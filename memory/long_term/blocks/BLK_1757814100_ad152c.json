@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: RFC9460: SVCB and HTTPS DNS Records\n • Hacker News: EFF to court: The Supreme Court must rein in secondary copyright liability\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Jung, weiblich, (selten) Kommunalpolitikerin",
+  "created_at": 1757814100.1201649,
+  "hash": "5a688d2b9687eee81bbead9cc1409f27fa831493200d0619d43cb4e53cc52486",
+  "id": "BLK_1757814100_ad152c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BN1hx1HhSrVvyI4kfTFC7q1uhmL214hSj238G30GJfFMoFC5AiukxbOI38E1hxtwnqpKGnxJmsYv9kBhP0lEBA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 03:41",
+  "url": null
+}

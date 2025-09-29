@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: WhoBIRD is now deprecated on certified Android devices\n • Hacker News: An Open-Source Maintainer's Guide to Saying No\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Jung, weiblich, (selten) Kommunalpolitikerin",
+  "created_at": 1757796092.6333063,
+  "hash": "8df79a5305d0dffe4574f87d457934064e7cd490fd3f7b9cbe7d748133e8a483",
+  "id": "BLK_1757796092_044557",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "hsZwYZWybeUCZVMh1yCT21z5GNQSH+7a5SkgUmP97CfZRTcvxi6t2NkAOLIOG3dAle592jutI6fConI+0DUOCg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 22:41",
+  "url": null
+}

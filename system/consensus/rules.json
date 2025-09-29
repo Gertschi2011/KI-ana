@@ -1,0 +1,6 @@
+{
+  "threshold": 0.51,
+  "weighting": "trust_weighted",
+  "require_signatures": true,
+  "dispute_window_hours": 12
+}

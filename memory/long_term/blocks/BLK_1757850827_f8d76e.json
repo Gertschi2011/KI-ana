@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Fukushima Insects Tested for Cognition\n • Hacker News: The PC was never a true 'IBMer'\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ostkongress in Wittenberg: Wo die Grünen ein rotes Tuch sind",
+  "created_at": 1757850827.616301,
+  "hash": "76ba58f730ae8f8a1389489d92c9c42fa6e274ff4269d821e4e2b47de7144ef7",
+  "id": "BLK_1757850827_f8d76e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/TyVmcFJ1d327++/9HgndFrYPxQbgqYyyAjfzVprfMwlsHeQMEO4RRveRa2zzNMw9pbcI3JUWiv0auCwAhblAQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 13:53",
+  "url": null
+}

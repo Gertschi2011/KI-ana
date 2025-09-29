@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: X open sourced their latest algorithm\n • Hacker News: We All Dodged a Bullet\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Militärattacke gegen Hamas-Führung in Doha",
+  "created_at": 1757432665.493754,
+  "hash": "0166c19310a75b2f62952ede58904632c3310cb0147744b37a28882616efae35",
+  "id": "BLK_1757432665_da4b7e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "APj1Zbb4hcRUTML440fuPD2PzHCFomi4InkjRQJPYdU4eezMevVsWkA8TtZ5aDOc/J2cxNJEsupZ2y4GIXroAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 17:44",
+  "url": null
+}

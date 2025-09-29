@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: South Korean workers detained in Hyundai plant raid to be freed and flown home\n • Hacker News: Belling the Cat\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Empörung nach Angriffen auf Ukraine: \"Der Kreml verhöhnt die Diplomatie\"",
+  "created_at": 1757254363.6986551,
+  "hash": "2198d0d91ffa3766315a3aad9790652c24e1b4e55eb33a1eeb2e65fefcce3269",
+  "id": "BLK_1757254363_0f2e81",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "kb7KEogQYXwS1jgIiuROQ2LNzvqHdOqqHKDBSNZiZfcNLtwiijcliXwAplUgL2FBLKrres2Ns2H0doHXitBwBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 16:12",
+  "url": null
+}

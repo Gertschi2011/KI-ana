@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Want to piss off your IT department? Are the links not malicious looking enough?\n • Hacker News: AI tools are making the world look weird\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "created_at": 1758240056.4903128,
+  "hash": "2b7a342ae3f15ef6c3fcfa88f42f4beb9ba7e0bcbcf874a983d263e8800b6571",
+  "id": "BLK_1758240056_03e33b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "NKmK1zJJBaIfhVq2sd3hueNPqFhrvvPQIBqM82AhpICaiCPJUYL+dOw/ou52zNEqCqJnX8CTaPDt8siGr4K3Dw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 02:00",
+  "url": null
+}

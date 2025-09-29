@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: IBM Technology Atlas\n • Hacker News: Public static void main(String[] args) is dead\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel beginnt offenbar Bodenoffensive in Gaza-Stadt",
+  "hash": "10bc06749ee0f8f805191c5a3404262869e8a085e4672373233de7132660bc17",
+  "id": "BLK_1758009666_pr8ir6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "c38AG2da7kV8L4jQl/QcDXiPt1FSX+eReUPDUSMy+OebK+vzYovZO6BBgOZ0+DCVGn0T1kH1JREgnM1v9/EMBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 10:01",
+  "ts": 1758009666,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Collecting All Causal Knowledge\n • Hacker News: WinBoat: Run Windows apps on Linux with seamless integration\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Erdbeben in Afghanistan: \"Alles brach über uns zusammen\"",
+  "created_at": 1756795674.1571815,
+  "hash": "0f02acfda0041767ce5f8e78e025c36167ebded5bfd3e7b60b981a7e37198f90",
+  "id": "BLK_1756795674_34389e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oSh7xAMm2G8zS5oXGKuXgm6o2pM6MoOaPVkJSEM/VsFQcGQZw1W3ht1T7GP57fiXIne5V5wJNEbW8Z7dYH2uCw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 08:47",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: High Altitude Living – 8,000 ft and above (2021)\n • Hacker News: Why you’d issue a branded stablecoin\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Krieg: Katar - Vermittler unter Beschuss",
+  "created_at": 1757828506.2077,
+  "hash": "4514dc3a59428d885175e77d5f0f61f444c1fbed2972a80eb85dba4702c8a634",
+  "id": "BLK_1757828506_f109ec",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "A79GucbXv8WY/V6aC+VnqXwye7Yx+Zm+l8cxCaqLX5l7iskAiDi6CM19oV8VuItrBOWnEnSljOwfmcYO+RfUAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 07:41",
+  "url": null
+}

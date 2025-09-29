@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Veena Chromatic Tuner\n • Hacker News: Show HN: C++ library for reading MacBook lid angle sensor data\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Enquete-Kommission zur Corona-Aufarbeitung nimmt Arbeit auf",
+  "created_at": 1757327194.5485458,
+  "hash": "43b1d5eac1d7b7c2178e63a3534a9830f974c7d41e4901301807e1e434a898cc",
+  "id": "BLK_1757327194_e94664",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ra9xsqMV5eAMg9e+4suvkFcP6q8P6yiMi/Q3WFeG6YwDrqgEuDkYRSV5lxpI286ROQgk1STiWVrz8IKTzKclDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 12:26",
+  "url": null
+}

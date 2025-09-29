@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Print GitHub Repositories as Books\n • Hacker News: Pico CSS - Minimal CSS Framework for Semantic HTML\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "hash": "06b6c0616f21c39ca0788cdd92ca24fe4b47f3e975817bc516af2c5a03166761",
+  "id": "BLK_1757279965_nlcwd4",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "GiqwMUM5uz77riAy/tjc/y0APgQPY6qtCbfRVOqG2/4ywDEyN9qnV6xjUU53yyApmCK0xual5c7v4R3BJUCZDw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 23:19",
+  "ts": 1757279965,
+  "url": ""
+}

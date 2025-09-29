@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Amazonq.nvim: Official AWS AI Assistant Plugin for Neovim\n • Hacker News: Kernel-hack-drill and exploiting CVE-2024-50264 in the Linux kernel\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krieg gegen die Ukraine: \"Russlands Wirtschaft verschlechtert sich rapide\"",
+  "hash": "e6ca45c6c94c5511c91a1c911721057e1b20a70337c462e6c4c1db37e7d40b86",
+  "id": "BLK_1756888045_p9wp3t",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "PWXI4jnrvEpQ9+LS2ORehhJKSMd09gk944Zxw8hS2/bmAIx5P1x+Qkyd36EhmS9L8YH/HMgws1DvoTNU4VD7BQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 10:27",
+  "ts": 1756888045,
+  "url": ""
+}

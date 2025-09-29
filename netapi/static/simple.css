@@ -1,0 +1,10 @@
+:root{--text:#eaf0ff;--muted:#b9c4e6;--line:#1e2a55}
+body{background:#0b1020;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px}
+a{color:#6aa6ff}
+.topbar{display:flex;gap:16px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0f1733,#0b1126)}
+.brand{display:flex;gap:12px;align-items:center;color:inherit;text-decoration:none}
+.avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.08)}
+.menu{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.menu a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px}
+.menu a.active{color:#eaf0ff;background:#16224a;border:1px solid #2a3a72}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Irssi: IRC Client in a Docker Image\n • Hacker News: Apple releases iOS 15.8.5 security update for 10-year old iPhone 6s\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Tatverdächtiger im Fall Kirk wegen Mordes angeklagt",
+  "created_at": 1758076173.7910042,
+  "hash": "c317a0c2b46de8f736a7906ca48a73a903d9af8cb5eff14e70e5fd6baba19e5a",
+  "id": "BLK_1758076173_667447",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "M0WZ1+kCkqQ0fJfIUSjT+iP6FVQKGJzBn4UgsWOrGyWpgqjHcJufj9xep/RtD1mlmtp00HZxY72mHvJFZYnSDA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 04:29",
+  "url": null
+}

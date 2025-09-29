@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A string formatting library in 65 lines of C++\n • Hacker News: Launch HN: Trigger.dev (YC W23) – Open-source platform to build reliable AI apps\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pläne von Wirtschaftsministerin Reiche: Die Energiewende-Wende",
+  "hash": "d75c54fe1b57b986933bb34c77f57d963e80d825e3e47faac4a1e49bf92b0dc4",
+  "id": "BLK_1757954436_vt4m08",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "jWKJool7YiHnXYGRiqx4i6DpX8u5qu1Yo+uCEVIguatd36/0ofoa1Nsmc2xIFAEJ31ZnFe2vw2ytJpvYB3M3Dg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 18:40",
+  "ts": 1757954436,
+  "url": ""
+}

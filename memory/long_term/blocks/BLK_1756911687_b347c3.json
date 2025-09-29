@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Today, I learned that eels are fish\n • Hacker News: Building the most accurate DIY CNC lathe in the world [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Bedeutung die Unabhängigkeit von Notenbanken hat",
+  "created_at": 1756911687.3959398,
+  "hash": "52a23ab29ce0359d687966b86fad67a6eb8288fd6472fcd2511e5ad29933d9fe",
+  "id": "BLK_1756911687_b347c3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "JXQ1XFzm2nUuqJR4s/Y3EsPZgSq6wfZSPZ1ibu+hH9MY5yLRQijZ+YDo616Wl6xTEUBSK2lStQgXKzWt8B7XDw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 17:01",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: BCacheFS is being disabled in the openSUSE kernels 6.17+\n • Hacker News: How Does the Cycle of Political Violence End? Here's What an Expert Says\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundesweiter Probealarm: Behörden testen Katastrophenwarnsysteme",
+  "hash": "48590de57583adf693c3484c641e3729d000ddc7656723f24f45005c2aeb0576",
+  "id": "BLK_1757585167_b1togs",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "obqXESa4E/GczYLMpNwb9FAitF9OXQ7ul8hMiyyvnjElhobREUbDl188xiEY86ub+ONysx4K+/srBj2zLvv9DQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 12:06",
+  "ts": 1757585167,
+  "url": ""
+}

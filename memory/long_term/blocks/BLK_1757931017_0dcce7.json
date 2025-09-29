@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: RustGPT: A pure-Rust transformer LLM built from scratch\n • Hacker News: Folks, we have the best π\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Monitoring-Bericht: Reiche will Subventionen für Energiewende kürzen",
+  "created_at": 1757931017.9920082,
+  "hash": "ac118ffc903ff5583dc67a973186eaf8bbfb07fdd303fc5b0ffa40a14e249365",
+  "id": "BLK_1757931017_0dcce7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/V2JpYNgrCCNSztawJXHqavwbEZNbcwXgtW+dhn3DR5h7BLRjqmVyLIBucHSLiECGLGbwtJ47EgNhyW1jlETCA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 12:10",
+  "url": null
+}

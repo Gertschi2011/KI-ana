@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!doctype html>
+<html lang="de" class="page">
+<head>
+  <meta charset="utf-8">
+  <title>Passwort vergessen – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Setze dein Passwort zurück bei KI_ana – dem sicheren KI-Interface.">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link href="/static/styles.css" rel="stylesheet">
+  <script defer src="/static/i18n.js"></script>
+</head>
+<body class="page">
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="paper" style="max-width:520px;margin:1.2rem auto">
+      <h1 data-i18n="forgot.title">Passwort zurücksetzen</h1>
+      <p data-i18n="forgot.subtitle">Gib deine E-Mail ein. Wir senden dir einen Link.</p>
+      <form onsubmit="return req(event)">
+        <input id="email" type="email" required placeholder="dein@mail.tld" class="input" data-i18n-placeholder="forgot.email_placeholder">
+        <button class="btn" type="submit" data-i18n="forgot.submit">Link senden</button>
+      </form>
+      <p style="margin-top:1rem;text-align:center"><a href="/static/login.html" data-i18n="forgot.back">Zurück zum Login</a></p>
+      <p id="msg"></p>
+    </div>
+  </div>
+  <script>
+    async function req(e){
+      e.preventDefault();
+      const r = await fetch('/api/password/forgot', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ email: document.getElementById('email').value.trim() })
+      });
+      const data = await r.json().catch(()=>({}));
+      document.getElementById('msg').textContent = data.message || (r.ok ? 'E-Mail gesendet' : 'Fehler');
+      return false;
+    }
+  </script>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

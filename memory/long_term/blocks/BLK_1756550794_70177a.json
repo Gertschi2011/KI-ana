@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: From Multi-Head to Latent Attention: The Evolution of Attention Mechanisms\n • Hacker News: Show HN: Hacker News em dash user leaderboard pre-ChatGPT\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Maßnahmen gegen Russland: Viele Sanktionen - aber welche Wirkung?",
+  "created_at": 1756550794.3187895,
+  "hash": "0a554c43da7c592cf08c9d660fedaf8920fcd0b970a47c313d1cfe92a14499ab",
+  "id": "BLK_1756550794_70177a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ht8veZLHC9ACeoxJ/tqD1FMkwNoaCnEyMTSiqV3JZsBIRh0KLw130W/mamLETvLVf5+zferildaGz2aW2OXgDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 12:46",
+  "url": null
+}

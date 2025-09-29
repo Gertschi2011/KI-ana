@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Using Claude Code to modernize a forgotten Linux kernel driver\n • Hacker News: Formatting code should be unnecessary\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "created_at": 1757294372.7830474,
+  "hash": "a2af261a70f2b48b460f0b5e3d81c8c52f9666ce94b5abbb89fcf63f894c2b9e",
+  "id": "BLK_1757294372_e82d1a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "UefO5Y+JXbpeKmDV5K4fAm1gBC03JfxwAhSLfhPuhkosmOBPbAwp9nntf/wfz/xHzADzM3I1D3Dao7Pn/wDfAA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 03:19",
+  "url": null
+}

@@ -1,0 +1,390 @@
+# -*- coding: utf-8 -*-
+from __future__ import annotations
+
+# … existierende Imports …
+from pathlib import Path
+# neu:
+import sys
+BASE = Path.home() / "ki_ana"      # falls noch nicht ganz oben gesetzt
+sys.path.insert(0, str(BASE / "system"))
+from profile_memory import (
+    load_profile, save_profile, set_display_name, add_nickname,
+    add_like, add_dislike, set_birthday
+)
+from datetime import datetime
+import json, re, subprocess, sys, os
+
+from fastapi import (
+    FastAPI, UploadFile, Form, Request, Depends,
+    HTTPException, status, Response, Cookie
+)
+from fastapi.responses import FileResponse, JSONResponse, HTMLResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
+
+# User/Session-Backend
+from .user_mgmt import (
+    authenticate, issue_session_token, verify_session_token,
+    get_user, set_plan_active, provision_submind_for
+)
+
+# ---------- Basis-Pfade ----------
+BASE = Path.home() / "ki_ana"
+MEM  = BASE / "memory"
+LT   = MEM / "long_term"
+TO_L = MEM / "to_learn.txt"
+OQ   = MEM / "open_questions.json"
+IDX  = MEM / "topic_index.json"
+SYS  = BASE / "system"
+CHAIN = SYS / "chain"
+WEB_CRAWL = SYS / "web_crawler.py"
+CHAIN_W   = SYS / "chain_writer.py"
+
+# ---------- App & Static ----------
+app = FastAPI(title="KI_ana API", version="0.1")
+static_dir = BASE / "netapi" / "static"
+static_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
+# ---------- Helpers ----------
+
+import re
+
+def teach_from_sentence(text: str) -> tuple[bool,str]:
+    """
+    Erkennt einfache Lehr-Sätze und speichert sie im Profil.
+    Gibt (True, msg) zurück, wenn etwas gelernt wurde.
+    """
+    t = (text or "").strip()
+    t_l = t.lower()
+
+    # Name / Anrede
+    m = re.search(r'\b(nenn\s+mich|du\s+darfst\s+mich\s+nennen|ich\s+heiße|ich\s+heisse)\s+(.+)$', t_l)
+    if m:
+        raw = t[m.start(2):].strip().strip(".! ")
+        ok = set_display_name(raw)
+        return True, f"Okay, ich nenne dich {raw}."
+
+    # Nickname
+    m = re.search(r'\bmein\s+spitzname\s+ist\s+(.+)$', t_l)
+    if m:
+        raw = t[m.start(1):].strip().strip(".! ")
+        add_nickname(raw)
+        return True, f"Spitzname gespeichert: {raw}."
+
+    # Vorlieben / Abneigungen
+    m = re.search(r'\bich\s+mag\s+(?!nicht\b)(.+)$', t_l)
+    if m:
+        item = t[m.start(1):].strip().strip(".! ")
+        add_like(item)
+        return True, f"Gemerkt: Du magst {item}."
+
+    m = re.search(r'\bich\s+mag\s+nicht\s+(.+)$', t_l)
+    if m:
+        item = t[m.start(1):].strip().strip(".! ")
+        add_dislike(item)
+        return True, f"Gemerkt: Du magst nicht {item}."
+
+    # Geburtstag (einfach)
+    m = re.search(r'\bmein\s+geburtstag\s+ist\s+am\s+(\d{1,2})\.\s*(\d{1,2})\.\s*(\d{4})\b', t_l)
+    if m:
+        d, mth, y = m.groups()
+        iso = f"{int(y):04d}-{int(mth):02d}-{int(d):02d}"
+        # Person unbekannt -> display_name oder "Du"
+        prof = load_profile()
+        person = prof.get("display_name") or "Du"
+        if set_birthday(person, iso):
+            return True, f"Alles Gute schon mal: {d}.{mth}.{y} 🎂"
+        return True, "Hab’s versucht, das Datum zu merken."
+
+    return False, ""
+
+SESSION_COOKIE = "ki_session"
+
+def iso_now() -> str:
+    return datetime.utcnow().isoformat() + "Z"
+
+def ensure_files():
+    MEM.mkdir(parents=True, exist_ok=True)
+    LT.mkdir(parents=True, exist_ok=True)
+    if not TO_L.exists(): TO_L.write_text("", encoding="utf-8")
+    if not OQ.exists():   OQ.write_text("{}", encoding="utf-8")
+    if not IDX.exists():  IDX.write_text("[]", encoding="utf-8")
+
+def read_json(p: Path, default):
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return default
+
+def write_json(p: Path, data):
+    p.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+def latest_chain_head():
+    if not CHAIN.exists(): return None
+    files = sorted(CHAIN.glob("block_*.json"), key=lambda x: int(x.stem.split("_")[1]))
+    if not files: return None
+    d = read_json(files[-1], {})
+    d["file"] = files[-1].name
+    return d
+
+def recent_memories(n=5):
+    files = sorted(LT.glob("*.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:n]
+    out = []
+    for f in files:
+        d = read_json(f, {})
+        d["file"] = f.name
+        out.append(d)
+    return out
+
+def append_to_learn(topic: str) -> bool:
+    topic = (topic or "").strip()
+    if not topic: return False
+    cur = TO_L.read_text(encoding="utf-8")
+    if cur and not cur.endswith("\n"):
+        cur += "\n"
+    TO_L.write_text(cur + topic + "\n", encoding="utf-8")
+    return True
+
+def is_url(msg: str):
+    m = re.search(r'(https?://\S+)', msg or "")
+    return m.group(1) if m else None
+
+def find_in_memory(topic: str):
+    t = (topic or "").lower().strip()
+    for f in sorted(LT.glob("*.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+        d = read_json(f, {})
+        text = (d.get("content","") + " " + d.get("topic","")).lower()
+        if t and t in text:
+            return f, d
+    return None, None
+
+def summarize(txt: str, max_sent=3, max_chars=800):
+    parts = re.split(r'(?<=[.!?])\s+', re.sub(r'\s+', ' ', (txt or "").strip()))
+    s = " ".join(parts[:max_sent]).strip()
+    if len(s) > max_chars:
+        s = s[:max_chars].rsplit(" ", 1)[0] + " ..."
+    return s if s else (txt or "")[:max_chars]
+
+def run_crawler(url: str):
+    """Startet den vorhandenen web_crawler.py und extrahiert Memory-Pfad + Hash aus stdout."""
+    try:
+        p = subprocess.run(
+            [sys.executable, str(WEB_CRAWL)],
+            input=f"{url}\n",
+            text=True,
+            capture_output=True,
+            timeout=180
+        )
+        out = (p.stdout or "") + "\n" + (p.stderr or "")
+        m_path = re.search(r"Crawl gespeichert:\s*(.+\.json)", out)
+        m_hash = re.search(r"SHA256 Hash:\s*([0-9a-f]{64})", out)
+        if m_path:
+            mp = Path(m_path.group(1))
+            return (mp if mp.exists() else None), (m_hash.group(1) if m_hash else "")
+        return None, ""
+    except Exception as e:
+        return None, f"ERR:{e}"
+
+def chain_write(entry_type: str, topic: str, memory_path: Path, source: str, meta: dict):
+    if not CHAIN_W.exists():
+        return
+    try:
+        subprocess.run([
+            sys.executable, str(CHAIN_W),
+            "--type", entry_type,
+            "--topic", topic,
+            "--source", source,
+            "--memory_path", str(memory_path),
+            "--meta", json.dumps(meta, ensure_ascii=False)
+        ], check=False)
+    except Exception:
+        pass
+
+# ---------- Session / Rollen ----------
+def current_user(request: Request, ki_session: str | None = Cookie(default=None)):
+    token = ki_session or request.headers.get("X-Session")
+    if not token:
+        return None
+    data = verify_session_token(token)
+    if not data:
+        return None
+    return get_user(data["uid"])
+
+def require_login(user=Depends(current_user)):
+    if not user:
+        raise HTTPException(status_code=401, detail="login required")
+    return user
+
+def require_owner(user=Depends(current_user)):
+    if not user or user.role not in ("owner", "admin"):
+        raise HTTPException(status_code=403, detail="forbidden")
+    return user
+
+# ---------- Models ----------
+class ChatIn(BaseModel):
+    message: str
+
+class ChatOut(BaseModel):
+    reply: str
+    topic: str | None = None
+    action: str | None = None
+    memory_path: str | None = None
+
+# ---------- Routes ----------
+@app.get("/", response_class=HTMLResponse)
+def index():
+    p = static_dir / "index.html"
+    if not p.exists():
+        html = "<h1>KI_ana UI</h1><p>Lege eine index.html nach ~/ki_ana/netapi/static/</p>"
+        return HTMLResponse(html, status_code=200)
+    return FileResponse(str(p))
+
+# Login / Logout / Me
+@app.post("/login")
+async def login(request: Request):
+    form = await request.form()
+    u = str(form.get("username") or "").strip()
+    p = str(form.get("password") or "")
+    user = authenticate(u, p)
+    if not user:
+        return HTMLResponse("<h3>Login fehlgeschlagen</h3><a href='/'>Zurück</a>", status_code=401)
+    token = issue_session_token(user)
+    resp = RedirectResponse(url="/", status_code=302)
+    # Achtung: secure=True setzt Cookie nur über HTTPS
+    resp.set_cookie(SESSION_COOKIE, token, httponly=True, samesite="Lax", secure=True)
+    return resp
+
+@app.post("/logout")
+def logout():
+    resp = RedirectResponse(url="/", status_code=302)
+    resp.delete_cookie(SESSION_COOKIE)
+    return resp
+
+@app.get("/me")
+def me(user=Depends(current_user)):
+    if not user:
+        return {"auth": False}
+    return {"auth": True, "id": user.id, "username": user.username, "role": user.role}
+
+# Owner/Admin: Status
+@app.get("/status")
+def status_route(_: object = Depends(require_owner)):
+    ensure_files()
+    head = latest_chain_head() or {}
+    rm = recent_memories(5)
+    oq = read_json(OQ, {})
+    q = {
+        "to_learn": sum(1 for _ in TO_L.read_text(encoding="utf-8").splitlines() if _.strip()),
+        "open_questions": len(oq),
+    }
+    return {"queue": q, "chain_head": head, "recent_memories": rm}
+
+# Chat & Enqueue (für alle eingeloggten Nutzer)
+@app.post("/chat", response_model=ChatOut)
+def chat(inp: ChatIn, user=Depends(require_login)):
+    ensure_files()
+    msg = (inp.message or "").trim()
+    msg = (inp.message or "").strip()
+taught, msg_out = teach_from_sentence(msg)
+    if taught:
+        # optional: Profil zurückgeben, damit UI den neuen Namen sofort anzeigen kann
+        prof = load_profile()
+        return ChatOut(
+            reply=msg_out,
+            topic=prof.get("display_name") or "",
+            action="learn_preference",
+            memory_path=None
+        )
+    if not msg:
+        return ChatOut(reply="Bitte Nachricht eingeben.")
+    url = is_url(msg)
+    if url:
+        mp, _ = run_crawler(url)
+        if mp:
+            # schreibe in Chain
+            chain_write("web_crawl", url, mp, url, {"url": url})
+            return ChatOut(reply="Danke! Ich habe aus dem Link gelernt.", topic=url, action="learn_link", memory_path=str(mp))
+        return ChatOut(reply="Konnte den Link nicht verarbeiten.")
+    # einfache Wissenssuche
+    f, d = find_in_memory(msg)
+    if f and d:
+        return ChatOut(reply=summarize(d.get("content","")), topic=d.get("topic"), action="from_memory", memory_path=str(f))
+    # sonst einreihen
+    append_to_learn(msg)
+    return ChatOut(reply="Hab’s auf die Lernliste gesetzt. 😊", topic=msg, action="enqueue")
+
+@app.post("/enqueue")
+def enqueue(topic: str, user=Depends(require_login)):
+    ensure_files()
+    ok = append_to_learn(topic)
+    return {"ok": bool(ok), "topic": topic}
+
+# Paywall/Webhook-Platzhalter
+@app.post("/billing/webhook/stripe")
+async def stripe_webhook(request: Request):
+    payload = await request.json()
+    if payload.get("type") == "checkout.session.completed":
+        uname = payload.get("user")
+        # echte Implementierung: DB-Lookup im user_mgmt; Signaturprüfung
+        from sqlalchemy import select
+        from .user_mgmt import engine, User, Session
+        with Session(engine) as sess:
+            u = sess.scalar(select(User).where(User.username == uname))
+            if not u:
+                raise HTTPException(400, "user not found")
+            set_plan_active(u.id, plan="pro", days=30)
+            provision_submind_for(u.id)
+        return {"ok": True}
+    return {"ok": False}
+
+# Skills – Owner only
+@app.get("/skills/proposals")
+def list_proposals(_: object = Depends(require_owner)):
+    props = []
+    root = BASE / "skills" / "proposals"
+    root.mkdir(parents=True, exist_ok=True)
+    for f in sorted(root.glob("*.json")):
+        try:
+            props.append(json.loads(f.read_text(encoding="utf-8")))
+        except:
+            pass
+    return props
+
+@app.post("/skills/proposals/create")
+def create_proposal(
+    id: str = Form(...),
+    name: str = Form(...),
+    version: str = Form("0.1"),
+    permissions: str = Form("read_memory,write_memory"),
+    _: object = Depends(require_owner)
+):
+    d = {"id": id, "name": name, "version": version, "permissions": permissions, "created": iso_now()}
+    out = BASE / "skills" / "proposals" / f"{id}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(d, indent=2, ensure_ascii=False), encoding="utf-8")
+    return {"ok": True, "proposal": d}
+from fastapi import Request
+
+@app.get("/profile")
+def get_profile():
+    return load_profile()
+
+class ProfileIn(BaseModel):
+    display_name: str | None = None
+    like: str | None = None
+    dislike: str | None = None
+    nickname: str | None = None
+
+@app.post("/profile")
+def post_profile(p: ProfileIn):
+    changed = []
+    if p.display_name:
+        set_display_name(p.display_name); changed.append("display_name")
+    if p.like:
+        add_like(p.like); changed.append("like")
+    if p.dislike:
+        add_dislike(p.dislike); changed.append("dislike")
+    if p.nickname:
+        add_nickname(p.nickname); changed.append("nickname")
+    return {"ok": True, "changed": changed, "profile": load_profile()}

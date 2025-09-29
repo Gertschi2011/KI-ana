@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Starlink is currently experiencing a service outage\n • Hacker News: \"Hello, Is This Anna?\": Unpacking the Lifecycle of Pig-Butchering Scams\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump mahnt Israel wegen Katar zur \"Vorsicht\"",
+  "created_at": 1757914841.4205883,
+  "hash": "1cec8d13e492ade898913e76af1b43732c58b5cadc97405098b87e38af6315c9",
+  "id": "BLK_1757914841_2f87f3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BUDonFJcLYOytmNaiTc9C9XLolUUgCZiKCi1Itw0jqT/BmL7HtY14iDFiDBcUtE/TKNzwmXQ6fgfbmx38iSkCA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 07:40",
+  "url": null
+}

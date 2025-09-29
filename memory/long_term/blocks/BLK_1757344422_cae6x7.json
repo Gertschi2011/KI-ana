@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Experimenting with Local LLMs on macOS\n • Hacker News: 'We can do it for under $100M': Startup joins race to build local ChatGPT\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienkampagne von Gouverneur Newsom: Trollen gegen Trump",
+  "hash": "3beff6e1f5d2495a2ee33954bf430e41ecea78c1eec30ce39191cb186090c5be",
+  "id": "BLK_1757344422_cae6x7",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "bcgqEU7NkP7XuxFbI5lV1IVFfRMLJGnLXqzOmTJTpIU2rG+L2MH5R3CsoiEFGV5Sz9FiBYWZsU89Eo/Wx6FcDQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 17:13",
+  "ts": 1757344422,
+  "url": ""
+}

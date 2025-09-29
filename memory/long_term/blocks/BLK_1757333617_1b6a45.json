@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 14 Killed in protests in Nepal over social media ban\n • Hacker News: RSS Beat Microsoft\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreich weckt Furcht vor neuer Euro-Schuldenkrise",
+  "created_at": 1757333617.6845114,
+  "hash": "9bf1564773f94ea90913ebe909d79ec8d5928b72108fb828af2ae4070cdbbe6d",
+  "id": "BLK_1757333617_1b6a45",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8jB6LP4mC6VlWpCN9OrJOeDXjI7I5TLVSGN+7iHklkMfbT+4oXyt4ZnAeupGgLGC2ffupP2wLWh91/p04RbNAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 14:13",
+  "url": null
+}

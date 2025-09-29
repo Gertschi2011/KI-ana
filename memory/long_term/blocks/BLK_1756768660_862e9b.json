@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Don't Build Multi-Agents\n • Hacker News: Raspberry Pi 5 support (OpenBSD)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwierige Rettungsarbeiten nach Erdbeben in Afghanistan",
+  "created_at": 1756768660.540271,
+  "hash": "e5c53935f951c016dec6a1950fa2744b483a189195693029ed78c3a941b88f21",
+  "id": "BLK_1756768660_862e9b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Gw30NTpCV6IVUi4WQhlrljCBJoq+Z6y2/0zQqlLO9Tn9Rph9IBu4fgImGwJLYaXX/j7ksie+kERe+e5KqemcAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 01:17",
+  "url": null
+}

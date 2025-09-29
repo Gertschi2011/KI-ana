@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Google gets away almost scot-free in US search antitrust case\n • Hacker News: American Flying Empty Airbus A321neo Across the Atlantic 20 Times\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienkampagne von Gouverneur Newsom: Trollen gegen Trump",
+  "created_at": 1757346222.898113,
+  "hash": "15c0b0db43a823ee2c2a78c065d6a9f9b91b729a6400587912470d7ab472a3b5",
+  "id": "BLK_1757346222_74a4ce",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "3FdB0KyKhrerAuFQ/Zg4menreK7huOQBFfRcqBe4lp9Q24LFlnBnmLwthguY6AlWst4VH/mLoLwTa5djdpTrAw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 17:43",
+  "url": null
+}

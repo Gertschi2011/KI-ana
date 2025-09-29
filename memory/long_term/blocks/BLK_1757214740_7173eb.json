@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Navy SEALs Killed Fishermen to Hide Failed Mission to Wiretap North Korea\n • Hacker News: Show HN: I recreated Windows XP as my portfolio\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht: Gelöstes Kabel wohl Ursache für Unglück in Lissabon",
+  "created_at": 1757214740.7134867,
+  "hash": "1a6a67798b519c5c3a6b65c8286b06c22c55c7621ac62f85f2022a8b87bfe3aa",
+  "id": "BLK_1757214740_7173eb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OrDmCASyrpV46+jipe89CowgWO1Ck5En20Bf1+RgvH973FqQNcI6CrihS67SamyHpOaBbTpWURmQY9Oi+WX4Cw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 05:12",
+  "url": null
+}

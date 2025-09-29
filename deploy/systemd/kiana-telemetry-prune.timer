@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily KI_ana Telemetry Prune Timer
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=kiana-telemetry-prune.service
+
+[Install]
+WantedBy=timers.target

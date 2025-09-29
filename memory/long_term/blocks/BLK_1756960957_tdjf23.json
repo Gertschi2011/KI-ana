@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Étoilé – desktop built on GNUStep\n • Hacker News: ReMarkable Paper Pro Move\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Koalitionsausschuss: Demonstrative Einigkeit gegen den Ampel-Sound",
+  "hash": "7ead0d07dfa1d1edf79898f321c5ecc1a0cfdba44a17db7de07bfc0d5aaae3f0",
+  "id": "BLK_1756960957_tdjf23",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "u+cpiPeyrHkZfAtLlzb8gtNPg+6jobJsjkA0vmESxc1fVq8vHc7s98qww/z88rJTe7XYteCq+1NY/FjnIJgcBA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 06:42",
+  "ts": 1756960957,
+  "url": ""
+}

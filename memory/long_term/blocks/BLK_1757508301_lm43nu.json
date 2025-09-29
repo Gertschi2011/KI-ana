@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Infracost (YC W21) Is Hiring First Product Manager to Shift FinOps Left\n • Hacker News: Supabase OrioleDB Patent: now freely available to the Postgres community\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Drohnen über Polen - was bedeutet das?",
+  "hash": "fdf7a8d6d48f95024b964808d38bbf93250758943bada9c05f8860e8e689ae06",
+  "id": "BLK_1757508301_lm43nu",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "BOQRmPSP+pSk97sHaMRb/wxu1S7+Du5bp8xjyjMXpceaV67Cz0xi/0LMIXnwrhIHG/iPq3vcZiAOAPhX4FZXAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 14:45",
+  "ts": 1757508301,
+  "url": ""
+}

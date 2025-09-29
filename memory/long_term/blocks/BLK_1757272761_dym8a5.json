@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Apple's A17 Pro Chip Ships with Hardware Flaw\n • Hacker News: Keeping Secrets Out of Logs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "hash": "93769f029294afd1c0f9c178f7f9298065b289edf83bb90749776cdc74cfb8b8",
+  "id": "BLK_1757272761_dym8a5",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "WrLRRVTkYmGd+KNrDw0hC1Y0iWIcztQBRoLi9rOcxZ85NO4V5xZp3Ac59opH0314dkwsBAr8mKSMTSEvsbObAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 21:19",
+  "ts": 1757272761,
+  "url": ""
+}

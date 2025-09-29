@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>KI_ana – Cron Jobs</title>
+  <link rel="stylesheet" href="/static/simple.css">
+  <link rel="stylesheet" href="/static/styles.css">
+  <style>
+    main { max-width: 1100px; margin: 20px auto; padding: 0 12px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding:8px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+    .pill { padding:2px 8px; border-radius: 999px; font-size: 12px; }
+    .ok { background: #e5f7ea; color: #0b7a2a; }
+    .off { background: #fdecea; color: #b00020; }
+    .muted { opacity:.65; }
+    .actions { display:flex; gap:6px; flex-wrap: wrap; }
+    .code { font-family: ui-monospace, Menlo, monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main>
+    <h1>⏱️ Cron / Scheduler</h1>
+    <section class="grid">
+      <div>
+        <h3>Jobs</h3>
+        <table id="jobs">
+          <thead>
+            <tr><th>Enabled</th><th>Skill</th><th>Action</th><th>Schedule</th><th>Last/Next</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="empty" class="muted" style="display:none">Keine Jobs vorhanden.</div>
+      </div>
+      <div>
+        <h3>Neuer Job</h3>
+        <form id="newJob" class="stack" onsubmit="return false">
+          <label>Skill <input id="skill" required placeholder="z.B. notify"></label>
+          <label>Action <input id="action" required placeholder="z.B. digest"></label>
+          <label>Args (JSON) <textarea id="args" rows="4" class="code">{}</textarea></label>
+          <fieldset>
+            <legend>Schedule</legend>
+            <label><input type="radio" name="sched" value="every" checked> every_seconds</label>
+            <input id="every" type="number" min="1" value="300" style="width:120px">
+            <div class="muted" style="margin:4px 0">oder</div>
+            <label><input type="radio" name="sched" value="cron"> cron</label>
+            <input id="cron" type="text" placeholder="*/5 * * * *" style="width:200px">
+          </fieldset>
+          <div class="actions">
+            <button id="addBtn" class="primary">Anlegen</button>
+            <button id="reloadBtn">Neu laden</button>
+          </div>
+          <p class="muted">Hinweis: Erfordert Login (admin/creator) für Änderungen.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/cron.js"></script>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Subminds – Downloads</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script defer src="/static/i18n.js"></script>
+</head>
+<body class="page"><script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+
+  <!-- Navigation wie gewohnt -->
+  <div id="navbar"></div>
+<!-- Hero -->
+  <main class="hero container">
+    <div class="hero-inner">
+ <!-- Avatar -->
+      <div class="hero-media" style="margin-top:2rem;">
+        <figure style="margin:0 auto;">
+          <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar" onerror="this.style.display='none'" style="max-width: 140px; height: auto; border-radius: 50%;">
+          <figcaption class="mt-avatar" data-i18n="home.caption">Ich lerne mit und von dir</figcaption>
+        </figure>
+      </div>
+    </div>
+
+  <!-- Inhalt -->
+  <main class="container" style="margin-top:2rem;">
+    <section class="card" style="background: rgba(74, 34, 166, 0.12); border-radius: 12px; padding: 2rem; max-width: 640px; margin: 0 auto; color:#fafafa;">
+      <h1 style="text-align:center;" data-i18n="downloads.title">Downloads</h1>
+      <p style="text-align:center;" data-i18n="downloads.subtitle">Hier erscheinen deine Submind-Pakete, sobald sie gebaut wurden.</p>
+      <ul id="list" style="list-style:none; padding:0; text-align:center;">
+        <li class="subtle" data-i18n="downloads.empty">Noch keine Pakete vorhanden.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      <p>© <span id="year"></span> KI_ana – mit Liebe gebaut.</p>
+      <p><a href="/static/impressum.html">Impressum</a> · <a href="/static/privacy.html">Datenschutz</a> · <a href="/static/agb.html">AGB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // kleines Helferlein für das Footer-Jahr
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <!-- KI_ana Interface: download.html -->
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

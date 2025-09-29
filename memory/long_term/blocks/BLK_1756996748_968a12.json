@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Calling your boss a dickhead is not a sackable offence, UK tribunal rules\n • Hacker News: How to build vector tiles from scratch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trauer um italienischen Modedesigner Giorgio Armani",
+  "created_at": 1756996748.6568573,
+  "hash": "5f40e86e49f5b9e2733ce8c41d4fea79bf7cb2d1b3fb4be5987ad02b12d0e7ef",
+  "id": "BLK_1756996748_968a12",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Bo07AfK9vRqkWMM1USEyOFFT+wKCr0nXzkjI8OjyjISq+HtN2sL960MVobYcPVYUcedzQSu6opCrUnj/sOuVCg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 16:39",
+  "url": null
+}

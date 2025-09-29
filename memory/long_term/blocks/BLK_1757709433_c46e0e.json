@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: North Korea executing more people for watching foreign films and TV, UN finds\n • Hacker News: Hyundai battery plant faces startup delay after US immigration raid, CEO says\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hinweise auf ein politische Motiv für Kirk-Attentat",
+  "created_at": 1757709433.649572,
+  "hash": "e3e9424a48d413af941aeac0013a5bd4e56876bf965c744d6cb537b11c9184dd",
+  "id": "BLK_1757709433_c46e0e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "SE0G1eH8wUEKMo+oBykq5sXeMbYlW17er+N29PGF5Z6Nd7i0BAkNqvxKQS6kl0C9I+0C7nRdZqw9BPkHxBQPAA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 22:37",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Classic 8×8-pixel B&W Mac patterns\n • Hacker News: Action was the best 8-bit programming language\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lissabon nach Seilbahn-Unglück: Trauer, ein wenig Wut und die Frage nach der Ursache",
+  "created_at": 1757018836.596085,
+  "hash": "f4d07b3af837c4cde5d3de85f0281a067eb4f08c7c0c53ac81406cd2cf5353fa",
+  "id": "BLK_1757018836_12a971",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HFOCRH66YPI/z2cT4CBuDfTPVsbmnyhGvXGC09xty+f7RqUoDqy9JLzEn4z/T0xrUGkl4k9WRN/cqykCXh73Cw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 22:47",
+  "url": null
+}

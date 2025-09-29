@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Public static void main(String[] args) is dead\n • Hacker News: Show HN: Pyproc – Call Python from Go Without CGO or Microservices\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Militärexperten warnen Israel vor Offensive auf Gaza-Stadt",
+  "hash": "bb1e2599ee46885047ef19f8ce9c8aed1a4f58b057ef9210396fa35c676a4e3b",
+  "id": "BLK_1758003597_zif2oc",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "coDhOBov/2HQRwNYNC2CBSWVeWbV2ekWs0kOn6OlxDJWRXFIFG+UGscYGf41UZfQsazoIrz2aZzT0MCzIi24DQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 08:19",
+  "ts": 1758003597,
+  "url": ""
+}

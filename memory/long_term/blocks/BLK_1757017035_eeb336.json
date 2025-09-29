@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: LLM Visualization\n • Hacker News: Artie (YC S23) Is Hiring Engineers, AES, and Senior PMM\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lissabon nach Seilbahn-Unglück: Trauer, ein wenig Wut und die Frage nach der Ursache",
+  "created_at": 1757017035.58412,
+  "hash": "c3caabec7c0eec024318a74107f4abb8e75579fd4279bc907ae02e54cae68566",
+  "id": "BLK_1757017035_eeb336",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "huYxXZewkasVmFbJZLTc04p2IUqh+r0g5FPbb19okaikOO9V/kkxdTksk1669eL4Pie8DPmUsstQWEKZwkCKDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 22:17",
+  "url": null
+}

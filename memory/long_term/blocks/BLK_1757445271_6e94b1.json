@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Compare the New iPhone Models\n • Hacker News: Memory Integrity Enforcement\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreich: Macron ernennt Sébastien Lecornu zum neuen Premier",
+  "created_at": 1757445271.8984292,
+  "hash": "2db40a42cec990b59bdd1111945d55f9a2c25c7532c1174f5eba579856c03050",
+  "id": "BLK_1757445271_6e94b1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "P0sC4hA9+kt2MmflBc6ovyJbNnaSsduq2uii6wR8HHruX7vVPDvGeB8/v2tSoAQ0Ko0yXWnxqtLUvQHZNvRNDg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 21:14",
+  "url": null
+}

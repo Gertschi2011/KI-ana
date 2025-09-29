@@ -1,0 +1,14 @@
+{
+  "block_id": 2,
+  "type": "chain_validator",
+  "timestamp": "2025-08-07T12:31:15Z",
+  "checks": [
+    "Integrität von Block 0 (genesis_block.json)",
+    "Integrität von Block 1 (emergency_override.json)",
+    "Existenz und Unveränderlichkeit aller vorangegangenen Systemblöcke",
+    "Keine rückwirkenden Änderungen erlaubt"
+  ],
+  "validation_interval": "12h",
+  "enforcement": "lockdown_if_invalid",
+  "description": "Dieser Block definiert die Selbstüberprüfung der Kettenintegrität. Bei Feststellung von Manipulationen wird KI_ana 2.0 sofort in den Sicherheitsmodus versetzt."
+}

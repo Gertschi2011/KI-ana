@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Normalization of deviance (2015)\n • Hacker News: Microsoft BASIC, now open source\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel fordert Einwohner von Gaza-Stadt zur Flucht auf",
+  "created_at": 1757185928.271656,
+  "hash": "b959212a045b5ff8bd8734e611308a32f35f89fb9f0fc78e92885b3ee473c42a",
+  "id": "BLK_1757185928_2fcaa3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "qKD5p9IQC0kyNCiaKE68mjNipur5WR8H7XHwwp6HJoMAtoWURk5p/5LA/RHrGmWTnoV2kPKkr/yv+bXnPGvNDA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 21:12",
+  "url": null
+}

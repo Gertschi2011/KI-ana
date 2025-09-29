@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How many HTTP requests/second can a Single Machine handle?\n • Hacker News: Mark Zuckerberg's AI dream team seems to be falling apart\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Klingbeil zur Haushaltslücke: \"Werden den Menschen etwas abverlangen müssen\"",
+  "created_at": 1756666428.7991893,
+  "hash": "e8e95f1d5e8242d685f6297611d2eb2f3e85db24d5784031a8c9accdea3741f4",
+  "id": "BLK_1756666428_4a34d3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "b0oFDIFvRnkDElcA5uI2I07HIzz1hrzyg1fnmkxXXwZsrWh705tuNUDiFF1yShKSmlffs3C/3iqOEjJ+PMwHDA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 20:53",
+  "url": null
+}

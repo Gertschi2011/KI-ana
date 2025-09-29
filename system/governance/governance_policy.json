@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "change_control": {
+    "quorum": 0.67,
+    "require_owner_co_sign": true,
+    "allowed_targets": ["policies","code","consensus_rules","crawler_scopes"],
+    "review_window_hours": 24
+  },
+  "approval_matrix": {
+    "policy_change": {"owner": true, "submind_votes": 0.6},
+    "code_change": {"owner": true, "submind_votes": 0.7},
+    "emergency_change": {"owner": true}
+  },
+  "audit_required": true
+}

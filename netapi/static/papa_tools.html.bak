@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Papa Tools Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <style>
+    .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    .card{ padding:16px; border:1px solid #eee; border-radius:8px; background:#fff; }
+    .row{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .muted{ color:#666; font-size: 12px; }
+    table{ width:100%; border-collapse: collapse; }
+    th, td{ border-bottom:1px solid #eee; padding:8px; text-align:left; }
+    th{ background:#f9f9f9; }
+    .pill{ padding:2px 8px; border-radius:999px; background:#f1f1f1; font-size:12px; }
+    /* Modal */
+    .modal-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,0.4); display:none; align-items:center; justify-content:center; }
+    .modal{ background:#fff; width: min(900px, 92vw); max-height: 80vh; border-radius:8px; box-shadow:0 6px 24px rgba(0,0,0,0.2); display:flex; flex-direction:column; }
+    .modal header{ padding:10px 12px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center; }
+    .modal .body{ padding:10px 12px; overflow:auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space:pre-wrap; background:#fafafa; border-top:1px solid #f0f0f0; border-bottom:1px solid #f0f0f0; }
+    .modal footer{ padding:8px 12px; display:flex; gap:8px; justify-content:flex-end; }
+  </style>
+</head>
+<body class="page">
+  <div id="nav" data-src="/static/nav.html"></div>
+  <main class="container">
+    <h1>Papa Tools Dashboard</h1>
+    <div class="row" style="margin:8px 0 16px 0">
+      <button id="btnDesktopHelp" class="btn">🖥️ Desktop Shell starten</button>
+      <span class="muted">Öffnet Anleitung zum Start der Electron‑Shell.</span>
+    </div>
+    <section class="card" style="margin-bottom:16px">
+      <h2>Sicherheit & System</h2>
+      <div id="guardianStatus" class="muted" style="margin-bottom:8px">Lade Status…</div>
+      <div class="row">
+        <button id="btnEmergency" class="btn btn-danger">🔴 Emergency Stop</button>
+        <button id="btnRecover" class="btn">🟢 Recovery</button>
+        <label class="row" style="gap:6px">
+          <span>⏪ Letzte</span>
+          <select id="invalidateN">
+            <option value="1">1</option>
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+          </select>
+          <span>ungültig (tag: tool_usage)</span>
+          <button id="btnInvalidate" class="btn">Ausführen</button>
+        </label>
+      </div>
+      <div class="row" style="margin-top:10px; gap:8px">
+        <button id="btnDbInfo" class="btn">DB‑Info</button>
+        <span id="dbInfo" class="muted">–</span>
+      </div>
+      <div class="row" style="margin-top:10px; gap:8px">
+        <button id="btnSwUpdate" class="btn">SW aktualisieren</button>
+        <button id="btnSwClear" class="btn">SW‑Caches leeren</button>
+        <span id="swInfo" class="muted">Service Worker</span>
+      </div>
+      <div class="row" style="margin-top:10px; gap:8px">
+        <button id="btnTtsHealth" class="btn">TTS Health</button>
+        <span id="ttsInfo" class="muted">–</span>
+      </div>
+    </section>
+    <div class="grid">
+      <section class="card">
+        <h2>System Health</h2>
+        <div id="healthRow" class="row" style="gap:8px; flex-wrap:wrap">
+          <span id="hbServer" class="pill">Server: –</span>
+          <span id="hbDB" class="pill">DB: –</span>
+          <span id="hbLLM" class="pill">LLM: –</span>
+          <span id="hbTTS" class="pill">TTS: –</span>
+          <button id="hbRefresh" class="btn">Neu laden</button>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Vorschläge</h2>
+        <div class="row">
+          <button id="refreshProposals" class="btn">Neu laden</button>
+        </div>
+        <div id="proposals">Lade…</div>
+      </section>
+      <section class="card">
+        <h2>Inventar</h2>
+        <div class="row">
+          <button id="refreshTools" class="btn">Neu laden</button>
+          <button id="aggregate" class="btn">Erfolg aggregieren</button>
+        </div>
+        <div id="tools">Lade…</div>
+      </section>
+    </div>
+    <section class="card" style="margin-top:16px">
+      <h2>Letzte Tool‑Nutzung</h2>
+      <div class="row"><button id="refreshUsage" class="btn">Neu laden</button></div>
+      <div id="usage">Lade…</div>
+    </section>
+    <section class="card" style="margin-top:16px">
+      <h2>Risky‑Prompts</h2>
+      <div class="row"><button id="refreshRisky" class="btn">Neu laden</button></div>
+      <div id="risky">Lade…</div>
+    </section>
+    <section class="card" style="margin-top:16px">
+      <h2>Ext‑Tools</h2>
+      <div class="row">
+        <input id="extName" placeholder="Toolname (z. B. echo)" />
+        <button id="extStart" class="btn">Start</button>
+        <button id="extStop" class="btn">Stop</button>
+        <button id="extRefresh" class="btn">Neu laden</button>
+      </div>
+      <div id="extStatus">Lade…</div>
+    </section>
+    <div id="logsModal" class="modal-backdrop">
+      <div class="modal">
+        <header>
+          <strong>Logs</strong>
+          <button id="logsClose" class="btn">Schließen</button>
+        </header>
+        <div class="row" style="padding:8px 12px; gap:8px; align-items:center">
+          <span id="logsMeta" class="muted">–</span>
+          <label style="margin-left:auto; display:flex; gap:6px; align-items:center"><input type="checkbox" id="logsAuto" /> Auto‑Refresh</label>
+          <label style="display:flex; gap:6px; align-items:center">Tail
+            <select id="logsLimit">
+              <option value="2000">2000 B</option>
+              <option value="4000" selected>4000 B</option>
+              <option value="8000">8000 B</option>
+            </select>
+          </label>
+          <button id="logsCopy" class="btn">Kopieren</button>
+          <button id="logsReload" class="btn">Neu laden</button>
+        </div>
+        <div id="logsBody" class="body">Lade…</div>
+        <footer>
+          <button id="logsClose2" class="btn">Schließen</button>
+        </footer>
+      </div>
+    </div>
+  </main>
+  <script>
+    async function jget(u){ const r = await fetch(u, { credentials:'include' }); try{ return await r.json(); }catch{ return {}; } }
+    async function jpost(u, body){ const r = await fetch(u, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body||{}), credentials:'include' }); try{ return await r.json(); }catch{ return {}; } }
+
+    async function loadProposals(){
+      const el = document.getElementById('proposals'); el.textContent = 'Lade…';
+      const res = await jget('/api/agent/tools/proposals');
+      if (!res || !res.ok){ el.textContent = 'Fehler beim Laden'; return; }
+      if (!res.items || !res.items.length){ el.textContent = 'Keine Vorschläge'; return; }
+      const rows = res.items.map(it=>`<tr>
+        <td><code>${(it.id||'')}</code></td>
+        <td>${(it.title||'')}</td>
+        <td>${(it.ts||'')}</td>
+        <td class="row">
+          <button data-act="approve" data-id="${it.id}" class="btn">Approve</button>
+          <button data-act="reject" data-id="${it.id}" class="btn btn-danger">Reject</button>
+        </td>
+      </tr>`).join('');
+      el.innerHTML = `<div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>Titel</th><th>TS</th><th>Aktion</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+      el.querySelectorAll('button[data-act]').forEach(b=>{
+        b.addEventListener('click', async ()=>{
+          const id = b.getAttribute('data-id');
+          if (b.getAttribute('data-act')==='approve'){
+            const desc = prompt('Beschreibung (optional)')||'';
+            const ep = prompt('Endpoint (optional)')||'';
+            const kind = prompt('Art (http|python|device)', 'http')||'http';
+            const r = await jpost(`/api/agent/tools/approve?id=${encodeURIComponent(id)}&description=${encodeURIComponent(desc)}&endpoint=${encodeURIComponent(ep)}&kind=${encodeURIComponent(kind)}`);
+            alert(JSON.stringify(r)); loadTools();
+          } else {
+            const reason = prompt('Grund der Ablehnung (optional)')||'';
+            const r = await jpost('/api/agent/tools/reject', { id, reason });
+            alert(JSON.stringify(r)); loadProposals();
+          }
+        });
+      });
+    }
+
+    async function loadTools(){
+      const el = document.getElementById('tools'); el.textContent = 'Lade…';
+      const res = await jget('/api/agent/tools');
+      if (!res || !res.ok){ el.textContent = 'Fehler beim Laden'; return; }
+      const items = res.items||[];
+      const rows = items.map(it=>`<tr>
+        <td>${it.name}</td>
+        <td>${it.description||''}</td>
+        <td><span class="pill">${(it.uses||0)} uses</span></td>
+        <td><span class="pill">${(it.success_rate||0).toFixed? it.success_rate.toFixed(2): it.success_rate}</span></td>
+        <td>${it.kind||''}</td>
+        <td>${it.endpoint||''}</td>
+      </tr>`).join('');
+      el.innerHTML = `<div class="table-wrap"><table class="table"><thead><tr><th>Name</th><th>Beschreibung</th><th>Verwendung</th><th>Erfolg</th><th>Art</th><th>Endpoint</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+
+    async function loadUsage(){
+      const el = document.getElementById('usage'); el.textContent = 'Lade…';
+      const res = await jget('/api/agent/tools/usage');
+      if (!res || !res.ok){ el.textContent = 'Fehler beim Laden'; return; }
+      const items = res.items||[];
+      el.innerHTML = items.map(it=>`<details><summary><code>${(it.id||'')}</code> — ${it.title||''}</summary><pre style="white-space:pre-wrap">${(it.content||'')}</pre></details>`).join('') || 'Keine Daten';
+    }
+
+    async function loadGuardian(){
+      const el = document.getElementById('guardianStatus');
+      el.textContent = 'Lade Status…';
+      try{
+        const res = await jget('/api/guardian/status');
+        if (!res || !res.ok){ el.textContent = 'Status: unbekannt'; return; }
+        el.textContent = res.emergency_active ? '⚠️ Emergency aktiv' : '✅ Normalbetrieb';
+      }catch{ el.textContent = 'Status: Fehler'; }
+    }
+
+    async function loadRisky(){
+      const el = document.getElementById('risky'); el.textContent = 'Lade…';
+      const res = await jget('/api/agent/tools/risky');
+      if (!res || !res.ok){ el.textContent = 'Fehler beim Laden'; return; }
+      const items = res.items||[];
+      el.innerHTML = items.map(it=>`<details><summary><code>${(it.id||'')}</code> — ${new Date((it.ts||0)*1000).toLocaleString()} — ${((it.meta&&it.meta.uid)!=null?('uid:'+it.meta.uid):'')}</summary><pre style="white-space:pre-wrap">${(it.content||'')}</pre></details>`).join('') || 'Keine Daten';
+    }
+
+    document.getElementById('refreshProposals').addEventListener('click', loadProposals);
+    document.getElementById('refreshTools').addEventListener('click', loadTools);
+    document.getElementById('aggregate').addEventListener('click', async ()=>{ const r=await jpost('/api/agent/tools/aggregate'); alert(JSON.stringify(r)); loadTools(); });
+    document.getElementById('refreshUsage').addEventListener('click', loadUsage);
+    document.getElementById('refreshRisky').addEventListener('click', loadRisky);
+    document.getElementById('btnEmergency').addEventListener('click', async ()=>{ if (!confirm('Emergency Stop auslösen?')) return; const r = await jpost('/api/sys/shutdown'); alert(JSON.stringify(r)); loadGuardian(); });
+    document.getElementById('btnRecover').addEventListener('click', async ()=>{ const r = await jpost('/api/sys/recover'); alert(JSON.stringify(r)); loadGuardian(); });
+    document.getElementById('btnInvalidate').addEventListener('click', async ()=>{ const n = parseInt(document.getElementById('invalidateN').value,10)||5; const r = await jpost('/api/sys/invalidate_last', { n, tag: 'tool_usage' }); alert(JSON.stringify(r)); });
+
+    // DB Info
+    async function loadDbInfo(){
+      const el = document.getElementById('dbInfo'); el.textContent = 'Lade…';
+      try{
+        const r = await jget('/api/sys/db_info');
+        if (!r || !r.ok){ el.textContent = 'DB: unbekannt'; return; }
+        const d = r.database||{};
+        const txt = `DB: ${d.dialect||'?'} — ${d.is_sqlite? 'SQLite' : 'Server'} — ${d.configured_url_masked||''}`;
+        el.textContent = txt;
+      }catch{ el.textContent = 'DB: Fehler'; }
+    }
+    document.getElementById('btnDbInfo').addEventListener('click', loadDbInfo);
+    loadDbInfo();
+
+    // SW controls
+    async function swUpdate(){
+      const info = document.getElementById('swInfo'); info.textContent = 'Update…';
+      try{
+        if ('serviceWorker' in navigator){
+          const regs = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(regs.map(r => r.update().catch(()=>{})));
+          info.textContent = 'SW: Update angestoßen';
+        } else info.textContent = 'SW: nicht verfügbar';
+      }catch{ info.textContent = 'SW: Fehler bei Update'; }
+    }
+    async function swClearCaches(){
+      const info = document.getElementById('swInfo'); info.textContent = 'Leere Caches…';
+      try{
+        if ('caches' in window){
+          const keys = await caches.keys();
+          await Promise.all(keys.map(k => caches.delete(k).catch(()=>{})));
+          info.textContent = 'SW: Caches geleert';
+        } else info.textContent = 'SW: keine Caches API';
+      }catch{ info.textContent = 'SW: Fehler beim Leeren'; }
+    }
+    document.getElementById('btnSwUpdate').addEventListener('click', swUpdate);
+    document.getElementById('btnSwClear').addEventListener('click', swClearCaches);
+
+    // TTS health
+    async function ttsHealth(){
+      const el = document.getElementById('ttsInfo'); el.textContent = 'Prüfe…';
+      try{
+        const r = await jget('/api/voice/health');
+        if (!r) { el.textContent = 'TTS: unbekannt'; return; }
+        el.textContent = r.ok ? `TTS OK (${r.backend||''})` : `TTS FEHLT (${r.reason||'unbekannt'})`;
+      }catch{ el.textContent = 'TTS: Fehler'; }
+    }
+    document.getElementById('btnTtsHealth').addEventListener('click', ttsHealth);
+    ttsHealth();
+
+    // -------- Health Badges --------
+    function setBadge(el, ok, text){
+      el.textContent = text;
+      el.style.background = ok ? '#e7f7ed' : '#fde8e8';
+      el.style.border = ok ? '1px solid #a8e1bf' : '1px solid #f3b4b4';
+    }
+    async function fetchWithRTT(url, opts){
+      const t0 = performance.now();
+      try{
+        const ctl = new AbortController();
+        const to = setTimeout(()=>ctl.abort(), (opts&&opts.timeout)||3000);
+        const res = await fetch(url, { credentials:'include', signal: ctl.signal });
+        clearTimeout(to);
+        const t = Math.max(1, Math.round(performance.now()-t0));
+        return { ok: res.ok, status: res.status, rtt: t, json: await res.json().catch(()=>({})) };
+      }catch(e){
+        const t = Math.max(1, Math.round(performance.now()-t0));
+        return { ok: false, status: 0, rtt: t, json: {} };
+      }
+    }
+    async function refreshHealth(){
+      const elS = document.getElementById('hbServer');
+      const elD = document.getElementById('hbDB');
+      const elL = document.getElementById('hbLLM');
+      const elT = document.getElementById('hbTTS');
+      // Server RTT via db_info (leichtgewichtige API)
+      const srv = await fetchWithRTT('/api/sys/db_info');
+      setBadge(elS, srv.ok, `Server: ${srv.ok?'🟢':'🔴'} ${srv.status||0} / ${srv.rtt}ms`);
+      // DB info
+      const d = srv.json && srv.json.database ? srv.json.database : {};
+      const dd = d.dialect || (d.is_sqlite?'sqlite':'db');
+      setBadge(elD, srv.ok, `DB: ${dd} ${srv.ok?'🟢':'🔴'}`);
+      // LLM metrics
+      const llm = await fetchWithRTT('/api/metrics');
+      const info = (llm.json && llm.json.ollama) || {};
+      const lOK = !!(llm.ok && info && (info.available !== false) && (info.model_present !== false));
+      const model = info.model || info.model_name || 'n/a';
+      setBadge(elL, lOK, `LLM: ${lOK?'🟢':'🟡'} ${model} / ${llm.rtt}ms`);
+      // TTS
+      const tts = await fetchWithRTT('/api/voice/health');
+      const tOK = !!(tts.ok && (tts.json && (tts.json.ok !== false)));
+      setBadge(elT, tOK, `TTS: ${tOK?'🟢':'🔴'} ${tts.json&&tts.json.backend||''}`);
+    }
+    document.getElementById('hbRefresh').addEventListener('click', refreshHealth);
+    refreshHealth();
+    setInterval(refreshHealth, 15000);
+
+    loadGuardian(); loadProposals(); loadTools(); loadUsage(); loadRisky(); loadExt();
+    // Desktop Shell instructions
+    document.getElementById('btnDesktopHelp').addEventListener('click', ()=>{
+      alert('Desktop Shell (Electron) starten:\n\n1) cd desktop/electron\n2) npm install\n3) npm run start\n\nOptional: KI_DESKTOP_BASE=https://localhost:8000 npm run start');
+    });
+    // Ext‑Tools
+    async function loadExt(){
+      const el = document.getElementById('extStatus'); el.textContent = 'Lade…';
+      const res = await jget('/api/ext/status');
+      if (!res || !res.ok){ el.textContent = 'Fehler beim Laden'; return; }
+      const items = res.items||[];
+      const rows = items.map(it=>`<tr>
+        <td>${it.name}</td>
+        <td>${it.port||''}</td>
+        <td>${it.running ? (it.healthy ? '🟢 healthy' : '🔴 unhealthy') : '⚪️ gestoppt'}</td>
+        <td class="row" style="gap:6px">
+          <a class="btn" href="/api/ext/proxy/${it.name}/run" target="_blank">Proxy‑/run</a>
+          <button class="btn" data-log="${it.name}">Logs</button>
+          ${it.running ? `<button class="btn" data-stop="${it.name}">Stop</button>` : `<button class="btn" data-start="${it.name}">Start</button>`}
+        </td>
+      </tr>`).join('');
+      el.innerHTML = `<div class="table-wrap"><table class="table"><thead><tr><th>Name</th><th>Port</th><th>Status</th><th>Aktion</th></tr></thead><tbody>${rows||''}</tbody></table></div>` || 'Keine Tools';
+      el.querySelectorAll('button[data-log]').forEach(b=>{
+        b.addEventListener('click', ()=> openLogsModal(b.getAttribute('data-log')));
+      });
+      el.querySelectorAll('button[data-start]').forEach(b=>{
+        b.addEventListener('click', async ()=>{
+          const name = b.getAttribute('data-start');
+          const r = await jpost(`/api/ext/start?name=${encodeURIComponent(name)}`);
+          if (!r || !r.ok) alert('Start fehlgeschlagen');
+          loadExt();
+        });
+      });
+      el.querySelectorAll('button[data-stop]').forEach(b=>{
+        b.addEventListener('click', async ()=>{
+          const name = b.getAttribute('data-stop');
+          const r = await jpost(`/api/ext/stop?name=${encodeURIComponent(name)}`);
+          if (!r || !r.ok) alert('Stop fehlgeschlagen');
+          loadExt();
+        });
+      });
+    }
+    document.getElementById('extRefresh').addEventListener('click', loadExt);
+    document.getElementById('extStart').addEventListener('click', async ()=>{
+      const name = (document.getElementById('extName').value||'').trim(); if (!name) return alert('Name eingeben');
+      const r = await jpost(`/api/ext/start?name=${encodeURIComponent(name)}`);
+      alert(JSON.stringify(r)); loadExt();
+    });
+    document.getElementById('extStop').addEventListener('click', async ()=>{
+      const name = (document.getElementById('extName').value||'').trim(); if (!name) return alert('Name eingeben');
+      const r = await jpost(`/api/ext/stop?name=${encodeURIComponent(name)}`);
+      alert(JSON.stringify(r)); loadExt();
+    });
+
+    // Logs modal logic
+    let logsTimer = null; let logsTarget = null;
+    function showLogsBackdrop(show){ document.getElementById('logsModal').style.display = show ? 'flex' : 'none'; }
+    async function fetchLogs(name){
+      const limitSel = document.getElementById('logsLimit');
+      const limit = parseInt(limitSel && limitSel.value ? limitSel.value : '4000', 10) || 4000;
+      const r = await jget(`/api/ext/logs?name=${encodeURIComponent(name)}&limit=${limit}`);
+      const body = document.getElementById('logsBody');
+      const meta = document.getElementById('logsMeta');
+      if (r && r.ok){
+        body.textContent = `stdout\n${r.stdout||''}\n\nstderr\n${r.stderr||''}`;
+        meta.textContent = `Tool: ${name} — ${new Date().toLocaleTimeString()}`;
+      } else { body.textContent = 'Fehler beim Laden'; }
+    }
+    function openLogsModal(name){
+      logsTarget = name; showLogsBackdrop(true); fetchLogs(name);
+      const auto = document.getElementById('logsAuto');
+      clearInterval(logsTimer); logsTimer = null;
+      auto.checked = true; logsTimer = setInterval(()=> fetchLogs(name), 2000);
+    }
+    function closeLogs(){ showLogsBackdrop(false); clearInterval(logsTimer); logsTimer = null; logsTarget = null; }
+    document.getElementById('logsClose').addEventListener('click', closeLogs);
+    document.getElementById('logsClose2').addEventListener('click', closeLogs);
+    document.getElementById('logsReload').addEventListener('click', ()=>{ if (logsTarget) fetchLogs(logsTarget); });
+    document.getElementById('logsAuto').addEventListener('change', (e)=>{
+      clearInterval(logsTimer); logsTimer = null;
+      if (e.target.checked && logsTarget){ logsTimer = setInterval(()=> fetchLogs(logsTarget), 2000); }
+    });
+    document.getElementById('logsCopy').addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(document.getElementById('logsBody').textContent||''); alert('Kopiert'); }catch{ alert('Konnte nicht kopieren'); }
+    });
+  </script>
+  <script>
+    // Register Service Worker for offline shell
+    (function(){
+      if ('serviceWorker' in navigator){
+        navigator.serviceWorker.register('/static/sw.js').catch(()=>{});
+      }
+    })();
+  </script>
+  <script defer src="/static/nav.js"></script>
+</body>
+</html>

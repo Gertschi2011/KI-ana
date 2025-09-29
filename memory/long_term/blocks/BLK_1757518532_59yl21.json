@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Zoox launches its robotaxi service to the public in Las Vegas\n • Hacker News: Performance Improvements in .NET 10\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Scharfe Kritik am Eindringen russischer Drohnen in polnischen Luftraum",
+  "hash": "a7b4b4b5e2d904fe7522eb5fd698c7db75e37792b2bb44afaea166303def8e16",
+  "id": "BLK_1757518532_59yl21",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "y5RxQUMzhE//btg33FPqYyjH5VV4EmS77h1E7sm0MlF3YAi9pQ9aaPMo1z7U1uMqw2rjtM4dUWBfyMNsj+CECg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 17:35",
+  "ts": 1757518532,
+  "url": ""
+}

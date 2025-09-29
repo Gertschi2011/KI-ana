@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Writing an operating system kernel from scratch\n • Hacker News: Website Is Just an SVG\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NRW-Kommunalwahlen: CDU laut Prognose stärkste Kraft, AfD legt zu",
+  "hash": "c6e837f35c9cb31cd086f2c17ac4685d634ff89fc6ab05a735fa0a2490664ba6",
+  "id": "BLK_1757867413_5khsko",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "AaoHZSRbr4DviedaNCcySNrB2r4ii79vr/ntR7ayk2ojRWYyOBe1E/0/vsGDYLkO71cR2ahIJbg0daikBTJ/AQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 18:30",
+  "ts": 1757867413,
+  "url": ""
+}

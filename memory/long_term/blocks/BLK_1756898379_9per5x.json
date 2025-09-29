@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The 16-year odyssey it took to emulate the Pioneer LaserActive\n • Hacker News: Finding thousands of exposed Ollama instances using Shodan\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"Herbst der Reformen\" - was Schwarz-Rot jetzt anpacken will",
+  "hash": "551a6e5c405993708fb25ca554dd69264f9df48c6a7947f3194d1b3d07560b8d",
+  "id": "BLK_1756898379_9per5x",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "WPF96bzh8tOvXHjM+qGgYKtLsFFhBH7sAK+3sY6DQZfvbDungnBj5/sds53MtH522BS4ihFB4XlqML3Qt4P2AQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 13:19",
+  "ts": 1756898379,
+  "url": ""
+}

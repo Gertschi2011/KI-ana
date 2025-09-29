@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Hypervisor 101 in Rust\n • Hacker News: Meta Ray-Ban Display\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Recherche zu Jan Marsalek: \"Deutschland hätte viel aktiver sein können\"",
+  "hash": "681e95b457d616e2ae59a99ff9d18c08ce9d291153ea0acf643909b0e2cc2bef",
+  "id": "BLK_1758159018_hcmf6s",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "+BGs/e7Zt/e80PPcQyH1A3GYIFN0YFKz0AzuejqNEuG5BfPuRfsUUhV3c86Ac68CzUtrvs9V40q2/J8e1kR2Dg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 03:30",
+  "ts": 1758159018,
+  "url": ""
+}

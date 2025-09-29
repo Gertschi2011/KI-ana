@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Atomic Bombs Exploded on Earth\n • Hacker News: Saquon Is Playing for Equity\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"Koalition der Willigen\" einigte sich auf Ukraine-Sicherheitsgarantien",
+  "created_at": 1757011632.8906713,
+  "hash": "0ce47fe4d5426a404113ea9a8e133716c2547262425369498bfbecc9ff4e7418",
+  "id": "BLK_1757011632_e397ab",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OXgGCjAuRNjLZYwIVQ9O6n39mPH7CkkUt9CuzHlhA4HJRWHs8DgYMsT2ZbUA9Ln1UAgP8YWY8oAzp2O4Y1YBAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 20:47",
+  "url": null
+}

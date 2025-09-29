@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple: SSH and FileVault\n • Hacker News: Shipping 100 hardware units in under eight weeks\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "created_at": 1758229252.0343301,
+  "hash": "5093c948db562029132fbc44f162459fb71df77840f8a09bdcc50220bb75ea06",
+  "id": "BLK_1758229252_30758f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "DMYjQheCCRzDmf5qA2Ekneq0IzEnugss+Mfkv93TYUAabfcGjfaJ/HoO6jWAlgfPOD9YPTr77AzjiXrF+K6OBQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 23:00",
+  "url": null
+}

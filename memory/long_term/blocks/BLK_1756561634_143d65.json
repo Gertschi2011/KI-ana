@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Cognitive Load is what matters\n • Hacker News: Agent Client Protocol\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Merkels Flüchtlingspolitik die AfD prägte",
+  "created_at": 1756561634.1941833,
+  "hash": "9653d900ee79958af07a972f20119b97b7829b31efdb0563e97ef397c1e05bb4",
+  "id": "BLK_1756561634_143d65",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "f80Yfa0RTjqHsdHeu6ukpnZBg5xviMMCweYgSgcPN27qyn4Q/pYN6JMQJspDnAGEwFt+Kyat0HK+Yab7R6+iDA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 15:47",
+  "url": null
+}

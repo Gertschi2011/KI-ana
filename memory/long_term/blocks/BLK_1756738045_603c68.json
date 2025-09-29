@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hackers demand Google fire 2 staff and halt probes, or they will leak databases\n • Hacker News: \"Turns out Google made up an elaborate story about me\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Flugzeug mit von der Leyen an Bord von GPS-Störung betroffen",
+  "created_at": 1756738045.8617735,
+  "hash": "4e038994c457831851418ca4a64dba9090fed5875eb5a7e46d7274cbf8d3327d",
+  "id": "BLK_1756738045_603c68",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8uOd5vOSUEThVbmUTJE1MEC287deI3aW+hvGPk+httFcIsFVQaAu2olAJMVzHsjTzF/kn2dEVol17DKPiELnDA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 16:47",
+  "url": null
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>KI_ana – Skill Registry (Intern)</title>
+  <link rel="stylesheet" href="/static/chat.css">
+  <script defer src="/static/global_theme.js"></script>
+  <style>
+    main { padding: 16px; max-width: 1100px; margin: 0 auto; }
+    table { width: 100%; border-collapse: collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 10px 20px rgba(0,0,0,.06); }
+    th, td { padding: 10px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+    th { background: #fafafa; text-align:left; }
+    body.theme-dark table{ background:#1f2530; }
+    body.theme-dark th{ background:#151a22; }
+    .pill { padding: 2px 8px; border-radius: 999px; font-size: 12px; background:#eef; }
+    .row-actions { display:flex; gap:6px; flex-wrap:wrap; }
+    dialog form { min-width: 360px; }
+    textarea { width: 100%; height: 120px; }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main>
+    <header style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+      <h1 style="margin:0;">🔧 Skills (intern)</h1>
+      <button id="reload">Kernel neu laden</button>
+    </header>
+
+    <input id="search" type="search" placeholder="Suche (Name, Capability, Entrypoint …)" style="width:100%;max-width:520px;margin:8px 0;"/>
+
+    <div class="table-wrap">
+      <table id="skills">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Version</th>
+            <th>Entrypoint</th>
+            <th>Capabilities</th>
+            <th>Mode</th>
+            <th>Schedule</th>
+            <th>Aktion</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="empty" class="muted" style="display:none">Keine Skills gefunden.</div>
+    </div>
+  </main>
+
+  <!-- Exec Modal -->
+  <dialog id="execDlg">
+    <form method="dialog">
+      <h3 id="dlgTitle">Skill ausführen</h3>
+      <label class="field">
+        <span>Action</span>
+        <input id="action" value="selftest" />
+      </label>
+      <label class="field">
+        <span>Args (JSON)</span>
+        <textarea id="args">{}</textarea>
+      </label>
+      <menu style="display:flex;gap:8px;justify-content:flex-end;">
+        <button value="cancel">Abbrechen</button>
+        <button id="runNow" class="primary" type="button">Ausführen</button>
+      </menu>
+      <pre id="result" style="background:#f7f7f7;padding:8px;border:1px solid #eee;max-height:240px;overflow:auto;"></pre>
+    </form>
+  </dialog>
+
+  <!-- Navbar loader -->
+  <script>
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n=document.getElementById('navbar');
+          if(!n) return;
+          n.innerHTML=html;
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
+  </script>
+  <script src="/static/skills.js"></script>
+</body>
+</html>

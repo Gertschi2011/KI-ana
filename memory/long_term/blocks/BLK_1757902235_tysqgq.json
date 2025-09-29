@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: AI False information rate for news nearly doubles in one year\n • Hacker News: J-Link RTT for the Masses using Semihosting on ARM\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NRW-Kommunalwahl: Grüne und SPD im Bund räumen Niederlagen ein",
+  "hash": "776759bac6224f1e0f2f59ae5b2c01fd6a803a45df4a3f72c2e085caf678c757",
+  "id": "BLK_1757902235_tysqgq",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "RKerZD2nBiyoifVobSH1CZp3ypApFyq+pHXiuYz5+yk78RFMm21NPTpBSsecGLFLQa865hidn7f+F2yYL+qvDg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 04:10",
+  "ts": 1757902235,
+  "url": ""
+}

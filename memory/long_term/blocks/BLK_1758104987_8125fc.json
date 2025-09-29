@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Oh no, not again a meditation on NPM supply chain attacks\n • Hacker News: Why We're Building Stategraph: Terraform State as a Distributed Systems Problem\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Generaldebatte: Merz schwört Deutsche auf tiefgreifende Reformen ein",
+  "created_at": 1758104987.96281,
+  "hash": "43bd07dda90e37a5e63cf6f6ff1daee9fdc101d19b54dab530a13fbcbda95fac",
+  "id": "BLK_1758104987_8125fc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4NKz3blF0D+eGmrNdSWK/rd4+ZyoK0fofvIxXWkll5ia7CEnuZWb8V+IU0bJIWFLazl7KxsMFp64dJsL+2GDBA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 12:29",
+  "url": null
+}

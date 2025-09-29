@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Representing Heterogeneous Data (2023)\n • Hacker News: Spectral Labs releases SGS-1: the first generative model for structured CAD\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Katerstimmung bei den Vereinten Nationen vor Vollversammlung",
+  "hash": "6d7b6f549d3adef8a1e84a35bf61d7ae8734216a09666535327431bbb535b78a",
+  "id": "BLK_1758436996_0gfxsn",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "s68u5cywTrMWByHz6O5LhSQX49uf5NxVYXFf4eZNH+W72XMHbi25LI341mbxo0z8yLkxeJ1bDvamrRIOBw19BA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-21 08:43",
+  "ts": 1758436996,
+  "url": ""
+}

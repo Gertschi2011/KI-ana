@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-08-08T07:03:45.070055",
+  "message": "Ich habe doppelte oder sehr ähnliche Lerninhalte erkannt. Dies bedeutet eine Lernvertiefung, keinen Fehler.",
+  "duplicates_found": 1,
+  "duplicate_pairs": [
+    {
+      "original": "Unbekannt",
+      "duplicate": "Unbekannt",
+      "timestamp_original": "2025-08-07T12:48:27.596095Z",
+      "timestamp_duplicate": "2025-08-07T14:25:23.900267Z"
+    }
+  ]
+}

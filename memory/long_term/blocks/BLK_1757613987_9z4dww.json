@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Bulletproof host Stark Industries evades EU sanctions\n • Hacker News: Native ACME support comes to Nginx\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Expertin nach Kirk-Attentat: \"Ein sehr gefährlicher Moment für die USA\"",
+  "hash": "d9e20246d1e04ab12dbeae7954ce777f79cc57cf04b09706ea098c2ad947e39c",
+  "id": "BLK_1757613987_9z4dww",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "vnV+KZPbJawx4krFzse3cHlwPR/q3l0JBEC1zS5oLsjuNwtSKEYJCNBFNF8dSf+OjZqrmTxTDg1LOSXtZG9ICw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 20:06",
+  "ts": 1757613987,
+  "url": ""
+}

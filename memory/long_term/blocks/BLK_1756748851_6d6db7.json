@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Optery (YC W22) Is Hiring in Engineering, Legal, Sales, Marketing (U.S., Latam)\n • Hacker News: 93% of GPT-4 performance at 1/4 cost: LLM routing with weak bandit feedback\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Özdemir auf Wahlkampf-Tour: Grüner Kronprinz trotzt der Vertrauenskrise",
+  "created_at": 1756748851.0936937,
+  "hash": "0a66bd114658ef9cf31b5602a6e6c7bb33f0dcd4d6c697a8016a07ea3811e2bb",
+  "id": "BLK_1756748851_6d6db7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HOWiQ1/hcH8kQVrHx8E8sTboYlRamzmefNwUkwpVqF4CEuUlnEomLymRFgCVYDMBFxRJV3DapiPprGW2kwoWCg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 19:47",
+  "url": null
+}

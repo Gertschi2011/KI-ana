@@ -1,0 +1,16 @@
+{
+  "name": "KI_ana",
+  "short_name": "KI_ana",
+  "start_url": "/static/chat.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7F5AF0",
+  "icons": [
+    { "src": "/static/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" },
+    { "src": "/static/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/static/apple-touch-icon-precomposed.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/static/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/static/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

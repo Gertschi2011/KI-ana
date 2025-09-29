@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hurricane category 6 could be introduced under new storm severity scale\n • Hacker News: Enrollment at trade schools is expected to grow 6.6% a year\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Putin reist nach China - und hofft auf stärkere Zusammenarbeit",
+  "created_at": 1756603400.8297899,
+  "hash": "1684daada72ec290744689f80ceb56dfa4abe181b8ffb996ea6f90eda1989910",
+  "id": "BLK_1756603400_fc314e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vC4BJXNJPscu3nYkL+ZLeJ+MrKV9N5Zb3a4fDcFDkub2c6jdYOWkSYQAjKVmoVVBxjrEUEUwsuguy9UN4AdvAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 03:23",
+  "url": null
+}

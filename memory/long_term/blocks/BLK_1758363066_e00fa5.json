@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: FocusStream – Focused, distraction-free YouTube for learners\n • Hacker News: LLM-Deflate: Extracting LLMs into Datasets\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vor Trauerfeier für Kirk: Scharfe Debatte und demonstrative Einheit",
+  "created_at": 1758363066.106843,
+  "hash": "bfe14cd7e3920482717877c172e3fe66db6cced64fc9232c7785e7797e0bdb29",
+  "id": "BLK_1758363066_e00fa5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ZpfS9+2K0qcNVJ9t8XgFQsc/czQwGYseCap5U45r9y2aL0ajGDm12Mn1TjulG69y4rJySpSVJeqTiJaNYHr5BA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 12:11",
+  "url": null
+}

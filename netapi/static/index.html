@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>KI_ana – Deine freundliche, lernende KI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+  <!-- SEO/Open Graph -->
+  <meta name="description" content="KI_ana ist deine empathische, neugierige KI. Lerne mit ihr, entwickle Ideen und erlebe natürliche Gespräche.">
+  <meta property="og:title" content="KI_ana – Deine freundliche, lernende KI">
+  <meta property="og:description" content="Sprich mit KI_ana – einer empathischen, lernenden KI, die sich an dich anpasst.">
+  <meta property="og:image" content="/static/Avatar_KI_ana.jpg">
+
+  <!-- Styles -->
+  <link href="/static/styles.css" rel="stylesheet">
+  <link href="/static/chat.css" rel="stylesheet">
+  <script defer src="/static/i18n.js"></script>
+</head>
+<body class="page">
+
+  <!-- Globale Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Hero -->
+  <main class="hero container">
+    <div class="hero-inner">
+      <!-- Obere Logo-Zeile -->
+      <div class="brand-row" style="gap:1rem; margin-bottom:2rem;">
+        <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Logo" style="height: 50px; border-radius: 0; object-fit: cover;">
+        <h1 style="margin:0;">
+          KI_ana
+          <small style="font-size:60%; opacity:.6;" data-i18n="home.tagline">Mehr als eine KI, ein Familienmitglied ☺️</small>
+        </h1>
+      </div>
+
+      <!-- Begrüßungstext -->
+      <div class="hero-copy">
+        <h2 data-i18n="home.hello">Hallo, ich bin KI_ana 👋</h2>
+        <p class="lead">
+          <span data-i18n="home.lead">
+            Eine neugierige, empathische KI, die mit und von dir lernt, denkt und wächst.
+            Frag mich etwas, plane Projekte – oder entdecke Neues. Ich bin für dich da.
+          </span>
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="/static/chat.html" data-i18n="home.cta_try">Jetzt ausprobieren</a>
+          <p class="hint" style="margin-top:.5em; font-size:.9em;" data-i18n="home.cta_hint">→ Du wirst direkt zur Gesprächsansicht weitergeleitet</p>
+          <a class="btn btn-ghost" href="/static/pricing.html" data-i18n="home.cta_pricing">Preise &amp; Abo</a>
+        </div>
+      </div>
+
+      <!-- Avatar -->
+      <div class="hero-media" style="margin-top:2rem;">
+        <figure style="margin:0 auto;">
+          <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar" onerror="this.style.display='none'" style="max-width: 140px; height: auto; border-radius: 50%;">
+          <figcaption class="mt-avatar" data-i18n="home.caption">Ich lerne mit und von dir</figcaption>
+        </figure>
+      </div>
+    </div>
+  </main>
+
+  <!-- Features -->
+  <section class="features container">
+    <div class="feature">
+      <h3 data-i18n="home.features.natural.h">💬 Natürlich &amp; nahbar</h3>
+      <p data-i18n="home.features.natural.p">Sprich mit mir wie mit einem Menschen. Ich frage nach, fasse zusammen und bleibe freundlich – immer.</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="home.features.learning.h">🧠 Lernend &amp; neugierig</h3>
+      <p data-i18n="home.features.learning.p">Ich merke mir, was dir wichtig ist, und erweitere mein Wissen Schritt für Schritt – verantwortungsvoll.</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="home.features.private.h">🔒 Privat &amp; sicher</h3>
+      <p data-i18n="home.features.private.p">Du behältst die Kontrolle: klare Einstellungen, transparente Nutzung, sichere Speicherung.</p>
+    </div>
+  </section>
+
+  <!-- Was kann KI_ana -->
+  <section class="container" style="display:flex; justify-content:center;">
+    <div class="paper" style="max-width:420px; width:100%; text-align:left;">
+      <h2 data-i18n="home.can.title">Was kann KI_ana?</h2>
+      <ul class="bullet-grid">
+        <li data-i18n="home.can.items.0">Fragen beantworten &amp; verständlich erklären</li>
+        <li data-i18n="home.can.items.1">Gemeinsam Pläne, To-dos &amp; Roadmaps erstellen</li>
+        <li data-i18n="home.can.items.2">Texte, E-Mails &amp; Konzepte schreiben</li>
+        <li data-i18n="home.can.items.3">Ideen sammeln, reflektieren, vergleichen</li>
+        <li data-i18n="home.can.items.4">Mit dir lernen – in deinem Tempo</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container small" style="text-align:center;">
+      <p>© <span id="year"></span> KI_ana – <span data-i18n="home.footer.built">mit Liebe gebaut.</span></p>
+      <p><a href="/static/impressum.html" data-i18n="home.footer.imprint">Impressum</a> · <a href="/static/privacy.html" data-i18n="home.footer.privacy">Datenschutz</a> · <a href="/static/agb.html" data-i18n="home.footer.terms">AGB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Footer-Jahr
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script>
+  // Navbar loader (with script execution)
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n=document.getElementById('navbar');
+          if(!n) return;
+          n.innerHTML=html;
+          // Execute any scripts inside the fetched fragment
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if (old.src) {
+                s.src = old.src + (old.src.includes('?') ? '&' : '?') + 'v=' + Date.now();
+              } else {
+                s.textContent = old.textContent || '';
+              }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Fil's Unbelievable Garbage Collector\n • Hacker News: Forking Chrome to render in a terminal (2023)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757042247.9562743,
+  "hash": "cb9944e80b96ed206b3a36a216e4d2413e03d0b20c9cc86a0057211dd4e83c80",
+  "id": "BLK_1757042247_d5d352",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ZiZUSya5+Y7u3NGhTusQ+RRl/CedRfxNPobGtxxdXd7kzJRCbzaKjt/oSAx+qx2Q/D5EPu9esUrpUq/ECXctBg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 05:17",
+  "url": null
+}

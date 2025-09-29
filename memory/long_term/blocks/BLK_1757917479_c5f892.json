@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Americans Crushed by Auto Loans as Defaults and Repossessions Surge\n • Hacker News: Starlink is currently experiencing a service outage\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump mahnt Israel wegen Katar zur \"Vorsicht\"",
+  "created_at": 1757917479.2235916,
+  "hash": "1855cf9dac4dda8dd071f43c57bc4060fe7bc5df736ad213409dfd8702ac83e3",
+  "id": "BLK_1757917479_c5f892",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "0JSSr8G8LD5wv8vDMtkYJ4uxmGU0bAE8YgbTPjZerKpBZKRSTlw8TeUnVK5BeGd/oqdYBmnxVu6WHqchpJIiAw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 08:24",
+  "url": null
+}

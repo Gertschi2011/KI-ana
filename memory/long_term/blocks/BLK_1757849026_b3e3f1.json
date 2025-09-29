@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Osteo-Odonto-Keratoprosthesis\n • Hacker News: The PC was never a true 'IBMer'\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ostkongress in Wittenberg: Wo die Grünen ein rotes Tuch sind",
+  "created_at": 1757849026.8938472,
+  "hash": "bf109420d7dd7ce9b0d82b22d022ec56691a7f10a6e3e87681adad8b504ad1eb",
+  "id": "BLK_1757849026_b3e3f1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "5luqY5KcazxmfzgO2WQ1QX44QDSANGDCNZdGG5M9m5N9wFgLxJuKr1Tm6Lv4iVjRGG5rsPnXKZu1TsapEjn0Bg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 13:23",
+  "url": null
+}

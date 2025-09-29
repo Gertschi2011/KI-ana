@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tips for installing Windows 98 in QEMU/UTM\n • Hacker News: FFglitch, FFmpeg fork for glitch arch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hinweise auf ein politische Motiv für Kirk-Attentat",
+  "created_at": 1757722039.6677692,
+  "hash": "0d0eed91bbc064c7a7fbf171efe0bc8bb8fcd418afcf6fd81f3ce19da3f85c12",
+  "id": "BLK_1757722039_9e1931",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "yNQE/Xw1MvzeTm//YcxvQSUpeSIRhCyWTuiylMPJ2Ch4V69e6EgtiaJUYqGMF5EMx/5CyMMovsN7Ew0OadJVCw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 02:07",
+  "url": null
+}

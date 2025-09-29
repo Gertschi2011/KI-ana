@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Lewis and Clark marked their trail with laxatives\n • Hacker News: A Linux version of the Procmon Sysinternals tool\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Klingbeil zur Haushaltslücke: \"Werden den Menschen etwas abverlangen müssen\"",
+  "hash": "958931d85c3266226f66df2454cfdf7a8b8f670b5e89d39c63ffbde48c80a803",
+  "id": "BLK_1756689422_2cloqg",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "BtCY17iUx800KQoRcjSdFIMtzmxo/n8xU7F3rHSfqHNRkJPstv8HxuOXsbtqPZAFz5JFivgzIH9IPN0fpxx6AA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 03:17",
+  "ts": 1756689422,
+  "url": ""
+}

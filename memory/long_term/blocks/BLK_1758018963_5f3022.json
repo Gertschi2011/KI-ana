@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Automating Distro Updates in CI\n • Hacker News: IBM Technology Atlas\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Italienisches Gericht ordnet Auslieferung von Nord-Stream-Verdächtigem an",
+  "created_at": 1758018963.0053976,
+  "hash": "0b9795fc24c4c0f6c4441527bd9a613a7e6490bb6952ad58e0b1f7ad68fa4b9e",
+  "id": "BLK_1758018963_5f3022",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "uH/cQWR8g9rpljOnyE4O4Ro6fRYO6VXO8HK8NjysQU5/ESWUxu2LXXGQGDoP4Fk/IAlQGnZlPcLkRtDu7R0bBQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 12:36",
+  "url": null
+}

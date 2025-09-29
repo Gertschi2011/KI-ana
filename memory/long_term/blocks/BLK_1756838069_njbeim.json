@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Introduction to Ada: a project-based exploration with rosettas\n • Hacker News: Python has had async for 10 years – why isn't it more popular?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Afghanistan: Nach dem Beben zeigt sich Ausmaß der Katastrophe",
+  "hash": "60a4b68642a79ca696e222cc4cdbabb0c6f3d4c6c5eed125f85fd4cb08b8b7cd",
+  "id": "BLK_1756838069_njbeim",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "AP3aHPXuPl97rqXGKkvggXpSsVQQAeJnoZJQ7ronNiV2vU7sB5ZkgEL52XTC7wrt72374QFHDbgODL+UKY0dAw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 20:34",
+  "ts": 1756838069,
+  "url": ""
+}

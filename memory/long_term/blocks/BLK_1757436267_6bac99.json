@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: South Koreans feel betrayed by workforce detentions at Georgia Hyundai plant\n • Hacker News: How An Attacker's Blunder Gave Us a Rare Look Inside Their Day-to-Day Operations\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Militärattacke gegen Hamas-Führung in Doha",
+  "created_at": 1757436267.1913946,
+  "hash": "b7fe57075820a913858fa57ff451e186de2a5f717f84f083c2da7260f63c3788",
+  "id": "BLK_1757436267_6bac99",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Id+LYIQ0bxCRASxemdatCWGvfnoNuKvYZNlM6n/OnaOVQ78uDbceksVyMhfmGvjri5DEAxHJSuF0QFjjp2+9DQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 18:44",
+  "url": null
+}

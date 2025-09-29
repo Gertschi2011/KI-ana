@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: React hook causes downtime at Cloudflare, which just stopped the biggest DDoS\n • Hacker News: Geizhals Preisvergleich Donates USD 10k to the Perl and Raku Foundation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Deutschlandticket soll ab Januar 63 Euro kosten",
+  "created_at": 1758205840.6222014,
+  "hash": "4bb7e226edb3bd4a79782be0a046ee4cdf8207cc7c06c5b49dbb3c6aba93cfb6",
+  "id": "BLK_1758205840_e6e77f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+efvjuq6PXdaC770OlrACwdTq/yoF+rFG1MXfzLL8T/IUbHWVR4isDVLRWOmRYBfsxpyloCYFOdRsJEFEDicDg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 16:30",
+  "url": null
+}

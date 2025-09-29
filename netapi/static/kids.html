@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>KI_ana – Kids</title>
+  <link href="/static/styles.css" rel="stylesheet">
+  <link rel="icon" href="/static/favicon.ico">
+  <script defer src="/static/i18n.js"></script>
+  <style>
+    /* Eingabe fix unten innerhalb des Cards, analog chat.html */
+    #input-area { position: sticky; bottom: 0; background: #fff; padding: 8px; border-top: 1px solid #ddd; }
+    body.page { display:flex; flex-direction:column; min-height:100vh; }
+    .kids-wrap { flex:1; display:flex; flex-direction:column; }
+    .chat-area { flex: 1; overflow-y: auto; padding: 12px; }
+    .bubble { max-width: 72%; padding: 10px 14px; border-radius:14px; margin:8px 0; background:#fff; box-shadow: var(--shadow); }
+    .bubble.me { align-self:flex-end; background: #eef1ff; }
+    .bubble.bot { align-self:flex-start; }
+    .hint { color: var(--muted); font-size: .9rem; }
+    .kids-hero { display:flex; align-items:center; gap:12px; padding: 8px 16px; background: #f9f9f9; }
+    .kids-hero img { height:36px; width:36px; border-radius:50%; object-fit:cover; }
+  </style>
+  </head>
+<body class="page">
+  <!-- Navigation -->
+  <div id="navbar"></div>
+
+  <!-- Inhalt -->
+  <main class="container narrow">
+    <div class="chat-wrap kids-wrap">
+      <header class="kids-hero">
+        <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana">
+        <div>
+          <div style="font-weight:600" data-i18n="kids.title">KI_ana für Kids</div>
+          <div style="font-size:12px; opacity:.7" data-i18n="kids.subtitle">Fragen stellen, lernen, neugierig sein</div>
+        </div>
+      </header>
+
+      <div id="chat" class="chat-area" aria-live="polite"></div>
+
+      <div id="input-area">
+        <textarea id="msg" placeholder="Frag mich etwas – oder schick mir einen Link" data-i18n-placeholder="kids.placeholder" rows="2" autocomplete="off"></textarea>
+        <div class="composer-actions" style="display:flex; gap:8px; justify-content:flex-end; margin-top:8px;">
+          <button id="send" class="primary" data-i18n="kids.send">Senden</button>
+        </div>
+        <p id="hint" class="hint"></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+  (function(){
+    const chat = document.getElementById('chat');
+    const msg  = document.getElementById('msg');
+    const hint = document.getElementById('hint');
+    const sendBtn = document.getElementById('send');
+
+    function add(role,text){
+      const b=document.createElement('div');
+      b.className='bubble '+(role==='me'?'me':'bot');
+      b.textContent=text;
+      chat.appendChild(b);
+      chat.scrollTop=chat.scrollHeight;
+    }
+
+    async function send(){
+      const t = msg.value.trim(); if(!t) return;
+      msg.value=''; add('me', t);
+      try{
+        const r = await fetch('/api/chat', {
+          method:'POST',
+          credentials:'include',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({message:t})
+        });
+        if (r.status===401){
+          const h = (window.i18n ? window.i18n.t('kids.login_hint','Bitte zuerst einloggen (oben rechts → Login).') : 'Bitte zuerst einloggen (oben rechts → Login).');
+          const b = (window.i18n ? window.i18n.t('kids.login_needed','Ich brauche ein Login, um zu antworten. 🙂') : 'Ich brauche ein Login, um zu antworten. 🙂');
+          hint.textContent = h;
+          add('bot', b);
+          return;
+        }
+        if(!r.ok) throw new Error('HTTP '+r.status);
+        const d = await r.json();
+        let reply = d.reply || '(keine Antwort)';
+        if(d.topic){ reply += `\n\n— [${d.action}] ${d.topic}`; }
+        add('bot', reply);
+      }catch(e){
+        const p = (window.i18n ? window.i18n.t('kids.error_prefix','⚠️ Fehler:') : '⚠️ Fehler:');
+        add('bot', p+' '+e.message);
+      }
+    }
+
+    sendBtn.onclick = send;
+    msg.addEventListener('keydown', ev => { if(ev.key==='Enter' && !ev.shiftKey){ ev.preventDefault(); send(); } });
+  })();
+  </script>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

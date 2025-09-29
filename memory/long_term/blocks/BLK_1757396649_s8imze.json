@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Anthropic reduced model output quality from Aug 5\n • Hacker News: Show HN: Attempt – A CLI for retrying fallible commands\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Beratungsstellen melden Zulauf von Wehrdienstverweigerern",
+  "hash": "2a62d6f3c03fb55744158da131ed09bbd66820a6838c5036e712949e415434c2",
+  "id": "BLK_1757396649_s8imze",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "fwpRZAKpbVTZn885eeo0WAL9lB0NwlDyYI/3ott8ynBSB13+i/I/UmabZeGC76wrsjr3coIlxMiZmoNECKIeDg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 07:44",
+  "ts": 1757396649,
+  "url": ""
+}

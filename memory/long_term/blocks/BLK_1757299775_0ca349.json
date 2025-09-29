@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Computers Are for Girls – Datagubbe.se\n • Hacker News: Cloud Storage Is Full Email Scam: What It Is and How to Protect Yourself\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vor Urteilsverkündung: Bolsonaro-Anhänger demonstrieren in Brasilien",
+  "created_at": 1757299775.5807838,
+  "hash": "a0c3633661df81d6c0302d0e9bd13de301791fa15a1d4f55fc7f7fc1329f428e",
+  "id": "BLK_1757299775_0ca349",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MHZu46ZLa56dSdvL+1qncAH3sUdocznfw86geJXNWwoZzUB7WeSG7oRg9kv4Wf3NEQti5bTsJOsDZdtJ1uSXDQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 04:49",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: BCacheFS is being disabled in the openSUSE kernels 6.17+\n • Hacker News: DeepCodeBench: Real-World Codebase Understanding by Q&A Benchmarking\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ist Bundestagspräsidentin Klöckner neutral - oder polarisierend?",
+  "hash": "afeae58d59b5878417cbf30b86bf66b08446c2f75cf36fd2416e1da90813d41c",
+  "id": "BLK_1757588769_jbrr5i",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "+77yyXAE9FYfvNCuWvfZ/tWFWQOzpDsKXwpBTX4uJX9wh/DntaKxgKyYI6eQI4d1fBXs5EADKXtWkHvEwh/QBw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 13:06",
+  "ts": 1757588769,
+  "url": ""
+}

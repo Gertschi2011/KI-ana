@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I bought the cheapest EV (a used Nissan Leaf)\n • Hacker News: Fiber Concurrency\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757061916.9734318,
+  "hash": "66ab0c5249acfd959c41ab8b0b97256146ac3e16c07186307f0e9bef4c0ac50a",
+  "id": "BLK_1757061916_db675b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "rw8jmHyFqjFPgT9SC3UfGsKIjnph4+IfowVA49uOYfdzOBwfBcamOmuurleHaIUfBtxmy+M0aBIKbA2AfjRrDA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 10:45",
+  "url": null
+}

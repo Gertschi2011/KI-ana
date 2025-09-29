@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Liquid Glass? That's what your M4 CPU is for\n • Hacker News: Hledger 1.50\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Standseilbahn entgleist: Zahl der Todesopfer in Lissabon steigt auf 17",
+  "hash": "ec836a34fd4aa2b85c8a26474bb892236ad726e9103e961781a3f19df888b7a7",
+  "id": "BLK_1756984955_5t9ghu",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Xu5sr43SGu2Gy9RplQjQYtp/apXlNKIv2x4h0DNZW2gMYEIsLwe6aSG3AijhuUwAEOWRUO82I2rMFIoOaHgjBQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 13:22",
+  "ts": 1756984955,
+  "url": ""
+}

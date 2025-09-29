@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: YouTube Is a Mysterious Monopoly\n • Hacker News: Strong Eventual Consistency – The Big Idea Behind CRDTs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie deutsche Autobauer auf die Konkurrenz aus China reagieren",
+  "created_at": 1757402051.4002576,
+  "hash": "393664e13c3ef355b4574199d607ddb05a8f741ef595300d34de01b576b5e76b",
+  "id": "BLK_1757402051_c2fa23",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "mI0GOXL6w6MXx490FDukwIJSj7ThD5sieXlg/ufASQw5azLkHTuqCKXIGIBbYmdQIBUbI8k/F34chZb5hO1JCA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 09:14",
+  "url": null
+}

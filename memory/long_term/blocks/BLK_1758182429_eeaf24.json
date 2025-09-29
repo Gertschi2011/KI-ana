@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: History of the Gem Desktop Environment\n • Hacker News: European ant is the first known animal to clone members of another species\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Äußerungen nach Kirk-Mord: Jimmy-Kimmel-Show wird vorerst abgesetzt",
+  "created_at": 1758182429.5291755,
+  "hash": "fb3136a88decfa42867ab2218cd1c23a80c39a5ed0fe4bc5218539ed13a6adc3",
+  "id": "BLK_1758182429_eeaf24",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QIMuLaY/Uq2EQBKwSKykT2ESjLE7vC+FVL2RKEkvN3fjfI4uWLG1R6q20/zyb+ETtdt/sBvMhovz5nfV58MbBQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 10:00",
+  "url": null
+}

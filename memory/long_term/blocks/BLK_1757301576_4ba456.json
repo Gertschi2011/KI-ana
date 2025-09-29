@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Computers Are for Girls – Datagubbe.se\n • Hacker News: The brompton-ness of it all\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Politische Krise in Frankreich - Bayrou stellt Vertrauensfrage",
+  "created_at": 1757301576.3108077,
+  "hash": "809bbdc3187e2aaffe246991d0b969e594a33663ccba89e694a697301111836b",
+  "id": "BLK_1757301576_4ba456",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "wMmkOubyL68cpjDLJqeyVBT7/gN5Ej0z4sAuiZMkf6AKBCykuGT9Vh9BkOblvpyZ5nVr1aH1qZkwST2GEoRBBw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 05:19",
+  "url": null
+}

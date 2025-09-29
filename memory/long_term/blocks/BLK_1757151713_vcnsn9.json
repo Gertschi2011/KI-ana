@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Rug pulls, forks, and open-source feudalism\n • Hacker News: Developing a Space Flight Simulator in Clojure\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jobcenter kämpfen gegen \"Bürgergeld-Mafia\"",
+  "hash": "dfcabcaab8986311010872e9130f5b8cf5f087b5fab0a148c5479eb93b2e133c",
+  "id": "BLK_1757151713_vcnsn9",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "kjqvybLCfk6LwkugTLx/dMY2aPpWzvAu2EkA7pXRs6vo7gGDXao+OUDo9Pvc63QO2H6aAuzp/2wbOebhkwftDg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 11:41",
+  "ts": 1757151713,
+  "url": ""
+}

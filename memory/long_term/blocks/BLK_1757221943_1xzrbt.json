@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The world has a running Rational R1000/400 computer again (2019)\n • Hacker News: Show HN: Lightweight tool for managing Linux virtual machines\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Liveblog: ++ Regierungsgebäude in Kiew brennt ++",
+  "hash": "44157f2b4bed770ef946577aae5ebda31853af9f7999553b8dc254439d7f4527",
+  "id": "BLK_1757221943_1xzrbt",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "HI0j3hc4QW1xyJ+fcaa5CAY7Rn9vwfrYxOQtfb5gSyW1TOZr3XwaqVzhPeXJ1HD/cfg4LLeIqfCP6oluefMvCg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 07:12",
+  "ts": 1757221943,
+  "url": ""
+}

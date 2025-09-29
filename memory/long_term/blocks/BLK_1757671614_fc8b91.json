@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Examples from The LaTeX Companion book (3rd edition)\n • Hacker News: Performance-focused forks of styled-components\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sorgt der Boom der Rüstungsindustrie für Wirtschaftsaufschwung?",
+  "created_at": 1757671614.746974,
+  "hash": "b774058839175974875e448ad8469f457c7fa96cd66f47ea3f5a3f04bdfadac4",
+  "id": "BLK_1757671614_fc8b91",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ZLbpng9DxMcOycY4I+nsodywp55zdchQN3A4cVlhaEXilyq2BmChFZ4ZOpcrFdLwyfPFbiDOknbspp3SO5+mBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 12:06",
+  "url": null
+}

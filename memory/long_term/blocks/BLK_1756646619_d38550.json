@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Channel3 (YC S25) Is Hiring a Founding Engineer, NYC\n • Hacker News: Sniffly – Claude Code Analytics Dashboard\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zehn Jahre \"Wir schaffen das\": Ein Rückblick auf Desinformationen",
+  "created_at": 1756646619.6903737,
+  "hash": "98c6dd67f704816fc7e90d54e0d2385cfeb062b71ec8a6294fc5c3018a7624b8",
+  "id": "BLK_1756646619_d38550",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oPqI7SkxG3jb/8dQY7uZ3LeammHA1PJaqQkDceRBnlewyhApg/1u8Ko133Mm+L6y0h+eSzKXItY2rERE6h3lAQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 15:23",
+  "url": null
+}

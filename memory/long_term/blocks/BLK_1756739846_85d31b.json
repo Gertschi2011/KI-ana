@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Cloudflare Radar: AI Insights\n • Hacker News: \"Turns out Google made up an elaborate story about me\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): SOZ-Gipfeltreffen in China: Gemeinsam für eine neue Weltordnung",
+  "created_at": 1756739846.619315,
+  "hash": "8b6b4a2d47a57ef98e33b0a4f0d6cea914266cc04dc402c81ec45c82773b16ee",
+  "id": "BLK_1756739846_85d31b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "f5/YKPRT709neQjIny+12KKTEst4qVhmsMPeK8CtL5Fr2YhrYj4quMjkQs5kAO1W2n00bYp1zTkOZelME9N+Cw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 17:17",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I'm Making a Beautiful, Aesthetic and Open-Source Platform for Learning Japanese\n • Hacker News: Qantas is cutting executive bonuses after data breach\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vorläufiger Bericht: Gelöstes Kabel sorgte wohl für Unglück in Lissabon",
+  "created_at": 1757198533.6094377,
+  "hash": "b42814666186e423cb1ebba2566d282895a01a722ce8afa32206512943791e08",
+  "id": "BLK_1757198533_ee72f6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "2q5iplYlyTMH7VluGd4f+Jl4duk9eGJaM0HE/Ks3btUMvcZSV91KsarI0AiUCF1H1NDqlFmRvttmH83xvrGgDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 00:42",
+  "url": null
+}

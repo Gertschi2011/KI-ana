@@ -1,0 +1,17 @@
+{
+  "owner": "user",
+  "persona": "mini_ana",
+  "title": "Raspberry Tipps",
+  "content": "apt update && apt upgrade",
+  "tags": [
+    "raspi",
+    "ops"
+  ],
+  "source": "personal",
+  "ts": 1756931567,
+  "hash": "5d2c04b2e685eeb07bf10e876bf81b194c1a6ab2cf611964a5c2a8c2445cdda3",
+  "signature": "67be10eb5c30166d2ac19b4db9f99f3ddaa18038b4f4c0fa7afd5277c84cf20e6ef40a7959250212a09d6584d4561f998c8abedb24db3c67685ebf5862596606",
+  "pubkey": "cf781ab008dec792a1b74b4dd9901450a099a050afe4f3da3c2db387a70ede04",
+  "subki_id": "device_local",
+  "ready_for_sync": true
+}

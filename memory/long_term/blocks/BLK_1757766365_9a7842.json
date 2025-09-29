@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How 'overworked, underpaid' humans train Google's AI to seem smart\n • Hacker News: AI Coding\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): 4,2 Milliarden Euro auf vergessenen deutschen Bankkonten",
+  "created_at": 1757766365.3688297,
+  "hash": "4336fe6e9476348145a3e8f36a979cc374dfa69acd160e5bd9bfeb2314fce443",
+  "id": "BLK_1757766365_9a7842",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bXs0xquarMbnRdd4BcgVGEQm6xLxKqJm55l2cM/p01Nb/sd9M9AYVCqh/PJ8nxWdf3Hn7eGM3CflTL7dEiPPDw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 14:26",
+  "url": null
+}

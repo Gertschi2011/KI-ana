@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Building the most accurate DIY CNC lathe in the world [video]\n • Hacker News: Sharing a mutable reference between Rust and Python\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Bedeutung die Unabhängigkeit von Notenbanken hat",
+  "created_at": 1756909590.457898,
+  "hash": "52cae6c3e8655bd5c97da910a0d7518cbc390606f4d9061589c16ef4c432a9cf",
+  "id": "BLK_1756909590_9ec676",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "SFJR4RLwwpinm747wcVzBMLPg/YwRC9tzVSXDDtnOnL5IGh/ivXGP3k+Mj6ZYwDbYKmEd8KKtpvfz3ikxj6tAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 16:26",
+  "url": null
+}

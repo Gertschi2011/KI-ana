@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Japan sets record of nearly 100k people aged over 100\n • Hacker News: America's Largest Homebuilders Shift the Cost of Shoddy Construction to Buyers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Attentat auf US-Podcaster Charlie Kirk: Was über den mutmaßlichen Täter bekannt ist",
+  "created_at": 1757773074.8300364,
+  "hash": "1f47dfd5d27d2621493c1fbc45525604f801e84ceed85033e5f2fbf78c4dd9e2",
+  "id": "BLK_1757773074_e28074",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HsDdBVaNrGhTkiN7fq5Vd4zA5oht82mSzN+/ul2neLmpaDUVOe1B0OHuZRNke0A+IHl+c4erB5SlRXW0Fyk9Ag==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 16:17",
+  "url": null
+}

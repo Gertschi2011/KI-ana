@@ -1,0 +1,55 @@
++ set -euo pipefail
++ PROJECT_DIR=/home/kiana/ki_ana
++ OUT_DIR=/home/kiana/ki_ana/reports
+++ date +%Y%m%d_%H%M%S
++ TS=20250826_080624
++ mkdir -p /home/kiana/ki_ana/reports
++ command -v tree
++ tree -a -L 8 /home/kiana/ki_ana
++ CONFIG_LIST=/home/kiana/ki_ana/reports/config_file_index_20250826_080624.txt
++ mapfile -t FILES
+++ sort
+++ find /home/kiana/ki_ana -type f '(' -name '.env*' -o -name 'requirements*.txt' -o -name pyproject.toml -o -name poetry.lock -name Pipfile -o -name Pipfile.lock -o -name Dockerfile -o -name 'docker-compose*.yml' -o -name 'compose*.yml' -o -name .dockerignore -o -name .gitignore -o -name Procfile -o -name '*.service' -o -name '*.timer' -o -name '*.env.example' ')'
++ CONFIG_OUT=/home/kiana/ki_ana/reports/project_config_20250826_080624.txt
++ for f in "${FILES[@]}"
++ echo /home/kiana/ki_ana/.env
++ echo ================================================================
++ echo '>> FILE: /home/kiana/ki_ana/.env'
++ echo ================================================================
++ mask_secrets
++ sed -E -e 's/([A-Z0-9_]*(SECRET|TOKEN|PASSWORD|API[-_]?KEY|PASS|KEY)[A-Z0-9_]*\s*=\s*)[^ #\r\n]+/\1•••/gi' -e 's/(Bearer\s+)[A-Za-z0-9._-]+/\1•••/g' -e 's/(postgres:\/\/)[^@]+@/\1•••@/g'
++ echo -e '\n'
++ for f in "${FILES[@]}"
++ echo /home/kiana/ki_ana/netapi/.gitignore
++ echo ================================================================
++ echo '>> FILE: /home/kiana/ki_ana/netapi/.gitignore'
++ echo ================================================================
++ mask_secrets
++ sed -E -e 's/([A-Z0-9_]*(SECRET|TOKEN|PASSWORD|API[-_]?KEY|PASS|KEY)[A-Z0-9_]*\s*=\s*)[^ #\r\n]+/\1•••/gi' -e 's/(Bearer\s+)[A-Za-z0-9._-]+/\1•••/g' -e 's/(postgres:\/\/)[^@]+@/\1•••@/g'
++ echo -e '\n'
++ for f in "${FILES[@]}"
++ echo /home/kiana/ki_ana/requirements.txt
++ echo ================================================================
++ echo '>> FILE: /home/kiana/ki_ana/requirements.txt'
++ echo ================================================================
++ mask_secrets
++ sed -E -e 's/([A-Z0-9_]*(SECRET|TOKEN|PASSWORD|API[-_]?KEY|PASS|KEY)[A-Z0-9_]*\s*=\s*)[^ #\r\n]+/\1•••/gi' -e 's/(Bearer\s+)[A-Za-z0-9._-]+/\1•••/g' -e 's/(postgres:\/\/)[^@]+@/\1•••@/g'
++ echo -e '\n'
++ DEP_OUT=/home/kiana/ki_ana/reports/python_deps_20250826_080624.txt
++ '[' -f /home/kiana/ki_ana/pyproject.toml ']'
++ '[' -f /home/kiana/ki_ana/requirements.txt ']'
++ cp /home/kiana/ki_ana/requirements.txt /home/kiana/ki_ana/reports/python_deps_20250826_080624.txt
++ '[' -d /home/kiana/ki_ana/.git ']'
++ echo '# KI_ana Projekt-Report (20250826_080624)'
++ echo
++ echo '- Tree: project_tree_20250826_080624.txt'
++ echo '- Config-Dateien (maskiert): project_config_20250826_080624.txt'
++ echo '- Gefundene Config-Pfade: config_file_index_20250826_080624.txt'
++ '[' -f /home/kiana/ki_ana/reports/python_deps_20250826_080624.txt ']'
+++ basename /home/kiana/ki_ana/reports/python_deps_20250826_080624.txt
++ echo '- Python-Dependencies: python_deps_20250826_080624.txt'
++ '[' -f /home/kiana/ki_ana/reports/git_info_20250826_080624.txt ']'
++ echo
++ echo 'Hinweis: Geheimnisse wurden in der Anzeige maskiert (•••).'
++ echo '✅ Fertig: Reports unter /home/kiana/ki_ana/reports'
+✅ Fertig: Reports unter /home/kiana/ki_ana/reports

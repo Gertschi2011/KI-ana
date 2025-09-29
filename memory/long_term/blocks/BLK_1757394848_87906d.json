@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Source code for the X Recommendation Algorithm\n • Hacker News: Show HN: Attempt – A CLI for retrying fallible commands\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): So startet Schwarz-Rot nach der Sommerpause in den Herbst",
+  "created_at": 1757394848.4896653,
+  "hash": "e73fa057b99be181ccc36d7a92f1cb5a3c60b3734307c7195cfbd1c98db107f0",
+  "id": "BLK_1757394848_87906d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "e3c8AxL3jvbUGTjYSYr5p7t/G++txgRp+EXHWT2ojkpQ8n3DLaLoT9GAW3qStG6isQGFSPm+d7mXu8APvd62DQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 07:14",
+  "url": null
+}

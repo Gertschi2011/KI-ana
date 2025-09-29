@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: WarpOS is a multitasking kernel for the PowerPC (PPC) architecture\n • Hacker News: Trucker built a scale model of NYC over 21 years\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): UN-Kommissionsbericht wirft Israel Genozid im Gazastreifen vor",
+  "hash": "c2b5d72ebb9a72b14f931473bbd2ce83e5166fbf95f984be2b1092a26fd8b96f",
+  "id": "BLK_1758031151_qhmgsk",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ALWuEnGFiSRq2bfWoNxaOmiOEOcXjODW3slgqXXs3LrtqhscITjoZjm9cKIi480xajGBPJCKjs7fjxZbmjTGAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 15:59",
+  "ts": 1758031151,
+  "url": ""
+}

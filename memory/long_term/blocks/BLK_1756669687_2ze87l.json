@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Installing UEFI Firmware on ARM SBCs\n • Hacker News: It's So Easy to Prompt Inject Perplexity Comet\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Klingbeil zur Haushaltslücke: \"Werden den Menschen etwas abverlangen müssen\"",
+  "hash": "a993f1594714fe3cd976c8bc4728f7c7cd41c22b21df55aa58c87d1e5b798953",
+  "id": "BLK_1756669687_2ze87l",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "zKZf6oflSvClbdC0HSK1YNBPnuw1uVDryqSH2m/Ug/ymkDY8fhsySRfbwV9Ib862KILA/piAYm4ysN7RoUt9DA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 21:48",
+  "ts": 1756669687,
+  "url": ""
+}

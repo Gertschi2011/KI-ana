@@ -1,0 +1,8 @@
+{
+  "name": "chain_sync",
+  "version": "0.1.0",
+  "entrypoint": "netapi.skills.chain_sync.handler:run",
+  "capabilities": ["web.get", "fs.read"],
+  "run_mode": "subproc"
+}
+

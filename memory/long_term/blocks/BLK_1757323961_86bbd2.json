@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: TheAuditor – Offline security scanner for AI-generated code\n • Hacker News: Show HN: Veena Chromatic Tuner\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Fünf Tote bei Schusswaffenangriff in Jerusalem",
+  "created_at": 1757323961.0704467,
+  "hash": "7b2e0b4f9907e7705177317400d64f7a5e8657bf35724ade40ccf2a53d4a0a16",
+  "id": "BLK_1757323961_86bbd2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KTSBryRdzsVJsxQxs961zerIX+GA6nuRq+/s+m/3R+G/pZ3tMeqrxo3I1MGDszloapbbU/KM2Tkex3Oz0MiRDw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 11:32",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Launch HN: Ghostship (YC S25) – AI agents that find bugs in your web app\n • Hacker News: Claude's Memory Architecture Is the Polar Opposite of ChatGPT's\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pianist Levit verurteilt Ausladung des israelischen Dirigenten Shani",
+  "hash": "886efde93504c73ec0b40a58c62b45fa0ca0c6cbc90270022a8d867ef2d2317b",
+  "id": "BLK_1757619389_26r18i",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "QLnIE9hZ3v2rmKjaiFh0Cv/CHKKdJyrwtQJ33u6T5DY3N2emUwM2n5q5KJN92nQTFeZlgz9R2/8xcFz1Mt2SBA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 21:36",
+  "ts": 1757619389,
+  "url": ""
+}

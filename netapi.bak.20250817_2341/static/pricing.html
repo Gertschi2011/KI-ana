@@ -1,0 +1,47 @@
+<!doctype html><html lang="de"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Preise & Subminds</title>
+<link rel="stylesheet" href="/static/style.css">
+</head><body>
+<header class="site-header">
+  <div class="brand"><img src="/static/Avatar_KI_ana.jpg" class="avatar" alt="KI_ana" onerror="this.style.display='none'">
+    <div class="titles"><h1>KI_ana</h1><p class="subtitle">Preise & Subminds</p></div>
+  </div>
+  <nav class="menu">
+    <a href="/">Start</a><a href="/static/about.html">Über</a>
+    <a href="/static/pricing.html">Preise & Subminds</a>
+    <a href="/static/kids.html">Kinder</a>
+  </nav>
+</header>
+<main class="container">
+  <section class="card">
+    <h2>Pakete</h2>
+    <div class="row stack">
+      <div class="card" style="flex:1">
+        <h3>Family (kostenlos)</h3>
+        <ul><li>Basis-Chat</li><li>Manuelles Lernen</li></ul>
+        <button class="btn secondary" onclick="getLink('free')">Jetzt nutzen</button>
+      </div>
+      <div class="card" style="flex:1">
+        <h3>Pro (empfohlen)</h3>
+        <ul><li>Autom. Lernen</li><li>Subminds Downloads</li><li>Priorisierte Updates</li></ul>
+        <button class="btn" onclick="getLink('pro')">Jetzt abonnieren</button>
+      </div>
+      <div class="card" style="flex:1">
+        <h3>Creator</h3>
+        <ul><li>Papa-Bereich</li><li>Skill-Proposals & Deploy</li><li>Signierte Chain</li></ul>
+        <button class="btn" onclick="getLink('creator')">Upgrade anfragen</button>
+      </div>
+    </div>
+    <p id="msg" class="muted" style="margin-top:10px"></p>
+  </section>
+
+  <section class="card">
+    <h3>Subminds</h3>
+    <p>Nach Abschluss deines Plans kannst du Subminds herunterladen:</p>
+    <div id="subs" class="row stack"></div>
+  </section>
+</main>
+<footer class="site-footer"><small>&copy; <span id="year"></span> KI_ana</small></footer>
+<script src="/static/pricing.js"></script>
+</body></html>

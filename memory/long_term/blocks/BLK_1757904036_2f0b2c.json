@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Dagger.js – A buildless, runtime-only JavaScript micro-framework\n • Hacker News: AI False information rate for news nearly doubles in one year\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NRW-Kommunalwahl: Grüne und SPD im Bund räumen Niederlagen ein",
+  "created_at": 1757904036.6257706,
+  "hash": "278201ac984b35dcd92fe871ca1c2b731f8f431777cef1126cc8255d3b138c2b",
+  "id": "BLK_1757904036_2f0b2c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/91pGrTZFb38U/IMB85mK2hrGP8uCKErdmVfW8z3YATDGwctStyDlKzUGFsVc+mtRHQm0SgQRYkZ+xWMCxFhCg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 04:40",
+  "url": null
+}

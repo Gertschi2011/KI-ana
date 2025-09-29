@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: I created a small 2D game about an ant\n • Hacker News: Meta's live staged demo fails; the \"AI\" recording plays before the actor acts\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "created_at": 1758236455.006887,
+  "hash": "09d86a6fa38d31a9764bfbcfcebe8bf6922873c37404f2c0c7ebb313c103fd88",
+  "id": "BLK_1758236455_6f9c09",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "sJ9EbvDN29jpQMZGJlsSyYqCn4zh2YWm7AZVr5OTLRwhJWQSRA2l0dEMuF5JO3KWTqWDu0sBJVm/raSy/qJZCw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 01:00",
+  "url": null
+}

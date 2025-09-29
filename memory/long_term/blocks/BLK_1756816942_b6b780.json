@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What's New with Firefox 142\n • Hacker News: Europol said ChatControl doesn't go far enough; they want to retain data forever\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Prozessbeginn: Plante Bolsonaro den Angriff auf Brasiliens Demokratie?",
+  "created_at": 1756816942.1076922,
+  "hash": "faf6791de19ec84672d73430f157d82299367111cd6ffb1950b0402ba9086279",
+  "id": "BLK_1756816942_b6b780",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jirzMzBBXj8hY0r+ibyv7SKdKeVMtQUaxNdUk31DP9lb9uL/5YpshkLYjTVYJEKXdf7VP0R7hkbOQcIPHBtuAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 14:42",
+  "url": null
+}

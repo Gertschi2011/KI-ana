@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: We're launching a new Google app for Windows experiment in Labs\n • Hacker News: Microsoft Favors Anthropic over OpenAI for Visual Studio Code\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was das Attentat auf Kirk mit Memes und Gaming zu tun hat",
+  "hash": "35c5a9efe206bf2bd11582f05925a633cfe7e9c147515eff3adad37a80de1266",
+  "id": "BLK_1758036681_gsuj32",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "+RplRk5lk0X28iD3ETO98iVUW+udOhjyYzjlvNjiMKCnkdHGUfQybofqvL/SSFH2kN9UliC+89X9WYhDYv8GDA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 17:31",
+  "ts": 1758036681,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Mistral AI raises €1.7B to accelerate technological progress with AI\n • Hacker News: ASML, Mistral AI enter strategic partnership\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach dem Sturz der Regierung steht Frankreichs Präsident Macron unter Druck",
+  "created_at": 1757405653.1033607,
+  "hash": "c03db06a95b8350ee885533fe5517d5bc58325c64e3d8f9d3cce8573b832501a",
+  "id": "BLK_1757405653_6a6e20",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "aybUEPWcdEzBuSWKIFAwSR/l1h6o76eyIYYmf6+WIH7iHD5nSKQOgMSjVh/hWykVPJYiySD5N+f8q5RcxgBICA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 10:14",
+  "url": null
+}

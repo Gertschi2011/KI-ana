@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: You're Not Interviewing for the Job. You're Auditioning for the Job Title\n • Hacker News: Google can keep its Chrome browser but will be barred from exclusive contracts\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Gericht: Google muss Webbrowser Chrome nicht verkaufen",
+  "created_at": 1756854035.5405726,
+  "hash": "dae5fd8e3293c142a6494aed1c7325d7e8a7c55c1a0d319dab78be2bb4117b66",
+  "id": "BLK_1756854035_aa110c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TmE7wCerkqLNTK+bA7WGfmEpV3n13KKGzZTd01gKa4R7TtASHa4X2yVZnTXFIOULNRiaHDUuYhnMUTnIJPVCBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 01:00",
+  "url": null
+}

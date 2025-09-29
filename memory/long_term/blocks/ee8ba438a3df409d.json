@@ -1,0 +1,25 @@
+{
+  "content": "Technische Systeme und Trainingsdaten können unbeabsichtigt Vorurteile enthalten, was zu einer scheinbaren Objektivität in KI-Entscheidungen führen kann; daher ist es wichtig, diese Aspekte kritisch zu bewerten.",
+  "hash": "ff59b4fdbd4c3a3c63e88256bda58c23540584464b81de8c648548dd43ce2afa",
+  "id": "ee8ba438a3df409d",
+  "meta": {
+    "linked_to": [
+      "cfdeedce5a5349ab",
+      "eadb88841ef94ac1",
+      "8f087491bc1b4cb1",
+      "e7eca8557b8c4c3b",
+      "4de3e0a92da944ef",
+      "c408164a72ba4736"
+    ],
+    "provenance": "auto_reflection",
+    "tags": [
+      "reflection:true"
+    ]
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "qvifE+uACsZ8C3xhJU7XqAjL3+GRfQ2ewmqZ2Tr8+VOoRpK5fP7uIdxT0ByQEUtBOa9pxo6HAstQOAvHPLspCw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "timestamp": "2025-09-03T14:58:51Z",
+  "title": "Reflexion zu Verantwortung",
+  "topic": "Verantwortung"
+}

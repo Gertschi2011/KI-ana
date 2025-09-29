@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Tariffs Are Still Illegal\n • Hacker News: Introduction to Ada: a project-based exploration with rosettas\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Afghanistan: Nach dem Beben zeigt sich Ausmaß der Katastrophe",
+  "created_at": 1756836268.3957348,
+  "hash": "5b179fdade19dc10daf0f25fb3616e3f1deaf8d4720729e167846fbd86df9740",
+  "id": "BLK_1756836268_c7a8b4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "YOoj1R/Atay0MMU6cA1q/QWFJU4kY8xWgmdtfdMfNo8x3kNbCL6wM0ln39ZFFzeG/rWjb6W3ZNjBvwECXVr6Ag==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 20:04",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: UTF-8 is a brilliant design\n • Hacker News: EU court rules nuclear energy is clean energy\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hinweise auf ein politische Motiv für Kirk-Attentat",
+  "created_at": 1757704030.7352712,
+  "hash": "bb638def3c0602b211362cba85bf3432e8c5615ba9c31b0820528a4821a0c0e4",
+  "id": "BLK_1757704030_d46e10",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "NMbDs2/jiYcD1GlYGcEOnTASD21jFlxT95DpFrSC6wD+NL59spFGNRkOzN2zZOFoHegIy2pJSmB/gagLL+h9Bg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 21:07",
+  "url": null
+}

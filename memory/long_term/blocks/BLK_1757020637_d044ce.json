@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ICPC 2025 World Finals Results\n • Hacker News: Classic 8×8-pixel B&W Mac patterns\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lissabon nach Seilbahn-Unglück: Trauer, ein wenig Wut und die Frage nach der Ursache",
+  "created_at": 1757020637.3989875,
+  "hash": "77833514cfdd9cad11ccd010bd1239f3d041ccfc36bc4721cdb144a392593051",
+  "id": "BLK_1757020637_d044ce",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "WeXyts650sJRUTpGN89WxS9Abv+kJk9zG8AxX3lkhGAs2wkndvuNUb7jeu8T0ztNsdoaOBwU8819oB2l8tUzCg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 23:17",
+  "url": null
+}

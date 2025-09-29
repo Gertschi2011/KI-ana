@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: US to target more businesses after Hyundai raid\n • Hacker News: Campfire: Web-Based Chat Application\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "created_at": 1757266914.9027753,
+  "hash": "825887cf9d03d177f9ff1e4ee33ae8a6ca4d6cca993e0bcdbaf00f03cf891df7",
+  "id": "BLK_1757266914_71570d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vHse/R5uhXn/A2LV1wQU+5wXkZQgpWvHnwVgTgFe4AqB/OAMTbo+3Dwl9qjXMJbYPmCqDOUYUlOn0bAeKd8XAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 19:41",
+  "url": null
+}

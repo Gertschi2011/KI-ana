@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Infisical (YC W23) Is Hiring Solutions Engineers to Scale the OSS Security Stack\n • Hacker News: Family of MSFT employee who died warn tech companies not to overwork workers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfeltreffen in Tianjin: Eine geeinte Front gegen den Westen?",
+  "created_at": 1756661026.369773,
+  "hash": "db3db146f9e31d463f86460963d796279842495e3c9feccccc199be8b3fff3be",
+  "id": "BLK_1756661026_13916f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "iIiQCyzf9lkbdLbQ5WGt9fHD8fkkrgUnMJG/B4hY/IJyLPdauMBNEgr+Bh70PljUvBqQBXzN43hdnO7+mWxKDw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 19:23",
+  "url": null
+}

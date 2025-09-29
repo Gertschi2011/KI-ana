@@ -1,0 +1,19 @@
+[#] /etc/systemd/system/kiana.service
+[Unit]
+Description=KI_ana FastAPI service
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/home/%i/ki_ana
+Environment=PORT=8000
+Environment=HOST=127.0.0.1
+Environment=RELOAD=0
+ExecStart=/bin/bash -lc '/home/%i/start-kiana.sh'
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+

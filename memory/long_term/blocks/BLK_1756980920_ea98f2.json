@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Color of the Future: A history of blue\n • Hacker News: Google was down in eastern EU and Turkey\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Standseilbahn entgleist: Zahl der Todesopfer in Lissabon steigt auf 17",
+  "created_at": 1756980920.3530424,
+  "hash": "6ad2fe42ad7d5c5fabc415cf9825b4fbe8a4bf70b4429f8baf7201fed25667a0",
+  "id": "BLK_1756980920_ea98f2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OHEv8lRq3Zhs5X8eNXf/PSFa6fMeyIjSS41aPNq9nuk+YTvcJd7aQrWvJEfh9Ks8rhaFLla4yrdFz7h5ZbJQAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 12:15",
+  "url": null
+}

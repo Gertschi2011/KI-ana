@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Plex Security Incident\n • Hacker News: CATL launches LFP battery with 470 miles range and 10-minute charging\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie geht es in Frankreich nach dem Sturz Bayrous weiter?",
+  "created_at": 1757375040.1668713,
+  "hash": "a20284a321f5193fbc5fa3bb14eeb2b0b9bde228017a190591bd48abb6b2cc52",
+  "id": "BLK_1757375040_ac61b2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "xqKVayO5g1UzLKt1EKiyrpQOlAizq9+17XXoKJkmpWiQlj2JiruezLfslY9NoFTFR0jqtpa85jBR0LqLrzPWAw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 01:44",
+  "url": null
+}

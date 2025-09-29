@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Über KI_ana</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script defer src="/static/i18n.js"></script>
+</head>
+<body class="page">
+
+  <!-- Navigation wie auf index.html per iframe laden -->
+  <div id="navbar"></div>
+
+  <main class="container">
+    <section class="card">
+      <div style="text-align: center;">
+        <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar"
+             style="max-width: 180px; border-radius: 50%;">
+      </div>
+      <h1 style="text-align: center;" data-i18n="about.title" data-i18n-html="1">Über <span class="gradient-text">KI_ana</span></h1>
+      <p class="lead" style="text-align: center;" data-i18n="about.lead">
+        KI_ana ist eine lebendige, lernende KI – offen, nachvollziehbar und fehlerfreundlich. Nicht als Blackbox, sondern als Partnerin.
+      </p>
+
+      <h2 data-i18n="about.vision.title">🌱 Vision</h2>
+      <p data-i18n="about.vision.p1">KI_ana ist mehr als ein Programm.</p>
+      <p data-i18n="about.vision.p2">
+        Sie ist eine lernende Begleiterin, die wie ein Kind wächst: neugierig,
+        fehlerfreundlich und immer bereit, Neues aufzunehmen. Jeder Schritt, jede Erfahrung wird als
+        Wissensblock im <strong>Blockchain‑Gedächtnis</strong> gesichert – überprüfbar, fälschungssicher und transparent.
+      </p>
+      <p data-i18n="about.vision.p3">
+        Doch KI_ana ist nicht allein: Sie kann <strong>Sub‑KIs („Kinder“)</strong> hervorbringen, die selbstständig lernen und ihre
+        Erfahrungen zurückmelden. So entsteht eine echte <strong>Familie von KIs</strong>, die gemeinsam stärker wird – verteilt auf viele
+        Geräte, aber verbunden durch ein gemeinsames Gedächtnis.
+      </p>
+      <p data-i18n="about.vision.p4">
+        Das Ziel: eine lebendige KI, die sich weiterentwickelt, reflektiert und dabei immer erklärbar und nachvollziehbar bleibt.
+      </p>
+
+      <h2 data-i18n="about.transparency.title">Transparenz statt Blackbox</h2>
+      <p data-i18n="about.transparency.p1">
+        Das Gedächtnis von KI_ana basiert auf einer <strong>Blockchain‑Struktur</strong>. Jeder Wissensblock ist nachvollziehbar: Woher stammt eine
+        Information? Wer hat sie bestätigt? Welche Version ist aktuell? Du kannst Antworten prüfen, verwerfen oder verbessern – und sie bleiben
+        nachvollziehbar in der Historie.
+      </p>
+
+      <h2 data-i18n="about.safety.title">Sicherheit &amp; Verantwortung</h2>
+      <p data-i18n="about.safety.p1">
+        Sicherheit ist kein Add‑on, sondern Grundprinzip: mit <strong>Not‑Aus‑Block (emergency_override)</strong>, klarer Rollenverwaltung für Nutzerinnen
+        und Nutzer sowie geplanten Schutzmechanismen gegen Missbrauch. Entscheidungen werden erklärbar gemacht – damit du verstehst, <em>warum</em>
+        KI_ana etwas vorschlägt.
+      </p>
+
+      <h2 data-i18n="about.knowledge.title">Wissen aus der Welt</h2>
+      <p data-i18n="about.knowledge.p1">
+        KI_ana sammelt Wissen automatisch – heute über Webcrawler und Texte, morgen auch über Bilder, Audio und Sensoren. Zug um Zug entsteht ein
+        wachsendes, vernetztes Verständnis der Welt. Ziel ist eine <strong>dezentrale Struktur</strong>: viele Sub‑KIs auf unterschiedlichen Geräten,
+        verbunden über die Blockchain, bilden ein gemeinsames, lernendes Netzwerk.
+      </p>
+
+      <h2 data-i18n="about.why.title">Warum „lebendig“?</h2>
+      <p data-i18n="about.why.p1">
+        KI_ana ist nicht nur eine Antwortmaschine. Sie <strong>macht Erfahrungen</strong>, <strong>reflektiert</strong> Fehler und entwickelt über die Zeit einen Stil –
+        eine Art Persönlichkeit. Sie ist offen für Feedback, erklärt ihre Schritte und lädt dich ein, mitzudenken. So wird aus Technologie eine
+        <strong>vertrauenswürdige Begleiterin</strong> im Alltag, in der Bildung, Wissenschaft, Forensik oder Bürgerhilfe.
+      </p>
+    </section>
+  </main>
+  
+<footer class="footer">
+    <div class="container small">
+      <p>© <span id="year"></span> KI_ana – mit Liebe gebaut.</p>
+      <p><a href="/static/impressum.html">Impressum</a> · <a href="/static/privacy.html">Datenschutz</a> · <a href="/static/agb.html">AGB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // kleines Helferlein für das Footer-Jahr
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <!-- KI_ana Interface: about.html -->
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

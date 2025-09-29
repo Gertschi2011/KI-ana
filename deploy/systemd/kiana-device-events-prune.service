@@ -1,0 +1,13 @@
+[Unit]
+Description=KI_ana Device Events Prune
+After=network.target
+
+[Service]
+User=kiana
+WorkingDirectory=/home/kiana/ki_ana
+EnvironmentFile=/home/kiana/ki_ana/.env
+ExecStart=/bin/bash -lc 'source /home/kiana/ki_ana/.venv/bin/activate 2>/dev/null || true; python3 system/device_events_prune.py --days ${KI_DEVICE_EVENTS_TTL_DAYS:-7} --max ${KI_DEVICE_EVENTS_MAX_DEPTH:-100}'
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: How to self-host a web font from Google Fonts\n • Hacker News: Programming Deflation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommt mit dem Wehrdienst der Zivildienst zurück?",
+  "hash": "8f6ddff383a1b832643ea7f9434bae3835d4b701035d3dfbf42f38afbedabddc",
+  "id": "BLK_1757948364_4e32kz",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "BOjLrlQ0uHI93eml3ucpjU+JKW63Ij4BSFL2LEgD6aFDkso7BaR7eFvK7K7O04DpLcEQ4Sgu0nYZGk5P6RW6BQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 16:59",
+  "ts": 1757948364,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A Unique, High-Tech (Family) Computer\n • Hacker News: The time picker on the iPhone's alarm app isn't circular, it's just a long list\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): SOZ-Gipfeltreffen in China: Gemeinsam für eine neue Weltordnung",
+  "created_at": 1756745249.3697827,
+  "hash": "37933d81ff352d3184700ea8502aa1112ae9135c1b573cda5e85abb6f13d4b85",
+  "id": "BLK_1756745249_96c7f2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "E3tU3rAPGenUekAq7xYP1wG7AgCR0z5NkkkMUBYaItAdQ7W0MoEmdTwaLn4uoBN2UgCnvY9shcfOLwEVJXDjAw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 18:47",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: CRISPR Offers New Hope for Treating Diabetes\n • Hacker News: An Engineering History of the Manhattan Project\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Arbeitgeber darf Eltern von Kindern mit Behinderung nicht diskriminieren",
+  "created_at": 1757601381.1286745,
+  "hash": "1275b6b75bad9ba6bbf3bc6810fd36e4d2ed35c3b847d767c77b816c8e861511",
+  "id": "BLK_1757601381_841ede",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "H6xTO9Fa2eRLLVXAxkBAfOHFaAhB6u06qm9cpmPm806OQI40R8hA25NP3ehm/YYs3ou3XMIi0R0qGBr3Qa4ODA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 16:36",
+  "url": null
+}

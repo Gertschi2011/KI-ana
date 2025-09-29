@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Pasadena man recounts 13 days in ICE's 'basement'\n • Hacker News: Debian 13, Postgres, and the US time zones\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Manöver von Russland und Belarus: Eine versteckte Mobilmachung?",
+  "created_at": 1757655407.176608,
+  "hash": "dcc146f5d55d49c562a599054b5a8b945fd1cfaa25552bdfd88d9a2367fb9674",
+  "id": "BLK_1757655407_2bda8d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "EQvxb7V4EDEzYTPX5xnH/h7xCNNwAKLxZoqrfOLCXMtCgHdag/9iXs93QRhuMWi4XzLKIMccUTPbVe3mDzMVBA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 07:36",
+  "url": null
+}

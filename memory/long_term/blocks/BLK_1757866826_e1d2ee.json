@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Writing an operating system kernel from scratch\n • Hacker News: Website Is Just an SVG\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie der Einstieg in die private Altersvorsorge gelingen kann",
+  "created_at": 1757866826.6058831,
+  "hash": "90e42e0430a8cc5e8daae73179b1e85588fe9c5dbd733a0f741a145e64bb52ae",
+  "id": "BLK_1757866826_e1d2ee",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TQAoJiHY77tMab3AnJUSvk3K7+ORp/bUtKmfLP2bsh2FH5b3u7DGCc90hS+Yqug9QrX2Rf7IwpIrq5T+Srh2DQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 18:20",
+  "url": null
+}

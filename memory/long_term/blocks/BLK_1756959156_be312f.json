@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Étoilé – desktop built on GNUStep\n • Hacker News: ReMarkable Paper Pro Move\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Koalitionsausschuss: Union und SPD beschwören Einigkeit",
+  "created_at": 1756959156.5936897,
+  "hash": "94eada804fbad29a85397ad5122d1b9554f809319d547c8600e1ddf6b810b1a0",
+  "id": "BLK_1756959156_be312f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Ft/HPbSYIivIL2ZfA/RGgOa8pNg+ac6B3iBu+Tt4zSrka3uDTVYIkJYZktMWtR8fzi6BVGFBxOczQxg/Xm2SCg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 06:12",
+  "url": null
+}

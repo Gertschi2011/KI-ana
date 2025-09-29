@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Writing an operating system kernel from scratch\n • Hacker News: Nicu's test website made with SVG (2007)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wüst zufrieden mit CDU-Ergebnis in NRW - AfD bereitet Sorgen",
+  "created_at": 1757877024.3928835,
+  "hash": "195d016e736c33e0f6b2bc9017940469dd540de3daee7c628470c3ece3a90997",
+  "id": "BLK_1757877024_f41380",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "JSlBO7I1LD721rjGAhBhcnNmEeRbwlA1K0prNiyQnXMsXM6iEMMQcNkqopCm+79/TItCKLtaHK1Zf5u7X3rKAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 21:10",
+  "url": null
+}

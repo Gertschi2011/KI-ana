@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Qwen3 30B A3B Hits 13 token/s on 4xRaspberry Pi 5\n • Hacker News: A Software Development Methodology for Disciplined LLM Collaboration\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD die Kultur in Sachsen-Anhalt umdeutet",
+  "created_at": 1757166119.379681,
+  "hash": "6bd1585abb70e401d382e013e9f56ec8a83d65a18659cb35a698376b05d60536",
+  "id": "BLK_1757166119_94f16c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/SkidYNtbpzhSvGdNIB/kK28+UKDqr+ImUPkLUdS95klKgXYTFzDzcQ+e0muvDd0nQ1A3dqPD/Jp9B3ink4PCQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 15:41",
+  "url": null
+}

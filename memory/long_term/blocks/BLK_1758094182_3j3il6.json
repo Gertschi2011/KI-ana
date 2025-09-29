@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Introducing Stargate UK\n • Hacker News: Murex – An intuitive and content aware shell for a modern command line\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Liveblog zur Generaldebatte: ++ Weidel greift Merz scharf an ++",
+  "hash": "66557496d110a29db344ae7ce1c57df0b0357a1c2a0c53a6b5f1068797c3116a",
+  "id": "BLK_1758094182_3j3il6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "9f6zpOmoZ+pJ+64Sj424b5TDIoVFYXU6mbcTdKIuEylrS6DnT/Of1J4cc2Ws4xg4GjJ7pO7wCSc5ByuDUVMRAA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 09:29",
+  "ts": 1758094182,
+  "url": ""
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>KI_ana – Fähigkeiten</title>
+  <link rel="stylesheet" href="/static/chat.css">
+  <script defer src="/static/global_theme.js"></script>
+  <style>
+    .hero { max-width: 1000px; margin: 0 auto; padding: 24px 16px; text-align:center; }
+    .cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 16px; max-width: 1000px; margin: 0 auto; padding: 0 16px 24px; }
+    .card { background:#fff; border-radius: 16px; padding: 16px; box-shadow: 0 10px 20px rgba(0,0,0,.06); text-align:left; }
+    body.theme-dark .card{ background:#1f2530; }
+    .avatar { max-width: 140px; height:auto; border-radius:50%; }
+    .muted { opacity: .8; }
+    .footer { text-align:center; font-size:.9em; padding: 20px 0; color:#555; }
+  </style>
+  </head>
+<body>
+  <div id="navbar"></div>
+
+  <main>
+    <section class="hero">
+      <img class="avatar" src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar" onerror="this.style.display='none'">
+      <h1>✨ Fähigkeiten</h1>
+      <p class="muted">KI_ana ist neugierig, freundlich und lernt mit dir. Hier ein kleiner Überblick, was sie gut kann.</p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>💬 Natürlich sprechen</h3>
+        <ul>
+          <li>Verständlich erklären</li>
+          <li>Zusammenfassen & nachfragen</li>
+          <li>Kindgerecht oder fachlich</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🧠 Gemeinsam lernen</h3>
+        <ul>
+          <li>Wissen merken (Memory)</li>
+          <li>Eigene Themen vertiefen</li>
+          <li>Tipps & Beispiele</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🛠️ Projekte & Ideen</h3>
+        <ul>
+          <li>Planen & strukturieren</li>
+          <li>To-dos & Roadmaps</li>
+          <li>Texte & E-Mails skizzieren</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🔒 Privat & sicher</h3>
+        <ul>
+          <li>Klare Einstellungen</li>
+          <li>Transparente Nutzung</li>
+          <li>Lokale Kontrolle</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="footer">
+      <small>© <span id="year"></span> KI_ana – mit Liebe gebaut.</small>
+    </div>
+  </main>
+
+  <!-- Navbar Loader (with script execution) -->
+  <script>
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n=document.getElementById('navbar');
+          if(!n) return;
+          n.innerHTML=html;
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
+  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

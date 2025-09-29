@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Development Speed Has Never Been a Bottleneck\n • Hacker News: Data Modeling Guide for Real-Time Analytics with ClickHouse\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Krieg: Debatte nach Genozid-Äußerung von EU-Kommissionsvize",
+  "hash": "2d34529c8a348aeb5d4fdb37c08046066987bf204c80623133d2c4443d83e919",
+  "id": "BLK_1757083284_oki70c",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "FYczvctgcFxd67k5UJyt17B7XQ3+3Llc8m9zkPwfkp+JVgjON9m0KrW1JSaEN9Q7Z2DkjrmFqST/WyV6L+qlDw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 16:41",
+  "ts": 1757083284,
+  "url": ""
+}

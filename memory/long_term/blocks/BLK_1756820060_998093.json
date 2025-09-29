@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What's New with Firefox 142\n • Hacker News: Run Erlang/Elixir on Microcontrollers and Embedded Linux\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Prozessbeginn: Plante Bolsonaro den Angriff auf Brasiliens Demokratie?",
+  "created_at": 1756820060.7868035,
+  "hash": "11cf53527e6b1a73e35bd27678033587d95028c371b2f57e5c39b44a08b1bdc9",
+  "id": "BLK_1756820060_998093",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OV+mdjDOLvqR92A01EWZBjSsBkaOqiodqxwuJTeKwHrmdl8VejcbO1YkCdISmPtR9IJUxXG3yW8QcHri932GDw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 15:34",
+  "url": null
+}

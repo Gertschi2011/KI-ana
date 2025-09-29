@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Atlassian is acquiring the Browser Company\n • Hacker News: Calling your boss a dickhead is not a sackable offence, UK tribunal rules\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zahl der Erdbebenopfer in Afghanistan steigt auf mehr als 2.200",
+  "created_at": 1756997835.0343556,
+  "hash": "99e5979837b3c336b7253d2a1c4d3e8a50152c01111cb3c95cac8bc7baeaeb20",
+  "id": "BLK_1756997835_0c6e88",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9DVnQNgydtDNLzvJgVFyIV4K95i61Av1zBoNzj7SmeqHoDYp2TIubqJtqDbevUvoBvGXLIhj2qUUwTzVwqDVAw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 16:57",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Apple: SSH and FileVault\n • Hacker News: U.S. has the critical minerals it needs – but they're being thrown away\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "hash": "52d4a9a74ebbf1a9a818eeb97c6af77032fc12ba9c52141051b2d4d2c804899d",
+  "id": "BLK_1758227451_yyp5bp",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "96pYe7szQlsw3S0iT6CLYAK9d+hSoupo2LyRj7JIiKTPgRebNxKyWiUW5xFhXG1X+J+as9qcYV+DREI8msX/DA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 22:30",
+  "ts": 1758227451,
+  "url": ""
+}

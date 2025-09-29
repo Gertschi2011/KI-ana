@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: The text disappears when you screenshot it\n • Hacker News: Hypervisor 101 in Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Länder beraten über höheren Preis für Deutschlandticket",
+  "hash": "e270f0d683fbf4ef9ef69350373a8a916b31b44f308e31fbaee5c8438ca4f564",
+  "id": "BLK_1758168022_g4168i",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "0JzO+NM4KOlSJMHJpBQtHaKQ5PTCSENXbMWL7MamTRzL0cLq/IkRIpAq2otgjgNDqfRunVVr1IinrReIUeE1BA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 06:00",
+  "ts": 1758168022,
+  "url": ""
+}

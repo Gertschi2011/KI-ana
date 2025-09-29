@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "type": "crawl_store",
+      "url": "https://de.wikipedia.org/wiki/quantencomputer",
+      "domain": "de.wikipedia.org",
+      "memory_path": "/home/kiana/ki_ana/memory/long_term/906f628dc99289f78059dd9c02ccd11ae77c7a2b22a35924c3eea0a9fa1eb153.json",
+      "content_sha256": "906f628dc99289f78059dd9c02ccd11ae77c7a2b22a35924c3eea0a9fa1eb153",
+      "prev_log_hash": "GENESIS_LOG_HASH",
+      "ts": "2025-08-14T07:52:21Z",
+      "log_hash": "c80c0301dcc3295d315bafc30a3f100cf6696bb47f8c628598146a43fce24af6"
+    },
+    {
+      "type": "crawl_store",
+      "url": "https://de.wikipedia.org/wiki/photosynthese",
+      "domain": "de.wikipedia.org",
+      "memory_path": "/home/kiana/ki_ana/memory/long_term/2b0fba3a8449a6e7089d2e658cc54094b5175b7c52b131d4f322009d0c30a3db.json",
+      "content_sha256": "2b0fba3a8449a6e7089d2e658cc54094b5175b7c52b131d4f322009d0c30a3db",
+      "prev_log_hash": "c80c0301dcc3295d315bafc30a3f100cf6696bb47f8c628598146a43fce24af6",
+      "ts": "2025-08-14T14:10:33Z",
+      "log_hash": "bfec6959de21f6203352a6a93838b131b94a4c2e55b62595b2eaeacd36a2132c"
+    }
+  ]
+}

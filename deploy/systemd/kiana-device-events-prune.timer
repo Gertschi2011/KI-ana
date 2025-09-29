@@ -1,0 +1,10 @@
+[Unit]
+Description=Run KI_ana Device Events Prune daily at 04:00
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+Persistent=true
+Unit=kiana-device-events-prune.service
+
+[Install]
+WantedBy=timers.target

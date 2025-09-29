@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: European ant is the first known animal to clone members of another species\n • Hacker News: Towards a Physics Foundation Model\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Äußerungen nach Kirk-Mord: Jimmy-Kimmel-Show wird vorerst abgesetzt",
+  "created_at": 1758180628.7434933,
+  "hash": "00b254e6cdbe8a30b3cd86521b7585b106dc34548cc507dfc27435c52a6d723c",
+  "id": "BLK_1758180628_2427f9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "uk9rQHB5Fg11FwxN31rNpBybe2rp/pkIj1rVKMG3VlYdr2vsD/ASDtkMfB5ZuGjmp5JLqXTxc/iamTYVp2YHCQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 09:30",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FBI cyber cop: Salt Typhoon pwned 'nearly every American'\n • Hacker News: Agent Client Protocol\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Merkels Flüchtlingspolitik die AfD prägte",
+  "created_at": 1756561365.7000356,
+  "hash": "a1c0388013edc43202a51def273825b036abe18d27400d2a671140cf9f27b1cd",
+  "id": "BLK_1756561365_de3ee9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "S7uPRtwIVIpMl/Ya7Px3kDDb85UIZGigmIaqkItERNV7hVPCpwhu9bWeUSvKyB+c798+UGv0OPwIatD9OdJwBA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 15:42",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Four Fallacies of Modern AI\n • Hacker News: Court rejects Verizon claim that selling location data without consent is legal\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kirk-Attentat alarmiert nicht nur Amerikas Konservative",
+  "created_at": 1757577962.9122634,
+  "hash": "6384d5bc82bd0e4616c4c6c2aa997bf96f030b9231ef38b335bf4c06337d5a4e",
+  "id": "BLK_1757577962_e0de23",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9Oec2eb4l3jvxuRi9fTA8wOROUG+gfFpHi4AjjrRsRJqpK5GwiC+BIoW25bh9x2/FqcR270rIG66gy6WJB4KDg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 10:06",
+  "url": null
+}

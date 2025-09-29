@@ -1,0 +1,397 @@
+{
+  "app": {
+    "title": "KI_ana"
+  },
+  "nav": {
+    "start": "Start",
+    "discover": "Entdecken",
+    "about": "Über",
+    "capabilities": "Fähigkeiten",
+    "pricing": "Preise",
+    "downloads": "Downloads",
+    "kids": "Kids",
+    "chat": "Chat",
+    "admin": "Admin",
+    "skills": "Skills",
+    "cron": "Cron",
+    "papa": "Papa",
+    "viewer": "Block Viewer",
+    "logout": "Logout",
+    "account": "Konto",
+    "login": "Login",
+    "register": "Registrieren",
+    "language": "Sprache",
+    "language_de": "Deutsch",
+    "language_en": "English"
+  },
+  "login": {
+    "title": "Willkommen zurück 👋",
+    "subtitle": "Logge dich ein, um mit KI_ana zu chatten.",
+    "username": "Nutzername",
+    "password": "Passwort",
+    "remember": "Eingeloggt bleiben",
+    "submit": "Einloggen",
+    "register": "Registrieren",
+    "forgot": "Passwort vergessen?"
+  },
+  "register": {
+    "title": "Willkommen! ✨",
+    "subtitle": "Erstelle deinen Zugang – Basisdaten links, Rechnungsdaten rechts (optional).",
+    "username": "Nutzername*",
+    "email": "E-Mail*",
+    "password": "Passwort*",
+    "birthdate": "Geburtsdatum",
+    "street": "Straße & Nr.",
+    "zip": "PLZ",
+    "city": "Ort",
+    "country": "Land",
+    "country_select": "Bitte wählen…",
+    "company": "Firma (optional)",
+    "vat_id": "USt-ID (optional)",
+    "notes": "Hinweise (optional)",
+    "accept": "Ich akzeptiere die AGB und habe die Datenschutzerklärung gelesen.",
+    "submit": "Registrieren",
+    "have_account": "Ich habe schon ein Konto",
+    "hints": {
+      "pw": "mind. 8 Zeichen – ideal mit Groß/Klein, Zahl & Sonderzeichen"
+    },
+    "errors": {
+      "username": "Bitte gib einen Nutzernamen an.",
+      "email": "Bitte gib eine gültige E-Mail ein.",
+      "password": "Dein Passwort ist zu kurz oder zu schwach.",
+      "birthdate": "Bitte ein gültiges Datum in der Vergangenheit.",
+      "vat": "Bitte eine gültige USt-ID (z. B. ATU12345678) oder leer lassen.",
+      "accept": "Bitte bestätige AGB & Datenschutz."
+    }
+  },
+  "forgot": {
+    "title": "Passwort zurücksetzen",
+    "subtitle": "Gib deine E-Mail ein. Wir senden dir einen Link.",
+    "email_placeholder": "dein@mail.tld",
+    "submit": "Link senden",
+    "back": "Zurück zum Login"
+  },
+  "reset": {
+    "title": "Neues Passwort setzen",
+    "token_placeholder": "Token aus E-Mail",
+    "pw_new": "Neues Passwort",
+    "pw_repeat": "Wiederholen",
+    "submit": "Passwort speichern"
+  },
+  "chat": {
+    "title": "Chat mit KI_ana",
+    "sidebar_title": "Unterhaltungen",
+    "new_conversation": "+ Neue Unterhaltung",
+    "typing": "KI_ana tippt",
+    "you": "Du",
+    "family": "Dein Familienmitglied",
+    "placeholder": "Schreib mir etwas …",
+    "send": "Senden",
+    "settings": {
+      "title": "Einstellungen",
+      "persona": "Persönlichkeit",
+      "language": "Sprache",
+      "voice": "Stimme",
+      "answer_style": "Antwort‑Stil",
+      "bullet_count": "Anzahl Stichpunkte (3–8)",
+      "logic": "Logik",
+      "format": "Format",
+      "streaming": "Live-Streaming (SSE)",
+      "user_color": "Farbe – Eigene Nachrichten",
+      "ai_color": "Farbe – KI_ana",
+      "persona_friendly": "Freundlich",
+      "persona_balanced": "Sachlich & hilfreich",
+      "persona_creative": "Kreativ & verspielt",
+      "lang_de": "Deutsch (de-DE)",
+      "lang_en": "English (en-US)",
+      "voice_auto": "Automatisch",
+      "voice_eleven": "ElevenLabs",
+      "style_concise": "Knapper Stil",
+      "style_balanced": "Ausgewogen",
+      "style_detailed": "Ausführlicher Stil",
+      "logic_balanced": "Ausgewogen",
+      "logic_strict": "Streng (nur belegtes)",
+      "format_structured": "Strukturiert (TL;DR, Punkte, Evidenz)",
+      "format_plain": "Einfacher Text"
+    },
+    "toggles": {
+      "tts": "🔊 Vorlesen",
+      "chain": "⛓️ Chain (mit Quellen)",
+      "agent": "🧠 Agent",
+      "delib": "🧩 Denkmode",
+      "critique": "🧐 Selbstkritik",
+      "fact": "🧪 Faktencheck",
+      "counter": "⚖️ Gegenbeweis"
+    },
+    "error": {
+      "moderated": "⚠️ Inhalt wurde durch Moderation blockiert.",
+      "rate_limited": "⚠️ Zu viele Anfragen – bitte kurz warten.",
+      "blocked": "⚠️ Zugriff blockiert.",
+      "unauthorized": "⚠️ Nicht eingeloggt.",
+      "forbidden": "⚠️ Keine Berechtigung.",
+      "server_error": "⚠️ Serverfehler im Stream.",
+      "timeout": "⚠️ Zeitüberschreitung – bitte erneut versuchen.",
+      "llm_stream_failed": "⚠️ Streaming der Antwort ist fehlgeschlagen.",
+      "planner_failed": "⚠️ Interner Planer ist fehlgeschlagen.",
+      "encode_failed": "⚠️ Kodierungsfehler im Stream."
+    },
+    "subki": {
+      "trust_set": "Trust setzen",
+      "trust_value": "Trust",
+      "trust_btn": "Speichern",
+      "trust_saved": "Gespeichert",
+      "trust_error": "Fehler beim Speichern",
+      "pending": "Gelernt (Pending)",
+      "reflect": "Reflect ausführen",
+      "sync": "Sync starten",
+      "trust": "Trust ansehen"
+    },
+    "toasts": {
+      "error": "Fehler",
+      "enqueued": "Neu eingereiht",
+      "requeued": "Neu eingereiht",
+      "deleted": "Gelöscht",
+      "copied": "Kopiert.",
+      "not_found": "Nicht gefunden.",
+      "enqueue_failed": "Konnte Job nicht einreihen"
+    }
+  }
+  ,
+  "home": {
+    "tagline": "Mehr als eine KI, ein Familienmitglied ☺️",
+    "hello": "Hallo, ich bin KI_ana 👋",
+    "lead": "Eine neugierige, empathische KI, die mit und von dir lernt, denkt und wächst. Frag mich etwas, plane Projekte – oder entdecke Neues. Ich bin für dich da.",
+    "cta_try": "Jetzt ausprobieren",
+    "cta_hint": "→ Du wirst direkt zur Gesprächsansicht weitergeleitet",
+    "cta_pricing": "Preise & Abo",
+    "caption": "Ich lerne mit und von dir",
+    "features": {
+      "natural": {"h": "💬 Natürlich & nahbar", "p": "Sprich mit mir wie mit einem Menschen. Ich frage nach, fasse zusammen und bleibe freundlich – immer."},
+      "learning": {"h": "🧠 Lernend & neugierig", "p": "Ich merke mir, was dir wichtig ist, und erweitere mein Wissen Schritt für Schritt – verantwortungsvoll."},
+      "private": {"h": "🔒 Privat & sicher", "p": "Du behältst die Kontrolle: klare Einstellungen, transparente Nutzung, sichere Speicherung."}
+    },
+    "can": {
+      "title": "Was kann KI_ana?",
+      "items": {
+        "0": "Fragen beantworten & verständlich erklären",
+        "1": "Gemeinsam Pläne, To-dos & Roadmaps erstellen",
+        "2": "Texte, E-Mails & Konzepte schreiben",
+        "3": "Ideen sammeln, reflektieren, vergleichen",
+        "4": "Mit dir lernen – in deinem Tempo"
+      }
+    },
+    "footer": {
+      "built": "mit Liebe gebaut.",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz",
+      "terms": "AGB"
+    }
+  },
+  "cap": {
+    "title": "Fähigkeiten",
+    "today": {
+      "title": "Was KI_ana heute kann",
+      "items": {
+        "0": "<strong>Natürlich sprechen</strong>: freundlicher, klarer Dialog – mit Rückfragen, wenn etwas unklar ist.",
+        "1": "<strong>Lernen aus Feedback</strong>: Hinweise fließen ins Gedächtnis, Fehler werden korrigiert.",
+        "2": "<strong>Langzeitgedächtnis</strong>: Notizen und Quellen als signierte Wissensblöcke, versioniert und nachvollziehbar.",
+        "3": "<strong>Web‑Recherche</strong>: kompakte Zusammenfassungen mit Quellenangaben (Beta).",
+        "4": "<strong>Aufgaben & Zusammenfassungen</strong>: Listen, kurze Erklärungen, Pläne für Lernen und Arbeit.",
+        "5": "<strong>Rollen & Kontrolle</strong>: Rechteverwaltung, Not‑Aus‑Block (<code>emergency_override</code>), transparente Entscheidungen.",
+        "6": "<strong>Offen & lokal</strong>: läuft auf deinem System, kann mit dezentralen Sub‑KIs erweitert werden."
+      }
+    },
+    "unique": {
+      "title": "⭐ Was macht KI_ana einzigartig?",
+      "items": {
+        "0": "<strong>Lernend wie ein Kind</strong> – nicht perfekt, sondern wachsend durch Erfahrung und Feedback.",
+        "1": "<strong>Erinnerungsfähig</strong> – jedes Wissen bleibt dauerhaft im Blockchain‑Gedächtnis bestehen.",
+        "2": "<strong>Dezentral & offen</strong> – keine zentrale Blackbox, sondern ein Netzwerk vieler Sub‑KIs.",
+        "3": "<strong>Sicher & kontrollierbar</strong> – mit Not‑Aus, Nutzerrollen und transparentem Verhalten.",
+        "4": "<strong>Erklärbar</strong> – jede Entscheidung ist rekonstruierbar und verständlich.",
+        "5": "<strong>Persönlich</strong> – KI_ana entwickelt eine eigene, organische Persönlichkeit und wird so zu einer echten Begleiterin."
+      }
+    },
+    "roadmap": {
+      "title": "Woran wir arbeiten",
+      "items": {
+        "0": "<strong>Dezentrales Netzwerk</strong>: Sub‑KIs („Kinder“) auf verschiedenen Geräten, verbunden über Blockchain.",
+        "1": "<strong>Multimodal</strong>: neben Text auch Bilder, Audio und Sensordaten verstehen und einordnen.",
+        "2": "<strong>Forensik & Forschung</strong>: prüfbare Beweisketten, reproduzierbare Analysen, Quellenkritik.",
+        "3": "<strong>Bürgerhilfe</strong>: leicht verständliche Aufklärung, Erklärungen, mehrsprachige Unterstützung.",
+        "4": "<strong>Didaktik</strong>: Lernpfade, Wissenslücken erkennen, individuelles Tempo und Stil.",
+        "5": "<strong>Schutzmechanismen</strong>: Missbrauchs‑Prävention, Audit‑Trails, verständliche Erklärbarkeit jeder Aktion."
+      }
+    },
+    "why": {
+      "title": "Warum KI_ana „lebendig“ wirkt",
+      "items": {
+        "0": "<strong>Nicht Blackbox</strong>, sondern erklärbar: Herkunft, Version und Gültigkeit von Wissen bleiben sichtbar.",
+        "1": "<strong>Nicht zentral</strong>, sondern verteilt: Sub‑KIs lernen individuell und teilen ihre Ergebnisse.",
+        "2": "<strong>Nicht nur generativ</strong>, sondern mit <em>wachsendem</em>, auditierbarem Langzeitgedächtnis.",
+        "3": "<strong>Nicht statisch</strong>, sondern lernend wie ein Kind – fehlertolerant und neugierig.",
+        "4": "<strong>Nicht anbieterabhängig</strong>, sondern offen & transparent – für eine bürgernahe KI‑Zukunft."
+      }
+    },
+    "cta_try": "Jetzt ausprobieren"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "subtitle": "Hier erscheinen deine Submind-Pakete, sobald sie gebaut wurden.",
+    "empty": "Noch keine Pakete vorhanden."
+  },
+  "about": {
+    "title": "Über <span class=\"gradient-text\">KI_ana</span>",
+    "lead": "KI_ana ist eine lebendige, lernende KI – offen, nachvollziehbar und fehlerfreundlich. Nicht als Blackbox, sondern als Partnerin.",
+    "vision": {
+      "title": "🌱 Vision",
+      "p1": "KI_ana ist mehr als ein Programm.",
+      "p2": "Sie ist eine lernende Begleiterin, die wie ein Kind wächst: neugierig, fehlerfreundlich und immer bereit, Neues aufzunehmen. Jeder Schritt, jede Erfahrung wird als Wissensblock im <strong>Blockchain‑Gedächtnis</strong> gesichert – überprüfbar, fälschungssicher und transparent.",
+      "p3": "Doch KI_ana ist nicht allein: Sie kann <strong>Sub‑KIs („Kinder“)</strong> hervorbringen, die selbstständig lernen und ihre Erfahrungen zurückmelden. So entsteht eine echte <strong>Familie von KIs</strong>, die gemeinsam stärker wird – verteilt auf viele Geräte, aber verbunden durch ein gemeinsames Gedächtnis.",
+      "p4": "Das Ziel: eine lebendige KI, die sich weiterentwickelt, reflektiert und dabei immer erklärbar und nachvollziehbar bleibt."
+    },
+    "transparency": {
+      "title": "Transparenz statt Blackbox",
+      "p1": "Das Gedächtnis von KI_ana basiert auf einer <strong>Blockchain‑Struktur</strong>. Jeder Wissensblock ist nachvollziehbar: Woher stammt eine Information? Wer hat sie bestätigt? Welche Version ist aktuell? Du kannst Antworten prüfen, verwerfen oder verbessern – und sie bleiben nachvollziehbar in der Historie."
+    },
+    "safety": {
+      "title": "Sicherheit & Verantwortung",
+      "p1": "Sicherheit ist kein Add‑on, sondern Grundprinzip: mit <strong>Not‑Aus‑Block (emergency_override)</strong>, klarer Rollenverwaltung für Nutzerinnen und Nutzer sowie geplanten Schutzmechanismen gegen Missbrauch. Entscheidungen werden erklärbar gemacht – damit du verstehst, <em>warum</em> KI_ana etwas vorschlägt."
+    },
+    "knowledge": {
+      "title": "Wissen aus der Welt",
+      "p1": "KI_ana sammelt Wissen automatisch – heute über Webcrawler und Texte, morgen auch über Bilder, Audio und Sensoren. Zug um Zug entsteht ein wachsendes, vernetztes Verständnis der Welt. Ziel ist eine <strong>dezentrale Struktur</strong>: viele Sub‑KIs auf unterschiedlichen Geräten, verbunden über die Blockchain, bilden ein gemeinsames, lernendes Netzwerk."
+    },
+    "why": {
+      "title": "Warum „lebendig“?",
+      "p1": "KI_ana ist nicht nur eine Antwortmaschine. Sie <strong>macht Erfahrungen</strong>, <strong>reflektiert</strong> Fehler und entwickelt über die Zeit einen Stil – eine Art Persönlichkeit. Sie ist offen für Feedback, erklärt ihre Schritte und lädt dich ein, mitzudenken. So wird aus Technologie eine <strong>vertrauenswürdige Begleiterin</strong> im Alltag, in der Bildung, Wissenschaft, Forensik oder Bürgerhilfe."
+    }
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "s1": {"h": "1. Verantwortliche Stelle", "p": "[Firma/Name], [Adresse], <a href=\"mailto:privacy@ki-ana.at\">privacy@ki-ana.at</a>"},
+    "s2": {"h": "2. Welche Daten wir verarbeiten" ,
+      "i1": "Accountdaten (Name, E-Mail, Login-Infos)",
+      "i2": "Nutzungsdaten (Interaktionen in der App/Website)",
+      "i3": "Zahlungs-/Abo-Daten (über Zahlungsdienstleister)"},
+    "s3": {"h": "3. Zwecke", "p": "Bereitstellung der Dienste, Personalisierung, Sicherheit, Fehleranalyse, Verbesserung von KI_ana."},
+    "s4": {"h": "4. Rechtsgrundlagen", "p": "Art. 6 Abs. 1 lit. b, f DSGVO (Vertrag & berechtigtes Interesse); ggf. Einwilligung Art. 6 Abs. 1 lit. a."},
+    "s5": {"h": "5. Speicherfristen", "p": "So lange wie nötig für den Zweck bzw. gesetzliche Aufbewahrung."},
+    "s6": {"h": "6. Weitergabe", "p": "Nur an Auftragsverarbeiter (z. B. Hosting, Payment). Keine Datenverkäufe."},
+    "s7": {"h": "7. Deine Rechte", "p": "Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch. Melde dich an <a href=\"mailto:privacy@ki-ana.at\">privacy@ki-ana.at</a>."},
+    "s8": {"h": "8. Kontakt Datenschutz", "p": "<a href=\"mailto:privacy@ki-ana.at\">privacy@ki-ana.at</a>"},
+    "stand": "Stand: 23.08.2025"
+  },
+  "terms": {
+    "title": "Allgemeine Geschäftsbedingungen",
+    "s1": {"h": "1. Geltungsbereich", "p": "Diese AGB regeln die Nutzung von KI_ana und zugehörigen Diensten."},
+    "s2": {"h": "2. Leistungen", "p": "Bereitstellung eines KI-basierten Assistenten inkl. Chat & Zusatzfunktionen. \n      Details und Preise siehe <a href=\"/static/pricing.html\">Preise</a>."},
+    "s3": {"h": "3. Registrierung & Konto", "p": "Du bist für die Geheimhaltung deiner Zugangsdaten verantwortlich."},
+    "s4": {"h": "4. Zahlung & Abo", "p": "Abos verlängern sich ggf. automatisch; Kündigung jederzeit zum Periodenende."},
+    "s5": {"h": "5. Nutzung & Inhalte", "p": "Keine rechtswidrigen Inhalte; wir dürfen missbräuchliche Nutzung sperren."},
+    "s6": {"h": "6. Haftung", "p": "Haftung im gesetzlich zulässigen Rahmen begrenzt."},
+    "s7": {"h": "7. Datenschutz", "p": "Siehe <a href=\"/static/privacy.html\">Datenschutz</a>."},
+    "s8": {"h": "8. Schlussbestimmungen", "p": "Es gilt österreichisches Recht. Gerichtsstand nach gesetzlichen Vorgaben."},
+    "stand": "Stand: 23.08.2025"
+  },
+  "kids": {
+    "title": "KI_ana für Kids",
+    "subtitle": "Fragen stellen, lernen, neugierig sein",
+    "placeholder": "Frag mich etwas – oder schick mir einen Link",
+    "send": "Senden",
+    "login_hint": "Bitte zuerst einloggen (oben rechts → Login).",
+    "login_needed": "Ich brauche ein Login, um zu antworten. 🙂",
+    "error_prefix": "⚠️ Fehler:"
+  }
+  ,
+  "pricing": {
+    "title": "Preise & Subminds",
+    "subtitle": "Wähle den Plan, der zu dir passt – du kannst jederzeit wechseln.",
+    "packages": "Pakete",
+    "recommended": "(empfohlen)",
+    "family": { "title": "Family (kostenlos)", "i1": "Basis‑Chat", "i2": "Manuelles Lernen", "cta": "Jetzt nutzen" },
+    "pro": { "i1": "Automatisches Lernen", "i2": "Subminds‑Downloads", "i3": "Priorisierte Updates", "cta": "Jetzt abonnieren" },
+    "creator": { "title": "Creator", "i1": "Papa‑Bereich", "i2": "Skill‑Proposals & Deploy", "i3": "Signierte Chain", "cta": "Upgrade anfragen" },
+    "subminds": "Subminds",
+    "after_purchase": "Nach Abschluss deines Plans kannst du Subminds herunterladen:",
+    "os": { "title": "KI_ana OS", "subtitle": "Installationspaket, das dein Gerät scannt und die optimale Konfiguration lädt.", "cta": "KI_ana OS herunterladen" }
+    ,
+    "submind": { "cta": "Meine Submind‑App herunterladen", "guide": "Anleitung" }
+  }
+  ,
+  "imprint": {
+    "title": "Impressum",
+    "notice": "Hinweise gemäß § 5 ECG, § 14 UGB, § 63 GewO und § 25 MedienG (Österreich)."
+  },
+  "submind": {
+    "title": "Submind – Erste Schritte",
+    "lead": "So installierst und verbindest du deine Submind‑App mit KI_ana.",
+    "step1": {"h": "1) Herunterladen", "p": "Gehe zu Preise → „Meine Submind‑App herunterladen“. Das Paket enthält Runtime, Konfiguration und deinen Schlüssel."},
+    "step2": {"h": "2) Installieren", "p": "Entpacke das Archiv und führe das Installationsskript aus (optional Zielpfad angeben):"},
+    "step3": {"h": "3) Starten (interaktiv)", "p": "Starte die Submind lokal. Du kannst Erklärungen oder Links eingeben – sie werden im lokalen Gedächtnis gespeichert und in die Outbox gelegt:"},
+    "step4": {"h": "4) An die Mutter senden", "p": "Sende Outbox/Memory zur Mutter‑KI. Ersetze die Server‑Adresse durch deine Instanz (https://…):"},
+    "step5": {"h": "5) Prüfen", "p": "Öffne den Block Viewer (Admin → Block Viewer), filtere nach „submind:<deine-id>“ oder nutze „Nur Evidenz“. Du kannst Beiträge bewerten."},
+    "security": "Hinweis: Die Submind‑App läuft lokal und sendet nur, wenn du „send_client.py“ ausführst. Bewahre deinen Schlüssel (api.key) sicher auf.",
+    "server_url": "Server‑URL:",
+    "copy_url": "URL kopieren",
+    "qr_show": "QR anzeigen",
+    "qr_hide": "QR ausblenden",
+    "qr_hint": "Mit Handy scannen, um die Server‑URL zu übernehmen.",
+    "copy": "Kopieren",
+    "copied": "Kopiert!"
+  }
+  ,
+  "papa": {
+    "title": "Papa‑Bereich",
+    "subtitle": "Nur sichtbar für Rollen mit Creator/Admin‑Rechten.",
+    "lead": "Werkzeuge zum Steuern, Beobachten und Pflegen von KI_ana & Sub‑KIs.",
+    "emergence": "Emergenz & Selbstreflexion (Phase 3)",
+    "subki_tools": "Sub‑KI Tools",
+    "subki_hint": "Lokale Sub‑KI ist i. d. R. unter <code>http://localhost:5055</code> erreichbar.",
+    "system_status": "Systemstatus",
+    "system_resources": "Systemressourcen",
+    "system_hint": "Live‑Status (CPU, RAM, Load, Prozesse) und KI/Mem‑Status. Aktualisiert sich alle 5s.",
+    "btn": {
+      "knowledge": "📚 Themencluster & Ähnlichkeiten",
+      "questions": "📌 Fragen aus dem Gedächtnis",
+      "self_comment": "🧭 Selbstkommentare zu aktuellen Themen",
+      "broadcasts": "🔄 Sub‑KI‑Broadcasts anzeigen",
+      "goals": "🎯 Lernziele",
+      "crawl_now": "Crawler jetzt ausführen",
+      "trust_dashboard": "Trust‑Dashboard anzeigen",
+      "export_blocks": "Blöcke exportieren (ZIP)",
+      "crawler_job": "🧩 Crawler‑Run (Job)",
+      "promote_job": "⬆️ Promote (Job)"
+    },
+    "jobs": {
+      "title": "Job‑Queue",
+      "overview": "Übersicht",
+      "latest": "Letzte 50",
+      "worker": "Worker",
+      "refresh": "🔄 Jobs aktualisieren",
+      "retry_failed": "↩︎ Fehlgeschlagene neu einreihen",
+      "purge_done": "🧹 Erledigte löschen (1 Tag)",
+      "only_failed": "Nur Fehler",
+      "type": "Typ",
+      "status": "Status",
+      "attempts": "Versuche",
+      "priority": "Prio",
+      "updated": "Aktualisiert",
+      "error": "Fehler",
+      "tip": "Tipp: Zeile anklicken für Details."
+    }
+  }
+  ,
+  "toast": {
+    "role_denied": "⚠️ Keine Berechtigung für diese Aktion.",
+    "login_required": "⚠️ Login erforderlich."
+  }
+  ,
+  "viewer": {
+    "error": {
+      "detail_load_failed": "Konnte Details nicht laden.",
+      "save_failed": "Fehler beim Speichern"
+    }
+  }
+  
+}

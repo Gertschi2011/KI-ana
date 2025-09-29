@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: DuckDB NPM packages 1.3.3 and 1.29.2 compromised with malware\n • Hacker News: You too can run malware from NPM (I mean without consequences)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kluft bei Bildungsabschlüssen in Deutschland wächst laut OECD",
+  "created_at": 1757416457.8763256,
+  "hash": "842bf49d6bd6898803202e6cb010d74fd3c0f905cc6374657737aed56f2bb0cd",
+  "id": "BLK_1757416457_9a069d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "1dzaCnP8PR69L+CiCY8P73oMJAE+ouJPYs6UHEwt3VC3tsnfMWoNHR0C4G9fPzYC8Kd86r99EPA2GD7YwFSABQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 13:14",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: South Korea: 'many' of its nationals detained in ICE raid on GA Hyundai facility\n • Hacker News: Protobuffers Are Wrong\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU verhängt Milliardenstrafe gegen Google",
+  "created_at": 1757088687.3742447,
+  "hash": "d52e8e15555987424820f252a49aed90b9825ae0fe2e1890a2f5b5aa8998c81d",
+  "id": "BLK_1757088687_e6b592",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vcX/PMyOHZW6aHxkhn/8IxqvzxXut1YyVfnVvYCdUldj8Fe2E9bC7Lr90GUKpJh0mUex42gwF1S66na+mzlhCg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 18:11",
+  "url": null
+}

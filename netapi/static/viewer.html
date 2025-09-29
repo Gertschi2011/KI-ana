@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Wissensviewer – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <link href="/static/styles.css" rel="stylesheet">
+  <link href="/static/chat.css" rel="stylesheet">
+  <script src="/static/global_theme.js"></script>
+  <style>
+    body { background:#fafafa; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    .header { display:flex; align-items:center; gap:12px; padding: 8px 0 12px; }
+    .header h1 { margin:0; font-size: 20px; display:flex; align-items:center; gap:10px; }
+    .header .back { margin-left:auto; text-decoration:none; }
+    .toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; background:#fff; border:1px solid #eee; border-radius:12px; padding:10px; }
+    .muted { opacity:.75; }
+    table { width:100%; border-collapse: collapse; margin-top: 10px; background:#fff; }
+    th, td { text-align:left; padding: 8px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+    th { background: #f5f5f5; }
+    input[type="text"], select { padding:8px; border:1px solid #ddd; border-radius:8px; }
+    .btn { padding:6px 10px; border-radius: 999px; background: #eef; border:1px solid #dde; cursor:pointer; }
+    .btn:hover { background:#e8eefc; }
+    #list { overflow-x:auto; }
+    .badges { display:flex; gap:6px; flex-wrap:wrap; }
+    .badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; background:#e7f1fb; color:#234; border:1px solid #d6e5f6; }
+    .preview { color:#666; font-size: 12px; }
+    .highlight { background: #fff8a6; }
+    @media (max-width: 640px){ .header h1{ font-size:18px; } }
+  </style>
+  <script defer src="/static/knowledge.js"></script>
+</head>
+<body>
+  <div id="navbar"></div>
+  <main class="container">
+    <div class="header">
+      <h1>📚 Wissensviewer</h1>
+      <a class="back" href="/static/chat.html">← Zurück</a>
+    </div>
+    <div class="toolbar">
+      <input id="q" type="text" placeholder="Filter nach Topic/Content…" style="flex:1;min-width:200px;">
+      <input id="tag" type="text" placeholder="Tag enthält…" style="min-width:160px;">
+      <label class="muted">Pro Seite:
+        <select id="limit">
+          <option>25</option>
+          <option selected>50</option>
+          <option>100</option>
+          <option>200</option>
+        </select>
+      </label>
+      <button id="reload" class="btn">🔄 Neu laden</button>
+      <button id="sortToggle" class="btn" title="Sortierung umschalten">🆕 Neueste zuerst</button>
+      <div style="margin-left:auto; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <button id="exportCsv" class="btn">📄 CSV Export</button>
+        <button id="exportJson" class="btn">🔗 JSON Export</button>
+        <button id="exportMinio" class="btn" style="display:none;">☁️ Export nach MinIO</button>
+        <span id="count" class="muted"></span>
+      </div>
+    </div>
+    <div id="list"><p>Lade…</p></div>
+    <div class="toolbar" style="justify-content: space-between; margin-top:8px;">
+      <div id="pagerInfo" class="muted">—</div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button id="prev" class="btn">◀ Zurück</button>
+        <button id="next" class="btn">Weiter ▶</button>
+      </div>
+    </div>
+    <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.4);">
+      <div style="background:#fff; max-width: 900px; margin: 5% auto; padding:16px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+          <h2 style="margin:0; font-size:18px;">Details</h2>
+          <button id="modalClose" class="btn" style="margin-left:auto;">Schließen ✖</button>
+        </div>
+        <pre id="modalBody" style="white-space:pre-wrap; background:#fafafa; border:1px solid #eee; border-radius:8px; padding:12px; max-height:65vh; overflow:auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;"></pre>
+      </div>
+    </div>
+  </main>
+  <div id="toasts" style="position:fixed;right:16px;top:16px;display:flex;flex-direction:column;gap:8px;z-index:10000"></div>
+  <script>
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n=document.getElementById('navbar');
+          if(!n) return;
+          n.innerHTML=html;
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
+  </script>
+</body>
+</html>

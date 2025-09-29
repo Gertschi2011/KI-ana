@@ -1,0 +1,14 @@
+[Unit]
+Description=KI_ana Knowledge Prune (knowledge_blocks TTL)
+After=network.target
+
+[Service]
+Type=oneshot
+User=kiana
+WorkingDirectory=/home/kiana/ki_ana
+Environment=PYTHONUNBUFFERED=1
+# Uses env KI_KNOWLEDGE_TTL_DAYS unless overridden by --days
+ExecStart=/usr/bin/python3 /home/kiana/ki_ana/system/knowledge_prune.py
+
+[Install]
+WantedBy=multi-user.target

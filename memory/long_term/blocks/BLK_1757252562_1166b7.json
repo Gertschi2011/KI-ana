@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What Really Caused the Sriracha Shortage? (2024)\n • Hacker News: Show HN: Semantic grep for Claude Code (RUST) (local embeddings)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Papst spricht den \"Influencer Gottes\" Carlo Acutis heilig",
+  "created_at": 1757252562.8941472,
+  "hash": "17c138da41f068b247303867b6b4e7c2893b2e53318d7dea5f16b0a2edc5d75f",
+  "id": "BLK_1757252562_1166b7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fN8+nEXb9FGOkjqzs8ZeHCWf47S9PI40X1Q8DBD/eUWSkqzl657Muc5dV/wXengZ7sZ0Hq5hW1GBR/TCfCVhCA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 15:42",
+  "url": null
+}

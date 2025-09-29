@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 1TB Raspberry Pi SSD on sale now for $70\n • Hacker News: US economy added just 22,000 jobs in August, unemployment highest in 4 yrs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Krieg: Debatte nach Genozid-Äußerung von EU-Kommissionsvize",
+  "created_at": 1757086886.5824406,
+  "hash": "c7a4cd6be1e67e2907327d9f24ef7f0de4e68783e3465d178c570961a64cf5fe",
+  "id": "BLK_1757086886_c71c89",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ceIePdnfvnSeDjQYQYc4n5QooCU8WXzLnfE/h6zT0I6r/r1JLcjsFW68uu4wlfLH0H2p6lw5OGGHE/X0KqkVBg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 17:41",
+  "url": null
+}

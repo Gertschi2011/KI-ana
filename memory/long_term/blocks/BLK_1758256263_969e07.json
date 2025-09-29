@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Bravo Apple! Calculator app has a memory leak\n • Hacker News: Gemini in Chrome\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushalt für 2025: Wie groß sind die Spar-Spielräume?",
+  "created_at": 1758256263.6982796,
+  "hash": "7ec17ec1c83543c0df7e11d3317545ad9c5b01e6528595c14b1d35951314402b",
+  "id": "BLK_1758256263_969e07",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "RfHm2Jr63jNCbWdY8hOFPgaz35kTVotEVI/aF4j+JOXfXU4/p2ldQRDA4fGgZOOVWojtcQ3iuFdnsCbxJC/sBQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 06:31",
+  "url": null
+}

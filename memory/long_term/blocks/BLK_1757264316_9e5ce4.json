@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The MacBook has a sensor that knows the exact angle of the screen hinge\n • Hacker News: Nepal Bans 26 Social Media Platforms, Including Facebook and YouTube\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Empörung nach Angriffen auf Ukraine: \"Der Kreml verhöhnt die Diplomatie\"",
+  "created_at": 1757264316.1680298,
+  "hash": "34296895a75c25b67ee2ba30303a1a7ba57ba61000f52bfc97c09a73b556e90a",
+  "id": "BLK_1757264316_9e5ce4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "2y8cHPbXrBxVZW/QsV63JX62YpxGaHmYVBbyJHD1paeh7lc1sNco4d4iheQKB95v13gbezbymfDEB3bbcIqrAA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 18:58",
+  "url": null
+}

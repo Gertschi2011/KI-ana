@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Rayhunter: IMSI Catchers We Have Found So Far\n • Hacker News: Google Doesn't Rank My Site for My Own Brand Name\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Regeln für die Richterwahl am Bundesverfassungsgericht gelten",
+  "created_at": 1757531139.508407,
+  "hash": "304e5ca6f5d344137c09329d5a57b3280ec003ee7b98596dbdd83a3efc43efb1",
+  "id": "BLK_1757531139_765d71",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "UujpsgqzpKKaFq8GKnByueildSEtr3QPBeuiLSrCrxfC3VLo1gG0OLZGo8+mvDlcwKEq/jh+TYA6XYtwcTnIBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 21:05",
+  "url": null
+}

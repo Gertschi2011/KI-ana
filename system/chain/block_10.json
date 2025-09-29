@@ -1,0 +1,18 @@
+{
+  "block_id": 10,
+  "content_hash": "2b0fba3a8449a6e7089d2e658cc54094b5175b7c52b131d4f322009d0c30a3db",
+  "hash": "17c3cf7a20564d5f115cab6030ac1ffedae2267e63e63efc3b1579ded289a08a",
+  "memory_path": "/home/kiana/ki_ana/memory/long_term/2b0fba3a8449a6e7089d2e658cc54094b5175b7c52b131d4f322009d0c30a3db.json",
+  "meta": {
+    "url": "https://de.wikipedia.org/wiki/photosynthese"
+  },
+  "previous_hash": "1aace75f9b7cc577240e28db9d873fb2ae49799b6941a60b029fe66762001be3",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "reaT9GDwXovrGTMtXTJdEGea1+8fbRI9VRxrjq53AxdnrjGfaHKr4GMEHH3CMkdthSTpfvh4ilwDiHfhwrAjDg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "signer_pubkey": "BPc5h+jR3VdGXle6pghTBSfDAiok+iYcwgbCuFX9+7g=",
+  "source": "https://de.wikipedia.org/wiki/photosynthese",
+  "timestamp": "2025-08-14T14:10:33.858756Z",
+  "topic": "photosynthese",
+  "type": "web_crawl"
+}

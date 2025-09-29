@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Sometimes Software Is Done, or Why Hugo Why\n • Hacker News: My Foray into Vlang\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zehn Jahre \"Wir schaffen das\": Ein Rückblick auf Desinformationen",
+  "created_at": 1756637615.7744877,
+  "hash": "540f687166b9f53ead6bcdb9ae6f3b72d716aecbea472650cc0e0739834f5e3a",
+  "id": "BLK_1756637615_559e2a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "k5KDF4Fc+QM9uqfulKTlzohEZFa1uL6z8uSVuCAdAoAe3+sEYO6TElMw8DCmKm3GoXFd+mfmb7vIga4RzvcMBg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 12:53",
+  "url": null
+}

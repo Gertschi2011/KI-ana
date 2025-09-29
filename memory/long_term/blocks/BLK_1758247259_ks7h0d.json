@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: David Lynch LA House\n • Hacker News: Show HN: Nallely – A Python signals/MIDI processing system inspired by Smalltalk\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "hash": "74a6d16d37b17c81dc430718f1f9704195d6423094f55c82e3bc48340efa2410",
+  "id": "BLK_1758247259_ks7h0d",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "EAJ3LtSRGn/6aUlhVY/8oukcxWcRjbA4o7tqXcW5e74XFIUI+RaDPEfnnTlXK/+HgYUHqUyEbD//YlpXwVccDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 04:00",
+  "ts": 1758247259,
+  "url": ""
+}

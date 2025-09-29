@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: University of Cambridge Cognitive Ability Test\n • Hacker News: The Delusion Machine – What happened when I fed my soul into an LLM\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): FAQ: Wie es mit den US-Zöllen nach dem Gerichtsentscheid weitergeht",
+  "hash": "bb1134d27f2a9f8e7868617b97d6deffd01a6a95cc5733873205a8a60dd62c0c",
+  "id": "BLK_1756579990_iun8p5",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "/okX6xEet1BrrdxDFAnWpHvvvXxCF/BLS5y2/B6U0/3LdZ3gxv6jr8HlYsY8J3lsau2+x4t7G2a0Gn/lodGZAQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 20:53",
+  "ts": 1756579990,
+  "url": ""
+}

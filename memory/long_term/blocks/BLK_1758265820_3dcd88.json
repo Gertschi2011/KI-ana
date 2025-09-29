@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Count Folke Bernadotte: Sweden's Servant of Peace (2010)\n • Hacker News: Nostr\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trumps politischer Druck auf Comedians",
+  "created_at": 1758265820.402584,
+  "hash": "883c0de1acb5f299870981d2bf0762fe51d9460ac522e17486970facfe3074a8",
+  "id": "BLK_1758265820_3dcd88",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "a55W8STWgXSgSalR/kNuwLKFdkjjZEEEIu5y0JVi++LgvQdHtaoDWVj8V/CXp78kVyvBsSP3koo8RWXsjXt8Cw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 09:10",
+  "url": null
+}

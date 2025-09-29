@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Why is your open source project still hosted on GitHub?\n • Hacker News: Seattle Ultrasonics: Ultrasonic Chef's Knife\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): DB-Regio-Chefin Palla soll neue Bahnchefin werden",
+  "hash": "d3057bbab8fb1bd4e807280c06b17b54a72f04a570d865ef5f6999059bbf53b0",
+  "id": "BLK_1758391880_0gk0rh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "05MmAhYif6CckLjsgfoVFBE1iq3pa0i023reYAzB82Vxh3c5BE6MbxBbzMTFWgf2E9xmOIvUp+ON+PgoRUPnCw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 20:11",
+  "ts": 1758391880,
+  "url": ""
+}

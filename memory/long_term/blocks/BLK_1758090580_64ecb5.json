@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: In Praise of Idleness (1932)\n • Hacker News: Notion API importer, with Databases to Bases conversion bounty\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump in Großbritannien: Pomp, Glanz und viele heikle Themen",
+  "created_at": 1758090580.8819945,
+  "hash": "6bea85475f1935441f36da8e6a8ea68a8adb73cadbafb6d57bbe3d9ff7dfa442",
+  "id": "BLK_1758090580_64ecb5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "YqOk5TopSOnysJaco6Y5reX4ZeP5FXDQJAJjIt01mNCPKIMFDLMwUSpXprY/a54aBzDq/2lpa26gus9d/LaeBg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 08:29",
+  "url": null
+}

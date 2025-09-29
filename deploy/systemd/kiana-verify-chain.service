@@ -1,0 +1,13 @@
+[Unit]
+Description=KI_ana Verify Chain
+After=network.target
+
+[Service]
+Type=oneshot
+User=%i
+WorkingDirectory=/home/%i/ki_ana
+ExecStart=/bin/bash -lc '/home/%i/ki_ana/system/bin/run_verify_chain.sh'
+
+[Install]
+WantedBy=multi-user.target
+

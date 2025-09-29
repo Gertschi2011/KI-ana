@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The Reichstag Fire\n • Hacker News: Windows KASLR Bypass – CVE-2025-53136\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundeswehr weitet Luftraum-Kontrolle über Polen aus",
+  "hash": "6997264fe41440f8a23392d3ae29192c1550347c8da1b594e3e74a6e7f6032bd",
+  "id": "BLK_1757608584_b9p73q",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "4wsYIc4KAZEcnrDNg+vikhf4O4cJWP/aTzBpvMv+bH1j9wRt4oeGXHE/DNPMVssR2x3UtXnK37OiVLLOdhW5DA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 18:36",
+  "ts": 1757608584,
+  "url": ""
+}

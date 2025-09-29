@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to build vector tiles from scratch\n • Hacker News: We Found the Hidden Cost of Data Centers. It's in Your Electric Bill [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trauer um italienischen Modedesigner Giorgio Armani",
+  "created_at": 1756995759.7227397,
+  "hash": "db46184791daf554646719fd1d5124fd352b0e3a477874ebccd07b3b003aca4e",
+  "id": "BLK_1756995759_1c2a9d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "V1xEgnxQyuK8QUY4FIPEzB1OD/16+mqVVNHvqMgNXrAbYPrIq4eMqySkrgNMBcLBNgr8DKJ3o/9qVmxX2Z9KBQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 16:22",
+  "url": null
+}

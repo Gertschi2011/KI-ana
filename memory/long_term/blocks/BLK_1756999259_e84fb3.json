@@ -1,0 +1,21 @@
+{
+  "content": "• tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zahl der Erdbebenopfer in Afghanistan steigt auf mehr als 2.200",
+  "created_at": 1756999259.537435,
+  "hash": "c80333dc7ecc5b6325e8cf64b0ef9c9a8439590443224f0da8cd80023df99076",
+  "id": "BLK_1756999259_e84fb3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "XYrsuZCFdBMAx8Es8QZXlVdHUzm66viGisCPiUWPW2MC1XzM2JQ9eokz80F1yGI4iG7y5Fuz6ujH3eKuo5/WAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 17:20",
+  "url": null
+}

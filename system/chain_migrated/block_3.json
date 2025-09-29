@@ -1,0 +1,16 @@
+{
+  "block_id": 3,
+  "timestamp": "2025-08-08T09:12:14.384080Z",
+  "previous_hash": "298e0dbd1e8452dcc0ff00dcbfbe1072d62e861266726878c257ab7ac35bcf06",
+  "type": "web_crawl",
+  "topic": "über quantencomputer",
+  "source": "https://de.wikipedia.org/wiki/Baum",
+  "memory_path": "/home/kiana/ki_ana/memory/long_term/2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b.json",
+  "content_hash": "2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b",
+  "meta": {
+    "url": "https://de.wikipedia.org/wiki/%C3%BCber_quantencomputer"
+  },
+  "hash": "a13889910951cd8e8687bf74ff0375ad1d3a8177c2eb04400bdb7d76e4eddf8a",
+  "signer_pubkey": "BPc5h+jR3VdGXle6pghTBSfDAiok+iYcwgbCuFX9+7g=",
+  "signature": "x14KWLdNKq4eh4E0nOVrOYXi8Pa/3yJo4LX5SIZeeCSoRliPOlF6fDvcvH3iYyyGOsEvMjKx9iW/O6Fwo9XOCA=="
+}

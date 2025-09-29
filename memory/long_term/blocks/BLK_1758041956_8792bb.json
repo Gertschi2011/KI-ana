@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: All Systems Go at SFO\n • Hacker News: Bertrand Russell to Oswald Mosley (1962)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was das Attentat auf Kirk mit Memes und Gaming zu tun hat",
+  "created_at": 1758041956.851827,
+  "hash": "3a3fda718c586c109fc43877210cfc3711151fe1102294f2b35b1428853fb17b",
+  "id": "BLK_1758041956_8792bb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "lXBRMzKlrbKgJ9u8arcgH+/OOLH492d1GGFJX1qru6CCi33seSCZDvWTBarPD1QVdlQKpQCQJNuqrb4P2XzoAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 18:59",
+  "url": null
+}

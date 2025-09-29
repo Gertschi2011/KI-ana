@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Adam (YC W25) Is Hiring to Build the Future of CAD\n • Hacker News: Oracle stock gains 36% to post best day since 1992, adding $244B in value\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Expertin nach Kirk-Attentat: \"Ein sehr gefährlicher Moment für die USA\"",
+  "created_at": 1757615788.0521564,
+  "hash": "2ac78a18bf54a20ec26603abce57921bd7dba64dec4cda7f87b7758f69051e77",
+  "id": "BLK_1757615788_8c6392",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cFAVwdNKaR8NE0TQqp8QPQfdLKNzkRieSDN64rgywOO0ETDp3br6te7efv/07JzL4mMMcbqwcVRD+cOlBeGjDA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 20:36",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Microsoft is officially sending employees back to the office\n • Hacker News: ICE Is Using Fake Cell Towers to Spy on People's Phones\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Militärattacke gegen Hamas-Führung in Doha",
+  "created_at": 1757438068.20487,
+  "hash": "3c025f07bb26a796c11497e766f6b3026dd7ba78bbf0e500bf298247792fb447",
+  "id": "BLK_1757438068_23adcd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HiG57hYyE/Mdjzmi30MOpFpi71qzatdpnx5Z2RQPsesG89Syiut0/tZeS00KBCq3ir570D25n5B7iETzDPujDg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 19:14",
+  "url": null
+}

@@ -1,0 +1,14 @@
+{
+  "block_id": 6,
+  "timestamp": "2025-08-08T12:58:08.098342Z",
+  "previous_hash": "ddb54b74171989628de4464e5fbd7b28080afe3028c4d825446ddc0f97efcf45",
+  "type": "test",
+  "topic": "keytest",
+  "source": "internal",
+  "memory_path": "/home/kiana/ki_ana/memory/long_term/2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b.json",
+  "content_hash": "2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b",
+  "meta": {},
+  "hash": "e80a1f33bce39f345e7882905d29c03ef06daf0146a1976bacaf571e5ea9cf74",
+  "signer_pubkey": "BPc5h+jR3VdGXle6pghTBSfDAiok+iYcwgbCuFX9+7g=",
+  "signature": "xiPhbbSaj+u6q4h8hy2BL6Kj7XntNljM1m8/Xxia6ExYOwz2BQWnvZHrpVID34sG/BfiU1heVO5bGhLZ/87LDQ=="
+}

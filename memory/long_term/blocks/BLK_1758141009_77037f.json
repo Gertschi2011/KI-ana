@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Gluon: a GPU programming language based on the same compiler stack as Triton\n • Hacker News: Famous cognitive psychology experiments that failed to replicate\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Recherche zu Jan Marsalek: \"Deutschland hätte viel aktiver sein können\"",
+  "created_at": 1758141009.0855873,
+  "hash": "728fcc5a47e81f2bc1ed49e47649920419afdd8687700affe4e5ba05531d34a7",
+  "id": "BLK_1758141009_77037f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "u2U29L4feUmhPu/96vX9w1dDjihU6ghQV06Obx5H1robvWXMPX9KvzhJwH/R5+81Wc+QQKT3ti5BU0oJwhDLDA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 22:30",
+  "url": null
+}

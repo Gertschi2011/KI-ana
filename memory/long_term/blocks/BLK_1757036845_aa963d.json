@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Coalition for Metabolic Health Launches with $50M\n • Hacker News: Evolving the OCaml Programming Language (2025)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757036845.4006748,
+  "hash": "5b56917f63d03406fb3143cce8a0df06e7423894fc085a5a5a43cb4ffb9f6a4a",
+  "id": "BLK_1757036845_aa963d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "uVpXXqvgM1OWhhlKzXzs1U8d6ByeEjoP5HryfAbVpWUtG2f6iZzyH8qinOTrcuXDmQjqOhTG/a2lj9XRyDRCAQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 03:47",
+  "url": null
+}

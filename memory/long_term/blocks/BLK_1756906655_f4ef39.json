@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: John Coltrane's Tone Circle\n • Hacker News: MIT Study Finds AI Use Reprograms the Brain, Leading to Cognitive Decline\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"Herbst der Reformen\" - was Schwarz-Rot jetzt anpacken will",
+  "created_at": 1756906655.8214188,
+  "hash": "9668352ff957cfa499952b3efafc0fd8adf80aef0293047e1fff61b3a418e0cd",
+  "id": "BLK_1756906655_f4ef39",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "NW/ycpXy4GoDypKh2lRDlSXvMJGtNnmLJAeL7mBrx7rA0YFQ5x2Te5i/wsResiXfpjVLmSV22Npav4Pm8SpQDg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 15:37",
+  "url": null
+}

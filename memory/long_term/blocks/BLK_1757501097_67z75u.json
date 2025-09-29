@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A love letter to the CSV format (2024)\n • Hacker News: Crimson (YC X25) is hiring founding engineers in London\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Polen beantragt NATO-Beratungen zum Abschuss russischer Drohnen",
+  "hash": "b0cfc0fee1abe189754fc56a653b5dcf3440d617efe1cf2e63a479869dde5569",
+  "id": "BLK_1757501097_67z75u",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "vFoUgH/BzrH0x3Y0+HTTUzyGIk1BZ+UWA2GhDpm/QDZMquv4U0ph0Cj85vER9Ka2tjwTuBeRDuF2j7KxKLOeDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 12:44",
+  "ts": 1757501097,
+  "url": ""
+}

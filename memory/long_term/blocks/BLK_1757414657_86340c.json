@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Nepal Prime Minister Resigns. Parliament / Ministires set on Fire.\n • Hacker News: Mistral AI raises 1.7B€, enters strategic partnership with ASML\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nepals Regierungschef Oli nach tödlichen Protesten zurückgetreten",
+  "created_at": 1757414657.1079674,
+  "hash": "f1b3457c2881a288f23c2bad44b51087a2af12900b20397843749c52bcd6bcd0",
+  "id": "BLK_1757414657_86340c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "LecwiaDKOTGcrCSpN3q17pha3/fQj4uX/LyC5goW/ZO2S06hf0r2P8/nQg8/111oLpO53IWyrkBcjZK4i5tZBQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 12:44",
+  "url": null
+}

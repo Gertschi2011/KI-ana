@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why our website looks like an operating system\n • Hacker News: Senator demands to know status of 'duplicate' SSA database 'immediately'\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brasiliens Ex-Präsident Bolsonaro zu mehr als 27 Jahren Haft verurteilt",
+  "created_at": 1757639199.29906,
+  "hash": "eb35c0194306fbc0f57fbd0a0edfac8284b276ca90899c4b27fc69fe60df03ce",
+  "id": "BLK_1757639199_f42acc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "hC4IESQE0ZuRSGy844ZHM7BLRPg64Cs0piPqqW2U0ytOFxKqcJ7j0aCt6CIZJd/9dJ3Ye5E9/BQ2/4agtQeCBQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 03:06",
+  "url": null
+}

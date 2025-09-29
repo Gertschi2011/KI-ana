@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Heart attacks may be triggered by bacteria\n • Hacker News: An open-source maintainer's guide to saying “no”\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Jung, weiblich, (selten) Kommunalpolitikerin",
+  "created_at": 1757803295.5395758,
+  "hash": "cfca0609cdb522d11d5958f7e473980a8ee3ace9e8f28ea84fe9d9e072564136",
+  "id": "BLK_1757803295_2586cd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cRhxnanHBnsBamunJUrn++3VeLI4uyssk4MUkwMtd2jL21gRxaKmUoxGPLvtOmOZVD48AFPrCrojlEYL6BymBA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 00:41",
+  "url": null
+}

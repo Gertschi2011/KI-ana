@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launch HN: Cactus (YC S25) – AI inference on smartphones\n • Hacker News: A better future for JavaScript that won't happen\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Aus für \"Jimmy Kimmel Live\": \"Klare Eskalation gegenüber Medienschaffenden\"",
+  "created_at": 1758211243.03067,
+  "hash": "c306c6a80f74fc94f1aa06c8fc6117655e3a9315accf2839531c455b76511680",
+  "id": "BLK_1758211243_898e27",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "POOc8tZFIQQkeAuIMXa76ZAGa7i6ROzM9dF5KLNLA/3KmX6NZa9e/9dPDAZhVQty+xoENOahJLUIlUhq4L0SDw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 18:00",
+  "url": null
+}

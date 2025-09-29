@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Restriction on Entry of Certain Nonimmigrant Workers\n • Hacker News: Less is safer: how Obsidian reduces the risk of supply chain attacks\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzung: Estland beantragt Artikel-4-Beratungen der NATO",
+  "created_at": 1758327049.954249,
+  "hash": "b98814a698f6b74a4d5a9f6331a27e70da04a98e0eaecb994f5ebd563b575817",
+  "id": "BLK_1758327049_bab65b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vPFq11NFhGWG2SvOGIjuaKSlN60a6XIPX2DxdEUjeZIHZoDzYAKi6aefHHBSeI1hpLxd3V+U+0KpaNtx57J/DQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 02:10",
+  "url": null
+}

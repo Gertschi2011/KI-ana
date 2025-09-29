@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Raspberry Pi 5 support (OpenBSD)\n • Hacker News: The Physics of Sales\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwierige Rettungsarbeiten nach Erdbeben in Afghanistan",
+  "hash": "4f84b1a4ecbd47c45a988c2598ee0d5df182bfa53308e5ea43b3d6eb985b5f41",
+  "id": "BLK_1756763258_7d819i",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "DC01iGgtAk+c79YqUR1dV/foiAs9kDs0tblW3LlT8A9PE+D4UtaJjK0BXLmm0S1f3PDChPxABpI1CqtUBOYABA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 23:47",
+  "ts": 1756763258,
+  "url": ""
+}

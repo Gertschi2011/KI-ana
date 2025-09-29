@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Finnish City Inaugurates 1 MW/100 MWh Sand Battery\n • Hacker News: Comic Sans typeball designed to work with the IBM Selectric typewriters\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): China will mit riesiger Militärparade seine Macht demonstrieren",
+  "created_at": 1756883331.4366357,
+  "hash": "8e5ecbca9928c002870c5719ba6c6af9f89b13e03618984d5aa9759afb0f46fd",
+  "id": "BLK_1756883331_05e154",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Uveyp0ATHFiJ/eZBCRs6QjKl0zlk4ZvxI22EsfvPmfj85CLw2F6i4ILdNNQa3Q5YuDsypPV1rbrt9WggGCIYBA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 09:08",
+  "url": null
+}

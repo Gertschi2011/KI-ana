@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Launch HN: RunRL (YC X25) – Reinforcement learning as a service\n • Hacker News: Microsoft Python Driver for SQL Server\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): AfD und die USA: Zwischen US-Kritik und Trump-Sympathie",
+  "hash": "7e3c20807ae3f036fca26a81adb422802cc66edc4debf50f800ae979c364ccd6",
+  "id": "BLK_1758128399_zpp1c5",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ppM0C+pbu99g58j2STNshU19GrldHo1UU1vtH3Dy/o0pjgAWcQkpq7s5hJnCxE2SJbwtUDKVFYuDPPDiHPSdCA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 18:59",
+  "ts": 1758128399,
+  "url": ""
+}

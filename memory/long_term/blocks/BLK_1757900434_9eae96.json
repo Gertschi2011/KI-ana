@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Rebutting 33 False Claims About Solar, Wind, and Electric Vehicles\n • Hacker News: J-Link RTT for the Masses using Semihosting on ARM\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NRW-Kommunalwahl: Grüne und SPD im Bund räumen Niederlagen ein",
+  "created_at": 1757900434.931536,
+  "hash": "161771bced9536f28b421f0fc9cfe4900e6102c14ff0aca2a970add4797e5a5f",
+  "id": "BLK_1757900434_9eae96",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "nv3TgWr8FDUXijdaJX8OdSlaf9cW/3LlN8ngHPsKB58/Zp8yJ88SEHFWvgfbDkF117QHOCXbJOd7JbesL5GZBw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 03:40",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Updating restrictions of sales to unsupported regions\n • Hacker News: Is the decline of reading making politics dumber?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757031442.5890646,
+  "hash": "09e39aa0366d21fd119db1f2268994632961fb559199ef8c70bfbddcffba99ea",
+  "id": "BLK_1757031442_f97fea",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4e8uKKWzLRzW5X+A2tOKVCyDK5LMiQZe58SUZgUCtyjpfHMomN2RKnuLRoph0Tj4HFiPWBTI9ttNKK71vb4QAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 02:17",
+  "url": null
+}

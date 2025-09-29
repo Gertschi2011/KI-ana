@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Ark v0.5.0 – A Minimal, High-Performance Entity Component System for Go\n • Hacker News: Guy running a Google rival from his laundry room\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Drohnen über Polen - was bedeutet das?",
+  "created_at": 1757516452.3941965,
+  "hash": "8ea933f7685d1422b43523273c69e901ff4610bb3d8f7049915651029acde750",
+  "id": "BLK_1757516452_d1c769",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "iJjU5GxLC9e9NuUvIHLZzAq/l6dBLylRxKiIWj57wVuhG9N+Nb4JyVgErj3SSZ4EjOzzd5AIWarkocmWp+WpDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 17:00",
+  "url": null
+}

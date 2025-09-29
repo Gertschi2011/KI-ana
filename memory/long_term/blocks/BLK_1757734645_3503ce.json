@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: OCI Registry Explorer\n • Hacker News: Chatbox app is back on the US app store\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): USA üben im UN-Sicherheitsrat deutliche Kritik an Russland",
+  "created_at": 1757734645.9289122,
+  "hash": "f88af649677651fc55d366e39d6607507c1e52bcafee583d367e9b0f8052be23",
+  "id": "BLK_1757734645_3503ce",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BsxNigHlDhkyFhnK40FzKC/MIitPCdSk/pJO/AucTH6s2NG9l9uBFA6ZPNub9vEdRLrKmE0a7C3Rddy0X9P3Dg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 05:37",
+  "url": null
+}

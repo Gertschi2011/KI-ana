@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Google can keep its Chrome browser but will be barred from exclusive contracts\n • Hacker News: Linux home server sleep on idle and wake on demand – the simple way\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Afghanistan: Nach dem Beben zeigt sich Ausmaß der Katastrophe",
+  "hash": "4b00f017bcf852f563f8831ecbbee06779bf8f4e86f753358911b7403b6b120c",
+  "id": "BLK_1756850433_gu6py5",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "SZYN2AOBbFnPnhZsQm7yLIqJWwLl9CcTKy2+iU1krBzqZe+Rs3jhX/1OchWNx7JtLoMKrKXXQlvl6lkcHEz3DQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 00:00",
+  "ts": 1756850433,
+  "url": ""
+}

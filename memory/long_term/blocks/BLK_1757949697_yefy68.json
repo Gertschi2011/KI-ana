@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Meta bypassed Apple privacy protections, claims former employee\n • Hacker News: Apple has a private CSS property to add Liquid Glass effects to web content\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommt mit dem Wehrdienst der Zivildienst zurück?",
+  "hash": "0f43551003cc30f687c6151be6989fa92b8c4a5e3056eb6f2f6d207e90969333",
+  "id": "BLK_1757949697_yefy68",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "IJQiOX/VvlttW2l+SpIDZ2oUjtQOt/CcqPIyWhgzSz/hkaZIdYiA71aQjy4fzyHBLY1sy9ojGKfi92mjuHxvCA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 17:21",
+  "ts": 1757949697,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Le Chat. Custom MCP Connectors. Memories\n • Hacker News: Liquid Glass? That's what your M4 CPU is for\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Standseilbahn entgleist: Zahl der Todesopfer in Lissabon steigt auf 17",
+  "created_at": 1756986755.9076908,
+  "hash": "69ef5007942d1320189a40a0e091b7009257b9ba268b61cd9c235b7538db9bff",
+  "id": "BLK_1756986755_fef6ba",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "xgZTRxpVIlVWX/GwlpPLFsyebfv1Xdv2lUvTOP37vZ76fnjueAm9JIA1g61gGmDERi/v0WcrEJxmL3nLnD4KBg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 13:52",
+  "url": null
+}

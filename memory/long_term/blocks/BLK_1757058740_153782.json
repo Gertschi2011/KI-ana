@@ -1,0 +1,21 @@
+{
+  "content": "• tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757058740.0165393,
+  "hash": "ea26e2c9fe5fe148018ec56ed3e1eba42ee6e7b7d5f6ab7357e2481bc0f2ff47",
+  "id": "BLK_1757058740_153782",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "LKkFbgpikuf4+YINzNWa0F7d3yGkTLJHGDMoXXov5Z53nhvcp0ps+fs+P/BJ/FButWB6BEziTySRZzZ5sP+5BQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 09:52",
+  "url": null
+}

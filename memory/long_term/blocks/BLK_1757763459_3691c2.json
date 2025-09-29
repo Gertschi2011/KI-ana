@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI Coding\n • Hacker News: Java 25's new CPU-Time Profiler (1)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): 4,2 Milliarden Euro auf vergessenen deutschen Bankkonten",
+  "created_at": 1757763459.568332,
+  "hash": "10f05cd49a66639fb11f7ba8e6b1639fecda63ff498ae73be59cc0b20bd309a9",
+  "id": "BLK_1757763459_3691c2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "rq8YNzf/YR6N4MNkSXZKHiT3KM7bCUYfya8gNcjg04PxzcuDTz9ONmvxG3mu8cSp+N/LT5v3JUbiCi4/Sl7JDA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 13:37",
+  "url": null
+}

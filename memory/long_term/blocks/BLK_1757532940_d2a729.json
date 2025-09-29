@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Llmswap – Universal AI SDK and Code Generation CLI\n • Hacker News: Rayhunter: IMSI Catchers We Have Found So Far\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Regeln für die Richterwahl am Bundesverfassungsgericht gelten",
+  "created_at": 1757532940.4982355,
+  "hash": "cfdf3c5e2452cb735e9ae33648e4a26337710ffe833ba512886bccaec6b17b5e",
+  "id": "BLK_1757532940_d2a729",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "CGzyP4rruMAWmyNfHld7kqLMEpYaEqc8w5MPttSVaB1vdsy0N/dFk09Oy/VRohAOTl3pwmxf1rERRo5v0++SBQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 21:35",
+  "url": null
+}

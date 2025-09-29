@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What's New with Firefox 142\n • Hacker News: Europol said ChatControl doesn't go far enough; they want to retain data forever\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Nordrhein-Westfalen den Ärztemangel auf dem Land bekämpft",
+  "created_at": 1756813340.027525,
+  "hash": "3da61f3b68897bbc7cccee5b51a052c50c5d8e2bb2ef31401458587a09e95dc9",
+  "id": "BLK_1756813340_69104e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KMsLSwdr8CEsOqAecRC5SjaqsbosyT4ypBmQSpT5k5nkXnpoMPUK2VYG7sGppMFWu4sN/l/tZv++UhVpBnBwDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 13:42",
+  "url": null
+}

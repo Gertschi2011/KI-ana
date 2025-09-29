@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: iPhone Dumbphone\n • Hacker News: Signal Secure Backups\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs Premier Bayrou verliert Vertrauensabstimmung",
+  "hash": "3974684862b3d8247f58c1839afcbbf512fd682fd5c9faa174b36740322bcf69",
+  "id": "BLK_1757355231_d0193b",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "AWlheqG+pADX/SyNtHtLCLImiTImumenc0EDQEZiVgytyc0bn+bPhSgMvT3t16lPYBOBnFQPYqWTqzOE5HcOBA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 20:13",
+  "ts": 1757355231,
+  "url": ""
+}

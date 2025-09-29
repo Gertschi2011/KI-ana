@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: An Engineering History of the Manhattan Project\n • Hacker News: GrapheneOS and Forensic Extraction of Data\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Arbeitgeber darf Eltern von Kindern mit Behinderung nicht diskriminieren",
+  "hash": "daca0b2775409243103473e86afcbbd0a4e444b316a65a312f86746941a6ad32",
+  "id": "BLK_1757597779_m4s8gv",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "eRgXwaFdsbK1EX+ANbYOJWGYtZWHFv1s32Qr2pVjvfxVDS/m+xUKgiNKOnEWA9AiIXIR98tJAN94vfv35mrvAA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 15:36",
+  "ts": 1757597779,
+  "url": ""
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: FBI couldn't get my husband to decrypt his Tor node so he was jailed for 3 years\n • Hacker News: Robert Redford Has Died\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): UN-Kommissionsbericht wirft Israel Genozid im Gazastreifen vor",
+  "hash": "3a131a58464c647a82d142b874c7c3e43accbc5461ae8134150b23d721de7274",
+  "id": "BLK_1758025748_mwdupj",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "H1el01OHdV4Z3ykAa+B29tJW+WCFNeSqpKES9LEZJ9BhJNnH0TOXeG9E4IhEDmnJobDPtgH2d7geqibdZqJSDw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 14:29",
+  "ts": 1758025748,
+  "url": ""
+}

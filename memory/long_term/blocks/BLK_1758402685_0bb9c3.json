@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Starship will soon fly over towns and cities, but will dodge the biggest ones\n • Hacker News: Philips announces digital pathology scanner with native DICOM JPEG XL output\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): DB-Regio-Chefin Palla soll neue Bahnchefin werden",
+  "created_at": 1758402685.2906814,
+  "hash": "6dbe5d604bac48ecaf499e696ab2cf514a70d60cb9dcc095caa8d72c7fb5aeb7",
+  "id": "BLK_1758402685_0bb9c3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BQbFMWJ/uj3FIbTqwuwJoXUOh5qNiSBC2wqyTA6YDzjLmHkgw6on9XtcNfxjBBUzH73CUJArZJftm2rEuNMNAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 23:11",
+  "url": null
+}

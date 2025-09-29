@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Agent Client Protocol\n • Hacker News: De minimis has ended\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ist bezahlbares Wohnen in Deutschland ein unerfüllbarer Traum?",
+  "created_at": 1756559799.0889142,
+  "hash": "b829365d1682a7de2094bf36fc075cb5bdaa541b0687243ed4649aa7daaf9d67",
+  "id": "BLK_1756559799_13ed19",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ff1r5GuToB3GTRZeeSX90wDnIG9SZ9NT62aYyecQo8Q1GOXI/5baS3Tk+Bg+Wg3J2vZOBeVSZQLcUAcXAbGZDg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 15:16",
+  "url": null
+}

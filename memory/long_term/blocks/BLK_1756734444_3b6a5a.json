@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: AfriTales – Discover the Magic of African Storytelling\n • Hacker News: Intel Patents 'Software Defined Supercore'\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Flugzeug mit von der Leyen an Bord von GPS-Störung betroffen",
+  "created_at": 1756734444.171259,
+  "hash": "bc7f85672ed32436ada3e3d2d10257ff322f6d153921fa169707d90d5b9b6a08",
+  "id": "BLK_1756734444_3b6a5a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gaRGIF7PMWILMo9iCvGdOxD2wMj1E/Qf8Q2z/LuZJ1AcLj4fTKgXLdY6P4QmEV7R3VwfmKs1gMQcJ6BRfCv6Dw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 15:47",
+  "url": null
+}

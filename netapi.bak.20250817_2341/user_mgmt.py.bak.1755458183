@@ -1,0 +1,84 @@
+from __future__ import annotations
+import json, os, secrets, hmac
+from pathlib import Path
+from datetime import datetime, timedelta
+from typing import Optional, Dict, Any
+
+BASE = Path.home() / "ki_ana" / "netapi"
+USERS_FILE = BASE / ".auth.json"       # {"users":[{"user":"Gerald","pass":"...","role":"creator"}]}
+SESS_FILE  = BASE / "sessions.json"    # {"<token>":{"uid":"Gerald","ts":"...Z"}}
+SUBM_DIR   = Path.home() / "ki_ana" / "subminds"
+
+BASE.mkdir(parents=True, exist_ok=True)
+if not SESS_FILE.exists():
+    SESS_FILE.write_text("{}", encoding="utf-8")
+SUBM_DIR.mkdir(parents=True, exist_ok=True)
+
+def _now_iso() -> str:
+    return datetime.utcnow().isoformat() + "Z"
+
+def _read_json(path: Path, default):
+    try: return json.loads(path.read_text(encoding="utf-8"))
+    except Exception: return default
+
+def _write_json(path: Path, data: Any):
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+def _secure_eq(a: str, b: str) -> bool:
+    try: return hmac.compare_digest(a, b)
+    except Exception: return False
+
+def _load_users() -> Dict[str, Any]:
+    d = _read_json(USERS_FILE, {})
+    users = d.get("users")
+    if isinstance(users, list) and users:
+        return {"users": users}
+    u = os.getenv("KI_ANA_USER"); p = os.getenv("KI_ANA_PASS")
+    if u and p:
+        return {"users":[{"user":u,"pass":p,"role":"creator"}]}
+    return {"users":[]}
+
+def _save_users(data: Dict[str, Any]): _write_json(USERS_FILE, data)
+
+def authenticate(username: str, password: str) -> Optional[Dict[str, Any]]:
+    for u in _load_users().get("users", []):
+        if username == u.get("user") and _secure_eq(password, u.get("pass","")):
+            return {"id":u["user"],"username":u["user"],"role":u.get("role","family"),
+                    "plan":u.get("plan"),"plan_expires":u.get("plan_expires")}
+    return None
+
+def issue_session_token(user: Dict[str, Any]) -> str:
+    token = secrets.token_urlsafe(32)
+    sess = _read_json(SESS_FILE, {})
+    sess[token] = {"uid": user["id"], "ts": _now_iso()}
+    _write_json(SESS_FILE, sess)
+    return token
+
+def verify_session_token(token: str) -> Optional[Dict[str, Any]]:
+    if not token: return None
+    return _read_json(SESS_FILE, {}).get(token)
+
+def get_user(uid: str) -> Optional[Dict[str, Any]]:
+    for u in _load_users().get("users", []):
+        if u.get("user") == uid:
+            return {"id":u["user"],"username":u["user"],"role":u.get("role","family"),
+                    "plan":u.get("plan"),"plan_expires":u.get("plan_expires")}
+    return None
+
+def set_plan_active(uid: str, plan: str = "pro", days: int = 30) -> bool:
+    data = _load_users(); changed=False
+    from datetime import datetime, timedelta
+    until = (datetime.utcnow() + timedelta(days=days)).isoformat() + "Z"
+    for u in data.get("users", []):
+        if u.get("user") == uid:
+            u["plan"] = plan; u["plan_expires"] = until; changed=True; break
+    if changed: _save_users(data)
+    return changed
+
+def provision_submind_for(uid: str) -> bool:
+    target = SUBM_DIR / uid
+    target.mkdir(parents=True, exist_ok=True)
+    cfg = {"owner":uid,"created":_now_iso(),"status":"ready",
+           "note":"Demo-Submind – hier könnte der echte Runtime-Listener + Config liegen."}
+    _write_json(target/"submind.json", cfg)
+    return True

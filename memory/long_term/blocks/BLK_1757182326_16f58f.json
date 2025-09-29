@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Statement on discourse about ActivityPub and AT Protocol\n • Hacker News: Oldest Recorded Transaction\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel fordert Einwohner von Gaza-Stadt zur Flucht auf",
+  "created_at": 1757182326.7124643,
+  "hash": "59f15484b3b084e42948d9c74b4469dd9173909c41684dc60195d1ae3ec295b9",
+  "id": "BLK_1757182326_16f58f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KoM4o9tsWrcbXUE1NnvSAnHza8kM93GocRDzB219S4CDGU/cX5weh3foDWMQDmOUS03+lDV2Spa/Ghs2YJX2AA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 20:12",
+  "url": null
+}

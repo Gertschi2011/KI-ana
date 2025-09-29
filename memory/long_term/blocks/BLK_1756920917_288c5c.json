@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Svix (webhooks as a service) is hiring for a founding marketing lead\n • Hacker News: Who Owns, Operates, and Develops Your VPN Matters\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ARD-DeutschlandTrend: Mehrheit für höhere Steuern - auch bei Unionsanhängern",
+  "created_at": 1756920917.9425027,
+  "hash": "c7435ba029855e854e2828847902175dd6c528d5695f9aee7975681e018b4eca",
+  "id": "BLK_1756920917_288c5c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "r7YmMdQ0GzSXN3bmrFLT8fnraG7+PqFYKZV+luKFVEEvywz5CryfgYseHeb9PkFgwQuvxTMuxW+A2Pvm4Jf8Cg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 19:35",
+  "url": null
+}

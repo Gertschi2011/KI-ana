@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Where's the Shovelware? Why AI Coding Claims Don't Add Up\n • Hacker News: Depot (YC W23) Is Hiring a Solutions Engineer (Remote US and Canada)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Standseilbahn in Lissabon entgleist - 15 Tote",
+  "created_at": 1756936558.162512,
+  "hash": "8162382ec219dd469f805edd8d4293f2f8ba948fa455aac27c434de503c1ec98",
+  "id": "BLK_1756936558_b4dd55",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Aa4Kl+Af54w8XemdfiNCahqcFUvs5at0UFUpTLiN1dsrAYyGIB8MD2V4/f9FcrAErSXbT8HLn/kjelyRjyUOAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 23:55",
+  "url": null
+}

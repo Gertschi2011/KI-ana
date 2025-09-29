@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Addendum to GPT-5 system card: GPT-5-Codex\n • Hacker News: Hosting a website on a disposable vape\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pläne von Wirtschaftsministerin Reiche: Die Energiewende-Wende",
+  "created_at": 1757963442.0972738,
+  "hash": "6302a8b5b608c8275a0489d1f2f4ad0bfd833f80c14eb95bbd3294f4d5d4add8",
+  "id": "BLK_1757963442_d0565e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "qxXfInv2rjzjuK+4UNfumFklo9LVJ0sBpqX5E0QQL0t3gm+UCTLMA8HXbApRkF9mNndvT7WU1tVyU3coH6voAw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 21:10",
+  "url": null
+}

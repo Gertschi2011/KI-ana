@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: WASM 3.0 Completed\n • Hacker News: DeepMind and OpenAI Win Gold at ICPC, OpenAI AKs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): AfD und die USA: Zwischen US-Kritik und Trump-Sympathie",
+  "created_at": 1758133803.2168236,
+  "hash": "984be3ea350577344cd93ef69732df649251fb01b02debe06672dc3109cea273",
+  "id": "BLK_1758133803_fc694b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9zrXivxCHAhxWnYWo3u3qWIsGP4+AFX0KP4cZRR6kdP/MyfwIutSAN1mttzLIjipAUBjiqanmQ37uGrSDCZ2Dw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 20:30",
+  "url": null
+}

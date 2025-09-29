@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: No place in children's hands: <16s in UK to be banned from buying energy drinks\n • Hacker News: John Coltrane's Tone Circle\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"Herbst der Reformen\" - was Schwarz-Rot jetzt anpacken will",
+  "created_at": 1756907106.4236388,
+  "hash": "1b68b938d4ff7ac8283be409a332747971d53d988c03f2d39e328ac469acdbec",
+  "id": "BLK_1756907106_edc825",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "P/viI14PE0wy4kH7/dpYUUHKhKvmvIoNx7O2RNacUgJBuEJ+al+IGHW46I2i7gOmBnzMJlhzOD9gPgHo/fSeCQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 15:45",
+  "url": null
+}

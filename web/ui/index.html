@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="manifest" href="/manifest.json">
+  <title>KI_ana Settings</title>
+  <style>body{font-family:sans-serif;margin:20px;max-width:800px}</style>
+</head>
+<body>
+  <h2>Settings</h2>
+  <form id="f">
+    <label>Language</label><input name="language" value="de"><br/>
+    <label>Ethics Filter</label><input name="ethics" value="strict"><br/>
+    <label>Active Sub-KIs (csv)</label><input name="subkis" value="crawler,image,audio"><br/>
+    <button>Save</button>
+  </form>
+  <script>
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+  const f=document.getElementById('f');
+  f.addEventListener('submit', async (e)=>{e.preventDefault();
+    const formData = new FormData(f); const data = Object.fromEntries(formData.entries());
+    await fetch('/api/settings', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    alert('Saved');
+  });
+  (async ()=>{
+    const r = await fetch('/api/settings'); if(r.ok){const s=await r.json();
+      Object.keys(s).forEach(k=>{if(f[k]) f[k].value=s[k]});
+    }
+  })();
+  </script>
+</body>
+</html>

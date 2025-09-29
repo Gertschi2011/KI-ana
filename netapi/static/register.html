@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Registrieren – KI_ana</title>
+  <link rel="stylesheet" href="/static/chat.css"/>
+  <script defer src="/static/global_theme.js"></script>
+  <style>
+    main.auth{max-width:520px;margin:30px auto;padding:20px;background:#fff;border:1px solid #e5e7eb;border-radius:12px}
+    body.theme-dark main.auth{background:#0f1622;border-color:#1f2a3a}
+    label{display:block;margin:.5rem 0;font-weight:600}
+    input{width:100%;padding:.6rem;margin:.2rem 0 .8rem;border:1px solid #d1d5db;border-radius:8px}
+    body.theme-dark input{background:#0b1020;color:#dfe6ff;border-color:#1f2a3a}
+    button{padding:.6rem 1rem;border-radius:10px;border:1px solid #d1d5db;background:#eef5ff;cursor:pointer}
+    body.theme-dark button{background:#1a2230;border-color:#2a3b55;color:#e6efff}
+    .alt{background:#fff}
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+  <main class="auth">
+    <h1>📝 Registrieren</h1>
+    <form id="f">
+      <label>Name<input required name="name"/></label>
+      <label>E‑Mail<input required type="email" name="email"/></label>
+      <label>Passwort<input required type="password" name="password"/></label>
+      <button type="submit">Konto anlegen</button>
+      <a class="btn alt" href="/static/login.html" style="margin-left:.5rem">Login</a>
+    </form>
+    <p id="msg" style="color:#dc2626"></p>
+  </main>
+
+  <script>
+  (function(){
+    fetch('/static/nav.html?v=' + Date.now())
+      .then(r=>r.text())
+      .then(h=>{
+        const n=document.getElementById('navbar');
+        if(!n) return;
+        n.innerHTML=h;
+        try{
+          n.querySelectorAll('script').forEach(old=>{
+            const s=document.createElement('script');
+            if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+            else { s.textContent = old.textContent || ''; }
+            document.body.appendChild(s);
+            old.remove();
+          });
+        }catch{}
+      });
+    const f=document.getElementById('f');
+    f.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd=new FormData(f);
+      const body={ username:String(fd.get('name')||'').trim(), email:fd.get('email'), password:fd.get('password') };
+      try{
+        const r=await fetch('/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+        const j=await r.json().catch(()=>({}));
+        if(!r.ok || !j || j.ok===false){ document.getElementById('msg').textContent=(j.detail||'Registrierung fehlgeschlagen'); return; }
+        location.href='/static/login.html';
+      }catch{ document.getElementById('msg').textContent='Netzwerkfehler'; }
+    });
+  })();
+  </script>
+</body>
+</html>

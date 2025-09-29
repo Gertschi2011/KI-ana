@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: OpenAI eats jobs, then offers to help you find a new one at Walmart\n • Hacker News: Relace (YC W23) Is Hiring for Code LLM's (SF)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Opposition kritisiert Haushalt für 2025: \"Finanzpolitischer Irrgarten\"",
+  "created_at": 1757076082.0749736,
+  "hash": "c7d3d4c4f78920e272dedb33258b188c9e8693804467899408cec2ced7c9a100",
+  "id": "BLK_1757076082_2935e6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8Y3B7pGRGqIaXWUFJGFe7IPJ05q6Ig5JveDYZlw+zs32Pvp3TteT8srkYaSF7dm9ca5ijjOUPXJ8jTbZNu2jDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 14:41",
+  "url": null
+}

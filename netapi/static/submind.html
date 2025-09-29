@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Submind – Erste Schritte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/styles.css" rel="stylesheet">
+  <script defer src="/static/i18n.js"></script>
+</head>
+<body class="page">
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="paper" style="max-width:820px;margin:1.2rem auto">
+      <h1 data-i18n="submind.title">Submind – Erste Schritte</h1>
+      <p class="muted" data-i18n="submind.lead">So installierst und verbindest du deine Submind‑App mit KI_ana.</p>
+
+      <h2 data-i18n="submind.step1.h">1) Herunterladen</h2>
+      <p data-i18n="submind.step1.p">Gehe zu Preise → „Meine Submind‑App herunterladen“. Das Paket enthält Runtime, Konfiguration und deinen Schlüssel.</p>
+
+      <h2 data-i18n="submind.step2.h">2) Installieren</h2>
+      <p data-i18n="submind.step2.p">Entpacke das Archiv und führe das Installationsskript aus (optional Zielpfad angeben):</p>
+      <pre><code>tar xzf submind_…tar.gz
+cd submind_…
+./install_submind.sh ~/submind</code></pre>
+
+      <h2 data-i18n="submind.step3.h">3) Starten (interaktiv)</h2>
+      <p data-i18n="submind.step3.p">Starte die Submind lokal. Du kannst Erklärungen oder Links eingeben – sie werden im lokalen Gedächtnis gespeichert und in die Outbox gelegt:</p>
+      <pre><code>cd ~/submind
+python3 runtime_listener.py</code></pre>
+
+      <h2 data-i18n="submind.step4.h">4) An die Mutter senden</h2>
+      <p data-i18n="submind.step4.p">Sende Outbox/Memory zur Mutter‑KI. Ersetze die Server‑Adresse durch deine Instanz (https://…):</p>
+      <pre><code>python3 send_client.py --id &lt;deine-id&gt; --base https://dein-server</code></pre>
+      <div class="row" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:.3rem 0 1rem;">
+        <label style="font-weight:600" data-i18n="submind.server_url">Server‑URL:</label>
+        <input id="serverBase" style="flex:1; min-width:240px; padding:8px 10px; border:1px solid #d9deea; border-radius:10px" readonly>
+        <button id="copyServer" class="btn" data-i18n="submind.copy_url">URL kopieren</button>
+        <button id="toggleQr" class="btn" data-i18n="submind.qr_show">QR anzeigen</button>
+      </div>
+      <div id="qrWrap" style="display:none;text-align:center;margin:.4rem 0 1rem;"></div>
+
+      <h2 data-i18n="submind.step5.h">5) Prüfen</h2>
+      <p data-i18n="submind.step5.p">Öffne den Block Viewer (Admin → Block Viewer), filtere nach „submind:&lt;deine-id&gt;“ oder nutze „Nur Evidenz“. Du kannst Beiträge bewerten.</p>
+
+      <p class="muted" data-i18n="submind.security">Hinweis: Die Submind‑App läuft lokal und sendet nur, wenn du „send_client.py“ ausführst. Bewahre deinen Schlüssel (api.key) sicher auf.</p>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const sel = (s,p=document)=>p.querySelector(s);
+      const $$  = (s,p=document)=>Array.from(p.querySelectorAll(s));
+      const serverBase = location.origin;
+      const serverEl = sel('#serverBase');
+      if (serverEl) serverEl.value = serverBase;
+      const copyServer = sel('#copyServer');
+      copyServer?.addEventListener('click', async ()=>{
+        try{ await navigator.clipboard.writeText(serverBase); copyServer.textContent = (window.i18n? i18n.t('submind.copied','Kopiert!'):'Kopiert!'); setTimeout(()=>{ copyServer.textContent = (window.i18n? i18n.t('submind.copy_url','URL kopieren'):'URL kopieren'); }, 1200);}catch{}
+      });
+      const qrBtn = sel('#toggleQr');
+      const qrWrap = sel('#qrWrap');
+      qrBtn?.addEventListener('click', ()=>{
+        if (!qrWrap) return;
+        const shown = qrWrap.style.display !== 'none';
+        if (shown){
+          qrWrap.style.display = 'none';
+          qrBtn.textContent = (window.i18n? i18n.t('submind.qr_show','QR anzeigen'):'QR anzeigen');
+          return;
+        }
+        // create remote QR image for serverBase
+        const size = 220;
+        const url = 'https://api.qrserver.com/v1/create-qr-code/?size='+size+'x'+size+'&data='+encodeURIComponent(serverBase);
+        qrWrap.innerHTML = '<img alt="QR" width="'+size+'" height="'+size+'" src="'+url+'">\n<p style="margin-top:6px;color:#667">'+(window.i18n? i18n.t('submind.qr_hint','Mit Handy scannen, um die Server‑URL zu übernehmen.'):'Mit Handy scannen, um die Server‑URL zu übernehmen.')+'</p>';
+        qrWrap.style.display = 'block';
+        qrBtn.textContent = (window.i18n? i18n.t('submind.qr_hide','QR ausblenden'):'QR ausblenden');
+      });
+      // Add copy buttons for all code blocks
+      $$('pre').forEach(pre=>{
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.style.margin='6px 0';
+        btn.textContent = (window.i18n? i18n.t('submind.copy','Kopieren'):'Kopieren');
+        const code = pre.querySelector('code');
+        btn.addEventListener('click', async ()=>{
+          const text = code? code.textContent : pre.textContent;
+          try{ await navigator.clipboard.writeText(text||''); btn.textContent = (window.i18n? i18n.t('submind.copied','Kopiert!'):'Kopiert!'); setTimeout(()=>{ btn.textContent = (window.i18n? i18n.t('submind.copy','Kopieren'):'Kopieren'); }, 1200);}catch{}
+        });
+        pre.insertAdjacentElement('afterend', btn);
+      });
+    })();
+  </script>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

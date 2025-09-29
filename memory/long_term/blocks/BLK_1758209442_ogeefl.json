@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: TernFS – An exabyte scale, multi-region distributed filesystem\n • Hacker News: Fuck, You're Still Sad?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Aus für \"Jimmy Kimmel Live\": \"Klare Eskalation gegenüber Medienschaffenden\"",
+  "hash": "4258f5c7dd53d52599d6daf770b16e1a2c3f6ead5e3e5ff6c22912c0d1ed9194",
+  "id": "BLK_1758209442_ogeefl",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "zdLWF/WZSvTay8UNmLpA1RpGqgW8xUQ6t5atg6KQF69nEVbyEI/Jp8xgKwNrohjdKeulDGgOJOqCWGrskK+2BQ==",
+  "signed_at": "2025-09-21T08:13:39Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 17:30",
+  "ts": 1758209442,
+  "url": ""
+}

@@ -1,0 +1,44 @@
+SHELL := /bin/bash
+
+.PHONY: up down rebuild logs seed test fmt lint shell_api shell_db verify_chain bootstrap
+
+up:
+	docker compose up -d --build
+	docker compose ps
+
+e2e:
+	npx playwright test || true
+
+down:
+	docker compose down
+
+rebuild:
+	docker compose build --no-cache
+
+logs:
+	docker compose logs -f --tail=200
+
+bootstrap:
+	bash infra/scripts/bootstrap.sh
+
+seed:
+	docker compose exec backend python -m backend.seed
+
+shell_api:
+	docker compose exec backend bash
+
+shell_db:
+	docker compose exec postgres psql -U $${POSTGRES_USER} -d $${POSTGRES_DB}
+
+fmt:
+	docker compose exec backend ruff check --fix || true
+	docker compose exec backend black . || true
+
+lint:
+	docker compose exec backend ruff check || true
+
+verify_chain:
+	docker compose exec backend python -m memory.cli verify || true
+
+test:
+	docker compose exec backend pytest -q || true

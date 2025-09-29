@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "KI_ana: Restart service",
+      "type": "shell",
+      "command": "sudo systemctl restart ki_ana-ui.service",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "KI_ana: Tail logs",
+      "type": "shell",
+      "command": "sudo journalctl -u ki_ana-ui.service -f -n 50 --no-pager",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "KI_ana: Healthcheck",
+      "type": "shell",
+      "command": "curl -fsS http://127.0.0.1:8080/health && echo 'health OK' || echo 'health FAIL'",
+      "problemMatcher": [],
+      "presentation": { "reveal": "always", "panel": "dedicated" }
+    },
+    {
+      "label": "KI_ana: OpenAPI routes",
+      "type": "shell",
+      "command": "curl -sS http://127.0.0.1:8080/openapi.json | grep -oE '\"/api/[^\"]+\"' | sort -u",
+      "problemMatcher": []
+    }
+  ]
+}

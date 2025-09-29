@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The LLM Lobotomy\n • Hacker News: Designing NotebookLM\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): DB-Regio-Chefin Palla soll neue Bahnchefin werden",
+  "hash": "e62293fa554423ee87ff7dc6e461478db2516a84de3e21b43844c67c5ce3d121",
+  "id": "BLK_1758395481_hw2033",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "IV3ZMWrx9YZCq2aSFsmO1GaJdylvoH6SYPLvcGmvizHVNioQmL0crrzNZCj0GQmRRvTtpUY2Mzh4yMIwPqYLAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 21:11",
+  "ts": 1758395481,
+  "url": ""
+}

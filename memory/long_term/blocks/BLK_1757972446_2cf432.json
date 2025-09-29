@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: William Gibson Reads Neuromancer\n • Hacker News: Imperial Tyranny, Korean Humiliation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfel arabischer Staaten bildet Front gegen Israel",
+  "created_at": 1757972446.2914653,
+  "hash": "e4f1b70d751efba5c04b3d9ffb2ea341cf18654e66ac84dc8f07259c32271db3",
+  "id": "BLK_1757972446_2cf432",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Qg9pWehElft4wYsml+zRGcdU+v4eBNbLIg9PUJA3hx0mmheo1kJ+lWBvDmW7Zk97eJ4vTkIFEIgD2D397025Bw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 23:40",
+  "url": null
+}

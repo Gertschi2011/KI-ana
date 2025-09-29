@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Apple has a private CSS property to add Liquid Glass effects to web content\n • Hacker News: How to self-host a web font from Google Fonts\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommt mit dem Wehrdienst der Zivildienst zurück?",
+  "hash": "7091403eceb4b32029d0fc02928ebe7213778d3b4dd5d59e192f55393e1087ed",
+  "id": "BLK_1757948753_7jacou",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "2Byh9oz78e/6HIVHeBYfJkmqCpc7z9iHa/pRM0vTZPh58I3kKxhQg0j54rhv0LC18tYgQUvBfS2rxaLCdjC3DQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 17:05",
+  "ts": 1757948753,
+  "url": ""
+}

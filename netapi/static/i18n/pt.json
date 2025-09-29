@@ -1,0 +1,12 @@
+{
+  "toast": {
+    "role_denied": "⚠️ Você não tem permissão para executar esta ação.",
+    "login_required": "⚠️ É necessário fazer login."
+  },
+  "viewer": {
+    "error": {
+      "detail_load_failed": "Não foi possível carregar os detalhes.",
+      "save_failed": "Falha ao salvar"
+    }
+  }
+}

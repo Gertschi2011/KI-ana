@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 'Clearest sign' yet of ancient life on Mars\n • Hacker News: UGMM-NN: Univariate Gaussian Mixture Model Neural Network\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump-Verbündeter und Podcaster Charlie Kirk angeschossen",
+  "created_at": 1757536542.3275008,
+  "hash": "d9119687a1b2b007a402dd8e3239dc3ed0c9403fef0b396b122841c929fb9430",
+  "id": "BLK_1757536542_b86f52",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BnX9FI3nyvSnXFAKcm3rE7hCFjKirZH66gSVm7+7mXWbSEqyGNGIYmxDRK/6rTFg97GLKhPWrNMQOXDlRePCCw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 22:35",
+  "url": null
+}

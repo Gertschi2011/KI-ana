@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Impressum – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/styles.css" rel="stylesheet">
+  <script defer src="/static/i18n.js"></script>
+</head>
+<body class="page">
+  <div id="navbar"></div>
+  <!-- Navigation wird automatisch per JavaScript geladen -->
+<!-- Hero -->
+  <main class="hero container">
+    <div class="hero-inner">
+ <!-- Avatar -->
+      <div class="hero-media" style="margin-top:2rem;">
+        <figure style="margin:0 auto;">
+          <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar" onerror="this.style.display='none'" style="max-width: 140px; height: auto; border-radius: 50%;">
+          <figcaption class="mt-avatar" data-i18n="home.caption">Ich lerne mit und von dir</figcaption>
+        </figure>
+      </div>
+    </div>
+  <div class="container">
+    <div class="paper">
+      <h1 data-i18n="imprint.title">Impressum</h1>
+
+      <p><strong>Medieninhaber:</strong> Gerald Stiefsohn</p>
+      <p><strong>Anschrift:</strong> Bahnhofstraße 25, 3150 Wilhelmsburg, Österreich</p>
+      <p><strong>Kontakt:</strong> <a href="mailto:info@ki-ana.at">info@ki-ana.at</a> · [Telefon]</p>
+      <p><strong>Firmenbuch/Behörde:</strong> [falls vorhanden]</p>
+      <p><strong>UID-Nr.:</strong> [falls vorhanden]</p>
+      <p><strong>Inhaltlich verantwortlich:</strong> Gerald Stiefsohn</p>
+
+      <hr>
+      <p data-i18n="imprint.notice">Hinweise gemäß § 5 ECG, § 14 UGB, § 63 GewO und § 25 MedienG (Österreich).</p>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container small" style="text-align:center;">
+      <p>© <span id="year"></span> KI_ana – <span data-i18n="home.footer.built">mit Liebe gebaut.</span></p>
+      <p><a href="/static/impressum.html" data-i18n="home.footer.imprint">Impressum</a> · <a href="/static/privacy.html" data-i18n="home.footer.privacy">Datenschutz</a> · <a href="/static/agb.html" data-i18n="home.footer.terms">AGB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Footer-Jahr
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

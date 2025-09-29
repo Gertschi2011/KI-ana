@@ -1,0 +1,7 @@
+{
+  "name": "keyword_extractor",
+  "version": "0.1",
+  "description": "Extrahiert Schlagworte aus jüngsten Memory-Blöcken und schreibt eine Übersicht.",
+  "permissions": ["read_memory","write_memory"],
+  "entry": "skill.py"
+}

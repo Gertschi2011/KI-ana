@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Google gets to keep Chrome but is barred from exclusive search deals\n • Hacker News: U.S. Emissions Rise 4.2%, China's Fall 2.7%\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Afghanistan: Nach dem Beben zeigt sich Ausmaß der Katastrophe",
+  "created_at": 1756849366.715002,
+  "hash": "67ace794e6984b2a107efb58155bd27cdcc74faf5f861990031a2e9fa4ff2b9a",
+  "id": "BLK_1756849366_89ca7d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "GvqN/K7+vE9wYizddFBfn9mBnqTpqPdOoeLZggRaMBh2v24s2MjtkVDW5l52nQtGjVT+0nxR42hUE0+1z7TIAg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 23:42",
+  "url": null
+}

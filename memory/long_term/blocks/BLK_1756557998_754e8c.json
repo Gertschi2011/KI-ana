@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: It turns out Nokia's legendary font makes for a great user interface font\n • Hacker News: You do not need \"analytics\" for your blog\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ist bezahlbares Wohnen in Deutschland ein unerfüllbarer Traum?",
+  "created_at": 1756557998.0619273,
+  "hash": "55ee14d22cdd0018512e844a5e4f99462c8434b42083d5c382e1ebc55ba2bd1e",
+  "id": "BLK_1756557998_754e8c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "SgheK0O0xhIie74crxC8nsR1a/kkvGHdNUPWQw49rigHJOIYn8CL8YsFp07mK+mh53uldmuXzNQGNNLxBDUUAQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 14:46",
+  "url": null
+}

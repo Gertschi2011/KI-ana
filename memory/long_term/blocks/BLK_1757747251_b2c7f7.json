@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Qwen 3 now supports ARM and MLX\n • Hacker News: SkiftOS: A hobby OS built from scratch using C/C++ for ARM, x86, and RISC-V\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brasilien nach Putsch-Urteil: Das schwere Erbe des Blair Bolsonaro",
+  "created_at": 1757747251.7750483,
+  "hash": "0f03c68d2a9146857aaf9a7d77722a509bb24bc12027cde29be737009329750a",
+  "id": "BLK_1757747251_b2c7f7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "2agNtI/EBKwRpoCRKq5sadnQQ9vSfeUnOHIHFiKne1g1ZeMyZ3mAXRe+4MYTovQpmZfBw4rOn86AW3/Zfm2YCg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 09:07",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Famous cognitive psychology experiments that failed to replicate\n • Hacker News: Optimizing ClickHouse for Intel's 280 core processors\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Notenbank Fed senkt Leitzins erstmals in diesem Jahr",
+  "created_at": 1758137407.3137002,
+  "hash": "4e28f67484aff47f3fe7788d79577ebcd9c2df7ed5cef50a1c5ce994ebbc8c11",
+  "id": "BLK_1758137407_92f0b0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "h/x60nTpcR4wtyiAm263JH1bnUOhnDMLPkbxZlIXRRfHjyIq5AAe9brmRWo6bk/qAIApAgmrA0fbz2unzwWCBQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 21:30",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Universe Within 12.5 Light Years\n • Hacker News: Quantum Mechanics, Concise Book\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump droht EU mit Zöllen nach Kartellstrafe für Google",
+  "created_at": 1757121100.9056127,
+  "hash": "0b334aef55fc407d22a603368ebb41352fdc407049a2dae0a9e6f348790ea420",
+  "id": "BLK_1757121100_dc527b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MXBOnupl4yd3xUxoSKBnuQw04i2MiWmgVzj82pyeN1uIwjRNY2apOUt6rSNK1XbaiLDmW9mZD+inlK4Cvj0jCA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 03:11",
+  "url": null
+}

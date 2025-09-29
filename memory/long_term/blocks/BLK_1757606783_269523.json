@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Health Insurance Costs for Businesses to Rise by Most in 15 Years\n • Hacker News: The US is now the largest investor in commercial spyware\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundeswehr weitet Luftraum-Kontrolle über Polen aus",
+  "created_at": 1757606783.5790343,
+  "hash": "fbc13d803234a813138a0ba5a3b9381b8a86726f27fe32c8bf4c4453749ccd3c",
+  "id": "BLK_1757606783_269523",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "GN1sxdlKgqbVNUhnoN1UO1Ufb8oqdfDJZk72UoLF4q387WtkfJ1wznUydq8WnEGUX4DxUG4lhlPV8VuVAHs9Ag==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 18:06",
+  "url": null
+}

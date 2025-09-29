@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Meta's live staged demo fails; the \"AI\" recording plays before the actor acts\n • Hacker News: Apple: SSH and FileVault\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "hash": "2dadf3e522cbd3925268cc8a601313beda093801a38f991aef28c270fed69ce1",
+  "id": "BLK_1758232853_blbcrl",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "DsU4iwFUYU+drb1PU/4BXULNVV23gsMt0Pnz1udHH3HEndBqCoD9da8daPFjgeJrGbI0a3+QoRh8yMOwUaJ7CA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 00:00",
+  "ts": 1758232853,
+  "url": ""
+}

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI_ana – Admin Logs</title>
+  <link href="/static/styles.css" rel="stylesheet">
+  <style>
+    body{background:#f7f9fc;color:#0b1020}
+    .container{max-width:1100px;margin:64px auto 24px;padding:0 16px}
+    h1{margin:12px 0 8px}
+    .card{background:#fff;border-radius:12px;padding:12px;border:1px solid #eef0f5;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:16px 0}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;position:sticky;top:0;z-index:5;background:#fff;padding:8px;border:1px solid #eef0f5;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+    .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef3fb;color:#23408f;border:1px solid #d7e2f3;font-size:12px}
+    input,select,.btn{padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px;background:#fff}
+    .btn{cursor:pointer}
+    .btn:hover{background:#f2f6fb}
+    #logs{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono";white-space:pre; background:#fbfdff;color:#0b1020;border:1px solid #eef0f5;border-radius:8px;padding:12px;height:60vh;overflow:auto}
+    .muted{color:#666}
+    @media (max-width: 480px){
+      input,select,.btn{padding:6px 8px;font-size:12px}
+      .pill{font-size:11px}
+    }
+  </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/static/sw.js').catch(()=>{});
+      });
+    }
+  </script>
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <h1>Admin – Live Logs</h1>
+    <div class="toolbar" style="margin-bottom:8px">
+      <input id="filter" placeholder="Filter (Text oder RegEx)" style="flex:1 1 280px">
+      <label class="btn" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="only"/> Nur Treffer</label>
+      <button class="btn" id="clear">✖ Löschen</button>
+      <span class="pill" id="hits">Treffer: —</span>
+      <label class="btn" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="auto" checked/> Auto‑Scroll</label>
+      <label class="btn" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="pause"/> Pause</label>
+      <label class="btn" style="display:inline-flex;gap:6px;align-items:center">FPS
+        <select id="fps" style="border:none;background:transparent">
+          <option value="2">2</option>
+          <option value="5" selected>5</option>
+          <option value="15">15</option>
+        </select>
+      </label>
+      <label class="btn" style="display:inline-flex;gap:6px;align-items:center" title="Kompakte Darstellung"><input type="checkbox" id="compact"/> Kompakt</label>
+      <label class="btn" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="lvlErr" checked/> error</label>
+      <label class="btn" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="lvlWarn" checked/> warn</label>
+      <label class="btn" style="display:inline-flex;gap:6px;align-items:center"><input type="checkbox" id="lvlInfo" checked/> info</label>
+      <button class="btn" id="jump">⤓ Neueste</button>
+      <button class="btn" id="restart">↻ SSE</button>
+    </div>
+    <div id="logs" class="muted">Verbinde…</div>
+  </div>
+  <script>
+    const logsEl = document.getElementById('logs');
+    const filterEl = document.getElementById('filter');
+    const onlyEl = document.getElementById('only');
+    const autoEl = document.getElementById('auto');
+    const hitsEl = document.getElementById('hits');
+    const clearBtn = document.getElementById('clear');
+    const restartBtn = document.getElementById('restart');
+    const compactEl = document.getElementById('compact');
+    const lvlErrEl = document.getElementById('lvlErr');
+    const lvlWarnEl = document.getElementById('lvlWarn');
+    const lvlInfoEl = document.getElementById('lvlInfo');
+
+    let es = null;
+    let textBuf = '';
+    let rx = null;
+    let paused = false;
+    let renderPending = false;
+    let lastRenderTs = 0;
+    let frameMs = 200; // default ~5 fps
+
+    function rootPrefix(){ const p = location.pathname||'/'; const i = p.indexOf('/static/'); return (i>=0)? p.slice(0,i): '' }
+    function esc(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])) }
+
+    function detectLevel(line){
+      try{
+        const s = String(line||'').toLowerCase();
+        if (/\b(error|err|exception|traceback|failed|fatal)\b/.test(s)) return 'error';
+        if (/\b(warn|warning|deprecated)\b/.test(s)) return 'warn';
+        if (/\b(info|started|connected|listening|ok)\b/.test(s)) return 'info';
+        return 'info';
+      }catch{ return 'info'; }
+    }
+
+    function render(){
+      renderPending = false;
+      if (paused) return;
+      const now = performance.now();
+      // throttle according to frameMs
+      if (now - lastRenderTs < frameMs){
+        if (!renderPending){ renderPending = true; setTimeout(()=>{ if (!paused) render(); }, Math.max(10, frameMs - (now - lastRenderTs))); }
+        return;
+      }
+      lastRenderTs = now;
+      const MAX_CHARS = 80000; // 80KB
+      const MAX_LINES = 3000;
+      let t = textBuf;
+      if (t.length > MAX_CHARS) t = t.slice(-MAX_CHARS);
+      let lines = t.split('\n');
+      if (lines.length > MAX_LINES) lines = lines.slice(-MAX_LINES);
+      let hits = 0;
+      const fErr = lvlErrEl?.checked !== false;
+      const fWarn = lvlWarnEl?.checked !== false;
+      const fInfo = lvlInfoEl?.checked !== false;
+      const html = lines.map(line => {
+        if (!line) return '';
+        const lvl = detectLevel(line);
+        if ((lvl==='error' && !fErr) || (lvl==='warn' && !fWarn) || (lvl==='info' && !fInfo)) return '';
+        if (!rx){ return `<span class="line">${esc(line)}</span>`; }
+        const m = rx.test(line); if (m) hits++;
+        if (!m) return onlyEl.checked? '' : `<span class="line">${esc(line)}</span>`;
+        try{ return `<span class="line">${esc(line).replace(rx, mm=>`<mark>${esc(mm)}</mark>`)}</span>`; }
+        catch{ return `<span class="line"><mark>${esc(line)}</mark></span>`; }
+      }).join('\n');
+      logsEl.innerHTML = html;
+      if (autoEl.checked) requestAnimationFrame(()=>{ logsEl.scrollTop = logsEl.scrollHeight; });
+      hitsEl.textContent = `Treffer: ${rx? hits : '—'}`;
+      logsEl.classList.remove('muted');
+    }
+
+    function connect(){
+      try{ if (es) es.close(); }catch{}
+      es = new EventSource(rootPrefix() + '/api/logs/stream');
+      es.onmessage = (e)=>{ textBuf += (e.data||'') + '\n'; if (!paused && !renderPending){ renderPending = true; requestAnimationFrame(render); } };
+      es.onerror = ()=>{ try{ es.close(); }catch{}; setTimeout(connect, 1500); };
+    }
+
+    filterEl.addEventListener('input', ()=>{
+      const v = filterEl.value.trim();
+      if (!v) rx = null; else { try{ rx = new RegExp(v, 'i'); }catch{ rx = new RegExp(v.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i'); } }
+      try{ localStorage.setItem('admin.logs.filter', v); }catch{}
+      render();
+    });
+    onlyEl.addEventListener('change', ()=>{ try{ localStorage.setItem('admin.logs.only', onlyEl.checked? '1':'0'); }catch{} render(); });
+    autoEl.addEventListener('change', render);
+    clearBtn.addEventListener('click', ()=>{ textBuf=''; render(); });
+    restartBtn.addEventListener('click', ()=>{ connect(); });
+    document.getElementById('pause').addEventListener('change', (e)=>{ paused = !!e.target.checked; if (!paused){ render(); }});
+    document.getElementById('fps').addEventListener('change', (e)=>{ const v = parseInt(e.target.value||'5',10)||5; frameMs = Math.max(10, Math.round(1000/Math.max(1,v))); });
+    document.getElementById('jump').addEventListener('click', ()=>{ logsEl.scrollTop = logsEl.scrollHeight; });
+    compactEl.addEventListener('change', ()=>{ try{ if (compactEl.checked){ logsEl.style.fontSize='12px'; logsEl.style.lineHeight='1.25'; } else { logsEl.style.fontSize=''; logsEl.style.lineHeight=''; } localStorage.setItem('admin.logs.compact', compactEl.checked? '1':'0'); }catch{} render(); });
+    lvlErrEl.addEventListener('change', ()=>{ try{ localStorage.setItem('admin.logs.lvlErr', lvlErrEl.checked? '1':'0'); }catch{} render(); });
+    lvlWarnEl.addEventListener('change', ()=>{ try{ localStorage.setItem('admin.logs.lvlWarn', lvlWarnEl.checked? '1':'0'); }catch{} render(); });
+    lvlInfoEl.addEventListener('change', ()=>{ try{ localStorage.setItem('admin.logs.lvlInfo', lvlInfoEl.checked? '1':'0'); }catch{} render(); });
+
+    // Fallback nav if nav.js failed to populate
+    window.addEventListener('load', async ()=>{
+      try{
+        const nav = document.getElementById('nav');
+        setTimeout(async ()=>{
+          if (!nav || nav.children.length>0) return;
+          const r = await fetch('/static/nav.html');
+          if (r.ok){ nav.innerHTML = await r.text(); return; }
+        }, 300);
+      }catch{}
+    });
+
+    // Restore prefs
+    try{
+      const sv = localStorage.getItem('admin.logs.filter'); if (sv){ filterEl.value = sv; const v = sv.trim(); if (v){ try{ rx = new RegExp(v,'i'); }catch{ rx = new RegExp(v.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i'); } } }
+      const so = localStorage.getItem('admin.logs.only'); if (so!=null){ onlyEl.checked = (so==='1'); }
+      const sc = localStorage.getItem('admin.logs.compact'); if (sc==='1'){ compactEl.checked = true; logsEl.style.fontSize='12px'; logsEl.style.lineHeight='1.25'; }
+      const se = localStorage.getItem('admin.logs.lvlErr'); if (se!=null){ lvlErrEl.checked = (se==='1'); }
+      const sw = localStorage.getItem('admin.logs.lvlWarn'); if (sw!=null){ lvlWarnEl.checked = (sw==='1'); }
+      const si = localStorage.getItem('admin.logs.lvlInfo'); if (si!=null){ lvlInfoEl.checked = (si==='1'); }
+    }catch{}
+    connect();
+  </script>
+  <script>
+    // Navbar loader
+    (function(){
+      try{
+        fetch('/static/nav.html?v=' + Date.now())
+          .then(r=>r.text())
+          .then(h=>{
+            const n=document.getElementById('navbar');
+            if(!n) return;
+            n.innerHTML=h;
+            try{
+              n.querySelectorAll('script').forEach(old=>{
+                const s=document.createElement('script');
+                if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+                else { s.textContent = old.textContent || ''; }
+                document.body.appendChild(s);
+                old.remove();
+              });
+            }catch{}
+          });
+      }catch{}
+    })();
+  </script>
+</body>
+{{ ... }}

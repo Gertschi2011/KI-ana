@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A store that generates products from anything you type in search\n • Hacker News: How 'overworked, underpaid' humans train Google's AI to seem smart\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Attentat auf US-Podcaster Charlie Kirk: Was über den mutmaßlichen Täter bekannt ist",
+  "hash": "fd50516d53bbbbd959c2ccf34427d6e18a053166a4363f8d871e83e072181120",
+  "id": "BLK_1757771273_u655bo",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "2D3F+6AJLwzeuR9MXvB8gFPfLvLDGiJ2eautFXrrKFuyym/A67plvcNIlCRljNdVbSkqSzABL+Tl+a4UskxGCA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 15:47",
+  "ts": 1757771273,
+  "url": ""
+}

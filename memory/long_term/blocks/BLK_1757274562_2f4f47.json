@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to make metals from Martian dirt\n • Hacker News: Submarine Cable Map\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "created_at": 1757274562.803282,
+  "hash": "a8101baaa30af96d4667d92dec9c3aab4ff102cfeef6c27994333de17e6fd41f",
+  "id": "BLK_1757274562_2f4f47",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "w1xwNAQ745jMiNyu6hmZrLVXazgFUnlQjdaa68hmykYzQ6ka9lWNyXAWtIfGGTtMg2TBcw6wSbL3f8EPxurlAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 21:49",
+  "url": null
+}

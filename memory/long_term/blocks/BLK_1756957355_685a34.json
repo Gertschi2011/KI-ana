@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Neovim Pack\n • Hacker News: Not paying with cash\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Koalitionsausschuss: Union und SPD beschwören Einigkeit",
+  "created_at": 1756957355.87099,
+  "hash": "3dd8a2e554b0988e048379c8496bbeedab47241248a4bd19b93ba54573cf1f24",
+  "id": "BLK_1756957355_685a34",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "6X+pB9KqDoETTo3DKoF498wb81qHM7eLEf6Jk1FQIbfBJyS0tohKAkoNiV89jW1NM9uov6c8DP1wY5smCqzjAA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 05:42",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Kapa.ai (YC S23) is hiring research and software engineers\n • Hacker News: Vibe coding as a VC\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Erdbeben in Afghanistan: \"Alles brach über uns zusammen\"",
+  "created_at": 1756799276.0940144,
+  "hash": "a97b738b96586f5bf3b5179c7d5ec85bcd1da7e57d697c722c0401dc34cfc388",
+  "id": "BLK_1756799276_db4648",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Q6dpfawa1KeH6TJMaj9Oh0+a5YUXLhqNeMA2lM7wo0KRC6bcreBuSxU3NiamuwmyqytJ8mtfjtuTMdg8IaFPDQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 09:47",
+  "url": null
+}

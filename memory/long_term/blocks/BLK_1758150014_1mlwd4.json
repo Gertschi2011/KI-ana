@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: macOS Tahoe Incompatible with Mac Studio M3 Ultra\n • Hacker News: Pg_links\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Recherche zu Jan Marsalek: \"Deutschland hätte viel aktiver sein können\"",
+  "hash": "d81eaa60fc3e87d5bc7bfebe1f2e5924263d48c0f7756fb62b180cda9ac44e53",
+  "id": "BLK_1758150014_1mlwd4",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "k255N7FHugSRuFP1Z4joFF4EOAMiPfDIfBkvPQLqbjHMmn1mYwSh3kb6iYbyd9P6FhJmQNTzLkGJvVcKAJ9rAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 01:00",
+  "ts": 1758150014,
+  "url": ""
+}

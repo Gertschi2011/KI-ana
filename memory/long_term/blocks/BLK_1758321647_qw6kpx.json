@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Lethal Trifecta attack leaking private data in Notion AI agents\n • Hacker News: Feedmaker: URL + CSS selectors = RSS feed\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzung: Estland beantragt Artikel-4-Beratungen der NATO",
+  "hash": "efe8f918f45789efb0a26c8376010dc1da758de312a45805dd44141b3d1ec9cb",
+  "id": "BLK_1758321647_qw6kpx",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "03erzAOsZXyONhwEdyO4V4brGImaGVQttgK2vufR8ME1bJupK80XvmCJR9snyQUrFZ4/NkAmzTq7lb2sr7kJDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 00:40",
+  "ts": 1758321647,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Nuclear: Desktop music player focused on streaming from free sources\n • Hacker News: Warp Code: the fastest way from prompt to production\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ARD-DeutschlandTrend: Mehrheit für höhere Steuern - auch bei Unionsanhängern",
+  "created_at": 1756915515.4265447,
+  "hash": "46947c3788ed808535deaf8264f3138becfa81bf1f143cf8a59d2f5f6d7f6be3",
+  "id": "BLK_1756915515_fa0670",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QKK7sUAqMc7LhtRTzhf4i9etMiuHJlJg+7i2IVIK9xCprTz/rbmUKwigH/TcFkqkEIeJ8e4UE2tpq/ShU1ZaCQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 18:05",
+  "url": null
+}

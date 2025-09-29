@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The health benefits of sunlight may outweigh the risk of skin cancer\n • Hacker News: Gemini in Chrome\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trumps politischer Druck auf Comedians",
+  "created_at": 1758259865.5696616,
+  "hash": "3f48e525d5ec5a5d6026f4739c98160a573e04b9aaf72de97fdfd6e69dd6fe1d",
+  "id": "BLK_1758259865_cc2f6a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "u1y+e+/9ytMja/trEUnPPOvW+kMtZ83SFRCwy5rGzf8HzdeqYdcVwwMi7HjmUikcqmp0jxcBKm/CL93zuwUpDg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 07:31",
+  "url": null
+}

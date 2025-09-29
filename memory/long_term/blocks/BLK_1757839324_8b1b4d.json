@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Models of European Metro Stations\n • Hacker News: Refurb Weekend: Silicon Graphics Indigo² Impact 10000\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Krieg: Katar - Vermittler unter Beschuss",
+  "created_at": 1757839324.1634758,
+  "hash": "4e6b6e3023687aa86b9bbf18b162b1d9039f92b2ee531070f00958ea32a2ba45",
+  "id": "BLK_1757839324_8b1b4d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "pFQuUGDrRx6bZw6HcKOhGAQI4Z5Ro/avTv86qwcg3ky/bXk4xJWBD66bFW/+tKWTT+zbk12gsCYf4TghxjZTDw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 10:42",
+  "url": null
+}

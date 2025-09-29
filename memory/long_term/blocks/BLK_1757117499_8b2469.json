@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tesla changes meaning of 'Full Self-Driving', gives up on promise of autonomy\n • Hacker News: The Universe Within 12.5 Light Years\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump droht EU mit Zöllen nach Kartellstrafe für Google",
+  "created_at": 1757117499.370494,
+  "hash": "17ff7ba4cbe13b8fc9230ee0106c97f7086aeaa5259c933f2f840cd31122a600",
+  "id": "BLK_1757117499_8b2469",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "eMdoUEqoQIH/9BmW5SNtvIlz+VCB+OZrEL6Zw7N2569XHi/JxE5AYzi2JtSISHkgkvOd/L/8mDjtGkzeqZVAAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 02:11",
+  "url": null
+}

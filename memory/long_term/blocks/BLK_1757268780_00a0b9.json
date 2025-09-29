@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Campfire: Web-Based Chat Application\n • Hacker News: The MacBook has a sensor that knows the exact angle of the screen hinge\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "created_at": 1757268780.5023282,
+  "hash": "924e3e6853b2c1de781386341dc86cc0fc50eacfd9e718cba877339b10c6362d",
+  "id": "BLK_1757268780_00a0b9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "w264ZoR0Zrmj8drDKXY0lUDV4G/Y/m0DKlDdJB2qnVLgRw/m0bPC+gHHzlN3kYSJfFuJTAdlc9nw30izDhfwCw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 20:13",
+  "url": null
+}

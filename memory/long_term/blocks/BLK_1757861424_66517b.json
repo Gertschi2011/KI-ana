@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Repetitive negative thinking is associated with cognitive function decline\n • Hacker News: CorentinJ: Real-Time Voice Cloning\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die ukrainische Marine im Schwarzen Meer nach Minen sucht",
+  "created_at": 1757861424.10139,
+  "hash": "0b77ae70e3a21e491070fc191a2f54099c4a4ee962ebca620097d8d4f429e7f2",
+  "id": "BLK_1757861424_66517b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "DVjDXOhSI3v4wXxCntwjqpvA9JOn13sdA0ymPWNIrRia0NH6Op5dSUdx1MSLhzWsYmmWDWOKJyTkuQR8HRhHBg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 16:50",
+  "url": null
+}

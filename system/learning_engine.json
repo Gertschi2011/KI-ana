@@ -1,0 +1,38 @@
+{
+  "block_id": 4,
+  "block_type": "learning_engine",
+  "timestamp": "2025-08-07T12:46:07.633807Z",
+  "description": "Definiert das initiale Lernsystem von KI_ana 2.0, inklusive Speicherstruktur, Lernregeln und Themenverzeichnis.",
+  "memory_structure": {
+    "short_term": "~/ki_ana/memory/short_term/",
+    "long_term": "~/ki_ana/memory/long_term/",
+    "archive": "~/ki_ana/memory/archive/",
+    "trash": "~/ki_ana/memory/trash/"
+  },
+  "learning_rules": {
+    "min_sources": 3,
+    "required_trust_level": 0.75,
+    "submind_validation": true
+  },
+  "topic_index": {
+    "Geschichte": [
+      {
+        "hash": "11a493107e09a08a883fb182366cd9a097375ff9afa6f42d6132f9c0552c121c",
+        "summary": "Fact: Die Erde ist etwa 4,54 Milliar..., Sources: 3, Trust: 0.9"
+      },
+      {
+        "hash": "a55d7c0b8a143c6c9f8c1f0e6784cacea84c3b4e5e46e9cdadfccc3a4cab81c5",
+        "summary": "Fact: Die Erde ist etwa 4,54 Milliar..., Sources: 3, Trust: 0.9"
+      }
+    ],
+    "Mathematik": [],
+    "Ethik": [],
+    "Technologie": [],
+    "\u00d6kologie": [],
+    "Kommunikation": []
+  },
+  "forgetting_rules": {
+    "inconsistent_info": "move_to_trash",
+    "obsolete_or_proven_false": "archive_then_purge"
+  }
+}

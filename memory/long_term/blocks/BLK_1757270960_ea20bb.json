@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: An empty S3 bucket can make your AWS bill explode\n • Hacker News: Campfire: Web-Based Chat Application\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "created_at": 1757270960.4917524,
+  "hash": "918c49c570668495ba1900429a7dc7493d66d4feabb78da7f8beffc08f5bf4aa",
+  "id": "BLK_1757270960_ea20bb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "aQjomEHC9XcAEJIxRp53BTbjqmH/k+zHI9hVnRrmgsIiOTITDPBo0FQkG/5SWD7XIVR9xzlupABunhHM/A//CA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 20:49",
+  "url": null
+}

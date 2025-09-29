@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Anthropic Services Down\n • Hacker News: \"No Tax on Tips\" Includes Digital Creators, Too\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Scharfe Kritik am Eindringen russischer Drohnen in polnischen Luftraum",
+  "created_at": 1757523935.7178853,
+  "hash": "e9668c0f45b3efb0e797195ab96b33112a3cf0649aaec60bfe327f9daeb04077",
+  "id": "BLK_1757523935_8d6870",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oek/v+lqoPOQUZ5x04+rYmaK1EXI+3xgS2CzT+9TstVEbb/2fRqtMdzIow4ahQKmk7FYaCxLgiSqJjp/lBrwDA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 19:05",
+  "url": null
+}

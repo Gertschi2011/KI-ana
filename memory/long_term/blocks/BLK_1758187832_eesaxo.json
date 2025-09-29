@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: This Website Has No Class\n • Hacker News: Pnpm has a new setting to stave off supply chain attacks\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Umweltminister: Europas Klimaziele wegen Deutschland auf der Kippe",
+  "hash": "a7e401e37b4fc29726c5e0ecd27a34d15e1e9ceca84f4af083995bd596569c4a",
+  "id": "BLK_1758187832_eesaxo",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "qGFJd4MgNwOV73qmGE52XLDmCLni2u0x2uxl2OqkxbdM6XTgvJRdi5Y3HyJBGP1KvaJaONDX1NyLY5ICH0xQCQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 11:30",
+  "ts": 1758187832,
+  "url": ""
+}

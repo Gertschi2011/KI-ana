@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Outraged Farmers Blame Ag Monopolies as Catastrophic Collapse Looms\n • Hacker News: NASA finds Titan's alien lakes may be creating primitive cells\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs neuer Premier: Lecornu wird es schwer haben",
+  "created_at": 1757474085.139442,
+  "hash": "607575e74fbd1d1cef0ebf8b95d00b52fc822f1f3b9c3dd05aad7720361f40dd",
+  "id": "BLK_1757474085_46dd11",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QGjJOM5hJQLSNIxBgsEFPLnx5p8QRXDDWGiN34/SoJXdKDReFln++1+LylLo8w2fBnVE7isyoJcHQeGwSHkVDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 05:14",
+  "url": null
+}

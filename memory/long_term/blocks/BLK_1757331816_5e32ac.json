@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 14 Killed in protests in Nepal over social media ban\n • Hacker News: How inaccurate are Nintendo's official emulators? [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Enquete-Kommission zur Corona-Aufarbeitung nimmt Arbeit auf",
+  "created_at": 1757331816.9130914,
+  "hash": "fd39a6c7d49af5627f95dcf47cefde06c36c4200528a694157b19b181f5e0ac8",
+  "id": "BLK_1757331816_5e32ac",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BeNaH4e8yU26f+c8u/ZIM+FbVIdLmE5bFkfNoFld1Q0nzqtLuS1w6CWV7KlCV00oeiIBwN+wgZTdx7ZO9QkIBw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 13:43",
+  "url": null
+}

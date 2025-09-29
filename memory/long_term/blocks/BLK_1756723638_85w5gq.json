@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: De-Googling TOTP Authenticator Codes\n • Hacker News: National Grid: UK's largest battery storage facility at Tilbury substation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz und Wüst: Zur Schau gestellte Männerfreundschaft",
+  "hash": "2d81d395e26d105d2731ddd9b546946cb3e8e99e16fc8fe11e5999c8323cc9fb",
+  "id": "BLK_1756723638_85w5gq",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Aqmt+kyQ1QMGIkX1XGb60lJaOrLJP2gf/68Cf/ReBhdL+rVNdArZ6gWfKbT+tEgGbS5S+h/XHUnSrBvOGxMjBA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 12:47",
+  "ts": 1756723638,
+  "url": ""
+}

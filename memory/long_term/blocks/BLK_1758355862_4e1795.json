@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Parents outraged as Meta uses photos of schoolgirls in ads targeting man\n • Hacker News: Show HN: FocusStream – Focused, distraction-free YouTube for learners\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vor Trauerfeier für Kirk: Scharfe Debatte und demonstrative Einheit",
+  "created_at": 1758355862.7909665,
+  "hash": "36e79aab905cb8ba1b2a45b1db82d509255bc07dde87ec814ef03af61982dadd",
+  "id": "BLK_1758355862_4e1795",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "g3H5skTvs9AfOZlS/IYB9adgNtjSGE0pTaKZza5KBd4hftVStzVLNwNLAQcErAY+99EWZ1x7ITry4Aj0JLN9AA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 10:11",
+  "url": null
+}

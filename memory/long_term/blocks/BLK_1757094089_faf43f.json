@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why Everybody Is Losing Money on AI\n • Hacker News: MentraOS – open-source Smart glasses OS\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU verhängt Milliardenstrafe gegen Google",
+  "created_at": 1757094089.6563923,
+  "hash": "16ffadf58c8006ee9dd65c644aef5effddf6f8e42dbfa7ec7a73de1b52dd70a2",
+  "id": "BLK_1757094089_faf43f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QHAgs6C+mzOohUorVWC8c5gbwKs4tuRMtOZpesd1Rt/KdvdLe3b5aTRBklUJGDFwIiMP03RHZhejo9JILXosDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 19:41",
+  "url": null
+}

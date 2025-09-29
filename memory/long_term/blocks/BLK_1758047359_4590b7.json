@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Adios Chicos, 25 Years of KDE\n • Hacker News: The Linux Process Journey [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Interview zu Israels-Gaza-Offensive: \"Aus humanitärer Perspektive nicht nachvollziehbar\"",
+  "created_at": 1758047359.6087496,
+  "hash": "e57b1e43a04847ef0cdb2d8b5a3aa0a35651e83cf7be18264c792183df270ff0",
+  "id": "BLK_1758047359_4590b7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "wzEVaTfO+oL0OqOAbnVW3yrpzYJh91A7ozw/RNXWomeirhsYc4zUOmf/UsFAqlcZ+7tG+WO0trkHFBuTstLYBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 20:29",
+  "url": null
+}

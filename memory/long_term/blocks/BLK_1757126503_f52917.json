@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Developing a Space Flight Simulator in Clojure\n • Hacker News: The sunscreen scandal shocking Australia - the world's skin cancer capital\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump droht EU mit Zöllen nach Kartellstrafe für Google",
+  "created_at": 1757126503.2397563,
+  "hash": "022a862dd4bc667c22701877bdd01d34cc6b7941afab2afb34dc82df6d4c92ff",
+  "id": "BLK_1757126503_f52917",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HcypJsJeoHj3Ss8qHo8oIwAmp0TGQlLp1Dgdu746vO7HjapHYv7Qe4yzSoWw/S8AduJjUktVR8DSFfSBNbLrAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 04:41",
+  "url": null
+}

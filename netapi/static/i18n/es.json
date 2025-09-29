@@ -1,0 +1,114 @@
+{
+  "app": { "title": "KI_ana" },
+  "nav": {
+    "start": "Inicio",
+    "discover": "Descubrir",
+    "about": "Acerca de",
+    "capabilities": "Capacidades",
+    "pricing": "Precios",
+    "downloads": "Descargas",
+    "kids": "Niños",
+    "chat": "Chat",
+    "admin": "Admin",
+    "skills": "Habilidades",
+    "cron": "Cron",
+    "papa": "Papa",
+    "viewer": "Visor de bloques",
+    "logout": "Cerrar sesión",
+    "account": "Cuenta",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "language": "Idioma",
+    "language_de": "Alemán",
+    "language_en": "Inglés"
+  },
+  "chat": {
+    "title": "Chat con KI_ana",
+    "sidebar_title": "Conversaciones",
+    "new_conversation": "+ Nueva conversación",
+    "family": "Tu miembro de la familia",
+    "placeholder": "Escríbeme algo…",
+    "send": "Enviar",
+    "settings": {
+      "title": "Configuración",
+      "persona": "Personalidad",
+      "persona_friendly": "Amable",
+      "persona_balanced": "Equilibrada y útil",
+      "persona_creative": "Creativa y juguetona",
+      "language": "Idioma",
+      "voice": "Voz",
+      "voice_auto": "Automático",
+      "voice_eleven": "ElevenLabs",
+      "answer_style": "Estilo de respuesta",
+      "bullet_count": "Número de puntos (3–8)",
+      "logic": "Lógica",
+      "format": "Formato",
+      "streaming": "Transmisión en vivo (SSE)",
+      "user_color": "Color – Tus mensajes",
+      "ai_color": "Color – KI_ana",
+      "style_concise": "Conciso",
+      "style_balanced": "Equilibrado",
+      "style_detailed": "Detallado",
+      "logic_balanced": "Equilibrada",
+      "logic_strict": "Estricto (solo evidencias)",
+      "format_structured": "Estructurado (TL;DR, puntos, evidencias)",
+      "format_plain": "Texto simple"
+    }
+  }
+  ,
+  "papa": {
+    "title": "Área Papa",
+    "subtitle": "Visible solo para roles de creador/admin.",
+    "lead": "Herramientas para operar, observar y mantener KI_ana y las sub‑IA.",
+    "emergence": "Emergencia y autorreflexión (Fase 3)",
+    "subki_tools": "Herramientas Sub‑IA",
+    "subki_hint": "La Sub‑IA local suele estar disponible en <code>http://localhost:5055</code>.",
+    "system_resources": "Recursos del sistema",
+    "system_hint": "Estado en vivo (CPU, RAM, carga, procesos) y estado KI/Mem. Se actualiza cada 5 s.",
+    "btn": {
+      "knowledge": "📚 Clústeres de temas y similitud",
+      "questions": "📌 Preguntas de la memoria",
+      "self_comment": "🧭 Auto‑comentarios sobre temas actuales",
+      "broadcasts": "🔄 Mostrar difusiones de Sub‑IA",
+      "goals": "🎯 Objetivos de aprendizaje",
+      "crawl_now": "Ejecutar crawler ahora",
+      "trust_dashboard": "Mostrar panel de confianza",
+      "export_blocks": "Exportar bloques (ZIP)",
+      "crawler_job": "🧩 Ejecución del crawler (job)",
+      "promote_job": "⬆️ Promocionar (job)"
+    },
+    "jobs": {
+      "title": "Cola de trabajos",
+      "overview": "Resumen",
+      "latest": "Últimos 50",
+      "worker": "Workers",
+      "refresh": "🔄 Actualizar trabajos",
+      "retry_failed": "↩︎ Re‑encolar fallidos",
+      "purge_done": "🧹 Purgar ‘done’ (1 día)",
+      "only_failed": "Solo fallidos",
+      "type": "Tipo",
+      "status": "Estado",
+      "attempts": "Intentos",
+      "priority": "Prioridad",
+      "updated": "Actualizado",
+      "error": "Error",
+      "tip": "Consejo: haz clic en una fila para ver detalles.",
+      "loading": "Cargando…",
+      "no_jobs": "Sin trabajos."
+    },
+    "subki": { "pending": "Aprendido (pendiente)", "reflect": "Ejecutar Reflect", "sync": "Iniciar sync", "trust": "Ver confianza" },
+    "toasts": { "enqueued": "Encolado", "requeued": "Re‑encolado", "deleted": "Eliminado", "copied": "Copiado.", "error": "Error", "not_found": "No encontrado.", "enqueue_failed": "No se pudo encolar el trabajo" }
+  }
+  ,
+  "toast": {
+    "role_denied": "⚠️ No tienes permiso para realizar esta acción.",
+    "login_required": "⚠️ Se requiere iniciar sesión."
+  }
+  ,
+  "viewer": {
+    "error": {
+      "detail_load_failed": "No se pudieron cargar los detalles.",
+      "save_failed": "Error al guardar"
+    }
+  }
+}

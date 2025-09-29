@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I still love PHP and JavaScript\n • Hacker News: Apple barely talked about AI at its big iPhone 17 event\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreich: Macron ernennt Sébastien Lecornu zum neuen Premier",
+  "created_at": 1757452475.2975485,
+  "hash": "78f91a3f28fd611939716c327ee0fd33ba7c61d634937c351fa748e3b27d18b7",
+  "id": "BLK_1757452475_675f2d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "tTm37p3kG2OByv6V3reQmnmu+ycxzAoaZYMlH3JcIX9kuvuBMWoZ7IjPpVfpzX2Prd4AegEUlmzxXmntFU7jBA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 23:14",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Claude Code Degradation: A postmortem of three recent issues\n • Hacker News: Gluon: a GPU programming language based on the same compiler stack as Triton\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Recherche zu Jan Marsalek: \"Deutschland hätte viel aktiver sein können\"",
+  "created_at": 1758144610.9758675,
+  "hash": "d312819a5cc96eb107c7ef2bd952d867dacfb66ef7fdcf803e01f7dd6b4b8c78",
+  "id": "BLK_1758144610_8af286",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vgKzizuJNZJiQFunOGbsb8KEIh7S5EdxXCLjYp7N5sWL7rFwlyKBYUmMSnkD0ArYM64GhBYkMrLv5/iyNX6iAA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 23:30",
+  "url": null
+}

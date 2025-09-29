@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How big a solar battery do I need to store *all* my home's electricity?\n • Hacker News: Denmark's Justice Minister calls encrypted messaging a false civil liberty\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Neuer Verfassungsschutzchef Selen: Ein sicherheitstechnischer Allrounder",
+  "created_at": 1757943624.1004376,
+  "hash": "340cef1bcbeb8f68cb76464362f999f348468847c3ceabe57e2cc01f84bf3d84",
+  "id": "BLK_1757943624_0c29bc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Eck+K6uCKB7eEYJ4QdJ2EiSCjsK+0SE/lmTGzX3y/S4kIQZOPRIZa/43POoTGyYrcp9Kf19urBxDoco+tjfKCw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 15:40",
+  "url": null
+}

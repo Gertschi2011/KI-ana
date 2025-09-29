@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tylenol-maker shares hit after report RFK Jr will suggest autism link\n • Hacker News: A Software Development Methodology for Disciplined LLM Collaboration\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Bundesstaat Georgia: 475 Menschen in Hyundai-Werk festgenommen",
+  "created_at": 1757162517.8743563,
+  "hash": "770c7d88639ae4649b0999d86597ab12e1daa7d0f80f5889db909e4531a1a25e",
+  "id": "BLK_1757162517_2c57af",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "1oAdcMfZh1n5zV85M6bjjAbcQq2Cn9oZxClmMRYLgDmaQ5iAQewIUdRrLpuj8V9YGqZin80ZJX6He2R0twowDQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 14:41",
+  "url": null
+}

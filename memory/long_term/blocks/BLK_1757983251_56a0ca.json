@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Awe Keeps Dropping\n • Hacker News: Fighting human trafficking with self-contained applications\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfel arabischer Staaten bildet Front gegen Israel",
+  "created_at": 1757983251.0919025,
+  "hash": "786346e469992103a2a69ce951b97bd271087bbf2b6df21914cc93a13de8ef04",
+  "id": "BLK_1757983251_56a0ca",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "B5ZrBkIzESD4Q6mHp0t6Xnz1f2K4SCaJT8DVH509yaZAnwbmkAuVtSFrkyGuQyhXa6IpGTUMJ3s5PcHZlJRMCQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 02:40",
+  "url": null
+}

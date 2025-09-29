@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: Attempt – A CLI for retrying fallible commands\n • Hacker News: The Storm Hits the Art Market\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie geht es in Frankreich nach dem Sturz Bayrous weiter?",
+  "hash": "b3368c5155b2237ac30524c03ac8bd7e61bcad80955a281d273a40212d214683",
+  "id": "BLK_1757384043_zblhe9",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "1HLYukuy4d76WGfQGS7XrTUt6l5Nc8csWhY0boE5CkHTddXZUMN13+5YbfucwRZt1Hm5EpCEztSFzb641aQ8Dg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 04:14",
+  "ts": 1757384043,
+  "url": ""
+}

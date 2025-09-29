@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Just use `git` to manage your dotfiles\n • Hacker News: Sometimes Software Is Done, or Why Hugo Why\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zehn Jahre \"Wir schaffen das\": Ein Rückblick auf Desinformationen",
+  "hash": "509c9c1f74aad1bc9db5182a9af98ba485879b0bf2d063b541fc7594effd05c9",
+  "id": "BLK_1756635814_7l60t6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "TkZD3KiiZXKLr9j3RjaQd8oO+7hfydE0DtPryGiE8iIwUF6zyH8dR21jftHUGn6YY+iXGKndCFlQfdQdWR6eCA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 12:23",
+  "ts": 1756635814,
+  "url": ""
+}

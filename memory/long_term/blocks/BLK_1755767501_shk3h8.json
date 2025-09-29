@@ -1,0 +1,16 @@
+{
+  "content": "Qubit – Wikipedia (function(){var className=\"client-js vector-feature-language-in-header-enabled vector-feature-language-in-main-page-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 vector-feature-night-mode-enabled skin-theme-clientpref-day vector-sticky-header-enabled vector-toc-available\";var cookie=document.cookie.match(/(?:^|; )dewikimwclientpreferences=([^;]+)/);if(cookie){cookie[1].split('%2C').forEach(function(pref){className=className.replace(new RegExp('(^| )'+pref.replace(/-clientpref-\\w+$|[^\\w-]+/g,'')+'-clientpref-\\\\w+( |$)'),'$1'+pref+'$2');});}document.documentElement.className=className;}());RLCONF={\"wgBreakF",
+  "hash": "66a31cc8c73feeb6e7eb2a862a8cbb20dbc8137bd1b437fdb4007a03f92543a1",
+  "id": "BLK_1755767501_shk3h8",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "eR3Z/xGIAMtxTN72QCSEBVOKlF7e45/yn9/ZBNPvnixKQ4JR52YSwKuaoqx17lxWKVPk7aItCmOf3DHV/7p3Ag==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "auto",
+    "web",
+    "learn"
+  ],
+  "title": "Gelernt: Qubit – Wikipedia",
+  "ts": 1755767501,
+  "url": "https://de.wikipedia.org/wiki/Qubit"
+}

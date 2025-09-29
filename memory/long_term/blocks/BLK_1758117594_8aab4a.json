@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Firefox 143 for Android to introduce DoH\n • Hacker News: Tau² Benchmark: How a Prompt Rewrite Boosted GPT-5-Mini by 22%\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Präsident Trump trifft König Charles III. - Proteste in London",
+  "created_at": 1758117594.2773893,
+  "hash": "7a17e5b69dc80bec124f59c03d22da17a16dfa8deb218e02fa8c8e4ea7a4e6cb",
+  "id": "BLK_1758117594_8aab4a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "tER0MIz4f9Tw+SwWuuJ24FwFTsnYfMQN7fga7ctpG2qlM4iKPf4ht3WNvhCLou9VIgOVqlXayw0LRUXAsvbvDw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 15:59",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ChatControl update: blocking minority held but Denmark is moving forward anyway\n • Hacker News: How older parents divorce affects their adult children\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NRW-Kommunalwahl: Grüne und SPD im Bund räumen Niederlagen ein",
+  "created_at": 1757878825.2101398,
+  "hash": "7e3bef403ae6f6b4192d5eddd2073db77f42085e25c64fc05b6389986658ffdc",
+  "id": "BLK_1757878825_d13fee",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "H0vknHEljmy/aPKcV6GSCry/KVTHO2NphqcdbrqFN5plFCL8mzDDokBQACnjNLkGpzF28iJEgn7rL6BNXRRHDA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 21:40",
+  "url": null
+}

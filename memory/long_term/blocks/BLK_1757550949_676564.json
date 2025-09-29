@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: DOOMscrolling: The Game\n • Hacker News: Intel's E2200 \"Mount Morgan\" IPU at Hot Chips 2025\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump-Unterstützer Charlie Kirk erschossen",
+  "created_at": 1757550949.597434,
+  "hash": "47f028a07e245386a18a39c8538280eae9a16d4e58c281ce9a99d6305b876d6f",
+  "id": "BLK_1757550949_676564",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "LY6MqECk9XOpI+AYgwwXC1iUB4cAsxXfeiMY3sgv3CnFBH1J1HBtaLwKXXvu6XenaaNqctYdYKUuUwjqw5R5BQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 02:35",
+  "url": null
+}

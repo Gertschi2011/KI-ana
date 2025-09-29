@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ASML, Mistral AI enter strategic partnership\n • Hacker News: Strong Eventual Consistency – The Big Idea Behind CRDTs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach dem Sturz der Regierung steht Frankreichs Präsident Macron unter Druck",
+  "created_at": 1757407453.9007134,
+  "hash": "6c03557ea16c6b87dee93c4ba912479acc2a261d37b8a455440822d621f5b36a",
+  "id": "BLK_1757407453_beac78",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "J/5vdFIBjFHJfBCVosQHedwefXgSc6reSUQpbvp/Jw7BzmE87Eh7YGfoCLCNFwVaEQZKf5KebPgPEveXfyx7Dg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 10:44",
+  "url": null
+}

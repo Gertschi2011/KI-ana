@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: My Foray into Vlang\n • Hacker News: Git Diagramming \"The Weave\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfeltreffen in Tianjin: Wie eng wird Indiens Beziehung zu China?",
+  "hash": "aec77ceff69e6c191f72bf3268df4fd1633f0fc54f070be4951dde153084a484",
+  "id": "BLK_1756630412_1nc367",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "tFjWFour+XAUustEezOOUCYI7q6TRzrlGrn/aOIL4T3uW3xmrra/Wrp6a1cNMfKpe0HL0Gn+jxt7hfh0cvocCQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 10:53",
+  "ts": 1756630412,
+  "url": ""
+}

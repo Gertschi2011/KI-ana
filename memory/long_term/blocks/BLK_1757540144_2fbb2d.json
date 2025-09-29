@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Mux (YC W16) Is Hiring Engineering ICs and Managers\n • Hacker News: Minerals represent potential biosignatures in the search for life on Mars\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump-Verbündeter Charlie Kirk erschossen",
+  "created_at": 1757540144.128232,
+  "hash": "085e752e67a1372c791b6f599b106657242b1e874d590f105c63b1593f7efb75",
+  "id": "BLK_1757540144_2fbb2d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "3+H12eiK7yTAFctYuPn2hL67PfyjiO86DNzgkm+1AlVsTMS9kBfn/WJpIKPVUWS86y5hrAzDYfNX/lxCyMgPAA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 23:35",
+  "url": null
+}

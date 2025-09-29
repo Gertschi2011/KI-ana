@@ -1,0 +1,17 @@
+[Unit]
+Description=KI_ana Crawler Worker
+After=network.target
+
+[Service]
+Type=simple
+User=kiana
+WorkingDirectory=/home/kiana/ki_ana
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /home/kiana/ki_ana/system/crawler_worker.py
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

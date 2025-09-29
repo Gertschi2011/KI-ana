@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Send kind and aspirational words to a stranger who needs it\n • Hacker News: C++26: Erroneous Behaviour\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht: Gelöstes Kabel wohl Ursache für Unglück in Lissabon",
+  "created_at": 1757205736.664098,
+  "hash": "7c851d303b8a57b6330350232002a4174371d9f0a152cd5d444c05bee048aab4",
+  "id": "BLK_1757205736_d4ae10",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fnuhrf69+Su/PjfA83Cw+R/jybNVUXJ7FiWS/T7N/tDp548BIWZnyfSjCyLz30ksmno8TPdKnMatUG2njPy9DQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 02:42",
+  "url": null
+}

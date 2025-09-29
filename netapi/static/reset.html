@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de" class="page">
+<head>
+  <meta charset="utf-8">
+  <title>Neues Passwort – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/styles.css" rel="stylesheet">
+  <script defer src="/static/i18n.js"></script>
+</head>
+<body class="page">
+  <div id="navbar"></div>
+  <div class="container">
+    <div class="paper" style="max-width:520px;margin:1.2rem auto">
+      <h1 data-i18n="reset.title">Neues Passwort setzen</h1>
+      <form onsubmit="return setpw(event)">
+        <input id="token" placeholder="Token aus E-Mail" required style="width:100%;padding:.6rem;margin:.2rem 0 .6rem;border:1px solid #d1d5db;border-radius:8px" data-i18n-placeholder="reset.token_placeholder">
+        <input id="pw1" type="password" placeholder="Neues Passwort" required style="width:100%;padding:.6rem;margin:.2rem 0 .6rem;border:1px solid #d1d5db;border-radius:8px" data-i18n-placeholder="reset.pw_new">
+        <input id="pw2" type="password" placeholder="Wiederholen" required style="width:100%;padding:.6rem;margin:.2rem 0 .8rem;border:1px solid #d1d5db;border-radius:8px" data-i18n-placeholder="reset.pw_repeat">
+        <button class="btn" type="submit" data-i18n="reset.submit">Passwort speichern</button>
+      </form>
+      <p id="msg"></p>
+    </div>
+  </div>
+  <script>
+    async function setpw(e){
+      e.preventDefault();
+      const a = document.getElementById('pw1').value;
+      const b = document.getElementById('pw2').value;
+      if(a !== b){
+        document.getElementById('msg').textContent = 'Die Passwörter stimmen nicht überein.';
+        return false;
+      }
+      const r = await fetch('/api/password/reset', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ token: document.getElementById('token').value.trim(), password: a })
+      });
+      const data = await r.json().catch(()=>({}));
+      document.getElementById('msg').textContent = data.message || (r.ok ? 'Dein Passwort wurde erfolgreich geändert.' : 'Es ist ein Fehler aufgetreten.');
+      if(r.ok) setTimeout(()=>location.href='/static/login.html', 1200);
+      return false;
+    }
+  </script>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

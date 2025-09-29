@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: World emissions hit record high, but the EU leads trend reversal\n • Hacker News: Writing an operating system kernel from scratch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wüst zufrieden mit CDU-Ergebnis in NRW - AfD bereitet Sorgen",
+  "created_at": 1757871621.9039083,
+  "hash": "0f6e772de5dc3e661224ecab34f94d4119449867c266fb866e70648aed5dd63e",
+  "id": "BLK_1757871621_ab9ce0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "80u5vDyneNYUm9qfebx0JetsNQ3tj09GIaVJCEuvVNCHqq7XjtuNQ5oK625bEN3uFVJ6cRbD6IjTqQn+oP/iDw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 19:40",
+  "url": null
+}

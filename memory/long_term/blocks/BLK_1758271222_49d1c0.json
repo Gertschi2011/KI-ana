@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: iTerm2 Web Browser\n • Hacker News: Count Folke Bernadotte: Sweden's Servant of Peace (2010)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Weg mit der Höchstarbeitszeit? Debatte über den Zwölfstundentag",
+  "created_at": 1758271222.7110155,
+  "hash": "b18a443c13cd13f396a0fbe8b3b27d63d4bc186e86f37ee60ea7a1434b70070d",
+  "id": "BLK_1758271222_49d1c0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "kqsgov3EKhf+6oLY1K+CDBvK4Dzi6xZViTYaflRzlA27+QTdIe9yOaRxd8dIfpGM3F7nbm1j1gl8dZvMDoWABA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 10:40",
+  "url": null
+}

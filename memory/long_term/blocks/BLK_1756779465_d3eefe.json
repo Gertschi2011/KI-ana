@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I Miss Using Em Dashes\n • Hacker News: Detecting and countering misuse of AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwierige Rettungsarbeiten nach Erdbeben in Afghanistan",
+  "created_at": 1756779465.9291267,
+  "hash": "ea898b64e2ed7ada50dc827ac9bdcc1bd5b46cfbc173cfce9ccac80c5b755790",
+  "id": "BLK_1756779465_d3eefe",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OWXIzXCiWyQ6GEXrPp6GfS4T2/R0Rt+A778ViMOeJZGpIuq/SlRSZODlgXan+szJE4mYj0Mt9hX3CdUgj5tgAQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 04:17",
+  "url": null
+}

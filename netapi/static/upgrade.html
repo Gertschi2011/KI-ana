@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Upgrade – KI_ana</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+      margin: 0; padding: 0; background: #0b1020; color: #e9f2ff;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    header { display:flex; align-items:center; gap:12px; padding: 12px 0; }
+    header h1 { font-size: 22px; margin: 0; }
+    .grid { display:grid; grid-template-columns: repeat(3, minmax(240px,1fr)); gap:12px; }
+    @media (max-width: 920px){ .grid { grid-template-columns: repeat(2, minmax(240px,1fr)); } }
+    @media (max-width: 640px){ .grid { grid-template-columns: 1fr; } }
+    .plan { background:#0e1733; border:1px solid #1f2a4d; border-radius:12px; box-shadow: 0 10px 30px rgba(0,0,0,.35); display:flex; flex-direction:column; }
+    .plan header { padding: 14px 16px; border-bottom:1px solid #1f2a4d; justify-content:space-between; }
+    .plan h2 { margin:0; font-size: 18px; }
+    .badge { padding: 2px 8px; border-radius:999px; background:#15224a; color:#9ec5ff; border:1px solid #20336b; font-size: 12px; }
+    .plan main { padding: 16px; display:flex; flex-direction:column; gap:10px; }
+    .plan ul { margin: 0 0 0 18px; }
+    .cta { display:flex; gap:8px; padding: 4px 16px 16px; }
+    a.btn { display:inline-block; padding: 10px 14px; border-radius:10px; text-decoration:none; border:1px solid #20336b; }
+    a.primary { background:#1a2a59; color:#cfe4ff; }
+    a.primary:hover { background:#22356f; }
+    a.secondary { color:#9ec5ff; }
+    .muted { opacity:.8; font-size: 13px; }
+    .info { background:#0e1733; border:1px solid #1f2a4d; border-radius:10px; padding: 10px 12px; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <header>
+      <h1>Upgrade</h1>
+      <span class="badge">Pläne</span>
+    </header>
+    <div class="grid">
+      <section class="plan">
+        <header>
+          <h2>Free</h2>
+          <span class="badge">kostenlos</span>
+        </header>
+        <main>
+          <ul>
+            <li>Tägliches Limit (z. B. 20 Nachrichten)</li>
+            <li>Grundfunktionen im Chat</li>
+            <li>Sicherheitsfilter für Kinder</li>
+          </ul>
+          <div class="muted">Für gelegentliche Nutzung ausreichend.</div>
+        </main>
+        <div class="cta">
+          <a class="btn secondary" href="/register">Registrieren</a>
+        </div>
+      </section>
+      <section class="plan">
+        <header>
+          <h2>Papa</h2>
+          <span class="badge">Empfohlen</span>
+        </header>
+        <main>
+          <ul>
+            <li>Unlimitiertes Chatten (fair use)</li>
+            <li>Personalisierung (Name, Avatar, Stimme)</li>
+            <li>Lernpfade, Einblick in Entwicklung</li>
+            <li>Einblick in Mutter‑KI (read‑only)</li>
+          </ul>
+          <div class="muted">Ideal für Familien und tägliche Nutzung.</div>
+        </main>
+        <div class="cta">
+          <a id="upgradeBtn" class="btn primary" href="#">Jetzt upgraden</a>
+          <a class="btn secondary" href="/">Zurück</a>
+        </div>
+      </section>
+      <section class="plan">
+        <header>
+          <h2>Creator</h2>
+          <span class="badge">Pro</span>
+        </header>
+        <main>
+          <ul>
+            <li>Voller Admin‑Zugang und Tools</li>
+            <li>Block Viewer, Audit, Telemetry</li>
+            <li>OS‑Integration und Geräteverwaltung</li>
+          </ul>
+          <div class="muted">Für Power‑User und Entwickler.</div>
+        </main>
+        <div class="cta">
+          <a id="contactBtn" class="btn secondary" href="mailto:hello@ki-ana.at">Kontakt</a>
+        </div>
+      </section>
+    </div>
+    <div id="upgradeInfo" class="info" style="display:none"></div>
+  </div>
+  <script>
+    (async function init(){
+      try{
+        const btn = document.getElementById('upgradeBtn');
+        const info = document.getElementById('upgradeInfo');
+        const res = await fetch('/api/system/config', { credentials:'include' });
+        const j = await res.json();
+        const url = (j && j.upgrade_url) ? String(j.upgrade_url).trim() : '';
+        if (url){ btn.href = url; btn.target = '_blank'; btn.rel = 'noopener'; }
+        else {
+          info.style.display = '';
+          info.innerHTML = 'Kein externer Upgrade‑Link konfiguriert. Setze <code>KI_UPGRADE_URL</code> in der .env oder nutze diesen Screen als Info.';
+          btn.addEventListener('click', (e)=>{ e.preventDefault(); alert('Upgrade‑Flow wird bald aktiviert.'); });
+        }
+      }catch{}
+    })();
+  </script>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

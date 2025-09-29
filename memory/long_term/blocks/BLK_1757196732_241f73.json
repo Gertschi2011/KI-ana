@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Qantas slashes executive pay by 15% after data breach\n • Hacker News: A Navajo weaving of an integrated circuit: the 555 timer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vorläufiger Bericht: Gelöstes Kabel sorgte wohl für Unglück in Lissabon",
+  "created_at": 1757196732.8463724,
+  "hash": "58c3d5ba45f9a47f59ea3113a9689141a3b383f786c7d4999144517181dca6b3",
+  "id": "BLK_1757196732_241f73",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "JBUW21SrYMNxAFHOnnnqvjOCs2JNNUi19ngrBmkLPgVh2VqtDKQ6qC6hbC5WQ3pCYEBxBxq8cGmfoUhqjvvMDA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 00:12",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Invasive Israeli-founded bloatware is harvesting data from Samsung users in WANA\n • Hacker News: A brief history of threads and threading\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): DB-Regio-Chefin Palla soll neue Bahnchefin werden",
+  "created_at": 1758404486.0748334,
+  "hash": "76fa328bbd8c1d0f517a399df179fb1e55aaa3f2bcd1c36b86d9e7be2447130c",
+  "id": "BLK_1758404486_a0e2cd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "dvrnuJCA1ZwX7zlc+Mm1K5agsTHAGCsnZ/NrSg5lMhxNZLEqTxUxj0STbG1jwRi0KA0Jk3weAlSpgK2MMguhDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 23:41",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Automating Distro Updates in CI\n • Hacker News: IBM Technology Atlas\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): UN-Kommissionsbericht wirft Israel Genozid im Gazastreifen vor",
+  "created_at": 1758020001.6047823,
+  "hash": "5d7b5ced8b6c1e2b05570d32c59f4f6bee9d5cf47c844ccf902cf228eab77766",
+  "id": "BLK_1758020001_021218",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "c92Zvy0P1bzFgOF0kQH0kSws/fQLUVXM4FEIIrp4sSJM6qp1Sr8wZpS+DwIg9EzOM9TpUPD1yC+Utcp0dxd6DQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 12:53",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Neovim Pack\n • Hacker News: Not paying with cash\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Standseilbahn in Lissabon entgleist - 15 Tote",
+  "hash": "571cf2e5cd1fa650d1123f96ebcc6365195945b53c62e1e967ebff8f59585acd",
+  "id": "BLK_1756951953_vi12ar",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "XDaQeFQYDiA/6DiunbM5+vGvna/to5ECuIARRxXE1QjZ3j98UAECi4hfiXgLXwzzse652tIip5yrmHMteJ4KDw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 04:12",
+  "ts": 1756951953,
+  "url": ""
+}

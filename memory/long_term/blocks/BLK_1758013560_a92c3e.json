@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Automating Distro Updates in CI\n • Hacker News: Reichstag Fire Decree: Decree of the President for Protection of People & State\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Urteil zum Messerattentat: Mannheim kann überall sein",
+  "created_at": 1758013560.5440621,
+  "hash": "f1e0da5facbc29de71f50e7401f0d6a9e15a5462935d7cda9de1b7f2f5e1e2a0",
+  "id": "BLK_1758013560_a92c3e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oCF+uKGE3XuHDTmh0EqZP2rPgeR/FC5M+cce8m0gTlqVIB/C1KGLdCUXmnmgLruZN6qxmswH77z4jp+CZ7CtAA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 11:06",
+  "url": null
+}

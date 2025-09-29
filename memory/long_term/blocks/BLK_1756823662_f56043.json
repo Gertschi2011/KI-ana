@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Imgur's Community Is in Full Revolt Against Its Owner\n • Hacker News: Show HN: Moribito – A TUI for LDAP Viewing/Queries\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Grüne kündigen Gegenwind für schwarz-rote Regierung an",
+  "created_at": 1756823662.5475426,
+  "hash": "e97608348f150dc87228fb88eef1b035d2131b299bb1a765c2136af3921bc9c5",
+  "id": "BLK_1756823662_f56043",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "wnAsiGejTPtATAj0XlN3SIVrgX9WvTbEQHhBrICelathJao8/fYlTbarUrKVWOw2HxDKSKG9e3+Q9Ni/kR/DBA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 16:34",
+  "url": null
+}

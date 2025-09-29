@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: California reached the unthinkable: A union deal with tech giants\n • Hacker News: Addendum to GPT-5 system card: GPT-5-Codex\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfel arabischer Staaten bildet Front gegen Israel",
+  "created_at": 1757968844.690065,
+  "hash": "9fa67ae35b91bb73c6d5c34eb2dda92ff28043635f46bdf339adcaa4957561fe",
+  "id": "BLK_1757968844_3ac515",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "WvYghJui+XHPJZ0/kw5ShFJhZXWkFMb8nx94vuxMnj3DmVB6QTRPsi2tjwQMOcdXv0sWdxO8WrXxAZzo39UbBQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 22:40",
+  "url": null
+}

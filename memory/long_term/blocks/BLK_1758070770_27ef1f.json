@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple releases iOS 15.8.5 security update for 10-year old iPhone 6s\n • Hacker News: I launched a Mac utility; now there are 5 clones on the App Store using my story\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Tatverdächtiger im Fall Kirk wegen Mordes angeklagt",
+  "created_at": 1758070770.9064434,
+  "hash": "d8ef06ece76fbed0a64ce3d41ee9858a000b30fd192d1083d901cadf4df319f8",
+  "id": "BLK_1758070770_27ef1f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oT+LEkyEQ4lVr0pn+ZInyxTM6vrcjrOLp+f3WDc3f3HLILItvcTC2nvjIexKzcllEwL7/MfAgXfZ57zG09G+CQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 02:59",
+  "url": null
+}

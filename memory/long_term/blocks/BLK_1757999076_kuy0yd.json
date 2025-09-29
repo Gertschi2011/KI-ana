@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Public static void main(String[] args) is dead\n • Hacker News: Linux phones are more important now than ever\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Militärexperten warnen Israel vor Offensive auf Gaza-Stadt",
+  "hash": "9b58070e3663cf661c17f14f6b817c0f2dcea338a6b57ec8353d6c8dd8e5bda2",
+  "id": "BLK_1757999076_kuy0yd",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ppJv2TQfRU+6YhhRZt+VLIjd71FuT9jNzUUvfYw9k8QZvkZ/fg2WCDT0hOXEAfRZLv98gdXfzyXKT91NLYS7Dg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 07:04",
+  "ts": 1757999076,
+  "url": ""
+}

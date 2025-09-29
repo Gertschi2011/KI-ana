@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kiana – Einstellungen</title>
+  <link rel="stylesheet" href="/static/chat.css">
+  <script src="/static/global_theme.js"></script>
+  <style>
+    .settings { max-width: 600px; margin: 2rem auto; padding: 1rem; background: #fff; border-radius: 8px; }
+    .settings h2 { margin-bottom: 1rem; }
+    .settings label { display: block; margin: 0.5rem 0; font-weight: bold; }
+    .settings select, .settings input[type=checkbox] { margin-top: 0.25rem; }
+    .save-btn { margin-top: 1rem; padding: 0.5rem 1rem; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="settings">
+    <h2>⚙️ Einstellungen</h2>
+
+    <label for="lang">Sprache</label>
+    <select id="lang">
+      <option value="de">Deutsch</option>
+      <option value="en">English</option>
+      <option value="ro">Română</option>
+    </select>
+
+    <label for="theme">Theme</label>
+    <select id="theme">
+      <option value="system">System</option>
+      <option value="light">Hell</option>
+      <option value="dark">Dunkel</option>
+    </select>
+
+    <label><input type="checkbox" id="toggle-tts"> 🔊 Sprache ausgeben (Text-to-Speech)</label>
+
+    <label for="answerStyle">Antwortstil</label>
+    <select id="answerStyle">
+      <option value="natural" selected>Natürlich</option>
+      <option value="formal">Fachlich</option>
+      <option value="concise">Kurz</option>
+    </select>
+
+    <label><input type="checkbox" id="memoryToggle"> 🧠 Memory aktivieren</label>
+    <label><input type="checkbox" id="autopilotToggle"> 🚀 Autopilot aktivieren</label>
+
+    <button class="save-btn" id="saveBtn">Speichern</button>
+  </div>
+
+  <div id="toasts"></div>
+
+  <script>
+  (function(){
+    // Navbar laden (cache-busting + scripts)
+    fetch('/static/nav.html?v=' + Date.now())
+      .then(r=>r.text())
+      .then(html=>{
+        const n=document.getElementById('navbar');
+        if(!n) return;
+        n.innerHTML=html;
+        try{
+          n.querySelectorAll('script').forEach(old=>{
+            const s=document.createElement('script');
+            if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+            else { s.textContent = old.textContent || ''; }
+            document.body.appendChild(s);
+            old.remove();
+          });
+        }catch{}
+      });
+    // Save + delayed redirect to chat (toast visible ~2s, fade within 500ms)
+    const btn = document.getElementById('saveBtn');
+    if (btn){
+      btn.addEventListener('click', function(){
+        try{ saveSettings && saveSettings(); }catch{}
+        // Redirect after 2s so toast is visible long enough
+        setTimeout(function(){ window.location.href = '/static/chat.html'; }, 2000);
+      });
+    }
+  })();
+
+  function showToast(msg){
+    const t=document.createElement('div');
+    t.className='toast show';
+    t.textContent=msg;
+    t.style.opacity='1';
+    t.style.transition='opacity .5s ease';
+    document.getElementById('toasts').appendChild(t);
+    // Keep visible for ~1500ms, then fade out in 500ms
+    setTimeout(()=>{ try{ t.style.opacity='0'; }catch{} }, 1500);
+    // Remove after fade completes (~2000ms total)
+    setTimeout(()=>{ try{ t.remove(); }catch{} }, 2000);
+  }
+
+  async function saveSettings(){
+    const payload = {
+      language: document.getElementById('lang').value,
+      theme: document.getElementById('theme').value,
+      tts: document.getElementById('toggle-tts').checked ? 'on' : 'off',
+      answer_style: document.getElementById('answerStyle').value,
+      memory_on: document.getElementById('memoryToggle').checked ? 1 : 0,
+      autopilot_on: document.getElementById('autopilotToggle').checked ? 1 : 0,
+    };
+    // Persist locally (source of truth for UI responsiveness)
+    try{
+      localStorage.setItem('kiana_lang', payload.language);
+      localStorage.setItem('kiana_theme', payload.theme);
+      localStorage.setItem('kiana_tts', payload.tts);
+      localStorage.setItem('kiana_style', payload.answer_style);
+      localStorage.setItem('kiana_memory', String(payload.memory_on ? 1 : 0));
+      localStorage.setItem('kiana_autopilot', String(payload.autopilot_on ? 1 : 0));
+      // Notify other tabs and live listeners
+      try{ window.dispatchEvent(new StorageEvent('storage', { key:'kiana_lang', newValue: payload.language })); }catch{}
+      try{ window.dispatchEvent(new StorageEvent('storage', { key:'kiana_theme', newValue: payload.theme })); }catch{}
+      try{ window.dispatchEvent(new StorageEvent('storage', { key:'kiana_tts', newValue: payload.tts })); }catch{}
+      try{ window.dispatchEvent(new StorageEvent('storage', { key:'kiana_style', newValue: payload.answer_style })); }catch{}
+    }catch{}
+    // Best-effort server save, non-blocking for redirect UX
+    try{ fetch('/api/settings', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify(payload)}).catch(()=>{}); }catch{}
+    showToast('🌈 Einstellungen gespeichert');
+  }
+
+  (async function loadSettings(){
+    try{
+      const res = await fetch('/api/settings', { credentials:'include' });
+      const jd = await res.json();
+      const s = jd && jd.settings ? jd.settings : {};
+      document.getElementById('lang').value = s.language || (localStorage.getItem('kiana_lang') || 'de');
+      document.getElementById('theme').value = s.theme || (localStorage.getItem('kiana_theme') || 'system');
+      document.getElementById('toggle-tts').checked = (localStorage.getItem('kiana_tts') === 'on');
+      document.getElementById('answerStyle').value = localStorage.getItem('kiana_style') || 'natural';
+      document.getElementById('memoryToggle').checked = String(s.memory_on||'1')==='1';
+      document.getElementById('autopilotToggle').checked = String(s.autopilot_on||'1')==='1';
+    }catch{
+      // fallback to local storage only
+      document.getElementById('lang').value = localStorage.getItem('kiana_lang') || 'de';
+      document.getElementById('theme').value = localStorage.getItem('kiana_theme') || 'system';
+      document.getElementById('toggle-tts').checked = (localStorage.getItem('kiana_tts') === 'on');
+      document.getElementById('answerStyle').value = localStorage.getItem('kiana_style') || 'natural';
+      document.getElementById('memoryToggle').checked = localStorage.getItem('kiana_memory')==='1';
+      document.getElementById('autopilotToggle').checked = localStorage.getItem('kiana_autopilot')==='1';
+    }
+  })();
+  </script>
+</body>
+</html>

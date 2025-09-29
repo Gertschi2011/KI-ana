@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: GitHub Community Discussions: Past year's top two request are to disable Copilot\n • Hacker News: 'Make invalid states unrepresentable' considered harmful\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Politische Krise in Frankreich - Bayrou stellt Vertrauensfrage",
+  "created_at": 1757306979.1200743,
+  "hash": "d6d159e40ea06547109179aa7be09e027c87bf07de42589f334f65c57a44de21",
+  "id": "BLK_1757306979_13b99a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BiPBnK+KhfgWtSTk8YaR5XngL9C9QqimqORU474UE+xNCTX44FOkm9RS8Zph8zC/IZCmhhWKBjfhGnKhu8J/CA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 06:49",
+  "url": null
+}

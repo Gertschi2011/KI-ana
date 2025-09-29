@@ -1,0 +1,16 @@
+{
+  "content": "• Hacker News: Condor's Cuzco RISC-V Core at Hot Chips 2025\n • Hacker News: AI models need a virtual machine\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Merkels Flüchtlingspolitik die AfD prägte",
+  "hash": "b57bf830f411e1354a863a0bfffaf7a2ada376e829b8ed2e47ba62028d53c0b0",
+  "id": "BLK_1756564614_f98sdm",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "HNOgTGzm07X2yrKQg1wX/B4J2rg4NQvzgffy79p54NfFyOxCAGYGhVzVLYZJ8f0SZpNeYNLWnnyIaRjx+XT7Dw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 16:36",
+  "ts": 1756564614,
+  "url": ""
+}

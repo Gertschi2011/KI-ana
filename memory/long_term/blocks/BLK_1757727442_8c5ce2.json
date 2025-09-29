@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Life, Work, Death and the Peasant: Rent and Extraction\n • Hacker News: Meow: Yet another modal editing on Emacs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hinweise auf ein politische Motiv für Kirk-Attentat",
+  "created_at": 1757727442.452857,
+  "hash": "9f3f92c0a728d5b417166e7427d4b34f41509e4369411607c77f708fa1b0b1ec",
+  "id": "BLK_1757727442_8c5ce2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9c0kGZJdrB9W9m79vlQQ6TX18A6bEmPUzSLOBKKgXC3ED/yXnINdV7l8vmkikDmqq0HhCul8L7eNyKfzGhEYDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 03:37",
+  "url": null
+}

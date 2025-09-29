@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Murex – An intuitive and content aware shell for a modern command line\n • Hacker News: In Praise of Idleness (1932)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Liveblog zur Generaldebatte: ++ Miersch: Deutschland voranbringen ++",
+  "hash": "1682598684ebb2d07f0903fcd7ec8e7c91f65779148fc3664b80df8130eb802d",
+  "id": "BLK_1758097784_wts32f",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "xTFo4hD2wWUemVQBkGXTuy0WTriZ277xrPDGBZjO50WrNZFzNAv6F1VK/mklUtWG53LmnSrZqO45MdZ6J8kFDw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 10:29",
+  "ts": 1758097784,
+  "url": ""
+}

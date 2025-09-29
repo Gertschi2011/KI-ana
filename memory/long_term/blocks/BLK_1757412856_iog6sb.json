@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Mistral AI raises 1.7B€, enters strategic partnership with ASML\n • Hacker News: Strong Eventual Consistency – The Big Idea Behind CRDTs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nepals Regierungschef Oli nach tödlichen Protesten zurückgetreten",
+  "hash": "328f43aa54c0cd069fbd6b18e9da6ec6a2eae179025bf91d4b95c6f1c855664e",
+  "id": "BLK_1757412856_iog6sb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ybxo328yXv9gOqy9HmtBq8tVOXy6yb3x7FM3Cq2p1nwnIVJPJVP6T9GNjJrfqoI+nVMQEyDCtDyWaah7hKuYCQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 12:14",
+  "ts": 1757412856,
+  "url": ""
+}

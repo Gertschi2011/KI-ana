@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Disney+ cancellation page crashes as customers rush to quit\n • Hacker News: Did you read the quarter-million-line license for your Slack app?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzung: Estland beantragt Artikel-4-Beratungen der NATO",
+  "created_at": 1758337854.6630445,
+  "hash": "086ff8825a051e3e98dbf16256741575a3bf4bc2371c1de7ad2bca8ccb517df6",
+  "id": "BLK_1758337854_e77301",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HEucm/D/XZlHp6LIToTBna0NqPPLvebMnOf/JyXUav6UXiRu4OdCO6l2ythjNwe6vwaXKAafysl87+6e5rCcAQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 05:10",
+  "url": null
+}

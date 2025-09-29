@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>AGB – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/styles.css" rel="stylesheet">
+  <script defer src="/static/i18n.js"></script>
+</head>
+<body class="page">
+  <div id="navbar"></div>
+  <!-- Navigation wird automatisch per JavaScript geladen -->
+<!-- Hero -->
+  <main class="hero container">
+    <div class="hero-inner">
+ <!-- Avatar -->
+      <div class="hero-media" style="margin-top:2rem;">
+        <figure style="margin:0 auto;">
+          <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar" onerror="this.style.display='none'" style="max-width: 140px; height: auto; border-radius: 50%;">
+          <figcaption class="mt-avatar" data-i18n="home.caption">Ich lerne mit und von dir</figcaption>
+        </figure>
+      </div>
+    </div>
+  <div class="container">
+    <div class="paper">
+      <h1 data-i18n="terms.title">Allgemeine Geschäftsbedingungen</h1>
+
+      <h3 data-i18n="terms.s1.h">1. Geltungsbereich</h3>
+      <p data-i18n="terms.s1.p">Diese AGB regeln die Nutzung von KI_ana und zugehörigen Diensten.</p>
+
+      <h3 data-i18n="terms.s2.h">2. Leistungen</h3>
+      <p data-i18n="terms.s2.p">Bereitstellung eines KI-basierten Assistenten inkl. Chat & Zusatzfunktionen. 
+      Details und Preise siehe <a href="/static/pricing.html">Preise</a>.</p>
+
+      <h3 data-i18n="terms.s3.h">3. Registrierung & Konto</h3>
+      <p data-i18n="terms.s3.p">Du bist für die Geheimhaltung deiner Zugangsdaten verantwortlich.</p>
+
+      <h3 data-i18n="terms.s4.h">4. Zahlung & Abo</h3>
+      <p data-i18n="terms.s4.p">Abos verlängern sich ggf. automatisch; Kündigung jederzeit zum Periodenende.</p>
+
+      <h3 data-i18n="terms.s5.h">5. Nutzung & Inhalte</h3>
+      <p data-i18n="terms.s5.p">Keine rechtswidrigen Inhalte; wir dürfen missbräuchliche Nutzung sperren.</p>
+
+      <h3 data-i18n="terms.s6.h">6. Haftung</h3>
+      <p data-i18n="terms.s6.p">Haftung im gesetzlich zulässigen Rahmen begrenzt.</p>
+
+      <h3 data-i18n="terms.s7.h">7. Datenschutz</h3>
+      <p data-i18n="terms.s7.p">Siehe <a href="/static/privacy.html">Datenschutz</a>.</p>
+
+      <h3 data-i18n="terms.s8.h">8. Schlussbestimmungen</h3>
+      <p data-i18n="terms.s8.p">Es gilt österreichisches Recht. Gerichtsstand nach gesetzlichen Vorgaben.</p>
+
+      <p class="muted" data-i18n="terms.stand">Stand: 23.08.2025</p>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container small" style="text-align:center;">
+      <p>© <span id="year"></span> KI_ana – mit Liebe gebaut.</p>
+      <p><a href="/static/impressum.html">Impressum</a> · <a href="/static/privacy.html">Datenschutz</a> · <a href="/static/agb.html">AGB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Footer-Jahr
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

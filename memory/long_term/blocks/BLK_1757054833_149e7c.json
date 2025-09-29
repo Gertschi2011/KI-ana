@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Escaping the odds and a formula for life (2024)\n • Hacker News: Why RDF Is the Natural Knowledge Layer for AI Systems\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757054833.8011296,
+  "hash": "507978d4c78fc607282a284227c2e984432b59782c8dab8e18d73442a8b2da65",
+  "id": "BLK_1757054833_149e7c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "wPzSZDH8aVtw34Dznw835x1boTAN/5e2LVRugPCVldl8YguDcIXYNPlldQncKDA7QxQwOlB1t6hIfNmILkELDg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 08:47",
+  "url": null
+}

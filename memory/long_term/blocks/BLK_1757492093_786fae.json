@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: News: Arm announces next Generation core family called Arm Lumex\n • Hacker News: Crimson (YC X25) is hiring founding engineers in London\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Kommission stoppt Zahlungen an Israel",
+  "created_at": 1757492093.7031538,
+  "hash": "582ae810726bfe448d88815ddef479356a21d4e9ac820cdc595d0df0ebdd631e",
+  "id": "BLK_1757492093_786fae",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vRIQ4K4l7AYBkOYFTad5dfx1uc3Gn19MT8MADbFzy29WlBApqOzQtrkUu/JPQaygS5RiGM0GpAIPjGi6qX+yCg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 10:14",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Groundbreaking Brazilian Drug, Capable of Reversing Spinal Cord Injury\n • Hacker News: UTF-8 is a brilliant design\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hinweise auf ein politische Motiv für Kirk-Attentat",
+  "created_at": 1757707632.6257606,
+  "hash": "57970b17ff032a8a3df2ada83e9459d6e092da794845a8f94788e555bf0aa0e1",
+  "id": "BLK_1757707632_730435",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "J7ec2r9YG2xTLXVHdR414JQTw6vQ+H+Kj2k1vcatDOHde3bmZ405P/qJ3/Jf8SkZ1qJCMqsyUm3GePtTEJ4bBA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 22:07",
+  "url": null
+}

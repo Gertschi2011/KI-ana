@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Philips announces digital pathology scanner with native DICOM JPEG XL output\n • Hacker News: Tariffs make it harder to justify US investments, automakers and suppliers warn\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): DB-Regio-Chefin Palla soll neue Bahnchefin werden",
+  "hash": "1acd99b8259ba77393dac2b07c3cc135e583d4d0ad6c87fe600638dca0b5d468",
+  "id": "BLK_1758400884_0ai77u",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "eh4yqOrFZxT+zCuj/LBJWDidl5bUpWKGetp3qqAfgJeWO6wVz9FTEbPNZNRJzryRH2dqWI2bP9NmT6qlwHXIAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 22:41",
+  "ts": 1758400884,
+  "url": ""
+}

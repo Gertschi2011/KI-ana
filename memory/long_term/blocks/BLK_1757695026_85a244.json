@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Corporations are trying, and now failing, to hide job openings from US citizens\n • Hacker News: Advanced Scheme Techniques (2004) [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hinweise auf ein politische Motiv für Kirk-Attentat",
+  "created_at": 1757695026.2607346,
+  "hash": "756627b3b01cca10500fd87c475e3eb459a41c321b1e38243c96a635a95aec54",
+  "id": "BLK_1757695026_85a244",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9uHBsE7TGVj9AZzDZmAWK6xU1w84QGzP11MThlcaXqFho9g8KkaGQnvlOGC0NGJ5ZXzMZ340PSoUNtXtmEVlAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 18:37",
+  "url": null
+}

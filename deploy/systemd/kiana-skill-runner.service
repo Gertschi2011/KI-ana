@@ -1,0 +1,16 @@
+[Unit]
+Description=KI_ana Skill Runner
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/home/%i/ki_ana
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /home/%i/ki_ana/system/skill_runner.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+

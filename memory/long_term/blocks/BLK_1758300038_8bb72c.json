@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Dev Culture Is Dying the Curious Developer Is Gone\n • Hacker News: Slow Liquid\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Estland: Drei russische Kampfjets dringen unerlaubt in Luftraum ein",
+  "created_at": 1758300038.279875,
+  "hash": "76b93217e4337bb71168099c5a4d3c09f9bec74fa22fabd030bc352be147946c",
+  "id": "BLK_1758300038_8bb72c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "42R01xApGgW7cudxIIrQJNEEJagdDp0e3f0wl2IgRJ9FZiBjxTtjiypcAB9zvna8ZaStXRkNZp+zm/mOOBUJCQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 18:40",
+  "url": null
+}

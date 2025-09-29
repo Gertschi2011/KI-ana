@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Family of MSFT employee who died warn tech companies not to overwork workers\n • Hacker News: eBPF 101: Your First Step into Kernel Programming\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfeltreffen in Tianjin - China und Indien wollen zusammenrücken",
+  "created_at": 1756659225.3308215,
+  "hash": "85fa3eb2c47f9e7fbc11cc996e8657bf37f09ec099de536349e2f388e3111749",
+  "id": "BLK_1756659225_844aab",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "L9MDmmCsihktsk73SNOId8o1xoLpxgXUlEdL6h9xg8oeAP0koDZvso6ZuDdEwkju4IWXsKgMN4wpiEg16E37Bw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 18:53",
+  "url": null
+}

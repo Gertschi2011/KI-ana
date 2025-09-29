@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Active phishing campaign targeting crates.io users\n • Hacker News: Health care costs are soaring. Blame insurers, drug companies and your employer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NATO sieht keine \"unmittelbare Bedrohung\" durch \"Sapad 2025\"",
+  "hash": "3fec1570d5f4522e0badd289ebb43ffa1e8da7fbd35426c2c7b5256c8f489077",
+  "id": "BLK_1757689623_aas4a3",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "xH08CHx1dGVq3qjaaw4C4xmhWDiQTdsriXT4U/CEUfPVPodWMcTCnqrqY9pPl8nvZAGxWrs6V/3/seO9qtYmDQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 17:07",
+  "ts": 1757689623,
+  "url": ""
+}

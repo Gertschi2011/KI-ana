@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple highlights Brazilian study on domestic App Store performance\n • Hacker News: Google to Obey South Korean Order to Blur Satellite Images on Maps\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Militärattacke gegen Hamas-Führung in Doha",
+  "created_at": 1757429063.3213398,
+  "hash": "2ef0b578a04f15e301f96f56888d561463871a854fd2a5feec0e682f56477b2c",
+  "id": "BLK_1757429063_a67bc0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "qfUDbYodKVltdZkD8Pcgy2OTOz+Sk9u8uN+qAdeniso/0bmKsT3foenOTBf44KdISm08n82+0tcI8wp9ikXvBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 16:44",
+  "url": null
+}

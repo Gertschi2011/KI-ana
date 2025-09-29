@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Dynamo AI (YC W22) Is Hiring a Senior Kubernetes Engineer\n • Hacker News: Statistical Physics with R: Ising Model with Monte Carlo\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum Polen zu den wirtschaftlich erfolgreichsten EU-Länder gehört",
+  "created_at": 1758283831.1418984,
+  "hash": "5942a623dafef9dc3014d108966678370d2ae8e443edefeb92eff3d3f6a8c327",
+  "id": "BLK_1758283831_80dcc5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8nOaG6YA5AuCyjNLCVbxhJJHUUCLuKFuDTiQYEj/uRlbQ4mGMg4m4UWJQXYwMpeTqqE4PRwVTfERDcF5RRR2Cg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 14:10",
+  "url": null
+}

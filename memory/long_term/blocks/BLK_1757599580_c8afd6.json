@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Teens are adjusting to the smartphone ban\n • Hacker News: An Engineering History of the Manhattan Project\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Arbeitgeber darf Eltern von Kindern mit Behinderung nicht diskriminieren",
+  "created_at": 1757599580.0859027,
+  "hash": "645c60a3507b17ba4bb5b8a0bbd902126c553b9a7255cc0a0d809ab471f4f311",
+  "id": "BLK_1757599580_c8afd6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "q81aGQGFKLYCW0LT6O8NXQ0XVGOzeprxLv7p638WX+4sX2LVHT1al2ae+zVshPY5cc+ziUBfhCIIA22NtykZDw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 16:06",
+  "url": null
+}

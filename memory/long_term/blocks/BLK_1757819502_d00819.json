@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Do I Need Kubernetes?\n • Hacker News: How the restoration of ancient Babylon is drawing tourists back to Iraq\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Jung, weiblich, (selten) Kommunalpolitikerin",
+  "created_at": 1757819502.3821807,
+  "hash": "e16b6279a83316e00558bd90cca856310eb2e79d75611590234b8615b755cbbf",
+  "id": "BLK_1757819502_d00819",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MN7uZFdUz2qlGA2ceYvf0siah48z8ZNNRhrvGOmxWk8/xgTxpBDhgiAk9g7GA5WPZYU/mz7FRe/D2p4wl1wZDw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 05:11",
+  "url": null
+}

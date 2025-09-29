@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: My Workflow Is 70% AI, 20% Copy-Paste, 10% Panic. What's Yours?\n • Hacker News: A love letter to the CSV format (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Polen beantragt NATO-Beratungen zum Abschuss russischer Drohnen",
+  "created_at": 1757504699.3903253,
+  "hash": "22ce481299bfd1de709805c09271494358bb7d050b0f0c077d7f0de5a473b4d5",
+  "id": "BLK_1757504699_a067ab",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "WvHDhiVSFRDEsRRtTFYK/z9miQn6xklUwCrIKL4SOXmyoAtsd4H+QOa4vgSoQSJpOZ6iIXs6Qaolum3+JWuPCg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 13:44",
+  "url": null
+}

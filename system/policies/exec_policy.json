@@ -1,0 +1,23 @@
+{
+  "network": {
+    "allowlist_domains": ["wikipedia.org","de.wikipedia.org","britannica.com"],
+    "denylist_domains": ["*.onion","pastebin.com"],
+    "user_agent": "KI_ana/1.0 (+https://example.local)",
+    "timeout_sec": 15,
+    "max_retries": 2
+  },
+  "filesystem": {
+    "allowed_write_paths": ["~/ki_ana/"],
+    "deny_patterns": ["/etc/*","/root/*","/var/log/auth.log"]
+  },
+  "process": {
+    "forbid_shell": true,
+    "max_cpu_pct": 60,
+    "max_mem_mb": 1024
+  },
+  "actions": {
+    "allow_code_exec": false,
+    "allow_system_cmds": false,
+    "allow_network_crawl": true
+  }
+}

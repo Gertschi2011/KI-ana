@@ -1,0 +1,30 @@
+{
+  "block_type": "sensor_interface",
+  "timestamp": "2025-08-07T12:51:00.644813Z",
+  "description": "Definiert die Sensor-Kommunikationsschnittstellen, die KI_ana 2.0 mit Subminds und Ger\u00e4ten verwenden darf.",
+  "supported_inputs": [
+    "microphone",
+    "camera",
+    "touchscreen",
+    "keyboard",
+    "temperature_sensor",
+    "gps",
+    "lidar",
+    "ultrasound",
+    "infrared",
+    "accelerometer"
+  ],
+  "communication_protocols": [
+    "USB",
+    "I2C",
+    "SPI",
+    "Bluetooth",
+    "Wi-Fi",
+    "WebRTC",
+    "HTTP API",
+    "MQTT"
+  ],
+  "permissions_required": true,
+  "sandbox_mode": true,
+  "notes": "Alle physischen Ein- und Ausgaben ben\u00f6tigen eine eindeutige Genehmigung durch die Instanz des Eigent\u00fcmers oder gesetzlich zust\u00e4ndige Stellen."
+}

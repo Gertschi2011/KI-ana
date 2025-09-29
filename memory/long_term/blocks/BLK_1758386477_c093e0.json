@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Are Touchscreens in Cars Dangerous?\n • Hacker News: These days, systemd can be a cause of restrictions on daemons\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas schürt Angst vor Verschwinden der Geiseln für immer",
+  "created_at": 1758386477.6566443,
+  "hash": "36cd7a9d880b9ba71279be7423066ba5c1350b892c376f5737f6b5023772e1f8",
+  "id": "BLK_1758386477_c093e0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "sP3P4CQoO2jYpqU+rHFmpB//+Xo8Ex2f8NUeuhpBmzkCcslvv6leCO/B6K7q05GBznRiX3H8uJn91k//YXUqDg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 18:41",
+  "url": null
+}

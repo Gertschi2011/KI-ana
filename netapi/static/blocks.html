@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>KI_ana – Blocks Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#7F5AF0">
+  <link rel="manifest" href="/static/manifest.json">
+  <link href="/static/styles.css" rel="stylesheet">
+  <style>
+    .container{max-width:1100px;margin:64px auto 24px;padding:0 16px}
+    h1{margin:12px 0 8px}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0 16px}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:860px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:#fff;border-radius:12px;padding:12px;border:1px solid #eef0f5;box-shadow:0 6px 20px rgba(0,0,0,.06)}
+    .card h3{margin:0 0 6px}
+    .meta{font-size:12px;color:#666}
+    .tag{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef2ff;color:#3b3b7a;margin-right:6px;font-size:11px}
+    .row{display:flex;gap:8px;align-items:center}
+    input,select{padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px}
+    .muted{color:#666}
+    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
+  </style>
+  <script defer src="/static/blocks.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/static/sw.js').catch(()=>{});
+      });
+    }
+  </script>
+</head>
+<body>
+  <div id="navbar"></div>
+  <div class="container">
+    <h1>Blocks Viewer</h1>
+    <div class="toolbar">
+      <input id="q" type="text" placeholder="Suche in Titeln/Inhalten…" style="flex:1 1 280px">
+      <input id="topic" type="text" placeholder="Thema (optional)">
+      <input id="tags" type="text" placeholder="Tags (Komma‑getrennt)">
+      <input id="host" type="text" placeholder="Quelle-Host (optional)">
+      <select id="minRating" title="min. Rating">
+        <option value="0">Rating ≥ 0.0</option>
+        <option value="0.2">Rating ≥ 0.2</option>
+        <option value="0.4">Rating ≥ 0.4</option>
+        <option value="0.6">Rating ≥ 0.6</option>
+        <option value="0.8">Rating ≥ 0.8</option>
+      </select>
+      <select id="sortBy" title="Sortierung">
+        <option value="rating_desc">Sortieren: Rating ↓</option>
+        <option value="rating_asc">Sortieren: Rating ↑</option>
+        <option value="count_desc">Sortieren: Bewertungen ↓</option>
+        <option value="count_asc">Sortieren: Bewertungen ↑</option>
+        <option value="time_desc">Sortieren: Neueste</option>
+        <option value="time_asc">Sortieren: Älteste</option>
+      </select>
+      <input id="minCount" type="number" min="0" step="1" placeholder="min. Bewertungen" style="width:140px">
+      <button id="searchBtn" class="btn primary">Suchen</button>
+      <button id="presetToolUsage" class="btn" title="Zeige Tool‑Nutzung (tool_usage)">Tool Usage</button>
+      <button id="resetBtn" class="btn">Reset</button>
+      <span id="count" class="muted"></span>
+      <span id="sortInfo" class="muted" style="margin-left:8px"></span>
+    </div>
+    <div id="list" class="grid"></div>
+  </div>
+<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+</body>
+</html>

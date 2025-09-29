@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Veena Chromatic Tuner\n • Hacker News: AI Adoption Rate Trending Down for Large Companies\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Selenskyj drängt auf schärfere Russland-Sanktionen - Trump zeigt sich offen",
+  "created_at": 1757315983.589018,
+  "hash": "5bb9317e62bcd1cafef23bce063827185049ee664314967ec438f58bef190554",
+  "id": "BLK_1757315983_c13a10",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "FtksyNCu1YXs1KfjU3uVvo6KNaz5Hr3z6who7mPdqP1nZfd/4TmIpl50g4/OybYqCKXoziOWqEbYi/6iJFM/DA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 09:19",
+  "url": null
+}

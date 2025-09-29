@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Models of European Metro Stations\n • Hacker News: SpikingBrain 7B – More efficient than classic LLMs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Krieg: Katar - Vermittler unter Beschuss",
+  "created_at": 1757839857.8857322,
+  "hash": "76af63b6e0ec3695b02538fe587087c318f8903aab5b5adb0f126125c6639e22",
+  "id": "BLK_1757839857_881bd8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TqmQ08l9GzpDMHBRvOBH5T3qrYt46tLr3z+Xy4AcFRgCDZXDkrLezsHmYs9/P38QyzxXtor+/J9OF9t+TRY6Cw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 10:50",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Performance-focused forks of styled-components\n • Hacker News: Qwen3-Next\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): İmamoğlu vor Gericht: Wachsender Druck auf türkische Opposition",
+  "created_at": 1757666212.232796,
+  "hash": "9f9fbf296d791bba6926a10642e2b7a14fe2876be22ef4d48f52fa20d2ec7be2",
+  "id": "BLK_1757666212_41f577",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "eCwPJjAFlPhY+vFeiM9oFo7Uw+uWcCp3qdfk8UE49wb6UTX04JzsHU1BZ23sYm+c58WGIP/KfveAxHasrZ9iAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 10:36",
+  "url": null
+}

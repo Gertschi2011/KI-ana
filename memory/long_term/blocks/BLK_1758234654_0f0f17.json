@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: I created a small 2D game about an ant\n • Hacker News: Returning to Church won't save us from nihilism\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "created_at": 1758234654.2647336,
+  "hash": "b705c94131f94f1be925bcde2a39581cfe1d5b28c4246471fc46fa2c6be1b94e",
+  "id": "BLK_1758234654_0f0f17",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "leyOXWckO6errvY9hplNX0/T0Fka8ksEel5zjs6iitrMcgvt9GM+XFWd/G3QBWWJ/rjpABDx+yOKE/HMdBH4CQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 00:30",
+  "url": null
+}

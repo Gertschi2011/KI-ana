@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: First Murder-Suicide Case Associated with AI Psychosis\n • Hacker News: Nintendo Switch 2 Dock USB-C Compatibility\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Klingbeil zur Haushaltslücke: \"Werden den Menschen etwas abverlangen müssen\"",
+  "created_at": 1756696625.753201,
+  "hash": "1f3f9e248b1e0d69005d2d07e98ad8451aa7f88fe6d8317495c258f48c75ddd6",
+  "id": "BLK_1756696625_79d35a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "6+AfPDFPJ27ZYxMvxpcs/H3ZvpdEGmPmxZGKRebYS80m79OTgXBxYu9mlgo5Vh5DhaO4owLx3hBBinl4y5+QBg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 05:17",
+  "url": null
+}

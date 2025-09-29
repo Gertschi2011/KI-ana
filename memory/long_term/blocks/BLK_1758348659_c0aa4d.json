@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: High-performance read-through cache for object storage\n • Hacker News: Supporting Our AI Overlords: Redesigning Data Systems to Be Agent-First\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vor Trauerfeier für Kirk: Scharfe Debatte und demonstrative Einheit",
+  "created_at": 1758348659.6006823,
+  "hash": "04ba2f8918db7caf5a9a55c047e5519d1c69ed6550a249582e44efab2c0833fe",
+  "id": "BLK_1758348659_c0aa4d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "WZkyaIdqpIfhQXjdQJoi4y84sxdQNHSnpL5RAoVbkCTBaWDayjeWnWUP/pww/gDyAOKkHHM0vdCnIuB11FpxCQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 08:10",
+  "url": null
+}

@@ -1,0 +1,11 @@
+{
+  "global": {
+    "per_minute": {"crawl": 3, "learn": 5},
+    "per_hour": {"crawl": 60, "learn": 200}
+  },
+  "per_domain": {
+    "wikipedia.org": {"per_hour": 30},
+    "britannica.com": {"per_hour": 15}
+  },
+  "burst": {"crawl": 2}
+}

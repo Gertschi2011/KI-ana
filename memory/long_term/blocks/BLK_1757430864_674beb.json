@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: US HS students lose ground in math and reading, continuing yearslong decline\n • Hacker News: Claude can now create and edit files\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Militärattacke gegen Hamas-Führung in Doha",
+  "created_at": 1757430864.66025,
+  "hash": "0bece68a04421915ca88af6afb0123283d60377ebef5afe55510afc4cc035cfc",
+  "id": "BLK_1757430864_674beb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "IXxhPRYtZTZhLAgLcPQGSUq6Jxv6fFBuHNaF8l/JyIVNDOcnd37Pv4+/Q1lLV0dNrqls5qoLzTI+tovYk4bJAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 17:14",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Decompiling the GPL violated Linux kernel using Evolutionary Algorithms\n • Hacker News: Performance-focused forks of styled-components\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sorgt der Boom der Rüstungsindustrie für Wirtschaftsaufschwung?",
+  "hash": "1e70c603a70cbb6a58c07aa691976aad9fe7c61210524f8d2b24f988c4793614",
+  "id": "BLK_1757669813_lzny3b",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "rzkIAUB/ADgZkrV7igs+xNq2xZm2pImCM1y8mS6eHnp1t74AllW/4kvuWD3aA/dRe3wvq5FkGHxM5M/QsIFoCg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 11:36",
+  "ts": 1757669813,
+  "url": ""
+}

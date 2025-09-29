@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I bought the cheapest EV, a used Nissan Leaf\n • Hacker News: Fiber Concurrency\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wadephul hält Stopp von Waffenlieferungen an Israel für ausreichend",
+  "created_at": 1757063974.4012887,
+  "hash": "4737e342b4756572b1e8f49d2841f391abc0f0b12fa5114e16dee9a38d2d52f4",
+  "id": "BLK_1757063974_867966",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KLDIRnDSmQGfN8fDDKDWZTqkbW+ZPqrqFxkKWSwza74lRM88j6uUcYP4ZTJ7SjHKfArA0wENvbEQaw8O2WvoBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 11:19",
+  "url": null
+}

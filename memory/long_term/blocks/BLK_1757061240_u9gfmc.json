@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Fiber Concurrency\n • Hacker News: SQL Needed Structure\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "hash": "95bb645e6909bffe8bd5d0df6d76c050c3dd14b8d3c2cbb487e64882ea8e5164",
+  "id": "BLK_1757061240_u9gfmc",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "H+xGNwttfN+Oq3wZGjM8wv+tbjzUHnJMYOodSKc8hHnF6iav/CHKBRu0VMXhinTN6tHeZ73TheOYOq93lY2ACA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 10:34",
+  "ts": 1757061240,
+  "url": ""
+}

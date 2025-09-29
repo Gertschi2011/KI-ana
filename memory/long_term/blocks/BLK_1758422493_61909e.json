@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI and surveillance capitalism are undermining democracy\n • Hacker News: Teen Suspect Surrenders in 2023 Las Vegas Casino Cyberattack Case\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): DB-Regio-Chefin Palla soll neue Bahnchefin werden",
+  "created_at": 1758422493.8826659,
+  "hash": "dbcd593ee442d07392ff42109bb843620d55d393f1fcc4fc98507ecb3e4cce88",
+  "id": "BLK_1758422493_61909e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "q4BKdR2aztDGpqiviyDGRw/jR9VghtGIoZ/0WZOJvGmLyjYgog796HmlODqcORuqRdfIUo6LEjp3LI/p0/5oBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-21 04:41",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: C++26: Erroneous Behaviour\n • Hacker News: A history of metaphorical brain talk in psychiatry\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht: Gelöstes Kabel wohl Ursache für Unglück in Lissabon",
+  "created_at": 1757200334.3963275,
+  "hash": "b0b6a69571995b5569ac899151cdc2e068de4fbb782c816618b78c14470a0bce",
+  "id": "BLK_1757200334_7ac8f3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cyoX8iWtUMJHMzhPkX9x7OJpAo0Ro22lTfHxgRv6uTasQZo4SzQI1o17bigV8Rp8euF5pk2MMqfmrtXQRckRAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 01:12",
+  "url": null
+}

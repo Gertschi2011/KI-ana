@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Folks, we have the best π\n • Hacker News: Celestia – Real-time 3D visualization of space\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Parteien beraten Ergebnis der Kommunalwahl in NRW",
+  "hash": "7aec1cdb1a59dbe9c9993b0a52aed1db5d0649afbeca65fd8281a75b8444dd75",
+  "id": "BLK_1757927416_649qjw",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ApcsehUApSvfd982EWYHcEXSUdndBFR+aHnT66ua5LmT/RsV1TYi+/URFeH1EWJthQkSzzXwnPPK3kumqYtvBA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 11:10",
+  "ts": 1757927416,
+  "url": ""
+}

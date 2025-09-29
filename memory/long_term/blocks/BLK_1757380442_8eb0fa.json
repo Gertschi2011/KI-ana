@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Storm Hits the Art Market\n • Hacker News: Tesla market share in US drops to lowest since 2017\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie geht es in Frankreich nach dem Sturz Bayrous weiter?",
+  "created_at": 1757380442.4282575,
+  "hash": "4d07e4f77b8588af6118568ba548ae466620e722d463d4c48178d1fb9c20c51c",
+  "id": "BLK_1757380442_8eb0fa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "sPPiXHk/iqw3agbiKcXuOen+eC2J/yjsvPIw/Y+tLm2ZHTSXGRlYpC+ZSxfN+ZDnyIQhFiybCctH0rKlOlxyDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 03:14",
+  "url": null
+}

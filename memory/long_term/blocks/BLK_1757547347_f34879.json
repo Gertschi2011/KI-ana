@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Intel's E2200 \"Mount Morgan\" IPU at Hot Chips 2025\n • Hacker News: KDE launches its own distribution\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump-Unterstützer Charlie Kirk erschossen",
+  "created_at": 1757547347.8009655,
+  "hash": "0f6f864f030d8d7927f4e0819476aa336f71e4f7e9f97eaef7adcb1ae59d9be6",
+  "id": "BLK_1757547347_f34879",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "6tTCXLrrRq+RqJjjVHAbHbO3TMApzcRCx3e5DukuIysRBEVp8BFh5CSwOlsiEA7AtFf1Po/D8DIl6YXrreNWCg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 01:35",
+  "url": null
+}

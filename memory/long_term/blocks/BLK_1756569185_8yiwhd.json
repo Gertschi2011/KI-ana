@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Adafruit Fruit Jam – An RP2350 mini computer running classic Macintosh\n • Hacker News: Condor's Cuzco RISC-V Core at Hot Chips 2025\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zehn Jahre \"Wir schaffen das\": Triebfeder für Europas Asylreform",
+  "hash": "ceb44a1fe2552da3e8d368a8fa6a0b3f8e74ec74ad10df7d94a215f8a2756bfc",
+  "id": "BLK_1756569185_8yiwhd",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "fhj4iitLGnkN3E3Qu+aWIEStHfvxfy/MIYhGBKGFQfafzrezJV+pmE5SD9rsjr6A48wDFtVezZU5Mg7e901nAA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 17:53",
+  "ts": 1756569185,
+  "url": ""
+}

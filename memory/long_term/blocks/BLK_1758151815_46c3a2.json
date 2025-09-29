@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ABC Pulls Jimmy Kimmel Live from the Air 'Indefinitely'\n • Hacker News: Pg_links\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Recherche zu Jan Marsalek: \"Deutschland hätte viel aktiver sein können\"",
+  "created_at": 1758151815.2900558,
+  "hash": "752f41bb6a4eaffce4ddc42b01dd5843ab1d7641b4b3880c3a8fa2128ad813d2",
+  "id": "BLK_1758151815_46c3a2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "l+RokxCK6xES+amXgE2RjlOWfxXD0jfcXx6bADaWn5f2N5/NL6lKFO6NbFh5rHcfRoH4WSJWcYjYOWZBoFOJCQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 01:30",
+  "url": null
+}

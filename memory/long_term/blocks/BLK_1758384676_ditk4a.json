@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: These days, systemd can be a cause of restrictions on daemons\n • Hacker News: Britain jumps into bed with Palantir in £1.5B defense pact\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas schürt Angst vor Verschwinden der Geiseln für immer",
+  "hash": "9eabb9ccf48f3851c2951093e584312f6dd2af538b817688ebc2068bef67add8",
+  "id": "BLK_1758384676_ditk4a",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "M9MUTlBOsbtyezCuPiqJ/Mt2dIfsEWVSaZyNcReuIj7udRGaJH62TFEdUjtxvtIejxElRJR5R50KS7vrDESsBA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 18:11",
+  "ts": 1758384676,
+  "url": ""
+}

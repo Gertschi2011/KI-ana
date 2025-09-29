@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Senator demands to know status of 'duplicate' SSA database 'immediately'\n • Hacker News: Fartscroll-Lid: An app that plays fart sounds when opening or closing a MacBook\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brasiliens Ex-Präsident Bolsonaro zu mehr als 27 Jahren Haft verurteilt",
+  "created_at": 1757637398.4684815,
+  "hash": "afb277012a9d6cdcf2fb0eda61aba0b2cfafbb3404c33eca8c8eb91e2464dec5",
+  "id": "BLK_1757637398_3f0a54",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "uDOBMjLDLXTgosI04aHyk5gaKVgos+oNtYKHy6CPgevE6anevyOn/qabCboPOTEpAmGaNDk6fXaXq+HL9mNSBw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 02:36",
+  "url": null
+}

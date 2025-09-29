@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Hypervisor in 1k Lines\n • Hacker News: Anthropic is endorsing SB 53\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs neuer Premier: Lecornu wird es schwer haben",
+  "hash": "47284ed164d7762abeb1447820fc3eefc5f64f29caa042f31ed4a9c3120bcf7e",
+  "id": "BLK_1757465080_ll0ys0",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "cJjy/05MQIH9rsWCq1FI6rYTbCkgqbEkz2xzgWzcIevdnr2iImusZumC8k7kXNTfaEHZ1SAWxaNm6HmorZOOAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 02:44",
+  "ts": 1757465080,
+  "url": ""
+}

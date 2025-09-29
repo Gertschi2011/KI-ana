@@ -1,0 +1,18 @@
+{
+  "content": "Es scheint, als hättest du noch keine Antwort hinterlassen. Könntest du bitte deine Frage oder dein Thema mitteilen? Ich helfe dir gerne bei der Überprüfung von Lücken und Unklarheiten und gebe Tipps für Verbesserungen an.",
+  "hash": "a60c5f7ee7b6c6a6ae91d6d4b9b86f4d7cdd670be1318e29c2f636d58a961440",
+  "id": "BLK_1757694942_wsh110",
+  "meta": {
+    "chain_hint": false,
+    "source": "chat"
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "I3Z0HTbu2LsHy/GzpqPSz1LuRepFIaETXRPYRYvtBmYVyxhCwng5i3ILLiZrEk3wyQj0tqOf4GJkI7O/o3jGAQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "learned"
+  ],
+  "title": "was weißt du über den Mars?",
+  "ts": 1757694942,
+  "url": ""
+}

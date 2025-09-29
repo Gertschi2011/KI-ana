@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Models of European Metro Stations\n • Hacker News: SpikingBrain 7B – More efficient than classic LLMs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brand in russischer Ölraffinerie nach Drohnenangriff",
+  "created_at": 1757845425.278123,
+  "hash": "b6ce02bb65815ffd759aec335bb8531ec2c01aaa0464c45ac35cb585648d423e",
+  "id": "BLK_1757845425_0d19c4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "CMFeOzfEPT5TwQJh1Zju9K188iVopVcA2AxIKAvuV0jukamN2dKYGROKrVMnpV18cCddZhQRiEuiKlryFxkEAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 12:23",
+  "url": null
+}

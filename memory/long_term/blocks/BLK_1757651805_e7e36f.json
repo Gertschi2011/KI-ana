@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Differences between stal/IX and regular Linux\n • Hacker News: The challenge of maintaining curl\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Manöver von Russland und Belarus: Eine versteckte Mobilmachung?",
+  "created_at": 1757651805.508467,
+  "hash": "babb4ffc11082af9c92d06727f775d0025eb08b322bba4e5658f642637900e56",
+  "id": "BLK_1757651805_e7e36f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "eKOzv2i4nDFfNEhL2EiWnF40Rro9FshlfG4XEzLa1WmBMVnAEy2uyR7paH91mmAId12pPmRwbSSvBUy21k2/BQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 06:36",
+  "url": null
+}

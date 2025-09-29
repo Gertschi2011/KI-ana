@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: iPhone app alerts users to nearby ICE sightings\n • Hacker News: Setting up local LLMs for R and Python\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie geht es in Frankreich nach dem Sturz Bayrous weiter?",
+  "hash": "c2015b4cb5efb0f5b4f34513054dd9fa64135c7b53aff5f7402bbc5a747991bf",
+  "id": "BLK_1757362435_z44zwy",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Fqj2c9AsnBpsEyJVmBz/f2NUKB5+5n7nddoyPsdcHxQcxU8YK26X/hl159U5uKL58i3RsW5MiRpHk3FQLHjFDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 22:13",
+  "ts": 1757362435,
+  "url": ""
+}

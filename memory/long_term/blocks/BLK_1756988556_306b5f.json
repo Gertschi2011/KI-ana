@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Framework Making Printers\n • Hacker News: Volkswagen to make EVs more affordable, starting with the ID.Polo and a new SUV\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Standseilbahn entgleist: Zahl der Todesopfer in Lissabon steigt auf 17",
+  "created_at": 1756988556.6734817,
+  "hash": "61ddb4a61c55377b4edb5b0dedfe4bb611a577cf532f06ea7f5488fa28908a4e",
+  "id": "BLK_1756988556_306b5f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "pwHg6mHGyAX+i1BiENnnUFOhqw10v4eQeaoCsVfbZz4RyNccZ+zjkcLQ+VIy/KdD+hPp7VVrnzbduO3dlTN4Dg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 14:22",
+  "url": null
+}

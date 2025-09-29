@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: YouTube Is a Mysterious Monopoly\n • Hacker News: Strong Eventual Consistency – The Big Idea Behind CRDTs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Beratungsstellen melden Zulauf von Wehrdienstverweigerern",
+  "hash": "b206e8ff4ed96c84443b4f488e652d7a04474a5629ddd81a24d947146d210f29",
+  "id": "BLK_1757400250_hk62og",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "iKo71uU3vzZGcN3clDa5ph2ee6VAe2+oEsox6MPz+sjvy2y+I5bwt1LU9BPJ6XqvSINwUQU8rGTScK2RGMJKAA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 08:44",
+  "ts": 1757400250,
+  "url": ""
+}

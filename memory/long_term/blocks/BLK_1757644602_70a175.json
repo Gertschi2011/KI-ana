@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Challenge of Maintaining Curl\n • Hacker News: We traded blogs for black boxes, now we're paying for it\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brasiliens Ex-Präsident Bolsonaro zu mehr als 27 Jahren Haft verurteilt",
+  "created_at": 1757644602.07551,
+  "hash": "2912b3063fe9826bfa5871e223ec8a30111f6da149653f36540028616a8a31cb",
+  "id": "BLK_1757644602_70a175",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "YE6OIDgneuGeLuwsKyXhdKDFPKhKDULuekDHYNCgLY37zKutHnBXG0KrkqNJZRxjiuqYGDR1yOt7yJeOJwbxDA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 04:36",
+  "url": null
+}

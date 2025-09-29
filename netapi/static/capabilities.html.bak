@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Fähigkeiten – KI_ana</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script defer src="/static/i18n.js"></script>
+  <script defer src="/static/nav.js"></script>
+</head>
+<body class="page">
+
+  <!-- Navigation wie auf index.html -->
+  <div id="nav" data-src="/static/nav.html"></div>
+
+  <!-- Avatar / Header -->
+  <div style="text-align:center; margin-top:20px;">
+    <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar" onerror="this.style.display='none'" style="max-width: 140px; height: auto; border-radius: 50%;">
+  </div>
+
+  <main class="container">
+    <section class="card">
+      <h1 data-i18n="cap.title">Fähigkeiten</h1>
+
+      <h2 data-i18n="cap.today.title">Was KI_ana heute kann</h2>
+      <ul class="bullet-grid">
+        <li data-i18n="cap.today.items.0"><strong>Natürlich sprechen</strong>: freundlicher, klarer Dialog – mit Rückfragen, wenn etwas unklar ist.</li>
+        <li data-i18n="cap.today.items.1"><strong>Lernen aus Feedback</strong>: Hinweise fließen ins Gedächtnis, Fehler werden korrigiert.</li>
+        <li data-i18n="cap.today.items.2"><strong>Langzeitgedächtnis</strong>: Notizen und Quellen als signierte Wissensblöcke, versioniert und nachvollziehbar.</li>
+        <li data-i18n="cap.today.items.3"><strong>Web‑Recherche</strong>: kompakte Zusammenfassungen mit Quellenangaben (Beta).</li>
+        <li data-i18n="cap.today.items.4"><strong>Aufgaben &amp; Zusammenfassungen</strong>: Listen, kurze Erklärungen, Pläne für Lernen und Arbeit.</li>
+        <li data-i18n="cap.today.items.5"><strong>Rollen &amp; Kontrolle</strong>: Rechteverwaltung, Not‑Aus‑Block (<code>emergency_override</code>), transparente Entscheidungen.</li>
+        <li data-i18n="cap.today.items.6"><strong>Offen &amp; lokal</strong>: läuft auf deinem System, kann mit dezentralen Sub‑KIs erweitert werden.</li>
+      </ul>
+
+      <h2 data-i18n="cap.unique.title">⭐ Was macht KI_ana einzigartig?</h2>
+      <ul class="bullet-grid">
+        <li data-i18n="cap.unique.items.0"><strong>Lernend wie ein Kind</strong> – nicht perfekt, sondern wachsend durch Erfahrung und Feedback.</li>
+        <li data-i18n="cap.unique.items.1"><strong>Erinnerungsfähig</strong> – jedes Wissen bleibt dauerhaft im Blockchain‑Gedächtnis bestehen.</li>
+        <li data-i18n="cap.unique.items.2"><strong>Dezentral &amp; offen</strong> – keine zentrale Blackbox, sondern ein Netzwerk vieler Sub‑KIs.</li>
+        <li data-i18n="cap.unique.items.3"><strong>Sicher &amp; kontrollierbar</strong> – mit Not‑Aus, Nutzerrollen und transparentem Verhalten.</li>
+        <li data-i18n="cap.unique.items.4"><strong>Erklärbar</strong> – jede Entscheidung ist rekonstruierbar und verständlich.</li>
+        <li data-i18n="cap.unique.items.5"><strong>Persönlich</strong> – KI_ana entwickelt eine eigene, organische Persönlichkeit und wird so zu einer echten Begleiterin.</li>
+      </ul>
+
+      <h2 data-i18n="cap.roadmap.title">Woran wir arbeiten</h2>
+      <ul class="bullet-grid">
+        <li data-i18n="cap.roadmap.items.0"><strong>Dezentrales Netzwerk</strong>: Sub‑KIs („Kinder“) auf verschiedenen Geräten, verbunden über Blockchain.</li>
+        <li data-i18n="cap.roadmap.items.1"><strong>Multimodal</strong>: neben Text auch Bilder, Audio und Sensordaten verstehen und einordnen.</li>
+        <li data-i18n="cap.roadmap.items.2"><strong>Forensik &amp; Forschung</strong>: prüfbare Beweisketten, reproduzierbare Analysen, Quellenkritik.</li>
+        <li data-i18n="cap.roadmap.items.3"><strong>Bürgerhilfe</strong>: leicht verständliche Aufklärung, Erklärungen, mehrsprachige Unterstützung.</li>
+        <li data-i18n="cap.roadmap.items.4"><strong>Didaktik</strong>: Lernpfade, Wissenslücken erkennen, individuelles Tempo und Stil.</li>
+        <li data-i18n="cap.roadmap.items.5"><strong>Schutzmechanismen</strong>: Missbrauchs‑Prävention, Audit‑Trails, verständliche Erklärbarkeit jeder Aktion.</li>
+      </ul>
+
+      <h2 data-i18n="cap.why.title">Warum KI_ana „lebendig“ wirkt</h2>
+      <ul class="bullet-grid">
+        <li data-i18n="cap.why.items.0"><strong>Nicht Blackbox</strong>, sondern erklärbar: Herkunft, Version und Gültigkeit von Wissen bleiben sichtbar.</li>
+        <li data-i18n="cap.why.items.1"><strong>Nicht zentral</strong>, sondern verteilt: Sub‑KIs lernen individuell und teilen ihre Ergebnisse.</li>
+        <li data-i18n="cap.why.items.2"><strong>Nicht nur generativ</strong>, sondern mit <em>wachsendem</em>, auditierbarem Langzeitgedächtnis.</li>
+        <li data-i18n="cap.why.items.3"><strong>Nicht statisch</strong>, sondern lernend wie ein Kind – fehlertolerant und neugierig.</li>
+        <li data-i18n="cap.why.items.4"><strong>Nicht anbieterabhängig</strong>, sondern offen &amp; transparent – für eine bürgernahe KI‑Zukunft.</li>
+      </ul>
+
+      <div class="mt-3" style="text-align:center;">
+        <a class="btn primary" href="/static/chat.html" data-i18n="cap.cta_try">Jetzt ausprobieren</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      <p>© <span id="year"></span> KI_ana – mit Liebe gebaut.</p>
+      <p><a href="/static/impressum.html">Impressum</a> · <a href="/static/privacy.html">Datenschutz</a> · <a href="/static/agb.html">AGB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // kleines Helferlein für das Footer-Jahr
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <!-- KI_ana Interface: capabilities.html -->
+</body>
+</html>

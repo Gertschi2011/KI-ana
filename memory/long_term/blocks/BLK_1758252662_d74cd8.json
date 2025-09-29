@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Gemini in Chrome\n • Hacker News: Playing “Minecraft” Without Minecraft (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushalt für 2025: Wie groß sind die Spar-Spielräume?",
+  "created_at": 1758252662.107906,
+  "hash": "1a5add24cf21fdf9384a87a50f207233c41a9dcf62dffdfea773d18fb967c15c",
+  "id": "BLK_1758252662_d74cd8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8EtClUVVjJX4uxJems+JtzeP1NZpl6+dSgy5nylVK/soF8BlnwTRI47mhfFK9SlgrvHv1TdM61nG1gz1ieZnBg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 05:31",
+  "url": null
+}

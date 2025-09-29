@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hosting a website on a disposable vape\n • Hacker News: React Won by Default – and It's Killing Front End Innovation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pläne von Wirtschaftsministerin Reiche: Die Energiewende-Wende",
+  "created_at": 1757959840.0115838,
+  "hash": "7861756705d63b8b30b45556d07423022d3cf92bc3a9b4c2e7713caa1a11d5c9",
+  "id": "BLK_1757959840_3d2f5b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "L+GcBwQkoWTzfGi3WOVJQffUr3Wq54PfJweMkRXyhZkwJfcmn/Yg/fJs8tmcZIcspuv6XDEJPzD2KKGvE2ghCg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 20:10",
+  "url": null
+}

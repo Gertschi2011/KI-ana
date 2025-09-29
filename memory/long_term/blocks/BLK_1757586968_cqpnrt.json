@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: BCacheFS is being disabled in the openSUSE kernels 6.17+\n • Hacker News: DeepCodeBench: Real-World Codebase Understanding by Q&A Benchmarking\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundesweiter Probealarm: Behörden testen Katastrophenwarnsysteme",
+  "hash": "23504ffe4711ffc0e07b4990fb4bea1e2ff9af54b983b83025db04d4621b04ac",
+  "id": "BLK_1757586968_cqpnrt",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "l78/ux29K/NUor9uScIvkjdm57R0binL2ap+uO0ULea1Y7Rnh2dgoYOg4fpVqa3dxSLDURKdnQIPTJDMNI2GCg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 12:36",
+  "ts": 1757586968,
+  "url": ""
+}

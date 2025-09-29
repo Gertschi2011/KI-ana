@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ETFs now hold more than $3.1T worth of just top US companies\n • Hacker News: Scottish brothers finish mammoth row across Pacific Ocean after 139 days\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Putin reist nach China - und hofft auf stärkere Zusammenarbeit",
+  "created_at": 1756610604.0401912,
+  "hash": "7c96023a4956285c32605ff6ba1bf7234c3da5cbeaf49d5d19d9c530bb2a2ad9",
+  "id": "BLK_1756610604_c78d84",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fAIYCmYyXohEYNE804Ar/Gor1AXaxfbAVbeD7iG1/hTOVHjm+hA9LyXtA+DdKy+JTRMAYpsCE/wzD4AclGEjDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 05:23",
+  "url": null
+}

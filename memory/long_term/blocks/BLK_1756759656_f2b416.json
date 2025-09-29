@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Towards Memory Specialization: A Case for Long-Term and Short-Term RAM\n • Hacker News: Patrick Winston: How to Speak (2018) [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwierige Rettungsarbeiten nach Erdbeben in Afghanistan",
+  "created_at": 1756759656.356742,
+  "hash": "b6ee0e8c5bed8fc14f999c648d2cc2eeee1f1737e1f6ac43879312208d306368",
+  "id": "BLK_1756759656_f2b416",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bJ3SLINX8/ZYs11o2vYJwKf55OBbC916CmbNhpCQST3syMwHSuH0X+L5QdUrL4D1Ym1m8uo3dEHRuk0reQJSDw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 22:47",
+  "url": null
+}

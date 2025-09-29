@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Self Propagating NPM Malware Compromises over 40 Packages\n • Hacker News: Automating Distro Updates in CI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): UN-Kommissionsbericht wirft Israel Genozid im Gazastreifen vor",
+  "created_at": 1758023947.8044314,
+  "hash": "32220226a92578c288eeb9a1b81de62e0ec5d4f4595f9396f5873f902f2017e4",
+  "id": "BLK_1758023947_3151f4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "K1a2lEIEOb1aoa/FZrP0Fk+d4lPjQvTnqHgAiTjOP03Tz8tjjCm0TqMGZG1hlOJWzhKc2HawfLSdbpU9SAdCDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 13:59",
+  "url": null
+}

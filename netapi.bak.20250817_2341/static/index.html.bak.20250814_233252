@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>KI_ana</title>
+<style>
+  :root{
+    --bg:#0b1020; --panel:#111833; --panel2:#0e1530; --text:#eef3ff; --muted:#b9c4e6; --ring:rgba(106,166,255,.35);
+    --ok:#7be495; --warn:#ffcf6a; --err:#ff7b7b; --accent:#6aa6ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; min-height:100dvh; display:grid; place-items:center; background:
+    radial-gradient(1200px 800px at 20% -10%, #172045 0%, transparent 60%),
+    radial-gradient(800px 600px at 120% 10%, #1c2a63 0%, transparent 50%), var(--bg); color:var(--text);
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  .card{width:min(880px,100% - 24px); background:linear-gradient(180deg,var(--panel2),var(--panel));
+    border:1px solid #1e2a55; border-radius:20px; box-shadow:0 16px 50px rgba(0,0,0,.35); overflow:hidden}
+  header{display:flex; gap:16px; align-items:center; padding:18px 20px; border-bottom:1px solid #213064;
+    background:linear-gradient(180deg,#0f1733,#0b1126)}
+  .avatar{width:84px; height:84px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.08)}
+  h1{margin:0; font-size:20px}
+  .sub{margin:4px 0 0 0; color:var(--muted); font-size:14px}
+  .section{padding:16px 18px; border-top:1px solid #1f2c58}
+  .row{display:flex; gap:12px; flex-wrap:wrap}
+  input,button,textarea{background:#0f1530; color:var(--text); border:1px solid #2a3a72; border-radius:12px; padding:12px; font:inherit}
+  input:focus,textarea:focus{outline:2px solid var(--ring); box-shadow:0 0 0 4px rgba(58,88,168,.15)}
+  button{cursor:pointer; border-color:#3557a8; background:linear-gradient(180deg,#1a2760,#132051)}
+  button:hover{filter:brightness(1.06)}
+  .muted{color:var(--muted); font-size:13px}
+  .ok{color:var(--ok)} .err{color:var(--err)}
+  .hidden{display:none}
+  .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 10px; border-radius:999px; background:#122047; border:1px solid #2a3a72}
+  .grow{flex:1}
+  .messages{background:#101735; border:1px solid #223062; border-radius:16px; padding:12px; min-height:120px; max-height:280px; overflow:auto}
+  .bubble{max-width:75%; padding:10px 12px; border-radius:12px; margin:8px 0}
+  .me{margin-left:auto; background:#2342a0}
+  .bot{margin-right:auto; background:#1a2550}
+  .tiny{font-size:12px; opacity:.9}
+</style>
+</head>
+<body>
+<div class="card">
+  <header>
+    <img class="avatar" id="avatar" src="/static/Avatar_KI_ana.jpg" alt="KI_ana" onerror="this.src='/static/Avatar_KI_ana.jpg'">
+    <div>
+      <h1 id="title">Willkommen bei <b>KI_ana</b> 🫶</h1>
+      <p id="subtitle" class="sub">Bitte anmelden, dann sag ich hallo – mit deinem Namen.</p>
+    </div>
+  </header>
+
+  <!-- Login zuerst -->
+  <div id="login" class="section">
+    <h3 style="margin:0 0 8px 0">🔐 Anmeldung</h3>
+    <div class="row">
+      <input id="u" placeholder="Benutzername" value="Gerald" class="grow"/>
+      <input id="p" placeholder="Passwort" type="password" class="grow"/>
+      <button id="loginBtn">Anmelden</button>
+    </div>
+    <label class="pill" style="margin-top:10px"><input id="remember" type="checkbox" style="margin-right:6px"> merken</label>
+    <div id="authMsg" class="muted tiny" style="margin-top:8px">Noch nicht verbunden.</div>
+  </div>
+
+  <!-- Hauptbereich (erst nach Login) -->
+  <div id="main" class="hidden">
+    <div class="section">
+      <div class="row" style="align-items:center">
+        <div class="grow">
+          <div class="muted tiny">Angemeldet als <span id="who">–</span> (<span id="role">–</span>)</div>
+          <div id="greeting" style="margin-top:6px">—</div>
+        </div>
+        <form id="logoutForm" method="post" action="/logout"><button>Abmelden</button></form>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3 style="margin:0 0 8px 0">🧒 Natürlich lernen</h3>
+      <div class="muted tiny" style="margin-bottom:8px">
+        Sag Dinge wie: „Ich bin Gerald“, „Ich heiße …“, „Ich mag …“, „Ich mag nicht …“, „Mein Geburtstag ist am 4.5.1979“,
+        „Wer bin ich?“, „Was mag ich?“, „Zeig Profil“.
+      </div>
+      <div class="row">
+        <input id="teach" class="grow" placeholder="schreibe wie du mit einem Kind reden würdest…"/>
+        <button id="teachBtn">Sagen</button>
+      </div>
+      <pre id="teachOut" class="muted tiny" style="white-space:pre-wrap; margin-top:8px">—</pre>
+    </div>
+
+    <!-- Chat (einfach) -->
+    <div class="section">
+      <h3 style="margin:0 0 8px 0">💬 Chat</h3>
+      <div id="chatBox" class="messages"></div>
+      <div class="row" style="margin-top:8px">
+        <input id="msg" class="grow" placeholder="Frag mich etwas… (Frage, Erklärung oder Link)"/>
+        <button id="send">Senden</button>
+      </div>
+    </div>
+
+    <!-- Nur für Erschaffer/Creator: Status -->
+    <div id="creatorPanel" class="section hidden">
+      <h3 style="margin:0 0 8px 0">🛠️ Status (nur für den Erschaffer)</h3>
+      <pre id="status" class="muted tiny" style="white-space:pre-wrap; margin:0">—</pre>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  let session = ""; // cookie wird vom Server gesetzt; hier nur UI-Status
+
+  function speak(text){
+    try{
+      if(!('speechSynthesis' in window)) return;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'de-DE';
+      window.speechSynthesis.speak(u);
+    }catch{}
+  }
+  function addMsg(role, text){
+    const b = document.createElement("div");
+    b.className = "bubble "+(role==="me"?"me":"bot");
+    b.textContent = text;
+    $("chatBox").appendChild(b);
+    $("chatBox").scrollTop = $("chatBox").scrollHeight;
+  }
+  async function fetchJSON(path, opts={}){
+    const r = await fetch(path, Object.assign({credentials:'include'}, opts));
+    if(!r.ok) throw new Error("HTTP "+r.status);
+    return r.json();
+  }
+
+  async function refreshMe(){
+    try{
+      const me = await fetchJSON("/me");
+      if(!me || me.auth===false){ return false; }
+      const role = me.role || "family";
+      $("who").textContent = me.username || me.id || "—";
+      $("role").textContent = role;
+      $("login").classList.add("hidden");
+      $("main").classList.remove("hidden");
+      // freundliche Begrüßung mit Namen
+      try{
+        const prof = await fetchJSON("/profile/get");
+        const display = (prof.active && prof.profile && (prof.profile.display_name || prof.active)) || (me.username||"du");
+        $("greeting").textContent = `Hallo ${display}! Wie kann ich dir helfen?`;
+        speak(`Hallo ${display}! Wie kann ich dir helfen?`);
+      }catch{
+        const display = me.username || "du";
+        $("greeting").textContent = `Hallo ${display}! Wie kann ich dir helfen?`;
+        speak(`Hallo ${display}! Wie kann ich dir helfen?`);
+      }
+      if(role==="creator" || role==="owner" || role==="admin"){
+        $("creatorPanel").classList.remove("hidden");
+        refreshStatus();
+      }
+      return true;
+    }catch{ return false; }
+  }
+
+  async function refreshStatus(){
+    try{
+      const s = await fetchJSON("/status");
+      const head = s.chain_head || {};
+      const q = s.queue || {to_learn:0, open_questions:0};
+      const rm = s.recent_memories || [];
+      $("status").textContent =
+        `Warteschlangen: to_learn=${q.to_learn}, open_questions=${q.open_questions}\n`+
+        `Chain-Head: ${head.file||"-"}  |  ${head.type||""}  |  ${head.topic||""}\n`+
+        `Signatur: ${head.signature?'ja':'nein'}  |  Quelle: ${head.source||''}\n\n`+
+        `Letzte Memorys:\n`+
+        rm.map(x => `• ${x.file}  |  ${x.type||''}  |  ${x.topic||''}  |  ${x.timestamp||''}`).join("\n");
+    }catch(e){ $("status").textContent = "⚠️ Status-Fehler: "+e.message; }
+  }
+
+  $("loginBtn").onclick = async ()=>{
+    const form = new FormData();
+    form.append("username", $("u").value.trim());
+    form.append("password", $("p").value);
+    try{
+      const r = await fetch("/login", {method:"POST", body:form, credentials:"include", redirect:"follow"});
+      if(r.redirected || r.ok){
+        $("authMsg").textContent = "Verbunden ✓";
+        if($("remember").checked){
+          localStorage.setItem("ki_user", $("u").value.trim());
+        } else {
+          localStorage.removeItem("ki_user");
+        }
+        await refreshMe();
+      }else{
+        $("authMsg").textContent = "Login fehlgeschlagen.";
+      }
+    }catch(e){ $("authMsg").textContent = "Fehler: "+e.message; }
+  };
+
+  // Teach
+  $("teachBtn").onclick = async ()=>{
+    const txt = $("teach").value.trim(); if(!txt) return;
+    $("teach").value = "";
+    try{
+      const r = await fetchJSON("/profile/teach", {method:"POST", headers:{'Content-Type':'application/json'}, body: JSON.stringify({text:txt})});
+      $("teachOut").textContent = (r.message||"") + (r.profile_summary? ("\n\n"+r.profile_summary):"");
+      if(r.message){ addMsg("bot", r.message); }
+    }catch(e){ $("teachOut").textContent = "Fehler: "+e.message; }
+  };
+
+  // Chat
+  $("send").onclick = async ()=>{
+    const m = $("msg").value.trim(); if(!m) return;
+    $("msg").value = ""; addMsg("me", m);
+    try{
+      const r = await fetchJSON("/chat", {method:"POST", headers:{'Content-Type':'application/json'}, body: JSON.stringify({message:m})});
+      let reply = r.reply || "(keine Antwort)";
+      if(r.topic){ reply += `\n\n— [${r.action}] ${r.topic}`; }
+      addMsg("bot", reply);
+      if(!$("creatorPanel").classList.contains("hidden")){ refreshStatus(); }
+    }catch(e){ addMsg("bot", "⚠️ Fehler: "+e.message); }
+  };
+
+  // Auto-Restore user
+  try{ const u = localStorage.getItem("ki_user"); if(u){ $("u").value = u; $("remember").checked = true; } }catch{}
+  // Erste Me-Prüfung (Cookie eventuell schon vorhanden)
+  refreshMe();
+})();
+</script>
+</body>
+</html>

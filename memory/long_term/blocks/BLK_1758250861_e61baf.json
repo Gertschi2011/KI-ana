@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Gemini in Chrome\n • Hacker News: The Math of Catastrophe\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "created_at": 1758250861.3453517,
+  "hash": "f25305c16e9463bfa9cfef727aa52c2c44b5b287adb4a9aa512e748f3ecc8f41",
+  "id": "BLK_1758250861_e61baf",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "6EDsHf21YtpVh1ergupL8Zw5K4660WkNtNZF+ZSzdnl7PGbNwTDLaS+AIcSyflF6MZ1EJXEHWns3oBaDXXXJAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 05:01",
+  "url": null
+}

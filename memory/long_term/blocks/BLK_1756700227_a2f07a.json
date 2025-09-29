@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Nintendo Switch 2 Dock USB-C Compatibility\n • Hacker News: Lewis and Clark marked their trail with laxatives\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Umstrittenes Extremismusgesetz tritt in Russland in Kraft",
+  "created_at": 1756700227.4721012,
+  "hash": "312a9096280983299046864f6c99925b80b219acfeeb019914006f49edf5b9c9",
+  "id": "BLK_1756700227_a2f07a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "eedkKsqudjrBOllu3uvzW4LKzBHntchL9z7g238klj6s5EftdQLh0GUJDf3lf0EPf4iyNrzw6eZwU9kfF4v7Dg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 06:17",
+  "url": null
+}

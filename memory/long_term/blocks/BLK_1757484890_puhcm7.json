@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: I replaced Animal Crossing's dialogue with a live LLM by hacking GameCube memory\n • Hacker News: R-Zero: Self-Evolving Reasoning LLM from Zero Data\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Polen schießt erstmals russische Drohnen ab",
+  "hash": "f8e189a999318fdd1ae99219f54c591daef54c8d262a2a2f5960ceb314a37937",
+  "id": "BLK_1757484890_puhcm7",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "SpyI0QvfVTInakywPH/14P7a2GJlb5G5hKSd45sTz5hpqA7yOpS7mgMJhS7Unzz2AnCkUxq+f0mRYP53AWZ6Dg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 08:14",
+  "ts": 1757484890,
+  "url": ""
+}

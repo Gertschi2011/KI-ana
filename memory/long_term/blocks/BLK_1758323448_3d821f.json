@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Less is safer: how Obsidian reduces the risk of supply chain attacks\n • Hacker News: Show HN: Zedis – A Redis clone I'm writing in Zig\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzung: Estland beantragt Artikel-4-Beratungen der NATO",
+  "created_at": 1758323448.395605,
+  "hash": "95cd511b85c78d4841229712a1b49f316bc3dd5e0b3a2b40c3fbabf95e6f74c0",
+  "id": "BLK_1758323448_3d821f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Mftr+2IWOiyvuCRKQdMj8/gBdvu8s/bLWXcL+evppb+0+Mb+vnHv8OtFJeCOJzQUoLWV3Onou4mklRO3ItEgAQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 01:10",
+  "url": null
+}

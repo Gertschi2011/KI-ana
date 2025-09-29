@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: AI web crawlers are destroying websites in their never-ending content hunger\n • Hacker News: Launch HN: Datafruit (YC S25) – AI for DevOps\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Afghanistan: Nach dem Beben zeigt sich Ausmaß der Katastrophe",
+  "hash": "9fb1182cceab47f4332fa1aa66ad0d67ea73115ce9a5ed95826c035fc827b22b",
+  "id": "BLK_1756832666_va3mrm",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "sooK2hyQEo0MnZp7mWy9PpG/HjpLDRZfbuUHO1BYgi3unYDQYZjNlHzhrh1fNJ2m1GddP8wPkFUcAjeb7JfKAw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 19:04",
+  "ts": 1756832666,
+  "url": ""
+}

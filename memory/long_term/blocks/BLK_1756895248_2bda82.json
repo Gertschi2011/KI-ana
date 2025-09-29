@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The 16-year odyssey it took to emulate the Pioneer LaserActive\n • Hacker News: Finding thousands of exposed Ollama instances using Shodan\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krieg gegen die Ukraine: \"Russlands Wirtschaft verschlechtert sich rapide\"",
+  "created_at": 1756895248.4440968,
+  "hash": "d055488fdfdbed5088160704abb1e7f9aa1d61b607a41b192c8d31e4ae2785ed",
+  "id": "BLK_1756895248_2bda82",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "y4z94EvI7fdA7HxeEWlGNpgugV7nnH64I56Wj3Ew9e0FGZSHV0/bzv/+DTEkWkAXJ2p9VeHA5qu/cCXxLgucBw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 12:27",
+  "url": null
+}

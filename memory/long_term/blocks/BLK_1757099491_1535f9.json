@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Open-sourcing our text-to-CAD app\n • Hacker News: Freeway guardrails are now a favorite target of thieves\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Regierungskrise in Großbritannien: Premier Starmer baut Kabinett um",
+  "created_at": 1757099491.9826055,
+  "hash": "37d3979fe72eb4bf84d77f889be9f979e10d4225068b00d16594a4c9b4b2a9ea",
+  "id": "BLK_1757099491_1535f9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BloGb0XFka8RXULW1hHgpAyRQZQjisIIpb/MP87v2+NHCs6p1OsQCcS4ymSw9yj0mneFfszjGbS09ncQ90pUDg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 21:11",
+  "url": null
+}

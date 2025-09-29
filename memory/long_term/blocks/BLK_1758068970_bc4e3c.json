@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I launched a Mac utility; now there are 5 clones on the App Store using my story\n • Hacker News: Fairchild PPS-25: 4-bit CPU for 25-digit precision\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Tatverdächtiger im Fall Kirk wegen Mordes angeklagt",
+  "created_at": 1758068970.1065109,
+  "hash": "84027353257d4a860f91975ecb38d94f8a2b0d2bc1332ba41561c9a69c6baa93",
+  "id": "BLK_1758068970_bc4e3c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "BBdK/73tajZo10dTlXo6/D6xc3BdzYQ59gpD3FJ+CiAhqb5l2DyU8LT/cyxRRkrfSQQrDgDVBxH7udVQtfccAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 02:29",
+  "url": null
+}

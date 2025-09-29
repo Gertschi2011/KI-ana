@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I am giving up on Intel and have bought an AMD Ryzen 9950X3D\n • Hacker News: Unofficial Windows 11 requirements bypass tool allows disabling all AI features\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Massive Angriffe auf Ukraine - Regierungsgebäude in Kiew brennt",
+  "created_at": 1757232753.5998027,
+  "hash": "b60789d3a9bb6c822112b26e3570bc9aab0104afe6f4e9cdd81179bd350d46d4",
+  "id": "BLK_1757232753_90db57",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "SKiTXTm/Q0KIJbEkfQjNAtlnUcg7rxL6inL5+no2VBvMSAswfkbgxeG1W6zbJ3b05hPf7RVHdgCicTzQCAYGBA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 10:12",
+  "url": null
+}

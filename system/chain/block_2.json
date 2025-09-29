@@ -1,0 +1,16 @@
+{
+  "block_id": 2,
+  "content_hash": "",
+  "hash": "a7c5d2c5b3edf906db6b2d3f54b8f53b66d4f1c6de88b62613dd1d812ab41be9",
+  "memory_path": "",
+  "meta": {},
+  "previous_hash": "9f66fd538c2286300d16df22a36f449df2118e7d3e931d77b084026cb2a12343",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "GoSV6JRy25aGi259Gh1lK7xiOc3UbrbW1AzxK/lmOEZ5ixz4TWMPbcUV3iIRk905VxjrcJwoNu0eduJvZVhFAw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "signer_pubkey": "BPc5h+jR3VdGXle6pghTBSfDAiok+iYcwgbCuFX9+7g=",
+  "source": "https://www.britannica.com/science/artificial-intelligence",
+  "timestamp": "2025-08-07T13:12:46.154882",
+  "topic": "",
+  "type": "knowledge"
+}

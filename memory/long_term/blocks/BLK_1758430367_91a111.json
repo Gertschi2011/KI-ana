@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: iFixit iPhone Air teardown\n • Hacker News: Ask HN: Radar and radio failures at Dallas area airports\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Katerstimmung bei den Vereinten Nationen vor Vollversammlung",
+  "created_at": 1758430367.9958375,
+  "hash": "0cc202c17d0a2b45255017c565871d62cb41a0fb2d2214fe3972eaf4037cb240",
+  "id": "BLK_1758430367_91a111",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "NjJYJluspgTjP4EkE7iwHf/oqAKKgaxqXpcVIGkXt0SQTgus6e1a3Uf9uafZARmVGAOw+BQ2yU9iYo7bOgDrBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-21 06:52",
+  "url": null
+}

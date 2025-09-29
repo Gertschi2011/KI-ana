@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Israel bombs Qatar, targeting Hamas leadership\n • Hacker News: Can a Despised Autocrat Consolidate Power?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Militärattacke gegen Hamas-Führung in Doha",
+  "created_at": 1757427262.5462134,
+  "hash": "fabe36adbb33873c0fcebfc6885b0f80cb923bdcd5a80a77757f127353e4c038",
+  "id": "BLK_1757427262_2fd001",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Io9k7UuX8bSQI5ocejc5Zyv2nzMU3Zfc3auKpJGw5IMn3NqxyufPI3Sdd5W/EPmIWcRcLoO0qlvnFJAQnb0WBg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 16:14",
+  "url": null
+}

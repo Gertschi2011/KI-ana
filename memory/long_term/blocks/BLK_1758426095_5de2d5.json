@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Radar and Radio Failures at Dallas Area Airports\n • Hacker News: Amazon to end commingling after years of complaints from brands and sellers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Katerstimmung bei den Vereinten Nationen vor Vollversammlung",
+  "created_at": 1758426095.3705564,
+  "hash": "5f6758c0a2bb2be4cf078d688f9220f666ec79632eae4110ab84038b436c9431",
+  "id": "BLK_1758426095_5de2d5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "y44yDU2fciuaFihyFB/nBA72aHhyJVweNZg+yVlYGQxJxGOmk2Vy6fxeCZdcyuSfRCaKWSgtv6gDg2XdFo8oAQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-21 05:41",
+  "url": null
+}

@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kiana Desktop Shell</title>
+  <style>
+    body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    header{ display:flex; align-items:center; gap:12px; padding:10px 12px; border-bottom:1px solid #eee; }
+    header h1{ font-size:16px; margin:0; }
+    nav button{ margin-right:6px; }
+    .content{ display:flex; height: calc(100vh - 52px); }
+    .sidebar{ width: 0; border-right:1px solid #eee; display:none; }
+    .main{ flex:1; display:flex; flex-direction:column; }
+    .tabs{ display:flex; gap:6px; padding:8px; border-bottom:1px solid #eee; }
+    .tabs button{ padding:6px 10px; }
+    iframe{ border:0; width:100%; height:100%; }
+    .bottom{ border-top:1px solid #eee; padding:6px; font-size:12px; display:flex; justify-content:space-between; align-items:center; }
+    .avatar{ display:flex; align-items:center; gap:8px; }
+    .avatar img{ width:36px; height:36px; border-radius:50%; object-fit:cover; }
+    /* Simple viseme/wave animation */
+    .avatar .wave{ width:12px; height:12px; border-radius:50%; background:#4a90e2; opacity:0.0; transform: scale(0.6); }
+    .avatar.speaking .wave{ animation: pulse 1s ease-in-out infinite; }
+    @keyframes pulse{ 0%{ opacity:0.2; transform: scale(0.6);} 50%{ opacity:0.8; transform: scale(1.15);} 100%{ opacity:0.2; transform: scale(0.6);} }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kiana Desktop</h1>
+    <nav>
+      <button data-tab="chat">Chat</button>
+      <button data-tab="papa">Papa</button>
+      <button data-tab="settings">Settings</button>
+    </nav>
+  </header>
+  <div class="content">
+    <div class="main">
+      <div class="tabs">
+        <span id="tabTitle">Chat</span>
+      </div>
+      <iframe id="frame" src=""></iframe>
+      <div class="bottom">
+        <div class="avatar" id="avatarBox">
+          <div class="wave" title="Sprechen…"></div>
+          <img src="https://placehold.co/72x72" alt="Avatar" />
+          <div>
+            <div><strong>Stimme:</strong> vorbereitet (TTS später)</div>
+            <div><small>Viseme/Animation folgt in Phase 2</small></div>
+          </div>
+        </div>
+        <div class="status">
+          <button id="btnOpenImage" class="btn">📷 Bild auswählen</button>
+          <button id="btnTtsPlay" class="btn">▶️ Sprechen</button>
+          <button id="btnTtsStop" class="btn">⏹ Stopp</button>
+          <span style="margin-left:8px">Offline‑Modus: vorbereitet (Service Worker)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const base = params.get('base') || 'https://localhost:8000';
+      const frame = document.getElementById('frame');
+      const tabTitle = document.getElementById('tabTitle');
+      function setTab(tab){
+        let url = base;
+        if (tab === 'chat') url += '/static/chat.html';
+        else if (tab === 'papa') url += '/static/papa_tools.html';
+        else url += '/static/chat.html#settings';
+        frame.src = url;
+        tabTitle.textContent = tab.charAt(0).toUpperCase() + tab.slice(1);
+      }
+      document.querySelectorAll('nav button').forEach(btn=>{
+        btn.addEventListener('click', ()=> setTab(btn.getAttribute('data-tab')));
+      });
+      setTab('chat');
+      // PWA/Offline prep: try to register SW in embedded pages later; placeholder
+
+      // Avatar controls
+      document.getElementById('btnOpenImage').addEventListener('click', async ()=>{
+        try{
+          const res = await (window.kianaDesktop && window.kianaDesktop.openFile ? window.kianaDesktop.openFile({ filters: [{ name: 'Images', extensions: ['png','jpg','jpeg','webp'] }] }) : Promise.resolve({ canceled:true }));
+          if (!res || res.canceled || !Array.isArray(res.files) || !res.files.length) return;
+          // Send to iframe for upload/analyze
+          frame.contentWindow.postMessage({ type: 'openFile', files: res.files }, '*');
+          if (window.kianaDesktop && window.kianaDesktop.notify) window.kianaDesktop.notify({ title: 'Kiana', body: 'Bild an Chat gesendet' });
+        }catch{}
+      });
+      const avatarBox = document.getElementById('avatarBox');
+      document.getElementById('btnTtsPlay').addEventListener('click', async ()=>{
+        try{
+          const text = prompt('Was soll ich sprechen?','Hallo, ich bin Kiana.');
+          if (!text) return;
+          if (window.kianaDesktop && window.kianaDesktop.ttsPlay) await window.kianaDesktop.ttsPlay(text);
+          try{ avatarBox.classList.add('speaking'); }catch{}
+        }catch{}
+      });
+      document.getElementById('btnTtsStop').addEventListener('click', async ()=>{
+        try{ if (window.kianaDesktop && window.kianaDesktop.ttsStop) await window.kianaDesktop.ttsStop(); }catch{}
+        try{ avatarBox.classList.remove('speaking'); }catch{}
+      });
+
+      // Listen to messages from chat iframe (tts control)
+      window.addEventListener('message', async (ev)=>{
+        try{
+          const data = ev.data || {};
+          if (data && data.type === 'tts'){
+            if (data.action === 'play' && data.text){
+              if (window.kianaDesktop && window.kianaDesktop.ttsPlay) await window.kianaDesktop.ttsPlay(String(data.text||''));
+              try{ avatarBox.classList.add('speaking'); }catch{}
+            } else if (data.action === 'stop'){
+              if (window.kianaDesktop && window.kianaDesktop.ttsStop) await window.kianaDesktop.ttsStop();
+              try{ avatarBox.classList.remove('speaking'); }catch{}
+            }
+          }
+        }catch{}
+      });
+    })();
+  </script>
+</body>
+</html>

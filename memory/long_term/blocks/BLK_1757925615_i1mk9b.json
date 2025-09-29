@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Celestia – Real-time 3D visualization of space\n • Hacker News: Omarchy on CachyOS\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Parteien beraten Ergebnis der Kommunalwahl in NRW",
+  "hash": "41be827904eee392e3f6891bc34688f1b8409e3bb70cb51110d8e373ee580428",
+  "id": "BLK_1757925615_i1mk9b",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "agxgB8q6CZBNALO+ZDaer6AXiaoxb+sfkrMNkbgBD9r7ZissGmQSSj5MIxoRy8BMS9m5vNqy9mf8QtwaRSxbDg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 10:40",
+  "ts": 1757925615,
+  "url": ""
+}

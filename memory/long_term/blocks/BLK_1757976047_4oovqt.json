@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Massive Attack Turns Concert into Facial Recognition Surveillance Experiment\n • Hacker News: Show HN: Pooshit – sync local code to remote Docker containers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfel arabischer Staaten bildet Front gegen Israel",
+  "hash": "257d1d19c512076a424e04cb44761789b01a6896088b28469487fa4515b018a6",
+  "id": "BLK_1757976047_4oovqt",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "bNK+cszOCgS8C77qsjs9zdQUTB3ulURGcll6ScDOam0FHpwBkN0XhV7eLBx9YW3mhtkj3nQsx1EEPT97ihm1Cw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 00:40",
+  "ts": 1757976047,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: tldraw SDK 4.0\n • Hacker News: The Last Days of the Managerial Class\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "created_at": 1758225650.3688507,
+  "hash": "b6799882cc1bc4bb01386ac1e555afa46ea73cee42a00f524bff93429f0e0fc0",
+  "id": "BLK_1758225650_f41e81",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "uvibryjOdQiMf54HnP+M3aVw+bnf7+T39wKWUl9sXydO4VJwvQmsApA+xtmIh7sI9mFSqxio3XiTcun7FJvTCA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 22:00",
+  "url": null
+}

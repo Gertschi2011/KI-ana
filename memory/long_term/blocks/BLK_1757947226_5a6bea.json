@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: CubeSats are fascinating learning tools for space\n • Hacker News: Show HN: Semlib – Semantic Data Processing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommt mit dem Wehrdienst der Zivildienst zurück?",
+  "created_at": 1757947226.1120794,
+  "hash": "02d5fa0dcdae4a99ed985643e318ac077d9512a4b52cd66e910aa4fcd67ea045",
+  "id": "BLK_1757947226_5a6bea",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "CSNxWwegBpgZWT8QwWBIdPI1Wm6/t6ODVMdZSElCNNjAPir5CHpBq3ONE5LlT22SE72e2H/MhgNc2ri8Jqh5Cg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 16:40",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A motto for programmers: \"Tuere usorem, data, veritatem\"\n • Hacker News: Kapa.ai (YC S23) is hiring research and software engineers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Erdbeben in Afghanistan: \"Alles brach über uns zusammen\"",
+  "hash": "7fa1643250584e0746e873f878a2464005504dd3bac3a35efaa62a057315495b",
+  "id": "BLK_1756800724_usjl2y",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "GLeJtGfc/O16togcx0lqYzOqYdvCnohu40H/TRoEjFti5ytJzQ6/oSGSpZXwIuDvlGKU3jBWMuTpAkW66UuIAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 10:12",
+  "ts": 1756800724,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Statistical Physics with R: Ising Model with Monte Carlo\n • Hacker News: iTerm2 Web Browser\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum Polen zu den wirtschaftlich erfolgreichsten EU-Länder gehört",
+  "created_at": 1758282030.4054945,
+  "hash": "99e2f8db774b7c7de2baf5add631fd61f4fc0de929a47ec21d446b01043ec01c",
+  "id": "BLK_1758282030_15440e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+cbWdlhacYBa32G+xzQtvAbO7F1lrMKY25dQRe/YmB81pKPsc/aeC8jdyc03WqouPahbPmjWwtjck2Ikp2rdBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 13:40",
+  "url": null
+}

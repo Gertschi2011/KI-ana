@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: RIP pthread_cancel\n • Hacker News: OpenAI’s latest research paper demonstrates that falsehoods are inevitable\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Jung, weiblich, (selten) Kommunalpolitikerin",
+  "hash": "cdf597a30028bb31b76b2c86ce809f2bf0d79374c73b519b890c4e64180c3005",
+  "id": "BLK_1757790690_y5uolk",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "VKnXyjs+CmxQCQNEEPeEZimWg/5vXuXx9oEpbXJy/oV08w4pi55bH5IhVJJzO0w765xFKZXj4Ov3OQaWSIQ2DA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 21:11",
+  "ts": 1757790690,
+  "url": ""
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A love letter to the CSV format (2024)\n • Hacker News: News: Arm announces next Generation core family called Arm Lumex\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Polen beantragt NATO-Beratungen zum Abschuss russischer Drohnen",
+  "hash": "fd46404b2ac7a607fb8e91e9113b9d83aed94a2493bdd6cfcac9113c4ea6e0be",
+  "id": "BLK_1757499296_l6ycex",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "95CxitgTNJEJ6l/A5fjLvBHXg7GT+PpDufl/svpEj7V85TGs1oDpF2bYHLD0FZGB7c0loFHsRxzQprjwcc09Bg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 12:14",
+  "ts": 1757499296,
+  "url": ""
+}

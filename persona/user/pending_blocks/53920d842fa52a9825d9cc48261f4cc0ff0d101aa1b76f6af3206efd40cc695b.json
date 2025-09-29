@@ -1,0 +1,18 @@
+{
+  "owner": "user",
+  "persona": "mini_ana",
+  "title": "Was ist Photovoltaik?",
+  "content": "Photovoltaik wandelt Sonnenlicht in elektrische Energie um.",
+  "tags": [
+    "energie",
+    "wissen",
+    "physik"
+  ],
+  "source": "Wikipedia",
+  "ts": 1756931709,
+  "hash": "53920d842fa52a9825d9cc48261f4cc0ff0d101aa1b76f6af3206efd40cc695b",
+  "signature": "f94f35ad9246c35189a4f0d2e0f5ef75e0b5185f37c13927d1eb4837f278e0e19fe82882c8257a28645c2483ac4631ac4af3065529cc7e4775b463fdd158eb0b",
+  "pubkey": "cf781ab008dec792a1b74b4dd9901450a099a050afe4f3da3c2db387a70ede04",
+  "subki_id": "device_local",
+  "ready_for_sync": true
+}

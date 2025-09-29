@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Non-Obviously Great Startups\n • Hacker News: ICPC 2025 World Finals Results\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lissabon nach Seilbahn-Unglück: Trauer, ein wenig Wut und die Frage nach der Ursache",
+  "created_at": 1757022438.4028847,
+  "hash": "4a5809a2bb36d59b9385f7242d8fb79b2fb0dee1c56a461933c6c076bf756271",
+  "id": "BLK_1757022438_13717a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cQECdu9NJZxp+EzZXlVSooBmlG74GUBf0h7xqJXZtnXok/10tOsVs2Q+m58u6vRU5USoObCsSppVueB5diNQDw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 23:47",
+  "url": null
+}

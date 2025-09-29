@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: One Token to rule them all – obtaining Global Admin in every Entra ID tenant\n • Hacker News: A postmortem of three recent issues\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Recherche zu Jan Marsalek: \"Deutschland hätte viel aktiver sein können\"",
+  "created_at": 1758157217.953659,
+  "hash": "8b6266ad7ffd81e382861c81aa70426e3afc0a3c1f6984a2e468382681a937da",
+  "id": "BLK_1758157217_996e59",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "N6enKPYi5kdBlcJnTAZzIcFMvCcicUsMQKnojF1EEpjeCHcwWkhnjEg1SpkqHz1zq3T1v+XgLUM+ZKsaULj6Ag==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 03:00",
+  "url": null
+}

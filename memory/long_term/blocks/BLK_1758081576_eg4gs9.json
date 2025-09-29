@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: A PSX/DOS style 3D game written in Rust with a custom software renderer\n • Hacker News: Global Peace Index 2025\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krieg in Nahost: Flucht im Schritttempo, große Angst um Geiseln",
+  "hash": "2e4f00713ac25b864ff0129bef6a9dc8fbc0552c64ceb44051449755c1da4997",
+  "id": "BLK_1758081576_eg4gs9",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "hn9OrWZuE1dfr+GunftOkRhNJ6vw9qlHdgZ+P5z+cSfhyBpSVekUwl6mZNHYMND6oQE5gLEGv5C43uT5QnZIAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 05:59",
+  "ts": 1758081576,
+  "url": ""
+}

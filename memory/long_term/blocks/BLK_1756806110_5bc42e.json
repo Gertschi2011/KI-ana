@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A motto for programmers: \"Tuere usorem, data, veritatem\"\n • Hacker News: Kapa.ai (YC S23) is hiring research and software engineers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach PayPal-Panne: Welche Alternativen es zum US-Zahlungsdienst gibt",
+  "created_at": 1756806110.7053716,
+  "hash": "27b8c5f7be9a919ec9de2aa22d9d0698826bf5418ed77f9c2ca436292759f28d",
+  "id": "BLK_1756806110_5bc42e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oSC97CaAOp0iPmEgSLazXW4XQtWQcWT9ZKHh+qoBgDQ7RD9wt2yMQFoA7hzjAEsGCbFhdbHh3MB2QBDJKUqXCw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 11:41",
+  "url": null
+}

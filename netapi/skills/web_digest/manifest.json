@@ -1,0 +1,8 @@
+{
+  "name": "web_digest",
+  "version": "0.1.0",
+  "entrypoint": "netapi.skills.web_digest.skill:run",
+  "capabilities": ["web.fetch", "memory.write"],
+  "run_mode": "subproc",
+  "schedule": { "every_seconds": 1800 }
+}

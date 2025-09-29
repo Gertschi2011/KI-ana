@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: How to build vector tiles from scratch\n • Hacker News: We Found the Hidden Cost of Data Centers. It's in Your Electric Bill [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Immer mehr Berufsabschlüsse aus dem Ausland anerkannt",
+  "hash": "28bfd1440bf62a4cc6024f2b172492544a3bf9cc5425c904f89c20466acb3ac3",
+  "id": "BLK_1756992158_jdikbj",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "OyP5r7CPdH66slJthMBxiRZqDaytFLIcf0v3kTU7cCSDho7MzMHCBTaw2Ps0E1cMWiGWFHm5uC0rJ4vrJR9KAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 15:22",
+  "ts": 1756992158,
+  "url": ""
+}

@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/styles.css"><title>Login</title></head>
+<body><div id="nav"></div><div class="container">
+  <div class="hero"><img class="kiana" src="/static/kiana.png"><div><h2>Login 🔐</h2><p class="small">Willkommen zurück.</p></div></div>
+  <div class="card">
+    <form id="f">
+      <div class="row">
+        <input class="input" name="username" placeholder="Benutzername" required>
+        <input class="input" name="password" type="password" placeholder="Passwort" required>
+      </div>
+      <button class="btn">Einloggen 🚀</button>
+    </form>
+    <div id="msg" class="notice hidden"></div>
+  </div>
+</div>
+<script>
+document.getElementById('f').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const r = await fetch('/auth/login', {method:'POST', body:fd, credentials:'include'});
+  const msg = document.getElementById('msg');
+  if(r.ok){
+    msg.classList.remove('hidden'); msg.textContent = "Erfolg – Weiter zum Chat…";
+    location.href = "/static/chat.html";
+  }else{
+    msg.classList.remove('hidden'); msg.textContent = "Login fehlgeschlagen.";
+  }
+});
+</script>
+<script src="/static/nav.js" defer></script>
+</body></html>

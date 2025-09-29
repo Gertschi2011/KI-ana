@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Images over DNS\n • Hacker News: Czech founding father Masaryk's message revealed in long-sealed envelope\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sicherheitsexperte Masala zu Kampfjets: \"Russland führt NATO vor\"",
+  "hash": "11f00f0b002ff6b9fb2d18ad0b3d99e0c3855ba1d81d2357aba8068159fa1e48",
+  "id": "BLK_1758373870_o21oc1",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "w6fjZesDvbp3c5TNtbiqL8AZL6VEarTkhQt/DtY1aDdvC6opLI31RE2AdcHyFg3nH9w2GIVWfklwzIZ4U67IBg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 15:11",
+  "ts": 1758373870,
+  "url": ""
+}

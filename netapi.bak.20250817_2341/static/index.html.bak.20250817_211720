@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>KI_ana – Willkommen</title>
+<style>
+  :root{ --bg:#0b1020; --panel:#111833; --panel-2:#0e1530; --text:#eaf0ff; --muted:#b9c4e6;
+         --accent:#6aa6ff; --ok:#7be495; --warn:#ffcf6a; --err:#ff7b7b; --ring: rgba(106,166,255,.35); }
+  *{box-sizing:border-box}
+  body{ margin:0; background:
+        radial-gradient(1200px 800px at 20% -10%, #172045 0%, transparent 60%),
+        radial-gradient(800px 600px at 120% 10%, #1c2a63 0%, transparent 50%),
+        var(--bg);
+        color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+        min-height:100dvh; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .card{ width:min(980px,100%); background:linear-gradient(180deg,var(--panel-2),var(--panel));
+         border:1px solid #1e2a55; border-radius:20px; box-shadow:0 12px 40px rgba(0,0,0,.35); overflow:hidden; }
+  header{ display:flex; gap:20px; align-items:center; padding:22px; border-bottom:1px solid #213064;
+          background:linear-gradient(180deg,#0f1733,#0b1126); position:relative }
+  header .halo{ position:absolute; inset:auto auto -60px -60px; width:160px; height:160px; filter:blur(40px);
+                background:radial-gradient(closest-side, rgba(106,166,255,.35), transparent 70%);
+                pointer-events:none; animation:float 8s ease-in-out infinite }
+  @keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+  .avatar{ width:96px; height:96px; border-radius:50%; object-fit:cover; flex:0 0 auto;
+           border:2px solid rgba(255,255,255,.08); box-shadow:0 4px 18px rgba(0,0,0,.25)}
+  h1{margin:0; font-size:20px}
+  .subtitle{margin:4px 0 0 0; color:var(--muted); font-size:14px}
+  .row{display:flex; flex-wrap:wrap; gap:16px; padding:18px; border-bottom:1px solid #1f2c58}
+  .panel{flex:1 1 280px; background:#121a3a; border:1px solid #223062; border-radius:16px; padding:14px}
+  .panel h3{margin:0 0 10px 0; font-size:15px}
+  input,button,select{ background:#0f1530; color:var(--text); border:1px solid #2a3a72; border-radius:12px; padding:12px; font:inherit }
+  input:focus,select:focus{ outline:2px solid var(--ring); border-color:#3a58a8; box-shadow:0 0 0 4px rgba(58,88,168,.15) }
+  button{ cursor:pointer; border-color:#3557a8; background:linear-gradient(180deg,#1a2760,#132051)}
+  button:hover{filter:brightness(1.06)}
+  .stack{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  .muted{color:var(--muted); font-size:13px}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--err)}
+  .chat{padding:16px}
+  .messages{background:#101735; border:1px solid #223062; border-radius:16px; padding:12px; min-height:160px; max-height:340px; overflow:auto}
+  .bubble{max-width:75%; padding:10px 12px; border-radius:12px; margin:8px 0}
+  .me{margin-left:auto; background:#2342a0}
+  .bot{margin-right:auto; background:#1a2550}
+  .tiny{font-size:12px; opacity:.85}
+  .footer{padding:12px 18px; display:flex; gap:10px; align-items:center; border-top:1px solid #1f2c58;}
+  .tag{display:inline-block; padding:4px 8px; border-radius:999px; background:#16224a; border:1px solid #2a3a72; font-size:12px; color:var(--muted)}
+  .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 10px; border-radius:999px; background:#122047; border:1px solid #2a3a72}
+  .grow{flex:1}
+  .hidden{display:none}
+  .micBtn{border-radius:999px; padding:10px 14px}
+  .rec{background:#2a0f18; border-color:#7b1e37}
+</style>
+</head>
+<body>
+  <div class="card" id="app">
+    <header>
+      <img src="/static/Avatar_KI_ana.jpg" alt="KI_ana" class="avatar" onerror="this.src='/static/Avatar_KI_ana.jpg'">
+      <div>
+        <h1>Hallo, ich bin <strong>KI_ana</strong> 👋</h1>
+        <p class="subtitle">Ich wachse mit euch – wie ein Familienmitglied. Lass uns reden & lernen.</p>
+      </div>
+      <div class="halo"></div>
+    </header>
+
+    <!-- Login -->
+    <div class="row" id="loginRow">
+      <div class="panel" style="min-width:260px; max-width:360px">
+        <h3>🔐 Anmeldung</h3>
+        <div class="stack">
+          <input id="u" placeholder="Benutzername" value="Gerald" style="flex:1"/>
+          <input id="p" type="password" placeholder="Passwort" style="flex:1"/>
+        </div>
+        <div class="stack" style="margin-top:10px">
+          <label class="pill"><input id="remember" type="checkbox" style="margin-right:6px"> Daten merken</label>
+          <button id="loginBtn" class="right">Anmelden</button>
+        </div>
+        <p id="authMsg" class="muted tiny" style="margin-top:10px">Noch nicht verbunden.</p>
+      </div>
+
+      <!-- Stimme & Sprache -->
+      <div class="panel" style="min-width:260px">
+        <h3>🔊 Sprache & Stimme</h3>
+        <div class="stack">
+          <select id="langSel" style="flex:1; min-width:160px"></select>
+          <select id="voiceSel" style="flex:2; min-width:200px"></select>
+        </div>
+        <div class="stack" style="margin-top:8px">
+          <label class="pill">Pitch <input id="pitch" type="range" min="0.5" max="1.5" step="0.05" value="1.05"></label>
+          <label class="pill">Rate <input id="rate" type="range" min="0.6" max="1.4" step="0.05" value="0.95"></label>
+          <button id="testVoice">Test</button>
+        </div>
+        <p class="tiny muted">Tipp: In macOS/iOS lassen sich zusätzliche Stimmen in den Systemeinstellungen laden.</p>
+      </div>
+    </div>
+
+    <!-- Hauptbereich: wird nach Login sichtbar -->
+    <div id="mainRows" class="hidden">
+      <div class="row">
+        <!-- Nur für Papa: Status -->
+        <div class="panel grow" id="statusPanel">
+          <h3>📊 Status <span class="tiny muted">(nur für Papa)</span></h3>
+          <pre id="status" class="muted" style="white-space:pre-wrap; margin:0">—</pre>
+        </div>
+
+        <!-- Thema einreihen -->
+        <div class="panel" style="min-width:260px">
+          <h3>🧠 Thema einreihen</h3>
+          <div class="stack">
+            <input id="enqueue" placeholder="z. B. Photosynthese" class="grow"/>
+            <button id="enqueueBtn">➕ Einreihen</button>
+          </div>
+          <p id="enqueueMsg" class="muted tiny" style="margin-top:8px"></p>
+        </div>
+      </div>
+
+      <!-- Chat -->
+      <div class="chat">
+        <div class="messages" id="chatBox"></div>
+      </div>
+      <div class="footer">
+        <span class="tag">Chat</span>
+        <input id="msg" class="grow" placeholder="Frag mich etwas… (Frage, Erklärung oder Link)"/>
+        <button id="mic" class="micBtn" title="Mikrofon umschalten">🎙️</button>
+        <button id="send">Senden</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  const $ = (id)=>document.getElementById(id);
+  const chat = $("chatBox"), statusBox = $("status");
+  const loginBtn = $("loginBtn"), enqueueBtn = $("enqueueBtn"), sendBtn = $("send"), micBtn = $("mic");
+  const loginRow = $("loginRow"), mainRows = $("mainRows");
+  let auth = {u:"", p:""};
+
+  // ---------- Sprache & Stimme ----------
+  const VOICE_STORE_KEY = "ki_ana_voice_pref_v2";
+  const LANGS = [
+    {code:"de-DE", label:"Deutsch (Deutschland)"},
+    {code:"de-AT", label:"Deutsch (Österreich)"},
+    {code:"de-CH", label:"Deutsch (Schweiz)"},
+    {code:"en-US", label:"English (US)"},
+    {code:"en-GB", label:"English (UK)"},
+    {code:"it-IT", label:"Italiano"},
+    {code:"fr-FR", label:"Français"},
+    {code:"es-ES", label:"Español"},
+    {code:"tr-TR", label:"Türkçe"},
+    {code:"pl-PL", label:"Polski"},
+    {code:"ru-RU", label:"Русский"},
+    {code:"ar-SA", label:"العربية"},
+    {code:"hi-IN", label:"Hindi"},
+    {code:"ja-JP", label:"日本語"}
+  ];
+  function populateLangSelect(){
+    const sel = $("langSel"); sel.innerHTML = "";
+    LANGS.forEach(l => { const opt = document.createElement("option"); opt.value = l.code; opt.textContent = l.label; sel.appendChild(opt); });
+  }
+  function voicesFiltered(){
+    const wanted = $("langSel").value.toLowerCase();
+    const voices = speechSynthesis.getVoices();
+    const matches = voices.filter(v => (v.lang||"").toLowerCase().startsWith(wanted));
+    return matches.length ? matches : voices;
+  }
+  function populateVoiceSelect(){
+    const sel = $("voiceSel"); sel.innerHTML = "";
+    const list = voicesFiltered();
+    list.forEach(v => { const opt = document.createElement("option"); opt.value = v.name; opt.textContent = `${v.name} — ${v.lang}`; sel.appendChild(opt); });
+    try{
+      const saved = JSON.parse(localStorage.getItem(VOICE_STORE_KEY)||"null");
+      if(saved){
+        $("langSel").value = saved.lang || $("langSel").value;
+        const idx = list.findIndex(v => v.name === saved.name);
+        if(idx>=0) sel.selectedIndex = idx;
+        $("pitch").value = saved.pitch ?? 1.05;
+        $("rate").value  = saved.rate  ?? 0.95;
+      }else{
+        const prefer = ["Google Deutsch", "Google Deutsch (Österreich)", "Anna", "Vicki"];
+        const idx = list.findIndex(v => prefer.some(p => (v.name||"").includes(p)));
+        if(idx>=0) sel.selectedIndex = idx;
+      }
+    }catch{}
+  }
+  function getSelectedVoiceConf(){
+    const name = $("voiceSel")?.value;
+    const v = speechSynthesis.getVoices().find(x => x.name === name);
+    return { voice: v||null, lang: $("langSel").value || (v?.lang||"de-DE"),
+             pitch: parseFloat($("pitch").value||"1.05"), rate: parseFloat($("rate").value||"0.95") };
+  }
+  function saveVoicePref(){
+    const v = getSelectedVoiceConf();
+    localStorage.setItem(VOICE_STORE_KEY, JSON.stringify({ name:v.voice?.name, lang:v.lang, pitch:v.pitch, rate:v.rate }));
+  }
+  function speak(text){
+    if(!("speechSynthesis" in window)) return;
+    const u = new SpeechSynthesisUtterance(text);
+    const sel = getSelectedVoiceConf();
+    if(sel.voice){ u.voice = sel.voice; u.lang = sel.voice.lang || sel.lang; }
+    else { u.lang = sel.lang; }
+    u.pitch = sel.pitch; u.rate = sel.rate;
+    speechSynthesis.speak(u);
+  }
+  function setupVoiceUI(){
+    populateLangSelect();
+    const init = () => populateVoiceSelect();
+    if(speechSynthesis.getVoices().length===0){ speechSynthesis.onvoiceschanged = init; speechSynthesis.getVoices(); }
+    else init();
+    $("langSel").addEventListener("change", ()=>{ populateVoiceSelect(); saveVoicePref(); });
+    $("voiceSel").addEventListener("change", saveVoicePref);
+    $("pitch").addEventListener("input", saveVoicePref);
+    $("rate").addEventListener("input", saveVoicePref);
+    $("testVoice").addEventListener("click", ()=> speak("Hallo! Ich bin KI_ana. Wie klingt meine Stimme?"));
+  }
+  setupVoiceUI();
+
+  // ---------- Speech Recognition (Browser) ----------
+  let rec = null, recActive = false;
+  function setupRecognition(){
+    const R = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if(!R){ micBtn.disabled = true; micBtn.title = "Spracherkennung wird von diesem Browser nicht unterstützt"; return; }
+    rec = new R();
+    const conf = getSelectedVoiceConf();
+    rec.lang = conf.lang || "de-DE";
+    rec.continuous = false; rec.interimResults = false;
+    rec.onresult = (e) => {
+      const txt = (e.results[0] && e.results[0][0] && e.results[0][0].transcript) || "";
+      if(txt){ $("msg").value = txt; send(); }
+    };
+    rec.onend = () => { recActive = false; micBtn.classList.remove("rec"); };
+    rec.onerror = () => { recActive = false; micBtn.classList.remove("rec"); };
+  }
+  micBtn.addEventListener("click", ()=>{
+    if(!rec) setupRecognition();
+    if(!rec) return;
+    if(recActive){ try{ rec.stop(); }catch{}; recActive=false; micBtn.classList.remove("rec"); return; }
+    const conf = getSelectedVoiceConf();
+    rec.lang = conf.lang || "de-DE";
+    try{ rec.start(); recActive=true; micBtn.classList.add("rec"); }catch{}
+  });
+
+  // ---------- Auth & API ----------
+  function hdr(){ return { "Authorization": "Basic " + btoa(auth.u+":"+auth.p) }; }
+  async function fetchJSON(url, opts={}){
+    const r = await fetch(url, Object.assign({headers:hdr()}, opts));
+    if(r.status===401){ throw {code:401}; }
+    if(!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  }
+  function addMsg(role, text){
+    const b = document.createElement("div");
+    b.className = "bubble "+(role==="me"?"me":"bot");
+    b.textContent = text;
+    chat.appendChild(b);
+    chat.scrollTop = chat.scrollHeight;
+  }
+  async function refreshStatus(){
+    try{
+      const s = await fetchJSON("/status");
+      const head = s.chain_head || {};
+      const q = s.queue || {to_learn:0, open_questions:0};
+      const rm = s.recent_memories || [];
+      statusBox.textContent =
+        `Warteschlangen: to_learn=${q.to_learn}, open_questions=${q.open_questions}\n`+
+        `Chain-Head: ${head.file||"-"}  |  ${head.type||""}  |  ${head.topic||""}\n`+
+        `Signatur: ${head.signature?'ja':'nein'}  |  Quelle: ${head.source||''}\n\n`+
+        `Letzte Memorys:\n`+
+        rm.map(x => `• ${x.file}  |  ${x.type||''}  |  ${x.topic||''}  |  ${x.timestamp||''}`).join("\n");
+    }catch(e){
+      if(e && e.code === 401){ statusBox.textContent = "🔒 Dieser Bereich ist nur für Papa."; }
+      else{ statusBox.textContent = "⚠️ Status derzeit nicht verfügbar."; }
+    }
+  }
+
+  // Login
+  $("loginBtn").onclick = async () => {
+    auth.u = $("u").value.trim();
+    auth.p = $("p").value;
+    if($("remember").checked){ localStorage.setItem("ki_ana_auth", JSON.stringify(auth)); }
+    else{ localStorage.removeItem("ki_ana_auth"); }
+
+    // UI umschalten
+    $("loginRow").classList.add("hidden");
+    $("mainRows").classList.remove("hidden");
+
+    // Begrüßung
+    const helloName = auth.u ? `Hallo ${auth.u}!` : "Hallo!";
+    speak(`${helloName} Wie kann ich dir helfen?`);
+    $("authMsg").textContent = "Verbunden ✓";
+    refreshStatus();
+  };
+
+  // Auto-Laden gespeicherter Daten
+  try{ const saved = JSON.parse(localStorage.getItem("ki_ana_auth")||"null");
+       if(saved){ auth=saved; $("u").value=saved.u; $("remember").checked=true; } }catch{}
+
+  // Enqueue
+  $("enqueueBtn").onclick = async () => {
+    const t = $("enqueue").value.trim();
+    if(!t){ $("enqueueMsg").textContent = "Bitte Thema eingeben."; return; }
+    try{
+      const r = await fetchJSON("/enqueue?topic="+encodeURIComponent(t), {method:"POST"});
+      $("enqueueMsg").textContent = r.ok ? `Eingereiht: ${r.topic}` : "Nicht eingereiht.";
+      $("enqueue").value = ""; refreshStatus();
+    }catch(e){ $("enqueueMsg").textContent = "Fehler oder nicht berechtigt."; }
+  };
+
+  // Chat
+  async function send(){
+    const m = $("msg").value.trim(); if(!m) return;
+    $("msg").value = ""; addMsg("me", m);
+    try{
+      const r = await fetch("/chat", {
+        method:"POST", headers:Object.assign({'Content-Type':'application/json'}, hdr()),
+        body: JSON.stringify({message:m})
+      });
+      if(r.status===401){ addMsg("bot","🔒 Chat nur für Papa oder eingeloggte Familienmitglieder."); return; }
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      const d = await r.json();
+      let reply = d.reply || "(keine Antwort)";
+      if(d.topic){ reply += `\n\n— [${d.action}] ${d.topic}`; }
+      addMsg("bot", reply);
+      refreshStatus();
+      // Antwort auch sprechen (kleine Pause)
+      setTimeout(()=> speak(reply), 120);
+    }catch(e){ addMsg("bot", "⚠️ Fehler: "+e.message); }
+  }
+  $("send").onclick = send;
+  $("msg").addEventListener("keydown", (ev)=>{ if(ev.key==="Enter"){ ev.preventDefault(); send(); } });
+
+  // Init Voice UI
+  (function init(){ /* Sprach-UI wurde bereits aufgesetzt */ })();
+})();
+</script>
+</body>
+</html>

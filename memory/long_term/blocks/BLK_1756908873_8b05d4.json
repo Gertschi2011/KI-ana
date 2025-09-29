@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: No place in children's hands: <16s in UK to be banned from buying energy drinks\n • Hacker News: John Coltrane's Tone Circle\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Bedeutung die Unabhängigkeit von Notenbanken hat",
+  "created_at": 1756908873.4701717,
+  "hash": "3e74e3b4449645b76275fb80c307eec9a10cae322efc5a6ef94ee6f14aab4c1b",
+  "id": "BLK_1756908873_8b05d4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cdUE9TRXdrNsp1W7g63+Qd/oEzvhY4wyKqszfgpGtclSqeOZ7+t9TYAZ0aQtqQ1mXZi8arXjTgBYdibhPtvsDQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 16:14",
+  "url": null
+}

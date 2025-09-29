@@ -1,0 +1,67 @@
+{
+  "content": "Technische Systeme und Trainingsdaten können unbeabsichtigt Vorurteile enthalten, was zu einer scheinbaren Objektivität in KI-Entscheidungen führen kann; daher ist es wichtig, diese Aspekte kritisch zu bewerten.",
+  "hash": "943e65f0db64381982c98e0a06e4d9b022eae98d47e5bfc35a8783381d65db86",
+  "id": "f8a714c9118d4553",
+  "meta": {
+    "keywords": [
+      "Technische",
+      "Systeme",
+      "Trainingsdaten",
+      "Können",
+      "Unbeabsichtigt",
+      "Vorurteile",
+      "Enthalten",
+      "Scheinbaren",
+      "Objektivität",
+      "Entscheidungen"
+    ],
+    "linked_to": [
+      "ee8ba438a3df409d",
+      "cfdeedce5a5349ab",
+      "eadb88841ef94ac1",
+      "8f087491bc1b4cb1",
+      "e7eca8557b8c4c3b",
+      "4de3e0a92da944ef",
+      "c408164a72ba4736"
+    ],
+    "provenance": "auto_reflection",
+    "tags": [
+      "auto",
+      "enthalten",
+      "entscheidungen",
+      "können",
+      "objektivität",
+      "reflection",
+      "reflection:true",
+      "scheinbaren",
+      "systeme",
+      "technische",
+      "trainingsdaten",
+      "unbeabsichtigt",
+      "verantwortung",
+      "vorurteile"
+    ]
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ygRfHAUlNSz3sXCSVUZET708bfvU6Lj4hFULoQiSfFap3jHD3Yr0FlNJ/RG/2qzmAMu2SQjYs3akK4QHZM2kCQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "auto",
+    "enthalten",
+    "entscheidungen",
+    "können",
+    "objektivität",
+    "reflection",
+    "reflection:true",
+    "scheinbaren",
+    "systeme",
+    "technische",
+    "trainingsdaten",
+    "unbeabsichtigt",
+    "verantwortung",
+    "vorurteile"
+  ],
+  "timestamp": "2025-09-03T15:02:54Z",
+  "title": "Reflexion zu Verantwortung",
+  "topic": "Verantwortung"
+}

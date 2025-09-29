@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Depot (YC W23) Is Hiring a Solutions Engineer (Remote US and Canada)\n • Hacker News: The worst possible antitrust outcome\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Standseilbahn in Lissabon entgleist - 15 Tote",
+  "created_at": 1756935375.8654244,
+  "hash": "c30998de0a05e6a36dd260cde2af85ebc8ce775b6af86a64845a2383abb68b11",
+  "id": "BLK_1756935375_c9326e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "xfLwlv7uU+7amdQtqJi8kxBGi//iC+hlsJU5OGkDaM2RRQVw1hCJl76/7NvTvBt4KtQwK5LemNKYWnDNMplKBg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 23:36",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI and the Rise of Techno-Fascism in the United States\n • Hacker News: Developing a Space Flight Simulator in Clojure\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump droht EU mit Zöllen nach Kartellstrafe für Google",
+  "created_at": 1757133706.1386864,
+  "hash": "955955d7a8dfcb2abf8698ad81297a805585ae20eab13b32766364de8a164a2b",
+  "id": "BLK_1757133706_b241c3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "NeNYupz/XHB6Y5p8bw3EOLKNutuO60l1SH4ktaMGDFTAhG+nKuBGAMbgFwHlfrrT1m6f1tGZpgiwiK25rKVbCw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 06:41",
+  "url": null
+}

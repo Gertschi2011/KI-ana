@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: GNU Midnight Commander\n • Hacker News: Show HN: A PSX/DOS style 3D game written in Rust with a custom software renderer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krieg in Nahost: Flucht im Schritttempo, große Angst um Geiseln",
+  "created_at": 1758083377.291936,
+  "hash": "d7b2fac40f633b1e64d303c1c233cbdabedf75358214f13bb7e707701156ab1f",
+  "id": "BLK_1758083377_fede5f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Ur8mCVBiBslMxut7h6W5/14AtOhAA7yqqOxXTsqyvNCcJfLltILy4lK3RuvKisIppyMGi9Zi4rvKFr7nf2e3CQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 06:29",
+  "url": null
+}

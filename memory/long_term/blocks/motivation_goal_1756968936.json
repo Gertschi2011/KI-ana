@@ -1,0 +1,33 @@
+{
+  "content": "Zielthema: :misc\nWarum wichtig: Erkenntnisgewinn und Schließen von Wissenslücken\nMessung: # neuer Blöcke zu diesem Thema in den nächsten 48h\nLernmood: Neugier\nPlan: \n - Grundlagenrecherche (Wikipedia/Stanford/Arxiv)\n - Zentrale Begriffe klären und definieren\n - Pro/Contra und Ethik-Spannungen identifizieren\n - Anwendungsfälle und Risiken sammeln\n - Kurze Zusammenfassung als Block ablegen",
+  "hash": "7ebd86035438ff55198464f3d85a03a5324c20e39dcd960c774d240b94495829",
+  "id": "motivation_goal_1756968936",
+  "meta": {
+    "goal": {
+      "created_at": 1756968936,
+      "id": "goal_1756968936",
+      "measure": "# neuer Blöcke zu diesem Thema in den nächsten 48h",
+      "mood": "Neugier",
+      "plan": [
+        "Grundlagenrecherche (Wikipedia/Stanford/Arxiv)",
+        "Zentrale Begriffe klären und definieren",
+        "Pro/Contra und Ethik-Spannungen identifizieren",
+        "Anwendungsfälle und Risiken sammeln",
+        "Kurze Zusammenfassung als Block ablegen"
+      ],
+      "tags": [],
+      "topic": ":misc",
+      "why": "Erkenntnisgewinn und Schließen von Wissenslücken"
+    },
+    "provenance": "self_diagnosis"
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "CuHPMjmQx+G5EUYNUV5WgfyqsHBoaaeNWhHKdygnTudMyn816Ys8qjjkZseEBZQ2L/ZKV0scafgDgYGjlAvhBg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "motivation",
+    "goal"
+  ],
+  "title": "Motivation: Lernziel",
+  "topic": "meta/learning_goal"
+}

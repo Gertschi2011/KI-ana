@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Revised Report on Scheme or An UnCommon Lisp (1985) [pdf]\n • Hacker News: William Gibson Reads Neuromancer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfel arabischer Staaten bildet Front gegen Israel",
+  "created_at": 1757974247.1201785,
+  "hash": "5ef465772d89f8ad85f780edc4ea1d7134a04d79ef6b1564c2bb3d2878ca6f07",
+  "id": "BLK_1757974247_d26a14",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Y8NuLtGiUQFvobYN0rqfcGop3bhtP6YpTGTPeB/nqUISFAF/LryEvQploLo5XEkMUAguMfEPJdyKxrYiXA8bCA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 00:10",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: U.S. Emissions Rise 4.2%, China's Fall 2.7%\n • Hacker News: Linux home server sleep on idle and wake on demand – the simple way\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Afghanistan: Nach dem Beben zeigt sich Ausmaß der Katastrophe",
+  "created_at": 1756845565.5273876,
+  "hash": "4dc056f711f9b37fb1eb37ae24b3444b871591d3fa2e47248fea359966f96e62",
+  "id": "BLK_1756845565_2e7237",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "m3RiXq+yMOmjIbeykkW52koePhGR3lA23KfsnWI7Muc/jXOMa8dIIdbZQTskVsAkX4BFtDHN9yUtH0CFfzgcAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 22:39",
+  "url": null
+}

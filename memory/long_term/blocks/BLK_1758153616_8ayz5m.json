@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Pg_links\n • Hacker News: Jqp: TUI Playground to Experiment with Jq\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Recherche zu Jan Marsalek: \"Deutschland hätte viel aktiver sein können\"",
+  "hash": "eb9b8d994c82d9da3b3f972f6a7dc5bc5f22035f625cd20ebe897edbf68149c4",
+  "id": "BLK_1758153616_8ayz5m",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "5+KRaVQ6g2/+63qJsrjGmp7oJcliBKXelyBDauz+0aNJYbZtsrMq0SaiO5oKiOj+aWMBO7TU7lo/Y0gmNA/pAQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 02:00",
+  "ts": 1758153616,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Zuckerberg Caught in Revealing Hot Mic Moment During White House Dinner\n • Hacker News: Oldest Recorded Transaction\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie eine \"Meisterjägerin\" betrügerische Handwerker aufspürt",
+  "created_at": 1757178724.6457849,
+  "hash": "004d39fe8cd51444afaa457fa6d5e611e1d5c40fa11a4c6c749b4ddc57c7139d",
+  "id": "BLK_1757178724_88c5f8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "JxaQ3sWo1GkdFHm18hSuB8Drg9ZOf1nAH7preJJ/ygtDcJvp3kZhq6x2pQ1pHTPsBljnzBtbesLcYF4CLxXHAQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 19:12",
+  "url": null
+}

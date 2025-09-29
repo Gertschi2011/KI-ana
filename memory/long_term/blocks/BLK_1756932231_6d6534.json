@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Gleam Gathering 2026\n • Hacker News: The Theoretical Limitations of Embedding-Based Retrieval\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Standseilbahn in Lissabon entgleist - 15 Tote",
+  "created_at": 1756932231.0955,
+  "hash": "e246a7b222dde763931377b0c82247a0cdac9fd4638d047c455bd59e819ce146",
+  "id": "BLK_1756932231_6d6534",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KlPQ9LFiEh723Q2JuFCIhzz1vtBnrvgtmZf6aA8AlL0t/G3sJaAp63ZVsPP8IWtuZPAK+ZCKdG5tPb0IE6UCAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 22:43",
+  "url": null
+}

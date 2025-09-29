@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: \"Hello, Is This Anna?\": Unpacking the Lifecycle of Pig-Butchering Scams\n • Hacker News: Not all browsers perform revocation checking\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump mahnt Israel wegen Katar zur \"Vorsicht\"",
+  "created_at": 1757913040.5999184,
+  "hash": "f9db473df5dd81dbcc68fecea1705da7805152a7e7887a3176951ea2f706a134",
+  "id": "BLK_1757913040_8da025",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gOSkhsUIRss45oDLeicV9ptLKekKYx2FD4XRCqd5aNsb1Z8ebpxPG9JQ5oOXlmJqVyDmKmk0xBayglbTBr93Dw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 07:10",
+  "url": null
+}

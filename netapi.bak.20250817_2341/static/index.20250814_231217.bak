@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>KI_ana – Willkommen</title>
+<style>
+  :root{
+    --bg:#0b1020; --panel:#111833; --panel2:#0d1430; --text:#eef3ff; --muted:#b9c4e6;
+    --accent:#6aa6ff; --ring:rgba(106,166,255,.35); --ok:#79e6a8; --warn:#ffcf6a;
+  }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+       background:
+       radial-gradient(1000px 600px at 10% -10%, #172045 0%, transparent 60%),
+       radial-gradient(800px 600px at 110% 0%, #1b265a 0%, transparent 55%), var(--bg);
+       color:var(--text); display:flex; align-items:center; justify-content:center; padding:20px}
+  .card{width:min(980px,100%); background:linear-gradient(180deg,var(--panel2),var(--panel));
+        border:1px solid #1e2a55; border-radius:20px; box-shadow:0 12px 40px rgba(0,0,0,.35); overflow:hidden}
+  header{display:flex; gap:18px; align-items:center; padding:22px; border-bottom:1px solid #213064}
+  .avatar{width:84px; height:84px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,.08)}
+  h1{margin:0; font-size:20px}
+  .sub{margin:4px 0 0 0; color:var(--muted); font-size:14px}
+  .grid{display:grid; grid-template-columns: 1fr; gap:16px; padding:16px}
+  @media(min-width:900px){ .grid{grid-template-columns: 320px 1fr} }
+  .panel{background:#0f1736; border:1px solid #223062; border-radius:14px; padding:14px}
+  .panel h3{margin:0 0 10px 0; font-size:15px}
+  input,button,textarea{background:#0d1430; color:var(--text); border:1px solid #2a3a72; border-radius:12px; padding:12px; font:inherit}
+  input:focus,textarea:focus{outline:2px solid var(--ring); border-color:#3a58a8}
+  button{cursor:pointer; background:linear-gradient(180deg,#1a2760,#132051); border-color:#3557a8}
+  button:hover{filter:brightness(1.06)}
+  .muted{color:var(--muted); font-size:13px}
+  .hidden{display:none}
+  .chat{padding:0 16px 16px}
+  .messages{background:#0f1736; border:1px solid #223062; border-radius:14px; padding:12px; min-height:220px; max-height:420px; overflow:auto}
+  .bubble{max-width:78%; padding:10px 12px; border-radius:12px; margin:8px 0; line-height:1.35}
+  .me{margin-left:auto; background:#2342a0}
+  .bot{margin-right:auto; background:#1b2652}
+  .footer{display:flex; gap:10px; padding:12px 16px; border-top:1px solid #213064}
+  .grow{flex:1}
+  .creator-only{border:1px dashed #3a58a8}
+</style>
+</head>
+<body>
+
+<div class="card" id="app">
+  <header>
+    <img src="/static/Avatar_KI_ana.jpg?v=1" alt="KI_ana" class="avatar" id="avatar">
+    <div>
+      <h1>Hallo, ich bin <strong>KI_ana</strong> 👋</h1>
+      <p class="sub">Ich wachse mit euch – wie ein Familienmitglied. Lass uns reden & lernen.</p>
+    </div>
+    <button id="speakBtn" style="margin-left:auto">🔊 Sprache an</button>
+  </header>
+
+  <!-- LOGIN VIEW (immer zuerst) -->
+  <div id="loginView" class="grid">
+    <div class="panel">
+      <h3>🔐 Anmeldung</h3>
+      <div style="display:flex; gap:8px; flex-direction:column">
+        <input id="u" placeholder="Benutzername" value="Gerald">
+        <input id="p" type="password" placeholder="Passwort">
+        <label style="display:flex;align-items:center;gap:8px">
+          <input id="remember" type="checkbox"> Anmeldedaten merken
+        </label>
+        <button id="loginBtn">Anmelden</button>
+        <p id="authMsg" class="muted">Bitte anmelden.</p>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Über KI_ana</h3>
+      <p class="muted">KI_ana lernt mit deiner Familie. Nach der Anmeldung kannst du sofort chatten.
+      Creator sehen zusätzlich Technik-Panels.</p>
+    </div>
+  </div>
+
+  <!-- MAIN VIEW (nach Login) -->
+  <div id="mainView" class="hidden">
+    <div class="grid">
+      <!-- Creator-Panels (nur für Rolle 'creator') -->
+      <div id="creatorLeft" class="panel creator-only hidden">
+        <h3>📊 Status (Creator)</h3>
+        <pre id="status" class="muted" style="white-space:pre-wrap; margin:0">—</pre>
+      </div>
+      <div id="creatorRight" class="panel creator-only hidden">
+        <h3>🧠 Thema einreihen (Creator)</h3>
+        <div style="display:flex; gap:8px">
+          <input id="enqueue" placeholder="z. B. Photosynthese" class="grow">
+          <button id="enqueueBtn">➕ Einreihen</button>
+        </div>
+        <p id="enqueueMsg" class="muted" style="margin-top:6px"></p>
+      </div>
+    </div>
+
+    <!-- Chat für alle -->
+    <div class="chat">
+      <div class="messages" id="chatBox"></div>
+      <div class="footer">
+        <input id="msg" class="grow" placeholder="Frag mich etwas… (Frage, Erklärung oder Link)">
+        <button id="send">Senden</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(()=>{
+  const $ = (id)=>document.getElementById(id);
+  const chat=$("chatBox"); let auth={u:"",p:""}, role=null, ttsOn=false, synth=window.speechSynthesis;
+
+  function hdr(){ return { "Authorization": "Basic " + btoa(auth.u+":"+auth.p) }; }
+  function say(text){
+    if(!ttsOn || !synth) return;
+    try{ let u=new SpeechSynthesisUtterance(text); u.lang="de-DE"; synth.cancel(); synth.speak(u);}catch{}
+  }
+  $("speakBtn").onclick=()=>{ ttsOn=!ttsOn; $("speakBtn").textContent = ttsOn?"🔊 Sprache an":"🔇 Sprache aus"; if(ttsOn) say("Hallo! Ich freue mich auf unser Gespräch."); };
+
+  function addMsg(role,text){
+    const b=document.createElement("div");
+    b.className="bubble "+(role==="me"?"me":"bot");
+    b.textContent=text; chat.appendChild(b); chat.scrollTop=chat.scrollHeight;
+  }
+
+  async function fetchJSON(url,opts={}){ const r=await fetch(url,Object.assign({headers:hdr()},opts)); if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); }
+
+  async function doLogin(){
+    auth.u=$("u").value.trim(); auth.p=$("p").value;
+    try{
+      const me=await fetchJSON("/me");
+      role=me.role||"family";
+      if($("remember").checked){ localStorage.setItem("ki_ana_auth", JSON.stringify(auth)); }
+      $("loginView").classList.add("hidden");
+      $("mainView").classList.remove("hidden");
+      if(role==="creator"){
+        $("creatorLeft").classList.remove("hidden");
+        $("creatorRight").classList.remove("hidden");
+        refreshStatus();
+      }else{
+        $("creatorLeft").classList.add("hidden");
+        $("creatorRight").classList.add("hidden");
+      }
+      $("authMsg").textContent="Angemeldet als "+me.username+" ("+role+")";
+      addMsg("bot","Hallo "+me.username+"! Wie kann ich helfen?");
+      say("Hallo "+me.username+"! Schön dich zu sehen.");
+    }catch(e){
+      $("authMsg").textContent="Anmeldung fehlgeschlagen.";
+    }
+  }
+
+  $("loginBtn").onclick = doLogin;
+  // gespeicherte Daten
+  try{ const saved=JSON.parse(localStorage.getItem("ki_ana_auth")||"null"); if(saved){ $("u").value=saved.u; $("remember").checked=true; } }catch{}
+
+  async function refreshStatus(){
+    if(role!=="creator") return;
+    try{
+      const s=await fetchJSON("/status");
+      const head=s.chain_head||{}, q=s.queue||{to_learn:0, open_questions:0}, rm=s.recent_memories||[];
+      $("status").textContent =
+        `Warteschlangen: to_learn=${q.to_learn}, open_questions=${q.open_questions}\n`+
+        `Chain-Head: ${head.file||"-"}  |  ${head.type||""}  |  ${head.topic||""}\n`+
+        `Signatur: ${head.signature?'ja':'nein'}  |  Quelle: ${head.source||''}\n\n`+
+        rm.map(x => `• ${x.file} | ${x.type||''} | ${x.topic||''} | ${x.timestamp||''}`).join("\n");
+    }catch(e){ $("status").textContent="⚠️ Status-Fehler"; }
+  }
+  setInterval(refreshStatus, 7000);
+
+  $("enqueueBtn").onclick = async ()=>{
+    const t=$("enqueue").value.trim(); if(!t) return;
+    try{ const r=await fetchJSON("/enqueue?topic="+encodeURIComponent(t), {method:"POST"}); $("enqueueMsg").textContent = r.ok? "Eingereiht.":"Nicht eingereiht."; $("enqueue").value=""; refreshStatus(); }
+    catch(e){ $("enqueueMsg").textContent="Fehler"; }
+  };
+
+  async function send(){
+    const m=$("msg").value.trim(); if(!m) return; $("msg").value=""; addMsg("me",m);
+    try{
+      const r=await fetch("/chat",{method:"POST", headers:Object.assign({'Content-Type':'application/json'}, hdr()), body:JSON.stringify({message:m})});
+      if(!r.ok) throw new Error("HTTP "+r.status);
+      const d=await r.json(); let reply=d.reply||"(keine Antwort)"; if(d.topic){ reply+=`\n\n— [${d.action}] ${d.topic}`; }
+      addMsg("bot",reply); say(reply);
+    }catch(e){ addMsg("bot","⚠️ Fehler: "+e.message); }
+  }
+  $("send").onclick=send; $("msg").addEventListener("keydown",(ev)=>{ if(ev.key==="Enter"){ ev.preventDefault(); send(); } });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Inside Palantir: Profits, Power and the Kill Machine\n • Hacker News: David Lynch LA House\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was bleibt von Trumps Besuch in Großbritannien?",
+  "created_at": 1758245459.0175464,
+  "hash": "711f459f9e2feffb37c29f0197ca66693205aca5cd6b4febcf322f4cbe22cfb6",
+  "id": "BLK_1758245459_c6551a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TqKhCyxwormmkd07UVcjubtVXOc392pF1lC1QkTt4HPyO7HfRtzPhzYaGWrU5RoMznkwu0jLk2ZtNjejd8mVAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 03:30",
+  "url": null
+}

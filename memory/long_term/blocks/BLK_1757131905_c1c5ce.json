@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: GOP Cries Censorship over Spam Filters That Work\n • Hacker News: Developing a Space Flight Simulator in Clojure\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump droht EU mit Zöllen nach Kartellstrafe für Google",
+  "created_at": 1757131905.3983808,
+  "hash": "c53a64cd64008fe1b53bac97f0945f87ab62f688458dfbdee63e1faff81f5c2b",
+  "id": "BLK_1757131905_c1c5ce",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "N9tq9cuytPYOm4ep9eowu2A2n1mYPvL2+0KuByTjumdo0tcU4o1E5jIZG2j3uPzmurPum4EW7cs+sB0/BeTjDw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 06:11",
+  "url": null
+}

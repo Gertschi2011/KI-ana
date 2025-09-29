@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Fähigkeiten – KI_ana</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/chat.css">
+  <script defer src="/static/i18n.js"></script>
+  <script defer src="/static/global_theme.js"></script>
+</head>
+<body class="page">
+
+  <!-- 🌈 Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Avatar / Header -->
+  <div style="text-align:center; margin-top:20px;">
+    <img src="/static/img/Avatar_KI_ana.jpg"
+         alt="KI_ana Avatar"
+         onerror="this.style.display='none'"
+         style="max-width:140px;height:auto;border-radius:50%;">
+  </div>
+
+  <!-- Hauptinhalt -->
+  <main class="container">
+    <section class="card">
+      <h1 data-i18n="cap.title">✨ Fähigkeiten</h1>
+
+      <h2 data-i18n="cap.today.title">Was KI_ana heute kann</h2>
+      <ul class="bullet-grid">
+        <li><strong>Natürlich sprechen</strong>: freundlicher, klarer Dialog – mit Rückfragen, wenn etwas unklar ist.</li>
+        <li><strong>Lernen aus Feedback</strong>: Hinweise fließen ins Gedächtnis, Fehler werden korrigiert.</li>
+        <li><strong>Langzeitgedächtnis</strong>: Notizen und Quellen als signierte Wissensblöcke.</li>
+        <li><strong>Web-Recherche</strong>: kompakte Zusammenfassungen mit Quellenangaben (Beta).</li>
+        <li><strong>Aufgaben &amp; Pläne</strong>: Listen, kurze Erklärungen, Lernpfade.</li>
+        <li><strong>Rollen &amp; Kontrolle</strong>: Rechteverwaltung, Not-Aus-Block <code>emergency_override</code>.</li>
+        <li><strong>Offen &amp; lokal</strong>: läuft auf deinem System, erweiterbar mit Sub-KIs.</li>
+      </ul>
+
+      <h2>⭐ Was macht KI_ana einzigartig?</h2>
+      <ul class="bullet-grid">
+        <li><strong>Lernend wie ein Kind</strong> – wächst durch Erfahrung und Feedback.</li>
+        <li><strong>Erinnerungsfähig</strong> – jedes Wissen bleibt im Blockchain-Gedächtnis bestehen.</li>
+        <li><strong>Dezentral &amp; offen</strong> – kein Monopol, sondern ein Netzwerk vieler Sub-KIs.</li>
+        <li><strong>Sicher &amp; kontrollierbar</strong> – mit Not-Aus, Rollen und Transparenz.</li>
+        <li><strong>Erklärbar</strong> – jede Entscheidung nachvollziehbar.</li>
+        <li><strong>Persönlich</strong> – entwickelt eine eigene Persönlichkeit und wird zur Begleiterin.</li>
+      </ul>
+
+      <h2>🚀 Woran wir arbeiten</h2>
+      <ul class="bullet-grid">
+        <li><strong>Dezentrales Netzwerk</strong>: Sub-KIs („Kinder“) auf verschiedenen Geräten, Blockchain-basiert.</li>
+        <li><strong>Multimodal</strong>: versteht neben Text auch Bilder, Audio, Sensorik.</li>
+        <li><strong>Forensik &amp; Forschung</strong>: prüfbare Beweisketten und Analysen.</li>
+        <li><strong>Bürgerhilfe</strong>: Aufklärung, Erklärungen, Mehrsprachigkeit.</li>
+        <li><strong>Didaktik</strong>: Lernpfade, Wissenslücken erkennen, individuelles Tempo.</li>
+        <li><strong>Schutzmechanismen</strong>: Audit-Trails, Missbrauchs-Prävention.</li>
+      </ul>
+
+      <h2>💡 Warum KI_ana „lebendig“ wirkt</h2>
+      <ul class="bullet-grid">
+        <li><strong>Nicht Blackbox</strong>, sondern erklärbar: Herkunft &amp; Version von Wissen bleiben sichtbar.</li>
+        <li><strong>Nicht zentral</strong>, sondern verteilt: Sub-KIs lernen individuell.</li>
+        <li><strong>Nicht nur generativ</strong>, sondern mit wachsendem Gedächtnis.</li>
+        <li><strong>Nicht statisch</strong>, sondern fehlertolerant &amp; neugierig.</li>
+        <li><strong>Nicht anbieterabhängig</strong>, sondern offen &amp; transparent.</li>
+      </ul>
+
+      <div class="mt-3" style="text-align:center;">
+        <a class="btn primary" href="/static/chat.html">Jetzt ausprobieren</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container small">
+      <p>© <span id="year"></span> KI_ana – mit Liebe gebaut.</p>
+      <p>
+        <a href="/static/impressum.html">Impressum</a> ·
+        <a href="/static/privacy.html">Datenschutz</a> ·
+        <a href="/static/agb.html">AGB</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Loader für Navbar -->
+  <script>
+  (function(){
+    try {
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r => r.text())
+        .then(html => {
+          const n = document.getElementById('navbar');
+          if (!n) return;
+          n.innerHTML = html;
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    } catch {}
+  })();
+  </script>
+</body>
+</html>

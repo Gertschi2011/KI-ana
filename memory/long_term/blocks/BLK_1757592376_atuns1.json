@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Reshaped is now open source\n • Hacker News: DeepCodeBench: Real-World Codebase Understanding by Q&A Benchmarking\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ist Bundestagspräsidentin Klöckner neutral - oder polarisierend?",
+  "hash": "2bf2367068dc40ee3e8790ed44b72a0c7ccc1de088b9e0c3371988c3cfad8551",
+  "id": "BLK_1757592376_atuns1",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "oRWTEYqDJSDGnEXYIPnNE7HVD3tcALGaLWtPjWdEVdre9DH4RFmBy6FXUEEHp3KNuh2egV7zH94Ht/Qd+m6UDA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 14:06",
+  "ts": 1757592376,
+  "url": ""
+}

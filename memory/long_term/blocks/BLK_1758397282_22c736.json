@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Bringing restartable sequences out of the niche\n • Hacker News: TV Time Machine: A Raspberry Pi That Plays Random 90s TV\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): DB-Regio-Chefin Palla soll neue Bahnchefin werden",
+  "created_at": 1758397282.770372,
+  "hash": "6688a5a0c89c36dc5c6bc03e8837610f9c835bcccbcbfb45b789a5e68f6e71cf",
+  "id": "BLK_1758397282_22c736",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "apSohAyr1Vd+clYeLTUfYq+BvXEkLv1rJhfV51VrJcks/Ly3IK2jz/op0O5ZSPOPpudIlDaySdbkQ203p1IVCg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 21:41",
+  "url": null
+}

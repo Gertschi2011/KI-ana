@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Refurb Weekend: Silicon Graphics Indigo² Impact 10000\n • Hacker News: A single, 'naked' black hole confounds theories of the young cosmos\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Krieg: Katar - Vermittler unter Beschuss",
+  "created_at": 1757834901.918636,
+  "hash": "d7163285199df868a4704d224d7b5f40d474b2dafbd2d2d8f67382935d86c462",
+  "id": "BLK_1757834901_a1042e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "DiFxFAMBnAm5ybYG+GDV2V39lw9xdtrx9nuWW9T0i8z36xb3N1+kcaNlHySvYvW5NEjIopkXWlzjoDDYPblTDQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 09:28",
+  "url": null
+}

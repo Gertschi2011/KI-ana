@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 486Tang – 486 on a credit-card-sized FPGA board\n • Hacker News: Show HN: CLAVIER-36 (programming environment for generative music)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Aufruf von Rechtsextremen: Zehntausende demonstrieren in London gegen Einwanderung",
+  "created_at": 1757778477.3028011,
+  "hash": "4fbc9c9dd603460e5bb779d01e6ffab1e641afe5198dcee30c896000b657e4bf",
+  "id": "BLK_1757778477_be2405",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QSWoB+jni01gCDhtmCTALh6PSRtBPBcFHkxk/PigSTKsu5Oq85Da/0p+uMmqtatrh0i8e7nrXwvmAjlpdfk/Dw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 17:47",
+  "url": null
+}

@@ -1,0 +1,81 @@
+# HTTP  HTTPS Redirect (inkl. ACME HTTP-01)
+server {
+    listen 80;
+    listen [::]:80;
+    server_name ki-ana.at www.ki-ana.at;
+
+    location /.well-known/acme-challenge/ {
+        alias /var/www/letsencrypt/.well-known/acme-challenge/;
+        default_type "text/plain";
+        try_files $uri =404;
+    }
+
+    return 301 https://$host$request_uri;
+}
+
+# HTTPS vHost
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name ki-ana.at www.ki-ana.at;
+
+    # TLS (Let's Encrypt)
+    ssl_certificate     /etc/letsencrypt/live/ki-ana.at/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/ki-ana.at/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/ki-ana.at/chain.pem;
+
+    # Security & Mixed-Content Hardening
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    add_header Content-Security-Policy "upgrade-insecure-requests" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # Static files
+    location /static/ {
+        alias /home/kiana/ki_ana/netapi/static/;
+        access_log off;
+        expires 7d;
+        add_header Cache-Control "public, max-age=604800, immutable";
+    }
+
+    # Default: reverse proxy zur App
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+
+        # Long-lived connections / SSE / WS
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+
+        proxy_buffering off;
+        proxy_request_buffering off;
+
+        proxy_read_timeout  3600s;
+        proxy_send_timeout  3600s;
+        proxy_connect_timeout 60s;
+    }
+
+    # ACME HTTP-01 (zur Sicherheit auch hier)
+    location /.well-known/acme-challenge/ {
+        alias /var/www/letsencrypt/.well-known/acme-challenge/;
+        default_type "text/plain";
+        try_files $uri =404;
+    }
+
+    # Gzip für statische Assets
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
+    gzip_min_length 1024;
+}
+
+# Map für Connection header (Upgrade)
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ""      close;
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Étoilé – desktop built on GNUStep\n • Hacker News: Neovim Pack\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Koalitionsausschuss: Demonstrative Einigkeit gegen den Ampel-Sound",
+  "hash": "3456970da1a12f4d06c198d0b77c24b233a94514036459e6f89825de2a8519a9",
+  "id": "BLK_1756962757_o6w0k9",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "tqvKDfsk3+gqOEkReZickDs5O3unXxyeA1rK0fLYJJYpewmkMPV/2Xg3VIHcPiTIOXPEaGmWA43d9Zcaa+DkAQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-04 07:12",
+  "ts": 1756962757,
+  "url": ""
+}

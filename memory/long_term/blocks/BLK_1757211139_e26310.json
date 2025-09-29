@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: I recreated Windows XP as my portfolio\n • Hacker News: Game launcher installs Root CA certificate on your machine (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht: Gelöstes Kabel wohl Ursache für Unglück in Lissabon",
+  "created_at": 1757211139.102196,
+  "hash": "b57778800919d3c56cb97121d20ae0fec2d3f235cc566ee14e3d0e4382b16539",
+  "id": "BLK_1757211139_e26310",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "y5TsXhYXsWGoyPph0ix8DHb5ITazu977lz7BOn//9mZhWBFuP7EetRn2LLBWg2rPHrtRyWKmkoZEZmeIGRe9Cg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 04:12",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Feedmaker: URL + CSS selectors = RSS feed\n • Hacker News: Ask HN: Has anyone else been unemployed for over two years?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzung: Estland beantragt Artikel-4-Beratungen der NATO",
+  "created_at": 1758319846.893891,
+  "hash": "09e8bf21f89152a2e10abab0409662226905f780a53f81fb77abcf7375ab8b92",
+  "id": "BLK_1758319846_8a6677",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TYnGjZvaA36cRwbZuUNZXdl0L493KUhbVopL/lK+PqiiJWiD9V17G0Jjv1AFrCwHIwIx9TrpGnPMPxgCrwUsAw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 00:10",
+  "url": null
+}

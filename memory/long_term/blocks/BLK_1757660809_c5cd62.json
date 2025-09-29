@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Debian 13, Postgres, and the US time zones\n • Hacker News: The challenge of maintaining curl\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Manöver von Russland und Belarus: Eine versteckte Mobilmachung?",
+  "created_at": 1757660809.661551,
+  "hash": "2198cce57c3820b78f3b8506a8d2ebc42663a0788b9c3c66e651c5eda45d66a9",
+  "id": "BLK_1757660809_c5cd62",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "AqY0TtF3DjVYUXYBu0gmUnRokKMZWUTDAGdVx9Lniv2rgydLS54HZQZJCXXr6xWMS7y+XUfOWAhfK7m6pLMXBw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 09:06",
+  "url": null
+}

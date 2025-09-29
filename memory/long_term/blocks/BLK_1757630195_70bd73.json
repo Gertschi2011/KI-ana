@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How Palantir is mapping the nation’s data\n • Hacker News: Unusual Capabilities of Nano Banana (Examples)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pianist Levit verurteilt Ausladung des israelischen Dirigenten Shani",
+  "created_at": 1757630195.0127997,
+  "hash": "a53ca60fa4131916ab5515bf7fee51eb201bd6f51bfe86f8afa5a1622d8e2b90",
+  "id": "BLK_1757630195_70bd73",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/3Q0Gvy8PKmo65OY2yuSM7t6z8ZPCcd13LHo15ZpNXMcQF7Wb198Bw2BMtYNzOwr9rvz1e6qaDw0Qw2p/Vi2BQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 00:36",
+  "url": null
+}

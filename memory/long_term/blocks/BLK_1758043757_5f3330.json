@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launch HN: Rowboat (YC S24) – Open-source IDE for multi-agent systems\n • Hacker News: Scammed out of $130K via fake Google call, spoofed Google email and auth sync\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Militärmanöver \"Sapad\" in Belarus: Putins Machtdemonstration an den Westen",
+  "created_at": 1758043757.81474,
+  "hash": "eec2d7724f0f16807704667020e956995ac8b1bc1b58604a6f52f157ae98e178",
+  "id": "BLK_1758043757_5f3330",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7antoE/WNoNF5bj5mhgJPs7IANunyRv8uIN4Q2HJZs7bLHqNSLVzPsHS5XIu4Ayn6XD7VEnx2TzBpWiZPPgoDg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 19:29",
+  "url": null
+}

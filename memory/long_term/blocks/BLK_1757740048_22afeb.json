@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: wcwidth-o1 – Find Unicode text cell width in no time for JavaScript/TS\n • Hacker News: OCI Registry Explorer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): USA üben im UN-Sicherheitsrat deutliche Kritik an Russland",
+  "created_at": 1757740048.2821078,
+  "hash": "974ce788c4dcfeae53953ef5f938ff7135b77b3e766384060191c5d463ff4d30",
+  "id": "BLK_1757740048_22afeb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ZCdypvXXdFDIr1uSN4nD9Y9LTZYgF0RXvWL8T7x5kkf0HSfm/QALp9XYqg8VxkHW0T+oq4wAtT9Ao5+QFLFYDA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 07:07",
+  "url": null
+}

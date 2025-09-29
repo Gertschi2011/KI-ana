@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Qwen3 30B A3B Hits 13 token/s on 4xRaspberry Pi 5\n • Hacker News: A Software Development Methodology for Disciplined LLM Collaboration\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Bundesstaat Georgia: 475 Menschen in Hyundai-Werk festgenommen",
+  "hash": "3f0a99d7953157c3d2c4a678c6e1c493f3daf5ed30e846f2f84b19d2c1261b05",
+  "id": "BLK_1757164318_v6kihy",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "WyAFKt26mRA0lj62FCO/svkRy2xhLqsMelEnRAdSdyZ4qy5nVKtb+KbIYpYGZyWg9F5UT7XIke+BiHlFOXtvCA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 15:11",
+  "ts": 1757164318,
+  "url": ""
+}

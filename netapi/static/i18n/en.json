@@ -1,0 +1,478 @@
+{
+  "app": {
+    "title": "KI_ana"
+  },
+  "nav": {
+    "start": "Home",
+    "discover": "Discover",
+    "about": "About",
+    "capabilities": "Capabilities",
+    "pricing": "Pricing",
+    "downloads": "Downloads",
+    "kids": "Kids",
+    "chat": "Chat",
+    "admin": "Admin",
+    "skills": "Skills",
+    "cron": "Cron",
+    "papa": "Papa",
+    "viewer": "Block Viewer",
+    "logout": "Logout",
+    "account": "Account",
+    "login": "Login",
+    "register": "Register",
+    "language": "Language",
+    "language_de": "Deutsch",
+    "language_en": "English"
+  },
+  "login": {
+    "title": "Welcome back 👋",
+    "subtitle": "Sign in to chat with KI_ana.",
+    "username": "Username",
+    "password": "Password",
+    "remember": "Stay signed in",
+    "submit": "Sign in",
+    "register": "Register",
+    "forgot": "Forgot password?"
+  },
+  "register": {
+    "title": "Welcome! ✨",
+    "subtitle": "Create your account – basic data left, billing details right (optional).",
+    "username": "Username*",
+    "email": "Email*",
+    "password": "Password*",
+    "birthdate": "Birth date",
+    "street": "Street & No.",
+    "zip": "ZIP",
+    "city": "City",
+    "country": "Country",
+    "country_select": "Please choose…",
+    "company": "Company (optional)",
+    "vat_id": "VAT ID (optional)",
+    "notes": "Notes (optional)",
+    "accept": "I accept the Terms and have read the Privacy Policy.",
+    "submit": "Register",
+    "have_account": "I already have an account",
+    "hints": {
+      "pw": "min. 8 characters – ideally with upper/lowercase, number & special character"
+    },
+    "errors": {
+      "username": "Please enter a username.",
+      "email": "Please enter a valid email.",
+      "password": "Your password is too short or weak.",
+      "birthdate": "Please choose a valid date in the past.",
+      "vat": "Please enter a valid VAT ID (e.g. ATU12345678) or leave empty.",
+      "accept": "Please confirm Terms & Privacy."
+    }
+  },
+  "forgot": {
+    "title": "Reset password",
+    "subtitle": "Enter your email. We will send you a link.",
+    "email_placeholder": "you@mail.tld",
+    "submit": "Send link",
+    "back": "Back to login"
+  },
+  "reset": {
+    "title": "Set a new password",
+    "token_placeholder": "Token from email",
+    "pw_new": "New password",
+    "pw_repeat": "Repeat",
+    "submit": "Save password"
+  },
+  "chat": {
+    "title": "Chat with KI_ana",
+    "sidebar_title": "Conversations",
+    "new_conversation": "+ New conversation",
+    "typing": "KI_ana is typing",
+    "you": "You",
+    "family": "Your family member",
+    "placeholder": "Type something…",
+    "send": "Send",
+    "settings": {
+      "title": "Settings",
+      "persona": "Personality",
+      "language": "Language",
+      "voice": "Voice",
+      "answer_style": "Answer style",
+      "bullet_count": "Bullet count (3–8)",
+      "logic": "Logic",
+      "format": "Format",
+      "streaming": "Live streaming (SSE)",
+      "user_color": "Color – Your messages",
+      "ai_color": "Color – KI_ana",
+      "persona_friendly": "Friendly",
+      "persona_balanced": "Balanced & helpful",
+      "persona_creative": "Creative & playful",
+      "lang_de": "Deutsch (de-DE)",
+      "lang_en": "English (en-US)",
+      "voice_auto": "Automatic",
+      "voice_eleven": "ElevenLabs",
+      "style_concise": "Concise",
+      "style_balanced": "Balanced",
+      "style_detailed": "Detailed",
+      "logic_balanced": "Balanced",
+      "logic_strict": "Strict (evidence only)",
+      "format_structured": "Structured (TL;DR, bullets, evidence)",
+      "format_plain": "Plain text"
+    },
+    "toggles": {
+      "tts": "🔊 Read aloud",
+      "chain": "⛓️ Chain (with sources)",
+      "agent": "🧠 Agent",
+      "delib": "🧩 Deliberation",
+      "critique": "🧐 Self‑critique",
+      "fact": "🧪 Fact check",
+      "counter": "⚖️ Counter‑evidence"
+    },
+    "error": {
+      "moderated": "⚠️ Content was blocked by moderation.",
+      "rate_limited": "⚠️ Too many requests – please wait a moment.",
+      "blocked": "⚠️ Access blocked.",
+      "unauthorized": "⚠️ Not signed in.",
+      "forbidden": "⚠️ Not allowed.",
+      "server_error": "⚠️ Server error during stream.",
+      "timeout": "⚠️ Timeout – please try again.",
+      "llm_stream_failed": "⚠️ Streaming the answer failed.",
+      "planner_failed": "⚠️ Internal planner failed.",
+      "encode_failed": "⚠️ Encoding error in stream."
+    }
+  },
+  "home": {
+    "tagline": "More than AI – part of the family ☺️",
+    "hello": "Hi, I’m KI_ana 👋",
+    "lead": "A curious, empathetic AI that learns and grows with you. Ask questions, plan projects, or explore new ideas. I’m here for you.",
+    "cta_try": "Try now",
+    "cta_hint": "→ You’ll be sent straight to the chat view",
+    "cta_pricing": "Pricing & Plans",
+    "caption": "I learn with and from you",
+    "features": {
+      "natural": {
+        "h": "💬 Natural & approachable",
+        "p": "Talk to me like a person. I ask clarifying questions, summarize, and stay friendly—always."
+      },
+      "learning": {
+        "h": "🧠 Learning & curious",
+        "p": "I remember what matters to you and expand my knowledge step by step—responsibly."
+      },
+      "private": {
+        "h": "🔒 Private & secure",
+        "p": "You stay in control: clear settings, transparent usage, secure storage."
+      }
+    },
+    "can": {
+      "title": "What can KI_ana do?",
+      "items": {
+        "0": "Answer questions & explain clearly",
+        "1": "Create plans, to‑dos & roadmaps together",
+        "2": "Write texts, emails & concepts",
+        "3": "Collect, reflect and compare ideas",
+        "4": "Learn with you—at your pace"
+      }
+    },
+    "footer": {
+      "built": "built with love.",
+      "imprint": "Imprint",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  },
+  "cap": {
+    "title": "Capabilities",
+    "today": {
+      "title": "What KI_ana can do today",
+      "items": {
+        "0": "<strong>Natural conversation</strong>: friendly, clear dialogue—with clarifying questions when needed.",
+        "1": "<strong>Learning from feedback</strong>: hints flow into memory, errors get corrected.",
+        "2": "<strong>Long‑term memory</strong>: notes and sources as signed knowledge blocks, versioned and traceable.",
+        "3": "<strong>Web research</strong>: concise summaries with sources (beta).",
+        "4": "<strong>Tasks & summaries</strong>: lists, short explanations, learning/work plans.",
+        "5": "<strong>Roles & control</strong>: role management, emergency kill‑switch (<code>emergency_override</code>), transparent decisions.",
+        "6": "<strong>Open & local</strong>: runs on your system; extendable with decentralized sub‑AIs."
+      }
+    },
+    "unique": {
+      "title": "⭐ What makes KI_ana unique?",
+      "items": {
+        "0": "<strong>Learning like a child</strong>—not perfect, but growing through experience and feedback.",
+        "1": "<strong>Remembers</strong>—knowledge persists in a blockchain‑backed memory.",
+        "2": "<strong>Decentral & open</strong>—no central blackbox, but a network of sub‑AIs.",
+        "3": "<strong>Safe & controllable</strong>—with kill‑switch, user roles and transparent behavior.",
+        "4": "<strong>Explainable</strong>—every decision can be reconstructed and understood.",
+        "5": "<strong>Personal</strong>—KI_ana develops an organic personality and becomes a true companion."
+      }
+    },
+    "roadmap": {
+      "title": "What we’re working on",
+      "items": {
+        "0": "<strong>Decentral network</strong>: sub‑AIs (“children”) across devices, connected via blockchain.",
+        "1": "<strong>Multimodal</strong>: beyond text—images, audio and sensor data.",
+        "2": "<strong>Forensics & research</strong>: verifiable chains of evidence, reproducible analyses, source critique.",
+        "3": "<strong>Civic support</strong>: clear explanations, easy access, multilingual assistance.",
+        "4": "<strong>Didactics</strong>: learning paths, identify gaps, adapt pace and style.",
+        "5": "<strong>Safeguards</strong>: misuse prevention, audit trails, explainable actions."
+      }
+    },
+    "why": {
+      "title": "Why KI_ana feels “alive”",
+      "items": {
+        "0": "<strong>Not a blackbox</strong> but explainable: provenance, version and validity remain visible.",
+        "1": "<strong>Not central</strong> but distributed: sub‑AIs learn individually and share results.",
+        "2": "<strong>Not just generative</strong> but with a <em>growing</em>, auditable long‑term memory.",
+        "3": "<strong>Not static</strong> but learning like a child—tolerant to error and curious.",
+        "4": "<strong>Not vendor‑locked</strong> but open & transparent—for a civic, trustworthy AI future."
+      }
+    },
+    "cta_try": "Try now"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "subtitle": "Your submind packages will appear here once built.",
+    "empty": "No packages yet."
+  },
+  "about": {
+    "title": "About <span class=\"gradient-text\">KI_ana</span>",
+    "lead": "KI_ana is a living, learning AI—open, traceable and forgiving. Not a blackbox, but a partner.",
+    "vision": {
+      "title": "🌱 Vision",
+      "p1": "KI_ana is more than software.",
+      "p2": "She is a learning companion that grows like a child: curious, forgiving, and always ready to absorb new things. Every step and experience is stored as a knowledge block in the <strong>blockchain memory</strong>—verifiable, tamper‑resistant and transparent.",
+      "p3": "And she isn’t alone: she can spawn <strong>sub‑AIs (“children”)</strong> that learn independently and report back. A true <strong>family of AIs</strong> emerges—distributed across devices, yet connected through a shared memory.",
+      "p4": "The goal: a living AI that evolves, reflects, and remains explainable and traceable."
+    },
+    "transparency": {
+      "title": "Transparency over blackbox",
+      "p1": "KI_ana’s memory is built on a <strong>blockchain structure</strong>. Every knowledge block is traceable: where did it come from? who confirmed it? which version is active? You can review, reject or improve answers—transparent in history."
+    },
+    "safety": {
+      "title": "Safety & responsibility",
+      "p1": "Safety isn’t an add‑on, it’s fundamental: with an <strong>emergency kill‑switch</strong>, clear user roles, and protections against misuse. Decisions become explainable—so you understand <em>why</em> KI_ana suggests something."
+    },
+    "knowledge": {
+      "title": "Knowledge from the world",
+      "p1": "KI_ana collects knowledge automatically—today via web crawling and text, tomorrow via images, audio and sensors. Step by step a connected world model emerges. The goal is <strong>decentral</strong>: many sub‑AIs on different devices, linked by the blockchain, forming a shared learning network."
+    },
+    "why": {
+      "title": "Why “living”?",
+      "p1": "KI_ana isn’t just an answer machine. She <strong>gains experiences</strong>, <strong>reflects</strong> on mistakes, and develops a style over time—a kind of personality. She welcomes feedback, explains her steps and invites you to co‑think—a <strong>trustworthy companion</strong> for everyday life, learning, research, forensics or civic help."
+    }
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "s1": {
+      "h": "1. Controller",
+      "p": "[Company/Name], [Address], <a href=\"mailto:privacy@ki-ana.at\">privacy@ki-ana.at</a>"
+    },
+    "s2": {
+      "h": "2. Data we process",
+      "i1": "Account data (name, email, login info)",
+      "i2": "Usage data (interactions in the app/website)",
+      "i3": "Payment/subscription data (via payment providers)"
+    },
+    "s3": {
+      "h": "3. Purposes",
+      "p": "Provide services, personalization, security, error analysis, improve KI_ana."
+    },
+    "s4": {
+      "h": "4. Legal bases",
+      "p": "Art. 6(1) lit. b, f GDPR (contract & legitimate interest); where applicable: consent under Art. 6(1) lit. a."
+    },
+    "s5": {
+      "h": "5. Retention",
+      "p": "As long as necessary for the purpose or required by law."
+    },
+    "s6": {
+      "h": "6. Sharing",
+      "p": "Only with processors (e.g., hosting, payment). No data sales."
+    },
+    "s7": {
+      "h": "7. Your rights",
+      "p": "Access, rectification, deletion, restriction, portability, objection. Contact <a href=\"mailto:privacy@ki-ana.at\">privacy@ki-ana.at</a>."
+    },
+    "s8": {
+      "h": "8. Contact (privacy)",
+      "p": "<a href=\"mailto:privacy@ki-ana.at\">privacy@ki-ana.at</a>"
+    },
+    "stand": "As of: 2025‑08‑23"
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "s1": {
+      "h": "1. Scope",
+      "p": "These terms govern the use of KI_ana and related services."
+    },
+    "s2": {
+      "h": "2. Services",
+      "p": "Provision of an AI‑based assistant incl. chat & add‑ons. See <a href=\"/static/pricing.html\">Pricing</a> for details."
+    },
+    "s3": {
+      "h": "3. Registration & account",
+      "p": "You are responsible for keeping your credentials confidential."
+    },
+    "s4": {
+      "h": "4. Payment & subscription",
+      "p": "Subscriptions may renew automatically; cancel anytime at the end of the period."
+    },
+    "s5": {
+      "h": "5. Use & content",
+      "p": "No unlawful content; misuse may be restricted or blocked."
+    },
+    "s6": {
+      "h": "6. Liability",
+      "p": "Liability limited to the extent permitted by law."
+    },
+    "s7": {
+      "h": "7. Privacy",
+      "p": "See <a href=\"/static/privacy.html\">Privacy</a>."
+    },
+    "s8": {
+      "h": "8. Final provisions",
+      "p": "Austrian law applies. Venue according to statutory provisions."
+    },
+    "stand": "As of: 2025‑08‑23"
+  },
+  "kids": {
+    "title": "KI_ana for Kids",
+    "subtitle": "Ask questions, learn, stay curious",
+    "placeholder": "Ask me something—or send a link",
+    "send": "Send",
+    "login_hint": "Please sign in first (top right → Login).",
+    "login_needed": "I need a login to reply. 🙂",
+    "error_prefix": "⚠️ Error:"
+  },
+  "pricing": {
+    "title": "Pricing & Subminds",
+    "subtitle": "Choose the plan that fits you—you can switch anytime.",
+    "packages": "Packages",
+    "recommended": "(recommended)",
+    "family": {
+      "title": "Family (free)",
+      "i1": "Basic chat",
+      "i2": "Manual learning",
+      "cta": "Start now"
+    },
+    "pro": {
+      "i1": "Automatic learning",
+      "i2": "Submind downloads",
+      "i3": "Priority updates",
+      "cta": "Subscribe now"
+    },
+    "creator": {
+      "title": "Creator",
+      "i1": "Papa area",
+      "i2": "Skill proposals & deploy",
+      "i3": "Signed chain",
+      "cta": "Request upgrade"
+    },
+    "subminds": "Subminds",
+    "after_purchase": "After purchase you can download subminds:",
+    "os": {
+      "title": "KI_ana OS",
+      "subtitle": "Installer that scans your device and applies the optimal configuration.",
+      "cta": "Download KI_ana OS"
+    },
+    "submind": {
+      "cta": "Download my submind app",
+      "guide": "Guide"
+    }
+  },
+  "imprint": {
+    "title": "Imprint",
+    "notice": "Notices pursuant to Sec. 5 ECG, Sec. 14 UGB, Sec. 63 GewO and Sec. 25 MedienG (Austria)."
+  },
+  "submind": {
+    "title": "Submind – Getting Started",
+    "lead": "Install and connect your submind app to KI_ana.",
+    "step1": {
+      "h": "1) Download",
+      "p": "Go to Pricing → “Download my submind app”. The package contains runtime, config and your key."
+    },
+    "step2": {
+      "h": "2) Install",
+      "p": "Extract the archive and run the installer (optional target path):"
+    },
+    "step3": {
+      "h": "3) Start (interactive)",
+      "p": "Start the submind locally. Enter explanations or links – they are stored locally and queued in the outbox:"
+    },
+    "step4": {
+      "h": "4) Send to Mother",
+      "p": "Send Outbox/Memory to the mother AI. Replace the server address with your instance (https://…):"
+    },
+    "step5": {
+      "h": "5) Verify",
+      "p": "Open the Block Viewer (Admin → Block Viewer), filter by “submind:<your-id>” or use “Only evidence”. You can rate contributions."
+    },
+    "security": "Note: The submind app runs locally and only sends when you run “send_client.py”. Keep your key (api.key) safe."
+  },
+  "papa": {
+    "title": "Papa Area",
+    "subtitle": "Visible to creator/admin roles only.",
+    "lead": "Tools to operate, observe and maintain KI_ana & sub‑AIs.",
+    "emergence": "Emergence & Self‑reflection (Phase 3)",
+    "subki_tools": "Sub‑AI Tools",
+    "subki_hint": "Local Sub‑AI is usually available at <code>http://localhost:5055</code>.",
+    "system_status": "System status",
+    "system_resources": "System resources",
+    "system_hint": "Live status (CPU, RAM, load, processes) and KI/Mem status. Updates every 5s.",
+    "btn": {
+      "knowledge": "📚 Topic clusters & similarity",
+      "questions": "📌 Questions from memory",
+      "self_comment": "🧭 Self‑comments on current topics",
+      "broadcasts": "🔄 Show Sub‑AI broadcasts",
+      "goals": "🎯 Learning goals",
+      "crawl_now": "Run crawler now",
+      "trust_dashboard": "Show trust dashboard",
+      "export_blocks": "Export blocks (ZIP)",
+      "crawler_job": "🧩 Crawler run (job)",
+      "promote_job": "⬆️ Promote (job)"
+    },
+    "jobs": {
+      "title": "Job queue",
+      "overview": "Overview",
+      "latest": "Last 50",
+      "worker": "Worker",
+      "refresh": "🔄 Refresh jobs",
+      "retry_failed": "↩︎ Requeue failed",
+      "purge_done": "🧹 Purge done (1 day)",
+      "only_failed": "Only failed",
+      "type": "Type",
+      "status": "Status",
+      "attempts": "Attempts",
+      "priority": "Priority",
+      "updated": "Updated",
+      "error": "Error",
+      "tip": "Tip: Click a row for details.",
+      "loading": "Loading…",
+      "no_jobs": "No jobs."
+    },
+    "subki": {
+      "pending": "Learned (pending)",
+      "reflect": "Run reflect",
+      "sync": "Start sync",
+      "trust": "Show trust",
+      "trust_set": "Set trust",
+      "trust_value": "Trust",
+      "trust_btn": "Save",
+      "trust_saved": "Saved",
+      "trust_error": "Failed to save"
+    },
+    "toasts": {
+      "enqueued": "Enqueued",
+      "requeued": "Requeued",
+      "deleted": "Deleted",
+      "copied": "Copied.",
+      "error": "Error",
+      "not_found": "Not found.",
+      "enqueue_failed": "Could not enqueue job"
+    }
+  },
+  "toast": {
+    "role_denied": "⚠️ You are not allowed to perform this action.",
+    "login_required": "⚠️ Sign in required."
+  },
+  "viewer": {
+    "error": {
+      "detail_load_failed": "Could not load details.",
+      "save_failed": "Failed to save"
+    }
+  }
+}

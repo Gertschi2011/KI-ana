@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Event Horizon Labs (YC W24) Is Hiring\n • Hacker News: Launch HN: RunRL (YC X25) – Reinforcement learning as a service\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): AfD und die USA: Zwischen US-Kritik und Trump-Sympathie",
+  "hash": "51f423c58924d8f8b2d3c5edb87e82b3de16a7447b46f64d834ceaa96fda4ba4",
+  "id": "BLK_1758130200_ec762p",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "XjO7wtlfmu/xW209mkkXHw3c7WXhU0Brwel83KO8Jy49wr9Ic7ZcJbUAXsxIqhydv5vxuJ+lGARyDrgg8hIACw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 19:30",
+  "ts": 1758130200,
+  "url": ""
+}

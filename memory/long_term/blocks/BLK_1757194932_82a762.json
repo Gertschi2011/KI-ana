@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Utah's hottest new power source is 15k feet below the ground\n • Hacker News: How often do health insurers say no to patients?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vorläufiger Bericht: Gelöstes Kabel sorgte wohl für Unglück in Lissabon",
+  "created_at": 1757194932.0859432,
+  "hash": "d3a2d9913790c5a04fb27c31b351ed182707107a665e51e6ce29b4a4703a7070",
+  "id": "BLK_1757194932_82a762",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "IgO+rsKEfMVLqcryi+zFyoqVLr0sDOohWkSBYwaENh3/QFcRfR7WZxJNvbe3BHcHJYJLc+r8nR0C02Bxd6/HDQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 23:42",
+  "url": null
+}

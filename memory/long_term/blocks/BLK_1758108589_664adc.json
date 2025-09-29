@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple Photos App Corrupts Images\n • Hacker News: Determination of the fifth Busy Beaver value\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Trumps MAGA-Umfeld die britischen Rechten stärkt",
+  "created_at": 1758108589.761963,
+  "hash": "dc60997ce661821b3557cf8eaae96e373b2a61ad7f5a1decebc74421a3d2531b",
+  "id": "BLK_1758108589_664adc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Qb7U3PLYlgyklXVDliykyTyaj8XoHYr/YRqaoB5td4BaYplgMd3l3dKM3guAd2Pv2loFzTsFAYs/WE7CWBcPCA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 13:29",
+  "url": null
+}

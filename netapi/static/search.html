@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <base href="/" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suche – KI_ana</title>
+  <link href="/static/styles.css" rel="stylesheet">
+  <link href="/static/chat.css" rel="stylesheet">
+  <link rel="icon" href="/static/favicon.ico">
+</head>
+<body class="page">
+  <div id="navbar"></div>
+
+  <main class="container" style="padding:16px;max-width:980px;margin:0 auto;">
+    <h1>Websuche</h1>
+    <p style="opacity:.8">Durchsuche das Web mit deiner Google Custom Search.</p>
+    <!-- Google CSE -->
+    <script async src="https://cse.google.com/cse.js?cx=e5a904995c3fe41f6"></script>
+    <div class="gcse-search"></div>
+  </main>
+<script>
+(function(){
+  try {
+    fetch('/static/nav.html?v=' + Date.now())
+      .then(r=>r.text())
+      .then(html => {
+        const n=document.getElementById('navbar');
+        if(!n) return;
+        n.innerHTML=html;
+        try{
+          n.querySelectorAll('script').forEach(old=>{
+            const s=document.createElement('script');
+            if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+            else { s.textContent = old.textContent || ''; }
+            document.body.appendChild(s);
+            old.remove();
+          });
+        }catch{}
+      })
+      .catch(()=>{});
+  } catch{}
+})();
+</script>
+</body>
+</html>
+

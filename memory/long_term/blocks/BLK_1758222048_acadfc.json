@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: When Knowing Someone at Meta Is the Only Way to Break Out of \"Content Jail\"\n • Hacker News: Learn Your Way: Reimagining Textbooks with Generative AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Protest gegen Sparpläne in Frankreich: \"Wir müssen dieses System ändern\"",
+  "created_at": 1758222048.606573,
+  "hash": "8f0b8347ae856550f34af6cf7807922614c0945fa06b030241f080a3fd78eec3",
+  "id": "BLK_1758222048_acadfc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "PNLos/8sBG//8aNmn4La4v6kg6GszBgSii6RtfE9QXx+T0y+hEl+78/nVfdukkc5Uyn9PenYqhcg+SEIjDFhAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 21:00",
+  "url": null
+}

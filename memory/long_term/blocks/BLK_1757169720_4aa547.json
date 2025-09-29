@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Vibe Coding Through the Berghain Challenge\n • Hacker News: 996\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD die Kultur in Sachsen-Anhalt umdeutet",
+  "created_at": 1757169720.9150736,
+  "hash": "b714b751579bf1bc7e7a4f9a5311203565ff333d73f160889cf4e125a6e0ad3f",
+  "id": "BLK_1757169720_4aa547",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "u7ZprnT2MKwbnCYXnzzC+NRxJupK0g5QBL9NSoC8NNN2SjiOqIDPzphC/K6Jp5IvDtJKZT2mpSWz9dkMp07ZDA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 16:42",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Europe enters the exascale supercomputing league with Jupiter\n • Hacker News: Show HN: Greppers – fast CLI cheat sheet with instant copy and shareable search\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel fordert Einwohner von Gaza-Stadt zur Flucht auf",
+  "created_at": 1757191330.58746,
+  "hash": "d21d6f78370b19aa83152f2c9dee5f1a06581ec875b33228410a238c62cb5e1a",
+  "id": "BLK_1757191330_9a9dcc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "JucyikpIacRFQu/rFcfJ0ayus30LQuJ+6dimVgYP8Bk+kwbxLyEW8RaUBXUX+WliGFpjmHzzO0G0znzripF+Bg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 22:42",
+  "url": null
+}

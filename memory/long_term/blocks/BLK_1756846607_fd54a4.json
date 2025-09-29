@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Judge Orders Google to Share Search Results to Help Resolve Monopoly\n • Hacker News: Google gets to keep Chrome but is barred from exclusive search deals\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Afghanistan: Nach dem Beben zeigt sich Ausmaß der Katastrophe",
+  "created_at": 1756846607.8241358,
+  "hash": "66f2eab6315edeb0b8d1a639c89efc23d19d42abca96ab3bbe6b139f7e4137f2",
+  "id": "BLK_1756846607_fd54a4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "lZa1WNmOi18JHONxSP30MBnNVCTOcQXaO7O/2U2pAEMl15k6HpzN5B17i9FNifoUrc/UDHnoAvGwXW5EXQo+Aw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 22:56",
+  "url": null
+}

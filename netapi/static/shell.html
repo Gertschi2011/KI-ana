@@ -1,0 +1,1499 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI_ana Shell</title>
+  <!--
+    Shell Quick Guide (Kurz-Doku)
+
+    Siehe ausführliche Anleitung: deploy/README.md (Abschnitt: "Shell Quick Guide (Knowledge+, Guardian, Autonomy‑Vorschläge)")
+
+    Neue Fenster & Panels:
+    - knowledgeplus: Suche, Zeitfilter (24h/7d/30d/Alle), Presets (Tagesberichte, Wochenberichte, Guardian), Export (JSON/CSV), Charts
+    - guardian: Live‑Feeds für Config‑Hash Änderungen (tags: guardian,config,hash) und Validator‑Events (tags: guardian,validator)
+    - autonomy: Panel "Vorschläge (Autonomy)" mit Übernehmen/Verwerfen
+
+    Presets & Tags (Knowledge+):
+    - Tagesberichte → tags:report,daily (Range 7d)
+    - Wochenberichte → tags:report,weekly (Range 30d)
+    - Guardian → tags:guardian,config,hash (Range 30d)
+
+    ENV Hinweise:
+    - WORKER_CONCURRENCY, LOW_PRIORITY_ALLOWED_HOURS, GUARDIAN_WATCH_FILES
+  -->
+  <style>
+    html, body { height: 100%; margin: 0; background: #0b1020; color: #e7ecf6; font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif; }
+    .topbar { height: 40px; display:flex; align-items:center; gap:8px; padding: 6px 10px; background: #0f152b; border-bottom: 1px solid #243153; position: sticky; top:0; z-index: 1000; }
+    .btn { background:#18234a; color:#cfe0ff; border:1px solid #2a3a66; padding:6px 10px; border-radius:8px; cursor:pointer; }
+    .btn:hover { background:#1e2b58; }
+    .btn[disabled] { opacity:.65; cursor:default; background:#102042; }
+    .desk { position: relative; height: calc(100% - 40px); }
+    .win { position:absolute; width: 520px; height: 360px; background:#0f152b; border:1px solid #28365f; border-radius:12px; box-shadow: 0 10px 30px rgba(0,0,0,.4); overflow:hidden; display:flex; flex-direction:column; resize: both; }
+    .title { height: 34px; background:#121a36; display:flex; align-items:center; gap:8px; padding: 6px 10px; cursor:move; user-select:none; border-bottom:1px solid #243153; }
+    .title .cap { flex:1 1 auto; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; opacity:.9 }
+    .actions { display:flex; gap:6px; }
+    .actions .btn { padding:4px 8px; }
+    .cont { flex:1 1 auto; background:#0a0f22; }
+    iframe { width: 100%; height: 100%; border:0; background:#0a0f22; }
+    .dock { position:absolute; left: 10px; bottom: 10px; display:flex; gap:10px; flex-wrap: wrap; max-width: 60%; }
+    .icon { width: 86px; height: 86px; border:1px solid #2a3a66; border-radius:12px; background:#121a36; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; cursor:pointer; box-shadow: 0 6px 20px rgba(0,0,0,.35); }
+    .icon:hover { background:#152044; }
+    .icon span { font-size: 12px; color:#cfe0ff; opacity:.9; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <button class="btn" data-open="admin">Admin</button>
+    <button class="btn" data-open="knowledge">Wissen</button>
+    <button class="btn" data-open="knowledgeplus" title="Wissen+ (Suche, Export, Charts)">Wissen+</button>
+    <button class="btn" data-open="devices">Geräte</button>
+    <button class="btn" data-open="guardian">Guardian</button>
+    <button class="btn" data-open="vision" title="KI_ana Vision">🧭 Vision</button>
+    <button class="btn" data-open="autonomy">Autonomie</button>
+    <div style="position:relative">
+      <button class="btn" id="winMenuBtn">Windows ▾</button>
+      <div id="winMenu" style="position:absolute;left:0;top:34px;background:#121a36;border:1px solid #28365f;border-radius:8px;display:none;min-width:220px;z-index:2000;padding:6px;box-shadow:0 10px 22px rgba(0,0,0,.5);">
+        <div style="padding:4px 6px;opacity:.8">Open Windows</div>
+        <div id="winList" style="max-height:220px;overflow:auto;margin:4px 0 6px 0;"></div>
+        <div style="display:flex;gap:6px;justify-content:space-between;">
+          <button class="btn" id="winCloseAll">Close all</button>
+          <button class="btn" id="winSavePreset">Save preset</button>
+          <button class="btn" id="winOpenPreset">Open preset</button>
+        </div>
+      </div>
+    </div>
+    <span style="margin-left:auto;display:inline-flex;align-items:center;gap:8px;opacity:.9">
+      <span id="sysAmpel" title="Self-Health" style="font-size:16px">⚪</span>
+      <span style="opacity:.7">KI_ana Shell · Phase 5B/6</span>
+    </span>
+  </div>
+  <div class="desk" id="desk">
+    <div class="dock" id="dock">
+      <div class="icon" data-open="planner" title="Planner"><div>🗂️</div><span>Planner</span></div>
+      <div class="icon" data-open="knowledge" title="Wissen"><div>📚</div><span>Wissen</span></div>
+      <div class="icon" data-open="knowledgeplus" title="Wissen+"><div>📈</div><span>Wissen+</span></div>
+      <div class="icon" data-open="devices" title="Geräte"><div>🖥️</div><span>Geräte</span></div>
+      <div class="icon" data-open="logs" title="Logs"><div>🗒️</div><span>Logs</span></div>
+    </div>
+  </div>
+  <script>
+    // Small HTML escape helper for safe rendering in Shell
+    function escapeHtml(str){
+      try{
+        return String(str)
+          .replace(/&/g,'&amp;')
+          .replace(/</g,'&lt;')
+          .replace(/>/g,'&gt;')
+          .replace(/"/g,'&quot;')
+          .replace(/'/g,'&#39;');
+      }catch{ return String(str||''); }
+    }
+    const desk = document.getElementById('desk');
+    let zc = 10; let idx = 0;
+    const URLS = {
+      admin: '/static/admin.html',
+      planner: '/static/admin.html#planner',
+      'planner-embed': null,
+      knowledge: '/static/admin.html#knowledge',
+      knowledgeplus: null,
+      devices: '/static/admin.html#devices',
+      logs: '/static/admin_logs.html',
+      autonomy: null,
+      guardian: null,
+      vision: null
+    };
+    function openWin(kind, pos){
+      const id = 'w'+(++idx);
+      const el = document.createElement('div'); el.className='win';
+      const left = pos?.left ?? (20+idx*24), top = pos?.top ?? (20+idx*18), w = pos?.w ?? 520, h = pos?.h ?? 360;
+      el.style.left = left+'px'; el.style.top=top+'px'; el.style.width=w+'px'; el.style.height=h+'px'; el.style.zIndex = ++zc;
+      let inner = `
+        <div class="title">
+          <div class="cap">${(kind||'').toUpperCase()}</div>
+          <div class="actions">
+            <button class="btn" data-act="front" title="In den Vordergrund">Vorne</button>
+            <button class="btn" data-act="min" title="Minimieren">▁</button>
+            <button class="btn" data-act="max" title="Maximieren">▢</button>
+            <button class="btn" data-act="close">Schließen</button>
+          </div>
+        </div>
+      `;
+      if (kind === 'planner-embed'){
+        inner += `<div class="cont" id="${id}-cont">
+          <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #243153;">
+            <select id="${id}-status" class="btn"><option value="">Alle</option><option>queued</option><option>running</option><option>done</option><option>failed</option><option>canceled</option></select>
+            <label class="btn" style="display:inline-flex;align-items:center;gap:6px;">Zeige: <select id="${id}-limit" style="border:none;background:transparent;"><option>10</option><option>25</option><option selected>50</option><option>100</option></select></label>
+            <input id="${id}-search" class="btn" placeholder="🔍 Titel" style="min-width:160px" />
+            <button class="btn" id="${id}-new">+ Plan</button>
+            <span id="${id}-sum" class="btn" style="opacity:.7">—</span>
+          </div>
+          <div id="${id}-list" style="padding:8px 10px;overflow:auto;height:100%;"></div>
+        </div>`;
+      } else if (kind === 'autonomy') {
+        inner += `<div class="cont" id="${id}-cont" style="display:flex;flex-direction:column;height:100%">
+          <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #243153;flex-wrap:wrap">
+            <label class="btn" style="display:inline-flex;align-items:center;gap:6px;">Level
+              <select id="${id}-level" style="border:none;background:transparent;">
+                <option value="0">0 · manuell</option>
+                <option value="1">1 · assistiert</option>
+                <option value="2">2 · autonom</option>
+              </select>
+            </label>
+            <button class="btn" id="${id}-start">Start</button>
+            <button class="btn" id="${id}-stop">Stop</button>
+            <span class="btn" id="${id}-ampel">⚪</span>
+          </div>
+          <div style="display:flex;gap:10px;padding:8px 10px;flex:1 1 auto;overflow:auto;">
+            <div style="flex:1 1 50%;min-width:300px;">
+              <h4 style="margin:6px 0">Rules</h4>
+              <textarea id="${id}-rules" style="width:100%;height:220px;background:#0f152b;color:#e7ecf6;border:1px solid #28365f;border-radius:8px;padding:8px;white-space:pre"></textarea>
+              <div style="margin-top:6px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <button class="btn" id="${id}-saveRules">Save Rules</button>
+                <button class="btn" id="${id}-addDevOffline">+ Device-Offline-Regel</button>
+                <button class="btn" id="${id}-addDevOfflinePlan">+ Device-Offline-Regel (Plan)</button>
+                <button class="btn" id="${id}-addPlanTemplate">+ Plan-Vorlage (plan_create)</button>
+                <button class="btn" id="${id}-addComboLog">+ Combo Log-Regel</button>
+                <span id="${id}-rulesInfo" style="opacity:.7"></span>
+              </div>
+              <!-- Modal for rule preview/edit -->
+              <div id="${id}-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:9999; align-items:center; justify-content:center;">
+                <div style="background:#0f152b; color:#e7ecf6; border:1px solid #28365f; border-radius:10px; width:min(780px, 96vw); max-width:780px; box-shadow:0 10px 30px rgba(0,0,0,.4)">
+                  <div style="padding:10px 12px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #243153">
+                    <strong>Regel-Vorschau (editierbar)</strong>
+                    <button id="${id}-modalClose" class="btn" title="Schließen">✖</button>
+                  </div>
+                  <div style="padding:10px 12px">
+                    <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px">
+                      <label style="display:flex; flex-direction:column; gap:4px">
+                        <span style="font-size:12px; opacity:.8">Device-ID</span>
+                        <input id="${id}-mDevId" list="${id}-devices" value="1" style="padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6; min-width:160px" />
+                        <datalist id="${id}-devices"></datalist>
+                        <small id="${id}-mDevErr" style="color:#f77; display:none">Geräte-ID darf nicht leer sein</small>
+                      </label>
+                      <label style="display:flex; flex-direction:column; gap:4px" id="${id}-wrapMinutes">
+                        <span style="font-size:12px; opacity:.8">Offline‑Minuten</span>
+                        <input id="${id}-mMinutes" type="number" value="10" min="1" max="1440" style="padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6; min-width:120px" />
+                        <small id="${id}-mMinErr" style="color:#f77; display:none">Offline‑Minuten muss > 0 sein</small>
+                      </label>
+                      <label style="display:flex; flex-direction:column; gap:4px; display:none" id="${id}-wrapLogWindow">
+                        <span style="font-size:12px; opacity:.8">Log‑Fenster (Minuten)</span>
+                        <input id="${id}-mLogWindow" type="number" value="5" min="1" max="1440" style="padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6; min-width:140px" />
+                        <small id="${id}-mLogWinErr" style="color:#f77; display:none">Log‑Fenster muss > 0 sein</small>
+                      </label>
+                      <label style="display:flex; flex-direction:column; gap:4px; display:none" id="${id}-wrapOfflineMin">
+                        <span style="font-size:12px; opacity:.8">Offline‑Schwelle (Minuten)</span>
+                        <input id="${id}-mOfflineMin" type="number" value="10" min="1" max="1440" style="padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6; min-width:140px" />
+                        <small id="${id}-mOfflineErr" style="color:#f77; display:none">Offline‑Schwelle muss > 0 sein</small>
+                      </label>
+                      <label style="display:flex; flex-direction:column; gap:4px">
+                        <span style="font-size:12px; opacity:.8">Plan‑Titel</span>
+                        <input id="${id}-mTitle" value="Autonomy Plan" style="padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6; min-width:220px" />
+                        <small id="${id}-mTitleErr" style="color:#f77; display:none">Titel darf nicht leer sein</small>
+                      </label>
+                      <label style="display:flex; flex-direction:column; gap:4px">
+                        <span style="font-size:12px; opacity:.8">Notiz/Message</span>
+                        <input id="${id}-mNote" value="Autonomy triggered" style="padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6; min-width:260px" />
+                        <small id="${id}-mNoteErr" style="color:#f77; display:none">Notiz darf nicht leer sein</small>
+                      </label>
+                      <label style="display:flex; flex-direction:column; gap:4px" id="${id}-logWrap">
+                        <span style="font-size:12px; opacity:.8">Log‑Typen (kommagetrennt)</span>
+                        <input id="${id}-mLogTypes" placeholder="z. B. kernel.error, app.warn" style="padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6; min-width:260px" />
+                        <small id="${id}-mLogErr" style="color:#f77; display:none">Bitte mindestens einen Log‑Typ angeben</small>
+                      </label>
+                      <label style="display:flex; flex-direction:column; gap:4px; display:none" id="${id}-wrapMsgRegex">
+                        <span style="font-size:12px; opacity:.8">Message Regex (optional)</span>
+                        <input id="${id}-mMsgRegex" placeholder="z. B. (timeout|failed)" style="padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6; min-width:260px" />
+                        <small id="${id}-mMsgErr" style="color:#f77; display:none">Ungültiges Regex‑Muster</small>
+                        <small style="opacity:.75">Beispiel: <code>(error|fail)</code> findet "error" oder "fail". Hinweis: Frontend testet mit JS‑Regex, Backend nutzt Python‑Regex – kleine Unterschiede möglich.</small>
+                      </label>
+                      <label style="display:flex; flex-direction:column; gap:4px; display:none" id="${id}-wrapGroup">
+                        <span style="font-size:12px; opacity:.8">Kombination</span>
+                        <div class="btn" style="display:inline-flex; gap:8px; align-items:center; background:transparent; border:none; padding:0">
+                          <label>Gruppe
+                            <select id="${id}-mGroup" style="border:1px solid #28365f; background:#0b1228; color:#e7ecf6; border-radius:8px; padding:4px 6px; margin-left:6px">
+                              <option value="all" selected>ALL (UND)</option>
+                              <option value="any">ANY (ODER)</option>
+                            </select>
+                          </label>
+                          <label style="display:inline-flex; align-items:center; gap:6px; margin-left:12px">
+                            <input type="checkbox" id="${id}-mLogNot" /> NOT (keiner der Logtypen)
+                          </label>
+                          <label style="display:inline-flex; align-items:center; gap:6px; margin-left:12px">
+                            <input type="checkbox" id="${id}-mAutoSuggest" /> Guardian Auto‑Suggest aktiv
+                          </label>
+                        </div>
+                      </label>
+                    </div>
+                    <div style="font-size:12px; opacity:.85; margin-bottom:6px">Bitte prüfe/editiere die JSON-Regel. Mit „Einfügen" wird sie den Rules hinzugefügt.</div>
+                    <div style="display:flex; gap:10px; align-items:stretch; flex-wrap:wrap">
+                      <textarea id="${id}-modalJson" style="flex:1 1 56%; min-width:320px; height:260px; background:#0b1228; color:#e7ecf6; border:1px solid #28365f; border-radius:8px; padding:8px; white-space:pre"></textarea>
+                      <div id="${id}-modalPreview" style="flex:1 1 40%; min-width:260px; height:260px; border:1px dashed #3a4a7a; border-radius:8px; padding:0; background:#0b1228; color:#cfe0ff; overflow:hidden; display:flex; flex-direction:column">
+                        <div style="opacity:.9; display:flex; justify-content:space-between; align-items:center; padding:6px 8px; border-bottom:1px solid #243153">
+                          <div style="display:flex; gap:6px; align-items:center">
+                            <button class="btn" id="${id}-tabResults">Ergebnisse</button>
+                            <button class="btn" id="${id}-tabExplain">Explain</button>
+                          </div>
+                          <span id="${id}-modalPreviewMeta" style="font-size:12px; opacity:.8"></span>
+                        </div>
+                        <div id="${id}-tabResultsBody" style="padding:8px; overflow:auto; flex:1 1 auto">
+                          <div id="${id}-modalPreviewBody"></div>
+                          <div id="${id}-modalPreviewSteps" style="margin-top:10px; font-size:12px"></div>
+                        </div>
+                        <div id="${id}-tabExplainBody" style="display:none; padding:8px; overflow:auto; flex:1 1 auto">
+                          <div style="display:flex; gap:8px; justify-content:flex-end; margin-bottom:8px">
+                            <button class="btn" id="${id}-explainCopy">Copy Klartext</button>
+                            <button class="btn" id="${id}-explainCopyJson">Copy JSON</button>
+                          </div>
+                          <div style="margin-bottom:10px"><b>Klartext</b><div id="${id}-explainText" style="margin-top:4px"></div></div>
+                          <div><b>Baum</b><div id="${id}-explainTree" style="margin-top:4px"></div></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:10px">
+                      <button id="${id}-modalTestServer" class="btn" title="Exakter Backend‑Test (Regex wie Evaluator)">⚡ Testen (Server)</button>
+                      <button id="${id}-modalTest" class="btn" title="Einmaligen Sandbox‑Plan auslösen oder Client‑Test">⚡ Testen</button>
+                      <button id="${id}-modalExplain" class="btn" title="Regel erklären (Baum + Klartext)">🔎 Explain</button>
+                      <button id="${id}-modalExportCsv" class="btn" title="Letzte Test‑Treffer als CSV exportieren" style="display:none">⬇️ Export CSV</button>
+                      <button id="${id}-modalInsert" class="btn">Einfügen</button>
+                      <button id="${id}-modalCancel" class="btn">Abbrechen</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:10px">
+                <h4 style="margin:6px 0">Self-Health</h4>
+                <div id="${id}-metrics" style="font-size:12px;opacity:.9"></div>
+              </div>
+            </div>
+            <div style="flex:1 1 50%;min-width:300px;">
+              <h4 style="margin:6px 0">Reflections (neu)</h4>
+              <div id="${id}-refl" style="border:1px solid #28365f;border-radius:8px;padding:8px;min-height:120px"></div>
+              <h4 style="margin:10px 0 6px">Reflections (stündlich)</h4>
+              <div id="${id}-reflHourly" style="border:1px solid #28365f;border-radius:8px;padding:8px;min-height:80px"></div>
+              <h4 style="margin:10px 0 6px">Vorschläge (Autonomy)</h4>
+              <div id="${id}-suggest" style="border:1px solid #28365f;border-radius:8px;padding:8px;min-height:80px"></div>
+            </div>
+          </div>
+        </div>`;
+      } else if (kind === 'knowledgeplus') {
+        inner += `<div class="cont" id="${id}-cont" style="display:flex;flex-direction:column;gap:0;height:100%">
+          <div style="display:flex;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #243153;flex-wrap:wrap">
+            <input id="${id}-q" class="btn" placeholder="🔍 Suche (z. B. tags:report,daily)" style="min-width:220px" />
+            <label class="btn" style="display:inline-flex;align-items:center;gap:6px;">Limit <select id="${id}-lim" style="border:none;background:transparent;"><option>20</option><option selected>50</option><option>100</option></select></label>
+            <button class="btn" id="${id}-search">Suchen</button>
+            <button class="btn" id="${id}-exportJson">Export JSON</button>
+            <button class="btn" id="${id}-exportCsv">Export CSV</button>
+            <label class="btn" style="display:inline-flex;align-items:center;gap:6px;">Zeitraum <select id="${id}-range" style="border:none;background:transparent;"><option value="1d">24h</option><option value="7d" selected>7 Tage</option><option value="30d">30 Tage</option><option value="all">Alle</option></select></label>
+            <span class="btn" style="opacity:.85">Presets:</span>
+            <button class="btn" id="${id}-pDaily">Tagesberichte</button>
+            <button class="btn" id="${id}-pWeekly">Wochenberichte</button>
+            <button class="btn" id="${id}-pGuardian">Guardian</button>
+          </div>
+          <div style="display:flex;gap:10px;padding:10px;flex:1 1 auto;overflow:auto;">
+            <div style="flex:1 1 50%;min-width:300px;">
+              <h4 style="margin:6px 0">Ergebnisse</h4>
+              <div id="${id}-res" style="border:1px solid #28365f;border-radius:8px;padding:8px;min-height:120px"></div>
+            </div>
+            <div style="flex:1 1 50%;min-width:300px;">
+              <h4 style="margin:6px 0">Charts</h4>
+              <canvas id="${id}-chart1" width="480" height="180" style="background:#0b1228;border:1px solid #28365f;border-radius:8px"></canvas>
+              <div style="height:10px"></div>
+              <canvas id="${id}-chart2" width="480" height="180" style="background:#0b1228;border:1px solid #28365f;border-radius:8px"></canvas>
+            </div>
+          </div>
+        </div>`;
+      } else if (kind === 'guardian') {
+        inner += `<div class="cont" id="${id}-cont" style="padding:10px;overflow:auto">
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+            <button class="btn" id="${id}-reload">↻ Reload</button>
+            <span class="btn" id="${id}-amp">⚪</span>
+          </div>
+          <div id="${id}-status"></div>
+          <h4 style="margin:10px 0 6px">Config‑Änderungen (Guardian)</h4>
+          <div id="${id}-cfgFeed" style="border:1px solid #28365f;border-radius:8px;padding:8px;min-height:80px"></div>
+          <h4 style="margin:10px 0 6px">Validator‑Events (Guardian)</h4>
+          <div id="${id}-valFeed" style="border:1px solid #28365f;border-radius:8px;padding:8px;min-height:80px"></div>
+        </div>`;
+      } else if (kind === 'vision') {
+        inner += `<div class="cont" id="${id}-cont" style="padding:10px;overflow:auto">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+            <h3 style="margin:0;flex:1">🧭 KI_ana Vision</h3>
+            <button class="btn" id="${id}-reload">↻ Reload</button>
+            <button class="btn" id="${id}-edit" style="display:none">✏️ Bearbeiten</button>
+            <button class="btn" id="${id}-save" style="display:none">💾 Speichern</button>
+            <button class="btn" id="${id}-cancel" style="display:none">Abbrechen</button>
+            <button class="btn" id="${id}-expert" style="display:none" title="Expertenmodus: JSON direkt bearbeiten">{} JSON</button>
+          </div>
+          <div id="${id}-visionBox" style="border:1px solid #28365f;border-radius:8px;padding:10px;margin-bottom:10px">
+            <div style="opacity:.8">Lade Vision …</div>
+          </div>
+          <div id="${id}-form" style="display:none; border:1px dashed #2a3a66; border-radius:8px; padding:10px; margin-bottom:10px">
+            <div style="margin-bottom:6px; opacity:.85">Prinzipien</div>
+            <div id="${id}-plist" style="display:flex; flex-direction:column; gap:8px"></div>
+            <div style="margin-top:10px"><button class="btn" id="${id}-addP">+ Prinzip hinzufügen</button></div>
+          </div>
+          <textarea id="${id}-editBox" style="display:none;width:100%;height:220px;background:#0f152b;color:#e7ecf6;border:1px solid #28365f;border-radius:8px;padding:8px;white-space:pre"></textarea>
+        </div>`;
+      } else{
+        inner += `<div class="cont"><iframe src="${URLS[kind]||URLS.admin}"></iframe></div>`;
+      }
+      el.innerHTML = inner;
+      desk.appendChild(el);
+      enableDrag(el.querySelector('.title'), el);
+      el.addEventListener('mousedown', ()=> el.style.zIndex = ++zc);
+      el.querySelector('[data-act="close"]').addEventListener('click', ()=> { el.remove(); saveLayout(); refreshWinMenu(); });
+      el.querySelector('[data-act="front"]').addEventListener('click', ()=> el.style.zIndex = ++zc);
+      // Minimize/Maximize
+      const cont = ()=> el.querySelector('.cont');
+      el.querySelector('[data-act="min"]').addEventListener('click', ()=>{
+        try{
+          const c = cont(); if (!c) return;
+          const isMin = el.dataset.min === '1';
+          if (isMin){ c.style.display=''; el.dataset.min='0'; }
+          else { c.style.display='none'; el.dataset.min='1'; }
+        }catch{}
+      });
+      el.querySelector('[data-act="max"]').addEventListener('click', ()=>{
+        try{
+          const isMax = el.dataset.max === '1';
+          if (isMax){
+            // restore
+            const st = JSON.parse(el.dataset.prevRect||'{}');
+            if (st && typeof st.left==='number'){ el.style.left=st.left+'px'; el.style.top=st.top+'px'; el.style.width=st.w+'px'; el.style.height=st.h+'px'; }
+            el.dataset.max='0';
+          } else {
+            const r = el.getBoundingClientRect(); el.dataset.prevRect = JSON.stringify({ left:r.left, top:r.top, w:r.width, h:r.height });
+            const dr = desk.getBoundingClientRect();
+            el.style.left=(dr.left+8)+'px'; el.style.top=(dr.top+8)+'px'; el.style.width=(dr.width-16)+'px'; el.style.height=(dr.height-16)+'px';
+            el.dataset.max='1';
+          }
+          saveLayout();
+        }catch{}
+      });
+      saveLayout();
+      // Resize persistence
+      let rs = false, sx=0, sy=0, sw=w, sh=h;
+      el.addEventListener('dblclick', ()=>{ /* future: toggle maximize */ });
+      // Save on drag end
+      el.querySelector('.title').addEventListener('mouseup', saveLayout);
+      const obs = new ResizeObserver(()=> saveLayout()); obs.observe(el);
+      if (kind === 'planner-embed') initPlannerEmbed(id);
+      if (kind === 'autonomy') initAutonomy(id);
+      if (kind === 'knowledgeplus') initKnowledgePlus(id);
+      if (kind === 'guardian') initGuardian(id);
+      if (kind === 'vision') initVision(id);
+      return el;
+    }
+    function enableDrag(handle, win){
+      let sx=0, sy=0, ox=0, oy=0, dragging=false;
+      handle.addEventListener('mousedown', (e)=>{ dragging=true; sx=e.clientX; sy=e.clientY; const r=win.getBoundingClientRect(); ox=r.left; oy=r.top; e.preventDefault(); });
+      window.addEventListener('mousemove', (e)=>{ if(!dragging) return; const dx=e.clientX-sx, dy=e.clientY-sy; win.style.left=(ox+dx)+"px"; win.style.top=(oy+dy)+"px"; });
+      window.addEventListener('mouseup', ()=>{ if(!dragging) return; dragging=false; saveLayout(); });
+    }
+    function saveLayout(){
+      try{
+        const wins = Array.from(document.querySelectorAll('.win')).map(w=>{
+          const r = w.getBoundingClientRect();
+          const cap = w.querySelector('.cap')?.textContent?.toLowerCase() || 'admin';
+          // reverse-map cap to key
+          let kind = 'admin';
+          for (const [k,v] of Object.entries(URLS)){
+            if ((cap||'').includes(k)) { kind = k; break; }
+          }
+          return { kind, left: Math.round(r.left), top: Math.round(r.top), w: Math.round(r.width), h: Math.round(r.height) };
+        });
+        localStorage.setItem('shell.layout', JSON.stringify(wins));
+      }catch{}
+    }
+
+    // Vision Panel
+    function initVision(id){
+      const root = document.getElementById(id+"-cont"); if (!root) return;
+      const box = document.getElementById(id+"-visionBox");
+      const btn = document.getElementById(id+"-reload");
+      const btnEdit = document.getElementById(id+"-edit");
+      const btnSave = document.getElementById(id+"-save");
+      const btnCancel = document.getElementById(id+"-cancel");
+      const btnExpert = document.getElementById(id+"-expert");
+      const editBox = document.getElementById(id+"-editBox");
+      const formWrap = document.getElementById(id+"-form");
+      const plist = document.getElementById(id+"-plist");
+      const addP = document.getElementById(id+"-addP");
+      let canEdit = false;
+      let expertMode = false;
+      let lastVision = { name: 'KI_ana Vision', owner:'Papa', principles: [], version: 1 };
+      function addPrincipleRow(val){
+        const row = document.createElement('div');
+        row.style.display = 'flex'; row.style.gap = '6px'; row.style.alignItems = 'center';
+        const inp = document.createElement('input');
+        inp.type = 'text'; inp.value = val||'';
+        inp.style.cssText = 'flex:1; padding:6px 8px; border:1px solid #28365f; border-radius:8px; background:#0b1228; color:#e7ecf6;';
+        const del = document.createElement('button'); del.className='btn'; del.textContent='🗑 Entfernen';
+        del.addEventListener('click', ()=>{ row.remove(); });
+        row.appendChild(inp); row.appendChild(del); plist.appendChild(row);
+      }
+      function renderFormFromVision(v){
+        lastVision = { name: String(v.name||'KI_ana Vision'), owner: String(v.owner||'Papa'), principles: Array.isArray(v.principles)? v.principles: [], version: parseInt(v.version||1,10)||1 };
+        plist.innerHTML='';
+        const arr = lastVision.principles.length ? lastVision.principles : [''];
+        arr.forEach(p => addPrincipleRow(String(p||'')));
+      }
+      function collectPrinciples(){
+        const vals = [];
+        Array.from(plist.querySelectorAll('input[type="text"]')).forEach(i=>{
+          const t = (i.value||'').trim(); if (t) vals.push(t);
+        });
+        return vals;
+      }
+      async function detectRole(){
+        try{
+          const r = await fetch('/api/me', { credentials:'include' });
+          if (r.ok){ const j = await r.json(); const me = j.user||j.me||null;
+            const roles = (me && (String(me.role||'')+','+((me.roles||[]).join(','))).toLowerCase()) || '';
+            if (roles.includes('admin') || roles.includes('creator') || roles.includes('papa')){ canEdit = true; if(btnEdit) btnEdit.style.display=''; }
+          }
+        }catch{}
+      }
+      detectRole();
+      async function loadVision(){
+        try{
+          box.innerHTML = '<div style="opacity:.8">Lade Vision …</div>';
+          const r = await fetch('/api/system/vision', { credentials:'include' });
+          const j = await r.json().catch(()=>({}));
+          if (!r.ok || !j || j.ok===false){ box.innerHTML = '<div style="color:#ffb0b0">Konnte Vision nicht laden.</div>'; return; }
+          const v = j.vision || {};
+          const name = (v.name||'KI_ana Vision');
+          const owner = (v.owner||'');
+          const pr = Array.isArray(v.principles)? v.principles: [];
+          const items = pr.map(p=> `<li style="margin:6px 0">✅ ${escapeHtml(String(p))}</li>`).join('') || '<li>Keine Prinzipien vorhanden</li>';
+          box.innerHTML = `
+            <div style="margin-bottom:6px"><b>${escapeHtml(name)}</b>${owner? ' · <span style="opacity:.7">Owner: '+escapeHtml(owner)+'</span>':''}</div>
+            <ul style="padding-left:18px; margin:8px 0">${items}</ul>
+          `;
+          // preload editor with current JSON
+          try{ if (editBox) editBox.value = JSON.stringify(v, null, 2); }catch{}
+          try{ renderFormFromVision(v); }catch{}
+        }catch{ box.innerHTML = '<div style="color:#ffb0b0">Fehler beim Laden.</div>'; }
+      }
+      loadVision();
+      if (btn) btn.addEventListener('click', loadVision);
+      if (btnEdit) btnEdit.addEventListener('click', ()=>{
+        if (!canEdit) return;
+        // default into structured form (non-expert)
+        expertMode = false;
+        box.style.display='none';
+        formWrap.style.display='block'; editBox.style.display='none';
+        btnSave.style.display=''; btnCancel.style.display=''; btnEdit.style.display='none'; btnExpert.style.display='';
+      });
+      if (btnExpert) btnExpert.addEventListener('click', ()=>{
+        expertMode = !expertMode;
+        if (expertMode){
+          formWrap.style.display='none'; editBox.style.display='block'; btnExpert.textContent = '{} JSON (an)';
+        } else {
+          // apply any edits in JSON to form if valid
+          try{ const parsed = JSON.parse(editBox.value||'{}'); renderFormFromVision(parsed); }catch{}
+          formWrap.style.display='block'; editBox.style.display='none'; btnExpert.textContent = '{} JSON';
+        }
+      });
+      if (addP) addP.addEventListener('click', ()=> addPrincipleRow(''));
+      async function doSave(){
+        try{
+          let payload = null;
+          if (expertMode){
+            const parsed = JSON.parse(editBox.value||'{}');
+            if (!Array.isArray(parsed.principles)) { alert('"principles" muss ein Array sein'); return; }
+            payload = parsed;
+          } else {
+            const principles = collectPrinciples();
+            payload = { name: lastVision.name||'KI_ana Vision', owner: lastVision.owner||'Papa', principles };
+          }
+          const r = await fetch('/api/system/vision', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify(payload) });
+          const j = await r.json().catch(()=>({}));
+          if (!r.ok || !j || j.ok===false){ alert('Speichern fehlgeschlagen'); return; }
+          await loadVision();
+          formWrap.style.display='none'; editBox.style.display='none'; box.style.display='block';
+          btnSave.style.display='none'; btnCancel.style.display='none'; btnEdit.style.display=''; btnExpert.style.display='none';
+        }catch(e){ alert('Fehler: '+(e&&e.message?e.message:'unbekannt')); }
+      }
+      if (btnSave) btnSave.addEventListener('click', doSave);
+      if (btnCancel) btnCancel.addEventListener('click', ()=>{
+        formWrap.style.display='none'; editBox.style.display='none'; box.style.display='block'; btnSave.style.display='none'; btnCancel.style.display='none'; btnEdit.style.display=''; btnExpert.style.display='none';
+      });
+    }
+    function savePreset(){ try{ localStorage.setItem('shell.preset', localStorage.getItem('shell.layout')||'[]'); }catch{} }
+    function openPreset(){ try{ const p = localStorage.getItem('shell.preset'); if(!p) return; localStorage.setItem('shell.layout', p); document.querySelectorAll('.win').forEach(w=> w.remove()); restoreLayout(); }catch{} }
+    function restoreLayout(){
+      try{
+        const raw = localStorage.getItem('shell.layout'); if (!raw) return false;
+        const arr = JSON.parse(raw); if (!Array.isArray(arr)) return false;
+        arr.forEach(w=> openWin(w.kind, w));
+        return true;
+      }catch{ return false; }
+    }
+    function refreshWinMenu(){
+      try{
+        const list = document.getElementById('winList'); if (!list) return;
+        const wins = Array.from(document.querySelectorAll('.win'));
+        list.innerHTML = wins.map((w,i)=>{
+          const cap = w.querySelector('.cap')?.textContent || 'Window';
+          return `<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;padding:4px 6px;border-radius:6px;background:#0f162f;margin:4px 0;">
+            <span>${cap}</span>
+            <span>
+              <button class="btn" data-focus="1" data-i="${i}">Focus</button>
+              <button class="btn" data-close="1" data-i="${i}">Close</button>
+            </span>
+          </div>`;
+        }).join('') || '<div class="muted" style="opacity:.7;padding:6px">No windows</div>';
+        list.querySelectorAll('[data-focus]').forEach(b=> b.addEventListener('click', ()=>{ const i=Number(b.getAttribute('data-i')); const w=wins[i]; if (w){ w.style.zIndex = ++zc; } }));
+        list.querySelectorAll('[data-close]').forEach(b=> b.addEventListener('click', ()=>{ const i=Number(b.getAttribute('data-i')); const w=wins[i]; if (w){ w.remove(); saveLayout(); refreshWinMenu(); } }));
+      }catch{}
+    }
+    // Windows menu wiring
+    document.getElementById('winMenuBtn').addEventListener('click', ()=>{ const m=document.getElementById('winMenu'); if (!m) return; const on = m.style.display !== 'none'; if (on){ m.style.display='none'; } else { refreshWinMenu(); m.style.display='block'; } });
+    document.getElementById('winCloseAll').addEventListener('click', ()=>{ document.querySelectorAll('.win').forEach(w=> w.remove()); saveLayout(); refreshWinMenu(); });
+    document.getElementById('winSavePreset').addEventListener('click', ()=>{ savePreset(); const m=document.getElementById('winMenu'); if(m) m.style.display='none'; });
+    document.getElementById('winOpenPreset').addEventListener('click', ()=>{ openPreset(); const m=document.getElementById('winMenu'); if(m) m.style.display='none'; });
+    window.addEventListener('click', (e)=>{ try{ const m=document.getElementById('winMenu'); const btn=document.getElementById('winMenuBtn'); if(!m||!btn) return; if (!m.contains(e.target) && e.target !== btn){ m.style.display='none'; } }catch{} });
+    document.querySelectorAll('[data-open]').forEach(b=> b.addEventListener('click', ()=> openWin(b.getAttribute('data-open'))));
+    // Initial windows: restore or open defaults
+    if (!restoreLayout()){
+      // Open defaults or hash-targeted window
+      const h = (location.hash||'').toLowerCase();
+      if (h.includes('guardian')){
+        openWin('guardian');
+      } else if (h.includes('autonomy')){
+        openWin('autonomy');
+      } else {
+        openWin('planner-embed');
+        openWin('logs');
+        openWin('knowledge');
+      }
+    }
+
+    // Embedded Planner minimal app
+    function initPlannerEmbed(id){
+      const root = document.getElementById(id+"-cont"); if (!root) return;
+      const statusEl = document.getElementById(id+"-status");
+      const limitEl = document.getElementById(id+"-limit");
+      const searchEl = document.getElementById(id+"-search");
+      const listEl = document.getElementById(id+"-list");
+      const sumEl = document.getElementById(id+"-sum");
+      let offset = 0;
+      async function refresh(){
+        try{
+          const qs = new URLSearchParams();
+          const lim = Number(limitEl.value||'50')||50; qs.set('limit', String(lim));
+          const st = (statusEl.value||'').trim(); if (st) qs.set('status', st);
+          if (offset>0) qs.set('offset', String(offset));
+          const r = await fetch('/api/plan?'+qs.toString(), { credentials:'include' }); const j = await r.json();
+          let items = Array.isArray(j.items)? j.items : [];
+          const q = (searchEl.value||'').toLowerCase(); if (q) items = items.filter(p=> String(p.title||'').toLowerCase().includes(q));
+          // Sandbox filter
+          try{
+            const sbOnly = document.getElementById(id+"-sbOnly");
+            if (sbOnly && sbOnly.checked){ items = items.filter(p=> /\bsandbox\b/i.test(String(p.title||''))); }
+          }catch{}
+          listEl.innerHTML = items.map(p=> {
+            const cls = stat=> (stat==='queued'?'sp q': stat==='running'?'sp r': stat==='done'?'sp d': stat==='failed'?'sp f': 'sp c');
+            const isSb = /\bsandbox\b/i.test(String(p.title||''));
+            return `<div data-row="${p.id}" style="border-bottom:1px solid #243153;padding:6px 0;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                <div><b>#${p.id}</b> · ${escapeHtml(p.title||'')} <span class="${cls(String(p.status||''))}">${escapeHtml(p.status||'')}</span> ${isSb? '<span class="sp c" title="Sandbox">Sandbox</span>': ''}</div>
+                <div>
+                  <button class="btn" data-act="steps" data-id="${p.id}">Steps</button>
+                  <button class="btn" data-act="cancel" data-id="${p.id}">Cancel</button>
+                  <button class="btn" data-act="retry" data-id="${p.id}">Retry</button>
+                  <button class="btn" data-act="dup" data-id="${p.id}">Duplicate</button>
+                </div>
+              </div>
+              <div class="steps" id="st-${p.id}" style="display:none;padding:6px 4px 0 4px;"></div>
+            </div>`;
+          }).join('') || '<div class=\"muted\" style=\"opacity:.7\">Keine Pläne</div>';
+          sumEl.textContent = `Offset ${j.offset||0} · ${items.length} / ${j.limit||lim}`;
+          listEl.querySelectorAll('[data-act="dup"]').forEach(b=> b.addEventListener('click', async ()=>{ try{ const idn = Number(b.getAttribute('data-id')||0); if(!idn) return; const r2 = await fetch('/api/plan/'+idn+'/duplicate', { method:'POST', credentials:'include'}); const j2 = await r2.json(); if (r2.ok && j2 && j2.ok){ refresh(); } }catch{} }));
+          listEl.querySelectorAll('[data-act="steps"]').forEach(b=> b.addEventListener('click', async ()=>{
+            try{
+              const idn = Number(b.getAttribute('data-id')||0); if(!idn) return; const box = document.getElementById('st-'+idn); if(!box) return;
+              if (box.style.display !== 'none'){ box.style.display='none'; box.innerHTML=''; return; }
+              box.style.display='block'; box.textContent='Lade Steps…';
+              const r3 = await fetch('/api/plan/'+idn, { credentials:'include' }); const j3 = await r3.json(); const steps = j3.plan?.steps || [];
+              const cls = stat=> (stat==='queued'?'sp q': stat==='running'?'sp r': stat==='done'?'sp d': stat==='failed'?'sp f': 'sp c');
+              box.innerHTML = steps.map(s=> `<div style="border:1px solid #243153;border-radius:8px;padding:6px;margin:6px 0;">`
+                + `<div><b>idx ${s.idx}</b> · <span class=\"sp\">${escapeHtml(s.type||'')}</span> · <span class=\"${cls(String(s.status||''))}\">${escapeHtml(s.status||'')}</span></div>`
+                + `<div style=\"opacity:.75\">start: ${s.started_at? new Date(s.started_at*1000).toLocaleString(): '—'} · end: ${s.finished_at? new Date(s.finished_at*1000).toLocaleString(): '—'}</div>`
+                + `${s.result? ('<div style=\"white-space:pre-wrap;margin-top:4px;\">'+escapeHtml(s.result)+'</div>'):''}`
+                + `${s.error? ('<div style=\"white-space:pre-wrap;margin-top:4px;color:#ffb0b0\">'+escapeHtml(s.error)+'</div>'):''}`
+              + `</div>`).join('') || '<div class=\"muted\">Keine Steps</div>';
+            }catch{}
+          }));
+          listEl.querySelectorAll('[data-act="cancel"]').forEach(b=> b.addEventListener('click', async ()=>{ try{ const idn = Number(b.getAttribute('data-id')||0); if(!idn) return; if(!confirm('Plan abbrechen?')) return; const r4 = await fetch('/api/plan/'+idn+'/cancel', { method:'POST', credentials:'include' }); const j4 = await r4.json(); if (r4.ok && j4 && j4.ok){ refresh(); } }catch{} }));
+          listEl.querySelectorAll('[data-act="retry"]').forEach(b=> b.addEventListener('click', async ()=>{ try{ const idn = Number(b.getAttribute('data-id')||0); if(!idn) return; const r5 = await fetch('/api/plan/'+idn+'/retry', { method:'POST', credentials:'include' }); const j5 = await r5.json(); if (r5.ok && j5 && j5.ok){ refresh(); } }catch{} }));
+        }catch{ listEl.textContent = 'Fehler beim Laden'; }
+      }
+      function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+      // UI controls
+      statusEl.addEventListener('change', refresh);
+      limitEl.addEventListener('change', ()=>{ offset=0; refresh(); });
+      searchEl.addEventListener('input', ()=>{ refresh(); });
+      // add sandbox checkbox
+      try{
+        const toolbar = root.querySelector('div[style*="border-bottom"]');
+        if (toolbar && !document.getElementById(id+'-sbOnly')){
+          const lab = document.createElement('label'); lab.className='btn'; lab.style.display='inline-flex'; lab.style.alignItems='center'; lab.style.gap='6px';
+          lab.innerHTML = `Nur Sandbox <input type="checkbox" id="${id}-sbOnly" style="margin-left:4px">`;
+          toolbar.insertBefore(lab, toolbar.children[3]||null);
+          // restore persisted state
+          try{ const k = 'planner.sbOnly'; const v = localStorage.getItem(k); if (v === '1'){ lab.querySelector('input').checked = true; } }catch{}
+          lab.querySelector('input').addEventListener('change', ()=>{ try{ localStorage.setItem('planner.sbOnly', lab.querySelector('input').checked? '1':'0'); }catch{} offset=0; refresh(); });
+        }
+      }catch{}
+      document.getElementById(id+"-new").addEventListener('click', async ()=>{
+        const title = prompt('Titel des Plans'); if (!title) return;
+        const stepsTxt = prompt('Steps JSON (optional)');
+        let steps = [];
+        if (stepsTxt){ try{ const parsed = JSON.parse(stepsTxt); steps = Array.isArray(parsed)? parsed : [parsed]; }catch{ alert('Ungültiges JSON'); return; } }
+        const r = await fetch('/api/plan', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ title, steps }) }); const j = await r.json(); if (r.ok && j && j.ok){ refresh(); } else { alert('Erstellen fehlgeschlagen'); }
+      });
+      refresh();
+    }
+
+    // -------- Self-Health Ampel (topbar) --------
+    async function refreshAmpel(){
+      try{
+        const r = await fetch('/api/system/status', { credentials:'include' });
+        const j = await r.json();
+        const m = j.metrics||{}; const a = m.anomalies||[]; const hb = Number(m.worker_heartbeat_age||0);
+        let sym = '🟢';
+        if (a.length>0 || hb>120) sym = '🔴';
+        else if (hb>60) sym = '🟡';
+        const el = document.getElementById('sysAmpel'); if(el){ el.textContent = sym; el.title = `HB:${hb}s · steps:${m.plan_steps_queued||0} · jobs:${m.jobs||0} · anomalies:${a.join(',')}`; }
+      }catch{}
+    }
+    setInterval(refreshAmpel, 10000); setTimeout(refreshAmpel, 0);
+
+    // -------- Autonomy window --------
+    function initAutonomy(id){
+      const levelEl = document.getElementById(id+'-level');
+      const rulesEl = document.getElementById(id+'-rules');
+      const saveBtn = document.getElementById(id+'-saveRules');
+      const infoEl = document.getElementById(id+'-rulesInfo');
+      const ampEl = document.getElementById(id+'-ampel');
+      const metEl = document.getElementById(id+'-metrics');
+      const reflEl = document.getElementById(id+'-refl');
+      const reflH = document.getElementById(id+'-reflHourly');
+      const suggEl = document.getElementById(id+'-suggest');
+      async function loadLevel(){ try{ const r=await fetch('/api/autonomy/level',{credentials:'include'}); const j=await r.json(); if(levelEl&&j&&j.ok){ levelEl.value=String(j.level||0); } }catch{} }
+      async function saveLevel(){ try{ const v=Number(levelEl.value||0); await fetch('/api/autonomy/level',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({level:v})}); }catch{} }
+      async function loadRules(){ try{ const r=await fetch('/api/autonomy/rules',{credentials:'include'}); const j=await r.json(); if(rulesEl&&j){ rulesEl.value = JSON.stringify(j, null, 2); } }catch{} }
+      async function saveRules(){ try{ const obj=JSON.parse(rulesEl.value||'{}'); const r=await fetch('/api/autonomy/rules',{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)}); infoEl.textContent = r.ok? 'Saved' : 'Error'; setTimeout(()=>infoEl.textContent='', 1500); }catch{ infoEl.textContent='Bad JSON'; setTimeout(()=>infoEl.textContent='', 1500); } }
+      function openRuleModal(kind){
+        // kind: 'dev_offline_plan' | 'dev_offline_notify' | 'plan_template' | 'combo_log'
+        const modal = document.getElementById(id+'-modal');
+        const modalJson = document.getElementById(id+'-modalJson');
+        const modalInsert = document.getElementById(id+'-modalInsert');
+        const modalTest = document.getElementById(id+'-modalTest');
+        const modalCancel = document.getElementById(id+'-modalCancel');
+        const modalClose = document.getElementById(id+'-modalClose');
+        const modalTestServer = document.getElementById(id+'-modalTestServer');
+        const modalExportCsv = document.getElementById(id+'-modalExportCsv');
+        const mDevId = document.getElementById(id+'-mDevId');
+        const devDatalist = document.getElementById(id+'-devices');
+        const mMinutes = document.getElementById(id+'-mMinutes');
+        const mTitle = document.getElementById(id+'-mTitle');
+        const mNote = document.getElementById(id+'-mNote');
+        const mMinErr = document.getElementById(id+'-mMinErr');
+        const mTitleErr = document.getElementById(id+'-mTitleErr');
+        const mNoteErr = document.getElementById(id+'-mNoteErr');
+        const mLogTypes = document.getElementById(id+'-mLogTypes');
+        const mLogErr = document.getElementById(id+'-mLogErr');
+        const logWrap = document.getElementById(id+'-logWrap');
+        const wrapGroup = document.getElementById(id+'-wrapGroup');
+        const mGroup = document.getElementById(id+'-mGroup');
+        const mLogNot = document.getElementById(id+'-mLogNot');
+        const wrapMsgRegex = document.getElementById(id+'-wrapMsgRegex');
+        const mMsgRegex = document.getElementById(id+'-mMsgRegex');
+        const logExtra = document.getElementById(id+'-logExtraFilters');
+        const mHost = document.getElementById(id+'-mHost');
+        const mSource = document.getElementById(id+'-mSource');
+        const mLevel = document.getElementById(id+'-mLevel');
+        const mAutoSuggest = document.getElementById(id+'-mAutoSuggest');
+        const wrapMinutes = document.getElementById(id+'-wrapMinutes');
+        const wrapLogWindow = document.getElementById(id+'-wrapLogWindow');
+        const wrapOfflineMin = document.getElementById(id+'-wrapOfflineMin');
+        const mLogWindow = document.getElementById(id+'-mLogWindow');
+        const mOfflineMin = document.getElementById(id+'-mOfflineMin');
+        if (!modal||!modalJson||!modalInsert||!modalCancel||!mDevId||!mMinutes||!mTitle||!mNote||!modalTest) return;
+        // Local storage helpers for persisting filters/options
+        const LS_KEY = 'autonomy_combo_prefs';
+        function loadPrefs(){
+          try{
+            const raw = localStorage.getItem(LS_KEY); if (!raw) return;
+            const p = JSON.parse(raw||'{}')||{};
+            if (kind!== 'combo_log') return;
+            if (p.device_id && mDevId) mDevId.value = String(p.device_id);
+            if (p.log_types && mLogTypes) mLogTypes.value = String(p.log_types);
+            if (p.log_window_min && mLogWindow) mLogWindow.value = String(p.log_window_min);
+            if (p.offline_min && mOfflineMin) mOfflineMin.value = String(p.offline_min);
+            if (p.regex && mMsgRegex) mMsgRegex.value = String(p.regex);
+            if (p.host && mHost) mHost.value = String(p.host);
+            if (p.source && mSource) mSource.value = String(p.source);
+            if (p.level && mLevel) mLevel.value = String(p.level);
+            if (p.group && mGroup) mGroup.value = String(p.group);
+            if (typeof p.log_not==='boolean' && mLogNot) mLogNot.checked = !!p.log_not;
+            if (typeof p.auto_suggest==='boolean' && mAutoSuggest) mAutoSuggest.checked = !!p.auto_suggest;
+            if (p.sort && p.sort.key && p.sort.dir){ currentSort = { key: p.sort.key, dir: p.sort.dir }; }
+          }catch{}
+        }
+        function savePrefs(){
+          try{
+            if (kind!== 'combo_log') return;
+            const obj = {
+              device_id: (mDevId?.value||'').trim(),
+              log_types: (mLogTypes?.value||'').trim(),
+              log_window_min: parseInt(mLogWindow?.value||'5',10)||5,
+              offline_min: parseInt(mOfflineMin?.value||'10',10)||10,
+              regex: (mMsgRegex?.value||'').trim(),
+              host: (mHost?.value||'').trim(),
+              source: (mSource?.value||'').trim(),
+              level: (mLevel?.value||'').trim(),
+              group: (mGroup?.value||'all'),
+              log_not: !!(mLogNot?.checked),
+              sort: currentSort,
+              auto_suggest: !!(mAutoSuggest?.checked)
+            };
+            localStorage.setItem(LS_KEY, JSON.stringify(obj));
+          }catch{}
+        }
+        let currentTestSamples = [];
+        let currentRegex = '';
+        let currentSort = { key: 'ts', dir: 'desc' };
+        function safeHtml(s){ return (typeof escapeHtml==='function')? escapeHtml(String(s)) : String(s).replace(/[&<>]/g, c=> ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+        function highlightMsg(msg, rx){
+          try{
+            if (!rx) return safeHtml(msg);
+            const re = new RegExp(rx, 'gi');
+            return safeHtml(String(msg)).replace(new RegExp(rx, 'gi'), (m)=> `<mark style="background:#4b2; color:#000; border-radius:2px; padding:0 2px">${safeHtml(m)}</mark>`);
+          }catch{ return safeHtml(msg); }
+        }
+        function fmtIso(ts){ try{ return ts? new Date(ts*1000).toISOString() : ''; }catch{ return ''; } }
+        function renderResultsTable(){
+          try{
+            const pv = document.getElementById(id+'-modalPreviewBody');
+            const meta = document.getElementById(id+'-modalPreviewMeta');
+            if (!pv) return;
+            const samples = Array.isArray(currentTestSamples)? currentTestSamples.slice(): [];
+            const key = currentSort.key; const dir = currentSort.dir;
+            samples.sort((a,b)=>{
+              const av = (a||{})[key] || '';
+              const bv = (b||{})[key] || '';
+              if (av === bv) return 0;
+              if (dir==='asc') return (av>bv?1:-1);
+              return (av<bv?1:-1);
+            });
+            if (meta) meta.textContent = `Treffer: ${samples.length}`;
+            if (!samples.length){ pv.innerHTML = '<div class="muted" style="opacity:.8">Keine Treffer</div>'; return; }
+            const th = (key, label)=> `<th data-k="${key}" style="cursor:pointer; text-align:left; padding:4px 6px; border-bottom:1px solid #243153">${safeHtml(label)}${currentSort.key===key? (currentSort.dir==='asc'?' ▲':' ▼') : ''}</th>`;
+            const rows = samples.map((s, i)=>{
+              const iso = fmtIso(Number(s.ts||0));
+              const type = safeHtml(s.type||'');
+              const dev = safeHtml(s.device||'');
+              const rawMsg = String(s.msg||'');
+              const msg = highlightMsg(rawMsg, currentRegex);
+              return `<tr>
+                <td style="padding:4px 6px; border-bottom:1px solid #1b2444; white-space:nowrap">${iso}</td>
+                <td style="padding:4px 6px; border-bottom:1px solid #1b2444">${type}</td>
+                <td style="padding:4px 6px; border-bottom:1px solid #1b2444">${dev}</td>
+                <td class="msgCell" data-fullmsg="${safeHtml(rawMsg)}" title="${safeHtml(rawMsg)}" style="padding:4px 6px; border-bottom:1px solid #1b2444; max-width:360px; overflow:hidden; text-overflow:ellipsis">${msg}</td>
+                <td style="padding:4px 6px; border-bottom:1px solid #1b2444; white-space:nowrap">
+                  <button class="btn" data-copy-idx="${i}" title="In Zwischenablage kopieren">📋</button>
+                  <button class="btn" data-plan-idx="${i}" title="Regel aus diesem Log bauen">🧩</button>
+                </td>
+              </tr>`;
+            }).join('');
+            pv.innerHTML = `<table style="width:100%; border-collapse:collapse; font-size:12px">
+              <thead><tr>${th('ts','Zeit (ISO)')}${th('type','Typ')}${th('device','Device')}${th('msg','Message')}<th style="text-align:left; padding:4px 6px; border-bottom:1px solid #243153">Aktion</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>`;
+            // Wire sort
+            pv.querySelectorAll('th[data-k]').forEach(th=> th.addEventListener('click', ()=>{
+              const k = th.getAttribute('data-k');
+              if (currentSort.key === k){ currentSort.dir = (currentSort.dir==='asc'?'desc':'asc'); } else { currentSort.key = k; currentSort.dir = 'asc'; }
+              renderResultsTable();
+              savePrefs();
+            }));
+            // Copy buttons
+            pv.querySelectorAll('[data-copy-idx]').forEach(btn=> btn.addEventListener('click', async()=>{
+              try{
+                const idx = Number(btn.getAttribute('data-copy-idx')||'-1');
+                if (idx<0 || idx>=samples.length) return;
+                const s = samples[idx]||{};
+                const text = `${fmtIso(Number(s.ts||0))} | ${String(s.type||'')} | ${String(s.device||'')} | ${String(s.msg||'')}`;
+                if (navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(text); }
+                else { const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }
+                btn.textContent = '✅'; setTimeout(()=>{ btn.textContent='📋'; }, 800);
+              }catch{ btn.textContent='⚠️'; setTimeout(()=>{ btn.textContent='📋'; }, 1200); }
+            }));
+            // Plan-from-row buttons
+            pv.querySelectorAll('[data-plan-idx]').forEach(btn=> btn.addEventListener('click', ()=>{
+              try{
+                const idx = Number(btn.getAttribute('data-plan-idx')||'-1'); if (idx<0||idx>=samples.length) return;
+                const s = samples[idx]||{};
+                if (mDevId) mDevId.value = String(s.device||'');
+                if (mLogTypes) mLogTypes.value = String(s.type||'');
+                // Prefer currentRegex if present; else leave empty (user can set)
+                if (mMsgRegex && currentRegex) mMsgRegex.value = String(currentRegex||'');
+                // Trigger updates and persist
+                [mDevId,mLogTypes,mMsgRegex].forEach(el=>{ if(el){ el.dispatchEvent(new Event('input')); }});
+                savePrefs();
+              }catch{}
+            }));
+            // Hover tooltip for full message
+            let tip = document.getElementById(id+'-msgTip');
+            if (!tip){ tip = document.createElement('div'); tip.id = id+'-msgTip'; tip.style.cssText = 'position:fixed; z-index:99999; max-width:60vw; padding:8px; background:#121a36; color:#e7ecf6; border:1px solid #2b3a6a; border-radius:6px; box-shadow:0 6px 18px rgba(0,0,0,.4); display:none; white-space:pre-wrap; font-size:12px;'; document.body.appendChild(tip); }
+            function showTip(e, html){ tip.innerHTML = html; tip.style.display='block'; positionTip(e); }
+            function hideTip(){ tip.style.display='none'; }
+            function positionTip(e){ const pad=12; let x=e.clientX+pad, y=e.clientY+pad; const vw=window.innerWidth, vh=window.innerHeight; const rect=tip.getBoundingClientRect(); if (x+rect.width>vw) x=vw-rect.width-pad; if (y+rect.height>vh) y=vh-rect.height-pad; tip.style.left=x+'px'; tip.style.top=y+'px'; }
+            pv.querySelectorAll('td.msgCell').forEach(td=>{
+              const full = td.getAttribute('data-fullmsg')||'';
+              td.addEventListener('mouseenter', (e)=> showTip(e, highlightMsg(full, currentRegex)));
+              td.addEventListener('mousemove', (e)=> positionTip(e));
+              td.addEventListener('mouseleave', hideTip);
+            });
+          }catch{}
+        }
+        // apply saved prefs before computing template
+        loadPrefs();
+        // default Auto-Suggest from system config if not set yet
+        (async()=>{ try{
+          if (kind !== 'combo_log') return;
+          const raw = localStorage.getItem('autonomy_combo_prefs');
+          const hasPref = raw && JSON.parse(raw||'{}')?.hasOwnProperty('auto_suggest');
+          if (!hasPref){
+            const r = await fetch('/api/system/config',{credentials:'include'}); const j = await r.json();
+            if (mAutoSuggest && j && typeof j.guardian_auto_suggest !== 'undefined') mAutoSuggest.checked = !!j.guardian_auto_suggest;
+          }
+        }catch{} })();
+        // visibility of inputs depends on kind
+        const devVis = (kind === 'dev_offline_plan' || kind === 'dev_offline_notify' || kind === 'combo_log');
+        mDevId.parentElement.style.display = devVis ? 'flex' : 'none';
+        if (wrapMinutes) wrapMinutes.style.display = (kind === 'dev_offline_plan' || kind === 'dev_offline_notify') ? 'flex' : 'none';
+        if (wrapLogWindow) wrapLogWindow.style.display = (kind === 'combo_log') ? 'flex' : 'none';
+        if (wrapOfflineMin) wrapOfflineMin.style.display = (kind === 'combo_log') ? 'flex' : 'none';
+        const planVis = (kind !== 'dev_offline_notify');
+        mTitle.parentElement.style.display = planVis ? 'flex' : 'none';
+        mNote.parentElement.style.display = 'flex';
+        // log type only for combo_log
+        if (logWrap) logWrap.style.display = (kind === 'combo_log') ? 'flex' : 'none';
+        if (wrapGroup) wrapGroup.style.display = (kind === 'combo_log') ? 'flex' : 'none';
+        if (wrapMsgRegex) wrapMsgRegex.style.display = (kind === 'combo_log') ? 'flex' : 'none';
+        if (logExtra) logExtra.style.display = (kind === 'combo_log') ? 'flex' : 'none';
+        if (modalTestServer) modalTestServer.style.display = (kind === 'combo_log') ? 'inline-flex' : 'none';
+        if (modalExportCsv) modalExportCsv.style.display = 'none';
+        // defaults
+        const devId = (mDevId.value||'1').trim()||'1';
+        const minutes = parseInt(mMinutes.value||'10',10)||10;
+        const logWindowMin = parseInt(mLogWindow?.value||'5',10)||5;
+        const offlineMin = parseInt(mOfflineMin?.value||String(minutes),10)||minutes;
+        const title = (mTitle.value||'Autonomy Plan').trim()||'Autonomy Plan';
+        const note = (mNote.value||'Autonomy triggered').trim()||'Autonomy triggered';
+        const logType = (mLogTypes?.value||'').trim();
+        const msgRegex = (mMsgRegex?.value||'').trim();
+        const host = (mHost?.value||'').trim();
+        const source = (mSource?.value||'').trim();
+        const level = (mLevel?.value||'').trim();
+        // build template
+        let tmpl = {};
+        if (kind === 'dev_offline_notify'){
+          const rid = `dev${devId}_offline_${minutes}m`;
+          tmpl = { id: rid, type: 'device_offline', device_id: String(devId), offline_sec: minutes*60, action: { type: 'os_notify', text: `Device ${devId} offline >${minutes}min – Reboot notification` } };
+        } else if (kind === 'dev_offline_plan'){
+          const rid = `dev${devId}_offline_${minutes}m_plan`;
+          tmpl = { id: rid, type: 'device_offline', device_id: String(devId), offline_sec: minutes*60, action: { type: 'plan_create', title: `Reboot notification – device ${devId}` } };
+        } else if (kind === 'combo_log'){
+          const raw = logType || 'log';
+          const types = raw.split(',').map(s=> s.trim()).filter(Boolean);
+          const safe = (s)=> s.replace(/[^a-z0-9_\-\.]/gi,'_');
+          const rid = `log_${safe(types.join('_or_')||'log')}_dev${devId}_win_${logWindowMin}m_off_${offlineMin}m`;
+          const base = { within_sec: logWindowMin*60, device_id: String(devId) };
+          if (msgRegex) base.message_regex = msgRegex;
+          if (host) base.host = host;
+          if (source) base.source = source;
+          if (level) base.level = level;
+          const logConds = (types.length? types: ['log']).map(l=> ({ type:'log_recent', log_type: l, ...base }));
+          let logsNode = (logConds.length===1)? logConds[0] : { any: logConds };
+          if (mLogNot?.checked){ logsNode = { not: logsNode }; }
+          const devCond = { type:'device_offline', device_id: String(devId), offline_sec: offlineMin*60 };
+          const group = (mGroup?.value||'all');
+          const root = (group==='any')? { any:[logsNode, devCond] } : { all:[logsNode, devCond] };
+          tmpl = { id: rid, type: 'combo', ...root, action: { type:'plan_create', title: `Reboot notification – device ${devId}` } };
+        } else {
+          const rid = `plan_${Date.now()}`;
+          tmpl = { id: rid, type: 'manual', action: { type: 'plan_create', title: title, steps: [
+            { type: 'os_notify', payload: { title: 'Autonomy', text: note } },
+            { type: 'knowledge_add', payload: { source: 'autonomy', type: 'note', tags: 'autonomy,plan', content: note + ' – protokolliert' } }
+          ] } };
+        }
+        // render
+        function stepSummaryList(){
+          try{
+            const act = tmpl.action || {};
+            let steps = [];
+            if (tmpl.type === 'device_offline' && act.type === 'plan_create'){
+              const dev = String(tmpl.device_id||'');
+              const thr = Math.floor((tmpl.offline_sec||0)/60);
+              steps = [
+                { type:'os_notify', text: `Device ${dev||'?'} offline >${thr||'?'}min – Reboot notification` },
+                { type:'knowledge_add', text: '… protokolliert durch Autonomy' },
+              ];
+              if (dev){ steps.push({ type:'device_event', text: 'reboot_notification' }); }
+            } else if (act.type === 'plan_create'){
+              if (Array.isArray(act.steps) && act.steps.length){
+                steps = act.steps.map(s=> ({ type: s.type||'step', text: (s.payload && (s.payload.text||s.payload.content||s.payload.event?.type)) || '' }));
+              } else {
+                steps = [ { type:'os_notify', text: 'Notify' }, { type:'knowledge_add', text: '… protokolliert' } ];
+              }
+            }
+            if (!steps.length) return '';
+            const html = ['<div style="opacity:.8;margin-bottom:4px">Steps:</div>'].concat(steps.map(s=> `<div>• <b>${s.type}</b>${s.text? ': '+escapeHtml(String(s.text)) : ''}</div>`)).join('');
+            return html;
+          }catch{ return ''; }
+        }
+        function humanize(){
+          try{
+            const dev = String(tmpl.device_id||'');
+            const mins = Math.floor((tmpl.offline_sec||0)/60);
+            const act = tmpl.action || {};
+            if (tmpl.type === 'device_offline'){
+              const what = (act.type==='plan_create')? `Plane "${act.title||('Reboot notification – device '+dev)}" (Notify + Knowledge${dev? ' + DeviceEvent':''})` : 'Notify senden';
+              return `Wenn Device ${dev||'—'} länger als ${mins||'?'} Minuten offline ist → ${what}`;
+            } else if (act.type === 'plan_create'){
+              const steps = Array.isArray(act.steps)? act.steps.map(s=> s.type).join(' + ') : 'os_notify + knowledge_add';
+              return `Erzeuge Plan "${act.title||'Autonomy Plan'}" mit Steps: ${steps}`;
+            }
+            return `Regel: ${tmpl.type||'—'}`;
+          }catch{ return '—'; }
+        }
+        function render(){ try{ modalJson.value = JSON.stringify(tmpl, null, 2); const pv=document.getElementById(id+'-modalPreviewBody'); if (pv){ pv.textContent = humanize(); } const ps=document.getElementById(id+'-modalPreviewSteps'); if (ps){ ps.innerHTML = stepSummaryList(); } }catch{} }
+        function setInvalid(el, errEl, invalid){ try{ el.style.borderColor = invalid? '#f66' : '#28365f'; if (errEl){ errEl.style.display = invalid? 'block':'none'; } }catch{} }
+        function validate(){
+          let ok = true;
+          if (devVis){
+            const emptyDev = !(mDevId.value||'').trim();
+            const minOk = (parseInt(mMinutes.value||'0',10)||0) > 0;
+            setInvalid(mDevId, mDevErr, emptyDev);
+            if (wrapMinutes && wrapMinutes.style.display !== 'none'){
+              setInvalid(mMinutes, mMinErr, !minOk);
+              ok = ok && !emptyDev && minOk;
+            }
+            if (wrapLogWindow && wrapLogWindow.style.display !== 'none'){
+              const lwOk = (parseInt(mLogWindow.value||'0',10)||0) > 0;
+              setInvalid(mLogWindow, document.getElementById(id+'-mLogWinErr'), !lwOk);
+              ok = ok && lwOk;
+            }
+            if (wrapOfflineMin && wrapOfflineMin.style.display !== 'none'){
+              const ofOk = (parseInt(mOfflineMin.value||'0',10)||0) > 0;
+              setInvalid(mOfflineMin, document.getElementById(id+'-mOfflineErr'), !ofOk);
+              ok = ok && ofOk;
+            }
+          }
+          if (planVis){
+            const tOk = !!(mTitle.value||'').trim();
+            setInvalid(mTitle, mTitleErr, !tOk);
+            ok = ok && tOk;
+          }
+          const nOk = !!(mNote.value||'').trim();
+          setInvalid(mNote, mNoteErr, !nOk);
+          ok = ok && nOk;
+          if (kind === 'combo_log'){
+            const lOk = !!(mLogTypes?.value||'').trim();
+            if (mLogTypes) setInvalid(mLogTypes, mLogErr, !lOk);
+            // Light regex validation: try to create JS RegExp
+            if ((mMsgRegex?.value||'').trim()){
+              try{ new RegExp(mMsgRegex.value); setInvalid(mMsgRegex, document.getElementById(id+'-mMsgErr'), false); }
+              catch{ setInvalid(mMsgRegex, document.getElementById(id+'-mMsgErr'), true); ok=false; }
+            } else {
+              setInvalid(mMsgRegex, document.getElementById(id+'-mMsgErr'), false);
+            }
+            ok = ok && lOk;
+          }
+          // disable insert if not ok
+          try{ modalInsert.disabled = !ok; modalTest.disabled = !ok; }catch{}
+          return ok;
+        }
+        render();
+        // inputs update tmpl
+        function onChange(){ try{
+          const _dev = (mDevId.value||'1').trim()||'1';
+          const _min = parseInt(mMinutes.value||'10',10)||10;
+          const _logw = parseInt(mLogWindow?.value||'5',10)||5;
+          const _offm = parseInt(mOfflineMin?.value||String(_min),10)||_min;
+          const _title = (mTitle.value||title).trim()||title;
+          const _note = (mNote.value||note).trim()||note;
+          if (kind === 'dev_offline_notify'){
+            tmpl.id = `dev${_dev}_offline_${_min}m`;
+            tmpl.type = 'device_offline';
+            tmpl.device_id = String(_dev);
+            tmpl.offline_sec = _min*60;
+            tmpl.action = { type: 'os_notify', text: `Device ${_dev} offline >${_min}min – Reboot notification` };
+          } else if (kind === 'dev_offline_plan'){
+            tmpl.id = `dev${_dev}_offline_${_min}m_plan`;
+            tmpl.type = 'device_offline';
+            tmpl.device_id = String(_dev);
+            tmpl.offline_sec = _min*60;
+            tmpl.action = { type: 'plan_create', title: `Reboot notification – device ${_dev}` };
+          } else if (kind === 'combo_log'){
+            const _raw = (mLogTypes?.value||logType||'log').trim()||'log';
+            const _types = _raw.split(',').map(s=> s.trim()).filter(Boolean);
+            const _safe = (s)=> s.replace(/[^a-z0-9_\-\.]/gi,'_');
+            tmpl.id = `log_${_safe(_types.join('_or_')||'log')}_dev${_dev}_win_${_logw}m_off_${_offm}m`;
+            tmpl.type = 'combo';
+            const _base = { within_sec: _logw*60, device_id: String(_dev) };
+          const _msgRe = (mMsgRegex?.value||'').trim(); if (_msgRe) _base.message_regex = _msgRe;
+          const _host = (mHost?.value||'').trim(); if (_host) _base.host = _host;
+          const _src = (mSource?.value||'').trim(); if (_src) _base.source = _src;
+          const _lev = (mLevel?.value||'').trim(); if (_lev) _base.level = _lev;
+          const _logConds = (_types.length? _types: ['log']).map(l=> ({ type:'log_recent', log_type: l, ..._base }));
+            let _logsNode = (_logConds.length===1)? _logConds[0] : { any: _logConds };
+            if (mLogNot?.checked){ _logsNode = { not: _logsNode }; }
+            const _devCond = { type:'device_offline', device_id: String(_dev), offline_sec: _offm*60 };
+            const _group = (mGroup?.value||'all');
+            if (_group==='any'){
+              delete tmpl.all; tmpl.any = [_logsNode, _devCond];
+            } else {
+              delete tmpl.any; tmpl.all = [_logsNode, _devCond];
+            }
+            tmpl.action = { type: 'plan_create', title: `Reboot notification – device ${_dev}` };
+          } else {
+            tmpl.id = tmpl.id || `plan_${Date.now()}`;
+            tmpl.type = 'manual';
+            tmpl.action = { type: 'plan_create', title: _title, steps: [
+              { type: 'os_notify', payload: { title: 'Autonomy', text: _note } },
+              { type: 'knowledge_add', payload: { source: 'autonomy', type: 'note', tags: 'autonomy,plan', content: _note + ' – protokolliert' } }
+            ] };
+          }
+          render();
+        }catch{} }
+        [mDevId, mMinutes, mTitle, mNote, mLogTypes, mLogWindow, mOfflineMin, mGroup, mLogNot, mMsgRegex, mHost, mSource, mLevel, mAutoSuggest].forEach(el=> { if(el) el.addEventListener('input', ()=>{ onChange(); validate(); savePrefs(); }); });
+        // open and bind actions
+        modal.style.display = 'flex';
+        validate();
+        const hide = ()=>{ modal.style.display='none'; [mDevId, mMinutes, mTitle, mNote].forEach(el=> el.removeEventListener('input', onChange)); };
+        const onInsert = ()=>{
+          try{
+            const rule = JSON.parse(modalJson.value||'{}');
+            const obj = JSON.parse(rulesEl.value||'{}');
+            if (!obj.rules || !Array.isArray(obj.rules)) obj.rules = [];
+            obj.rules.push(rule);
+            rulesEl.value = JSON.stringify(obj, null, 2);
+            infoEl.textContent = 'Rule hinzugefügt'; setTimeout(()=>infoEl.textContent='', 1500);
+            hide();
+          }catch{ infoEl.textContent='Ungültige JSON im Modal'; setTimeout(()=>infoEl.textContent='', 2000); }
+        };
+        const onTest = async()=>{
+          try{
+            if (!validate()) return;
+            if (kind === 'combo_log'){
+              // Client-side Test Match for logs
+              const devId = (mDevId.value||'').trim();
+              const logWindowMin = parseInt(mLogWindow?.value||'5',10)||5;
+              const withinSec = logWindowMin*60;
+              const raw = (mLogTypes?.value||'').trim();
+              const types = raw.split(',').map(s=> s.trim()).filter(Boolean);
+              const msgRegex = (mMsgRegex?.value||'').trim();
+              let rx = null; if (msgRegex){ try{ rx = new RegExp(msgRegex); }catch{ rx = null; } }
+              const r = await fetch('/api/logs?limit=800', { credentials:'include' });
+              const j = await r.json();
+              let items = Array.isArray(j)? j : (Array.isArray(j.items)? j.items : []);
+              const nowTs = Math.floor(Date.now()/1000);
+              const since = nowTs - withinSec;
+              function matchesLog(lg){
+                try{
+                  const ts = parseInt(lg.ts||lg.created_at||0,10)||0; if (ts < since) return false;
+                  const typ = (lg.type||lg.level||lg.category||'').toString();
+                  const dev = (lg.device_id||lg.dev||'').toString();
+                  const msg = (lg.message||lg.msg||lg.text||'').toString();
+              const host2 = (lg.host||lg.hostname||'').toString();
+              const src2 = (lg.source||lg.logger||'').toString();
+              const lvl2 = (lg.level||lg.severity||'').toString();
+              const typeOk = types.length? types.some(t=> t.toLowerCase() === typ.toLowerCase()) : true;
+              const devOk = devId? (dev === devId) : true;
+              const msgOk = rx? rx.test(msg) : true;
+              const hostOk = host? (host2.toLowerCase() === host.toLowerCase()) : true;
+              const srcOk = source? (src2.toLowerCase() === source.toLowerCase()) : true;
+              const lvlOk = level? (lvl2.toLowerCase() === level.toLowerCase()) : true;
+              let ok = typeOk && devOk && msgOk && hostOk && srcOk && lvlOk;
+                  if (mLogNot?.checked){ ok = !ok; }
+                  return ok;
+                }catch{ return false; }
+              }
+              const hits = items.filter(matchesLog).sort((a,b)=> (b.ts||b.created_at||0) - (a.ts||a.created_at||0));
+              currentRegex = msgRegex || '';
+              // store samples for CSV (normalize fields)
+              currentTestSamples = hits.slice(0,200).map(h=>({ ts: (h.ts||h.created_at||0), type: String(h.type||h.level||h.category||''), device: String(h.device_id||h.dev||''), msg: String(h.message||h.msg||h.text||'') }));
+              if (modalExportCsv) modalExportCsv.style.display = currentTestSamples.length? 'inline-flex':'none';
+              renderResultsTable();
+              return;
+            }
+            // Fallback: Sandbox plan for other kinds
+            const rule = JSON.parse(modalJson.value||'{}');
+            let title = `Sandbox: ${rule?.action?.title || 'Autonomy Plan'}`;
+            let steps = Array.isArray(rule?.action?.steps) && rule.action.steps.length ? rule.action.steps : [
+              { type: 'os_notify', payload: { title: 'Autonomy (Sandbox)', text: 'Autonomy triggered' } },
+              { type: 'knowledge_add', payload: { source: 'autonomy', type: 'note', tags: 'autonomy,sandbox', content: 'Sandbox-Test: Autonomy triggered' } }
+            ];
+            const resp = await fetch('/api/plan', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ title, steps }) });
+            infoEl.textContent = resp.ok? 'Sandbox-Plan erstellt' : 'Sandbox fehlgeschlagen'; setTimeout(()=>infoEl.textContent='', 2000);
+          }catch{ infoEl.textContent = 'Test Fehler'; setTimeout(()=>infoEl.textContent='', 2000); }
+        };
+        const cleanup = ()=>{
+          try{ modalInsert.removeEventListener('click', onInsert); }catch{}
+          try{ modalTest.removeEventListener('click', onTest); }catch{}
+          try{ modalTestServer && modalTestServer.removeEventListener('click', onTestServer); }catch{}
+          try{ modalCancel.removeEventListener('click', hide); }catch{}
+          try{ modalClose.removeEventListener('click', hide); }catch{}
+        };
+        modalInsert.addEventListener('click', onInsert);
+        modalCancel.addEventListener('click', hide);
+        modalClose.addEventListener('click', hide);
+        modalTest.addEventListener('click', onTest);
+        async function onTestServer(){
+          try{
+            if (kind !== 'combo_log' || !validate()) return;
+            // Build the logs node similar to rule template
+            const devId = (mDevId.value||'').trim();
+            const logWindowMin = parseInt(mLogWindow?.value||'5',10)||5;
+            const withinSec = logWindowMin*60;
+            const raw = (mLogTypes?.value||'').trim();
+            const types = raw.split(',').map(s=> s.trim()).filter(Boolean);
+            const msgRegex = (mMsgRegex?.value||'').trim();
+            const base = { within_sec: withinSec, device_id: devId||undefined, message_regex: msgRegex||undefined };
+            const host = (mHost?.value||'').trim(); if (host) base.host = host;
+            const source = (mSource?.value||'').trim(); if (source) base.source = source;
+            const level = (mLevel?.value||'').trim(); if (level) base.level = level;
+            const logConds = (types.length? types: ['log']).map(l=> ({ type:'log_recent', log_type: l, ...base }));
+            let logsNode = (logConds.length===1)? logConds[0] : { any: logConds };
+            if (mLogNot?.checked){ logsNode = { not: logsNode }; }
+            const payload = { node: logsNode, auto_suggest: !!(mAutoSuggest?.checked) };
+            const resp = await fetch('/api/autonomy/test_log_condition', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+            const j = await resp.json();
+            currentRegex = (mMsgRegex?.value||'').trim();
+            // store samples for CSV
+            currentTestSamples = Array.isArray(j.samples)? j.samples.slice(0,500).map(s=>({ ts: s.ts||0, type: String(s.type||''), device: String(s.device||''), msg: String(s.msg||'') })) : [];
+            if (modalExportCsv) modalExportCsv.style.display = currentTestSamples.length? 'inline-flex':'none';
+            renderResultsTable();
+          }catch{ try{ const pv=document.getElementById(id+'-modalPreviewBody'); if (pv) pv.textContent = 'Server‑Test fehlgeschlagen'; }catch{} }
+        }
+        if (modalTestServer) modalTestServer.addEventListener('click', onTestServer);
+        // Explain (inline tabs) helpers
+        function explainNodeTree(n){
+          try{
+            if (!n || typeof n !== 'object') return '<i>—</i>';
+            if (Array.isArray(n)) return '<ul>'+ n.map(explainNodeTree).map(x=> '<li>'+x+'</li>').join('') +'</ul>';
+            if (n.any){ return '<div><b>ANY</b>'+ explainNodeTree(n.any) +'</div>'; }
+            if (n.all){ return '<div><b>ALL</b>'+ explainNodeTree(n.all) +'</div>'; }
+            if (n.not){ return '<div><b>NOT</b>'+ explainNodeTree(n.not) +'</div>'; }
+            const t = String(n.type||'');
+            if (t === 'log_recent'){
+              const mins = Math.round((Number(n.within_sec||0)||0)/60);
+              const parts = [];
+              if (n.log_type) parts.push('type='+escapeHtml(n.log_type));
+              if (n.device_id) parts.push('device='+escapeHtml(String(n.device_id)));
+              if (n.host) parts.push('host='+escapeHtml(String(n.host)));
+              if (n.source) parts.push('source='+escapeHtml(String(n.source)));
+              if (n.level) parts.push('level='+escapeHtml(String(n.level)));
+              if (n.message_regex) parts.push('msg~='+escapeHtml(String(n.message_regex)));
+              return `<span>log_recent(${parts.join(', ')}) innerhalb ${mins||0}m</span>`;
+            }
+            if (t === 'device_offline'){
+              const mins = Number(n.offline_min||0)||0;
+              return `<span>device_offline(device=${escapeHtml(String(n.device_id||''))}, >${mins}m)</span>`;
+            }
+            if (t === 'metric'){
+              return `<span>metric(${escapeHtml(String(n.metric||''))} ${escapeHtml(String(n.op||''))} ${escapeHtml(String(n.value||''))})</span>`;
+            }
+            return `<span>${escapeHtml(JSON.stringify(n))}</span>`;
+          }catch{ return '<i>—</i>'; }
+        }
+        function explainPlainText(n){
+          try{
+            if (!n || typeof n !== 'object') return '';
+            if (Array.isArray(n)) return n.map(explainPlainText).filter(Boolean).join(' ODER ');
+            if (n.any){ return '('+explainPlainText(n.any)+')'; }
+            if (n.all){ const a = Array.isArray(n.all)? n.all: [n.all]; return a.map(explainPlainText).filter(Boolean).join(' UND '); }
+            if (n.not){ return 'NICHT ('+explainPlainText(n.not)+')'; }
+            const t = String(n.type||'');
+            if (t === 'log_recent'){
+              const mins = Math.round((Number(n.within_sec||0)||0)/60);
+              const parts = [];
+              if (n.log_type) parts.push(`Log ${n.log_type}`);
+              if (n.level) parts.push(`Level=${n.level}`);
+              if (n.device_id) parts.push(`Device ${n.device_id}`);
+              if (n.host) parts.push(`Host=${n.host}`);
+              if (n.source) parts.push(`Source=${n.source}`);
+              if (n.message_regex) parts.push(`Msg~/${n.message_regex}/`);
+              return `${parts.join(' · ')} in den letzten ${mins||0} Minuten`;
+            }
+            if (t === 'device_offline'){
+              return `Device ${n.device_id||''} länger als ${n.offline_min||0} Minuten offline`;
+            }
+            if (t === 'metric'){
+              return `Metrik ${n.metric||''} ${n.op||''} ${n.value||''}`;
+            }
+            return '';
+          }catch{ return ''; }
+        }
+        function currentRuleFromTextarea(){
+          try{
+            const raw = modalJson.value||''; const obj = JSON.parse(raw);
+            if (obj && typeof obj==='object'){
+              if (obj.condition) return obj.condition;
+              return obj;
+            }
+          }catch{}
+          return null;
+        }
+        function currentActionSummary(){
+          try{
+            const raw = modalJson.value||''; const obj = JSON.parse(raw)||{};
+            // Try action from plan_create or similar
+            if (obj.action && obj.action.type){
+              const t = String(obj.action.type);
+              if (t==='plan_create'){
+                const title = obj.action.title || obj.title || 'Plan';
+                return `→ Plan erstellen (${escapeHtml(String(title))})`;
+              }
+              return `→ Aktion ${escapeHtml(t)}`;
+            }
+          }catch{}
+          return '';
+        }
+        // Tabs behavior
+        const tabBtnResults = document.getElementById(id+'-tabResults');
+        const tabBtnExplain = document.getElementById(id+'-tabExplain');
+        const tabBodyResults = document.getElementById(id+'-tabResultsBody');
+        const tabBodyExplain = document.getElementById(id+'-tabExplainBody');
+        const explainTextEl = document.getElementById(id+'-explainText');
+        const explainTreeEl = document.getElementById(id+'-explainTree');
+        const explainCopyBtn = document.getElementById(id+'-explainCopy');
+        const explainCopyJsonBtn = document.getElementById(id+'-explainCopyJson');
+        function showTab(which){
+          if (!tabBodyResults || !tabBodyExplain) return;
+          if (which==='explain'){
+            tabBodyResults.style.display='none';
+            tabBodyExplain.style.display='block';
+            if (tabBtnExplain) tabBtnExplain.disabled = true;
+            if (tabBtnResults) tabBtnResults.disabled = false;
+            // Render explain content
+            try{
+              const node = currentRuleFromTextarea();
+              const txt = explainPlainText(node) || '';
+              const tree = explainNodeTree(node) || '';
+              if (explainTextEl) explainTextEl.textContent = txt;
+              if (explainTreeEl) explainTreeEl.innerHTML = tree;
+            }catch{}
+          } else {
+            tabBodyResults.style.display='block';
+            tabBodyExplain.style.display='none';
+            if (tabBtnExplain) tabBtnExplain.disabled = false;
+            if (tabBtnResults) tabBtnResults.disabled = true;
+          }
+        }
+        if (tabBtnResults) tabBtnResults.addEventListener('click', ()=> showTab('results'));
+        if (tabBtnExplain) tabBtnExplain.addEventListener('click', ()=> showTab('explain'));
+        // wire existing Explain button to switch to tab
+        const modalExplain = document.getElementById(id+'-modalExplain');
+        if (modalExplain) modalExplain.addEventListener('click', ()=> showTab('explain'));
+        // Copy Klartext
+        if (explainCopyBtn) explainCopyBtn.addEventListener('click', async()=>{
+          try{
+            const node = currentRuleFromTextarea();
+            const txt = explainPlainText(node) || '';
+            if (navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(txt); }
+            else { const ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }
+            explainCopyBtn.textContent = '✅ Kopiert'; setTimeout(()=>{ explainCopyBtn.textContent='Copy Klartext'; }, 900);
+          }catch{ explainCopyBtn.textContent = '⚠️'; setTimeout(()=>{ explainCopyBtn.textContent='Copy Klartext'; }, 1200); }
+        });
+        // Copy JSON
+        if (explainCopyJsonBtn) explainCopyJsonBtn.addEventListener('click', async()=>{
+          try{
+            const raw = modalJson.value||'';
+            const pretty = (()=>{ try{ const o=JSON.parse(raw); return JSON.stringify(o,null,2);}catch{ return raw; } })();
+            if (navigator.clipboard && navigator.clipboard.writeText){ await navigator.clipboard.writeText(pretty); }
+            else { const ta=document.createElement('textarea'); ta.value=pretty; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); }
+            explainCopyJsonBtn.textContent = '✅ JSON kopiert'; setTimeout(()=>{ explainCopyJsonBtn.textContent='Copy JSON'; }, 900);
+          }catch{ explainCopyJsonBtn.textContent = '⚠️'; setTimeout(()=>{ explainCopyJsonBtn.textContent='Copy JSON'; }, 1200); }
+        });
+        // Default to results tab
+        showTab('results');
+        // Load devices for datalist
+        (async()=>{ try{ const r=await fetch('/api/devices?limit=200',{credentials:'include'}); const j=await r.json(); const it = Array.isArray(j)? j : (j.items||[]); if(devDatalist){ devDatalist.innerHTML = it.map(d=> `<option value="${String(d.id||d.device_id||'')}">${String(d.name||d.label||'')}</option>`).join(''); } }catch{} })();
+        function exportCsv(){ try{
+          if (!currentTestSamples || !currentTestSamples.length) return;
+          const rows = [['ts','time','type','device','message']].concat(currentTestSamples.map(s=>{
+            const dt = s.ts? new Date(s.ts*1000).toISOString() : '';
+            return [String(s.ts||''), dt, s.type||'', s.device||'', (s.msg||'').replace(/\n/g,' ')];
+          }));
+          const csv = rows.map(r=> r.map(v=> '"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+          const blob = new Blob([csv], {type:'text/csv'});
+          const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='log_test_samples.csv'; a.click();
+        }catch{} }
+        if (modalExportCsv) modalExportCsv.addEventListener('click', exportCsv);
+        function addDeviceOfflineRule(){ openRuleModal('dev_offline_notify'); }
+        function addDeviceOfflinePlanRule(){
+          openRuleModal('dev_offline_plan');
+        }
+        // (removed duplicate helper definitions)
+      function addPlanTemplate(){ openRuleModal('plan_template'); }
+      async function metrics(){ try{ const r=await fetch('/api/system/status',{credentials:'include'}); const j=await r.json(); const m=j.metrics||{}; const a=m.anomalies||[]; const hb=Number(m.worker_heartbeat_age||0); let sym='🟢'; if(a.length>0||hb>120) sym='🔴'; else if(hb>60) sym='🟡'; ampEl.textContent=sym; metEl.innerHTML = `<div>worker_heartbeat_age: ${hb}s</div><div>steps_queued: ${m.plan_steps_queued||0}</div><div>plans_queued: ${m.plans_queued||0}</div><div>jobs: ${m.jobs||0}</div><div>anomalies: ${(a||[]).join(', ')||'—'}</div>`; }catch{} }
+      async function reflections(){ try{ const r=await fetch('/api/knowledge/search?q=tags:reflection&limit=10',{credentials:'include'}); const j=await r.json(); const it= j.items||[]; reflEl.innerHTML = it.map(x=>`<div style=\"border-bottom:1px solid #243153;padding:6px 0\"><div style=\"opacity:.8\">${new Date((x.ts||0)*1000).toLocaleString()}</div><div style=\"white-space:pre-wrap\">${escapeHtml(x.content||'')}</div></div>`).join('') || '<div class=\"muted\" style=\"opacity:.7\">Keine Reflections</div>'; }catch{} }
+      async function reflectionsHourly(){ try{ const r=await fetch('/api/knowledge/search?q=tags:hourly&limit=10',{credentials:'include'}); const j=await r.json(); const it= j.items||[]; reflH.innerHTML = it.map(x=>`<div style=\"border-bottom:1px solid #243153;padding:6px 0\"><div style=\"opacity:.8\">${new Date((x.ts||0)*1000).toLocaleString()}</div><div style=\"white-space:pre-wrap\">${escapeHtml(x.content||'')}</div></div>`).join('') || '<div class=\"muted\" style=\"opacity:.7\">Keine stündlichen Reflections</div>'; }catch{} }
+      // Suggestions
+      async function loadSuggestions(){
+        try{
+          const r=await fetch('/api/knowledge/search?q=tags:autonomy,suggested_rule&limit=20',{credentials:'include'});
+          const j=await r.json(); const it=j.items||[];
+          suggEl.innerHTML = it.map(x=>{
+            const txt = String(x.content||'');
+            return `<div style=\"border:1px solid #243153;border-radius:8px;padding:8px;margin:6px 0\">`
+              + `<div style=\"opacity:.8\">${new Date((x.ts||0)*1000).toLocaleString()}</div>`
+              + `<div style=\"white-space:pre-wrap;margin:6px 0\">${escapeHtml(txt)}</div>`
+              + `<div style=\"display:flex;gap:8px\">`
+              + `<button class=\"btn\" data-accept=\"1\" data-id=\"${x.id}\">Übernehmen</button>`
+              + `<button class=\"btn\" data-dismiss=\"1\" data-id=\"${x.id}\">Verwerfen</button>`
+              + `</div>`
+            + `</div>`;
+          }).join('') || '<div class="muted" style="opacity:.7">Keine Vorschläge</div>';
+          // Wire actions
+          suggEl.querySelectorAll('[data-accept]').forEach(b=> b.addEventListener('click', ()=> acceptSuggestion(b.getAttribute('data-id'))));
+          suggEl.querySelectorAll('[data-dismiss]').forEach(b=> b.addEventListener('click', ()=> dismissSuggestion(b.getAttribute('data-id'))));
+        }catch{}
+      }
+      function parseDeviceFromSuggestion(text){ const m = /Device\s+(\d+)/i.exec(text||''); return m? m[1] : null; }
+      function parseLogTypeFromSuggestion(text){ const m = /Log\s+'([^']+)'/i.exec(text||''); return m? m[1] : null; }
+      async function acceptSuggestion(idk){
+        try{
+          const card = Array.from(suggEl.querySelectorAll('[data-accept]')).find(el=> el.getAttribute('data-id')===String(idk))?.closest('div[style*="border:"]');
+          const txt = card? card.querySelector('div[style*="white-space:"]')?.textContent||'' : '';
+          const dev = parseDeviceFromSuggestion(txt)||'1';
+          const logt = parseLogTypeFromSuggestion(txt);
+          if (logt){
+            // Open combo_log modal prefilled
+            openRuleModal('combo_log');
+            const mDev = document.getElementById(id+'-mDevId'); const mMin = document.getElementById(id+'-mMinutes'); const mLogs = document.getElementById(id+'-mLogTypes'); const mTitle = document.getElementById(id+'-mTitle'); const mNote = document.getElementById(id+'-mNote');
+            if(mDev) mDev.value = String(dev);
+            if(mMin) mMin.value = '10';
+            if(mLogs) mLogs.value = String(logt);
+            if(mTitle) mTitle.value = `Reboot notification – device ${dev}`;
+            if(mNote) mNote.value = `Autonomy: Log '${logt}' vor Offline erkannt`;
+            const mLW = document.getElementById(id+'-mLogWindow'); const mOFF = document.getElementById(id+'-mOfflineMin');
+            if(mLW) mLW.value = '5'; if(mOFF) mOFF.value = '10';
+            // trigger updates
+            [mDev,mMin,mLogs,mTitle,mNote, mLW, mOFF].forEach(el=>{ if(el){ el.dispatchEvent(new Event('input')); }});
+            infoEl.textContent = 'Bitte prüfen und Einfügen klicken (combo Regel)'; setTimeout(()=>infoEl.textContent='', 3000);
+          } else {
+            const minutes = 10;
+            const rid = `dev${dev}_offline_${minutes}m_plan_suggested`;
+            const rulesEl = document.getElementById(id+'-rules');
+            const obj = JSON.parse(rulesEl.value||'{}'); if (!obj.rules||!Array.isArray(obj.rules)) obj.rules=[];
+            obj.rules.push({ id: rid, type: 'device_offline', device_id: String(dev), offline_sec: minutes*60, action: { type: 'plan_create', title: `Reboot notification – device ${dev}` } });
+            rulesEl.value = JSON.stringify(obj, null, 2);
+            infoEl.textContent = 'Vorschlag übernommen (nicht vergessen: Save Rules)'; setTimeout(()=>infoEl.textContent='', 2500);
+          }
+        }catch{ infoEl.textContent='Fehler beim Übernehmen'; setTimeout(()=>infoEl.textContent='', 2000); }
+      }
+      async function dismissSuggestion(idk){
+        try{
+          await fetch('/api/knowledge', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ source:'autonomy', type:'note', tags:'autonomy,suggested_rule_dismissed', content:`dismissed ${idk}` }) });
+          loadSuggestions();
+        }catch{}
+      }
+      document.getElementById(id+'-start').addEventListener('click', async()=>{ try{ await fetch('/api/autonomy/start',{method:'POST',credentials:'include'}); }catch{} });
+      document.getElementById(id+'-stop').addEventListener('click', async()=>{ try{ await fetch('/api/autonomy/stop',{method:'POST',credentials:'include'}); }catch{} });
+      levelEl.addEventListener('change', saveLevel);
+      saveBtn.addEventListener('click', saveRules);
+      document.getElementById(id+'-addDevOffline').addEventListener('click', addDeviceOfflineRule);
+      document.getElementById(id+'-addDevOfflinePlan').addEventListener('click', addDeviceOfflinePlanRule);
+      document.getElementById(id+'-addPlanTemplate').addEventListener('click', addPlanTemplate);
+      document.getElementById(id+'-addComboLog').addEventListener('click', ()=> openRuleModal('combo_log'));
+      loadLevel(); loadRules(); metrics(); reflections(); reflectionsHourly(); loadSuggestions();
+      setInterval(()=>{ metrics(); reflections(); reflectionsHourly(); loadSuggestions(); }, 15000);
+    }
+
+    // -------- Knowledge+ window --------
+    function initKnowledgePlus(id){
+      const qEl = document.getElementById(id+'-q');
+      const limEl = document.getElementById(id+'-lim');
+      const rangeEl = document.getElementById(id+'-range');
+      const resEl = document.getElementById(id+'-res');
+      const c1 = document.getElementById(id+'-chart1');
+      const c2 = document.getElementById(id+'-chart2');
+      function filterByRange(items){
+        try{
+          const now = Math.floor(Date.now()/1000);
+          const v = (rangeEl.value||'7d');
+          let sec = 0; if(v==='1d') sec=86400; else if(v==='7d') sec=7*86400; else if(v==='30d') sec=30*86400; else sec=0;
+          if (!sec) return items;
+          const since = now - sec;
+          return items.filter(x=> (x.ts||0) >= since);
+        }catch{ return items; }
+      }
+      async function run(){
+        try{
+          const qs = new URLSearchParams();
+          const q = (qEl.value||'').trim(); if(q) qs.set('q', q); else qs.set('q','');
+          const lim = Number(limEl.value||'50')||50; qs.set('limit', String(Math.max(lim, 200)));
+          const r = await fetch('/api/knowledge/search?'+qs.toString(), { credentials:'include' }); const j = await r.json(); const it=j.items||[];
+          const filtered = filterByRange(it);
+          resEl.innerHTML = filtered.map(x=>`<div style=\"border-bottom:1px solid #243153;padding:6px 0\"><div style=\"opacity:.8\">${new Date((x.ts||0)*1000).toLocaleString()} · <span class=\"sp\">${escapeHtml(x.type||'')}</span> · <span class=\"sp\">${escapeHtml(x.source||'')}</span></div><div style=\"white-space:pre-wrap\">${escapeHtml(x.content||'')}</div></div>`).join('') || '<div class=\"muted\" style=\"opacity:.7\">Keine Einträge</div>';
+          drawCharts(filtered);
+          // export helpers
+          document.getElementById(id+'-exportJson').onclick = ()=>{
+            const blob = new Blob([JSON.stringify(filtered,null,2)], {type:'application/json'});
+            const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='knowledge.json'; a.click();
+          };
+          document.getElementById(id+'-exportCsv').onclick = ()=>{
+            const rows = [['ts','type','source','content']].concat(filtered.map(x=>[x.ts||'', x.type||'', x.source||'', (x.content||'').replace(/\n/g,' ').slice(0,500)]));
+            const csv = rows.map(r=> r.map(v=> '"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+            const blob = new Blob([csv], {type:'text/csv'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='knowledge.csv'; a.click();
+          };
+        }catch{ resEl.textContent='Fehler bei der Suche'; }
+      }
+      document.getElementById(id+'-search').addEventListener('click', run);
+      rangeEl.addEventListener('change', run);
+      limEl.addEventListener('change', run);
+      document.getElementById(id+'-pDaily').addEventListener('click', ()=>{ qEl.value='tags:report,daily'; rangeEl.value='7d'; run(); });
+      document.getElementById(id+'-pWeekly').addEventListener('click', ()=>{ qEl.value='tags:report,weekly'; rangeEl.value='30d'; run(); });
+      document.getElementById(id+'-pGuardian').addEventListener('click', ()=>{ qEl.value='tags:guardian,config,hash'; rangeEl.value='30d'; run(); });
+      run();
+    }
+
+    // -------- Guardian window --------
+    function initGuardian(id){
+      const amp = document.getElementById(id+'-amp');
+      const box = document.getElementById(id+'-status');
+      const feed = document.getElementById(id+'-cfgFeed');
+      const vfeed = document.getElementById(id+'-valFeed');
+      async function reload(){
+        try{
+          const r = await fetch('/api/system/status', { credentials:'include' }); const j = await r.json();
+          const a = j.metrics?.anomalies||[]; let sym='🟢'; if(a.length>0) sym='🟡'; amp.textContent=sym;
+          box.textContent = JSON.stringify(j.metrics||{}, null, 2);
+          // Load Guardian config-hash knowledge feed
+          try{
+            const r2 = await fetch('/api/knowledge/search?q=tags:guardian,config,hash&limit=20',{credentials:'include'}); const j2 = await r2.json(); const it=j2.items||[];
+            if(feed){ feed.innerHTML = it.map(x=>`<div style=\"border-bottom:1px solid #243153;padding:6px 0\"><div style=\"opacity:.8\">${new Date((x.ts||0)*1000).toLocaleString()}</div><div style=\"white-space:pre-wrap\">${escapeHtml(x.content||'')}</div></div>`).join('') || '<div class=\"muted\" style=\"opacity:.7\">Keine Änderungen</div>'; }
+          }catch{}
+          // Validator events feed (if available in knowledge)
+          try{
+            const r3 = await fetch('/api/knowledge/search?q=tags:guardian,validator&limit=20',{credentials:'include'}); const j3 = await r3.json(); const it2=j3.items||[];
+            if(vfeed){ vfeed.innerHTML = it2.map(x=>`<div style=\"border-bottom:1px solid #243153;padding:6px 0\"><div style=\"opacity:.8\">${new Date((x.ts||0)*1000).toLocaleString()}</div><div style=\"white-space:pre-wrap\">${escapeHtml(x.content||'')}</div></div>`).join('') || '<div class=\"muted\" style=\"opacity:.7\">Keine Events</div>'; }
+          }catch{}
+        }catch{}
+      }
+      document.getElementById(id+'-reload').addEventListener('click', reload);
+      reload();
+    }
+  </script>
+</body>
+</html>

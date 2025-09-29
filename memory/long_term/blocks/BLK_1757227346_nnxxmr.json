@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Unofficial Windows 11 requirements bypass tool allows disabling all AI features\n • Hacker News: RFC 3339 vs. ISO 8601\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Liveblog: ++ Regierungsgebäude in Kiew brennt ++",
+  "hash": "06a6a802d776007de046f8e3f986f643afaa68007d5f147aea1efa435dfdf4c4",
+  "id": "BLK_1757227346_nnxxmr",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "OVQeUbcv5TqwcgEq7tgfL0zHFIwY5dtmVLrmvk/tM/J2pRqbueFQ67rpdsAX6gBomasMJgd5CpYcknpe+/snAQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 08:42",
+  "ts": 1757227346,
+  "url": ""
+}

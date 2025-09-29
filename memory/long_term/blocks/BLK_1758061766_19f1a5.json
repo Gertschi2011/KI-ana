@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: SQL performance improvements: finding the right queries to fix\n • Hacker News: The \"Most Hated\" CSS Feature: Cos() and Sin()\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Tatverdächtiger im Fall Kirk wegen Mordes angeklagt",
+  "created_at": 1758061766.670401,
+  "hash": "9316021d62c9fba628fe100bfe0e8e732d0662824f29715d2b9639ee787ae82b",
+  "id": "BLK_1758061766_19f1a5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "P0durh7iyDWpvRnoE/5DHBcdzhch7XGwNQ7ZgKhFJXcnC0WwsfiIC1oMnzJNC9D4njmVM38skDni+xu5Zm8AAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 00:29",
+  "url": null
+}

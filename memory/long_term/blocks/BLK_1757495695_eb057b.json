@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: News: Arm announces next Generation core family called Arm Lumex\n • Hacker News: Crimson (YC X25) is hiring founding engineers in London\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Anschlag mit drei Toten: Höchststrafe für Attentäter von Solingen",
+  "created_at": 1757495695.3003306,
+  "hash": "a14e1761a0f282531d1ca404859c37498a910891180582a55800a69121e261c0",
+  "id": "BLK_1757495695_eb057b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "XDmIVH/yDFZoU+2jgya1zS6xXzbHvI5fmkki/yPg8GSRzbFlWHgmPDMoMbcbj0+KS/68ay6rftcJClSjqGorDg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 11:14",
+  "url": null
+}

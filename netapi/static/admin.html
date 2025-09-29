@@ -1,0 +1,2138 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta http-equiv="refresh" content="0; url=/static/admin_logs.html">
+  <script>window.location.replace('/static/admin_logs.html');
+    // --- Knowledge ---------------------------------------------------------
+    async function refreshKnowledge(){
+      try{
+        const params = new URLSearchParams();
+        const statsUrl = rootPrefix() + '/api/knowledge/stats?limit=3';
+        const statsPromise = fetch(statsUrl, { credentials:'include' }).then(r=>r.json()).catch(()=>({}));
+
+        const q = (document.getElementById('kbQuery')?.value||'').trim();
+        const tags = (document.getElementById('kbTags')?.value||'').trim();
+        const src = (document.getElementById('kbSource')?.value||'').trim();
+        const typ = (document.getElementById('kbType')?.value||'').trim();
+        const lim = Number(document.getElementById('kbLimit')?.value||50)||50;
+        if (q) params.set('q', q);
+        if (tags) params.set('tags', tags);
+        if (src) params.set('source', src);
+        if (typ) params.set('type', typ);
+        params.set('limit', String(lim));
+        const res = await fetch(rootPrefix() + '/api/knowledge/search?' + params.toString(), { credentials:'include' });
+        const j = await res.json();
+        const box = document.getElementById('kbList');
+        if (!res.ok || !j || j.ok===false){ box.textContent='Fehler beim Laden'; return; }
+        const items = Array.isArray(j.items)? j.items: [];
+        const rows = items.map(r=>{
+          const ts = r.ts? new Date(r.ts*1000).toLocaleString() : '—';
+          const tg = String(r.tags||'');
+          const tagsHtml = (r.snippet_tags? r.snippet_tags : tg.split(',').map(t=>t.trim()).filter(Boolean).map(t=>`<span class="pill">${escapeHtml(t)}</span>`).join(' '));
+          return `<div data-kb-row="1" style="border-bottom:1px solid #e5eaf2;padding:8px 0;display:flex;gap:10px;justify-content:space-between;">
+            <div style="flex:1 1 auto;min-width:0;">
+              <div><b>${ts}</b> · <span class="pill">${escapeHtml(r.type||'')}</span> · <span class="pill">${(r.snippet_source? r.snippet_source : escapeHtml(r.source||''))}</span></div>
+              <div class="muted kbTagsLine">${tagsHtml || ''}</div>
+              <div class="kbContentSnippet" style="white-space:pre-wrap;margin-top:4px;">${(r.snippet? r.snippet : escapeHtml(r.content||''))}</div>
+              <div class="kbContentRaw" style="white-space:pre-wrap;margin-top:4px;display:none;">${escapeHtml(r.content||'')}</div>
+            </div>
+            <div style="flex:0 0 auto;display:flex;gap:6px;align-items:flex-start;">
+              <button class="btn" data-kb="copy" data-id="${r.id}">Copy</button>
+              <button class="btn" data-kb="full" data-id="${r.id}">Volltext</button>
+            </div>
+          </div>`;
+        }).join('');
+        box.innerHTML = rows || '<div class="muted">Keine Einträge</div>';
+        document.getElementById('kbSummary').innerHTML = `Treffer: <b>${items.length}</b>`;
+        try{ const raw = document.getElementById('kbShowRaw')?.checked; const on = (raw===true); box.querySelectorAll('.kbContentSnippet').forEach(el=> el.style.display = on? 'none':''); box.querySelectorAll('.kbContentRaw').forEach(el=> el.style.display = on? '':'none'); const lbl=document.getElementById('kbShowRawLbl'); if(lbl){ lbl.textContent = on? 'Volltext' : 'Snippet'; } }catch{}
+        document.getElementById('kbLast').textContent = new Date().toLocaleTimeString();
+        try{ const st = await statsPromise; if (st && st.ok!==false){ const total = Number(st.total||0); const d24 = Number(st.last_24h||0); const tt = Array.isArray(st.top_tags)? st.top_tags: []; const ts = Array.isArray(st.top_sources)? st.top_sources: []; const sum = document.getElementById('kbSummary'); if (sum){ sum.innerHTML = `Treffer: <b>${items.length}</b> · <span class=\"pill\" title=\"Gesamt\">Gesamt: ${total}</span> <span class=\"pill\" title=\"Neue in 24h\">+24h: ${d24}</span>`; } const tagsEl = document.getElementById('kbTagsList'); if (tagsEl){ tagsEl.innerHTML = (tt.slice(0,3).map(x=>`<span class=\"pill\">${x.tag||''}: ${x.count||0}</span>`).join(' ') || '<span class=\"muted\">—</span>'); } const srcEl = document.getElementById('kbSourcesList'); if (srcEl){ srcEl.innerHTML = (ts.slice(0,3).map(x=>`<div class=\"muted\">${(x.source||'').replace(/</g,'&lt;').slice(0,48)} <span class=\"pill\">${x.count||0}</span></div>`).join('') || '<span class=\"muted\">—</span>'); } } }catch{}
+
+        // Wire copy buttons
+        box.querySelectorAll('button[data-kb="copy"]').forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            try{
+              const id = Number(btn.getAttribute('data-id')||0);
+              const it = items.find(x=>Number(x.id)===id); if (!it) return;
+              const txt = `${it.content||''}`;
+              if (navigator.clipboard?.writeText) navigator.clipboard.writeText(txt);
+            }catch{}
+          });
+    // Load devices for dropdown and keep it fresh on reloads
+    async function loadDevicesForDropdown(){
+      try{
+        const res = await fetch(rootPrefix() + '/os/devices', { credentials:'include' });
+        const j = await res.json();
+        const sel = document.getElementById('devSelect'); if (!sel) return;
+        sel.innerHTML = '<option value="">— Gerät wählen —</option>';
+        const items = (j && j.items) ? j.items : [];
+        items.forEach(d=>{
+          const opt = document.createElement('option');
+          opt.value = String(d.id);
+          opt.textContent = `${d.name||'Device'} (${d.id})`;
+          sel.appendChild(opt);
+        });
+      }catch{}
+    }
+    document.getElementById('devReload')?.addEventListener('click', ()=>{ try{ loadDevicesForDropdown(); }catch{} });
+    document.getElementById('devSelect')?.addEventListener('change', ()=>{
+      try{
+        const v = (document.getElementById('devSelect')?.value||'').trim();
+        if (v){ const idEl = document.getElementById('devTestId'); if (idEl) idEl.value = v; }
+      }catch{}
+    });
+    try{ loadDevicesForDropdown(); }catch{}
+        });
+        // Wire per-row Full toggle
+        box.querySelectorAll('button[data-kb="full"]').forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            try{
+              const row = btn.closest('[data-kb-row]');
+              if (!row) return;
+              const sn = row.querySelector('.kbContentSnippet');
+              const rw = row.querySelector('.kbContentRaw');
+              const isRaw = (rw && rw.style.display !== 'none');
+              if (sn && rw){
+                if (isRaw){ sn.style.display=''; rw.style.display='none'; btn.textContent='Volltext'; }
+                else { sn.style.display='none'; rw.style.display=''; btn.textContent='Snippet'; }
+              }
+            }catch{}
+          });
+        });
+      }catch{ document.getElementById('kbList').textContent='Fehler beim Laden'; }
+    }
+    document.getElementById('kbReload')?.addEventListener('click', refreshKnowledge);
+    document.getElementById('kbCsv')?.addEventListener('click', async ()=>{
+      try{
+        const q = (document.getElementById('kbQuery')?.value||'').trim();
+        const tags = (document.getElementById('kbTags')?.value||'').trim();
+        const src = (document.getElementById('kbSource')?.value||'').trim();
+        const typ = (document.getElementById('kbType')?.value||'').trim();
+        const lim = Number(document.getElementById('kbLimit')?.value||50)||50;
+        const params = new URLSearchParams(); if(q) params.set('q',q); if(tags) params.set('tags',tags); if(src) params.set('source',src); if(typ) params.set('type',typ); params.set('limit', String(lim));
+        const res = await fetch(rootPrefix() + '/api/knowledge/search?' + params.toString(), { credentials:'include' }); const j = await res.json();
+        const items = Array.isArray(j.items)? j.items: [];
+        const csv = ['id,ts,source,type,tags,hash,content,snippet'];
+        items.forEach(r=>{ const c = String(r.content||'').replaceAll('"','""'); const sn = String(r.snippet||'').replaceAll('"','""'); csv.push([r.id, r.ts, '\"'+(r.source||'')+'\"', '\"'+(r.type||'')+'\"', '\"'+(r.tags||'')+'\"', r.hash||'', '\"'+c+'\"', '\"'+sn+'\"'].join(',')); });
+        downloadText(csv.join('\n'), 'knowledge.csv');
+      }catch{}
+    });
+    document.getElementById('kbJson')?.addEventListener('click', async ()=>{
+      try{
+        const q = (document.getElementById('kbQuery')?.value||'').trim();
+        const tags = (document.getElementById('kbTags')?.value||'').trim();
+        const src = (document.getElementById('kbSource')?.value||'').trim();
+        const typ = (document.getElementById('kbType')?.value||'').trim();
+        const lim = Number(document.getElementById('kbLimit')?.value||50)||50;
+        const params = new URLSearchParams(); if(q) params.set('q',q); if(tags) params.set('tags',tags); if(src) params.set('source',src); if(typ) params.set('type',typ); params.set('limit', String(lim));
+        const res = await fetch(rootPrefix() + '/api/knowledge/search?' + params.toString(), { credentials:'include' }); const j = await res.json();
+        downloadText(JSON.stringify(j.items||[], null, 2), 'knowledge.json');
+      }catch{}
+    });
+    document.getElementById('kbAdd')?.addEventListener('click', async ()=>{
+      try{
+        const source = (document.getElementById('kbNewSource')?.value||'').trim();
+        const type = (document.getElementById('kbNewType')?.value||'text').trim();
+        const tags = (document.getElementById('kbNewTags')?.value||'').trim();
+        const content = (document.getElementById('kbNewContent')?.value||'').trim();
+        if (!content){ alert('Inhalt fehlt'); return; }
+        const r = await fetch(rootPrefix() + '/api/knowledge', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ source, type, tags, content }) });
+        const j = await r.json();
+        if (r.ok && j && j.ok){ document.getElementById('kbNewContent').value=''; refreshKnowledge(); }
+        else { alert('Speichern fehlgeschlagen: ' + ((j && j.detail)||r.status)); }
+      }catch{}
+    });
+    // --- Planner -----------------------------------------------------------
+    let planOffset = 0;
+    async function refreshPlans(){
+      try{
+        const box = document.getElementById('planList');
+        if (!box) return;
+        const st = (document.getElementById('planStatus')?.value||'').trim();
+        const lim = Number((document.getElementById('planLimit')?.value||'50'))||50;
+        const qs = new URLSearchParams(); qs.set('limit', String(lim)); if (st) qs.set('status', st); if (planOffset>0) qs.set('offset', String(planOffset));
+        const res = await fetch(rootPrefix() + '/api/plan?' + qs.toString(), { credentials:'include' });
+        const j = await res.json();
+        if (!res.ok || !j || j.ok===false){ box.textContent='Fehler beim Laden'; return; }
+        let items = Array.isArray(j.items)? j.items: [];
+        // Client-side search by title
+        try{
+          const q = (document.getElementById('planSearch')?.value||'').trim().toLowerCase();
+          if (q){ items = items.filter(p => String(p.title||'').toLowerCase().includes(q)); }
+        }catch{}
+        renderPlans(items);
+        document.getElementById('planLast').textContent = new Date().toLocaleTimeString();
+        // Totals
+        try{
+          const rc = await fetch(rootPrefix() + '/api/plan/count', { credentials:'include' });
+          const jc = await rc.json();
+          if (rc.ok && jc && jc.ok){
+            const total = Number(jc.total||0);
+            const pill = document.getElementById('planTotal'); if (pill){ pill.textContent = `🧮 Gesamt: ${total}`; pill.style.display='inline-block'; pill.title = `Alle Pläne: ${total}`; }
+            const bs = jc.by_status||{};
+            const pct = (n)=>{ const t = total>0? Math.round((Number(n||0)*1000)/total)/10 : 0; return isFinite(t)? t : 0; };
+            const qEl = document.getElementById('planCountQueued'); if (qEl && typeof bs.queued!=="undefined"){ qEl.textContent = `🟦 queued: ${bs.queued}`; qEl.style.display='inline-block'; qEl.title = `queued: ${bs.queued} (${pct(bs.queued)}%) von ${total}`; }
+            const rEl = document.getElementById('planCountRunning'); if (rEl && typeof bs.running!=="undefined"){ rEl.textContent = `🟧 running: ${bs.running}`; rEl.style.display='inline-block'; rEl.title = `running: ${bs.running} (${pct(bs.running)}%) von ${total}`; }
+            const dEl = document.getElementById('planCountDone'); if (dEl && typeof bs.done!=="undefined"){ dEl.textContent = `🟩 done: ${bs.done}`; dEl.style.display='inline-block'; dEl.title = `done: ${bs.done} (${pct(bs.done)}%) von ${total}`; }
+            const fEl = document.getElementById('planCountFailed'); if (fEl && typeof bs.failed!=="undefined"){ fEl.textContent = `🟥 failed: ${bs.failed}`; fEl.style.display='inline-block'; fEl.title = `failed: ${bs.failed} (${pct(bs.failed)}%) von ${total}`; }
+            const cEl = document.getElementById('planCountCanceled'); if (cEl && typeof bs.canceled!=="undefined"){ cEl.textContent = `⬜ canceled: ${bs.canceled}`; cEl.style.display='inline-block'; cEl.title = `canceled: ${bs.canceled} (${pct(bs.canceled)}%) von ${total}`; }
+          }
+        }catch{}
+        // Paging controls
+        try{
+          const hasMore = !!j.has_more;
+          const limN = Number(j.limit||lim)||lim;
+          const offN = Number(j.offset||planOffset)||planOffset;
+          const prevBtn = document.getElementById('planPrev'); if (prevBtn){ prevBtn.disabled = offN<=0; }
+          const nextBtn = document.getElementById('planNext'); if (nextBtn){ nextBtn.disabled = !hasMore; }
+          const info = document.getElementById('planPageInfo'); if (info){ info.textContent = `Offset ${offN}`; info.style.display='inline-block'; }
+        }catch{}
+        // Counters
+        try{
+          const cq = items.filter(p=>String(p.status)==='queued').length;
+          const cr = items.filter(p=>String(p.status)==='running').length;
+          const cd = items.filter(p=>String(p.status)==='done').length;
+          const qEl = document.getElementById('planCountQueued'); if (qEl){ qEl.textContent = `queued: ${cq}`; qEl.style.display='inline-block'; }
+          const rEl = document.getElementById('planCountRunning'); if (rEl){ rEl.textContent = `running: ${cr}`; rEl.style.display='inline-block'; }
+          const dEl = document.getElementById('planCountDone'); if (dEl){ dEl.textContent = `done: ${cd}`; dEl.style.display='inline-block'; }
+        }catch{}
+      }catch{ document.getElementById('planList').textContent='Fehler beim Laden'; }
+    }
+
+    function renderPlans(items){
+      const box = document.getElementById('planList');
+      const rows = items.map(p=>{
+        const created = p.created_at? new Date(p.created_at*1000).toLocaleString(): '—';
+        const updated = p.updated_at? new Date(p.updated_at*1000).toLocaleString(): '—';
+        return `<div class="planRow" data-id="${p.id}" style="border-bottom:1px solid #e5eaf2;padding:8px 0;">
+          <div style="display:flex;gap:10px;justify-content:space-between;align-items:flex-start;">
+            <div style="flex:1 1 auto;min-width:0;">
+              <b>#${p.id}</b> · ${escapeHtml(p.title||'')}
+              <span class="pill">${escapeHtml(p.status||'')}</span>
+              <div class="muted">${escapeHtml(created)} · ${escapeHtml(updated)}</div>
+            </div>
+            <div style="flex:0 0 auto;display:flex;gap:6px;flex-wrap:wrap;">
+              <button class="btn" data-plan="steps" data-id="${p.id}">📄 Steps</button>
+              <button class="btn" data-plan="cancel" data-id="${p.id}">⏹ Cancel</button>
+              <button class="btn" data-plan="retry" data-id="${p.id}">🔁 Retry</button>
+              <button class="btn" data-plan="dup" data-id="${p.id}" title="Duplicate Plan">📑 Duplicate</button>
+            </div>
+          </div>
+          <div class="planSteps" id="planSteps-${p.id}" style="margin-top:6px;display:none;"></div>
+        </div>`;
+      }).join('');
+      box.innerHTML = rows || '<div class="muted">Keine Pläne</div>';
+      // Wire buttons
+      box.querySelectorAll('button[data-plan="steps"]').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          try{
+            const id = Number(btn.getAttribute('data-id')||0); if(!id) return;
+            const cont = document.getElementById('planSteps-'+id); if(!cont) return;
+            if (cont.style.display !== 'none'){ cont.style.display='none'; cont.innerHTML=''; return; }
+            cont.style.display='block'; cont.textContent='Lade Steps…';
+            const r = await fetch(rootPrefix() + '/api/plan/'+id, { credentials:'include' });
+            const j = await r.json();
+            const steps = (j && j.plan && Array.isArray(j.plan.steps))? j.plan.steps: [];
+            const html = steps.map(s=>{
+              const st = String(s.status||'');
+              const sa = s.started_at? new Date(s.started_at*1000).toLocaleString(): '—';
+              const fa = s.finished_at? new Date(s.finished_at*1000).toLocaleString(): '—';
+              const res = String(s.result||'');
+              const err = String(s.error||'');
+              return `<div style="border:1px solid #e5eaf2;border-radius:8px;padding:8px;margin:6px 0;background:#fbfdff;">
+                <div><b>idx ${s.idx}</b> · <span class="pill">${escapeHtml(s.type||'')}</span> · <span class="pill">${escapeHtml(st)}</span></div>
+                <div class="muted">start: ${escapeHtml(sa)} · end: ${escapeHtml(fa)}</div>
+                ${res? ('<div style="white-space:pre-wrap;margin-top:4px;">'+escapeHtml(res)+'</div>'):''}
+                ${err? ('<div style="white-space:pre-wrap;margin-top:4px;color:#833">'+escapeHtml(err)+'</div>'):''}
+              </div>`;
+            }).join('');
+            cont.innerHTML = html || '<div class="muted">Keine Steps</div>';
+          }catch{ }
+        });
+      });
+      box.querySelectorAll('button[data-plan="cancel"]').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          try{ const id = Number(btn.getAttribute('data-id')||0); if(!id) return; if(!confirm('Plan wirklich abbrechen?')) return; const r = await fetch(rootPrefix() + '/api/plan/'+id+'/cancel', { method:'POST', credentials:'include' }); const j = await r.json(); if (r.ok && j && j.ok){ refreshPlans(); } }catch{}
+        });
+      });
+      box.querySelectorAll('button[data-plan="retry"]').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          try{ const id = Number(btn.getAttribute('data-id')||0); if(!id) return; const r = await fetch(rootPrefix() + '/api/plan/'+id+'/retry', { method:'POST', credentials:'include' }); const j = await r.json(); if (r.ok && j && j.ok){ refreshPlans(); } }catch{}
+        });
+      });
+      box.querySelectorAll('button[data-plan="dup"]').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          try{
+            const id = Number(btn.getAttribute('data-id')||0); if(!id) return;
+            const r2 = await fetch(rootPrefix() + '/api/plan/'+id+'/duplicate', { method:'POST', credentials:'include' });
+            const j2 = await r2.json();
+            if (r2.ok && j2 && j2.ok){ refreshPlans(); }
+            else { alert('Duplicate fehlgeschlagen: ' + ((j2 && j2.detail)||r2.status)); }
+          }catch{}
+        });
+      });
+    }
+
+    document.getElementById('planReload')?.addEventListener('click', refreshPlans);
+    document.getElementById('planStatus')?.addEventListener('change', ()=>{ try{ const v=(document.getElementById('planStatus')?.value||''); localStorage.setItem('planner.status', v); refreshPlans(); }catch{} });
+    document.getElementById('planLimit')?.addEventListener('change', ()=>{ try{ const v=(document.getElementById('planLimit')?.value||''); localStorage.setItem('planner.limit', v); planOffset = 0; refreshPlans(); }catch{} });
+    // Simple debounce helper
+    function debounce(fn, wait){ let t; return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn.apply(null,args), wait); }; }
+    const debouncedRefreshPlans = debounce(()=>{ try{ refreshPlans(); }catch{} }, 200);
+    document.getElementById('planSearch')?.addEventListener('input', ()=>{ try{ const v=(document.getElementById('planSearch')?.value||''); localStorage.setItem('planner.search', v); debouncedRefreshPlans(); }catch{} });
+    document.getElementById('planPrev')?.addEventListener('click', ()=>{ try{ const lim = Number((document.getElementById('planLimit')?.value||'50'))||50; planOffset = Math.max(0, planOffset - lim); localStorage.setItem('planner.offset', String(planOffset)); refreshPlans(); }catch{} });
+    document.getElementById('planNext')?.addEventListener('click', ()=>{ try{ const lim = Number((document.getElementById('planLimit')?.value||'50'))||50; planOffset = planOffset + lim; localStorage.setItem('planner.offset', String(planOffset)); refreshPlans(); }catch{} });
+    document.getElementById('planTemplate')?.addEventListener('change', ()=>{
+      try{
+        const sel = document.getElementById('planTemplate');
+        const val = (sel && sel.value)||'';
+        const ta = document.getElementById('planSteps');
+        if (!ta) return;
+        if (val === 'knowledge_add'){
+          ta.value = JSON.stringify([
+            {"type":"knowledge_add","payload":{"content":"Collected via Planner","tags":["auto","planner"],"source":"plan:demo"}}
+          ], null, 2);
+        }else if (val === 'device_event'){
+          ta.value = JSON.stringify([
+            {"type":"device_event","payload":{"device_id":1,"event":{"type":"log_upload","payload":{"text":"Planner says hi"}}}}
+          ], null, 2);
+        }
+        if (sel) sel.value = '';
+      }catch{}
+    });
+    document.getElementById('planCreate')?.addEventListener('click', async ()=>{
+      try{
+        const title = (document.getElementById('planTitle')?.value||'').trim();
+        const txt = (document.getElementById('planSteps')?.value||'').trim();
+        if (!title){ alert('Titel fehlt'); return; }
+        let steps = [];
+        if (txt){
+          try{ const parsed = JSON.parse(txt); steps = Array.isArray(parsed)? parsed : [parsed]; }
+          catch{ alert('Steps JSON ungültig'); return; }
+        }
+        const r = await fetch(rootPrefix() + '/api/plan', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ title, steps }) });
+        const j = await r.json();
+        if (r.ok && j && j.ok){ document.getElementById('planTitle').value=''; document.getElementById('planSteps').value=''; refreshPlans(); }
+        else { alert('Plan erstellen fehlgeschlagen: ' + ((j && j.detail)||r.status)); }
+      }catch{}
+    });
+
+    // Restore Planner settings and initial load
+    try{
+      const st = localStorage.getItem('planner.status'); if (st){ const el=document.getElementById('planStatus'); if (el){ el.value = st; } }
+      const lm = localStorage.getItem('planner.limit'); if (lm){ const el=document.getElementById('planLimit'); if (el){ el.value = lm; } }
+      const sq = localStorage.getItem('planner.search'); if (sq){ const el=document.getElementById('planSearch'); if (el){ el.value = sq; } }
+      const of = localStorage.getItem('planner.offset'); if (of){ planOffset = Math.max(0, Number(of)||0); }
+    }catch{}
+    try{ refreshKnowledge(); }catch{}
+    try{ refreshPlans(); }catch{}
+    // Device test sender
+    document.getElementById('devSendTest')?.addEventListener('click', async ()=>{
+      try{
+        const id = Number((document.getElementById('devTestId')?.value||'').trim());
+        const typ = (document.getElementById('devTestType')?.value||'').trim() || 'message';
+        const text = (document.getElementById('devTestText')?.value||'').trim();
+        if (!id){ alert('Device ID fehlt'); return; }
+        const r = await fetch(rootPrefix() + '/os/devices/'+id+'/events', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ type: typ, payload: { text } }) });
+        const j = await r.json();
+        if (r.ok && j && j.ok){ alert('Event gesendet (#'+j.id+')'); }
+        else { alert('Senden fehlgeschlagen: ' + ((j && j.detail)||r.status)); }
+      }catch{}
+    });
+    try{ const sw=document.getElementById('kbShowRaw'); if(sw){ const lbl=document.getElementById('kbShowRawLbl'); const apply=()=>{ try{ const box=document.getElementById('kbList'); const on=sw.checked===true; box.querySelectorAll('.kbContentSnippet').forEach(el=> el.style.display = on? 'none':''); box.querySelectorAll('.kbContentRaw').forEach(el=> el.style.display = on? '':'none'); if(lbl){ lbl.textContent = on? 'Volltext' : 'Snippet'; } }catch{} }; sw.addEventListener('change', apply); setTimeout(apply,0); } }catch{}
+    
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI_ana Admin</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif; margin: 0; background: #f7f9fc; color: #0b1020; }
+    header { padding: 12px 16px; background: #ffffff; border-bottom: 1px solid #e5eaf2; display:flex; align-items:center; gap:12px; position: sticky; top: 0; z-index: 10; flex-wrap: wrap; }
+    h1 { font-size: 18px; margin: 0; }
+    .pill { padding: 2px 8px; border-radius: 999px; background: #f5f8ff; color:#385ea8; font-size:12px; border: 1px solid #dde6f7; transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease; }
+    /* Planner status pill colors */
+    .p-total { background:#eef3ff; border-color:#dfe8ff; color:#2a4a9b; }
+    .p-queued { background:#eef6ff; border-color:#d7eafc; color:#0b5cab; }
+    .p-running { background:#fff7e6; border-color:#ffe0a3; color:#8a5a00; }
+    .p-done { background:#e9f9f1; border-color:#b8efcf; color:#166534; }
+    .p-failed { background:#fdecec; border-color:#f5b5b5; color:#8b1d1d; }
+    .p-canceled { background:#f3f4f6; border-color:#e5e7eb; color:#374151; }
+    .pill mark { background:#ffef9e; color: inherit; padding:0 2px; border-radius:3px; }
+    .kbTagsLine mark { background:#fff1a8; color: inherit; padding:0 2px; border-radius:3px; }
+    main { padding: 12px 16px; }
+    .card { background: #ffffff; border:1px solid #e5eaf2; border-radius: 10px; overflow: hidden; margin: 16px 0; box-shadow: 0 2px 12px rgba(16,24,40,0.04); }
+    .card header { background: #ffffff; border-bottom: 1px solid #e5eaf2; }
+    .card h2 { font-size: 16px; margin: 0; }
+    .toolbar { display:flex; gap:8px; align-items:center; flex-wrap: wrap; }
+    .btn { background:#ffffff; color:#0b1020; border:1px solid #d9e0ea; padding:6px 10px; border-radius:8px; cursor:pointer; box-shadow: 0 1px 2px rgba(16,24,40,0.04); }
+    .btn:hover { background:#f2f6fb; }
+    #logs { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; white-space: pre; background:#fbfdff; color:#0b1020; padding: 12px; border-top:1px solid #e5eaf2; height: 70vh; overflow: auto; }
+    .muted { opacity: .7; }
+    a { color: #23408f; }
+    /* Long text handling in dynamic lists */
+    #usersList, #jobsRecent, #auditList, #devList, #jobsWorkers { word-wrap: break-word; overflow-wrap: anywhere; }
+    /* Small-screen tweaks */
+    @media (max-width: 640px){
+      .btn { padding: 6px 8px; font-size: 12px; }
+      .pill { font-size: 11px; padding: 2px 6px; }
+      header { gap: 8px; }
+      .toolbar { gap: 6px; }
+    }
+    @media (max-width: 480px){
+      .btn { padding: 5px 7px; font-size: 11px; }
+      input.btn, select.btn { min-width: 140px; }
+    }
+    .btn-active { outline:2px solid #9ec5ff; outline-offset: 1px; background:#eef6ff; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>KI_ana Admin</h1>
+    <span class="pill" id="statusPill">Status: unbekannt</span>
+    <span class="pill" id="quotaPill" title="Free-Tageslimit">Quota: —</span>
+    <span class="pill" id="upgradePill" title="Upgrade-URL">Upgrade: —</span>
+    <span class="pill" id="dbBadge" title="Datenbankstatus">DB: ⏳</span>
+    <span class="pill" id="ttsBadge" title="Text‑to‑Speech">TTS: ⏳</span>
+    <span class="pill" id="sseBadge" title="Server‑Sent Events">SSE: ⏳</span>
+    <span class="pill" id="ollamaBadge" title="Lokales LLM (Ollama)">Ollama: ⏳</span>
+    <span class="pill" id="roleBadge" title="Meine Rolle">Rolle: —</span>
+    <div class="toolbar">
+      <button class="btn" id="openLogs">Logs</button>
+      <button class="btn" id="tailNow">Tail 1000</button>
+      <input id="logFilter" class="btn" placeholder="Filter (cid, Text, RegEx)" style="min-width:220px" />
+      <label class="btn" style="display:inline-flex;align-items:center;gap:6px;">
+        <input type="checkbox" id="onlyMatches" /> Nur Treffer
+      </label>
+      <button class="btn" id="copyFilter" title="Filter kopieren" aria-label="Filter kopieren">📋 Kopieren</button>
+      <button class="btn" id="clearFilter" title="Filter löschen" aria-label="Filter löschen">✖ Löschen</button>
+      <span class="pill" id="matchCount" title="Anzahl Treffer">Treffer: —</span>
+      <label class="btn" style="display:inline-flex;align-items:center;gap:6px;">
+        <input type="checkbox" id="autoScroll" checked /> Auto‑Scroll
+      </label>
+      <button class="btn" id="prevMatch" title="Vorheriger Treffer" aria-label="Vorheriger Treffer">◀</button>
+      <button class="btn" id="nextMatch" title="Nächster Treffer" aria-label="Nächster Treffer">▶</button>
+      <button class="btn" id="downloadView" title="Aktuelle Ansicht herunterladen" aria-label="Aktuelle Ansicht herunterladen">⬇ Ansicht</button>
+      <button class="btn" id="exportMatches" title="Nur Treffer exportieren" aria-label="Nur Treffer exportieren">⬇ Treffer</button>
+      <button class="btn" id="pauseStream" title="Stream pausieren/fortsetzen" aria-label="Stream pausieren/fortsetzen">⏸ Pause</button>
+      <input id="jumpTime" class="btn" placeholder="Zu Zeit/Text springen…" style="min-width:200px" />
+      <button class="btn" id="goTime" title="Zu Zeit/Text springen" aria-label="Zu Zeit/Text springen">⏎ Zeit/Text</button>
+      <input id="jumpCid" class="btn" placeholder="CID springen…" style="min-width:180px" />
+      <button class="btn" id="goCid" title="Zu CID springen" aria-label="Zu CID springen">⏎ CID</button>
+      <span class="pill" id="bufferInfo" title="Zwischengespeicherte Zeilen" style="display:none">+0</span>
+      <button class="btn" id="restartSSE" title="SSE neu verbinden" aria-label="SSE neu verbinden">↻ SSE</button>
+      <a class="btn" href="/" title="Zurück">Zurück</a>
+      <a class="btn" href="/static/admin_roles.html" title="Rollenverwaltung (Creator)">Rollenverwaltung</a>
+    </div>
+    <div class="card" id="maintenanceCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Wartung</h2>
+        <span id="maintLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="padding:12px;display:flex;flex-direction:column;gap:10px;">
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;">
+          <button class="btn" id="jobsRetryFailed">🔄 Jobs: Retry failed</button>
+        </div>
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;">
+          <input id="purgeDoneAge" class="btn" type="number" min="60" value="86400" style="width:160px" aria-label="Älter als (Sekunden)" />
+          <button class="btn" id="jobsPurgeDone">🧹 Jobs: Purge done</button>
+        </div>
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;">
+          <input id="purgeFailedAge" class="btn" type="number" min="60" value="604800" style="width:160px" aria-label="Älter als (Sekunden)" />
+          <button class="btn" id="jobsPurgeFailed">🧹 Jobs: Purge failed</button>
+        </div>
+      </div>
+    </div>
+    <!-- Toast / Snackbar container (stacked) -->
+    <div id="toasts" style="position:fixed;right:16px;top:16px;display:flex;flex-direction:column;gap:8px;z-index:10000"></div>
+
+    <div class="card" id="usersCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Benutzerverwaltung</h2>
+        <span id="usersLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="padding:12px;">
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;">
+          <input id="usersSearch" class="btn" placeholder="Suche (Name/Email/ID/Status/Rolle)" style="min-width:260px" />
+          <button class="btn" id="usersReload">↻ Aktualisieren</button>
+          <button class="btn" id="usersCsv">⬇ CSV</button>
+          <button class="btn" id="runPlanEnforcer" title="Plan Enforcer jetzt ausführen">⚡ Plan Enforcer</button>
+        </div>
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px">
+          <input id="cUserName" class="btn" placeholder="Username" style="min-width:160px" />
+          <input id="cUserEmail" class="btn" placeholder="E-Mail" style="min-width:220px" />
+          <input id="cUserPw" class="btn" placeholder="Passwort" type="password" style="min-width:160px" />
+          <select id="cUserRole" class="btn" aria-label="Rolle">
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+            <option value="creator">creator</option>
+          </select>
+          <button class="btn" id="createUser">+ Benutzer anlegen</button>
+        </div>
+        <div id="usersSummary" class="muted" style="margin-top:6px;">—</div>
+        <div id="usersList" style="margin-top:10px;"></div>
+      </div>
+    </div>
+    <div class="card" id="auditCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Audit</h2>
+        <span id="auditLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="padding:12px;">
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;">
+          <input id="auditSearch" class="btn" placeholder="Suche (q)" style="min-width:220px" />
+          <select id="auditAction" class="btn" aria-label="Action">
+            <option value="">Alle Aktionen</option>
+            <option value="set_role">set_role</option>
+            <option value="telemetry_prune">telemetry_prune</option>
+            <option value="device_add">device_add</option>
+            <option value="device_remove">device_remove</option>
+            <option value="device_heartbeat">device_heartbeat</option>
+            <option value="jobs_retry_failed">jobs_retry_failed</option>
+            <option value="jobs_purge">jobs_purge</option>
+            <option value="user_set_status">user_set_status</option>
+            <option value="user_create">user_create</option>
+            <option value="plan_enforcer_run">plan_enforcer_run</option>
+          </select>
+          <button class="btn" id="auditReload">↻ Aktualisieren</button>
+          <button class="btn" id="auditCsv">⬇ CSV</button>
+        </div>
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px">
+          <input id="pruneDays" class="btn" type="number" min="1" value="30" style="width:120px" aria-label="Tage" />
+          <button class="btn" id="pruneTelemetry">🧹 Telemetry Prune</button>
+        </div>
+        <div id="auditList" style="margin-top:10px;">
+          <div class="muted">Lade Audit…</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="devicesCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Geräte (Papa OS)</h2>
+        <span id="devLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="padding:12px;">
+        <div id="devSummary" class="muted">Lade Geräte…</div>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <input id="devName" class="btn" placeholder="Gerätename" style="min-width:200px" />
+          <input id="devOS" class="btn" placeholder="OS (z. B. linux)" style="min-width:160px" />
+          <button class="btn" id="devAdd">+ Hinzufügen</button>
+          <button class="btn" id="devReload">↻ Aktualisieren</button>
+          <span class="muted" style="margin-left:8px">Test‑Event:</span>
+          <select id="devSelect" class="btn" aria-label="Gerät auswählen" style="min-width:200px">
+            <option value="">— Gerät wählen —</option>
+          </select>
+          <input id="devTestId" class="btn" placeholder="Device ID" style="width:110px" />
+          <input id="devTestType" class="btn" placeholder="type (z. B. log_upload)" style="min-width:180px" />
+          <input id="devTestText" class="btn" placeholder="Text/Nachricht" style="min-width:240px" />
+          <button class="btn" id="devSendTest">📡 Test‑Event senden</button>
+        </div>
+        <div id="devList" style="margin-top:10px;"></div>
+      </div>
+    </div>
+    
+    <div class="card" id="knowledgeCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Wissen</h2>
+        <span id="kbLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="padding:12px;">
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;">
+          <input id="kbQuery" class="btn" placeholder="Suche (Text)" style="min-width:220px" />
+          <input id="kbTags" class="btn" placeholder="Tags (comma)" style="min-width:200px" />
+          <input id="kbSource" class="btn" placeholder="Quelle (source)" style="min-width:180px" />
+          <input id="kbType" class="btn" placeholder="Typ (z. B. text, ocr, whisper)" style="min-width:200px" />
+          <input id="kbLimit" class="btn" type="number" min="1" value="50" style="width:100px" aria-label="Limit" />
+          <button class="btn" id="kbReload">↻ Suchen</button>
+          <button class="btn" id="kbCsv">⬇ CSV</button>
+          <button class="btn" id="kbJson">⬇ JSON</button>
+          <label style="margin-left:8px;white-space:nowrap"><input type="checkbox" id="kbShowRaw"> <span id="kbShowRawLbl">Volltext</span></label>
+        </div>
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px">
+          <input id="kbNewSource" class="btn" placeholder="Quelle" style="min-width:160px" />
+          <input id="kbNewType" class="btn" placeholder="Typ" style="min-width:140px" value="text" />
+          <input id="kbNewTags" class="btn" placeholder="Tags (comma)" style="min-width:200px" />
+          <textarea id="kbNewContent" class="btn" placeholder="Inhalt…" style="min-width:320px;height:60px"></textarea>
+          <button class="btn" id="kbAdd">+ Speichern</button>
+        </div>
+        <div id="kbSummary" class="muted" style="margin-top:6px;">—</div>
+        <div id="kbStats" style="display:flex;gap:16px;margin-top:6px;flex-wrap:wrap;align-items:flex-start;">
+          <div id="kbTopTags" style="min-width:200px;"><div class="muted">Tags</div><div id="kbTagsList" class="muted">—</div></div>
+          <div id="kbTopSources" style="min-width:260px;"><div class="muted">Quellen</div><div id="kbSourcesList" class="muted">—</div></div>
+        </div>
+        <div id="kbList" style="margin-top:10px;"></div>
+      </div>
+    </div>
+    
+    <div class="card" id="plannerCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Planner</h2>
+        <input id="planSearch" class="btn" placeholder="🔍 Titel suchen" style="min-width:200px" />
+        <select id="planStatus" class="btn" aria-label="Statusfilter">
+          <option value="">Alle</option>
+          <option value="queued">queued</option>
+          <option value="running">running</option>
+          <option value="done">done</option>
+          <option value="failed">failed</option>
+          <option value="canceled">canceled</option>
+        </select>
+        <label class="btn" style="display:inline-flex;align-items:center;gap:6px;">
+          Zeige:
+          <select id="planLimit" aria-label="Limit" style="border:none;background:transparent;">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+          </select>
+        </label>
+        <button class="btn" id="planReload" style="margin-left:auto">↻ Refresh</button>
+        <span id="planLast" class="pill muted">—</span>
+        <span id="planCountQueued" class="pill p-queued" title="queued" style="display:none"></span>
+        <span id="planCountRunning" class="pill p-running" title="running" style="display:none"></span>
+        <span id="planCountDone" class="pill p-done" title="done" style="display:none"></span>
+        <span id="planCountFailed" class="pill p-failed" title="failed" style="display:none"></span>
+        <span id="planCountCanceled" class="pill p-canceled" title="canceled" style="display:none"></span>
+        <span id="planTotal" class="pill p-total" title="Gesamt" style="display:none"></span>
+        <div class="toolbar" style="margin-left:auto;gap:6px;align-items:center;">
+          <button class="btn" id="planPrev">◀ Vorherige</button>
+          <button class="btn" id="planNext">Nächste ▶</button>
+          <span id="planPageInfo" class="pill muted" title="Offset" style="display:none"></span>
+        </div>
+      </header>
+      <div style="padding:12px;">
+        <div class="toolbar" style="gap:8px;flex-wrap:wrap;align-items:center;">
+          <input id="planTitle" class="btn" placeholder="Titel" style="min-width:200px" />
+          <textarea id="planSteps" class="btn" placeholder='Steps (JSON), z. B.\n[{"type":"task","payload":{"text":"hi"}}]' style="min-width:360px;height:70px"></textarea>
+          <select id="planTemplate" class="btn" aria-label="Vorlage" title="Vorlage einfügen">
+            <option value="">Vorlage…</option>
+            <option value="knowledge_add">knowledge_add</option>
+            <option value="device_event">device_event</option>
+          </select>
+          <button class="btn" id="planCreate">+ Plan anlegen</button>
+        </div>
+        <div id="planList" style="margin-top:10px;"></div>
+      </div>
+    </div>
+
+    <div class="card" id="mediaJobsCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Media Jobs</h2>
+        <span id="jobsLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="padding:12px;">
+        <div id="jobsSummary" class="muted">Lade Status…</div>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <button class="btn" id="jobsReload">↻ Aktualisieren</button>
+          <button class="btn" id="jobsRetryFailed" title="Alle fehlgeschlagenen Jobs mit <5 Versuchen erneut einreihen">Retry Failed</button>
+          <button class="btn" id="jobsPurgeDone" title="Erledigte Jobs >24h löschen">Purge Done (24h)</button>
+          <button class="btn" id="jobsOnlyMedia" title="Nur Media-Jobs anzeigen">Nur Media: Aus</button>
+        </div>
+        <div id="jobsWorkers" class="muted" style="margin-top:10px;">Lade Worker…</div>
+        <div id="jobsRecent" style="margin-top:10px;">
+          <div class="muted">Lade letzte Jobs…</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="telemetryCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Telemetry</h2>
+        <span id="telLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="padding:12px;">
+        <div id="telSummary" class="muted">Lade Fehlerübersicht…</div>
+        <div style="margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+          <button class="btn" id="telReload">↻ Aktualisieren</button>
+          <button class="btn" id="telShow">Details</button>
+          <button class="btn" id="telPrune" title="Browserfehler älter als 30 Tage löschen">Prune 30d</button>
+          <label class="btn" style="display:inline-flex;align-items:center;gap:6px;">
+            Top
+            <select id="telTop" aria-label="Top N" style="padding:6px 8px; border-radius:8px; border:1px solid #1f2a4d; background:#0a0f1f; color:#fff;">
+              <option value="5" selected>5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+          </label>
+          <button class="btn" id="telAuto" title="Auto-Refresh toggeln">Auto: Aus</button>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <input id="telSearch" class="btn" placeholder="Suche (message/url)" style="min-width:240px" />
+          <label class="btn" style="display:inline-flex;align-items:center;gap:6px;"><input type="checkbox" id="lvlErr" checked /> error</label>
+          <label class="btn" style="display:inline-flex;align-items:center;gap:6px;"><input type="checkbox" id="lvlWarn" checked /> warn</label>
+          <label class="btn" style="display:inline-flex;align-items:center;gap:6px;"><input type="checkbox" id="lvlInfo" checked /> info</label>
+          <button class="btn" id="telLoadDetails">Laden</button>
+        </div>
+        <div id="telChart" style="margin-top:10px;"></div>
+        <div id="telDetails" style="display:none;margin-top:10px;"></div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="card" id="sysCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Systemstatus</h2>
+        <span id="sysLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="display:grid;grid-template-columns: repeat(2, minmax(220px,1fr)); gap:12px; padding: 12px;">
+        <div>
+          <div>CPU: <strong id="cpuPct">—</strong> • Kerne: <span id="cpuCnt">—</span></div>
+          <div>Loadavg: <span id="la1">—</span> / <span id="la5">—</span> / <span id="la15">—</span></div>
+          <div>Uptime: <span id="uptime">—</span></div>
+        </div>
+        <div>
+          <div>RAM: <strong id="memPct">—</strong> • <span id="memUsed">—</span> / <span id="memTotal">—</span></div>
+          <div>Disk: <strong id="diskPct">—</strong> • frei: <span id="diskFree">—</span></div>
+          <div>Jobs: <span id="jobs">—</span> • Ollama: <span id="ollama">—</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <header><h2>Live Logs</h2></header>
+      <div id="logs" class="muted">Verbinde zu Live‑Logs…</div>
+    </div>
+    <div class="card" id="blocksCard">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2>Blöcke – Health</h2>
+        <span id="blocksLast" class="pill muted" style="margin-left:auto">—</span>
+      </header>
+      <div style="display:grid;grid-template-columns: repeat(2, minmax(220px,1fr)); gap:12px; padding: 12px;">
+        <div>
+          <div>Signer verfügbar: <strong id="signerAvail">—</strong></div>
+          <div>Keys vorhanden: <span id="keysPresent">—</span></div>
+        </div>
+        <div>
+          <div>Verifiziert OK: <strong id="verifiedPct">—</strong></div>
+          <div>Gesamt: <span id="blkTotal">—</span>, Hash OK: <span id="blkHashOk">—</span>, Sign OK: <span id="blkSigOk">—</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    // Moved from stray header: helper functions
+    function updateBufferInfo(){
+      try{
+        if (!bufferInfo) return;
+        if (!pausedBuffer){ bufferInfo.style.display = 'none'; bufferInfo.textContent = '+0'; return; }
+        const count = pausedBuffer.split('\n').filter(x=>x.length>0).length;
+        bufferInfo.textContent = `+${count}`;
+        bufferInfo.style.display = '';
+      }catch{}
+    }
+
+    async function refreshJobs(){
+      try{
+        // Status
+        try{
+          const r = await fetch(rootPrefix()+ '/api/jobs/status', { credentials:'include' });
+          const j = await r.json();
+          if (r.ok && j && j.ok){
+            const bs = j.by_status||{}; const bt = j.by_type||{};
+            const parts = [];
+            const mk = (m)=> Object.entries(m).map(([k,v])=>`${k||'—'}:${v}`).join(', ');
+            parts.push('Status: '+ (mk(bs)||'—'));
+            if (Object.keys(bt).length){ parts.push('Typen: '+ mk(bt)); }
+            jobsSummaryEl.textContent = parts.join(' • ');
+          } else {
+            jobsSummaryEl.textContent = 'Status nicht verfügbar';
+          }
+        }catch{ jobsSummaryEl.textContent = 'Status nicht verfügbar'; }
+
+        // Heartbeats
+        try{
+          const r = await fetch(rootPrefix()+ '/api/jobs/heartbeats', { credentials:'include' });
+          const j = await r.json();
+          if (r.ok && j && Array.isArray(j.items)){
+            const rows = j.items.map(it => {
+              const name = (it.name||it.type||'worker');
+              const age = typeof it.age==='number' ? `${it.age}s` : '—';
+              const status = it.status||'ok'; const host = it.host||''; const pid = it.pid||'';
+              const jt = Array.isArray(it.job_types)? it.job_types.join(', '):'';
+              return `<div class="muted">${name} • ${status} • age ${age} • pid ${pid} • ${host} ${jt?('• '+jt):''}</div>`;
+            }).join('') || '<div class="muted">Keine Heartbeats</div>';
+            jobsWorkersEl.innerHTML = rows;
+          } else {
+            jobsWorkersEl.innerHTML = '<div class="muted">Heartbeats nicht verfügbar</div>';
+          }
+        }catch{ jobsWorkersEl.innerHTML = '<div class="muted">Heartbeats nicht verfügbar</div>'; }
+
+        // Recent jobs
+        try{
+          const r = await fetch(rootPrefix()+ '/api/jobs?limit=50', { credentials:'include' });
+          const j = await r.json();
+          if (r.ok && j && Array.isArray(j.items)){
+            const items = j.items.filter(it => !jobsOnlyMedia || String(it.type||'').toLowerCase().includes('media'));
+            const rows = items.map(it => {
+              const when = it.created_at ? new Date(it.created_at*1000).toLocaleString() : '';
+              const err = (it.error||'');
+              return `<div class="muted">#${it.id} • ${it.type} • ${it.status} • prio ${it.priority||0} • attempts ${it.attempts||0} • ${when}${err?(' • err: '+escapeHtml(String(err)).slice(0,200)):''}</div>`;
+            }).join('') || '<div class="muted">Keine Jobs</div>';
+            jobsRecentEl.innerHTML = rows;
+          } else {
+            jobsRecentEl.innerHTML = '<div class="muted">Jobs nicht verfügbar</div>';
+          }
+        }catch{ jobsRecentEl.innerHTML = '<div class="muted">Jobs nicht verfügbar</div>'; }
+
+        if (jobsLastEl){ jobsLastEl.textContent = new Date().toLocaleTimeString(); }
+      }catch{}
+    }
+
+    async function refreshBlocksHealth(){
+      try{
+        const res = await fetch(rootPrefix() + '/viewer/api/blocks/health', { credentials:'include' });
+        const j = await res.json();
+        if (!res.ok || !j || j.ok === false) throw new Error('health http');
+        const s = j.signer || {}; const st = j.stats || {};
+        document.getElementById('signerAvail').textContent = (s.available===true? '✅' : '⏳');
+        document.getElementById('keysPresent').textContent = (s.keys_present===true? '✅' : '—');
+        document.getElementById('verifiedPct').textContent = (typeof st.verified_ok_percent==='number') ? (st.verified_ok_percent.toFixed(2)+'%') : '—';
+        document.getElementById('blkTotal').textContent = st.total ?? '—';
+        document.getElementById('blkHashOk').textContent = st.hash_ok ?? '—';
+        document.getElementById('blkSigOk').textContent = st.signature_ok ?? '—';
+        document.getElementById('blocksLast').textContent = new Date().toLocaleTimeString();
+      }catch(e){ const el = document.getElementById('blocksLast'); if (el) el.textContent = '⚠️ Fehler'; }
+    }
+    const logsEl = document.getElementById('logs');
+    const statusPill = document.getElementById('statusPill');
+    const tailBtn = document.getElementById('tailNow');
+    const openLogsBtn = document.getElementById('openLogs');
+    const logFilter = document.getElementById('logFilter');
+    const onlyMatches = document.getElementById('onlyMatches');
+    const copyFilterBtn = document.getElementById('copyFilter');
+    const clearFilterBtn = document.getElementById('clearFilter');
+    const matchCount = document.getElementById('matchCount');
+    const autoScroll = document.getElementById('autoScroll');
+    const prevMatchBtn = document.getElementById('prevMatch');
+    const nextMatchBtn = document.getElementById('nextMatch');
+    const downloadViewBtn = document.getElementById('downloadView');
+    const exportMatchesBtn = document.getElementById('exportMatches');
+    const pauseStreamBtn = document.getElementById('pauseStream');
+    const jumpTimeInp = document.getElementById('jumpTime');
+    const goTimeBtn = document.getElementById('goTime');
+    const jumpCidInp = document.getElementById('jumpCid');
+    const goCidBtn = document.getElementById('goCid');
+    const bufferInfo = document.getElementById('bufferInfo');
+    const restartSSEBtn = document.getElementById('restartSSE');
+    const dbBadge = document.getElementById('dbBadge');
+    const ttsBadge = document.getElementById('ttsBadge');
+    const sseBadge = document.getElementById('sseBadge');
+    const ollamaBadge = document.getElementById('ollamaBadge');
+    let lastLogText = '';
+    let filterExpr = null; // RegExp or null
+    let matchNodes = []; // NodeList of <mark> elements
+    let matchIndex = -1;
+    let paused = false;
+    let esRef = null;
+    let pollTimer = null;
+    let pausedBuffer = '';
+    // Jobs UI elements
+    const jobsSummaryEl = document.getElementById('jobsSummary');
+    const jobsWorkersEl = document.getElementById('jobsWorkers');
+    const jobsRecentEl = document.getElementById('jobsRecent');
+    const jobsLastEl = document.getElementById('jobsLast');
+    const jobsReloadBtn = document.getElementById('jobsReload');
+    const jobsOnlyBtn = document.getElementById('jobsOnlyMedia');
+    let jobsOnlyMedia = false;
+
+    function rootPrefix(){
+      try{
+        const p = window.location.pathname || '/';
+        const i = p.indexOf('/static/');
+        if (i >= 0) return p.slice(0, i);
+        return '';
+      }catch{ return ''; }
+    }
+
+    function setStatus(text){ statusPill.textContent = 'Status: ' + text; }
+
+    async function refreshBadges(){
+      try{
+        // DB badge via /api/sys/db_info (auth required)
+        try{
+          const r = await fetch(rootPrefix()+ '/api/sys/db_info', { credentials:'include' });
+          if (r.ok){
+            dbBadge.textContent = 'DB: 🟢';
+            dbBadge.title = 'Datenbank erreichbar';
+          } else {
+            dbBadge.textContent = 'DB: 🔴';
+            dbBadge.title = 'Datenbank nicht erreichbar ('+ r.status +')';
+          }
+        }catch{ dbBadge.textContent = 'DB: 🔴'; dbBadge.title = 'Datenbank nicht erreichbar'; }
+
+        // TTS badge via /api/voice/health, fallback /voice/health
+        let ok = false; let info = '';
+        try{
+          let r = await fetch(rootPrefix()+ '/api/voice/health', { credentials:'include' });
+          if (!r.ok){ r = await fetch(rootPrefix()+ '/voice/health', { credentials:'include' }); }
+          if (r.ok){ const j = await r.json().catch(()=>({})); ok = !!(j && (j.ok!==false)); info = j && j.reason ? String(j.reason) : ''; }
+        }catch{}
+        if (ok){ ttsBadge.textContent = 'TTS: 🟢'; ttsBadge.title = 'TTS bereit'; }
+        else { ttsBadge.textContent = 'TTS: 🔴'; ttsBadge.title = info ? ('TTS nicht bereit: '+info) : 'TTS nicht bereit'; }
+
+        // Ollama badge via /api/metrics
+        try{
+          const r = await fetch(rootPrefix()+ '/api/metrics', { credentials:'include' });
+          if (r.ok){
+            const j = await r.json().catch(()=>({}));
+            const o = (j && j.ollama) || {};
+            if (o.available === true){
+              if (o.model_running === true || o.model_present === true){
+                ollamaBadge.textContent = 'Ollama: 🟢';
+                ollamaBadge.title = `Host: ${o.host||''} • Model: ${o.model||''}`.trim();
+              } else {
+                ollamaBadge.textContent = 'Ollama: ⏳';
+                ollamaBadge.title = `Model lädt … (${o.model||''})`;
+              }
+            } else {
+              ollamaBadge.textContent = 'Ollama: 🔴';
+              ollamaBadge.title = 'Ollama nicht verfügbar';
+            }
+          } else {
+            ollamaBadge.textContent = 'Ollama: 🔴';
+            ollamaBadge.title = `Ollama Status HTTP ${r.status}`;
+          }
+        }catch{ ollamaBadge.textContent = 'Ollama: 🔴'; ollamaBadge.title = 'Ollama Status nicht abrufbar'; }
+
+        // SSE badge via quick EventSource handshake (1.5s timeout)
+        await new Promise(resolve => {
+          try{
+            let opened = false; let done = false;
+            const es = new EventSource(rootPrefix()+ '/events', { withCredentials: true });
+            const cleanup = (ok)=>{ if (done) return; done = true; try{ es.close(); }catch{}; sseBadge.textContent = ok ? 'SSE: 🟢' : 'SSE: 🔴'; sseBadge.title = ok ? 'SSE verbunden' : 'SSE Fehler'; resolve(); };
+            es.onopen = ()=>{ opened = true; cleanup(true); };
+            es.onerror = ()=>{ cleanup(false); };
+            setTimeout(()=>{ cleanup(opened); }, 1500);
+          }catch{ sseBadge.textContent = 'SSE: 🔴'; sseBadge.title = 'SSE Test fehlgeschlagen'; resolve(); }
+        });
+        box.querySelectorAll('button[data-act="ev"]').forEach(btn => {
+          btn.addEventListener('click', async ()=>{
+            try{ const id = btn.getAttribute('data-id'); if(!id) return; const body = { type:'message', payload:{ msg:'hello-from-admin', ts: Date.now()/1000 } };
+              const r = await fetch(rootPrefix() + '/os/devices/'+encodeURIComponent(id)+'/events', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+              const j=await r.json(); if (r.ok && j && j.ok){ refreshDevices(); }
+            }catch{}
+          });
+        });
+        box.querySelectorAll('button[data-act="cfg"]').forEach(btn => {
+          btn.addEventListener('click', async ()=>{
+            try{ const id = btn.getAttribute('data-id'); if(!id) return; const body = { type:'config_update', payload:{} };
+              const r = await fetch(rootPrefix() + '/os/devices/'+encodeURIComponent(id)+'/events', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+              const j=await r.json(); if (r.ok && j && j.ok){ refreshDevices(); }
+            }catch{}
+          });
+        });
+        box.querySelectorAll('button[data-act="logs"]').forEach(btn => {
+          btn.addEventListener('click', async ()=>{
+            try{ const id = btn.getAttribute('data-id'); if(!id) return; const body = { type:'log_upload_request', payload:{ range:'last_10m' } };
+              const r = await fetch(rootPrefix() + '/os/devices/'+encodeURIComponent(id)+'/events', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+              const j=await r.json(); if (r.ok && j && j.ok){ refreshDevices(); }
+            }catch{}
+          });
+        });
+        box.querySelectorAll('button[data-act="media"]').forEach(btn => {
+          btn.addEventListener('click', async ()=>{
+            try{ const id = btn.getAttribute('data-id'); if(!id) return; const body = { type:'media_capture', payload:{ duration: 5 } };
+              const r = await fetch(rootPrefix() + '/os/devices/'+encodeURIComponent(id)+'/events', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+              const j=await r.json(); if (r.ok && j && j.ok){ refreshDevices(); }
+            }catch{}
+          });
+        });
+      }catch{}
+    }
+
+    async function refreshConfig(){
+      try{
+        const res = await fetch(rootPrefix() + '/api/system/config', { credentials:'include' });
+        const j = await res.json();
+        if (res.ok && j){
+          const q = (j.free_daily_quota!=null) ? String(j.free_daily_quota) : '—';
+          const el = document.getElementById('quotaPill'); if (el) el.textContent = 'Quota: ' + q;
+          const up = document.getElementById('upgradePill');
+          if (up){
+            const url = String(j.upgrade_url||'').trim();
+            up.title = url ? ('Upgrade-URL: ' + url) : 'Upgrade-URL nicht gesetzt';
+            up.textContent = 'Upgrade: ' + (url ? 'gesetzt ⏳' : '—');
+            if (url){
+              checkUpgradeUrl(url).then(state => {
+                try{
+                  if (state === 'ok') up.textContent = 'Upgrade: gesetzt ✅';
+                  else if (state === 'warn') up.textContent = 'Upgrade: gesetzt ⚠️';
+                  else up.textContent = 'Upgrade: gesetzt ⏳';
+                }catch{}
+              }).catch(()=>{});
+            }
+          }
+        }
+      }catch{}
+    }
+
+    async function checkUpgradeUrl(url){
+      try{
+        // If it's a local static path, assume OK
+        if (url.startsWith('/')) return 'ok';
+        // Try HEAD with timeout and tolerant CORS mode
+        const ctrl = new AbortController();
+        const t = setTimeout(()=>ctrl.abort(), 2500);
+        try{
+          const r = await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: ctrl.signal });
+          clearTimeout(t);
+          // In no-cors mode we cannot inspect status; assume reachable if resolved
+          return 'ok';
+        }catch(e){
+          clearTimeout(t);
+          // Retry GET no-cors quickly
+          try{
+            const r2 = await fetch(url, { method: 'GET', mode: 'no-cors' });
+            return 'warn'; // reachable but opaque
+          }catch{
+            return 'warn';
+          }
+        }
+      }catch{ return 'warn'; }
+    }
+
+    function parseCidFromHash(){
+      try{
+        const h = location.hash || '';
+        if (!h.startsWith('#logs')) return null;
+        const q = h.split('?')[1] || '';
+        if (!q) return null;
+        const params = new URLSearchParams(q);
+        return params.get('cid');
+      }catch{return null;}
+    }
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+    }
+
+    function applyFilterValue(val){
+      if (!val){ filterExpr = null; logFilter.value = ''; renderLogs(lastLogText); return; }
+      try{ filterExpr = new RegExp(val, 'i'); }
+      catch{ filterExpr = new RegExp(val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'); }
+      renderLogs(lastLogText);
+    }
+
+    function renderLogs(text){
+      // append and trim to avoid crashes with huge logs
+      const incoming = String(text||'');
+      lastLogText = String(lastLogText||'');
+      if (incoming && !lastLogText.endsWith(incoming)){
+        lastLogText = incoming; // default assign if from tail or SSE append happens elsewhere
+      }
+      // hard trim: keep last ~50k chars to prevent DOM bloat
+      const MAX_CHARS = 50000; // ~50 KB view
+      if (lastLogText.length > MAX_CHARS){
+        lastLogText = lastLogText.slice(-MAX_CHARS);
+      }
+      if (!filterExpr){
+        logsEl.textContent = lastLogText;
+        logsEl.classList.remove('muted');
+        if (autoScroll?.checked) logsEl.scrollTop = logsEl.scrollHeight;
+        if (matchCount) matchCount.textContent = 'Treffer: —';
+        matchNodes = []; matchIndex = -1;
+        return;
+      }
+      const lines = lastLogText.split('\n');
+      // soft trim by lines: keep last 2000 lines
+      const MAX_LINES = 2000;
+      const start = Math.max(0, lines.length - MAX_LINES);
+      const view = lines.slice(start);
+      let hits = 0;
+      const html = view.map(line => {
+        if (!line) return '';
+        const match = filterExpr.test(line);
+        if (match) hits++;
+        if (!match) return onlyMatches?.checked ? '' : `<span class="line">${escapeHtml(line)}</span> <button class="copy-line" data-text="${escapeHtml(line)}">📋</button>`;
+        // highlight matches
+        try{
+          const highlighted = escapeHtml(line).replace(filterExpr, m=>`<mark>${escapeHtml(m)}</mark>`);
+          return `<span class="line">${highlighted}</span> <button class="copy-line" data-text="${escapeHtml(line)}">📋</button>`;
+        }catch{ return `<span class="line"><mark>${escapeHtml(line)}</mark></span> <button class="copy-line" data-text="${escapeHtml(line)}">📋</button>`; }
+      }).filter(x=>x!==null).join('\n');
+      logsEl.innerHTML = html;
+      logsEl.classList.remove('muted');
+      if (autoScroll?.checked) logsEl.scrollTop = logsEl.scrollHeight;
+      if (matchCount) matchCount.textContent = `Treffer: ${hits}`;
+      try{ matchNodes = Array.from(logsEl.querySelectorAll('mark')); }catch{ matchNodes = []; }
+      if (matchNodes.length){ matchIndex = 0; focusMatch(matchIndex); updateMatchCounter(hits); }
+      else { matchIndex = -1; updateMatchCounter(hits); }
+      // wire copy buttons
+      try{
+        logsEl.querySelectorAll('.copy-line').forEach(btn => {
+          btn.addEventListener('click', async (e)=>{
+            try{ await navigator.clipboard.writeText(btn.getAttribute('data-text')||''); btn.textContent='Kopiert'; setTimeout(()=>btn.textContent='📋',800); }catch{}
+          });
+        });
+      }catch{}
+    }
+
+    function updateMatchCounter(total){
+      if (!matchCount) return;
+      if (!total || total <= 0 || matchIndex < 0){ matchCount.textContent = `Treffer: ${total||0}`; return; }
+      matchCount.textContent = `Treffer: ${total} (${matchIndex+1}/${total})`;
+    }
+
+    function focusMatch(i){
+      try{
+        if (!matchNodes || !matchNodes.length) return;
+        const n = matchNodes[Math.max(0, Math.min(i, matchNodes.length-1))];
+        if (!n) return;
+        n.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }catch{}
+    }
+
+    // Initialize filter from #logs?cid=...
+    (function initFilter(){
+      const cid = parseCidFromHash();
+      if (cid){
+        logFilter.value = cid;
+        onlyMatches.checked = true; // preselect only matches for CID
+        try{ localStorage.setItem('admin.logFilter', cid); localStorage.setItem('admin.onlyMatches', '1'); }catch{}
+        applyFilterValue(cid);
+      } else {
+        // restore previous
+        try{
+          const saved = localStorage.getItem('admin.logFilter') || '';
+          const savedOnly = localStorage.getItem('admin.onlyMatches') === '1';
+          if (saved){ logFilter.value = saved; applyFilterValue(saved); }
+          onlyMatches.checked = savedOnly;
+        }catch{}
+      }
+      logFilter.addEventListener('input', () => { const v = logFilter.value.trim(); try{ localStorage.setItem('admin.logFilter', v); }catch{} applyFilterValue(v); });
+      onlyMatches.addEventListener('change', () => { try{ localStorage.setItem('admin.onlyMatches', onlyMatches.checked ? '1':'0'); }catch{} renderLogs(lastLogText); });
+      copyFilterBtn.addEventListener('click', async ()=>{
+        try{
+          const v = logFilter.value || '';
+          if (!v) return;
+          await navigator.clipboard.writeText(v);
+          const old = copyFilterBtn.textContent; copyFilterBtn.textContent = 'Kopiert'; setTimeout(()=> copyFilterBtn.textContent = old, 1000);
+        }catch{}
+      });
+      clearFilterBtn.addEventListener('click', ()=>{
+        logFilter.value = '';
+        try{ localStorage.removeItem('admin.logFilter'); }catch{}
+        applyFilterValue('');
+      });
+      prevMatchBtn.addEventListener('click', ()=>{
+        if (!matchNodes.length) return;
+        matchIndex = (matchIndex <= 0) ? (matchNodes.length - 1) : (matchIndex - 1);
+        focusMatch(matchIndex);
+        updateMatchCounter(matchNodes.length);
+      });
+      nextMatchBtn.addEventListener('click', ()=>{
+        if (!matchNodes.length) return;
+        matchIndex = (matchIndex + 1) % matchNodes.length;
+        focusMatch(matchIndex);
+        updateMatchCounter(matchNodes.length);
+      });
+      downloadViewBtn.addEventListener('click', ()=>{
+        try{
+          const text = getVisibleText(false);
+          downloadText(text, 'logs_view.txt');
+        }catch{}
+      });
+      exportMatchesBtn.addEventListener('click', ()=>{
+        try{
+          const text = getVisibleText(true);
+          downloadText(text, 'logs_matches.txt');
+        }catch{}
+      });
+      pauseStreamBtn.addEventListener('click', ()=>{
+        paused = !paused;
+        pauseStreamBtn.textContent = paused ? '▶ Fortsetzen' : '⏸ Pause';
+        if (!paused && pausedBuffer){
+          // flush buffered lines
+          renderLogs((lastLogText ? lastLogText + '\n' : '') + pausedBuffer);
+          pausedBuffer = '';
+          updateBufferInfo();
+        }
+      });
+      restartSSEBtn.addEventListener('click', ()=>{
+        try{ if (esRef) esRef.close(); }catch{}
+        esRef = null;
+        if (pollTimer){ clearInterval(pollTimer); pollTimer = null; }
+        connectSSE();
+      });
+      // Jobs wiring
+      if (jobsReloadBtn){ jobsReloadBtn.addEventListener('click', ()=>{ refreshJobs(); }); }
+      if (jobsOnlyBtn){
+        jobsOnlyBtn.addEventListener('click', ()=>{
+          jobsOnlyMedia = !jobsOnlyMedia;
+          jobsOnlyBtn.textContent = jobsOnlyMedia ? 'Nur Media: An' : 'Nur Media: Aus';
+          refreshJobs();
+        });
+      }
+      // initial refresh
+      refreshJobs();
+      setInterval(refreshJobs, 30000);
+      // initial badges
+      refreshBadges();
+      // periodic badge refresh every 30s
+      setInterval(refreshBadges, 30000);
+      const doJumpTo = (needle) => {
+        try{
+          const q = String(needle||'').trim(); if (!q) return;
+          // Try DOM: find first line element that includes the text
+          const lines = Array.from(logsEl.querySelectorAll('.line'));
+          const node = lines.find(n => (n.textContent||'').toLowerCase().includes(q.toLowerCase()));
+          if (node){ node.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
+          // Fallback: adjust filter and focus first match
+          logFilter.value = q; applyFilterValue(q); onlyMatches.checked = true; renderLogs(lastLogText);
+        }catch{}
+      };
+      goTimeBtn.addEventListener('click', ()=> doJumpTo(jumpTimeInp.value));
+      goCidBtn.addEventListener('click', ()=> doJumpTo(jumpCidInp.value));
+    })();
+
+    function getVisibleText(matchesOnly){
+      const lines = String(lastLogText||'').split('\n');
+      if (!filterExpr){ return lines.join('\n'); }
+      const out = [];
+      for (const line of lines){
+        const match = filterExpr.test(line);
+        if (matchesOnly){ if (match) out.push(line); }
+        else {
+          if (onlyMatches?.checked){ if (match) out.push(line); }
+          else out.push(line);
+        }
+      }
+      return out.join('\n');
+    }
+
+    function downloadText(text, filename){
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename || 'logs.txt';
+      document.body.appendChild(a); a.click();
+      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 0);
+    }
+
+    async function tail(n=1000){
+      try{
+        const res = await fetch(`${rootPrefix()}/api/logs?n=${n}`, { credentials: 'include' });
+        const j = await res.json();
+        if (!paused && j && j.lines){ renderLogs(j.lines.join('\n')); }
+        setStatus('Tail OK');
+      }catch(e){ setStatus('Tail Fehler'); }
+    }
+
+    function connectSSE(){
+      try{
+        if (esRef) { try{ esRef.close(); }catch{} esRef = null; }
+        const es = new EventSource(rootPrefix() + '/api/logs/stream'); esRef = es;
+        logsEl.textContent = '';
+        logsEl.classList.remove('muted');
+        setStatus('SSE verbunden');
+        es.onmessage = (ev) => {
+          if (paused) {
+            pausedBuffer += (pausedBuffer ? '\n' : '') + ev.data;
+            updateBufferInfo();
+          } else {
+            renderLogs((lastLogText ? lastLogText + '\n' : '') + ev.data);
+          }
+        };
+        es.onerror = () => {
+          setStatus('SSE getrennt – Fallback');
+          try{ es.close(); }catch{}
+          esRef = null;
+          setTimeout(connectPoll, 500);
+        };
+      }catch(e){
+        setStatus('SSE nicht verfügbar – Fallback');
+        connectPoll();
+      }
+    }
+
+    function connectPoll(){
+      if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+      let lastLen = 0;
+      async function tick(){
+        try{
+          const res = await fetch(rootPrefix() + '/api/logs?n=1000', { credentials: 'include' });
+          const j = await res.json();
+          if (j && Array.isArray(j.lines)){
+            const text = j.lines.join('\n');
+            if (paused) {
+              // buffer delta
+              if (text.length > lastLen){
+                const delta = text.slice(lastLen);
+                const clean = delta.replace(/^\n+/, '');
+                if (clean) { pausedBuffer += (pausedBuffer ? '\n' : '') + clean; updateBufferInfo(); }
+                lastLen = text.length;
+              }
+            } else if (text.length !== lastLen){
+              renderLogs(text); lastLen = text.length;
+            }
+            setStatus('Polling');
+          }
+        }catch(e){ setStatus('Polling Fehler'); }
+      }
+      tick();
+      pollTimer = setInterval(tick, 2000);
+    }
+
+    tailBtn.addEventListener('click', () => tail(1000));
+    openLogsBtn.addEventListener('click', () => { location.hash = '#logs'; logsEl.scrollIntoView({ behavior:'smooth' }); });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      try{
+        // '/' focuses filter (common pattern)
+        if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          const tag = (document.activeElement && document.activeElement.tagName) || '';
+          if (tag !== 'INPUT' && tag !== 'TEXTAREA') {
+            e.preventDefault(); logFilter?.focus(); logFilter?.select(); return;
+          }
+        }
+        // Alt+Down / Alt+Up for next/prev match
+        if (e.altKey && !e.ctrlKey && !e.metaKey && (e.key === 'ArrowDown' || e.key === 'ArrowUp')){
+          e.preventDefault();
+          if (e.key === 'ArrowDown') nextMatchBtn?.click(); else prevMatchBtn?.click();
+          return;
+        }
+        // 'p' toggles pause
+        if (!e.altKey && !e.ctrlKey && !e.metaKey && (e.key.toLowerCase() === 'p')){
+          // avoid interfering when typing in inputs
+          const el = document.activeElement; const tag = el && el.tagName;
+          if (tag !== 'INPUT' && tag !== 'TEXTAREA') { e.preventDefault(); pauseStreamBtn?.click(); return; }
+        }
+      }catch{}
+    });
+
+    // Enter in jump inputs triggers actions
+    jumpTimeInp?.addEventListener('keydown', (e)=>{ if (e.key === 'Enter'){ e.preventDefault(); goTimeBtn?.click(); } });
+    jumpCidInp?.addEventListener('keydown', (e)=>{ if (e.key === 'Enter'){ e.preventDefault(); goCidBtn?.click(); } });
+
+    function fmtBytes(n){
+      if (!n && n !== 0) return '—';
+      const units=['B','KB','MB','GB','TB']; let i=0; let x=Number(n);
+      while (x>=1024 && i<units.length-1){ x/=1024; i++; }
+      return x.toFixed(1)+' '+units[i];
+    }
+    function fmtUptime(sec){
+      if (!sec && sec !== 0) return '—';
+      const d=Math.floor(sec/86400), h=Math.floor((sec%86400)/3600), m=Math.floor((sec%3600)/60);
+      const parts=[]; if(d) parts.push(d+'d'); if(h) parts.push(h+'h'); if(m||!parts.length) parts.push(m+'m');
+      return parts.join(' ');
+    }
+    async function refreshStatus(){
+      try{
+        const res = await fetch(rootPrefix() + '/api/system/status', { credentials:'include' });
+        const j = await res.json();
+        if (!res.ok || !j || j.ok === false) throw new Error('status http');
+        const r = j.resources || {};
+        const m = j.metrics || {};
+        document.getElementById('cpuPct').textContent = (r.cpu_percent!=null? r.cpu_percent.toFixed? r.cpu_percent.toFixed(0)+'%': String(r.cpu_percent): '—');
+        document.getElementById('cpuCnt').textContent = r.cpu_count ?? '—';
+        const la = r.loadavg || {}; document.getElementById('la1').textContent = la['1m']??'—'; document.getElementById('la5').textContent = la['5m']??'—'; document.getElementById('la15').textContent = la['15m']??'—';
+        const mem = r.memory || {}; document.getElementById('memPct').textContent = mem.percent!=null? String(Math.round(mem.percent))+'%':'—'; document.getElementById('memUsed').textContent = fmtBytes(mem.used); document.getElementById('memTotal').textContent = fmtBytes(mem.total);
+        const disk = r.disk || {}; const dp = (disk.percent!=null)? String(Math.round(disk.percent))+'%':'—'; document.getElementById('diskPct').textContent = dp; document.getElementById('diskFree').textContent = fmtBytes(disk.free);
+        document.getElementById('jobs').textContent = m.jobs ?? '—';
+        const o = (m.ollama || {}); document.getElementById('ollama').textContent = (o.available===true ? '✅' : '⏳');
+        document.getElementById('sysLast').textContent = new Date().toLocaleTimeString();
+      }catch(e){ document.getElementById('sysLast').textContent = '⚠️ Fehler'; }
+    }
+
+    // Init
+    connectSSE();
+    refreshStatus();
+    refreshConfig();
+    refreshBlocksHealth();
+    setInterval(refreshStatus, 5000);
+    setInterval(refreshConfig, 15000);
+    setInterval(refreshBlocksHealth, 7000);
+
+    // Telemetry
+    let telAutoTimer = null;
+    let telAbortCtrl = null;
+    async function refreshTelemetry(){
+      try{
+        // Abort previous in-flight request
+        try{ if (telAbortCtrl) telAbortCtrl.abort(); }catch{}
+        telAbortCtrl = new AbortController();
+        const topSel = document.getElementById('telTop');
+        const top = topSel ? (parseInt(topSel.value||'5',10)||5) : 5;
+        const res = await fetch(rootPrefix() + '/api/telemetry/summary?since=86400&top=' + encodeURIComponent(top), { credentials:'include', signal: telAbortCtrl.signal });
+        const j = await res.json();
+        const box = document.getElementById('telSummary');
+        if (!res.ok || !j || j.ok===false){ box.textContent = 'Fehler beim Laden'; return; }
+        const total = (j.items||[]).reduce((a,x)=>a+Number(x.count||0),0);
+        const shown = Math.min(top,(j.items||[]).length);
+        box.innerHTML = `Letzte 24h: <b>${total}</b> Ereignisse · Top ${shown}:`;
+        const rows = (j.items||[]).slice(0,top).map(x=>`<div>• ${escapeHtml(x.message||'?')} <span class="muted">(${escapeHtml(x.url||'')})</span> <b>×${x.count||0}</b></div>`).join('');
+        box.innerHTML += `<div style="margin-top:6px">${rows||'<span class=\"muted\">—</span>'}</div>`;
+        document.getElementById('telLast').textContent = new Date().toLocaleTimeString();
+      }catch{ document.getElementById('telSummary').textContent = 'Fehler beim Laden'; }
+    }
+    document.getElementById('telReload').addEventListener('click', refreshTelemetry);
+    const telTopEl = document.getElementById('telTop');
+    if (telTopEl){ telTopEl.addEventListener('change', refreshTelemetry); }
+    const telAutoEl = document.getElementById('telAuto');
+    if (telAutoEl){
+      telAutoEl.addEventListener('click', ()=>{
+        try{ if (telAutoTimer){ clearInterval(telAutoTimer); telAutoTimer = null; telAutoEl.textContent = 'Auto: Aus'; }
+        else { refreshTelemetry(); telAutoTimer = setInterval(refreshTelemetry, 30000); telAutoEl.textContent = 'Auto: An'; } }catch{}
+      });
+    }
+    async function loadTelemetryChart(){
+      try{
+        const res = await fetch(rootPrefix() + '/api/telemetry/series?hours=24', { credentials:'include' });
+        const j = await res.json();
+        const div = document.getElementById('telChart');
+        if (!res.ok || !j || j.ok===false){ div.textContent='Chart: Fehler beim Laden'; return; }
+        const pts = j.points||[];
+        const w=600,h=160,pad=24; const max = pts.reduce((m,p)=>Math.max(m, Number(p.count||0)),0) || 1;
+        let svg = `<svg width="${w}" height="${h}" xmlns="https://www.w3.org/2000/svg">`;
+        // axes
+        svg += `<line x1="${leftPad}" y1="${h-pad}" x2="${w-pad}" y2="${h-pad}" stroke="#999"/>`;
+        svg += `<line x1="${leftPad}" y1="${pad}" x2="${pad}" y2="${h-pad}" stroke="#999"/>`;
+        // bars/line
+        const n = pts.length; const gx = (w-2*pad)/Math.max(1,n);
+        let path = '';
+        for(let i=0;i<n;i++){
+          const x = pad + i*gx + gx*0.1;
+          const barW = gx*0.6;
+          const v = Math.max(0, Number(pts[i].count||0));
+          const y = h-pad - (v/max)*(h-2*pad);
+          svg += `<rect x="${x}" y="${y}" width="${Math.max(1,barW)}" height="${Math.max(1,(h-pad)-y)}" fill="#4a90e2" opacity="0.6"/>`;
+          const cx = pad + i*gx + gx/2;
+          const cy = y;
+          path += (i===0?`M ${cx} ${cy}`:` L ${cx} ${cy}`);
+        }
+        if (n>1){ svg += `<path d="${path}" stroke="#4a90e2" fill="none"/>`; }
+        // X-axis hour ticks/labels every 3 hours
+        try{
+          const step = Math.max(1, Math.floor(n/8)); // roughly every 3h for 24 points
+          const fmtHour = (t)=>{ try{ return new Date(t*1000).getHours().toString().padStart(2,'0') + 'h'; }catch{ return ''; } };
+          for(let i=0;i<n;i++){
+            if (i % 3 !== 0) continue; // label every 3 hours
+            const cx = pad + i*gx + gx/2;
+            const lbl = fmtHour(pts[i].t||0);
+            svg += `<line x1="${cx}" y1="${h-pad}" x2="${cx}" y2="${h-pad+4}" stroke="#777"/>`;
+            svg += `<text x="${cx}" y="${h-pad+14}" fill="#9ec5ff" font-size="10" text-anchor="middle">${lbl}</text>`;
+          }
+        }catch{}
+        svg += `</svg>`;
+        div.innerHTML = svg;
+      }catch{ document.getElementById('telChart').textContent='Chart: Fehler'; }
+    }
+
+    function filterTelemetryItems(items){
+      try{
+        const q = (document.getElementById('telSearch').value||'').toLowerCase();
+        const fErr = document.getElementById('lvlErr').checked;
+        const fWarn = document.getElementById('lvlWarn').checked;
+        const fInfo = document.getElementById('lvlInfo').checked;
+        return (items||[]).filter(r=>{
+          const lvl = String(r.level||'error').toLowerCase();
+          if (lvl==='error' && !fErr) return false;
+          if (lvl==='warn' && !fWarn) return false;
+          if (lvl==='info' && !fInfo) return false;
+          if (!q) return true;
+          const hay = (String(r.message||'')+' '+String(r.url||'')).toLowerCase();
+          return hay.includes(q);
+        });
+      }catch{ return items||[]; }
+    }
+
+    async function loadTelemetryDetails(){
+      try{
+        const res = await fetch(rootPrefix() + '/api/telemetry/recent?limit=200', { credentials:'include' });
+        const j = await res.json();
+        const box = document.getElementById('telDetails');
+        if (!res.ok || !j || j.ok===false){ box.textContent = 'Fehler beim Laden'; box.style.display=''; return; }
+        const filtered = filterTelemetryItems(j.items||[]);
+        const rows = filtered.map(r=>{
+          const lvl = String(r.level||'error').toLowerCase();
+          let bg = '#ffe6e6', fg = '#833';
+          if (lvl==='warn'){ bg = '#fff4e0'; fg = '#7a5a00'; }
+          if (lvl==='info'){ bg = '#e6f4ff'; fg = '#134'; }
+          return `<div style="border-bottom:1px solid #1f2a4d;padding:6px 0;display:flex;gap:8px;align-items:flex-start;justify-content:space-between;">
+            <div style="flex:1 1 auto;min-width:0;">
+              <b>${new Date((r.ts||0)*1000).toLocaleString()}</b>
+              <span class="pill" style="background:${bg};color:${fg};margin-left:6px;">${escapeHtml(lvl)}</span>
+              <div><code>${escapeHtml(r.message||'')}</code> <button class="btn tel-copy" data-text="${escapeHtml(r.message||'')}" title="Message kopieren">📋</button></div>
+              <div class="muted">${escapeHtml(r.url||'')} <button class="btn tel-copy" data-text="${escapeHtml(r.url||'')}" title="URL kopieren">📋</button></div>
+            </div>
+            <div style="flex:0 0 auto;align-self:center;">
+              <span class="pill" title="Anzahl ähnlicher Ereignisse">×${parseInt(r.count||1,10)}</span>
+            </div>
+          </div>`;
+        }).join('');
+        box.innerHTML = rows || '<div class="muted">Keine Daten</div>';
+        box.style.display='';
+        // Copy buttons (event delegation)
+        try{
+          box.querySelectorAll('.tel-copy').forEach(btn => {
+            btn.addEventListener('click', async (e)=>{
+              e.preventDefault();
+              try{
+                const txt = btn.getAttribute('data-text') || '';
+                await navigator.clipboard.writeText(txt);
+                const old = btn.textContent; btn.textContent = '✔'; setTimeout(()=> btn.textContent = '📋', 700);
+              }catch{}
+            });
+          });
+        }catch{}
+      }catch{}
+    }
+
+    document.getElementById('telShow').addEventListener('click', loadTelemetryDetails);
+    document.getElementById('telLoadDetails').addEventListener('click', loadTelemetryDetails);
+    document.getElementById('telSearch').addEventListener('input', loadTelemetryDetails);
+    document.getElementById('lvlErr').addEventListener('change', loadTelemetryDetails);
+    document.getElementById('lvlWarn').addEventListener('change', loadTelemetryDetails);
+    document.getElementById('lvlInfo').addEventListener('change', loadTelemetryDetails);
+    loadTelemetryChart();
+    refreshTelemetry();
+    document.getElementById('telPrune').addEventListener('click', async ()=>{
+      try{
+        const r = await fetch(rootPrefix() + '/api/telemetry/prune', { method:'POST', credentials:'include' });
+        const j = await r.json();
+        if (r.ok && j && j.ok){ refreshTelemetry(); }
+      }catch{}
+    });
+
+    // --- Media Jobs Panel -------------------------------------------------
+    function fmtAge(sec){ try{ sec = Math.max(0, parseInt(sec||0,10)); const d=Math.floor(sec/86400), h=Math.floor((sec%86400)/3600), m=Math.floor((sec%3600)/60); const parts=[]; if(d) parts.push(d+'d'); if(h) parts.push(h+'h'); if(m||!parts.length) parts.push(m+'m'); return parts.join(' ');}catch{return String(sec||'')}}
+    let onlyMedia = false;
+    async function refreshJobs(){
+      try{
+        const sres = await fetch(rootPrefix() + '/api/jobs/status', { credentials:'include' });
+        const s = await sres.json();
+        const box = document.getElementById('jobsSummary');
+        if (!sres.ok || !s || s.ok===false){ box.textContent = 'Fehler beim Laden'; return; }
+        const bs = s.by_status || {}; const bt = s.by_type || {};
+        const pills = [
+          `queued: <b>${bs.queued||0}</b>`,
+          `leased: <b>${bs.leased||0}</b>`,
+          `failed: <b>${bs.failed||0}</b>`,
+          `done: <b>${bs.done||0}</b>`
+        ].join(' · ');
+        const types = Object.keys(bt).sort().map(k=>`${escapeHtml(k)}=<b>${bt[k]||0}</b>`).join(' · ');
+        box.innerHTML = `${pills}<div class="muted" style="margin-top:6px">${types||''}</div>`;
+        document.getElementById('jobsLast').textContent = new Date().toLocaleTimeString();
+      }catch{ document.getElementById('jobsSummary').textContent = 'Fehler beim Laden'; }
+      // Heartbeats summary
+      try{
+        const hres = await fetch(rootPrefix() + '/api/jobs/heartbeats', { credentials:'include' });
+        const h = await hres.json();
+        const box = document.getElementById('jobsWorkers');
+        if (!hres.ok || !h || h.ok===false){ box.textContent = 'Worker-Status unbekannt'; }
+        else {
+          const arr = Array.isArray(h.items)? h.items: [];
+          const alive = arr.filter(r=> (r && typeof r.age==='number' ? r.age : 9999) <= 60);
+          const txt = `${alive.length}/${arr.length} Worker aktiv`;
+          const list = arr.slice(0,5).map(r=>`${(r.name||'worker')}: ${Math.max(0, parseInt(r.age||0,10))}s`).join(' · ');
+          box.innerHTML = `${txt}${list? ' — <span class="muted">'+escapeHtml(list)+'</span>':''}`;
+        }
+      }catch{ document.getElementById('jobsWorkers').textContent = 'Worker-Status unbekannt'; }
+      try{
+        const rres = await fetch(rootPrefix() + '/api/jobs?limit=30', { credentials:'include' });
+        const r = await rres.json();
+        const list = document.getElementById('jobsRecent');
+        if (!rres.ok || !r || r.ok===false){ list.textContent = 'Fehler beim Laden'; return; }
+        const items = Array.isArray(r.items)? r.items: [];
+        const rows = items.filter(j=>{
+          if (!onlyMedia) return true;
+          const t = String(j.type||'');
+          return t.startsWith('media.');
+        }).map(j=>{
+          const status = String(j.status||'')
+          const color = status==='failed' ? '#ff9a9a' : (status==='queued'?'#ffd38a':(status==='leased'?'#fff28a':'#9effa3'));
+          return `<div style="border-bottom:1px solid #1f2a4d;padding:6px 0">
+            <span class="pill" style="background:${color};color:#123">${escapeHtml(status)}</span>
+            <b>#${j.id}</b> · ${escapeHtml(j.type||'')}
+            · tries ${j.attempts||0}
+            ${j.error? `<div class="muted">${escapeHtml(String(j.error||'').slice(0,180))}</div>`:''}
+          </div>`;
+        }).join('');
+        list.innerHTML = rows || '<div class="muted">Keine Jobs</div>';
+      }catch{ document.getElementById('jobsRecent').textContent = 'Fehler beim Laden'; }
+    }
+    document.getElementById('jobsReload').addEventListener('click', refreshJobs);
+    document.getElementById('jobsOnlyMedia').addEventListener('click', ()=>{
+      try{
+        onlyMedia = !onlyMedia;
+        const btn = document.getElementById('jobsOnlyMedia');
+        if (btn) btn.textContent = 'Nur Media: ' + (onlyMedia ? 'An' : 'Aus');
+        refreshJobs();
+
+    // --- Devices Card ------------------------------------------------------
+    async function refreshDevices(){
+      try{
+        const res = await fetch(rootPrefix() + '/os/devices', { credentials:'include' });
+        const j = await res.json();
+        const box = document.getElementById('devList');
+        const sum = document.getElementById('devSummary');
+        if (!res.ok || !j || j.ok===false){ sum.textContent='Fehler beim Laden'; return; }
+        const items = Array.isArray(j.items)? j.items: [];
+        const counts = { ok:0, warn:0, offline:0, unknown:0 };
+        let qTot = 0, pTot = 0;
+        items.forEach(d=>{ const s=(d.status||'unknown').toLowerCase(); if (counts[s]!=null) counts[s]++; else counts.unknown++; qTot += Number(d.events_queued||0); pTot += Number(d.events_pruned||0); });
+        const nowIso = new Date();
+        const nowShort = nowIso.toLocaleTimeString();
+        const nowFull = nowIso.toLocaleString();
+        // whoami badge
+        try{ const meRes = await fetch(rootPrefix() + '/os/me', { credentials:'include' }); const me = await meRes.json(); if (meRes.ok && me && me.role){ const badge = document.getElementById('roleBadge'); if (badge) badge.textContent = 'Rolle: ' + String(me.role||''); } }catch{}
+        sum.innerHTML = `Gesamt: <b>${items.length}</b> · `+
+          `<span class="pill" style="background:#e6ffe6;color:#1a4">ok ${counts.ok}</span> `+
+          `<span class="pill" style="background:#fff4e0;color:#7a5a00">warn ${counts.warn}</span> `+
+          `<span class="pill" style="background:#ffe6e6;color:#833">offline ${counts.offline}</span> `+
+          `<span class="pill" style="background:#15224a;color:#9ec5ff">unknown ${counts.unknown}</span> `+
+          `<span class=\"pill\" style=\"background:#15224a;color:#9ec5ff;margin-left:6px;\" title=\"Summe aller nicht zugestellten Events über alle Geräte\">🔵 queued total: ${qTot}</span> `+
+          `<span class=\"pill\" style=\"background:#0f152e;color:#8aa8d8;margin-left:6px;\" title=\"Summe aller kumulativ entfernten Events über alle Geräte\">⚫️ pruned total: ${pTot}</span> `+
+          `<span class=\"pill\" id=\"devUpdated\" style=\"background:#101735;color:#a9c4ff;margin-left:6px;\" title=\"Letztes Refresh: ${nowFull}\">⟳ updated ${nowShort}</span> `+
+          `<span id=\"devDeltas\"></span>`;
+        document.getElementById('devLast').textContent = nowShort;
+        // Stats controls (24h/48h/7d) + Δ badges + mini-chart with hover
+        let chartWrap = document.getElementById("devChartWrap");
+        if (!chartWrap){ chartWrap = document.createElement("div"); chartWrap.id="devChartWrap"; chartWrap.style.marginTop="6px"; sum.appendChild(chartWrap); }
+        if (!window.__devStatsHours){ window.__devStatsHours = 48; }
+        let ctrl = document.getElementById("devChartCtrl");
+        if (!ctrl){
+          ctrl = document.createElement('div'); ctrl.id='devChartCtrl'; ctrl.style.marginTop='6px';
+          ctrl.innerHTML = `
+            <span class="muted">Zeitraum:</span>
+            <button class="btn" data-h="24">24h</button>
+            <button class="btn" data-h="48">48h</button>
+            <button class="btn" data-h="168">7d</button>
+            <button class="btn" id="devReset" title="Zurücksetzen auf Standard">Reset</button>
+            <span id="devDeltas"></span>
+            <label style="margin-left:8px;"><input type="checkbox" id="devShowQueued" checked> queued</label>
+            <label style="margin-left:8px;"><input type="checkbox" id="devShowPruned" checked> pruned</label>
+          `;
+          chartWrap.appendChild(ctrl);
+          ctrl.querySelectorAll('button[data-h]').forEach(b=>{
+            b.addEventListener('click', async ()=>{
+              try{ window.__devStatsHours = Number(b.getAttribute('data-h')||48); await loadStats(window.__devStatsHours); updateRangeButtons(); }catch{}
+            });
+          });
+          function updateRangeButtons(){
+            try{
+              ctrl.querySelectorAll('button[data-h]').forEach(b=>{
+                const h = Number(b.getAttribute('data-h')||0);
+                if (h === Number(window.__devStatsHours||0)){
+                  b.className = 'btn btn-active';
+                } else { b.className = 'btn'; }
+              });
+            }catch{}
+          }
+          updateRangeButtons();
+          try{ const rb=document.getElementById('devReset'); if(rb){ rb.addEventListener('click', async ()=>{ try{ window.__devStatsHours=48; const cq=document.getElementById('devShowQueued'); const cp=document.getElementById('devShowPruned'); if(cq) cq.checked=true; if(cp) cp.checked=true; await loadStats(48); updateRangeButtons(); }catch{} }); } }catch{}
+        }
+        let chart = document.getElementById('devChart');
+        if (!chart){ chart = document.createElement('div'); chart.id='devChart'; chart.style.marginTop='6px'; chart.style.position='relative'; chartWrap.appendChild(chart); }
+        // Legend for queued/pruned
+        try{ if(!document.getElementById('devChartLegend')){ const lg=document.createElement('div'); lg.id='devChartLegend'; lg.style.marginTop='4px'; lg.innerHTML = '<span class=\"pill q\" title=\"queued\">🔵 queued</span> <span class=\"pill p\" title=\"pruned\">⚫ pruned</span>'; chartWrap.insertBefore(lg, chart); } }catch{}
+        try{ const cq=document.getElementById('devShowQueued'); const cp=document.getElementById('devShowPruned');
+          if (cq) cq.addEventListener('change', ()=>{ if (window.__devLastSj) drawStats(window.__devLastSj, window.__devStatsHours||48); });
+          if (cp) cp.addEventListener('change', ()=>{ if (window.__devLastSj) drawStats(window.__devLastSj, window.__devStatsHours||48); }); }catch{}
+
+        function drawStats(sj, hours){
+          try{
+            // Δ (24h)
+            if (sj.delta_24h){
+              const dq = Number((sj.delta_24h||{}).queued||0);
+              const dp = Number((sj.delta_24h||{}).pruned||0);
+              const cont = document.getElementById('devDeltas');
+              if (cont){
+                const dqSign = dq>0? '+' : '';
+                const dpSign = dp>0? '+' : '';
+                cont.innerHTML = `
+                  <span class="pill" style="background:#16214a;color:#9ec5ff;margin-left:6px;" title="Δ queued (24h): Veränderung der nicht zugestellten Events">Δ🔵 ${dqSign}${dq}</span>
+                  <span class="pill" style="background:#0c1126;color:#8aa8d8;margin-left:6px;" title="Δ pruned (24h): Veränderung kumulativ entfernter Events">Δ⚫️ ${dpSign}${dp}</span>`;
+              }
+            }
+            // Build chart
+            const series = Array.isArray(sj.items)? sj.items: [];
+            const w=480, h=100, pad=6, leftPad=34;
+            let maxY = 1; series.forEach(p=>{ maxY = Math.max(maxY, Number(p.queued_total||0), Number(p.pruned_total||0)); });
+            const niceStep = (m)=>{ const raw=Math.max(1,m/4); const pow=Math.pow(10, Math.floor(Math.log10(raw))); const c=[1,2,5,10]; for (let i=0;i<c.length;i++){ if (c[i]*pow>=raw) return c[i]*pow; } return 10*pow; };
+            const yStep = niceStep(maxY);
+            const yMaxRound = Math.ceil((maxY||0)/yStep)*yStep;
+            const yMid = Math.round((yMaxRound/2)/yStep)*yStep;
+            const scaleX = (i)=> leftPad + (i*(w-2*pad))/Math.max(1, series.length-1);
+            const scaleY = (v)=> h - pad - (Math.min(maxY, v) * (h-2*pad)) / (maxY||1);
+            const qPts = series.map((p,i)=> `${scaleX(i)},${scaleY(Number(p.queued_total||0))}`).join(' ');
+            const pPts = series.map((p,i)=> `${scaleX(i)},${scaleY(Number(p.pruned_total||0))}`).join(' ');
+            // (removed duplicate early grid/lines to avoid redeclarations)
+                        const kfmt=(v)=>{ v=Number(v)||0; const a=Math.abs(v); if (a>=1e9) return (v/1e9).toFixed(1).replace(/\.0$/,"")+"B"; if (a>=1e6) return (v/1e6).toFixed(1).replace(/\.0$/,"")+"M"; if (a>=1e3) return (v/1e3).toFixed(1).replace(/\.0$/,"")+"k"; return String(v); };
+            const gridStep = (yMaxRound<=10)? 1 : yStep;
+            let grid = ""; for (let y=0; y<=yMaxRound; y+=gridStep){ const yy = scaleY(y); grid += `<line x1=\"${leftPad}\" y1=\"${yy}\" x2=\"${w-pad}\" y2=\"${yy}\" stroke=\"#d7e2f3\" stroke-width=\"1\" opacity=\"0.35\" />`; }
+            const labels = (()=>{ const vals=[0,yMid,yMaxRound]; let t=""; vals.forEach(v=>{ const yy=scaleY(v); t += `<text x=\"8\" y=\"${yy-2}\" fill=\"#5b6f92\" font-size=\"10\" text-anchor=\"start\">${kfmt(v)}</text>`; }); return t; })();
+            const ticks = (()=>{ const vals=[0,yMid,yMaxRound]; let t=""; vals.forEach(v=>{ const yy=scaleY(v); t += `<line x1=\"${leftPad-6}\" y1=\"${yy}\" x2=\"${leftPad-2}\" y2=\"${yy}\" stroke=\"#8aa8d8\" stroke-width=\"1\" />`; }); return t; })();
+            const showQ = (document.getElementById('devShowQueued')||{}).checked !== false;
+            const showP = (document.getElementById('devShowPruned')||{}).checked !== false;
+            let lines = ""; if (showQ) lines += `<polyline points=\"${qPts}\" fill=\"none\" stroke=\"#4aa3ff\" stroke-width=\"2\" />`; if (showP) lines += `<polyline points=\"${pPts}\" fill=\"none\" stroke=\"#7f8fb3\" stroke-width=\"2\" />`;
+const svg = `
+              <svg id="devChartSvg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Device Events">
+                <rect x="0" y="0" width="${w}" height="${h}" fill="#fbfdff" rx="6" ry="6"/>
+                ${grid}
+                ${labels}
+                ${ticks}
+                ${lines}
+              </svg>`;
+            const chart = document.getElementById('devChart'); if (chart){ chart.innerHTML = svg; chart.title = `${hours}h Trends: Blau=queued, Grau=pruned`;
+            try{ const lg=document.getElementById('devChartLegend'); if (lg){ const lq=lg.querySelector('.q'); const lp=lg.querySelector('.p'); const sq=(document.getElementById('devShowQueued')||{}).checked!==false; const sp=(document.getElementById('devShowPruned')||{}).checked!==false; if(lq) lq.style.display = sq? 'inline-block':'none'; if(lp) lp.style.display = sp? 'inline-block':'none'; } }catch{} }
+            // Tooltip
+            let tip = document.getElementById('devChartTip');
+            if (!tip){ tip = document.createElement('div'); tip.id='devChartTip'; tip.style.position='absolute'; tip.style.pointerEvents='none'; tip.style.background='#0f152e'; tip.style.border='1px solid #1f2a4d'; tip.style.borderRadius='6px'; tip.style.padding='6px 8px'; tip.style.color='#e9f2ff'; tip.style.fontSize='12px'; tip.style.display='none'; chart.appendChild(tip); }
+            const svgEl = document.getElementById('devChartSvg'); if (svgEl){
+              const onMove = (ev)=>{ const rect = svgEl.getBoundingClientRect(); const x = ev.clientX - rect.left; const idx = Math.max(0, Math.min(series.length-1, Math.round((x - pad) * (series.length-1) / Math.max(1,(w-2*pad))))); const p = series[idx] || {}; const ts = new Date((Number(p.ts_hour||0))*1000).toLocaleString(); const qv = Number(p.queued_total||0); const pv = Number(p.pruned_total||0); tip.style.left = Math.min(w-160, Math.max(0, x+10)) + 'px'; tip.style.top = '4px'; tip.innerHTML = `<div class=\"muted\">${ts}</div><div>🔵 queued: <b>${qv}</b></div><div>⚫️ pruned: <b>${pv}</b></div>`; tip.style.display = 'block'; };
+              const onLeave = ()=>{ tip.style.display='none'; }; svgEl.addEventListener('mousemove', onMove); svgEl.addEventListener('mouseleave', onLeave);
+            }
+          }catch{}
+        }
+
+        async function loadStats(hours){
+          try{
+            const rs = await fetch(rootPrefix() + '/os/devices/stats?hours='+encodeURIComponent(hours), { credentials:'include' });
+            const sj = await rs.json();
+            if (!rs.ok || !sj) return;
+            window.__devLastSj = sj;
+            drawStats(sj, hours);
+            return;
+            // Δ (24h)
+            if (sj.delta_24h){
+              const dq = Number((sj.delta_24h||{}).queued||0);
+              const dp = Number((sj.delta_24h||{}).pruned||0);
+              const cont = document.getElementById('devDeltas');
+              if (cont){
+                const dqSign = dq>0? '+' : '';
+                const dpSign = dp>0? '+' : '';
+                cont.innerHTML = `
+                  <span class="pill" style="background:#16214a;color:#9ec5ff;margin-left:6px;" title="Δ queued (24h): Veränderung der nicht zugestellten Events">Δ🔵 ${dqSign}${dq}</span>
+                  <span class="pill" style="background:#0c1126;color:#8aa8d8;margin-left:6px;" title="Δ pruned (24h): Veränderung kumulativ entfernter Events">Δ⚫️ ${dpSign}${dp}</span>`;
+              }
+            }
+            // Mini-Chart SVG + hover tooltip
+            const series = Array.isArray(sj.items)? sj.items: [];
+            const w=480, h=90, pad=6, leftPad=34;
+            let maxY = 1;
+            series.forEach(p=>{ maxY = Math.max(maxY, Number(p.queued_total||0), Number(p.pruned_total||0)); });
+            const scaleX = (i)=> leftPad + (i*(w-2*pad))/Math.max(1, series.length-1);
+            const scaleY = (v)=> h - pad - (Math.min(maxY, v) * (h-2*pad)) / (maxY||1);
+            const qPts = series.map((p,i)=> `${scaleX(i)},${scaleY(Number(p.queued_total||0))}`).join(' ');
+            const pPts = series.map((p,i)=> `${scaleX(i)},${scaleY(Number(p.pruned_total||0))}`).join(' ');
+                        const kfmt=(v)=>{ v=Number(v)||0; const a=Math.abs(v); if (a>=1e9) return (v/1e9).toFixed(1).replace(/\.0$/,"")+"B"; if (a>=1e6) return (v/1e6).toFixed(1).replace(/\.0$/,"")+"M"; if (a>=1e3) return (v/1e3).toFixed(1).replace(/\.0$/,"")+"k"; return String(v); };
+            const gridStep = (yMaxRound<=10)? 1 : yStep;
+            let grid = ""; for (let y=0; y<=yMaxRound; y+=gridStep){ const yy = scaleY(y); grid += `<line x1=\"${leftPad}\" y1=\"${yy}\" x2=\"${w-pad}\" y2=\"${yy}\" stroke=\"#d7e2f3\" stroke-width=\"1\" opacity=\"0.35\" />`; }
+            const labels = (()=>{ const vals=[0,yMid,yMaxRound]; let t=""; vals.forEach(v=>{ const yy=scaleY(v); t += `<text x=\"8\" y=\"${yy-2}\" fill=\"#5b6f92\" font-size=\"10\" text-anchor=\"start\">${kfmt(v)}</text>`; }); return t; })();
+            const ticks = (()=>{ const vals=[0,yMid,yMaxRound]; let t=""; vals.forEach(v=>{ const yy=scaleY(v); t += `<line x1=\"${leftPad-6}\" y1=\"${yy}\" x2=\"${leftPad-2}\" y2=\"${yy}\" stroke=\"#8aa8d8\" stroke-width=\"1\" />`; }); return t; })();
+            const showQ = (document.getElementById('devShowQueued')||{}).checked !== false;
+            const showP = (document.getElementById('devShowPruned')||{}).checked !== false;
+            let lines = ""; if (showQ) lines += `<polyline points=\"${qPts}\" fill=\"none\" stroke=\"#4aa3ff\" stroke-width=\"2\" />`; if (showP) lines += `<polyline points=\"${pPts}\" fill=\"none\" stroke=\"#7f8fb3\" stroke-width=\"2\" />`;
+const svg = `
+              <svg id="devChartSvg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Device Events">
+                <rect x="0" y="0" width="${w}" height="${h}" fill="#fbfdff" rx="6" ry="6"/>
+                ${grid}
+                ${labels}
+                ${ticks}
+                ${lines}
+              </svg>`;
+            chart.innerHTML = svg;
+            chart.title = `${hours}h Trends: Blau=queued, Grau=pruned`;
+            try{ const lg=document.getElementById('devChartLegend'); if (lg){ const lq=lg.querySelector('.q'); const lp=lg.querySelector('.p'); const sq=(document.getElementById('devShowQueued')||{}).checked!==false; const sp=(document.getElementById('devShowPruned')||{}).checked!==false; if(lq) lq.style.display = sq? 'inline-block':'none'; if(lp) lp.style.display = sp? 'inline-block':'none'; } }catch{}
+            let tip = document.getElementById('devChartTip');
+            if (!tip){ tip = document.createElement('div'); tip.id='devChartTip'; tip.style.position='absolute'; tip.style.pointerEvents='none'; tip.style.background='#0f152e'; tip.style.border='1px solid #1f2a4d'; tip.style.borderRadius='6px'; tip.style.padding='6px 8px'; tip.style.color='#e9f2ff'; tip.style.fontSize='12px'; tip.style.display='none'; chart.appendChild(tip); }
+            const svgEl = document.getElementById('devChartSvg');
+            if (svgEl){
+              const onMove = (ev)=>{
+                const rect = svgEl.getBoundingClientRect();
+                const x = ev.clientX - rect.left;
+                const idx = Math.max(0, Math.min(series.length-1, Math.round((x - pad) * (series.length-1) / Math.max(1,(w-2*pad)))));
+                const p = series[idx] || {};
+                const ts = new Date((Number(p.ts_hour||0))*1000).toLocaleString();
+                const qv = Number(p.queued_total||0);
+                const pv = Number(p.pruned_total||0);
+                tip.style.left = Math.min(w-160, Math.max(0, x+10)) + 'px';
+                tip.style.top = '4px';
+                tip.innerHTML = `<div class=\"muted\">${ts}</div><div>🔵 queued: <b>${qv}</b></div><div>⚫️ pruned: <b>${pv}</b></div>`;
+                tip.style.display = 'block';
+              };
+              const onLeave = ()=>{ tip.style.display='none'; };
+              svgEl.addEventListener('mousemove', onMove);
+              svgEl.addEventListener('mouseleave', onLeave);
+            }
+          }catch{}
+        }
+        try{ await loadStats(window.__devStatsHours); updateRangeButtons(); }catch{}
+        const nowSec = Math.floor(Date.now()/1000);
+        const rows = items.map(d=>{
+          const s = String(d.status||'unknown').toLowerCase();
+          let bg='#15224a', fg='#9ec5ff';
+          if (s==='ok'){ bg='#e6ffe6'; fg='#1a4'; }
+          else if (s==='warn'){ bg='#fff4e0'; fg='#7a5a00'; }
+          else if (s==='offline'){ bg='#ffe6e6'; fg='#833'; }
+          const last = d.last_seen ? new Date(d.last_seen*1000).toLocaleString() : '—';
+          const issued = d.issued_at? new Date(d.issued_at*1000).toLocaleString() : '—';
+          const lastAuth = d.last_auth_at? new Date(d.last_auth_at*1000).toLocaleString() : '—';
+          const revoked = d.revoked_at? new Date(d.revoked_at*1000).toLocaleString() : '';
+          const lastDelivered = d.last_event_delivered? new Date(d.last_event_delivered*1000).toLocaleString() : '—';
+          const lastQueued = d.last_event_queued? new Date(d.last_event_queued*1000).toLocaleString() : '—';
+          const ackTs = d.last_ack_ts? new Date(d.last_ack_ts*1000).toLocaleString() : '—';
+          const autoOffline = (nowSec - (Number(d.last_seen||0))) > 300; // >5min
+          return `<div style="border-bottom:1px solid #1f2a4d;padding:6px 0;display:flex;gap:8px;align-items:flex-start;justify-content:space-between;">
+            <div style="flex:1 1 auto;min-width:0;">
+              <b>${escapeHtml(d.name||'')}</b> <span class="muted">(${escapeHtml(d.os||'')})</span>
+              <span class="pill" style="background:${bg};color:${fg};margin-left:6px;">${escapeHtml(s)}</span>
+              <span class="pill" style="background:#15224a;color:#9ec5ff;margin-left:6px;" title="queued: Anzahl nicht zugestellter Events">🔵 queued: ${Number(d.events_queued||0)}</span>
+              <span class="pill" style="background:#0f152e;color:#8aa8d8;margin-left:6px;" title="pruned: kumulativ entfernte Events">⚫️ pruned: ${Number(d.events_pruned||0)}</span>
+              ${autoOffline ? '<span class="pill" style="background:#ffe6e6;color:#833;margin-left:6px;" title="Kein Heartbeat seit >5 Minuten">auto-offline</span>' : ''}
+              <div class="muted">Last Seen: ${escapeHtml(last)}</div>
+              <div class="muted">Token: ${escapeHtml(d.token_hint||'—')} ${revoked? '(revoked '+escapeHtml(revoked)+')':''}</div>
+              <div class="muted">Issued: ${escapeHtml(issued)} · Letzte Auth: ${escapeHtml(lastAuth)}</div>
+              <div class="muted">Letztes Event: zugestellt ${escapeHtml(lastDelivered)} · eingereiht ${escapeHtml(lastQueued)}</div>
+              <div class="muted">Letztes Ack: ${escapeHtml(d.last_ack_type||'—')} – ${escapeHtml(d.last_ack_status||'—')} – ${escapeHtml(ackTs)}</div>
+            </div>
+            <div style="flex:0 0 auto;display:flex;gap:6px;flex-wrap:wrap;">
+              <button class="btn" data-act="hb" data-id="${d.id}" title="Heartbeat (lokal)">🫀</button>
+              <button class="btn" data-act="ev" data-id="${d.id}" title="Testevent senden">📡</button>
+              <button class="btn" data-act="cfg" data-id="${d.id}" title="Config Update">⚙️</button>
+              <button class="btn" data-act="logs" data-id="${d.id}" title="Logs anfordern">📜</button>
+              <button class="btn" data-act="media" data-id="${d.id}" title="Media Capture">📷</button>
+              <button class="btn" data-act="rot" data-id="${d.id}" title="Token rotieren">♻</button>
+              <button class="btn" data-act="rev" data-id="${d.id}" title="Token widerrufen">⨂</button>
+              <button class="btn" data-act="rm" data-id="${d.id}" title="Entfernen">🗑</button>
+            </div>
+          </div>`;
+        }).join('');
+        box.innerHTML = rows || '<div class="muted">Keine Geräte</div>';
+        // wire actions
+        box.querySelectorAll('button[data-act="rm"]').forEach(btn => {
+          btn.addEventListener('click', async ()=>{
+            try{ const id = btn.getAttribute('data-id'); if(!id) return; const r = await fetch(rootPrefix() + '/os/devices/'+encodeURIComponent(id), { method:'DELETE', credentials:'include' }); const j=await r.json(); if (r.ok && j && j.ok){ refreshDevices(); } }catch{}
+          });
+        });
+        box.querySelectorAll('button[data-act="hb"]').forEach(btn => {
+          btn.addEventListener('click', async ()=>{
+            try{ const id = btn.getAttribute('data-id'); if(!id) return; const r = await fetch(rootPrefix() + '/os/devices/heartbeat', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id: Number(id), status:'ok'}) }); const j=await r.json(); if (r.ok && j && j.ok){ refreshDevices(); } }catch{}
+          });
+        });
+        box.querySelectorAll('button[data-act="rot"]').forEach(btn => {
+          btn.addEventListener('click', async ()=>{
+            try{ const id = btn.getAttribute('data-id'); if(!id) return; const r = await fetch(rootPrefix() + '/os/devices/rotate', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id: Number(id)}) }); const j=await r.json(); if (r.ok && j && j.ok){ showDeviceToken(j); refreshDevices(); } }catch{}
+          });
+        });
+        box.querySelectorAll('button[data-act="rev"]').forEach(btn => {
+          btn.addEventListener('click', async ()=>{
+            try{ const id = btn.getAttribute('data-id'); if(!id) return; const r = await fetch(rootPrefix() + '/os/devices/revoke', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({id: Number(id)}) }); const j=await r.json(); if (r.ok && j && j.ok){ refreshDevices(); } }catch{}
+          });
+        });
+      }catch{ document.getElementById('devSummary').textContent='Fehler beim Laden'; }
+    }
+    document.getElementById('devReload').addEventListener('click', refreshDevices);
+    function showDeviceToken(resp){
+      try{
+        if (!resp || !resp.token) return;
+        const tok = String(resp.token);
+        const hint = String(resp.token_hint||tok.slice(0,8));
+        const did = Number(resp.id||0);
+        const box = document.getElementById('devTokenBox');
+        const pre = `<div class="pill" style="background:#15224a;color:#9ec5ff">Token Hint: ${escapeHtml(hint)}</div>`;
+        const apiUrl = location.origin + rootPrefix() + '/os/devices/heartbeat';
+        const curl = `curl -X POST ${apiUrl} \\\n+     -H "Authorization: Bearer ${tok}" \\\n+     -H "Content-Type: application/json" \\\n+     -d '{"id": ${did||0}, "status": "ok"}'`;
+        box.innerHTML = `${pre}
+          <div style="margin-top:6px;display:flex;gap:6px;align-items:center;">
+            <input id="devToken" value="${escapeHtml(tok)}" readonly style="flex:1 1 auto;padding:8px;border-radius:8px;border:1px solid #1f2a4d;background:#0b1021;color:#e9f2ff;">
+            <button class="btn" id="copyTok">Copy</button>
+          </div>
+          <div class="muted" style="margin-top:4px;">Wichtig: Der Token wird nur einmal angezeigt. Bitte sicher speichern.</div>
+          <div style="margin-top:10px;">
+            <div style="font-weight:600;margin-bottom:4px;">Provisioning (Heartbeat‑Test):</div>
+            <pre id="curlBox" style="white-space:pre-wrap;background:#0b1021;color:#e9f2ff;border:1px solid #1f2a4d;border-radius:8px;padding:8px;">${escapeHtml(curl)}</pre>
+            <button class="btn" id="copyCurl">Copy curl</button>
+          </div>`;
+        setTimeout(()=>{
+          const c = document.getElementById('copyTok');
+          const inp = document.getElementById('devToken');
+          if (c && inp){ c.addEventListener('click', ()=>{ try{ inp.select(); document.execCommand('copy'); c.textContent='Kopiert'; setTimeout(()=>{ c.textContent='Copy'; }, 1200);}catch{} }); }
+          const cc = document.getElementById('copyCurl');
+          const curlEl = document.getElementById('curlBox');
+          if (cc && curlEl){ cc.addEventListener('click', ()=>{ try{ const r = document.createRange(); r.selectNodeContents(curlEl); const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); document.execCommand('copy'); sel.removeAllRanges(); cc.textContent='Kopiert'; setTimeout(()=>{ cc.textContent='Copy curl'; }, 1200);}catch{} }); }
+        }, 0);
+      }catch{}
+    }
+    document.getElementById('devAdd').addEventListener('click', async ()=>{
+      try{
+        const name = (document.getElementById('devName').value||'').trim();
+        const osname = (document.getElementById('devOS').value||'').trim();
+        if (!name) return;
+        const r = await fetch(rootPrefix() + '/os/devices', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name, os: osname }) });
+        const j = await r.json(); if (r.ok && j && j.ok){ document.getElementById('devName').value=''; showDeviceToken(j); refreshDevices(); }
+      }catch{}
+    });
+    refreshDevices();
+
+    // --- Users Management ---------------------------------------------------
+    let __usersCache = [];
+    function renderUsers(list){
+      const box = document.getElementById('usersList');
+      const rows = list.map(u=>{
+        const status = String(u.status||'active').toLowerCase();
+        const role = String(u.role||'user').toLowerCase();
+        const badge = status==='active' ? '<span class="pill" style="background:#e6ffe6;color:#1a4">active</span>' :
+                      (status==='suspended' ? '<span class="pill" style="background:#fff4e0;color:#7a5a00">suspended</span>' :
+                      (status==='banned' ? '<span class="pill" style="background:#ffe6e6;color:#833">banned</span>' :
+                      '<span class="pill" style="background:#15224a;color:#9ec5ff">deleted</span>'));
+        const plan = (u.plan||'free') + (u.plan_until? (' · until ' + new Date((u.plan_until||0)*1000).toLocaleDateString()):'');
+        const dq = (u.daily_quota!=null? (' · quota ' + u.daily_quota):'');
+        const reason = (u.status!=='active' && u.suspended_reason)? ('<div class="muted">'+escapeHtml(u.suspended_reason||'')+'</div>'):'';
+        return `<div style="border-bottom:1px solid #1f2a4d;padding:8px 0;display:flex;gap:10px;justify-content:space-between;align-items:flex-start;">
+          <div style="flex:1 1 auto;min-width:0;">
+            <b>#${u.id}</b> · ${escapeHtml(u.username||'')} <span class="muted">(${escapeHtml(u.email||'')})</span>
+            <span class="pill" style="margin-left:6px">${escapeHtml(role)}</span>
+            ${badge}
+            <div class="muted">${escapeHtml(plan)}${escapeHtml(dq)}</div>
+            ${reason}
+          </div>
+          <div style="flex:0 0 auto;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;">
+            <select class="btn user-role" data-id="${u.id}" aria-label="Rolle setzen">
+              <option value="user" ${role==='user'?'selected':''}>user</option>
+              <option value="admin" ${role==='admin'?'selected':''}>admin</option>
+              <option value="creator" ${role==='creator'?'selected':''}>creator</option>
+            </select>
+            <button class="btn user-role-apply" data-id="${u.id}">Set Role</button>
+            <button class="btn user-status" data-id="${u.id}" data-status="active">Restore</button>
+            <button class="btn user-status" data-id="${u.id}" data-status="suspended">Suspend</button>
+            <button class="btn user-status" data-id="${u.id}" data-status="banned">Ban</button>
+            <button class="btn user-status" data-id="${u.id}" data-status="deleted">Delete</button>
+          </div>
+        </div>`;
+      }).join('');
+      box.innerHTML = rows || '<div class="muted">Keine Nutzer</div>';
+      // Wire role apply buttons
+      box.querySelectorAll('.user-role-apply').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          try{
+            const id = Number(btn.getAttribute('data-id'))||0; if(!id) return;
+            const sel = btn.parentElement.querySelector('.user-role');
+            const role = sel? String(sel.value||'user'):'user';
+            const r = await fetch(rootPrefix()+ '/api/admin/users/set-role', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ user_id:id, role }) });
+            const j = await r.json();
+            if (r.ok && j && j.ok){ toast('Rolle gesetzt ✓', true); refreshUsers(); }
+            else { toast('Rolle setzen fehlgeschlagen: ' + ((j && j.detail)||r.status)); }
+          }catch{}
+        });
+      });
+      // Wire status buttons
+      box.querySelectorAll('.user-status').forEach(btn=>{
+        btn.addEventListener('click', async ()=>{
+          try{
+            const id = Number(btn.getAttribute('data-id'))||0; if(!id) return;
+            const status = String(btn.getAttribute('data-status')||'active');
+            let reason = '';
+            if (status!=='active'){
+              // confirmation for destructive actions
+              if (status==='deleted'){
+                if (!confirm('Benutzer wirklich löschen (Soft-Delete)?')) return;
+              }
+              if (status==='banned'){
+                if (!confirm('Benutzer wirklich sperren (banned)?')) return;
+              }
+              reason = prompt('Grund angeben (optional):','') || '';
+            }
+            const r = await fetch(rootPrefix()+ '/api/admin/users/set-status', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ user_id:id, status, reason }) });
+            const j = await r.json();
+            if (r.ok && j && j.ok){ toast('Status aktualisiert ✓', true); refreshUsers(); }
+            else { toast('Status-Update fehlgeschlagen: ' + ((j && j.detail)||r.status)); }
+          }catch{}
+        });
+      });
+    }
+    function filterUsers(items){
+      const q = (document.getElementById('usersSearch').value||'').toLowerCase().trim();
+      if (!q) return items;
+      return items.filter(u=>{
+        const hay = `${u.id} ${u.username||''} ${u.email||''} ${u.role||''} ${u.status||''}`.toLowerCase();
+        return hay.includes(q);
+      });
+    }
+    async function refreshUsers(){
+      try{
+        const res = await fetch(rootPrefix()+ '/api/admin/users', { credentials:'include' });
+        const j = await res.json();
+        if (!res.ok || !j || j.ok===false){ document.getElementById('usersList').textContent='Fehler beim Laden'; toast('Benutzerliste konnte nicht geladen werden', false); return; }
+        __usersCache = Array.isArray(j.items)? j.items: [];
+        const filtered = filterUsers(__usersCache);
+        document.getElementById('usersSummary').innerHTML = `Gesamt: <b>${__usersCache.length}</b> · gefiltert: <b>${filtered.length}</b>`;
+        document.getElementById('usersLast').textContent = new Date().toLocaleTimeString();
+        renderUsers(filtered);
+      }catch{ document.getElementById('usersList').textContent='Fehler beim Laden'; }
+    }
+    document.getElementById('usersReload').addEventListener('click', refreshUsers);
+    document.getElementById('usersSearch').addEventListener('input', ()=>{ clearTimeout(window.__usersDeb); window.__usersDeb = setTimeout(()=>{ renderUsers(filterUsers(__usersCache)); document.getElementById('usersSummary').innerHTML = `Gesamt: <b>${__usersCache.length}</b> · gefiltert: <b>${filterUsers(__usersCache).length}</b>`; }, 250); });
+    document.getElementById('usersCsv').addEventListener('click', ()=>{
+      try{
+        const items = filterUsers(__usersCache);
+        const csv = ['id,username,email,role,status,plan,plan_until,daily_quota'];
+        items.forEach(u=>{
+          csv.push([u.id, `"${(u.username||'').replaceAll('"','""')}"`, `"${(u.email||'').replaceAll('"','""')}"`, u.role||'', u.status||'', u.plan||'', u.plan_until||0, (u.daily_quota!=null?u.daily_quota:'')].join(','));
+        });
+        downloadText(csv.join('\n'), 'users.csv');
+      }catch{}
+    });
+    refreshUsers();
+
+    // --- Admin Audit -------------------------------------------------------
+    async function refreshAudit(){
+      try{
+        const q = (document.getElementById('auditSearch').value||'').trim();
+        const action = (document.getElementById('auditAction').value||'').trim();
+        const params = new URLSearchParams();
+        params.set('limit','50');
+        if (q) params.set('q', q);
+        if (action) params.set('action', action);
+        const res = await fetch(rootPrefix() + '/api/admin/audit?' + params.toString(), { credentials:'include' });
+        const j = await res.json();
+        const box = document.getElementById('auditList');
+        if (!res.ok || !j || j.ok===false){ box.textContent = 'Fehler beim Laden'; return; }
+        const rows = (j.items||[]).map(r=>{
+          const ts = new Date((r.ts||0)*1000).toLocaleString();
+          const act = String(r.action||'');
+          const ttype = String(r.target_type||'');
+          const tid = Number(r.target_id||0);
+          const meta = r.meta || {};
+          return `<div style="border-bottom:1px solid #1f2a4d;padding:6px 0;display:flex;gap:8px;justify-content:space-between;align-items:flex-start;">
+            <div style="flex:1 1 auto;min-width:0;">
+              <b>${ts}</b> · <span class="pill">${escapeHtml(act)}</span>
+              <div class="muted">${escapeHtml(ttype)} #${tid}</div>
+              <div class="muted"><code>${escapeHtml(JSON.stringify(meta))}</code></div>
+            </div>
+          </div>`;
+        }).join('');
+        box.innerHTML = rows || '<div class="muted">Keine Audit-Einträge</div>';
+        document.getElementById('auditLast').textContent = new Date().toLocaleTimeString();
+      }catch{ document.getElementById('auditList').textContent = 'Fehler beim Laden'; }
+    }
+    document.getElementById('auditReload').addEventListener('click', refreshAudit);
+    document.getElementById('auditSearch').addEventListener('input', ()=>{ clearTimeout(window.__auditDeb); window.__auditDeb=setTimeout(refreshAudit, 300); });
+    document.getElementById('auditAction').addEventListener('change', refreshAudit);
+    document.getElementById('auditCsv').addEventListener('click', async ()=>{
+      try{
+        const q = (document.getElementById('auditSearch').value||'').trim();
+        const action = (document.getElementById('auditAction').value||'').trim();
+        const params = new URLSearchParams(); params.set('limit','200'); if(q) params.set('q',q); if(action) params.set('action',action);
+        const res = await fetch(rootPrefix() + '/api/admin/audit?' + params.toString(), { credentials:'include' });
+        const j = await res.json();
+        const items = j.items||[];
+        const csv = ['ts,actor_user_id,action,target_type,target_id,meta'];
+        items.forEach(r=>{
+          const meta = JSON.stringify(r.meta||{}).replaceAll('"','""');
+          csv.push([r.ts, r.actor_user_id, '"'+(r.action||'')+'"', '"'+(r.target_type||'')+'"', r.target_id, '"'+meta+'"'].join(','));
+        });
+        downloadText(csv.join('\n'), 'audit.csv');
+      }catch{}
+    });
+    refreshAudit();
+      }catch{}
+    });
+    document.getElementById('jobsRetryFailed').addEventListener('click', async ()=>{
+      try{ const r = await fetch(rootPrefix() + '/api/jobs/retry-failed', { method:'POST', credentials:'include' }); const j = await r.json(); if (r.ok && j && j.ok){ refreshJobs(); } }catch{}
+    });
+    document.getElementById('jobsPurgeDone').addEventListener('click', async ()=>{
+      try{ const r = await fetch(rootPrefix() + '/api/jobs/purge?status=done&older_than_seconds=86400', { method:'POST', credentials:'include' }); const j = await r.json(); if (r.ok && j && j.ok){ refreshJobs(); } }catch{}
+    });
+    refreshJobs();
+  
+    // --- Knowledge ---------------------------------------------------------
+    async function refreshKnowledge(){
+      try{
+        const params = new URLSearchParams();
+        const statsUrl = rootPrefix() + '/api/knowledge/stats?limit=3';
+        const statsPromise = fetch(statsUrl, { credentials:'include' }).then(r=>r.json()).catch(()=>({}));
+
+        const q = (document.getElementById('kbQuery')?.value||'').trim();
+        const tags = (document.getElementById('kbTags')?.value||'').trim();
+        const src = (document.getElementById('kbSource')?.value||'').trim();
+        const typ = (document.getElementById('kbType')?.value||'').trim();
+        const lim = Number(document.getElementById('kbLimit')?.value||50)||50;
+        if (q) params.set('q', q);
+        if (tags) params.set('tags', tags);
+        if (src) params.set('source', src);
+        if (typ) params.set('type', typ);
+        params.set('limit', String(lim));
+        const res = await fetch(rootPrefix() + '/api/knowledge/search?' + params.toString(), { credentials:'include' });
+        const j = await res.json();
+        const box = document.getElementById('kbList');
+        if (!res.ok || !j || j.ok===false){ box.textContent='Fehler beim Laden'; return; }
+        const items = Array.isArray(j.items)? j.items: [];
+        const rows = items.map(r=>{
+          const ts = r.ts? new Date(r.ts*1000).toLocaleString() : '—';
+          const tg = String(r.tags||'');
+          return `<div style="border-bottom:1px solid #e5eaf2;padding:8px 0;display:flex;gap:10px;justify-content:space-between;">
+            <div style="flex:1 1 auto;min-width:0;">
+              <div><b>${ts}</b> · <span class="pill">${escapeHtml(r.type||'')}</span> · <span class="pill">${escapeHtml(r.source||'')}</span></div>
+              <div class="muted">${escapeHtml(tg)}</div>
+              <div style="white-space:pre-wrap;margin-top:4px;">${(r.snippet? r.snippet : escapeHtml(r.content||''))}</div>
+            </div>
+            <div style="flex:0 0 auto;display:flex;gap:6px;align-items:flex-start;">
+              <button class="btn" data-kb="copy" data-id="${r.id}">Copy</button>
+            </div>
+          </div>`;
+        }).join('');
+        box.innerHTML = rows || '<div class="muted">Keine Einträge</div>';
+        document.getElementById('kbSummary').innerHTML = `Treffer: <b>${items.length}</b>`;
+        document.getElementById('kbLast').textContent = new Date().toLocaleTimeString();
+        try{ const st = await statsPromise; if (st && st.ok!==false){ const total = Number(st.total||0); const d24 = Number(st.last_24h||0); const tt = Array.isArray(st.top_tags)? st.top_tags: []; const ts = Array.isArray(st.top_sources)? st.top_sources: []; const sum = document.getElementById('kbSummary'); if (sum){ sum.innerHTML = `Treffer: <b>${items.length}</b> · <span class=\"pill\" title=\"Gesamt\">Gesamt: ${total}</span> <span class=\"pill\" title=\"Neue in 24h\">+24h: ${d24}</span>`; } const tagsEl = document.getElementById('kbTagsList'); if (tagsEl){ tagsEl.innerHTML = (tt.slice(0,3).map(x=>`<span class=\"pill\">${x.tag||''}: ${x.count||0}</span>`).join(' ') || '<span class=\"muted\">—</span>'); } const srcEl = document.getElementById('kbSourcesList'); if (srcEl){ srcEl.innerHTML = (ts.slice(0,3).map(x=>`<div class=\"muted\">${(x.source||'').replace(/</g,'&lt;').slice(0,48)} <span class=\"pill\">${x.count||0}</span></div>`).join('') || '<span class=\"muted\">—</span>'); } } }catch{}
+
+        // Wire copy buttons
+        box.querySelectorAll('button[data-kb="copy"]').forEach(btn=>{
+          btn.addEventListener('click', ()=>{
+            try{
+              const id = Number(btn.getAttribute('data-id')||0);
+              const it = items.find(x=>Number(x.id)===id); if (!it) return;
+              const txt = `${it.content||''}`;
+              if (navigator.clipboard?.writeText) navigator.clipboard.writeText(txt);
+            }catch{}
+          });
+        });
+      }catch{ document.getElementById('kbList').textContent='Fehler beim Laden'; }
+    }
+    document.getElementById('kbReload')?.addEventListener('click', refreshKnowledge);
+    document.getElementById('kbCsv')?.addEventListener('click', async ()=>{
+      try{
+        const q = (document.getElementById('kbQuery')?.value||'').trim();
+        const tags = (document.getElementById('kbTags')?.value||'').trim();
+        const src = (document.getElementById('kbSource')?.value||'').trim();
+        const typ = (document.getElementById('kbType')?.value||'').trim();
+        const lim = Number(document.getElementById('kbLimit')?.value||50)||50;
+        const params = new URLSearchParams(); if(q) params.set('q',q); if(tags) params.set('tags',tags); if(src) params.set('source',src); if(typ) params.set('type',typ); params.set('limit', String(lim));
+        const res = await fetch(rootPrefix() + '/api/knowledge/search?' + params.toString(), { credentials:'include' }); const j = await res.json();
+        const items = Array.isArray(j.items)? j.items: [];
+        const csv = ['id,ts,source,type,tags,hash,content,snippet'];
+        items.forEach(r=>{ const c = String(r.content||'').replaceAll('"','""'); const sn = String(r.snippet||'').replaceAll('"','""'); csv.push([r.id, r.ts, '\"'+(r.source||'')+'\"', '\"'+(r.type||'')+'\"', '\"'+(r.tags||'')+'\"', r.hash||'', '\"'+c+'\"', '\"'+sn+'\"'].join(',')); });
+        downloadText(csv.join('\n'), 'knowledge.csv');
+      }catch{}
+    });
+    document.getElementById('kbJson')?.addEventListener('click', async ()=>{
+      try{
+        const q = (document.getElementById('kbQuery')?.value||'').trim();
+        const tags = (document.getElementById('kbTags')?.value||'').trim();
+        const src = (document.getElementById('kbSource')?.value||'').trim();
+        const typ = (document.getElementById('kbType')?.value||'').trim();
+        const lim = Number(document.getElementById('kbLimit')?.value||50)||50;
+        const params = new URLSearchParams(); if(q) params.set('q',q); if(tags) params.set('tags',tags); if(src) params.set('source',src); if(typ) params.set('type',typ); params.set('limit', String(lim));
+        const res = await fetch(rootPrefix() + '/api/knowledge/search?' + params.toString(), { credentials:'include' }); const j = await res.json();
+        downloadText(JSON.stringify(j.items||[], null, 2), 'knowledge.json');
+      }catch{}
+    });
+    document.getElementById('kbAdd')?.addEventListener('click', async ()=>{
+      try{
+        const source = (document.getElementById('kbNewSource')?.value||'').trim();
+        const type = (document.getElementById('kbNewType')?.value||'text').trim();
+        const tags = (document.getElementById('kbNewTags')?.value||'').trim();
+        const content = (document.getElementById('kbNewContent')?.value||'').trim();
+        if (!content){ alert('Inhalt fehlt'); return; }
+        const r = await fetch(rootPrefix() + '/api/knowledge', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ source, type, tags, content }) });
+        const j = await r.json();
+        if (r.ok && j && j.ok){ document.getElementById('kbNewContent').value=''; refreshKnowledge(); }
+        else { alert('Speichern fehlgeschlagen: ' + ((j && j.detail)||r.status)); }
+      }catch{}
+    });
+    // Initial load
+    try{ refreshKnowledge(); }catch{}
+    
+  </script>
+</body>
+</html>

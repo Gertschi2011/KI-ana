@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Toxic \"forever chemicals\" found in 95% of beers tested in the U.S.\n • Hacker News: Chat Control repelled 4th time in the EU\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Attentat auf US-Aktivist Kirk - Festnahme von Verdächtigem",
+  "created_at": 1757684221.0305777,
+  "hash": "caaa33054c9db42808ffa45f927298f4885113ddd2b4c7d17668a78a7bda72bd",
+  "id": "BLK_1757684221_72e79f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OFSDqqKftZV5UYlZ09r0IcvJ7xfykW9IyNOAp89wFxFa9S/gLbCo0MtLQZjdrn+4wFtXygdlhR+qMwDHaOGnBg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 15:37",
+  "url": null
+}

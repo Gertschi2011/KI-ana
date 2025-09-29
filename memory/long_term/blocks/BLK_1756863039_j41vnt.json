@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: U.S. Military Strikes Drug Vessel from Venezuela, Killing 11\n • Hacker News: Show HN: LightCycle, a FOSS game in Rust based on Tron\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Gericht: Google muss Webbrowser Chrome nicht verkaufen",
+  "hash": "42986298fab7b15c136fa3337022d02d7b180c1a1827c0879625648646e9ff18",
+  "id": "BLK_1756863039_j41vnt",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "rn3Ycg/JqT1O0lrVl+K1VZzcLwbVLTjTaq/fGc3HHOmLBvhdWmS2ZW8HCcr/+P4LQFsap1UbZTR4V2aeoqYHAg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 03:30",
+  "ts": 1756863039,
+  "url": ""
+}

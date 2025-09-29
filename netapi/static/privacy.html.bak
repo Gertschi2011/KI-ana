@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Datenschutz – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/styles.css" rel="stylesheet">
+  <script defer src="/static/i18n.js"></script>
+  <script defer src="/static/nav.js"></script>
+</head>
+<body class="page">
+  <div id="nav" data-src="/static/nav.html"></div>
+
+  <!-- Hero -->
+  <main class="hero container">
+    <div class="hero-inner">
+ <!-- Avatar -->
+      <div class="hero-media" style="margin-top:2rem;">
+        <figure style="margin:0 auto;">
+          <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar" onerror="this.style.display='none'" style="max-width: 140px; height: auto; border-radius: 50%;">
+          <figcaption class="mt-avatar" data-i18n="home.caption">Ich lerne mit und von dir</figcaption>
+        </figure>
+      </div>
+    </div>
+  <div class="container">
+    <div class="paper">
+      <h1 data-i18n="privacy.title">Datenschutzerklärung</h1>
+
+      <h3 data-i18n="privacy.s1.h">1. Verantwortliche Stelle</h3>
+      <p data-i18n="privacy.s1.p">[Firma/Name], [Adresse], <a href="mailto:privacy@ki-ana.at">privacy@ki-ana.at</a></p>
+
+      <h3 data-i18n="privacy.s2.h">2. Welche Daten wir verarbeiten</h3>
+      <ul>
+        <li data-i18n="privacy.s2.i1">Accountdaten (Name, E-Mail, Login-Infos)</li>
+        <li data-i18n="privacy.s2.i2">Nutzungsdaten (Interaktionen in der App/Website)</li>
+        <li data-i18n="privacy.s2.i3">Zahlungs-/Abo-Daten (über Zahlungsdienstleister)</li>
+      </ul>
+
+      <h3 data-i18n="privacy.s3.h">3. Zwecke</h3>
+      <p data-i18n="privacy.s3.p">Bereitstellung der Dienste, Personalisierung, Sicherheit, Fehleranalyse, Verbesserung von KI_ana.</p>
+
+      <h3 data-i18n="privacy.s4.h">4. Rechtsgrundlagen</h3>
+      <p data-i18n="privacy.s4.p">Art. 6 Abs. 1 lit. b, f DSGVO (Vertrag & berechtigtes Interesse); ggf. Einwilligung Art. 6 Abs. 1 lit. a.</p>
+
+      <h3 data-i18n="privacy.s5.h">5. Speicherfristen</h3>
+      <p data-i18n="privacy.s5.p">So lange wie nötig für den Zweck bzw. gesetzliche Aufbewahrung.</p>
+
+      <h3 data-i18n="privacy.s6.h">6. Weitergabe</h3>
+      <p data-i18n="privacy.s6.p">Nur an Auftragsverarbeiter (z. B. Hosting, Payment). Keine Datenverkäufe.</p>
+
+      <h3 data-i18n="privacy.s7.h">7. Deine Rechte</h3>
+      <p data-i18n="privacy.s7.p">Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch. Melde dich an
+      <a href="mailto:privacy@ki-ana.at">privacy@ki-ana.at</a>.</p>
+
+      <h3 data-i18n="privacy.s8.h">8. Kontakt Datenschutz</h3>
+      <p data-i18n="privacy.s8.p"><a href="mailto:privacy@ki-ana.at">privacy@ki-ana.at</a></p>
+
+      <p class="muted" data-i18n="privacy.stand">Stand: 23.08.2025</p>
+    </div>
+  </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container small" style="text-align:center;">
+      <p>© <span id="year"></span> KI_ana – mit Liebe gebaut.</p>
+      <p><a href="/static/impressum.html">Impressum</a> · <a href="/static/privacy.html">Datenschutz</a> · <a href="/static/agb.html">AGB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Footer-Jahr
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

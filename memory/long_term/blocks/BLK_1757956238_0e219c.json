@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The U.S. Government's Extraordinary Pursuit of Kilmar Ábrego García\n • Hacker News: Wanted to spy on my dog, ended up spying on TP-Link\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pläne von Wirtschaftsministerin Reiche: Die Energiewende-Wende",
+  "created_at": 1757956238.0033317,
+  "hash": "e7d06d1b7e90fb909ff20dc2352645c0573954a08af44b5359fc874e427f679e",
+  "id": "BLK_1757956238_0e219c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "x6RKbR3kNnqHOTbcPNDoN4wOG+U9mFcT+mnARuby4WFIPp2irluvicDcPF1iwKkOC/PB44wyY87utEBFPF8SAA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-15 19:10",
+  "url": null
+}

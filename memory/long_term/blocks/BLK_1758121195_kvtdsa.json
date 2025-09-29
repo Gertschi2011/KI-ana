@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: YouTube addresses lower view counts which seem to be caused by ad blockers\n • Hacker News: SQLiteData: A fast, lightweight replacement for SwiftData using SQL and CloudKit\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Generaldebatte im Bundestag: Ein neuer Merz?",
+  "hash": "dd6c5eebf11e1e33f78a52c5e251468cc45b01611b50404c509349190774d58a",
+  "id": "BLK_1758121195_kvtdsa",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "FP95Oq772ga9ruRpP5wCTWV3dwpc3mnHEau14v2feCMeHOD9jdQ/9iw8foElQIu4vfU/+UiBVzs3xInM1+rUDA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 16:59",
+  "ts": 1758121195,
+  "url": ""
+}

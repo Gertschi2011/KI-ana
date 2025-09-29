@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Physics of Sales\n • Hacker News: Towards Memory Specialization: A Case for Long-Term and Short-Term RAM\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwierige Rettungsarbeiten nach Erdbeben in Afghanistan",
+  "created_at": 1756761457.1446557,
+  "hash": "761b5e2e43139d047282a7a2c53969c87989a80242a6cb6998f680e8db71396c",
+  "id": "BLK_1756761457_13a5f0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QhedgQeS0qOPXWMsUkKSTUT3NC2TFLX6kvuhbWLFst+9hra4PI+DagYrQ8XNMnV+WdKAz1kG1EEJMEO3TwC5Bg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 23:17",
+  "url": null
+}

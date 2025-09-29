@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Fed up with macOS – it downloaded 47 GB of 4K 240FPS screensavers. Asahi FTW\n • Hacker News: New research reveals longevity gains slowing, life expectancy of 100 unlikely\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): FAQ: Wie es mit den US-Zöllen nach dem Gerichtsentscheid weitergeht",
+  "created_at": 1756576388.8695338,
+  "hash": "0cb55725fb8c191469c3117ff029d92990155095abd2b48ce8df9899fb3b407f",
+  "id": "BLK_1756576388_c68f00",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "3RUrcT8IKw2aOYWe9Q0CD0jdlkM3CGU6VKD4wVAmu5m4/6Zp8KAdu+qbbpoOGtQ8WR1I2XrSqzqTRdQzCojlBA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 19:53",
+  "url": null
+}

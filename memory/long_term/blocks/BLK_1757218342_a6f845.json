@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The world has a running Rational R1000/400 computer again (2019)\n • Hacker News: Show HN: Lightweight tool for managing Linux virtual machines\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht: Gelöstes Kabel wohl Ursache für Unglück in Lissabon",
+  "created_at": 1757218342.2171252,
+  "hash": "1d4494aec9235d878a39f9b24e0f1b08e3201e232b1009a70890840eff2e729e",
+  "id": "BLK_1757218342_a6f845",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "L+6MEcK/zVQEcc3pRbv5cPXFypEbDgxlEWLIMZBOjuIZaK/HvWkn8AAc04fN/vQOeCiXisVgk+Yti8NLrmuIBA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 06:12",
+  "url": null
+}

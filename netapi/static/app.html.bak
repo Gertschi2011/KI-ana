@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>KI_ana – App</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/styles.css?v=3">
+</head>
+<body>
+<div style="text-align:center;margin:24px 0;">
+  <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana rund" style="width:160px;height:160px;border-radius:50%;box-shadow:0 0 12px rgba(0,0,0,0.2);">
+</div>
+<header class="hero">
+  <div class="hero-left">
+    <img src="/static/img/Avatar_KI_ana.jpg" class="avatar" alt="KI_ana" style="width:80px;height:auto;margin-right:20px;">
+    <div>
+      <h1>KI_ana</h1>
+      <p class="lead">Deine persönliche KI-Begleiterin</p>
+    </div>
+  </div>
+  <div id="nav"></div>
+</header>
+<main style="max-width:980px;margin:18px auto;padding:0 16px">
+  <section class="app-dashboard">
+    <h2>KI_ana Steuerzentrale</h2>
+    <p class="lead">Hier kannst du deine Subminds verwalten, mit KI_ana chatten oder neue Funktionen entdecken.</p>
+    <div class="dashboard-actions" style="display:flex;flex-direction:column;gap:12px;margin-top:24px;">
+      <a class="cta" href="/static/chat.html" style="background:#6a5acd;color:#fff;border:none;padding:12px 24px;border-radius:6px;text-align:center;text-decoration:none;">🔮 Zum Chat</a>
+      <a class="cta" href="/static/downloads.html" style="background:#6a5acd;color:#fff;border:none;padding:12px 24px;border-radius:6px;text-align:center;text-decoration:none;">⬇️ Subminds herunterladen</a>
+      <a class="cta" href="/static/capabilities.html" style="background:#6a5acd;color:#fff;border:none;padding:12px 24px;border-radius:6px;text-align:center;text-decoration:none;">⚙️ Fähigkeiten entdecken</a>
+    </div>
+  </section>
+</main>
+<footer style="text-align:center;margin:48px 0;color:#999">
+  KI_ana ist deine persönliche Begleiterin. Weitere Funktionen folgen bald 🚀
+</footer>
+<script src="/static/nav.js?v=5" defer></script>
+</body></html>

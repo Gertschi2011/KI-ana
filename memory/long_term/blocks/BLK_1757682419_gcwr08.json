@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The Treasury Is Expanding the Patriot Act to Attack Bitcoin Self Custody\n • Hacker News: Astrophysics Source Code Library\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Attentat auf US-Aktivist Kirk - Festnahme von Verdächtigem",
+  "hash": "69f268190848c3af1e418fee3e3cbddbdcfa1a45342e3137edcea93d33e22d61",
+  "id": "BLK_1757682419_gcwr08",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "RTzMY5tkVIdsuRvbY99ZzY+K3FW30wJ8X4h6pdjOuMgCvsvcqCYUBApO8jlAuoeVjZVmTXiR5kIGzJmMGjBNDw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 15:06",
+  "ts": 1757682419,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Older developers are down with the vibe coding vibe\n • Hacker News: Google: 'Your $1000 phone needs our permission to install apps now' [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfeltreffen in Tianjin - China und Indien wollen zusammenrücken",
+  "created_at": 1756653822.8595243,
+  "hash": "6a409b94adf06e7aca6188c1c9dfbc0e91644c6c8c0280debf1aae091f1b5d98",
+  "id": "BLK_1756653822_ab294d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QNSK1PxXoFw0kBqD2E7kcjUyGAmDoDcznz3FuvDbDWXv4OtUUbFRr76e7W1ESTbCHPzH1nekdBwxCptG+knMAQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 17:23",
+  "url": null
+}

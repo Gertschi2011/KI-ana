@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: LightCycle, a FOSS game in Rust based on Tron\n • Hacker News: %CPU utilization is a lie\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Gericht: Google muss Webbrowser Chrome nicht verkaufen",
+  "created_at": 1756861238.6304016,
+  "hash": "cc3ec6e35a2d836cb487b73648c174411908d290ba07a0a15c56feac37aaff53",
+  "id": "BLK_1756861238_cb9fa0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gaxoQZ5xke/WXozs2GHZfbmtFSVfiZkZ2bPTtvBYS2xjkQpb+uVuEKDYmSUjsD2P3ybx8HzCqkI4Guc3JSM7Dw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 03:00",
+  "url": null
+}

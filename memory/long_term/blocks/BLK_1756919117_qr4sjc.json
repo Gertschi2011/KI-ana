@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Svix (webhooks as a service) is hiring for a founding marketing lead\n • Hacker News: Nuclear: Desktop music player focused on streaming from free sources\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ARD-DeutschlandTrend: Mehrheit für höhere Steuern - auch bei Unionsanhängern",
+  "hash": "1b2ab88d42808b89f860f28afb80f4fd626289eb171f06e46c06ba240eea183e",
+  "id": "BLK_1756919117_qr4sjc",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "HwCi7Y1YH914sjjKkSEvwMfbckqP48rKb3s9u94GzQTPvCg7FeOamYuUNTF/swFMF6lcZ+iGUG9YjZg7f6D0Bg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 19:05",
+  "ts": 1756919117,
+  "url": ""
+}

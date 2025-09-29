@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I am giving up on Intel and have bought an AMD Ryzen 9950X3D\n • Hacker News: The \"impossibly small\" Microdot web framework\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Massive Angriffe auf Ukraine - Regierungsgebäude in Kiew brennt",
+  "created_at": 1757239956.7925272,
+  "hash": "fb294d158b4cbe26c622d20ff05766eff84862d4c9deb2a1529a409a2952421b",
+  "id": "BLK_1757239956_832af4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "5OJdYYFMkdSKqSeQOP2DwNvNwEcsFiPfTTFC5KZWAb4slvFKEFdh9l5wyWnSVAr9EVMlA2Z49bSzAohb29ZsAA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 12:12",
+  "url": null
+}

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guardian – Not‑Aus & Integrität</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script defer src="/static/nav.js"></script>
+  <style>
+    .wrap{max-width:900px;margin:24px auto;padding:0 16px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.08);padding:16px;margin:12px 0}
+    .ok{color:#0a7}
+    .bad{color:#b00}
+    code{background:#f6f7f9;padding:2px 6px;border-radius:6px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width: 700px){.grid{grid-template-columns:1fr}}
+    .btn{padding:8px 12px;border-radius:8px;border:1px solid #ccc;background:#fafafa;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div id="nav" data-src="/static/nav.html"></div>
+  <main class="wrap">
+    <h1>Guardian – Not‑Aus & Integrität</h1>
+
+    <section class="card" id="emergency">
+      <h2>Not‑Aus</h2>
+      <div id="emergencyState">Lade Status …</div>
+      <div id="emergencyDetails" class="muted" style="white-space:pre-wrap"></div>
+      <div style="margin-top:8px">
+        <button class="btn" id="refresh">Aktualisieren</button>
+      </div>
+      <p class="muted" style="margin-top:12px">
+        Aktivieren/Deaktivieren erfolgt ausschließlich über die Creator‑CLI auf dem Server.
+        Beispiele:
+      </p>
+      <pre><code>python3 ~/ki_ana/system/emergency_activate.py --trigger "KIANA:CODE-RED"
+python3 ~/ki_ana/system/emergency_deactivate.py --confirm YES</code></pre>
+    </section>
+
+    <section class="card" id="integrity">
+      <h2>Integritätsprüfungen</h2>
+      <div id="integrityList">Lade …</div>
+    </section>
+  </main>
+
+  <script>
+    async function loadStatus(){
+      try{
+        const r = await fetch('/api/guardian/status', {credentials:'include'});
+        const j = await r.json();
+        const em = document.getElementById('emergencyState');
+        const det = document.getElementById('emergencyDetails');
+        const il = document.getElementById('integrityList');
+        if (j.emergency_active){
+          em.innerHTML = '<strong class="bad">🛑 Not‑Aus ist AKTIV</strong>';
+          const d = j.emergency_details || {};
+          det.textContent = JSON.stringify(d, null, 2);
+        } else {
+          em.innerHTML = '<strong class="ok">✅ Not‑Aus ist inaktiv</strong>';
+          det.textContent = '';
+        }
+        const items = (j.items||[]).map(it => {
+          const ok = (it.exists && it.hash_ok);
+          return `<div class="grid"><div><strong>${it.name}</strong></div><div>${ok?'<span class="ok">OK</span>':'<span class="bad">Fehler</span>'}</div></div>`;
+        }).join('');
+        il.innerHTML = items || '<em>Keine Daten.</em>';
+      }catch(e){
+        document.getElementById('emergencyState').textContent = 'Fehler beim Laden.';
+      }
+    }
+    document.getElementById('refresh').addEventListener('click', loadStatus);
+    loadStatus();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI will not make you rich\n • Hacker News: Heart attacks may be triggered by bacteria\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Jung, weiblich, (selten) Kommunalpolitikerin",
+  "created_at": 1757806897.030577,
+  "hash": "3fcf7e8d51aa947305bb428c96b00b9e7d73678cc81ff06c5b1feedb3bb70820",
+  "id": "BLK_1757806897_04e404",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "lInKks2RBcVeVMzGY0CDWLn1igTLi8omfts1d4/IXd+X33HgscJJvt7an1W1w1kQaoPkYWQVhyh83xTEDMppBg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 01:41",
+  "url": null
+}

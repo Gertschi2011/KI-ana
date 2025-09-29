@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Google killing 2 million nest thermostats next month\n • Hacker News: US special forces killed North Korean civilians in botched 2019 mission\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Parteitag von Reform UK: Die Ein-Mann-Band bespielt ein Thema",
+  "created_at": 1757112097.101978,
+  "hash": "30504728332d26d640c80d94f985b2af5f4bcf73eb2df6de49166748bb2e710c",
+  "id": "BLK_1757112097_51d386",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oeh/d+xHybsc/3PulDdhWAyucaArxA7AejYW5oHKHiGl11GRcaZh7e7rxN+43r7O9Np/IdKXZVLmEPFpW4rACg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 00:41",
+  "url": null
+}

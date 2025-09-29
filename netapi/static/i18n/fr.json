@@ -1,0 +1,137 @@
+{
+  "app": { "title": "KI_ana" },
+  "nav": {
+    "start": "Accueil",
+    "discover": "Découvrir",
+    "about": "À propos",
+    "capabilities": "Capacités",
+    "pricing": "Tarifs",
+    "downloads": "Téléchargements",
+    "kids": "Enfants",
+    "chat": "Chat",
+    "admin": "Admin",
+    "skills": "Compétences",
+    "cron": "Cron",
+    "papa": "Papa",
+    "viewer": "Visualiseur de blocs",
+    "logout": "Déconnexion",
+    "account": "Compte",
+    "login": "Connexion",
+    "register": "Inscription",
+    "language": "Langue",
+    "language_de": "Allemand",
+    "language_en": "Anglais"
+  },
+  "chat": {
+    "title": "Chat avec KI_ana",
+    "sidebar_title": "Conversations",
+    "new_conversation": "+ Nouvelle conversation",
+    "family": "Votre membre de la famille",
+    "placeholder": "Écris‑moi quelque chose…",
+    "send": "Envoyer",
+    "settings": {
+      "title": "Paramètres",
+      "persona": "Personnalité",
+      "persona_friendly": "Amicale",
+      "persona_balanced": "Équilibrée & utile",
+      "persona_creative": "Créative & enjouée",
+      "language": "Langue",
+      "voice": "Voix",
+      "voice_auto": "Automatique",
+      "voice_eleven": "ElevenLabs",
+      "answer_style": "Style de réponse",
+      "bullet_count": "Nombre de points (3–8)",
+      "logic": "Logique",
+      "format": "Format",
+      "streaming": "Diffusion en direct (SSE)",
+      "user_color": "Couleur – Vos messages",
+      "ai_color": "Couleur – KI_ana",
+      "style_concise": "Concise",
+      "style_balanced": "Équilibrée",
+      "style_detailed": "Détaillée",
+      "logic_balanced": "Équilibrée",
+      "logic_strict": "Stricte (preuves uniquement)",
+      "format_structured": "Structuré (TL;DR, points, preuves)",
+      "format_plain": "Texte simple"
+    },
+    "error": {
+      "moderated": "⚠️ Contenu bloqué par la modération.",
+      "rate_limited": "⚠️ Trop de requêtes – veuillez patienter un instant.",
+      "blocked": "⚠️ Accès bloqué.",
+      "unauthorized": "⚠️ Non connecté.",
+      "forbidden": "⚠️ Non autorisé.",
+      "server_error": "⚠️ Erreur serveur pendant le flux.",
+      "timeout": "⚠️ Délai dépassé – réessayez.",
+      "llm_stream_failed": "⚠️ Échec du streaming de la réponse.",
+      "planner_failed": "⚠️ Le planificateur interne a échoué.",
+      "encode_failed": "⚠️ Erreur d'encodage dans le flux."
+    }
+  }
+  ,
+  "papa": {
+    "title": "Espace Papa",
+    "subtitle": "Visible uniquement pour les rôles créateur/admin.",
+    "lead": "Outils pour piloter, observer et entretenir KI_ana et les sous‑IA.",
+    "emergence": "Émergence & auto‑réflexion (Phase 3)",
+    "subki_tools": "Outils Sub‑IA",
+    "subki_hint": "La Sub‑IA locale est généralement disponible sur <code>http://localhost:5055</code>.",
+    "system_status": "Statut du système",
+    "system_resources": "Ressources système",
+    "system_hint": "Statut en direct (CPU, RAM, charge, processus) et état KI/Mem. Mise à jour toutes les 5 s.",
+    "btn": {
+      "knowledge": "📚 Clusters de sujets & similarité",
+      "questions": "📌 Questions issues de la mémoire",
+      "self_comment": "🧭 Auto‑commentaires sur les sujets actuels",
+      "broadcasts": "🔄 Afficher les diffusions des Sub‑IA",
+      "goals": "🎯 Objectifs d’apprentissage",
+      "crawl_now": "Lancer le crawler maintenant",
+      "trust_dashboard": "Afficher le tableau de confiance",
+      "export_blocks": "Exporter les blocs (ZIP)",
+      "crawler_job": "🧩 Exécuter le crawler (job)",
+      "promote_job": "⬆️ Promouvoir (job)"
+    },
+    "jobs": {
+      "title": "File de jobs",
+      "overview": "Aperçu",
+      "latest": "50 derniers",
+      "worker": "Workers",
+      "refresh": "🔄 Actualiser",
+      "retry_failed": "↩︎ Ré‑enfiler les échecs",
+      "purge_done": "🧹 Purger ‘done’ (1 jour)",
+      "only_failed": "Échecs seulement",
+      "type": "Type",
+      "status": "Statut",
+      "attempts": "Essais",
+      "priority": "Priorité",
+      "updated": "Mis à jour",
+      "error": "Erreur",
+      "tip": "Astuce : cliquer sur une ligne pour les détails.",
+      "loading": "Chargement…",
+      "no_jobs": "Aucun job."
+    },
+    "subki": {
+      "pending": "Appris (en attente)",
+      "reflect": "Exécuter Reflect",
+      "sync": "Démarrer la synchro",
+      "trust": "Afficher la confiance",
+      "trust_set": "Définir la confiance",
+      "trust_value": "Confiance",
+      "trust_btn": "Enregistrer",
+      "trust_saved": "Enregistré",
+      "trust_error": "Échec de l'enregistrement"
+    },
+    "toasts": { "enqueued": "Ajouté", "requeued": "Ré‑ajouté", "deleted": "Supprimé", "copied": "Copié.", "error": "Erreur", "not_found": "Introuvable.", "enqueue_failed": "Impossible d'ajouter le job" }
+  }
+  ,
+  "toast": {
+    "role_denied": "⚠️ Vous n'êtes pas autorisé à effectuer cette action.",
+    "login_required": "⚠️ Connexion requise."
+  }
+  ,
+  "viewer": {
+    "error": {
+      "detail_load_failed": "Impossible de charger les détails.",
+      "save_failed": "Échec de l'enregistrement"
+    }
+  }
+}

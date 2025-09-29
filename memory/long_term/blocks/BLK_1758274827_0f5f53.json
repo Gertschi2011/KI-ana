@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: iTerm2 Web Browser\n • Hacker News: Count Folke Bernadotte: Sweden's Servant of Peace (2010)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum Polen zu den wirtschaftlich erfolgreichsten EU-Länder gehört",
+  "created_at": 1758274827.4228637,
+  "hash": "be78385a13f7cea5d3726717a30cb9fea6eb8a57835806073be75bc1fcb41ad3",
+  "id": "BLK_1758274827_0f5f53",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "0fB0VdSIdA3yEzrwLAGKHdZ1JrLvXtjusTTMTupllDR8ShAx80W5NYTKE34hMjRCbqtUpjoSgNhc2RkSLAM6Cw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 11:40",
+  "url": null
+}

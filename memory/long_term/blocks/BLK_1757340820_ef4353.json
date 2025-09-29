@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tesla Wants Out of the Car Business\n • Hacker News: No more data centers: Ohio township pushes back against influx of Amazon, others\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienkampagne von Gouverneur Newsom: Trollen gegen Trump",
+  "created_at": 1757340820.612457,
+  "hash": "1515e3914b3f58bc733da1bdf0ea473a98401859ff13ac698edd4e2f56e07a07",
+  "id": "BLK_1757340820_ef4353",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "u4EjXv+tCQAXguHUnn4LyHdaO3FISXqfAGve5nG4O3hfdG9j1DcbXfahRASnKt+IWUKwdECjk7eCzDyhFPCmDA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 16:13",
+  "url": null
+}

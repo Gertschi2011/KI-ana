@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Czech founding father Masaryk's message revealed in long-sealed envelope\n • Hacker News: The Gold Card\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sicherheitsexperte Masala zu Kampfjets: \"Russland führt NATO vor\"",
+  "created_at": 1758370269.2641761,
+  "hash": "2d51a62dd93e69cdba98829fdd994c85591f2115e01b07298bd9d20102e69a96",
+  "id": "BLK_1758370269_32eb95",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bm4hSst5dCImnXnVsgUc+bwL2v6QRXeW04gjJd/UHNbTdcyeyswOq+aWmED2gGkC+8kX0z5nuPPIJ64hG1I6DQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 14:11",
+  "url": null
+}

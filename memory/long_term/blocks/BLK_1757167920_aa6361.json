@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 996\n • Hacker News: We Hacked Burger King: How Auth Bypass Led to Drive-Thru Audio Surveillance\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD die Kultur in Sachsen-Anhalt umdeutet",
+  "created_at": 1757167920.1665554,
+  "hash": "c40f226dd9b0ad80b23cb88adedce447eb81c412f92644e5c50c871433fb4c66",
+  "id": "BLK_1757167920_aa6361",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "En+E3Z64KG4q/H3erG9zCYs+zSOUrlFRad2SuAogYT0nmbgRJzmN+yMlUY+m0ZJxc2AE6ErxxrE85OsQKVfeBQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 16:12",
+  "url": null
+}

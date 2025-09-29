@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Papa – KI_ana</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/chat.css">
+  <script defer src="/static/i18n.js"></script>
+  <style>
+    .badge{ display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; margin-left:6px; }
+    .badge.warn{ background:#eef2ff; color:#334; }
+    .badge.info{ background:#e6f0ff; color:#203a8a; }
+    .badge.bad{ background:#fee2e2; color:#7a1c1c; }
+    .badge.ok{ background:#e6ffe6; color:#1a4; }
+  </style>
+</head>
+<body class="page">
+  <div id="navbar"></div>
+
+  <main class="container">
+    <section class="card">
+      <div class="hero">
+        <img class="avatar-ki" src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana Avatar">
+        <div>
+          <h1 class="gradient-text" data-i18n="papa.title">Papa‑Bereich 🛠️</h1>
+          <p class="small" data-i18n="papa.subtitle">Nur sichtbar für Rollen mit Creator/Admin‑Rechten.</p>
+        </div>
+        <div style="margin-left:auto; align-self:center">
+          <span id="sys-pill" class="pill muted">System: …</span>
+        </div>
+      </div>
+      <p class="lead" data-i18n="papa.lead">Werkzeuge zum Steuern, Beobachten und Pflegen von KI_ana & Sub‑KIs.</p>
+    </section>
+
+    <!-- Role Inspector (helps diagnose 403 / visibility issues) -->
+    <section class="card">
+      <h2>Role Inspector</h2>
+      <p class="small">Zeigt die aktuelle Identität aus <code>/api/me</code> und die abgeleiteten Rollen.</p>
+      <div class="grid-2" style="align-items:flex-start">
+        <div>
+          <ul>
+            <li><strong>Auth:</strong> <span id="me-auth">–</span></li>
+            <li><strong>User:</strong> <span id="me-user">–</span></li>
+            <li><strong>is_papa:</strong> <span id="me-papa">–</span></li>
+          </ul>
+        </div>
+        <div>
+          <strong>Rollen:</strong>
+          <pre id="me-roles" class="small" style="white-space:pre-wrap; margin:0">–</pre>
+        </div>
+      </div>
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn" id="btnReloadMe" type="button">Neu laden</button>
+      </div>
+    </section>
+
+    <!-- Systemstatus Karte -->
+    <section class="card">
+      <h2 data-i18n="papa.system_status">Systemstatus</h2>
+      <p class="small muted" id="sys-ts"></p>
+      <div class="grid-2">
+        <div>
+          <ul>
+            <li><strong>CPU:</strong> <span id="sys-cpu">–</span></li>
+            <li><strong>Load:</strong> <span id="sys-load">–</span></li>
+            <li><strong>RAM:</strong> <span id="sys-ram">–</span></li>
+          </ul>
+        </div>
+        <div>
+          <ul>
+            <li><strong>Disk:</strong> <span id="sys-disk">–</span></li>
+            <li><strong>Net I/O:</strong> <span id="sys-net">–</span></li>
+            <li><strong>Jobs:</strong> <span id="sys-jobs">–</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pill" id="sys-ollama" style="display:inline-block; margin-top:8px">Ollama: –</div>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="papa.emergence">Emergenz & Selbstreflexion (Phase 3)</h2>
+      <div class="btn-row">
+        <a class="btn" data-auth="1" data-role="admin,papa" href="/api/insight/ui/knowledge_graph" data-i18n="papa.btn.knowledge">📚 Themencluster & Ähnlichkeiten</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" href="/api/insight/ui/questions" data-i18n="papa.btn.questions">📌 Fragen aus dem Gedächtnis</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" href="/api/insight/ui/self_comment" data-i18n="papa.btn.self_comment">🧭 Selbstkommentare zu aktuellen Themen</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" href="/api/subki/ui/broadcasts" data-i18n="papa.btn.broadcasts">🔄 Sub‑KI‑Broadcasts anzeigen</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" href="/api/goals/ui" data-i18n="papa.btn.goals">🎯 Lernziele</a>
+      </div>
+      <div class="grid-2" style="margin-top:12px">
+        <div class="card" style="padding:10px">
+          <h4 data-i18n="papa.subki.trust_set">Trust setzen</h4>
+          <div class="inline" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap">
+            <label class="inline" style="gap:6px">
+              <span>ID</span>
+              <input id="subkiId" type="text" placeholder="device_local" style="padding:6px 8px; border:1px solid #ddd; border-radius:8px; min-width:160px">
+            </label>
+            <label class="inline" style="gap:6px">
+              <span data-i18n="papa.subki.trust_value">Trust</span>
+              <input id="subkiTrust" type="number" min="0" max="1" step="0.01" value="0.9" style="padding:6px 8px; border:1px solid #ddd; border-radius:8px; width:100px">
+            </label>
+            <button class="btn" data-auth="1" data-role="admin,papa" id="btnSetTrust" type="button" data-i18n="papa.subki.trust_btn">Speichern</button>
+          </div>
+          <p class="small muted" style="margin-top:6px">POST /api/subki/feedback {subki_id, trust}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 data-i18n="papa.subki_tools">Sub‑KI Tools</h2>
+      <p class="small" data-i18n="papa.subki_hint">Lokale Sub‑KI ist i. d. R. unter <code>https://localhost:5055</code> erreichbar.</p>
+      <div class="btn-row">
+        <a class="btn" data-auth="1" data-role="admin,papa" target="_blank" rel="noopener" href="https://localhost:5055/learned" data-i18n="papa.subki.pending">Gelernt (Pending)</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" target="_blank" rel="noopener" href="https://localhost:5055/ui/reflect" data-i18n="papa.subki.reflect">Reflect ausführen</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" target="_blank" rel="noopener" href="https://localhost:5055/ui/sync" data-i18n="papa.subki.sync">Sync starten</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" target="_blank" rel="noopener" href="https://localhost:5055/trust" data-i18n="papa.subki.trust">Trust ansehen</a>
+        <a class="btn" data-auth="1" data-role="admin,worker" href="/ui/crawl" data-i18n="papa.btn.crawl_now">Crawler jetzt ausführen</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" href="/api/subki/ui/trust_dashboard" data-i18n="papa.btn.trust_dashboard">Trust‑Dashboard anzeigen</a>
+        <a class="btn" data-auth="1" data-role="admin,papa" href="/api/export/blocks" data-i18n="papa.btn.export_blocks">Blöcke exportieren (ZIP)</a>
+        <button class="btn" data-auth="1" data-role="admin,worker" id="btnEnqRun" type="button" data-i18n="papa.btn.crawler_job">🧩 Crawler‑Run (Job)</button>
+        <button class="btn" data-auth="1" data-role="admin,worker" id="btnEnqPromote" type="button" data-i18n="papa.btn.promote_job">⬆️ Promote (Job)</button>
+      </div>
+      <details style="margin-top:10px">
+        <summary>Trust setzen (Mother‑KI)</summary>
+        <pre class="small" style="white-space:pre-wrap">curl -X POST https://localhost:8000/api/subki/feedback \
+-H 'Content-Type: application/json' \
+-d '{"subki_id":"device_local","trust":0.95}'</pre>
+      </details>
+    </section>
+
+    
+
+    <section class="card">
+      <h2 data-i18n="papa.jobs.title">Job‑Queue
+        <span id="jobsBq" class="badge warn" title="Queued">0</span>
+        <span id="jobsBl" class="badge info" title="Leased">0</span>
+        <span id="jobsBf" class="badge bad" title="Failed">0</span>
+        <span id="jobsBd" class="badge ok" title="Done">0</span>
+      </h2>
+      <p class="small">Einfache Übersicht der letzten Jobs und Zählung pro Status/Typ.</p>
+      <div class="grid-2">
+        <div>
+          <h4 data-i18n="papa.jobs.overview">Übersicht</h4>
+          <pre id="jobsStatus" class="small" style="white-space:pre-wrap; margin:0" data-i18n="papa.jobs.loading">Lade…</pre>
+        </div>
+        <div>
+          <h4 data-i18n="papa.jobs.latest">Letzte 50</h4>
+          <div id="jobsList" class="small" style="margin:0; max-height:280px; overflow:auto" data-i18n="papa.jobs.loading">Lade…</div>
+        </div>
+      </div>
+      <div style="margin-top:8px">
+        <h4 data-i18n="papa.jobs.worker">Worker</h4>
+        <pre id="workersBox" class="small" style="white-space:pre-wrap; margin:0" data-i18n="papa.jobs.loading">Lade…</pre>
+      </div>
+      <div class="btn-row" style="margin-top:8px; align-items:center; gap:10px; display:flex; flex-wrap:wrap">
+        <button class="btn" id="btnJobsRefresh" type="button" data-i18n="papa.jobs.refresh">🔄 Jobs aktualisieren</button>
+        <button class="btn" data-auth="1" data-role="admin,worker" id="btnJobsRetry" type="button" data-i18n="papa.jobs.retry_failed">↩︎ Fehlgeschlagene neu einreihen</button>
+        <button class="btn" data-auth="1" data-role="admin,worker" id="btnJobsPurge" type="button" data-i18n="papa.jobs.purge_done">🧹 Erledigte löschen (1 Tag)</button>
+        <label class="inline" style="display:inline-flex; gap:6px; align-items:center;">
+          <input type="checkbox" id="jobsOnlyFailed"> <span data-i18n="papa.jobs.only_failed">Nur Fehler</span>
+        </label>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">
+      <p>© <span id="year"></span> KI_ana – mit Liebe gebaut.</p>
+      <p><a href="/static/impressum.html">Impressum</a> · <a href="/static/privacy.html">Datenschutz</a> · <a href="/static/agb.html">AGB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar loader (cache-busting + execute scripts)
+    (function(){
+      try{
+        fetch('/static/nav.html?v=' + Date.now())
+          .then(r=>r.text())
+          .then(html=>{
+            const n=document.getElementById('navbar');
+            if(!n) return;
+            n.innerHTML=html;
+            try{
+              n.querySelectorAll('script').forEach(old=>{
+                const s=document.createElement('script');
+                if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+                else { s.textContent = old.textContent || ''; }
+                document.body.appendChild(s);
+                old.remove();
+              });
+            }catch{}
+          })
+          .catch(()=>{});
+      }catch{}
+    })();
+  </script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // --- i18n helpers for toasts/alerts ---
+    function tr(key, fallback){ try { return (window.i18n && window.i18n.t(key, fallback)) || fallback; } catch { return fallback; } }
+    function toast(msg){ try{ alert(msg); }catch{} }
+    function roleDeniedMsg(){ return tr('toast.role_denied', '⚠️ Keine Berechtigung für diese Aktion.'); }
+    function loginRequiredMsg(){ return tr('toast.login_required', '⚠️ Login erforderlich.'); }
+    function fmtBytes(b){ if(b==null) return "-"; const u=['B','KB','MB','GB','TB']; let i=0; let x=Number(b); while(x>=1024&&i<u.length-1){x/=1024;i++} return x.toFixed(1)+' '+u[i] }
+    function renderRes(data){
+      const m=data.memory||{};
+      const used=m.used, total=m.total, pct=m.percent;
+      const load=data.loadavg||{};
+      return [
+        `Zeit: ${new Date(data.ts*1000).toLocaleTimeString()}`,
+        `CPU: ${data.cpu_percent??'-'}% (${data.cpu_count??'-'} Kerne)`,
+        `Load: ${load['1m']??'-'}/${load['5m']??'-'}/${load['15m']??'-'}`,
+        `RAM: ${fmtBytes(used)} / ${fmtBytes(total)} (${pct?pct.toFixed?pct.toFixed(1):pct:'-'}%)`,
+        `Prozesse: ${data.procs?.count??'-'} (open_files self: ${data.procs?.self_open_files??'-'})`,
+        `Uptime: ${data.uptime_seconds??'-'}s`,
+        `Disk: ${data.disk?fmtBytes(data.disk.used)+"/"+fmtBytes(data.disk.total)+` (${data.disk.percent?.toFixed?data.disk.percent.toFixed(1):data.disk.percent}%)`:'-'}\nNet I/O: ${data.net_io?data.net_io.bytes_recv+' in / '+data.net_io.bytes_sent+' out':'-'}`
+      ].join('\n');
+    }
+    function renderMet(m){
+      return [
+        `Zeit: ${new Date(m.ts*1000).toLocaleTimeString()}`,
+        `Blöcke: ${m.memory_blocks} (chain: ${m.chain_blocks})`,
+        `Jobs: ${m.jobs}`,
+        `Emergency: ${m.emergency_active?'AKTIV':'nein'}`,
+        `Netz: ${m.net_access?'OK':'blockiert'}`,
+        `LLM: ${m.ollama?.available?'verfügbar':'offline'}${m.ollama?.model?(' ('+m.ollama.model+')'):''}`
+      ].join('\n');
+    }
+    async function tick(){
+      try{
+        const j = await fetch('/api/system/status', { credentials:'include' }).then(x=>x.json());
+        const res = j?.resources || {};
+        const m = j?.metrics || {};
+        try{ const el=document.getElementById('res'); if(el) el.textContent = renderRes(res); }catch{}
+        try{ const el=document.getElementById('met'); if(el) el.textContent = renderMet({
+          ts: j?.ts||Date.now()/1000,
+          memory_blocks: m?.memory_blocks,
+          chain_blocks: m?.chain_blocks,
+          jobs: m?.jobs,
+          emergency_active: m?.emergency_active,
+          net_access: m?.net_access,
+          ollama: m?.ollama,
+        }); }catch{}
+      }catch(e){
+        const errTxt = (window.i18n&&i18n.t('papa.jobs.error','Fehler'))||'Fehler';
+        try{ const el=document.getElementById('res'); if(el) el.textContent = errTxt; }catch{}
+        try{ const el=document.getElementById('met'); if(el) el.textContent = errTxt; }catch{}
+      }
+    }
+    tick();
+    setInterval(tick, 5000);
+
+    // ---- Jobs -------------------------------------------------------------
+    async function jobsRefresh(){
+      try{
+        const [st, ls, hb] = await Promise.all([
+          fetch('/api/jobs/status', {credentials:'include'}).then(r=>r.json()),
+          fetch('/api/jobs?limit=50', {credentials:'include'}).then(r=>r.json()),
+          fetch('/api/jobs/heartbeats', {credentials:'include'}).then(r=>r.json())
+        ]);
+        const s = st || {};
+        const bs = s.by_status || {}; const bt = s.by_type || {};
+        const lines = [];
+        lines.push('Status:'); Object.keys(bs).sort().forEach(k=>lines.push(`  ${k||'-'}: ${bs[k]}`));
+        lines.push('Typen:'); Object.keys(bt).sort().forEach(k=>lines.push(`  ${k||'-'}: ${bt[k]}`));
+        document.getElementById('jobsStatus').textContent = lines.join('\n');
+        // Badges
+        try{
+          const q=Number(bs['queued']||0), l=Number(bs['leased']||0), f=Number(bs['failed']||0), d=Number(bs['done']||0);
+          const bq=document.getElementById('jobsBq'), bl=document.getElementById('jobsBl'), bf=document.getElementById('jobsBf'), bd=document.getElementById('jobsBd');
+          if(bq) bq.textContent = q; if(bl) bl.textContent = l; if(bf) bf.textContent = f; if(bd) bd.textContent = d;
+        }catch{}
+        let items = (ls && ls.items) ? ls.items : [];
+        try{ if (document.getElementById('jobsOnlyFailed').checked){ items = items.filter(j => j.status === 'failed'); } }catch{}
+        const root = document.getElementById('jobsList');
+        if (!items.length){ root.textContent = (window.i18n&&i18n.t('papa.jobs.no_jobs','Keine Jobs.'))||'Keine Jobs.'; }
+        else {
+          const rows = items.map(j => {
+            const err = j.error ? String(j.error).slice(0,90) : '';
+            const upd = j.updated_at ? new Date(j.updated_at*1000).toLocaleString() : '';
+            return `<tr data-jid="${j.id}">
+              <td>#${j.id}</td>
+              <td>${j.type}</td>
+              <td>${j.status}</td>
+              <td>${j.attempts||0}</td>
+              <td>${j.priority||0}</td>
+              <td>${upd}</td>
+              <td>${err}</td>
+            </tr>`;
+          }).join('');
+          root.innerHTML = `<table class="table"><thead><tr>
+            <th>ID</th><th data-i18n="papa.jobs.type">Typ</th><th data-i18n="papa.jobs.status">Status</th><th data-i18n="papa.jobs.attempts">Versuche</th><th data-i18n="papa.jobs.priority">Prio</th><th data-i18n="papa.jobs.updated">Aktualisiert</th><th data-i18n="papa.jobs.error">Fehler</th>
+          </tr></thead><tbody>${rows}</tbody></table><p class="small" data-i18n="papa.jobs.tip">Tipp: Zeile anklicken für Details.</p>`;
+          root.querySelectorAll('tbody tr').forEach(tr => tr.addEventListener('click', () => showJobDetail(tr.getAttribute('data-jid'))));
+          // cache full items for details
+          window._jobsCache = items.reduce((m,j)=>{ m[j.id]=j; return m; },{});
+        }
+        // Heartbeats
+        try{
+          const arr = (hb && hb.items) ? hb.items : [];
+          const lines = arr.map(w => {
+            const alive = (w.age <= 60);
+            const dot = alive ? '🟢' : '🔴';
+            const ago = Math.max(0, Math.round(w.age||0));
+            const types = Array.isArray(w.job_types) ? w.job_types.join(',') : '';
+            return `${dot} ${w.name||'?'} · ${ago}s · pid=${w.pid||''} · ${types}`;
+          }).join('\n');
+          document.getElementById('workersBox').textContent = lines || 'Keine Heartbeats gefunden.';
+        }catch{ document.getElementById('workersBox').textContent=(window.i18n&&i18n.t('papa.jobs.error','Fehler'))||'Fehler'; }
+      }catch(e){ const t=(window.i18n&&i18n.t('papa.jobs.error','Fehler'))||'Fehler'; document.getElementById('jobsStatus').textContent=t; document.getElementById('jobsList').textContent=t; }
+    }
+    document.getElementById('btnJobsRefresh').addEventListener('click', jobsRefresh);
+    document.getElementById('jobsOnlyFailed').addEventListener('change', jobsRefresh);
+    jobsRefresh();
+
+    // Job actions
+    document.getElementById('btnJobsRetry').addEventListener('click', async ()=>{
+      try{ const r = await postJSON('/api/jobs/retry-failed', {}); toast(((window.i18n&&i18n.t('papa.toasts.requeued','Neu eingereiht'))||'Neu eingereiht')+': '+r.requeued); jobsRefresh(); }catch(e){ toast(((window.i18n&&i18n.t('papa.toasts.error','Fehler'))||'Fehler')+': '+(e.message||e)); }
+    });
+    document.getElementById('btnJobsPurge').addEventListener('click', async ()=>{
+      try{ const r = await postJSON('/api/jobs/purge', { status:'done', older_than_seconds: 86400 }); toast(((window.i18n&&i18n.t('papa.toasts.deleted','Gelöscht'))||'Gelöscht')+': '+r.deleted); jobsRefresh(); }catch(e){ toast(((window.i18n&&i18n.t('papa.toasts.error','Fehler'))||'Fehler')+': '+(e.message||e)); }
+    });
+
+    // Job Detail Modal (lightweight)
+    let modalEl = null;
+    function ensureModal(){
+      if (modalEl) return modalEl;
+      const el = document.createElement('div');
+      el.id = 'jobModal';
+      el.style.position='fixed'; el.style.inset='0'; el.style.background='rgba(0,0,0,.35)'; el.style.display='none'; el.style.zIndex='3000';
+      el.innerHTML = `<div style="background:#fff; color:#222; border-radius:10px; max-width:900px; margin:6vh auto; padding:12px; box-shadow:0 8px 28px rgba(0,0,0,.35);">
+        <div style="display:flex; align-items:center; gap:8px; border-bottom:1px solid #eee; padding:6px 4px 10px 4px;">
+          <strong style="font-size:16px">Job‑Details</strong>
+          <span style="margin-left:auto"></span>
+          <button id="jobModalClose" style="border:1px solid #ddd; background:#fff; border-radius:8px; padding:2px 8px; cursor:pointer">×</button>
+        </div>
+        <div style="padding:10px 2px">
+          <pre id="jobModalPre" style="white-space:pre-wrap; background:#0b1021; color:#dfe6ff; padding:10px; border-radius:10px; max-height:70vh; overflow:auto; margin:0">{}</pre>
+          <div style="display:flex; gap:8px; margin-top:10px;">
+            <button id="jobRerun" class="btn">↻ Neu einreihen</button>
+            <button id="jobCopy" class="btn secondary">📋 Kopieren</button>
+          </div>
+        </div>
+      </div>`;
+      document.body.appendChild(el);
+      el.addEventListener('click', (ev)=>{ if(ev.target===el) hideModal(); });
+      el.querySelector('#jobModalClose').addEventListener('click', hideModal);
+      modalEl = el; return el;
+    }
+    function hideModal(){ if (modalEl) modalEl.style.display='none'; }
+    async function showJobDetail(id){
+      try{
+        ensureModal();
+        const data = (window._jobsCache && window._jobsCache[id]) ? window._jobsCache[id] : null;
+        const pre = modalEl.querySelector('#jobModalPre');
+        pre.textContent = data ? JSON.stringify(data, null, 2) : ((window.i18n&&i18n.t('papa.detail.not_found','Nicht gefunden.'))||'Nicht gefunden.');
+        modalEl.style.display = 'block';
+        modalEl.querySelector('#jobCopy').onclick = () => { try{ navigator.clipboard.writeText(pre.textContent||''); toast(((window.i18n&&i18n.t('papa.toasts.copied','Kopiert.'))||'Kopiert.')); }catch{} };
+        modalEl.querySelector('#jobRerun').onclick = async () => {
+          if (!data) return;
+          try{
+            const body = { type: data.type, payload: data.payload || {}, priority: data.priority||0 };
+            const r = await postJSON('/api/jobs/enqueue', body);
+            toast(((window.i18n&&i18n.t('papa.toasts.enqueued','Neu eingereiht'))||'Neu eingereiht')+': #'+(r.id||''));
+            hideModal(); jobsRefresh();
+          }catch(e){ toast(((window.i18n&&i18n.t('papa.toasts.error','Fehler'))||'Fehler')+': '+(e.message||e)); }
+        };
+      }catch{}
+    }
+
+    // ---- Enqueue buttons (Jobs) -----------------------------------------
+    async function postJSON(url, body){
+      const r = await fetch(url, { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body||{}) });
+      const j = await r.json().catch(()=>({}));
+      if (!r.ok || j.ok === false){
+        const err = new Error(j.error || `HTTP ${r.status}`);
+        err.status = r.status;
+        err.data = j;
+        throw err;
+      }
+      return j;
+    }
+    document.getElementById('btnEnqRun').addEventListener('click', async ()=>{
+      try{
+        const j = await postJSON('/crawler/enqueue/run', { idempotency_key: 'run_'+Date.now() });
+        toast(tr('papa.toasts.enqueued','Neu eingereiht')+': #'+(j.id||''));
+        jobsRefresh();
+      }catch(e){
+        const s = e && e.status;
+        const m = s===401 ? loginRequiredMsg() : (s===403 ? roleDeniedMsg() : tr('papa.toasts.enqueue_failed','Konnte Job nicht einreihen'));
+        toast(m+ (e && e.message ? ' – '+e.message : ''));
+      }
+    });
+    document.getElementById('btnEnqPromote').addEventListener('click', async ()=>{
+      try{
+        const j = await postJSON('/crawler/enqueue/promote', { idempotency_key: 'promote_'+Date.now(), limit: 100 });
+        toast(tr('papa.toasts.enqueued','Neu eingereiht')+': #'+(j.id||''));
+        jobsRefresh();
+      }catch(e){
+        const s = e && e.status;
+        const m = s===401 ? loginRequiredMsg() : (s===403 ? roleDeniedMsg() : tr('papa.toasts.enqueue_failed','Konnte Job nicht einreihen'));
+        toast(m+ (e && e.message ? ' – '+e.message : ''));
+      }
+    });
+
+    // ---- Sub‑KI trust submit ------------------------------------------------
+    document.getElementById('btnSetTrust')?.addEventListener('click', async ()=>{
+      const sid = (document.getElementById('subkiId')?.value||'').trim();
+      const trustV = parseFloat(document.getElementById('subkiTrust')?.value||'0.9');
+      if (!sid){ toast(tr('papa.toasts.error','Fehler')+': subki_id'); return; }
+      try{
+        const r = await fetch('/api/subki/feedback', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ subki_id: sid, trust: trustV }) });
+        const j = await r.json().catch(()=>({}));
+        if (!r.ok || j.ok === false){ const s=r.status; const m = s===401?loginRequiredMsg():(s===403?roleDeniedMsg(): (i18n&&i18n.t('papa.toasts.error','Fehler'))||'Fehler'); throw new Error(m); }
+        toast((i18n&&i18n.t('papa.subki.trust_saved','Gespeichert'))||'Gespeichert');
+      }catch(e){ toast(((i18n&&i18n.t('papa.subki.trust_error','Fehler beim Speichern'))||'Fehler beim Speichern')+': '+(e.message||e)); }
+    });
+
+    // ---- Systemstatus -------------------------------------------------------
+    function fmtBytes(x){
+      if (x==null) return '–';
+      const units=['B','KB','MB','GB','TB'];
+      let i=0, v=Number(x);
+      while(v>=1024 && i<units.length-1){ v/=1024; i++; }
+      return v.toFixed(1)+' '+units[i];
+    }
+    function pct(x){ return (x==null||isNaN(x))? '–' : (Number(x).toFixed(1)+'%'); }
+    async function loadSystemStatus(){
+      try{
+        const r = await fetch('/api/system/status', { credentials: 'include' });
+        const j = await r.json();
+        const m = j.metrics || {};
+        const res = j.resources || {};
+        // TS
+        try{ const d=new Date((j.ts||Date.now())*1000); document.getElementById('sys-ts').textContent = d.toLocaleString(); }catch{}
+        // CPU
+        const cpu = res.cpu_percent!=null ? res.cpu_percent.toFixed(1)+'%' : '–';
+        document.getElementById('sys-cpu').textContent = `${cpu} (${res.cpu_count||'–'} cores)`;
+        // Load
+        const la = res.loadavg || {};
+        document.getElementById('sys-load').textContent = (la['1m']!=null?la['1m'].toFixed(2):'–')+ ' / ' + (la['5m']!=null?la['5m'].toFixed(2):'–') + ' / ' + (la['15m']!=null?la['15m'].toFixed(2):'–');
+        // RAM
+        const mem = res.memory || {};
+        const ramTxt = (fmtBytes(mem.used) + ' / ' + fmtBytes(mem.total) + ' ('+ pct(mem.percent) + ')');
+        try{ const el=document.getElementById('sys-ram'); if(el) el.textContent = ramTxt; }catch{}
+        // Disk
+        const dk = res.disk || {};
+        const dkTxt = (fmtBytes(dk.used) + ' / ' + fmtBytes(dk.total) + ' ('+ pct(dk.percent) + ')');
+        try{ const el=document.getElementById('sys-disk'); if(el) el.textContent = dkTxt; }catch{}
+        // Net
+        const ni = res.net_io || {};
+        const netTxt = (ni.bytes_sent!=null||ni.bytes_recv!=null) ? (fmtBytes(ni.bytes_sent||0)+' ↑ / '+fmtBytes(ni.bytes_recv||0)+' ↓') : '–';
+        try{ const el=document.getElementById('sys-net'); if(el) el.textContent = netTxt; }catch{}
+        // Jobs
+        try{ const el=document.getElementById('sys-jobs'); if(el) el.textContent = (m.jobs!=null ? String(m.jobs) : '–'); }catch{}
+        // Ollama
+        const ol = (m.ollama||{});
+        const o = document.getElementById('sys-ollama');
+        const ok = !!ol.available;
+        o.textContent = `Ollama: ${ok? 'verfügbar' : 'nicht verfügbar'}${ol.model? ' – '+ol.model : ''}`;
+        o.style.background = ok? '#e6ffe6' : '#ffe6e6';
+        o.style.color = ok? '#1a4' : '#833';
+        // Header status pill: show overall quick state
+        try{
+          const pill = document.getElementById('sys-pill');
+          const emergency = !!(m.emergency_active);
+          let label = ok ? 'OK' : 'Problem';
+          let bg = ok ? '#e6ffe6' : '#ffe6e6';
+          let fg = ok ? '#1a4' : '#833';
+          if (emergency){ label = 'Not‑Aus aktiv'; bg = '#ffe6e6'; fg = '#833'; }
+          if (pill){ pill.textContent = `System: ${label}`; pill.style.background = bg; pill.style.color = fg; }
+        }catch{}
+      }catch(e){
+        // Show a subtle hint only
+        try{ const el=document.getElementById('sys-ts'); if(el) el.textContent = 'Status: offline'; }catch{}
+        try{ const pill=document.getElementById('sys-pill'); if (pill){ pill.textContent='System: offline'; pill.style.background='#ffe6e6'; pill.style.color='#833'; } }catch{}
+      }
+    }
+    loadSystemStatus();
+    setInterval(loadSystemStatus, 5000);
+
+    // ---- Role Inspector ----------------------------------------------------
+    async function loadMe(){
+      try{
+        const r = await fetch('/api/me', { credentials:'include' });
+        const j = await r.json();
+        const auth = !!(j && j.auth);
+        const u = j && j.user || null;
+        const roles = (u && Array.isArray(u.roles)) ? u.roles : [];
+        const elA = document.getElementById('me-auth'); if (elA) elA.textContent = auth ? 'true' : 'false';
+        const elU = document.getElementById('me-user'); if (elU) elU.textContent = (u && (u.username || u.email || ('uid:'+u.id))) || '–';
+        const elP = document.getElementById('me-papa'); if (elP) elP.textContent = (u && (u.is_papa ? 'true' : 'false'));
+        const elR = document.getElementById('me-roles'); if (elR) elR.textContent = roles.length ? roles.join(', ') : '–';
+      }catch(e){
+        try{ const elR=document.getElementById('me-roles'); if (elR) elR.textContent = 'Fehler'; }catch{}
+      }
+    }
+    loadMe();
+    document.getElementById('btnReloadMe')?.addEventListener('click', loadMe);
+  </script>
+  <!-- KI_ana Interface: papa.html -->
+</body>
+</html>

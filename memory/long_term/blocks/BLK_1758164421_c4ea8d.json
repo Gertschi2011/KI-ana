@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Slack is extorting us with a $195k/yr bill increase\n • Hacker News: Hypervisor 101 in Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Recherche zu Jan Marsalek: \"Deutschland hätte viel aktiver sein können\"",
+  "created_at": 1758164421.169416,
+  "hash": "3695d756a5dc1c8ca8092f120c6a15703ee55c2f2f3b0086073b297b8deeba15",
+  "id": "BLK_1758164421_c4ea8d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Jy+6avsqdIdHue9GtUqeUmqyCtAZ24f7hSA1fxLVy71CmhTWU7gJmF9okxktLRulRb2HWkLYg1xNYdUOfri+Cw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 05:00",
+  "url": null
+}

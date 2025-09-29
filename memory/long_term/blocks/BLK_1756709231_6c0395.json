@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What Is Complexity in Chess?\n • Hacker News: Nintendo Switch 2 Dock USB-C Compatibility\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hunderte Tote nach Erdbeben in Afghanistan",
+  "created_at": 1756709231.9633336,
+  "hash": "08cc0a468f1b8e50c902e290583faf4f07cd7366c923cfc7039def7051bb7490",
+  "id": "BLK_1756709231_6c0395",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KvixWA1nrRruQUeMTiqI+zauFrCPSuBg6v/PuppyHVkjORY2V8JHVb7FyGjV6+K4P3CV0zHe0fYrw1tjo7hkAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 08:47",
+  "url": null
+}

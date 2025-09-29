@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Linux phones are more important now than ever\n • Hacker News: I feel Apple has lost its alignment with me and other long-time customers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfel arabischer Staaten bildet Front gegen Israel",
+  "created_at": 1757990454.3847296,
+  "hash": "eb98aceec5a8e5560343376d0e30ee5036419add065fbbd7fcbcca92e6162eac",
+  "id": "BLK_1757990454_90fa6f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "yKqAouEdHLp08cRh70p/XGuVI64U6P9Tah/RKVVRiP2qZsGguHMnh38VTiN4k0D5bu+wMYNjeW7z1EdlT7LTAg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 04:40",
+  "url": null
+}

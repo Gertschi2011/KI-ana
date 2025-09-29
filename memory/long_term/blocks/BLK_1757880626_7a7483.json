@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Update: Open-source private home security camera(end-to-end encryption)\n • Hacker News: ChatControl update: blocking minority held but Denmark is moving forward anyway\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Deutschland ist Basketball-Europameister",
+  "created_at": 1757880626.056003,
+  "hash": "6d5cb131528aaefeb98cf6b7b352bb6bb24bd9ab9bbda3b448df958a3c5b0bb4",
+  "id": "BLK_1757880626_7a7483",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+L2MoBYYrv9T3tHjiM2CvBW0DKJR1i4dwtWThY0X+ewLBUCSnFg+b5LEQWWjTWRjqpCLVMS5qo63qUQB/RqECA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 22:10",
+  "url": null
+}

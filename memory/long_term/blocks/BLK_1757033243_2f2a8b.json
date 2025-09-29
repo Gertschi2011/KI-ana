@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: We Investigated Tesla's Autopilot. It's Scarier Than You Think [video]\n • Hacker News: Updating restrictions of sales to unsupported regions\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757033243.5267823,
+  "hash": "7c34e507bd63c7a1814c9e4f215a9e93a38b0f8b50511ca4363a29f2a8edfec7",
+  "id": "BLK_1757033243_2f2a8b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ynCenoJVmuD722QzMLxlMBom4ea8q1w+iZQfEZ/mggyWaLvn46BGEtM1UJSNPQRWnik0f1VWZH6YSs8/nDGqBA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 02:47",
+  "url": null
+}

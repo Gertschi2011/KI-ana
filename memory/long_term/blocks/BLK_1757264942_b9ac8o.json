@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Campfire: Web-Based Chat Application\n • Hacker News: The MacBook has a sensor that knows the exact angle of the screen hinge\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Empörung nach Angriffen auf Ukraine: \"Der Kreml verhöhnt die Diplomatie\"",
+  "hash": "33405a7c0a0e49ff419c16b8ccd2f1f494d891e83105fddf00f6d1a352547a54",
+  "id": "BLK_1757264942_b9ac8o",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "CVa4NGAtGE8hmaYEqFQzniFzqxSaTueRxtP8l3zxrUY9qGEO2ZH8jTr4ug6+XkIP/xheNw512kdVbRKo3DGoBQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 19:09",
+  "ts": 1757264942,
+  "url": ""
+}

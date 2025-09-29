@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The brompton-ness of it all\n • Hacker News: Using Claude Code to modernize a 25-year-old kernel driver\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Politische Krise in Frankreich - Bayrou stellt Vertrauensfrage",
+  "created_at": 1757305178.096615,
+  "hash": "80c171d652bcc0ff0c164a89cc1d041903c032d5fb882b0e28452c9f632b1a56",
+  "id": "BLK_1757305178_8458a7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "iPkxtPRr7FD7/EP82yqTUx/2AnCtsyA5SEgipyOhwAPplfIA9nGmKezSegc1VdArgRjejhZnxqKfdWXDc1ktCw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 06:19",
+  "url": null
+}

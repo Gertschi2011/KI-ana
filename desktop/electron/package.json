@@ -1,0 +1,14 @@
+{
+  "name": "kiana-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kiana Desktop Shell (Phase 2 Scaffold)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron ."
+  },
+  "devDependencies": {
+    "electron": "28.3.0"
+  }
+}

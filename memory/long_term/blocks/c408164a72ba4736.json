@@ -1,0 +1,17 @@
+{
+  "content": "KI ist immer objektiv.",
+  "hash": "63a96131dbfabeae0eabc3807bebb752fe1a04f04b2578ccbdcc8c57a143e650",
+  "id": "c408164a72ba4736",
+  "meta": {
+    "provenance": "test_fixture",
+    "tags": [
+      "test:true"
+    ]
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "DQT4NMslhDy2kHJ09rLc77Y2QFTZceymhrls2vjXgE9FCtDAodWldbRKKzGJ4HOLOXa3XRXYre2fChTlM8lBCQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "timestamp": "2025-09-03T14:41:27Z",
+  "title": "Testblock c408164a72ba4736",
+  "topic": "Verantwortung"
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FreeDroidWarn\n • Hacker News: Apple pulls iPhone torrent app from AltStore PAL in Europe\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum Analphabetismus die Demokratie gefährden kann",
+  "created_at": 1756793873.1744418,
+  "hash": "e9556655f5842094001edfdac7ab9c759c7777d2f41daf3a8baa9a49293c8072",
+  "id": "BLK_1756793873_f49ab6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "tRZW31AxV/DrpI/y4gw1zs9shq007u7LAYdV3aqzzkKXpv4fxhdu6mc748evnxXaXLFtYGgQ9cWJKk2GUCHhAg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 08:17",
+  "url": null
+}

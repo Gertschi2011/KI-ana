@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Grocery prices have jumped up, and there's no relief in sight\n • Hacker News: Dynamo AI (YC W22) Is Hiring a Senior Kubernetes Engineer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Xiangshan Forum in Peking: Sicherheitskonferenz gegen den Westen",
+  "created_at": 1758289233.5032368,
+  "hash": "eb13a4f3bda3a290b8b79cafb0c2f6881fff1d52a4d28b287bbed14a244eeb14",
+  "id": "BLK_1758289233_e5409a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "AAgL5NA0FHC+aKsPr1E1fh6g0jCvEYagy6+fYZl1eSgcKr9zRONIQIXCe54AZWZ3NYQIzpcYPuXM5guLWz7LBw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 15:40",
+  "url": null
+}

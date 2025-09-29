@@ -1,0 +1,10 @@
+[Unit]
+Description=Run KI_ana verify_chain periodically
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

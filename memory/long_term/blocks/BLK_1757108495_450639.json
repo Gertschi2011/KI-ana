@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Gym Class VR (YC W22) Is Hiring – UX Design Engineer\n • Hacker News: California AG to OpenAI: Harm to Children Will Not Be Tolerated\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Parteitag von Reform UK: Die Ein-Mann-Band bespielt ein Thema",
+  "created_at": 1757108495.6603804,
+  "hash": "e0d6748d71a3785c84aa2118943b1310987c6e51a5f73267f9b6e2c4d3492660",
+  "id": "BLK_1757108495_450639",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "sFZlppRhE28itbMU1yMBA8ZmwKXxue6OVqC++QwZ7ifQftGZY8qxjgWmd0R6S9NFwkIsFq4s6OQbrKU9b7HrBg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 23:41",
+  "url": null
+}

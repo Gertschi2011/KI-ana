@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Conway's Game of Life, but Musical\n • Hacker News: CRISPR Offers New Hope for Treating Diabetes\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russische Einflussnahme - Eine deutsche Informantin des Kreml?",
+  "hash": "7434efa9479fb028f8b828f45c19b6a23edd8c6270badb2a8c434d9ebd9ae00c",
+  "id": "BLK_1757603181_fe97si",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "R501cPox1Lm0SolRdxf8NNA48v489mH1QnaZr3UnHaZKk1BYdkfG1U1mQ5J5v90JPFGWkZkH/sbS42UiVtDcBw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 17:06",
+  "ts": 1757603181,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Intermittent fasting correlated with increased risk of cardiovascular disease\n • Hacker News: Sheafification – The optimal path to mathematical mastery\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfeltreffen in Tianjin: Wie eng wird Indiens Beziehung zu China?",
+  "created_at": 1756621408.7076976,
+  "hash": "3ab29950b90644b465230bcb9a265921397862ee77a3b4c9aafd9e206973c878",
+  "id": "BLK_1756621408_ea580b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "YPW3jGHu73+O1x1j4BbGWzwsqcj6KwxYAHfDoz7KDyrQg2voORRNJ/c5JjpdETpP2xQuda8/z4SEjnfOQ0SOBg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 08:23",
+  "url": null
+}

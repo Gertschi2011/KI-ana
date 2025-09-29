@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: What is the origin of the private network address 192.168.*.*?\n • Hacker News: GPT-5 Thinking in ChatGPT (a.k.a. Research Goblin) is shockingly good at search\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Massive Angriffe auf Ukraine - Regierungsgebäude in Kiew brennt",
+  "hash": "317e074360b53b0480979b6d94691a257a0fb8923a4e284c86c717d95e7b9c11",
+  "id": "BLK_1757245359_ogesjq",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Vqdxn45hfol7MfCL4ppMtqdIzslyDlWTm4ydC83kIrqRUS1ZSGyTM2NiTDrMZVn8ldVPhriLNV4IQaPm6pe9DA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 13:42",
+  "ts": 1757245359,
+  "url": ""
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: High-performance read-through cache for object storage\n • Hacker News: Supporting Our AI Overlords: Redesigning Data Systems to Be Agent-First\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzung: Estland beantragt Artikel-4-Beratungen der NATO",
+  "hash": "31e6247756707ab94719ba852d7f322321a71e55942ff9a55d700bdc0f2ac53d",
+  "id": "BLK_1758346858_asitig",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "hMxZR4dLo5VnIk18FWYPVdObNuNpYIT9k5EZnWxKOJV8llXvzdznIGC++vY5lCoVA5GG8HEKGt3mmOmkn/6CBw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 07:40",
+  "ts": 1758346858,
+  "url": ""
+}

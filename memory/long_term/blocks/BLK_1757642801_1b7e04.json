@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: We traded blogs for black boxes, now we're paying for it\n • Hacker News: Backprompting: Leveraging synthetic production data for health advice guardrails\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brasiliens Ex-Präsident Bolsonaro zu mehr als 27 Jahren Haft verurteilt",
+  "created_at": 1757642801.0659535,
+  "hash": "9c70191eeb1e9d88ba79e6430f8f297ad5dd7e138238caddc541047e2b3cceab",
+  "id": "BLK_1757642801_1b7e04",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "pBrt2Y+c1mC9M4c6iDoIESCMRnS7E7sDF6HpS79UBxkm6NVb9mh2OVwXJnFglGRvPuTnrg4FVFvCBztQSMdjCw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 04:06",
+  "url": null
+}

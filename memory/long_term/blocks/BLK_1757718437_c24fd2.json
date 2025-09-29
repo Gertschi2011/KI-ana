@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FFglitch, FFmpeg fork for glitch arch\n • Hacker News: Show HN: Aris – a free AI-powered answer engine for kids\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hinweise auf ein politische Motiv für Kirk-Attentat",
+  "created_at": 1757718437.8858242,
+  "hash": "e5fd65417f8251fc06b76b920b06ba1a962ad53d2bb676c30fa4d7def3124fcb",
+  "id": "BLK_1757718437_c24fd2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cPZWTtLFOgWg/GNnDACoxYMo+UmeYXuxhgSBnoJRpW3J3fZwccSSxeCbIrVtIjqa8iTTJchMliEOwWvy1FZeCg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 01:07",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Google: 'Your $1000 phone needs our permission to install apps now' [video]\n • Hacker News: \"This telegram must be closely paraphrased before being communicated\" Why?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gipfeltreffen in Tianjin - China und Indien wollen zusammenrücken",
+  "created_at": 1756652022.0596046,
+  "hash": "3d5233a49b23651833ddb8fe880732f114d616c4b7df228e5fb78d99df316d8a",
+  "id": "BLK_1756652022_4e8bc8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jBJaEYyalbPazbYFZNU7wXl8jD3113xyzCGTcANPWDq4AyQwl56Lz+jn+e6/dQKkimn+vQ7/2BCQ/yI3G4hBAw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 16:53",
+  "url": null
+}

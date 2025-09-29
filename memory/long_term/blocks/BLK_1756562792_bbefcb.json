@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI models need a virtual machine\n • Hacker News: Cognitive Load is what matters\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Merkels Flüchtlingspolitik die AfD prägte",
+  "created_at": 1756562792.601302,
+  "hash": "e98cc1ef73c8e36c60e187b05da639229e5ccbe0e7d65937713ef1aa9e2ff918",
+  "id": "BLK_1756562792_bbefcb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "SNKs13NFkuSRRTjjCSisy51GlaTJ7sI+qgSD3Zvn2mFu5sSfk8rHw2do75wnDLFK+erjXWrtewr38nNZVQXwDQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-30 16:06",
+  "url": null
+}

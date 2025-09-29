@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Airbus B612 Cockpit Font\n • Hacker News: Today, I learned that eels are fish\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Bedeutung die Unabhängigkeit von Notenbanken hat",
+  "created_at": 1756912979.6005206,
+  "hash": "91a124bb7d04d2d663b15e4edd60ea11469ef0fef5dd258f977ce586a2c97436",
+  "id": "BLK_1756912979_b98486",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "aZbkdkp7LsSHAEwXg4U+6B2o/PN8yS5p3as6C4lPCncaCJceqAogfaajeSunkIRAA/bFKahDSC4EEA1+a42FDA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 17:22",
+  "url": null
+}

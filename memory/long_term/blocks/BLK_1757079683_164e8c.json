@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Data Modeling Guide for Real-Time Analytics with ClickHouse\n • Hacker News: Lava RGB\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Opposition kritisiert Haushalt für 2025: \"Finanzpolitischer Irrgarten\"",
+  "created_at": 1757079683.5406966,
+  "hash": "d5b8e55a30a0da2e3a9eba30d1c8500c070c75e7622a2061927fd0d5403ce4f5",
+  "id": "BLK_1757079683_164e8c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "htAYiWuLnQRYe+WKcEeLHyPsle+p677vaq2pkzyTbef175H9N2CR9jE5rP1L7wO2lMgogNKh4z2mRoP7caLhDA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 15:41",
+  "url": null
+}

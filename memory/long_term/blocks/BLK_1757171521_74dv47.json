@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Oldest Recorded Transaction\n • Hacker News: Vibe Coding Through the Berghain Challenge\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD die Kultur in Sachsen-Anhalt umdeutet",
+  "hash": "548278cd4f0b89e8aac4dd261f2c39ba4144bc48df9e119bc60a0d9453af89cc",
+  "id": "BLK_1757171521_74dv47",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "jK7Fi3kk3NgMGZMNZedvSM6Da8/bqi0CrgKZydUc5cmNGHjaItO9MMRDkL/vFAyHQpeELDDDVtbuIgJrGuS0DA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 17:12",
+  "ts": 1757171521,
+  "url": ""
+}

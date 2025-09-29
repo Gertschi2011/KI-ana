@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Comic Sans typeball designed to work with the IBM Selectric typewriters\n • Hacker News: Zig Software Foundation 2025 Financial Report and Fundraiser\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): China will mit riesiger Militärparade seine Macht demonstrieren",
+  "created_at": 1756881047.6373756,
+  "hash": "2fd9bd794ce58fc58cc30bce5ec898f4e9b71136d0bd1cc336c3ed781a73db0b",
+  "id": "BLK_1756881047_964f16",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "G0UefkWiirxYRci5K2XOs9TSO+huc7vlbLu4vEaGi3CW2pX0t7WOfnxxIAczQnTNnQYR/31S9Bk+tXXaQ2R+Dw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 08:30",
+  "url": null
+}

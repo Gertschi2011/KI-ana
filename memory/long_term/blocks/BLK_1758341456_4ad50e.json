@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: White House keeps heat on ABC's Maher\n • Hacker News: Things managers do that leaders never would\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzung: Estland beantragt Artikel-4-Beratungen der NATO",
+  "created_at": 1758341456.205283,
+  "hash": "ddeb32e5ef31291955197ce0be049c8b32ae8907a427cff6b48439c6121a293b",
+  "id": "BLK_1758341456_4ad50e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "0mOubmSeD9kNVWLrkMa9DOxqKCQ2fDgTlvm6l3hooDixnLbJY6vhkL5vEQDTRZeQULBXvUAxZzt2oWy+xiUvDw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 06:10",
+  "url": null
+}

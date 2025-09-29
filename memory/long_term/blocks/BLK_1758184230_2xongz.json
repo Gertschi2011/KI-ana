@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Pnpm has a new setting to stave off supply chain attacks\n • Hacker News: History of the Gem Desktop Environment\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Äußerungen nach Kirk-Mord: Jimmy-Kimmel-Show wird vorerst abgesetzt",
+  "hash": "1caedd567ceb113cea599c73e860b41305aeb1a8e09d1e61d6f494cb556caf89",
+  "id": "BLK_1758184230_2xongz",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Hxs5w7A4g3RXvHtDnH9THHPnmpYJ9CKbz6lX30jvB3rtiGNRvkyQIXp+pMoL7nH5sqU1lx2Y7bpnJwrIkKK9Dw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 10:30",
+  "ts": 1758184230,
+  "url": ""
+}

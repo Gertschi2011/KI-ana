@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Linux phones are more important now than ever\n • Hacker News: I feel Apple has lost its alignment with me and other long-time customers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Militärexperten warnen Israel vor Offensive auf Gaza-Stadt",
+  "created_at": 1757995212.2244463,
+  "hash": "b0e8ddbe935bab1d724e0aa451c7e482b0b8319e959f1ae391eb630d323fff5c",
+  "id": "BLK_1757995212_2b7e31",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ZCRNdpb6sgZ7a3untv/k/ea18iNiWlcAzDA5yaNY9twhgxbaDH6bxU9ZpIQpOvy+99mlBwQ5AniqCwJPC1HOBQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-16 06:00",
+  "url": null
+}

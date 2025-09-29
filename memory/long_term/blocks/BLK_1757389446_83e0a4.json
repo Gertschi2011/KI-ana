@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Attempt – A CLI for retrying fallible commands\n • Hacker News: No adblocker detected\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): So startet Schwarz-Rot nach der Sommerpause in den Herbst",
+  "created_at": 1757389446.322921,
+  "hash": "5b272fb28a1467026ba4c8b9850a8751cd0476f1f460b198470f0ba0ddd470d7",
+  "id": "BLK_1757389446_83e0a4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "CBvKBcQ5mvho7avOcYVXR46HTVxZc5CwiOjX5iOJkdqz3jH7yjzAZoyNjR1LsVlDNwBT/o+UXlxqSMmYOH3BBA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 05:44",
+  "url": null
+}

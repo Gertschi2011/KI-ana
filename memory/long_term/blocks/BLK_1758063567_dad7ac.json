@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Micro-LEDs boost random number generation\n • Hacker News: SQL performance improvements: finding the right queries to fix\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Tatverdächtiger im Fall Kirk wegen Mordes angeklagt",
+  "created_at": 1758063567.420613,
+  "hash": "d3a38bb813e23429ea8c622a12e7029f78ccead346fe0474a91469abad26c40b",
+  "id": "BLK_1758063567_dad7ac",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Ce4QITKYpznKlk1HlkusZJtZMnf5GdoOB3/pZyMSrEW4wkt+n1xFFfVTjnwOm1y7oVxbKBaqQfL4skFTD9MjAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 00:59",
+  "url": null
+}

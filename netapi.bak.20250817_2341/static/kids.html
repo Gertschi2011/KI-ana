@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>KI_ana – Kids-Chat</title>
+<link rel="stylesheet" href="/static/style.css">
+<style>
+  .chat-wrap{max-width:840px;margin:20px auto;padding:0 16px}
+  .messages{background:#101735;border:1px solid #223062;border-radius:16px;
+            padding:12px;min-height:260px;max-height:480px;overflow:auto}
+  .bubble{max-width:75%;padding:10px 12px;border-radius:12px;margin:8px 0}
+  .me{margin-left:auto;background:#2342a0}
+  .bot{margin-right:auto;background:#1a2550}
+  .row{display:flex;gap:10px;margin-top:10px}
+  input,button{padding:12px;border-radius:10px;border:1px solid #2c3d74;background:#0f1530;color:#e8edf7}
+  input{flex:1}
+  button{cursor:pointer;background:linear-gradient(180deg,#1a2760,#132051)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-left">
+    <img src="/static/Avatar_KI_ana.jpg" alt="KI_ana" class="avatar"/>
+    <div>
+      <h1>Kids-Chat mit <strong>KI_ana</strong> 👋</h1>
+      <p>Frag mich etwas – oder schick mir einen Link, aus dem ich lernen soll.</p>
+    </div>
+  </div>
+  <div id="nav"></div>
+</header>
+
+<main class="chat-wrap">
+  <div class="messages" id="chatBox" aria-live="polite"></div>
+  <div class="row">
+    <input id="msg" placeholder="Schreib mir … (Frage, Erklärung oder Link)"/>
+    <button id="send">Senden</button>
+  </div>
+  <p id="hint" class="muted tiny"></p>
+</main>
+
+<script src="/static/nav.js?v=4" defer></script>
+<script>
+(function(){
+  const chat = document.getElementById('chatBox');
+  const msg  = document.getElementById('msg');
+  const hint = document.getElementById('hint');
+  const sendBtn = document.getElementById('send');
+
+  function add(role,text){
+    const b=document.createElement('div');
+    b.className='bubble '+(role==='me'?'me':'bot');
+    b.textContent=text;
+    chat.appendChild(b);
+    chat.scrollTop=chat.scrollHeight;
+  }
+
+  async function send(){
+    const t = msg.value.trim(); if(!t) return;
+    msg.value=''; add('me', t);
+    try{
+      const r = await fetch('/chat', {
+        method:'POST',
+        credentials:'include',                 // <- Session-Cookie verwenden
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({message:t})
+      });
+      if (r.status===401){
+        hint.textContent = "Bitte zuerst einloggen (oben rechts → Login).";
+        add('bot', 'Ich brauche ein Login, um zu antworten. 🙂');
+        return;
+      }
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      const d = await r.json();
+      let reply = d.reply || '(keine Antwort)';
+      if(d.topic){ reply += `\n\n— [${d.action}] ${d.topic}`; }
+      add('bot', reply);
+    }catch(e){
+      add('bot', '⚠️ Fehler: '+e.message);
+    }
+  }
+
+  sendBtn.onclick = send;
+  msg.addEventListener('keydown', ev => { if(ev.key==='Enter'){ ev.preventDefault(); send(); } });
+})();
+</script>
+</body>
+</html>

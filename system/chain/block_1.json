@@ -1,0 +1,16 @@
+{
+  "block_id": 1,
+  "content_hash": "",
+  "hash": "cd0e1d1f55283d6a5cf49075bc45c39045a18db83b0f1a607271b85959ca7635",
+  "memory_path": "",
+  "meta": {},
+  "previous_hash": "GENESIS_BLOCK_HASH",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "l+jOXcLbAUA8+8GlQa71TZ/eU6jfgW2J+J6+r4FIqKIoki+EvJ6UlnpUHFtyaqppXJQTTT/GV9YQirtcUZB9AQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "signer_pubkey": "BPc5h+jR3VdGXle6pghTBSfDAiok+iYcwgbCuFX9+7g=",
+  "source": "🗂️ Unbekannt",
+  "timestamp": "2025-08-07T12:48:27.596095Z",
+  "topic": "",
+  "type": "knowledge"
+}

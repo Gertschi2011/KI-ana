@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Rug pulls, forks, and open-source feudalism\n • Hacker News: Developing a Space Flight Simulator in Clojure\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump droht EU mit Zöllen nach Kartellstrafe für Google",
+  "hash": "83e32f9b9df7592c053cc0d5ef569e9218bad4acd81d2949bfec58112fca9b47",
+  "id": "BLK_1757144510_59ybz1",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "no8J0Yvf1HWCKQ39RejHZMwP2BRQp+vaGTcY4n5VJlGuSHkmjkqaISVrx+9lOvcxy+/Z6fu+3IC5J70SS7/9BA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-06 09:41",
+  "ts": 1757144510,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Patrick Winston: How to Speak (2018) [video]\n • Hacker News: Amazon has mostly sat out the AI talent war\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwierige Rettungsarbeiten nach Erdbeben in Afghanistan",
+  "created_at": 1756756054.5594854,
+  "hash": "ea4e79d836d55ba20de66fdf3d9697bfb966b5b43587d839a0744e0844aa471c",
+  "id": "BLK_1756756054_cf59ce",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "COrp87Kwtd21MUOHXiJLX/ZxXzdVFYKypD3oYkk73mrY1duO6ciILYnvnlibGyVZ7j1whSTog1sdqVffgt1iDg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 21:47",
+  "url": null
+}

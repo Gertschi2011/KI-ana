@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Abo & Preise – KI_ana</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Wähle zwischen Free-, Pro- und Creator-Abo für KI_ana – deiner persönlichen KI.">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/chat.css">
+</head>
+<body>
+  <div class="page">
+    <!-- Navigation -->
+    <div id="navbar"></div>
+
+    <!-- Hauptinhalt -->
+    <main class="container padding-top">
+      <section class="card">
+        <h1 class="center">Abo & Preise</h1>
+        <p class="center">Wähle das Modell, das zu dir passt</p>
+
+        <div class="features cards">
+          <div class="card">
+            <h3>Free</h3>
+            <p>Chatten & kennenlernen. Fair mit Limits.</p>
+            <a class="btn btn-primary" href="/static/login.html">Kostenlos starten</a>
+          </div>
+          <div class="card">
+            <h3>Pro</h3>
+            <p>Mehr Kontext, Priorität, bald: Tools & Plugins.</p>
+            <a class="btn btn-primary" href="/static/login.html">Pro freischalten</a>
+          </div>
+          <div class="card">
+            <h3>Creator</h3>
+            <p>Subminds, Experimente & Early Features.</p>
+            <a class="btn btn-primary" href="/static/login.html">Creator anfragen</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Navigation nachladen -->
+  <script>
+  (function(){
+    try {
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html => {
+          const n=document.getElementById('navbar');
+          if(!n) return;
+          n.innerHTML=html;
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    } catch{}
+  })();
+  </script>
+</body>
+</html>

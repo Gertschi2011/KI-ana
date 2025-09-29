@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/styles.css"><title>Registrieren</title></head>
+<body><div id="nav"></div><div class="container">
+  <div class="hero"><img class="kiana" src="/static/kiana.png"><div><h2>Registrieren ✍️</h2><p class="small">Erstelle deinen Zugang.</p></div></div>
+  <div class="card">
+    <form id="r">
+      <div class="grid" style="grid-template-columns:1fr 1fr;">
+        <input class="input" name="username" placeholder="Benutzername" required>
+        <input class="input" name="email" type="email" placeholder="E-Mail" required>
+        <input class="input" name="password" type="password" placeholder="Passwort (min. 6)" required>
+        <input class="input" name="birthdate" placeholder="Geburtsdatum (YYYY-MM-DD)" required>
+        <input class="input" name="address" placeholder="Adresse" required>
+      </div>
+      <button class="btn" style="margin-top:10px">Registrieren</button>
+    </form>
+    <div id="msg" class="notice hidden"></div>
+  </div>
+</div>
+<script>
+document.getElementById('r').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const f = e.target;
+  const data = Object.fromEntries(new FormData(f).entries());
+  const r = await fetch('/auth/register', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+  const msg = document.getElementById('msg');
+  if(r.ok){
+    msg.classList.remove('hidden'); msg.textContent = "Registriert! Jetzt Abo wählen…";
+    location.href = "/static/subscribe.html";
+  }else{
+    msg.classList.remove('hidden'); msg.textContent = "Fehler bei der Registrierung.";
+  }
+});
+</script>
+<script src="/static/nav.js" defer></script>
+</body></html>

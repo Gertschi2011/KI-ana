@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>KI_ana Preise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/static/chat.css" rel="stylesheet">
+  <style>
+    .pricing-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 2rem auto;
+      max-width: 1000px;
+    }
+    .plan {
+      flex: 1 1 280px;
+      border-radius: 1rem;
+      padding: 2rem;
+      color: #222;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+    .plan:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .plan h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+    }
+    .plan .price {
+      font-size: 1.4rem;
+      margin: 1rem 0;
+    }
+    .plan ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      text-align: left;
+    }
+    .plan ul li {
+      margin: 0.3rem 0;
+    }
+    .plan button {
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+    }
+    .free { background: #f1fff3; border: 1px solid #d7f5df; }
+    .plus { background: #4a90e2; color:#fff; }
+    .family { background: #9b59b6; color:#fff; }
+    .free .price, .free h2 { color: #1b7a3a; }
+    .free ul li { color:#2a4433; }
+    .free button { background: #1b7a3a; color: #fff; }
+    .plus button { background: #fff; color: #1f5fb3; }
+    .family button { background: #fff; color: #7b3aa6; }
+    .plan button:hover { transform: scale(1.03); box-shadow: 0 6px 14px rgba(0,0,0,.15); background: #fff7ea; }
+    .badge-rec {
+      position: absolute;
+      top: 8px; right: 8px;
+      background: #ffd79a;
+      color: #7a4b00;
+      border: 1px solid #ffc46b;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: .85rem;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(0,0,0,.12);
+    }
+    .pill-rec{
+      display:inline-block;
+      margin: .25rem auto .5rem;
+      background: #ffe8c2;
+      color: #7a4b00;
+      border: 1px solid #ffd7a1;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <main id="plans" class="pricing-container">
+    <div class="plan free">
+      <h2>🍼 Free</h2>
+      <div class="price">0 € / Monat</div>
+      <ul>
+        <li>20 Chats pro Tag</li>
+        <li>Basis-Wissen</li>
+        <li>Kein Autopilot</li>
+      </ul>
+      <button title="Kostenlos starten" onclick="location.href='/static/register.html'">Jetzt registrieren</button>
+    </div>
+    <div class="plan plus">
+      <span class="badge-rec">⭐ Empfohlen</span>
+      <h2>🚀 Plus</h2>
+      <div class="pill-rec">Empfohlen</div>
+      <div class="price">9,99 € / Monat</div>
+      <ul>
+        <li>Unlimitierte Chats</li>
+        <li>Memory-Erweiterung</li>
+        <li>Autopilot</li>
+        <li>Stimmenausgabe</li>
+      </ul>
+      <button onclick="location.href='/static/register.html'">Jetzt registrieren</button>
+    </div>
+    <div class="plan family">
+      <h2>👨‍👩‍👧 Family</h2>
+      <div class="price">19,99 € / Monat</div>
+      <ul>
+        <li>Alles aus Plus</li>
+        <li>Papa-Tools</li>
+        <li>Block-Viewer</li>
+        <li>Mehrnutzer-Support</li>
+      </ul>
+      <button onclick="location.href='/static/register.html'">Jetzt registrieren</button>
+    </div>
+  </main>
+
+  <footer>
+    Alle Preise inkl. MwSt, jederzeit kündbar.
+  </footer>
+
+  <script>
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n=document.getElementById('navbar');
+          if(!n) return;
+          n.innerHTML=html;
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
+  </script>
+</body>
+</html>

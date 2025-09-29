@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: I have two Amazon Echos that I never use, but they apparently burn GBs a day\n • Hacker News: SAP splashes €20B on Euro sovereign cloud push\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine Deutschen unter Todesopfern in Lissabon",
+  "hash": "c1bd3d9139890df77b57dcdfbb7ca1da4ce2dd27b1624b32199e54a150b7b923",
+  "id": "BLK_1757071296_lgyqpc",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "GL4g5kN0AZnYBNaIX9ze4OBKk7rVQgCrTyqUEObpW0TpjluGMdy67omiNPP0YlxpZZllAdzeYXDUUwF35/COAA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 13:21",
+  "ts": 1757071296,
+  "url": ""
+}

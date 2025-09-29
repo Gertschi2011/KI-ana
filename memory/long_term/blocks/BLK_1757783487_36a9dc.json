@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Magical Systems Thinking\n • Hacker News: \"Learning how to Learn\" will be next generation's most needed skill\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Aufruf von Rechtsextremen: Zehntausende demonstrieren in London gegen Einwanderung",
+  "created_at": 1757783487.3828514,
+  "hash": "ae000415c3d14d524b19a16de4dcd5c0fdefd6d6108fe452e1245ff32ca77c5b",
+  "id": "BLK_1757783487_36a9dc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "qUUGWxkrcaDvee1EbVd7UgP9n5jRpfwbp3nxS4HdldLASPU8l1qRZ8yGwey2zMvorZ2vgSa+M6fcirRP1S4IAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 19:11",
+  "url": null
+}

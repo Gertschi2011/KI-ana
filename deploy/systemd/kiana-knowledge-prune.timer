@@ -1,0 +1,10 @@
+[Unit]
+Description=Run Knowledge Prune daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=kiana-knowledge-prune.service
+
+[Install]
+WantedBy=timers.target

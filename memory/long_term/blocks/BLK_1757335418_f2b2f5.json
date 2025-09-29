@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: VMware's in court again. Customer relationships rarely go this wrong\n • Hacker News: 14 Killed in protests in Nepal over social media ban\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreich weckt Furcht vor neuer Euro-Schuldenkrise",
+  "created_at": 1757335418.4194617,
+  "hash": "4e6a10525d44ff3687ff7d5e5a8501108a7b29b27ca21e0f71e84c281f9acba7",
+  "id": "BLK_1757335418_f2b2f5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "FKY91mznD2LlAuVQM8E2/3jO31xvO6yV20SeCKDyy+3N+HH/kAK0MFiv62dvVdFyoIef0tHjFo1zRIuoFDDqAQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 14:43",
+  "url": null
+}

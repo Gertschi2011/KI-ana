@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Byte Type: Supporting Raw Data Copies in the LLVM IR\n • Hacker News: Incident Report for Anthropic\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Beratungsstellen melden Zulauf von Wehrdienstverweigerern",
+  "created_at": 1757398449.888581,
+  "hash": "1f2e353ee21a9a97fcb381c70d84620717e3bac49c934dec08f0e16806508be4",
+  "id": "BLK_1757398449_00ea19",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "XW0a/XepT8rL8PFeZaCDjDfssPtOhW47Tvs8K1/t3TYTGcPJqK3C9czv/ucuS1ufdEpUt+Nqu2/1gy7GzuQTAQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-09 08:14",
+  "url": null
+}

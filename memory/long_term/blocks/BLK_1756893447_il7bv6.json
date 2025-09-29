@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Finding thousands of exposed Ollama instances using Shodan\n • Hacker News: Amazonq.nvim: Official AWS AI Assistant Plugin for Neovim\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krieg gegen die Ukraine: \"Russlands Wirtschaft verschlechtert sich rapide\"",
+  "hash": "ad22debf72908c81d3e0711435edb80f4bdb28527810dd1cffcc3723f7562617",
+  "id": "BLK_1756893447_il7bv6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "qGklqZKN55yHSpDXTmZE7AAzq99IysRUSzvInAV6eTtX89tr5byefTwcRI1NX/b3W1Ne8iIshjrNDi6M1FE1Cg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 11:57",
+  "ts": 1756893447,
+  "url": ""
+}

@@ -1,0 +1,164 @@
+{
+  "blocks": [
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758443162,
+      "topic": "was weißt du über den Planeten mars?"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758443719,
+      "topic": "Was weißt du über den Planeten Mars?"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758514184,
+      "topic": "Was weißt du über Wasserspeicher?"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758514276,
+      "topic": "ja, speichern"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758517750,
+      "topic": "was weißt du über Wasserspeicher?"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "https://de.wikipedia.org/wiki/Mars",
+      "timestamp": 1758517847,
+      "topic": "Mars"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758520230,
+      "topic": "was weißt du über den Mars?"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758527897,
+      "topic": "Was weißt du über den Mars?"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758530965,
+      "topic": "Den Mars"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758536988,
+      "topic": "ja, vergleiche"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758540746,
+      "topic": "was weißt du über den mars?"
+    },
+    {
+      "block_id": "",
+      "path": "",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758556655,
+      "topic": "was weißt du über den Planeten Mars?"
+    },
+    {
+      "block_id": "BLK_1",
+      "path": "memory/long_term/blocks/BLK_1.json",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758557667,
+      "topic": "ja, speichern"
+    },
+    {
+      "block_id": "BLK_1",
+      "path": "memory/long_term/blocks/BLK_1.json",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758568253,
+      "topic": "was weißt du über den Mars?"
+    },
+    {
+      "block_id": "BLK_2",
+      "path": "memory/long_term/blocks/BLK_2.json",
+      "rating": 0,
+      "source": "https://de.wikipedia.org/wiki/Mars",
+      "timestamp": 1758568330,
+      "topic": "Mars"
+    },
+    {
+      "block_id": "BLK_1",
+      "path": "memory/long_term/blocks/BLK_1.json",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758661385,
+      "topic": "Was weißt du über den Mars?"
+    },
+    {
+      "block_id": "BLK_1",
+      "path": "memory/long_term/blocks/BLK_1.json",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758838235,
+      "topic": "was weißt du über den Jupiter?"
+    },
+    {
+      "block_id": "BLK_2",
+      "path": "memory/long_term/blocks/BLK_2.json",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758995381,
+      "topic": "Was weißt du über Quantencomputer?"
+    },
+    {
+      "block_id": "BLK_3",
+      "path": "memory/long_term/blocks/BLK_3.json",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1758995974,
+      "topic": "Was weißt du über den Mars?"
+    },
+    {
+      "block_id": "BLK_4",
+      "path": "memory/long_term/blocks/BLK_4.json",
+      "rating": 0,
+      "source": "",
+      "timestamp": 1759040598,
+      "topic": "Was weißt du über den Mars?"
+    }
+  ]
+}

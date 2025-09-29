@@ -1,0 +1,10 @@
+{
+  "submind_id": "{{ID}}",
+  "license_key": "{{LICENSE}}",
+  "parent_endpoint": "{{PARENT_ENDPOINT}}",
+  "parent_pubkey": "{{PARENT_PUBKEY}}",
+  "policies": {
+    "allow_domains": ["de.wikipedia.org","wikipedia.org","britannica.com"],
+    "timeout_sec": 15
+  }
+}

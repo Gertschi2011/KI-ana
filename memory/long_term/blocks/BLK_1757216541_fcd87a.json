@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The world has a running Rational R1000/400 computer again (2019)\n • Hacker News: Navy SEALs Killed Fishermen to Hide Failed Mission to Wiretap North Korea\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht: Gelöstes Kabel wohl Ursache für Unglück in Lissabon",
+  "created_at": 1757216541.453951,
+  "hash": "caa240d2d6529d7b1b590fdbef07ec0518881852006622f065a0627c2f6c72c4",
+  "id": "BLK_1757216541_fcd87a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MImfxV0fW7eR25wPLwd6cFjz2aT7LicrhtwKDJtjTTaBBGFQqK33NX6JmEaIdrU50THomqw7wxBmYUairWH7BA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 05:42",
+  "url": null
+}

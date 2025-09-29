@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How the restoration of ancient Babylon is drawing tourists back to Iraq\n • Hacker News: RFC9460: SVCB and HTTPS DNS Records\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Der erste Stimmungstest",
+  "created_at": 1757821303.1407812,
+  "hash": "530eca12a1e2954854d95bf60f66a56da2d715b308c53e399ab0663aadfed98e",
+  "id": "BLK_1757821303_c7a17f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "s7vHzBHHYFZed6lFv3d7YII1Ye1vGIbSH5VHptPKP+/x8Fblid1JHQ/kz05cIdOLqSprj6zkLVB4ZDc0jYvjBQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-14 05:41",
+  "url": null
+}

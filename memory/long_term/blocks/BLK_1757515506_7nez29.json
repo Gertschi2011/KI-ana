@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: Ark v0.5.0 – A Minimal, High-Performance Entity Component System for Go\n • Hacker News: Leaked Ice document shows worker detained in Hyundai raid had valid visa\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Drohnen über Polen - was bedeutet das?",
+  "hash": "8b9cf107bac6167779549d457e9aa3611d4e22419fabbad00b61afb62d2d13b9",
+  "id": "BLK_1757515506_7nez29",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "KNz6LmBaW8k3CoOIw8Y/yz/cRX986ROKABdFKf7CZXMM73ZSWppiSsF5zfaiLpkuhomkvmtQrnexBp0a1EiGAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 16:45",
+  "ts": 1757515506,
+  "url": ""
+}

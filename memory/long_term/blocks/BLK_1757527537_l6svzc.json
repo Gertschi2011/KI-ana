@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Defeating Nondeterminism in LLM Inference\n • Hacker News: Bild AI (YC W25) Is Hiring\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Regeln für die Richterwahl am Bundesverfassungsgericht gelten",
+  "hash": "174fb104572996390710387a08dab2b2ebab23f378fdb7314b2b02a96aa67a5a",
+  "id": "BLK_1757527537_l6svzc",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "1tJXzaogrvJNHWhqH6HN13gZpyPexr6SiE+Du0lSLyA4AJJOqYq5KVgPR4PTnkHyJqCcj2dfvdETOYJBCSZLDA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 20:05",
+  "ts": 1757527537,
+  "url": ""
+}

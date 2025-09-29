@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Micro-LEDs boost random number generation\n • Hacker News: Doom crash after 2.5 years of real-world runtime confirmed on real hardware\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Tatverdächtiger im Fall Kirk wegen Mordes angeklagt",
+  "hash": "3b5db43abbf2d76ab3d9293aa35d0db423bc2102b4f7d8fcea0daaf5e2af7f5f",
+  "id": "BLK_1758067169_8oplti",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "tG5R9x4tdWQv7H+tp8050HqpOA28jIB7Rexw83WkWX+YytGd+M2n+3+/NyzY9iePUsvjfohXjVJGTYV15LlaBw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-17 01:59",
+  "ts": 1758067169,
+  "url": ""
+}

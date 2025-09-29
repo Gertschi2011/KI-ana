@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Fartscroll-Lid: An app that plays fart sounds when opening or closing a MacBook\n • Hacker News: Danish supermarket chain is setting up \"Emergency Stores\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brasiliens Ex-Präsident Bolsonaro zu mehr als 27 Jahren Haft verurteilt",
+  "created_at": 1757633796.7232163,
+  "hash": "f8029b2a735c1a94b8aadc17ece75f88272fe142e18b7f7228c62a4d981c6691",
+  "id": "BLK_1757633796_f7af6f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "RwakgZ3gkmAxvTkgHKvTOt+5qI3IvzZOKAMiY9krJzPWfMOzHiczrOlAQwQi9sD9CCcfK2upsQYICCylpxNzCw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 01:36",
+  "url": null
+}

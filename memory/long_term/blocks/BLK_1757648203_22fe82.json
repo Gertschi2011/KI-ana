@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Challenge of Maintaining Curl\n • Hacker News: The effects of algorithms on the public discourse\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Manöver von Russland und Belarus: Eine versteckte Mobilmachung?",
+  "created_at": 1757648203.7565918,
+  "hash": "658717faa9e4bed84fdef273b8e20109cd4adffeda4564bc57e624236cfa4c5a",
+  "id": "BLK_1757648203_22fe82",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "wPs2m74dxk7+74G6LdgcgYwMTHFKq/BeyDh4IP7VVu17xB+FvDgsySGZefSKl91c81tuM22KC4m5cIm4RR+KDQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-12 05:36",
+  "url": null
+}

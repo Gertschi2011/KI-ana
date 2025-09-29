@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Slow Liquid\n • Hacker News: I regret building this $3000 Pi AI cluster\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Xiangshan Forum in Peking: Sicherheitskonferenz gegen den Westen",
+  "created_at": 1758294635.7828126,
+  "hash": "74094d7759778ca3ed028f24ce0006b9a1ed5be47ee14bfa677f9d09fd110074",
+  "id": "BLK_1758294635_87993a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fwNQ29R63+brbmNfNxFVOkL2krD2iTE7Z52+iSM5DGU9EgpE85Y2zqPpiSTJPY4mj48+5Z2R1snbbFZ9O32+Dg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 17:10",
+  "url": null
+}

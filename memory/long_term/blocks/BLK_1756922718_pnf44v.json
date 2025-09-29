@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: What Is It Like to Be a Bat?\n • Hacker News: Poor man's bitemporal data system in SQLite and Clojure\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ARD-DeutschlandTrend: Mehrheit für höhere Steuern - auch bei Unionsanhängern",
+  "hash": "e63c72831072210d920f02376f92b98730b28b6f00ecb4f429001ce6fb7824dc",
+  "id": "BLK_1756922718_pnf44v",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "8+3RxbD1WU+KKVFhqkfvde6j7Xc2OfSxAf7dXIPL+2ADRDfm7Vs5phVKoewKUwA3lcpWuWgByva7ny9DW852BQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 20:05",
+  "ts": 1756922718,
+  "url": ""
+}

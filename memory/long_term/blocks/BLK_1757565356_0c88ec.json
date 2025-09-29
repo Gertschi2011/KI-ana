@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Four Fallacies of Modern AI\n • Hacker News: Seoul says US must fix its visa system if it wants Korea's investments\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie schützt sich die NATO vor Angriffen aus Russland?",
+  "created_at": 1757565356.489159,
+  "hash": "9b340a8328ae1dfeef666e5293dd7dfdafa976c9ed87e68f8f00a7cd2e0385d0",
+  "id": "BLK_1757565356_0c88ec",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bevMH7kmxXPilA8rcSmqYuvoxk60zuYjwKbFxSAblS0SFrkH5Jw6SETgLfynaVgOtgDk8RoCYmKMhpFp2BctCA==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 06:35",
+  "url": null
+}

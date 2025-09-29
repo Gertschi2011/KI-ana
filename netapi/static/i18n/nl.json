@@ -1,0 +1,12 @@
+{
+  "toast": {
+    "role_denied": "⚠️ Je hebt geen toestemming voor deze actie.",
+    "login_required": "⚠️ Inloggen vereist."
+  },
+  "viewer": {
+    "error": {
+      "detail_load_failed": "Details konden niet worden geladen.",
+      "save_failed": "Opslaan mislukt"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: California lawmakers pass SB 79, housing bill that brings dense housing\n • Hacker News: Life, work, death and the peasant: Rent and extraction\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): USA üben im UN-Sicherheitsrat deutliche Kritik an Russland",
+  "created_at": 1757729243.2470675,
+  "hash": "17b0482a17bb3ef7c1f8a6cdc6f13ca694f3e7a693275be4ae866bc2baf3fabd",
+  "id": "BLK_1757729243_268359",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vvgCLbMrcc3pWZP+pue8O4QdF0eIKt3UALPow4tWquDPatmpkvRwCdO9K/qBAEje193tPUSXkj4cmN9+/oS6Dw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 04:07",
+  "url": null
+}

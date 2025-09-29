@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why OpenAI's solution to AI hallucinations would kill ChatGPT tomorrow\n • Hacker News: Several people fired after clampdown on speech over Charlie Kirk shooting\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Jung, weiblich, (selten) Kommunalpolitikerin",
+  "created_at": 1757787088.972122,
+  "hash": "c734097ba7db6467b05b0810ee0ef3dc9c7a68475dcb9cddb4af7e1e9a4c326e",
+  "id": "BLK_1757787088_315870",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "kUIx0GFqx9UBm+/eeWGc9wHXnKo4V0d/6Wt5HDcfbOjeq5iEylm1DxIBh020ubKLVxlf9d8CdZhse868PE6mBg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 20:11",
+  "url": null
+}

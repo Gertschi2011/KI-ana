@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily KI_ana Plan Enforcer Timer
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+Unit=kiana-plan-enforcer.service
+
+[Install]
+WantedBy=timers.target

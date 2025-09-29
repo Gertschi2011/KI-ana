@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rollenverwaltung – KI_ana</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif; margin:0; background:#0b1020; color:#e9f2ff; }
+    header { padding: 12px 16px; background:#0e1733; border-bottom:1px solid #1f2a4d; display:flex; align-items:center; gap:12px; }
+    h1 { font-size:18px; margin:0; }
+    main { padding: 12px 16px; }
+    .card { background:#0e1733; border:1px solid #1f2a4d; border-radius:10px; overflow:hidden; margin-bottom:16px; }
+    .card header { background:#0e1733; border-bottom:1px solid #1f2a4d; }
+    .pill { padding:2px 8px; border-radius:999px; background:#15224a; color:#9ec5ff; font-size:12px; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding:10px; border-bottom:1px solid #1f2a4d; text-align:left; font-size:14px; }
+    th { background:#0f1b3d; position:sticky; top:0; z-index:1; }
+    input, select { background:#0b142e; color:#e9f2ff; border:1px solid #273869; border-radius:6px; padding:6px 8px; }
+    .btn { background:#1a2a59; color:#cfe4ff; border:1px solid #20336b; padding:6px 10px; border-radius:8px; cursor:pointer; }
+    .btn:hover { background:#22356f; }
+    .toolbar { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
+    .muted { opacity:.8; font-size:12px; }
+    .ok { color:#7fe29a; }
+    .err { color:#ff9a9a; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Rollenverwaltung</h1>
+    <span class="pill">Creator‑Only</span>
+    <span id="status" class="muted" style="margin-left:auto;">—</span>
+    <a class="btn" href="/" style="text-decoration:none;">Zurück</a>
+  </header>
+  <main>
+    <div class="card">
+      <header style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
+        <h2 style="font-size:16px;margin:0;">Nutzer</h2>
+        <input id="filter" placeholder="Suche (Name/Email)" style="margin-left:auto; min-width:220px;" />
+        <button id="reload" class="btn">↻ Aktualisieren</button>
+        <button id="exportCsv" class="btn" title="Aktuelle Ansicht als CSV exportieren">CSV</button>
+      </header>
+      <div style="max-height:70vh; overflow:auto;">
+        <table id="tbl">
+          <thead>
+            <tr>
+              <th style="width:60px;">ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th style="width:120px;">Geburtstag</th>
+              <th style="width:80px;">is_kid</th>
+              <th style="width:140px;">Role</th>
+              <th style="width:160px;">Tier</th>
+              <th style="width:120px;">Quota/Tag</th>
+              <th style="width:360px;">Aktion</th>
+            </tr>
+          </thead>
+          <tbody id="rows">
+            <tr><td colspan="7" class="muted">Lade Nutzer…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script>
+    const rowsEl = document.getElementById('rows');
+    const statusEl = document.getElementById('status');
+    const filterEl = document.getElementById('filter');
+    const reloadBtn = document.getElementById('reload');
+    const exportBtn = document.getElementById('exportCsv');
+    let users = [];
+    let freeDefault = 20; // will be overridden by /api/system/config
+
+    function setStatus(text, cls){ statusEl.textContent = text; statusEl.className = (cls||'muted'); }
+
+    async function fetchUsers(){
+      try{
+        setStatus('Lade…');
+        const r = await fetch('/api/admin/users', { credentials:'include' });
+        const j = await r.json().catch(()=>({}));
+        if (r.status === 403){
+          rowsEl.innerHTML = '<tr><td colspan="9"><div class="err">Keine Berechtigung (Creator erforderlich). Bitte mit einem Creator‑Account anmelden.</div></td></tr>';
+          setStatus('403 – verboten', 'err');
+          return;
+        }
+
+    async function loadConfig(){
+      try{
+        const r = await fetch('/api/system/config', { credentials:'include' });
+        const j = await r.json().catch(()=>({}));
+        if (r.ok && j && j.free_daily_quota!=null){ freeDefault = parseInt(j.free_daily_quota, 10) || 20; }
+      }catch{}
+    }
+        if (!r.ok || !j || j.ok===false){ setStatus('Fehler', 'err'); rowsEl.innerHTML = '<tr><td colspan="9" class="err">Fehler beim Laden</td></tr>'; return; }
+        users = Array.isArray(j.items) ? j.items : [];
+        render(); setStatus('OK', 'ok');
+      }catch(e){ setStatus('Fehler', 'err'); }
+    }
+
+    function render(){
+      const q = (filterEl.value||'').toLowerCase();
+      const items = users.filter(u => {
+        if (!q) return true;
+        const s = (String(u.username||'')+' '+String(u.email||'')).toLowerCase();
+        return s.includes(q);
+      });
+      if (!items.length){ rowsEl.innerHTML = '<tr><td colspan="9" class="muted">Keine Nutzer gefunden</td></tr>'; return; }
+      rowsEl.innerHTML = items.map(u => rowHtml(u)).join('');
+      // wire buttons
+      rowsEl.querySelectorAll('button[data-act="save"]').forEach(btn => {
+        btn.addEventListener('click', () => saveRow(btn.closest('tr')));
+      });
+      rowsEl.querySelectorAll('button[data-act="promote_app"]').forEach(btn => {
+        btn.addEventListener('click', () => promote(btn.closest('tr'), 'papa_app'));
+      });
+      rowsEl.querySelectorAll('button[data-act="promote_os"]').forEach(btn => {
+        btn.addEventListener('click', () => promote(btn.closest('tr'), 'papa_os'));
+      });
+      rowsEl.querySelectorAll('button[data-act="rollback"]').forEach(btn => {
+        btn.addEventListener('click', () => rollback(btn.closest('tr')));
+      });
+    }
+
+    function rowHtml(u){
+      const rid = `r_${u.id}`;
+      const roleOpts = ['user','papa','creator','system'].map(v => `<option value="${v}" ${String(u.role||'')===v?'selected':''}>${v}</option>`).join('');
+      const tierOpts = ['user','papa_app','papa_os','creator'].map(v => `<option value="${v}" ${String(u.tier||'')===v?'selected':''}>${v}</option>`).join('');
+      const dq = (typeof u.daily_quota==='number') ? u.daily_quota : 20;
+      return `
+        <tr id="${rid}" data-is-kid="${u.is_kid===true}" data-birthdate="${escapeHtml(u.birthdate||'')}">
+          <td>${u.id}</td>
+          <td>${escapeHtml(u.username||'')}</td>
+          <td>${escapeHtml(u.email||'')}</td>
+          <td>${escapeHtml(u.birthdate||'')}</td>
+          <td>${u.is_kid===true ? '✅' : (u.is_kid===false ? '—' : '')}</td>
+          <td><select name="role">${roleOpts}</select></td>
+          <td><select name="tier">${tierOpts}</select></td>
+          <td><input name="daily_quota" type="number" min="0" value="${dq}" style="width:100px" /></td>
+          <td style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button class="btn" data-act="save">Speichern</button>
+            <button class="btn" data-act="promote_app" title="Auf Papa (App) setzen (unlimitiert)">Papa App</button>
+            <button class="btn" data-act="promote_os" title="Auf Papa (OS) setzen – hat Geräte‑Rechte (⚠️)" aria-label="Auf Papa OS setzen – hat Geräte-Rechte">Papa OS ⚠️</button>
+            <button class="btn" data-act="rollback" title="Zurück auf Free (role=user, tier=user, quota=20)">Rollback</button>
+          </td>
+        </tr>
+      `;
+    }
+
+    function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+
+    async function saveRow(tr){
+      if (!tr) return;
+      try{
+        const id = parseInt(tr.children[0].textContent,10);
+        const role = tr.querySelector('select[name="role"]').value;
+        const tier = tr.querySelector('select[name="tier"]').value;
+        const dq = parseInt(tr.querySelector('input[name="daily_quota"]').value, 10);
+        const payload = { user_id: id, role, tier, daily_quota: dq };
+        setStatus('Speichere…');
+        const r = await fetch('/api/admin/users/set-role', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        const j = await r.json().catch(()=>({}));
+        if (r.status === 403){ setStatus('403 – verboten', 'err'); return; }
+        if (!r.ok || !j || j.ok===false){ setStatus('Fehler beim Speichern', 'err'); return; }
+        setStatus('Gespeichert', 'ok');
+        await fetchUsers();
+      }catch(e){ setStatus('Fehler beim Speichern', 'err'); }
+    }
+
+    async function promote(tr, tier){
+      if (!tr) return;
+      try{
+        const id = parseInt(tr.children[0].textContent,10);
+        const role = 'papa';
+        const dq = 0; // unlimited
+        // Soft validation: warn if kid and promoting to papa_os
+        try{
+          const isKid = String(tr.getAttribute('data-is-kid')||'') === 'true';
+          const bd = tr.getAttribute('data-birthdate')||'';
+          if (isKid && tier === 'papa_os'){
+            const msg = `Achtung: Dieser Account ist als Kind markiert (${bd||'kein Geburtsdatum'}).\nWillst du wirklich auf Papa OS (mit Geräte-Rechten) setzen?`;
+            const ok = window.confirm(msg);
+            if (!ok) { setStatus('Abgebrochen', 'muted'); return; }
+          }
+        }catch{}
+        const payload = { user_id: id, role, tier, daily_quota: dq };
+        setStatus('Promote…');
+        const r = await fetch('/api/admin/users/set-role', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        const j = await r.json().catch(()=>({}));
+        if (r.status === 403){ setStatus('403 – verboten', 'err'); return; }
+        if (!r.ok || !j || j.ok===false){ setStatus('Fehler beim Promote', 'err'); return; }
+        setStatus('Promote OK', 'ok');
+        await fetchUsers();
+      }catch(e){ setStatus('Fehler beim Promote', 'err'); }
+    }
+
+    async function rollback(tr){
+      if (!tr) return;
+      try{
+        const id = parseInt(tr.children[0].textContent,10);
+        const payload = { user_id: id, role: 'user', tier: 'user', daily_quota: freeDefault };
+        setStatus('Rollback…');
+        const r = await fetch('/api/admin/users/set-role', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        const j = await r.json().catch(()=>({}));
+        if (r.status === 403){ setStatus('403 – verboten', 'err'); return; }
+        if (!r.ok || !j || j.ok===false){ setStatus('Fehler beim Rollback', 'err'); return; }
+        setStatus('Rollback OK', 'ok');
+        await fetchUsers();
+      }catch(e){ setStatus('Fehler beim Rollback', 'err'); }
+    }
+
+    function toCsvValue(v){
+      const s = String(v==null? '': v);
+      if (s.includes('"') || s.includes(',') || s.includes('\n')){
+        return '"' + s.replace(/"/g, '""') + '"';
+      }
+      return s;
+    }
+
+    function exportCsv(){
+      try{
+        const q = (filterEl.value||'').toLowerCase();
+        const items = users.filter(u => {
+          if (!q) return true;
+          const s = (String(u.username||'')+' '+String(u.email||'')).toLowerCase();
+          return s.includes(q);
+        });
+        const cols = ['id','username','email','birthdate','is_kid','role','tier','daily_quota','plan','plan_until'];
+        const header = cols.join(',');
+        const rows = items.map(u => cols.map(k => toCsvValue(u[k])).join(','));
+        const csv = [header].concat(rows).join('\n');
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'users.csv';
+        document.body.appendChild(a); a.click();
+        setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 0);
+      }catch{}
+    }
+
+    // Wire events
+    filterEl.addEventListener('input', () => render());
+    reloadBtn.addEventListener('click', () => fetchUsers());
+    exportBtn.addEventListener('click', () => exportCsv());
+
+    // Boot
+    loadConfig().finally(fetchUsers);
+  </script>
+</body>
+</html>

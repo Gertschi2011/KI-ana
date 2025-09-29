@@ -1,0 +1,10 @@
+[Unit]
+Description=Run KI_ana Device Events Stats Rollup hourly at minute 05
+
+[Timer]
+OnCalendar=*-*-* *:05:00
+Persistent=true
+Unit=kiana-device-events-stats.service
+
+[Install]
+WantedBy=timers.target

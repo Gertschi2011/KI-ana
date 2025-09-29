@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Court rejects Verizon claim that selling location data without consent is legal\n • Hacker News: Gravitational wave detector confirms theories of Einstein and Hawking\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie schützt sich die NATO vor Angriffen aus Russland?",
+  "created_at": 1757558153.148826,
+  "hash": "4805576bf5d70fc6eb4ace813e85466e9382efd8249216c8d7f6a052c6b09227",
+  "id": "BLK_1757558153_fb1768",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "rsREyHDZCTePpQA+MvcfKgD8gOiv6oSWvJhvrBNFQXOCVKRjMAqOWWxYh8KBObzwndQrMtC0dNDCgTZaI0FsAQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 04:35",
+  "url": null
+}

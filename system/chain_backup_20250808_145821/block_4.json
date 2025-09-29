@@ -1,0 +1,14 @@
+{
+  "block_id": 4,
+  "timestamp": "2025-08-08T11:53:39.807262Z",
+  "previous_hash": "31b1dfb5f1e12b8ad387d92d4ae04c10dbefc367e7da77e606ef4bd37294862e",
+  "type": "web_crawl",
+  "topic": "Einen baum?",
+  "source": "https://de.wikipedia.org/wiki/Baum",
+  "memory_path": "/home/kiana/ki_ana/memory/long_term/2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b.json",
+  "content_hash": "2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b",
+  "meta": {
+    "url": "https://de.wikipedia.org/wiki/Einen_baum%3F"
+  },
+  "hash": "899d7db22d07057d53b0347727017df88138e6d18a4c62f8c6464cb408061816"
+}

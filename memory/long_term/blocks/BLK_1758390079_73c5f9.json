@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Microsoft memo advises H1B employees to return immediately if currently abroad\n • Hacker News: Are Touchscreens in Cars Dangerous?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienberichte: DB-Regio-Chefin Palla soll neue Bahnchefin werden",
+  "created_at": 1758390079.374201,
+  "hash": "9c60c94dca4dbec031cf30f646bfc8212ba0477cdd488dbd221ec3926509e36d",
+  "id": "BLK_1758390079_73c5f9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+BVN1TLrDNv+FBRQJdwAF7AHs28NocXCjuKeIbZrxYNoxYngj99BeRL+vDANzWicGNqVj8+T6Xjb5ziuptMIDQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 19:41",
+  "url": null
+}

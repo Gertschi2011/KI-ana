@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Unofficial Windows 11 requirements bypass tool allows disabling all AI features\n • Hacker News: The world has a running Rational R1000/400 computer again (2019)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Liveblog: ++ Regierungsgebäude in Kiew brennt ++",
+  "created_at": 1757223744.5193498,
+  "hash": "95421b14dd6c3340eec629c1b872dd141d6315bba54ad13df63dd85e55212564",
+  "id": "BLK_1757223744_79447d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7uy61HZYQb49IxjJ3jcCkcrlSjtQz13Hk+diEKmNxSoyCmA10mswKYnW3xr0Kzjxsz4TW+ibBLm0ohBVh7ANAw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 07:42",
+  "url": null
+}

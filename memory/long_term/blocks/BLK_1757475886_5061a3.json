@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I replaced Animal Crossing's dialogue with a live LLM by hacking GameCube memory\n • Hacker News: Outraged Farmers Blame Ag Monopolies as Catastrophic Collapse Looms\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs neuer Premier: Lecornu wird es schwer haben",
+  "created_at": 1757475886.0365028,
+  "hash": "f4712053ea9cd93dc92d2549e884feb330e1d987b56bb1cce2c397fedecc9fe9",
+  "id": "BLK_1757475886_5061a3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OK+Ehc/m3tz7r3m+VURi4RqNvwZGbkeDd92c74XfH/2CiHfiD5MglQXgP1B3syRzoTlY68i+jpwyjk3oM9U5CQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 05:44",
+  "url": null
+}

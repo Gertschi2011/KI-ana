@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: CircuitHub (YC W12) Is Hiring Operations Research Engineers (UK/Remote)\n • Hacker News: Fast Fourier Transforms Part 1: Cooley-Tukey\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Europas Klimaziele wegen Deutschland auf der Kippe",
+  "created_at": 1758193234.39848,
+  "hash": "ce0408eb4ed073493c5cac29402eefb0c0d8cbffa841a7473b7e628683a7acc2",
+  "id": "BLK_1758193234_730c2d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "F/RaCYYmxmlswEAdSuN2+PNAjdfzkYMhu0KUQX4LqIZtnJYaBnKL6J0N0SZ80Hq+4mMjIfTqnkL0ZJuAFjVwBA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-18 13:00",
+  "url": null
+}

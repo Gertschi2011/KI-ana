@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Intel Arc Pro B50 GPU Launched at $349 for Compact Workstations\n • Hacker News: Show HN: OpenCV over WebRTC (in Go)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "created_at": 1757285368.4959211,
+  "hash": "390e752c4bb3783963d25ca93640795542c3a61ea5cd87a323359ce21f7cb036",
+  "id": "BLK_1757285368_acfab2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "wAXBkngeL1JGhHr0RZrJ3sEJu15rI69/lUIA8/gBDI/9W3GeiRjykTx56JzqNrKGBpALsVuwf71EaTueKtPxAw==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 00:49",
+  "url": null
+}

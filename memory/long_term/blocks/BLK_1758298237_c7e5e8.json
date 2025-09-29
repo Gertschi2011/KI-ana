@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Slow Liquid\n • Hacker News: Trevor Milton's Nikola Case Dropped by SEC Following Trump Pardon\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Estland: Drei russische Kampfjets dringen unerlaubt in Luftraum ein",
+  "created_at": 1758298237.4291353,
+  "hash": "9f27bddf60d1e4a79e34c833cea2a20554c950a1a4a44a551ae916b2adfe11c3",
+  "id": "BLK_1758298237_c7e5e8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "d26D41Dnn+bPq2GyR07OsNK2fmsXzeHxjgreL0vy5ZY1SXppIJQXCkABJkb+BYFxWNZOc2QBHYgbqAoWQgd1Dw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 18:10",
+  "url": null
+}

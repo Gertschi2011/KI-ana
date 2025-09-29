@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How is Ultrassembler so fast?\n • Hacker News: A 'Third Way' Between Buying or Renting? Swiss Co-Ops Say They've Found It\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Klingbeil zur Haushaltslücke: \"Werden den Menschen etwas abverlangen müssen\"",
+  "created_at": 1756662827.1574008,
+  "hash": "b10d35f714fa0df82b9fd039adfb430286dee6de500423706231c6a0d83c3eaa",
+  "id": "BLK_1756662827_32d8d1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "EufylF1mXyyWWJiFIR59G+Z3CEbQhr6s1I420d4rsm+VhtWwaPd0DEBCggzUPlXepSwTwMTyij5Gi4FyZ0HzDQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 19:53",
+  "url": null
+}

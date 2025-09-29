@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Kernel-hack-drill and exploiting CVE-2024-50264 in the Linux kernel\n • Hacker News: Lit: a library for building fast, lightweight web components\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krieg gegen die Ukraine: \"Russlands Wirtschaft verschlechtert sich rapide\"",
+  "hash": "bd34c8ce736f5e7326cf41d064f71d62c185bd3320ed6ae4b6c77abc3532f0f8",
+  "id": "BLK_1756886243_9mqwbb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ZtDR7xEnFAPfiEgUqNt20EgcRjlnSS5Tf/FKeR7oiAVAeRsbVBziBtTW++yCISY7/yESIMma7nnd7IbFIi4ADQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-03 09:57",
+  "ts": 1756886243,
+  "url": ""
+}

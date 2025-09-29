@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  subki:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: subki_ana
+    ports:
+      - "5055:5055"
+    volumes:
+      - ../../:/root/ki_ana
+    working_dir: /root/ki_ana
+    environment:
+      - ENABLE_CRON=true
+      - CRON_INTERVAL_SECONDS=86400
+      - MOTHER_KI_URL=http://host.docker.internal:8000/api/subki/sync
+    restart: unless-stopped

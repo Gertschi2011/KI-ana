@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I ditched Spotify and set up my own music stack\n • Hacker News: What Is the Fourier Transform?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757029641.820009,
+  "hash": "becd751b460245d192e21b07fbee22d8839597a5e87e42d86f5676dca8f88f70",
+  "id": "BLK_1757029641_74bc6f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+O2lYtUAoaCtgzCloBTpeSiK4axFcHHz6ZVhFtHC3szGws+zWzHcObZBG5je8ghADcJiQYa3rLNl2O42FTNtBg==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 01:47",
+  "url": null
+}

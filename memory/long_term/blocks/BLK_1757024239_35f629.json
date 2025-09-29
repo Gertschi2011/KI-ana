@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Rocketships and Slingshots\n • Hacker News: Amazon RTO policy is costing it top tech talent, according to internal document\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lissabon nach Seilbahn-Unglück: Trauer, ein wenig Wut und die Frage nach der Ursache",
+  "created_at": 1757024239.1398623,
+  "hash": "3ecfbbcb2aa931daaf9bf31c306183dc97a36c14a5358041d776725186d6c79e",
+  "id": "BLK_1757024239_35f629",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Ar7uCkfumcAl09iyLxaEEOgpBJL4a6vXrqDlElVLzYG7nyUitKDPhJ0ob8ShaFUSrzkROiGlwU5afqZJx3fYDA==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 00:17",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: SAP splashes €20B on Euro sovereign cloud push\n • Hacker News: IRHash: Efficient Multi-Language Compiler Caching by IR-Level Hashing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine Deutschen unter Todesopfern in Lissabon",
+  "hash": "ceacfcc9f3a2ddaa17217c12d802aecb51bf528a611a9061f21369bc25467256",
+  "id": "BLK_1757072393_nsgvc1",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "w6z70KmanflEb3x6JDgmFlJifn+PQ0UniKZTMRz1r4kyqhGwL2OPJpFiqFBTYpvcdJFcmsoCJrookV9jJYAQBg==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 13:39",
+  "ts": 1757072393,
+  "url": ""
+}

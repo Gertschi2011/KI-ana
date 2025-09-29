@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: mitchivin.com\n • Hacker News: Show HN: Send kind and aspirational words to a stranger who needs it\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht: Gelöstes Kabel wohl Ursache für Unglück in Lissabon",
+  "created_at": 1757207537.4908204,
+  "hash": "caf22ed38f080cd2aa083ae90aec341fbb8b37c88a5268b2a795de249618c8ea",
+  "id": "BLK_1757207537_21541c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "kfYQ5mDx/qE9GaAl0HTu6m+iJk0vB4Bn2r82RiNlphEfYZzUACFsuoHSSxa4VXvGxQLm68LqUq+mZA8KnVdfCQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 03:12",
+  "url": null
+}

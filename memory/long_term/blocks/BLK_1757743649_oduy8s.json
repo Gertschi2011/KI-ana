@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Qwen 3 now supports ARM and MLX\n • Hacker News: SkiftOS: A hobby OS built from scratch using C/C++ for ARM, x86, and RISC-V\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): USA üben im UN-Sicherheitsrat deutliche Kritik an Russland",
+  "hash": "16ed1e16736abbcd2e50df786cd28732646e1f003f8428d0550121fd1601e5e5",
+  "id": "BLK_1757743649_oduy8s",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "760O/HoKjAdtdTCpOgKuN9iidLl2J7r4rplqdIDGOeXOHW6uKYTEjSZxYuSmxuaBwPPssYeNU/eR5WfNEzR9Bg==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 08:07",
+  "ts": 1757743649,
+  "url": ""
+}

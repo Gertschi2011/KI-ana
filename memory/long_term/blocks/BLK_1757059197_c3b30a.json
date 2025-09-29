@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Age verification doesn’t work\n • Hacker News: Escaping the odds and a formula for life (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsausschuss einigt sich auf Etat für 2025",
+  "created_at": 1757059197.5779555,
+  "hash": "c418fd0f81efc14e10073e76f8d994c1c506b3e4ba0f8790b14f90b4b84fb81d",
+  "id": "BLK_1757059197_c3b30a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TnZt++8rcmhNFLdoZF9elAbgDCPIEt87TOSJLoz9Z04ZPpJyUDLDu5wArc5pPPdH9OmH/q9SsPM0K0PBtSzEDg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-05 09:59",
+  "url": null
+}

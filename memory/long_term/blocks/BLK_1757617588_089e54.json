@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Top model scores may be skewed by Git history leaks in SWE-bench\n • Hacker News: Adam (YC W25) Is Hiring to Build the Future of CAD\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Expertin nach Kirk-Attentat: \"Ein sehr gefährlicher Moment für die USA\"",
+  "created_at": 1757617588.8170598,
+  "hash": "46ac01f5da080daac5ebc884ee5c928b8ba691c4b7f994170a07ea8504894179",
+  "id": "BLK_1757617588_089e54",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7JckjU52qF0xnaQGZknvOgPav2pzUOjFONMS1mzdDiIQkIFlN+rY7SyPMoUkj1PLi55N6uGy9NIuFZTGjRd9Dg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-11 21:06",
+  "url": null
+}

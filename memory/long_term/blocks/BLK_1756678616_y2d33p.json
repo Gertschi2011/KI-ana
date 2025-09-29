@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Installing UEFI Firmware on ARM SBCs\n • Hacker News: New Ruby Curl bindings with Fiber native support\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Klingbeil zur Haushaltslücke: \"Werden den Menschen etwas abverlangen müssen\"",
+  "hash": "9f2da902b4679185078b721b3bc79e58921e081a98f2918a5decf2211c4eb319",
+  "id": "BLK_1756678616_y2d33p",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "qafiEMPw5gNdSXNClq0TX1Pi4kA5oN0EDIHJuiNkuv9k2Nz7ABYffMoWKrf5ExD1qtnkG61DVMRqrTV3yMqfAw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 00:16",
+  "ts": 1756678616,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Game launcher installs Root CA certificate on your machine\n • Hacker News: Blogs Used to Be Different\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht: Gelöstes Kabel wohl Ursache für Unglück in Lissabon",
+  "created_at": 1757209338.3123784,
+  "hash": "88ea05259fa47fcf321ca1e280a4f01fe0c8f6528b190b9c74402013134e4092",
+  "id": "BLK_1757209338_824e88",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4HfZ5vejCAHnDiW+f7EjGbEOXQr0PlZRP1WQCK20gMYiW04ue3qacUhKscrnkUHLH1FAHpKh/W0FhZVObIhKAQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-07 03:42",
+  "url": null
+}

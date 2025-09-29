@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: Amber – better Beeper, a modern all-in-one messenger\n • Hacker News: The Kafka Replication Protocol with KIP-966\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Afghanistan: Nach dem Beben zeigt sich Ausmaß der Katastrophe",
+  "hash": "a3b3c9eaeaf53bfc25437e395143b3d906e447c3fefaf6c85ce3de5d7ec46306",
+  "id": "BLK_1756841670_lrsg3s",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "m79b5/j1p9I+s63n7WtdVp/d/crLqvwiYnATkdru2JoM6gb2IhOHZBaIn5xvzJSYBXytGQkqoFgT3ev1+C7RBQ==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 21:34",
+  "ts": 1756841670,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Sheafification - The optimal path to mathematical mastery\n • Hacker News: Are people's bosses making them use AI tools?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Putin reist nach China - und hofft auf stärkere Zusammenarbeit",
+  "created_at": 1756617807.1351817,
+  "hash": "57d96eabeb534003a4ad792539fd3235b20e3ddd1d3c3865750dcb943f5da046",
+  "id": "BLK_1756617807_d252cb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4SQrLG2yxEk0wnl9pyz7Pjn/rY84DMz8vwwo8RfXHoRPDsd+VxrHcpLhx+gccN8aIipwf9Oab8KBQqJz3cvvBg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 07:23",
+  "url": null
+}

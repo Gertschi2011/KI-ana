@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tell HN: Use \"-f**k\" to kill Google AI Overview\n • Hacker News: Telli (YC F24) is hiring engineers, designers, and interns [on-site Berlin]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz und Wüst: Zur Schau gestellte Männerfreundschaft",
+  "created_at": 1756720037.0852652,
+  "hash": "e9fa38ed8ab924e6a712d4d1f18c875ad2ce162578dea3ec8a1d4edd70b4165b",
+  "id": "BLK_1756720037_caed7d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "De1vu2gPs6NotbsqRUt6n/sKe2Q17cSliPZ+Dzo3bBFmYYMWDN7lIW1yKYqbHa34LO+8iN3NoP6DMrkvn1q1Cg==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 11:47",
+  "url": null
+}

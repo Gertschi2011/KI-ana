@@ -1,0 +1,254 @@
+# app.py — stable FastAPI root with health, status, static, registration, stripe webhook
+from fastapi import FastAPI, Request, Depends, HTTPException, status
+from fastapi.responses import FileResponse, JSONResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
+from pathlib import Path
+import os, json, re, subprocess, sys
+from datetime import datetime
+
+from .user_mgmt import (
+    init_db, authenticate, issue_session_token, verify_session_token, get_user,
+    set_plan_active, provision_submind_for
+)
+from .registrations import router as reg_router
+
+BASE = Path.home() / "ki_ana"
+MEM  = BASE / "memory"
+LT   = MEM / "long_term"
+TO_L = MEM / "to_learn.txt"
+OQ   = MEM / "open_questions.json"
+IDX  = MEM / "topic_index.json"
+SYS  = BASE / "system"
+CHAIN = SYS / "chain"
+WEB_CRAWL = SYS / "web_crawler.py"
+CHAIN_W   = SYS / "chain_writer.py"
+
+app = FastAPI(title="KI_ana API", version="0.2")
+static_dir = BASE / "netapi" / "static"
+static_dir.mkdir(parents=True, exist_ok=True)
+app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
+# CORS (allow your domain + localhost)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://ki-ana.at", "https://www.ki-ana.at", "http://localhost:8080", "http://127.0.0.1:8080"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# -------- helpers
+def iso_now(): return datetime.utcnow().isoformat()+"Z"
+
+def ensure_files():
+    MEM.mkdir(parents=True, exist_ok=True)
+    LT.mkdir(parents=True, exist_ok=True)
+    if not TO_L.exists(): TO_L.write_text("", encoding="utf-8")
+    if not OQ.exists():   OQ.write_text("{}", encoding="utf-8")
+    if not IDX.exists():  IDX.write_text("[]", encoding="utf-8")
+
+def read_json(p: Path, default):
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return default
+
+def latest_chain_head():
+    if not CHAIN.exists(): return None
+    files = sorted(CHAIN.glob("block_*.json"), key=lambda x: int(x.stem.split("_")[1]))
+    if not files: return None
+    d = read_json(files[-1], {})
+    d["file"] = files[-1].name
+    return d
+
+def recent_memories(n=5):
+    files = sorted(LT.glob("*.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:n]
+    out = []
+    for f in files:
+        try:
+            d = read_json(f, {})
+            d["file"] = f.name
+            out.append(d)
+        except Exception:
+            pass
+    return out
+
+def append_to_learn(topic: str) -> bool:
+    topic = (topic or "").strip()
+    if not topic: return False
+    cur = TO_L.read_text(encoding="utf-8")
+    if cur and not cur.endswith("\n"):
+        cur += "\n"
+    TO_L.write_text(cur + topic + "\n", encoding="utf-8")
+    return True
+
+# -------- health & root
+@app.get("/health")
+def health():
+    return {"ok": True, "ts": iso_now()}
+
+@app.get("/", response_class=HTMLResponse)
+def index():
+    p = static_dir / "index.html"
+    if not p.exists():
+        return HTMLResponse("<h1>KI_ana UI</h1><p>Leg eine index.html in /static</p>", status_code=200)
+    return FileResponse(str(p))
+
+# -------- status (public minimal)
+@app.get("/status")
+def status_route():
+    ensure_files()
+    head = latest_chain_head() or {}
+    rm = recent_memories(5)
+    oq = read_json(OQ, {})
+    q = {"to_learn": sum(1 for _ in TO_L.read_text(encoding="utf-8").splitlines() if _.strip()),
+         "open_questions": len(oq)}
+    return {"queue": q, "chain_head": head, "recent_memories": rm}
+
+# -------- chat enqueue (simple)
+@app.post("/enqueue")
+def enqueue(topic: str):
+    ensure_files()
+    ok = append_to_learn(topic)
+    return {"ok": bool(ok), "topic": topic}
+
+# -------- Stripe webhook (stub logic; set env later)
+@app.post("/api/stripe/webhook")
+async def stripe_webhook(request: Request):
+    payload = await request.json()
+    t = payload.get("type")
+    uname = (payload.get("user") or payload.get("username") or "").strip()
+    if t == "checkout.session.completed" and uname:
+        u = authenticate(uname, payload.get("password","") + "__bypass__")  # find user by name without checking pw
+        # fallback: look up directly
+        from user_mgmt import get_user_by_username
+        row = get_user_by_username(uname)
+        if not row: raise HTTPException(400, "user not found")
+        set_plan_active(row["id"], plan="pro", days=30)
+        provision_submind_for(row["id"])
+        return {"ok": True}
+    return {"ok": False, "note": "ignored"}
+
+# -------- mount registration/login routes
+app.include_router(reg_router)
+
+# === ### KI_ANA_LOGIN_FALLBACK_API ### (do not remove) ===
+try:
+    from fastapi import Request, Response, Depends
+    from fastapi.responses import JSONResponse
+    from typing import Optional
+    from .user_mgmt import authenticate, issue_session_token, verify_session_token, get_user
+except Exception as _e:
+    # Wenn user_mgmt relativ nicht gefunden wird, versuche absolut (zur Not)
+    try:
+        from user_mgmt import authenticate, issue_session_token, verify_session_token, get_user
+    except Exception:
+        authenticate = issue_session_token = verify_session_token = get_user = None
+
+def _cookie_session_user(request: "Request"):
+    token = request.cookies.get("ki_session") or request.headers.get("X-Session")
+    if not token or not verify_session_token:
+        return None
+    data = verify_session_token(token)
+    return get_user(data["uid"]) if (data and get_user) else None
+
+# Nur hinzufügen, wenn /api/login noch nicht existiert
+if "app" in globals():
+    _paths = {getattr(r, "path", "") for r in app.routes}
+    if "/api/login" not in _paths and authenticate and issue_session_token:
+        @app.post("/api/login")
+        async def api_login(request: Request):
+            # JSON oder Form erlauben
+            username = password = None
+            ct = (request.headers.get("content-type") or "").lower()
+            if "application/json" in ct:
+                data = await request.json()
+                username = (data.get("username") or "").strip()
+                password = data.get("password") or ""
+            else:
+                form = await request.form()
+                username = (str(form.get("username") or "")).strip()
+                password = str(form.get("password") or "")
+            user = authenticate(username, password)
+            if not user:
+                return JSONResponse({"ok": False, "error": "invalid_credentials"}, status_code=401)
+            token = issue_session_token(user)
+            resp = JSONResponse({"ok": True, "username": user.username, "role": user.role})
+            # secure=True wenn hinter HTTPS (bei dir der Fall)
+            resp.set_cookie("ki_session", token, httponly=True, samesite="Lax", secure=True, max_age=60*60*24*7)
+            return resp
+
+    if "/api/me" not in _paths and verify_session_token and get_user:
+        @app.get("/api/me")
+        async def api_me(request: Request):
+            u = _cookie_session_user(request)
+            if not u:
+                return {"auth": False}
+            return {"auth": True, "id": u.id, "username": u.username, "role": u.role}
+# === ### KI_ANA_LOGIN_FALLBACK_API ### end ===
+
+# === ### AUTH_COOKIE_ENDPOINTS ### (do not remove) ===
+from fastapi import Request
+from fastapi.responses import JSONResponse
+from typing import Optional
+try:
+    # vorhandene Funktionen aus user_mgmt verwenden
+    from .user_mgmt import authenticate, issue_session_token, verify_session_token, get_user
+except Exception:
+    # Fallback auf alte, evtl. absolute Imports (falls noch vorhanden)
+    from user_mgmt import authenticate, issue_session_token, verify_session_token, get_user  # type: ignore
+
+def _cookie_domain(req: Request) -> Optional[str]:
+    host = (req.headers.get("host") or "").split(":")[0].strip().lower()
+    # Auf deiner Domain: Cookie-Domain für Subdomains freigeben
+    if host.endswith("ki-ana.at"):
+        return ".ki-ana.at"
+    # Lokal/Entwicklung: keine Domain setzen
+    return None
+
+@app.post("/auth/login")
+async def auth_login(request: Request):
+    # akzeptiert JSON ODER Form-Data
+    data = {}
+    ctype = (request.headers.get("content-type") or "").lower()
+    if "application/json" in ctype:
+        data = await request.json()
+    else:
+        form = await request.form()
+        data = {k: str(v) for k, v in form.items()}  # type: ignore
+
+    u = str(data.get("username", "")).strip()
+    p = str(data.get("password", "")).strip()
+    user = authenticate(u, p)
+    if not user:
+        return JSONResponse({"ok": False, "error": "invalid credentials"}, status_code=401)
+
+    token = issue_session_token(user)
+    resp = JSONResponse({
+        "ok": True,
+        "user": {"id": user.id, "username": user.username, "role": user.role, "plan": user.plan, "plan_until": user.plan_until}
+    })
+    resp.set_cookie(
+        "ki_session",
+        token,
+        max_age=60*60*24*7,  # 7 Tage
+        httponly=True,
+        samesite="Lax",
+        secure=True,
+        domain=_cookie_domain(request),
+        path="/"
+    )
+    return resp
+
+@app.get("/auth/me")
+def auth_me(request: Request):
+    token = request.cookies.get("ki_session") or request.headers.get("X-Session") or ""
+    data = verify_session_token(token) if token else None
+    if not data:
+        return {"auth": False}
+    user = get_user(data["uid"])
+    if not user:
+        return {"auth": False}
+    return {"auth": True, "id": user.id, "username": user.username, "role": user.role, "plan": user.plan}
+# === ### /AUTH_COOKIE_ENDPOINTS ### ===

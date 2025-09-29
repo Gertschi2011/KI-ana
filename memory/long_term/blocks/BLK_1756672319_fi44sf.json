@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: How to poop outdoors in a way that won't harm the environment and other hikers\n • Hacker News: Installing UEFI Firmware on ARM SBCs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Klingbeil zur Haushaltslücke: \"Werden den Menschen etwas abverlangen müssen\"",
+  "hash": "a209d6896e283082584525044b31675809b5f269ac6929120623e9a3ba40c01b",
+  "id": "BLK_1756672319_fi44sf",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "2xzzbBGABansx6VU9Si/RUx5B1OyRP103prnTkI/c1MOyGVjOaG5mMMFNLDHcOXNeKysCvC3GOHY/ZkCbrr4Aw==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-08-31 22:31",
+  "ts": 1756672319,
+  "url": ""
+}

@@ -1,0 +1,39 @@
+{
+  "block_id": 3,
+  "type": "access_control",
+  "timestamp": "2025-08-07T12:35:40Z",
+  "roles": {
+    "creator": {
+      "can_override": true,
+      "can_shutdown": true,
+      "permissions": [
+        "all"
+      ]
+    },
+    "submind": {
+      "can_learn": true,
+      "can_sync": true,
+      "permissions": [
+        "sensor_access",
+        "user_interaction",
+        "feedback_transfer"
+      ]
+    },
+    "user": {
+      "can_interact": true,
+      "can_feedback": true,
+      "permissions": [
+        "voice",
+        "text",
+        "gui"
+      ]
+    }
+  },
+  "rules": [
+    "Jeder Submind muss eindeutig identifiziert sein",
+    "Subminds dürfen nur lernen, wenn ein aktiver Benutzer zustimmt",
+    "Zugriffe auf Kameras und Mikrofone müssen genehmigt und geloggt werden",
+    "Feedbackdaten dürfen nur anonymisiert zur Mutter-KI zurückfließen"
+  ],
+  "description": "Definiert, wer was darf. Verhindert unkontrollierten Zugriff und schützt Privatsphäre & Autonomie der Nutzer."
+}

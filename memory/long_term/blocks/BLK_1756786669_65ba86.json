@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FreeDroidWarn\n • Hacker News: Apple pulls iPhone torrent app from AltStore PAL in Europe\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Auch Belgien stellt Anerkennung von Palästinenserstaat in Aussicht",
+  "created_at": 1756786669.3527436,
+  "hash": "0f514f364c08fdb14f8810f43e391f9b0828ce47001751c20d1925bd36278070",
+  "id": "BLK_1756786669_65ba86",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "GusrjIc+3g49NTh947zgxqJ9svHq+Ku9XRFFAv8jWPtT2XDn7qk+4thu+aycw4tGAHkq0IRM+eU6eTA2y+NXAA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 06:17",
+  "url": null
+}

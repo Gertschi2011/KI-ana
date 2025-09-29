@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Block Viewer – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <link href="/static/styles.css" rel="stylesheet">
+  <style>
+    .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    .toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .muted { opacity: .75; }
+    table { width:100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { text-align:left; padding: 8px 10px; border-bottom: 1px solid #eee; }
+    th { background: #f5f5f5; }
+    .tag { display:inline-block; padding:2px 6px; border-radius:6px; background:#eef; color:#334; font-size:12px; margin-right: 4px; }
+    .ok { color: #2f8f2f; }
+    .bad { color: #c33; }
+    .pill { padding:2px 8px; border-radius: 999px; background: #eee; font-size: 12px; }
+    .row-actions a { margin-right: 8px; }
+    .controls { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .toolbar { flex-wrap: wrap; }
+    input[type="text"] { padding:8px; border:1px solid #ddd; border-radius:8px; min-width: 240px; }
+    label { display:flex; gap:6px; align-items:center; }
+    /* List container can scroll horizontally if needed */
+    #list { overflow-x:auto; }
+    /* Table: fixed layout and sticky header */
+    #blocks-table { table-layout: fixed; }
+    #blocks-table th, #blocks-table td { word-break: break-word; }
+    #blocks-table thead th { position: sticky; top: 0; z-index: 1; background: #f5f5f5; }
+    /* Cards */
+    .cards { display:grid; grid-template-columns: repeat(3, minmax(260px, 1fr)); gap:12px; margin-top:10px; }
+    @media (max-width: 980px){ .cards { grid-template-columns: repeat(2, minmax(220px, 1fr)); } }
+    @media (max-width: 640px){ .cards { grid-template-columns: 1fr; } }
+    .card-item { background:#fff; border:1px solid #eee; border-radius:12px; padding:12px; box-shadow: 0 2px 8px rgba(16,24,40,0.06); display:flex; flex-direction:column; gap:8px; }
+    .card-head { display:flex; gap:8px; align-items:center; justify-content:space-between; }
+    .card-title { font-weight:700; }
+    .badge { display:inline-block; padding:2px 8px; border-radius:999px; background:#eef3fb; color:#23408f; font-size:12px; border:1px solid #d7e2f3; }
+    .muted-sm { color:#667085; font-size: 12px; }
+    /* Modal */
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,.35); display:none; align-items:center; justify-content:center; padding: 16px; }
+    .modal .modal-content { background: #fff; color: #222; border-radius: 10px; max-width: 960px; width: 100%; max-height: 85vh; overflow: auto; box-shadow: 0 8px 28px rgba(0,0,0,.35); }
+    .modal-header { display:flex; align-items:center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #eee; }
+    .modal-header h3 { margin: 0; font-size: 18px; }
+    .modal-header button { margin-left:auto; background:transparent; border:1px solid #ddd; border-radius:8px; padding: 2px 8px; cursor:pointer; }
+    .modal-body { padding: 12px; }
+    .modal-body .meta { display:grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; align-items: baseline; }
+    .modal-body pre { background: #0b1021; color: #dfe6ff; padding: 12px; border-radius: 10px; overflow:auto; }
+    .rating-row { display:flex; align-items:center; gap:8px; }
+    /* Responsive tweaks */
+    @media (max-width: 900px){
+      /* hide Bytes column (7) */
+      #blocks-table th:nth-child(7), #blocks-table td:nth-child(7){ display:none; }
+    }
+    @media (max-width: 720px){
+      /* hide Trust column (9) */
+      #blocks-table th:nth-child(9), #blocks-table td:nth-child(9){ display:none; }
+    }
+    @media (max-width: 560px){
+      /* hide Topic column (3) and make inputs full width */
+      #blocks-table th:nth-child(3), #blocks-table td:nth-child(3){ display:none; }
+      input[type="text"] { min-width: 100%; flex: 1 1 100%; }
+      .modal-body .meta { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 460px){
+      /* hide Quelle column (4) */
+      #blocks-table th:nth-child(4), #blocks-table td:nth-child(4){ display:none; }
+      .pill, .controls select, .toolbar button { font-size: 12px; padding: 6px 8px; }
+    }
+  </style>
+  <script defer src="/static/nav.js"></script>
+  <script defer src="/static/block_viewer.js"></script>
+</head>
+<body>
+  <div id="nav" data-src="/static/nav.html"></div>
+  <main class="container">
+    <h1>KI_ana Block Viewer</h1>
+    <div class="toolbar">
+      <div class="controls">
+        <input id="q" type="text" placeholder="Suche in Titel/Topic/Quelle…">
+        <label class="muted"><input id="verifiedOnly" type="checkbox" checked> Nur verifizierte</label>
+        <label class="muted">Sortieren:
+          <select id="sortBy">
+            <option value="none">–</option>
+            <option value="trust">Trust (absteigend)</option>
+            <option value="rating">Rating (absteigend)</option>
+            <option value="time">Zeit (neu → alt)</option>
+          </select>
+        </label>
+        <label class="muted">Ansicht:
+          <select id="viewMode">
+            <option value="table" selected>Tabelle</option>
+            <option value="cards">Karten</option>
+          </select>
+        </label>
+      </div>
+      <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+        <span id="healthPill" class="pill" title="Signer/Keys Status" style="display:none"></span>
+        <span id="coveragePill" class="pill" title="Verifikationsabdeckung" style="display:none"></span>
+        <button id="rehashAllBtn" class="pill" title="Alle Blöcke prüfen und fehlende/abweichende Hashes korrigieren">Rehash alle</button>
+        <span id="rehashAllStatus" class="muted"></span>
+        <button id="signAllBtn" class="pill" title="Alle Blöcke signieren (erfordert Papa/Admin/Worker)">Signiere alle</button>
+        <span id="signAllStatus" class="muted"></span>
+        <span id="count" class="muted"></span>
+      </div>
+    </div>
+    <div id="list">
+      <p>Lade Blöcke…</p>
+    </div>
+    <div id="pager" class="toolbar" style="justify-content: space-between; margin-top:8px;">
+      <div class="muted" id="pagerInfo">—</div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <label class="muted">Pro Seite:
+          <select id="pageSize">
+            <option value="25">25</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+          </select>
+        </label>
+        <label class="muted">Seite:
+          <input id="pageJump" type="number" min="1" value="1" style="width:80px; padding:6px; border:1px solid #ddd; border-radius:8px;" />
+        </label>
+        <button id="goPage" class="pill">Gehe</button>
+        <label class="muted" title="Alle Treffer unter aktuellen Filtern exportieren (Client-seitig)"><input id="exportAllToggle" type="checkbox" /> Alle</label>
+        <button id="exportCsv" class="pill" title="CSV exportieren">CSV</button>
+        <button id="prevPage" class="pill">◀ Zurück</button>
+        <button id="nextPage" class="pill">Weiter ▶</button>
+      </div>
+    </div>
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="detail-title">Block Details</h3>
+          <button id="detail-close" aria-label="close">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="meta">
+            <div><strong>Block-ID:</strong> <span id="detail-block-id"></span></div>
+            <div><strong>Topic:</strong> <span id="detail-topic"></span></div>
+            <div><strong>Source:</strong> <span id="detail-source"></span></div>
+            <div><strong>Path:</strong> <code id="detail-path"></code></div>
+            <div><strong>Timestamp:</strong> <span id="detail-ts"></span></div>
+            <div><strong>Trust:</strong> <span id="detail-trust"></span></div>
+            <div>
+              <a id="detail-open-json" href="#" target="_blank" rel="noopener" class="pill">JSON in neuem Tab</a>
+              <a id="detail-download" href="#" target="_blank" rel="noopener" class="pill">Download</a>
+            </div>
+            <div class="rating-row">
+              <label for="detail-rating"><strong>Rating (0..1):</strong></label>
+              <input id="detail-rating" type="number" min="0" max="1" step="0.05" />
+              <button id="detail-rate-btn">Speichern</button>
+              <span id="detail-rate-status" class="muted"></span>
+            </div>
+            <div class="rating-row">
+              <button id="detail-rehash-btn" class="pill" title="Hash neu berechnen und speichern">Rehash ausführen</button>
+              <span id="detail-rehash-status" class="muted"></span>
+            </div>
+          </div>
+          <hr/>
+          <pre id="detail-json" class="json-viewer">{}</pre>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

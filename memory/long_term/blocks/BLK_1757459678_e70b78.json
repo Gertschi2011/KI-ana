@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: All vibe coding tools are selling a get rich quick scheme\n • Hacker News: Anthropic is endorsing SB 53\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreich: Macron ernennt Sébastien Lecornu zum neuen Premier",
+  "created_at": 1757459678.542006,
+  "hash": "df42a87f0c5b04c2dd700e243b66f7978c683f8061a5270a7697b4fb3b7712e4",
+  "id": "BLK_1757459678_e70b78",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "x+/Nj4znSdqi/uv5Ako83W9QAcXsPYfvAZg9JYvfBa12nJOZ2ZLWjqcDm4nQHHrWRfTSsENzk4gMWv9PcqL8AQ==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-10 01:14",
+  "url": null
+}

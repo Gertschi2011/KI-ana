@@ -1,0 +1,15 @@
+[Unit]
+Description=KI_ana Plan Enforcer (auto-suspend expired plans)
+After=network.target
+
+[Service]
+Type=oneshot
+User=kiana
+WorkingDirectory=/home/kiana/ki_ana
+Environment=PYTHONUNBUFFERED=1
+Environment=KI_ROOT=/home/kiana/ki_ana
+Environment=DATABASE_URL=sqlite:////home/kiana/ki_ana/db.sqlite3
+ExecStart=/usr/bin/python3 /home/kiana/ki_ana/system/plan_enforcer.py
+
+[Install]
+WantedBy=multi-user.target

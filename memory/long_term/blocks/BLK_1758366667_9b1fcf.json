@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: FocusStream – Focused, distraction-free YouTube for learners\n • Hacker News: LLM-Deflate: Extracting LLMs into Datasets\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sicherheitsexperte Masala zu Kampfjets: \"Russland führt NATO vor\"",
+  "created_at": 1758366667.6977143,
+  "hash": "be228dc9cbcf12614b3e92f3dd64f0531784a82b8223438b29c9bc53bb1bfd7a",
+  "id": "BLK_1758366667_9b1fcf",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7DPPMCw2+mKrZAQg2HGGsOb32c5vjj754DbEz9DafgH3elEdz5uT2Qa07LTF/Uh4h12QxnLVj52SumIBEfIgCQ==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-20 13:11",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Telli (YC F24) is hiring engineers, designers, and interns [on-site Berlin]\n • Hacker News: What Is Complexity in Chess?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): SCO-Gipfeltreffen in Tianjin: China nähert sich Indien an - und hofiert Putin",
+  "created_at": 1756718236.109964,
+  "hash": "eeab77108dba0fed009601a689c49bd39ae3db567a79487c95fb53a8b8b9d856",
+  "id": "BLK_1756718236_9025cd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4JJ0kXa0J5md4fFdJGU71eRxXxGpvwiTePi9jAOkmcxB2SEdPUhhp5k4Gp9Rz4pa86DC2q9Q5qZmgsabdWNtDA==",
+  "signed_at": "2025-09-21T08:13:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-01 11:17",
+  "url": null
+}

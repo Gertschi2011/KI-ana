@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Taco Bell AI Drive-Thru\n • Hacker News: Print GitHub Repositories as Books\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bas zu Sozialreformen: \"Zumutungen gerecht verteilen\"",
+  "created_at": 1757283567.4162304,
+  "hash": "7f4c9627a88192f413a4a45e3d692c18ecf713288d70995fd8a0f843234dccc6",
+  "id": "BLK_1757283567_53a1d9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "0q7uP6lSjHJZPHyjJWC9QqPC4oLOWjLV5UUs5wBP7nOQSQEwYEHk4kbZKWfUgydxD61LVXnwk6PMvEqnoJOBDw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-08 00:19",
+  "url": null
+}

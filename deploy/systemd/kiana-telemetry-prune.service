@@ -1,0 +1,13 @@
+[Unit]
+Description=KI_ana Telemetry Prune (browser_errors TTL)
+After=network.target
+
+[Service]
+Type=oneshot
+User=kiana
+WorkingDirectory=/home/kiana/ki_ana
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /home/kiana/ki_ana/system/telemetry_prune.py --days 30
+
+[Install]
+WantedBy=multi-user.target

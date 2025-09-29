@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: An Open-Source Maintainer's Guide to Saying No\n • Hacker News: Safe C++ proposal is not being continued\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kommunalwahlen in NRW: Jung, weiblich, (selten) Kommunalpolitikerin",
+  "created_at": 1757794291.912506,
+  "hash": "18e26b2e1daa811f629c2fd9034fcd217443d0bb3be429d0bf62edc40f7b0199",
+  "id": "BLK_1757794291_3e3ba5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "JEYeZhnTWPK1sgyDY7WK9I1iwHsQHuJppXyEu/zhtqYkon0JpY+TyEVA9NsMe2V2eZ+oPkS27RVRp0PGinpQAA==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-13 22:11",
+  "url": null
+}

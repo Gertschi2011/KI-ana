@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Time Spent on Hardening\n • Hacker News: $100K fee added to H1B applications\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzung: Estland beantragt Artikel-4-Beratungen der NATO",
+  "created_at": 1758314444.5980392,
+  "hash": "e11f6b6fbacd2a1f5304fee60272ec5d7dea0e8d7e15d73879276c72d2ef3578",
+  "id": "BLK_1758314444_22f2d9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bhlU88OeoQ0oDjVYFck3Om5Dt9xIXbkdvx22kW1sdmbE27Gwe2XEfpWnp/yThkDRh5uu8z1UmOpVLqyM9pPYBQ==",
+  "signed_at": "2025-09-21T08:13:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-19 22:40",
+  "url": null
+}

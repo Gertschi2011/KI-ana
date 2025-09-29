@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Europol said ChatControl doesn't go far enough; they want to retain data forever\n • Hacker News: Unfortunately, the ICEBlock app is activism theater\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Nordrhein-Westfalen den Ärztemangel auf dem Land bekämpft",
+  "hash": "bb73ede71a4311fa6d6ba242245883563fbc4cefefebd57248c44058c05fa1f2",
+  "id": "BLK_1756811538_9tgq54",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "rgI+eoDdFm8SKyGSamAov6eF0LcuDrL8m3ODQnQeMAf48BU1CrwT4JR9pOf91mdOtvd9YKeX5E4NZu5c1Bu9Aw==",
+  "signed_at": "2025-09-21T08:13:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 13:12",
+  "ts": 1756811538,
+  "url": ""
+}

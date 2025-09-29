@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Anthropic raises $13B Series F at $183B post-money valuation\n • Hacker News: X(Twitter) Shadow Bans Turkish Presidential Candidate\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Grüne kündigen Gegenwind für schwarz-rote Regierung an",
+  "created_at": 1756830865.712681,
+  "hash": "0b1b71f85c7b0775915c13a6c3f3b3094cfc480331220c2cb6f786b869934791",
+  "id": "BLK_1756830865_007f80",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "v4GKg+V1lu1UN+pVQhrgiF4AtBxYRKBrSuoxVl2kYlmMTnTa4xFkzgbh9X38Pd2V0Se43RTP/7ts2U/51HLsAw==",
+  "signed_at": "2025-09-21T08:13:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-02 18:34",
+  "url": null
+}
