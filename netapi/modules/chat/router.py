@@ -4169,6 +4169,9 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                         # pure link line
                         if re.fullmatch(r"https?://\S+", t):
                             return True
+                        # state-dump style JSON (self diagnostics) shouldn't count as knowledge
+                        if t.startswith("{") and '"recent_topics"' in t and '"learning_buffer"' in t:
+                            return True
                     except Exception:
                         return False
                     return False
@@ -4305,69 +4308,70 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                         km_hint_only = True
                 except Exception:
                     pass
-                reply_k = ans_mem
-                if src_block_mem:
-                    reply_k = (reply_k + "\n\n" + src_block_mem).strip()
-                reply_k = postprocess_and_style(reply_k, persona, state, profile_used, style_prompt)
-                reply_k = make_user_friendly_text(reply_k, state)
-                # Persist and return
-                conv_id_k = None
-                try:
-                    if current and current.get("id"):
-                        uid = int(current["id"])  # type: ignore
-                        conv = _ensure_conversation(db, uid, body.conv_id)
-                        conv_id_k = conv.id
-                        _save_msg(db, conv.id, "user", user_msg)
-                        _save_msg(db, conv.id, "ai", reply_k)
-                        asyncio.create_task(_retitle_if_needed(conv.id, user_msg, reply_k, body.lang or "de-DE"))
-                except Exception:
+                if ans_mem:
+                    reply_k = ans_mem
+                    if src_block_mem:
+                        reply_k = (reply_k + "\n\n" + src_block_mem).strip()
+                    reply_k = postprocess_and_style(reply_k, persona, state, profile_used, style_prompt)
+                    reply_k = make_user_friendly_text(reply_k, state)
+                    # Persist and return
                     conv_id_k = None
-                try:
-                    now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
-                    uid_for_mem = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
-                    save_experience(uid_for_mem, conv_id_k, {"type": "knowledge_from_memory", "user_message": user_msg, "assistant_reply": reply_k, "topic_path": topic_path, "timestamp": now_iso})
-                    if state:
-                        try:
-                            state.last_pipeline = "km"  # type: ignore[attr-defined]
-                        except Exception:
-                            pass
-                        save_state(state)
-                except Exception:
-                    pass
-                # Knowledge hard-guard: prevent self-state JSON leak before finalizing
-                try:
-                    if isinstance(reply_k, str):
-                        s = reply_k.strip()
-                        if s.startswith('{') and '"recent_topics"' in s and '"mood"' in s:
-                            logger.warning("chat_once: knowledge answer tried to return self-state JSON, converting to human text")
+                    try:
+                        if current and current.get("id"):
+                            uid = int(current["id"])  # type: ignore
+                            conv = _ensure_conversation(db, uid, body.conv_id)
+                            conv_id_k = conv.id
+                            _save_msg(db, conv.id, "user", user_msg)
+                            _save_msg(db, conv.id, "ai", reply_k)
+                            asyncio.create_task(_retitle_if_needed(conv.id, user_msg, reply_k, body.lang or "de-DE"))
+                    except Exception:
+                        conv_id_k = None
+                    try:
+                        now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                        uid_for_mem = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
+                        save_experience(uid_for_mem, conv_id_k, {"type": "knowledge_from_memory", "user_message": user_msg, "assistant_reply": reply_k, "topic_path": topic_path, "timestamp": now_iso})
+                        if state:
                             try:
-                                from netapi.core.expression import express_state_human as _expr_k
-                                reply_k = _expr_k(state) if state else "Ich spüre, dass ich gerade vor allem lernen und verstehen will – sag mir gern, was du konkret über das Thema wissen möchtest. 🙂"
+                                state.last_pipeline = "km"  # type: ignore[attr-defined]
                             except Exception:
-                                reply_k = "Ich spüre, dass ich gerade vor allem lernen und verstehen will – sag mir gern, was du konkret über das Thema wissen möchtest. 🙂"
-                except Exception:
-                    pass
-                # pipeline log + extras
-                try:
-                    uid_log = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
-                except Exception:
-                    uid_log = None
-                try:
-                    logger.info(f"knowledge_pipeline selected=km topic={extract_topic(user_msg)} user={uid_log}")
-                except Exception:
-                    pass
-                # set last_pipeline
-                try:
-                    if state is not None:
-                        state.last_pipeline = "km"  # type: ignore[attr-defined]
-                except Exception:
-                    pass
-                _bump_answers_and_maybe_reflect(extract_topic(user_msg))
-                return _finalize_reply(
-                    reply_k,
-                    state=state, conv_id=(conv_id_k if conv_id_k is not None else (body.conv_id or None)), intent="knowledge", topic=extract_topic(user_msg), pipeline="km",
-                    extras={"ok": True, "auto_modes": [], "role_used": "Wissen", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "km", "topic": extract_topic(user_msg)}}
-                )
+                                pass
+                            save_state(state)
+                    except Exception:
+                        pass
+                    # Knowledge hard-guard: prevent self-state JSON leak before finalizing
+                    try:
+                        if isinstance(reply_k, str):
+                            s = reply_k.strip()
+                            if s.startswith('{') and '"recent_topics"' in s and '"mood"' in s:
+                                logger.warning("chat_once: knowledge answer tried to return self-state JSON, converting to human text")
+                                try:
+                                    from netapi.core.expression import express_state_human as _expr_k
+                                    reply_k = _expr_k(state) if state else "Ich spüre, dass ich gerade vor allem lernen und verstehen will – sag mir gern, was du konkret über das Thema wissen möchtest. 🙂"
+                                except Exception:
+                                    reply_k = "Ich spüre, dass ich gerade vor allem lernen und verstehen will – sag mir gern, was du konkret über das Thema wissen möchtest. 🙂"
+                    except Exception:
+                        pass
+                    # pipeline log + extras
+                    try:
+                        uid_log = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
+                    except Exception:
+                        uid_log = None
+                    try:
+                        logger.info(f"knowledge_pipeline selected=km topic={extract_topic(user_msg)} user={uid_log}")
+                    except Exception:
+                        pass
+                    # set last_pipeline
+                    try:
+                        if state is not None:
+                            state.last_pipeline = "km"  # type: ignore[attr-defined]
+                    except Exception:
+                        pass
+                    _bump_answers_and_maybe_reflect(extract_topic(user_msg))
+                    return _finalize_reply(
+                        reply_k,
+                        state=state, conv_id=(conv_id_k if conv_id_k is not None else (body.conv_id or None)), intent="knowledge", topic=extract_topic(user_msg), pipeline="km",
+                        extras={"ok": True, "auto_modes": [], "role_used": "Wissen", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "km", "topic": extract_topic(user_msg)}}
+                    )
 
             # 2) LLM consultation (local model) if memory empty or low-confidence
             llm_text = None
