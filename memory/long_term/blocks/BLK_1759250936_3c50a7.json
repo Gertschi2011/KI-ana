@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launch HN: Airweave (YC X25) – Let agents search any app\n • Hacker News: Leaked Apple M5 9 core Geekbench scores\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Urteil gegen Ex-Mitarbeiter: Für AfD-Politiker Krah ist es noch nicht vorbei",
+  "created_at": 1759250936.6534982,
+  "hash": "7fe2e42a7ddf46c8ae34c0df6b3bce8e286b6dc34421e67c8b84353904c8a4d8",
+  "id": "BLK_1759250936_3c50a7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OZHvtuZQS31ZGUtgVstyVTM9PoXaLp+ZutDCZMQjg1ZUJ/95rdFNEqD0inIpcooqPRDupW5HC87/aENNmTh9Bw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 18:48",
+  "url": null
+}

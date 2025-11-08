@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Xubuntu.org Might Be Compromised\n • Hacker News: Replacement.ai\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel bestätigt Angriffe auf Gaza nach Vorwürfen gegen Hamas",
+  "created_at": 1760884918.2910686,
+  "hash": "23e1d0125b0d9e3e173374cfa75c02b2e0a6e31ee6612ce16875fe25830e8023",
+  "id": "BLK_1760884918_378d0f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "49dE/jNQ3yXE+QAwpbfSikPn6cxdXjM547ea57/GsKym3efCePrHkox5uBZlWSqmn4WnVko2LmR1Ou6aGZykBw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 16:41",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Vertical Solar Panels Are Out Standing\n • Hacker News: Electronic Arts Goes Private for $52.5B in Largest LBO\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Düstere Aussichten für Europas Umwelt",
+  "created_at": 1759159207.4003227,
+  "hash": "c6aff251016f5b0fa1e90a6e6f2304e9ff2ad2be36d690a2ee98b6a28f59f85b",
+  "id": "BLK_1759159207_bccc39",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "a5c6yGWyDmkA3OrXIu/giwZZpsHeJsUlqzl1Ygq9jrK4nmVQ0Igwa8Qd9yYPsEYH8FPJGMETFzJoh7cqIKMUBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 17:20",
+  "url": null
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758762596_qjmvta",
-  "title": "Web Digest 2025-09-25 03:09",
   "content": "• Hacker News: How did sports betting become legal in the US?\n • Hacker News: Docker Hub Is Down\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): China macht beim UN-Klima-Gipfel eine überraschende Ankündigung",
+  "hash": "6de0bb26d1f7604f94135515677ff04772e06d5766976ff75449fe9da69b34c5",
+  "id": "BLK_1758762596_qjmvta",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "kX+IHGxiiDLrVuVcd9qLP62I+J6J+0kfe9rH8H1naZ0fQGOWQ5sLxeUa5N1fwz67eniQmHS1DfRhMZIFJiXACQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 03:09",
   "ts": 1758762596,
-  "meta": {},
-  "hash": "6de0bb26d1f7604f94135515677ff04772e06d5766976ff75449fe9da69b34c5"
+  "url": ""
 }

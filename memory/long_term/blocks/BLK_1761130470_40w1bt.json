@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Knocker, a knock based access control system for your homelab\n • Hacker News: Greenland Ditches Starlink for French Satellite Service\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sacharow-Preis geht an inhaftierte Journalisten in Belarus und Georgien",
+  "hash": "48128bdb3132139550c865c9fe2d0181225f902a5ab5b8ddf248dd7fc6d87284",
+  "id": "BLK_1761130470_40w1bt",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "ksv6QiDBjtx8ijPb+EM5A/vI6R+Ggc+I9GWlDR0U+8eVAoXS/ECusZcyusnbYpiy5ILg83qlX+BegtqfZgapAg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 12:54",
+  "ts": 1761130470,
+  "url": ""
+}

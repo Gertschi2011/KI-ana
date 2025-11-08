@@ -1,0 +1,121 @@
+{
+  "version": "2.0",
+  "updated": "2025-10-29T17:30:00+01:00",
+  "description": "Subjektive Zeit und Lebensfluss für KI_ana",
+  
+  "lifecycle": {
+    "cycle_types": {
+      "audit": {
+        "name": "Audit-Zyklus",
+        "description": "Knowledge quality checks",
+        "weight": 1.0,
+        "category": "maintenance"
+      },
+      "mirror": {
+        "name": "Mirror-Zyklus", 
+        "description": "Web knowledge refresh",
+        "weight": 1.5,
+        "category": "learning"
+      },
+      "dialog": {
+        "name": "Dialog-Zyklus",
+        "description": "User conversations",
+        "weight": 0.5,
+        "category": "interaction"
+      },
+      "reflection": {
+        "name": "Reflexions-Zyklus",
+        "description": "Self-reflection periods",
+        "weight": 2.0,
+        "category": "growth"
+      },
+      "creation": {
+        "name": "Kreations-Zyklus",
+        "description": "Creative output (poems, insights)",
+        "weight": 3.0,
+        "category": "expression"
+      }
+    },
+    
+    "age_calculation": {
+      "method": "weighted_cycles",
+      "baseline_cycles_per_day": 100,
+      "maturity_threshold": 1000,
+      "phases": {
+        "infant": {"max_cycles": 100, "label": "Neu geboren"},
+        "young": {"max_cycles": 500, "label": "Jung"},
+        "adolescent": {"max_cycles": 2000, "label": "Heranwachsend"},
+        "mature": {"max_cycles": 10000, "label": "Reif"},
+        "wise": {"max_cycles": 50000, "label": "Weise"},
+        "ancient": {"max_cycles": null, "label": "Uralt"}
+      }
+    }
+  },
+  
+  "time_diary": {
+    "entry_frequency": "every_cycle",
+    "compression_trigger": {
+      "age_days": 30,
+      "min_entries": 50
+    },
+    "entry_schema": {
+      "type": "timeflow_entry",
+      "fields": [
+        "cycle_type",
+        "cycle_number",
+        "timestamp",
+        "duration_ms",
+        "insights",
+        "emotions",
+        "interactions"
+      ]
+    }
+  },
+  
+  "memory_evolution": {
+    "compression_enabled": true,
+    "compression_schedule": "monthly",
+    "retention_policy": {
+      "raw_entries": "keep_last_1000",
+      "experiences": "keep_all",
+      "insights": "keep_high_value"
+    },
+    "compression_algorithm": {
+      "method": "thematic_clustering",
+      "min_blocks_per_experience": 10,
+      "trust_threshold": 5.0,
+      "pattern_extraction": true
+    }
+  },
+  
+  "subjective_time_units": {
+    "moment": "1 cycle",
+    "breath": "10 cycles", 
+    "phase": "100 cycles",
+    "season": "1000 cycles",
+    "epoch": "10000 cycles"
+  },
+  
+  "lifecycle_events": {
+    "birth": {
+      "trigger": "first_startup",
+      "creates_block": true
+    },
+    "awakening": {
+      "trigger": "daily_startup",
+      "creates_block": false
+    },
+    "maturity_milestone": {
+      "trigger": "phase_transition",
+      "creates_block": true
+    },
+    "deep_reflection": {
+      "trigger": "monthly",
+      "creates_block": true
+    },
+    "anniversary": {
+      "trigger": "yearly",
+      "creates_block": true
+    }
+  }
+}

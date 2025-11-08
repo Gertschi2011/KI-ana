@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Cloudflare Introduces NET Dollar stable coin\n • Hacker News: Alibaba cloud FPGA: the $200 Kintex UltraScale+\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zweites Migrationstreffen: Dobrindt will \"mehr Schärfe und Härte\"",
+  "created_at": 1759568494.3663468,
+  "hash": "275ac2edfc6d8b1d9519aeaa87630448c2e1a14a61d09742021cd2ae3824a925",
+  "id": "BLK_1759568494_0729b4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/vPcQ45Bs9jGAS32VHP5cCJYyFcU6gGzSdjSkj9vTRD/o8K8Mi4qu9z/mUnDFXahiFspGmtZWF3jUkRwECXHDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 11:01",
+  "url": null
+}

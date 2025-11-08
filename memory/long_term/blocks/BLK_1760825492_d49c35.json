@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to sequence your DNA for <$2k\n • Hacker News: Liva AI (YC S25) Is Hiring\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"No Kings\"-Proteste: Demonstrationen gegen Trump in vielen US-Städten",
+  "created_at": 1760825492.8380404,
+  "hash": "b195dd07ba5bd51dcb2ee67db974973f563cbde79192bbd18b0f2018326dda44",
+  "id": "BLK_1760825492_d49c35",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "seGjHtu6sYk7m8rlKYpsGGJ4Qe1tTvcz39uj7WQQv4c+Jg2GFLclTEv7U43vFPvIEkLAlXVdLnrYpP2Uqb+QCw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 00:11",
+  "url": null
+}

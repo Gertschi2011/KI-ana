@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Game over. AGI is not imminent, and LLMs are not the royal road to getting there\n • Hacker News: The IDEs we had 30 years ago ... and we lost\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Laura Loomer Jagd auf Trump-Skeptiker macht",
+  "created_at": 1760794879.559544,
+  "hash": "a183861ff1ee6760c9ed58f5a2c16e023e44ef78fecedd0019c8d9a28a9e2978",
+  "id": "BLK_1760794879_7c73ac",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "UO4AWd+IUV8N/2Q5JZE2ztL0jZqJFiIbwuXy3VXuVsfjifweowRF8Dm8SvVWvvS2R2+7n1LpEhuhqVp4/fKUBA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 15:41",
+  "url": null
+}

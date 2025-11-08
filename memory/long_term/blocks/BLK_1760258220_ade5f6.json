@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The App Store was always authoritarian\n • Hacker News: Spyware maker NSO Group confirms acquisition by US investors\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Viele Touristen nutzen den Herbst als Urlaubs-Saison",
+  "created_at": 1760258220.896464,
+  "hash": "7da1faf669cd517fdaf732c8e0f9a5edf89468c17b6fd5fefbc86fb48af63668",
+  "id": "BLK_1760258220_ade5f6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "2Wn50XPu7m9xAas/HB2oc/cFIU26p7DWiar2tfa/aIjsDKQSDa8mBDx8L2ZjzKEqrpdmfpHERcty5XK/wSkoDQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 10:37",
+  "url": null
+}

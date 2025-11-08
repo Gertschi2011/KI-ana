@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Flight Simulator for the Brain Reveals How We Learn and Why Minds Go Off Course\n • Hacker News: Ask HN: How to stop an AWS bot sending 2B requests/month\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Treffen mit Trump: Selenskyjs Drahtseilakt in Washington",
+  "created_at": 1760686832.640146,
+  "hash": "b0fd38ff2aa5e2c70a4d40b35e058db18a929273e01bac041b92b697ef9367dc",
+  "id": "BLK_1760686832_74ed1a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "1PRaisaZ7PE2ECxp5RJn3qsfbRgC5lQAIvDJKjCzmDMXzwokC3AtaRV4GafcKBym13giItX5/sUWwhgE0KRkAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 09:40",
+  "url": null
+}

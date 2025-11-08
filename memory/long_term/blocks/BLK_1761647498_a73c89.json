@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Geometry and Physics of Wrinkling [pdf]\n • Hacker News: Criminal complaint against facial recognition company Clearview AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Martinsgans und Frühstücksei: Lässt die Vogelgrippe die Preise steigen?",
+  "created_at": 1761647498.7261531,
+  "hash": "2498b7e993345c6e9e1eaf92bf8201d970e3fb1464ace513a2c01a898c24f4f9",
+  "id": "BLK_1761647498_a73c89",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "dhaAYG2m+tuvl7bj8jn8K+n4/2SfyV5NA3u+OkhvvJkqLwIha5o2Ab7+6ci5LzAfKuPiK3NvSUrsEOZWzzCSCg==",
+  "signed_at": "2025-10-28T10:31:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 11:31",
+  "url": null
+}

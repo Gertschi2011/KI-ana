@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Zoo of Array Languages\n • Hacker News: KDE celebrates the 29th birthday and kicks off the yearly fundraiser\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): FAQ zum Gazastreifen: Wie weiter nach dem Gipfel von Ägypten?",
+  "created_at": 1760443713.316917,
+  "hash": "8c0fd9bde419077e566539ee051d6995f6425fe986349d02371cca0fae4e45aa",
+  "id": "BLK_1760443713_622468",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "NegWZPJl5nGU5eR/s9CzsJY/V4mP9P0Xjt1UaBSotq5jhul/LzppAb8qc31IWWWXplN6qDzTgc8AXD284sHsBw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 14:08",
+  "url": null
+}

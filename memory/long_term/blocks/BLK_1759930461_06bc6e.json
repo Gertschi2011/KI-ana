@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Email They Shouldn't Have Read\n • Hacker News: Legal Contracts Built for AI Agents\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundesregierung geht von mehr Wirtschaftswachstum ab 2026 aus",
+  "created_at": 1759930461.1664805,
+  "hash": "22df986bf67fa5f70b5363604ba7bdd8d499a6e59c8fea22fa7b06c3335363e8",
+  "id": "BLK_1759930461_06bc6e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "8oBhOfOJu3Poc2JpV0SVwmQ5nvp77xqL2qYUje3itrEJ8FALVNAGT4b5dkcbQXp5wKvM3ffRNHxjyv1xgvDgAg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 15:34",
+  "url": null
+}

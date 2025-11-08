@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 'Western Qwen': IBM Wows with Granite 4 LLM Launch and Hybrid Mamba/Transformer\n • Hacker News: Blender 4.5 brings big changes\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Flugausfälle wegen Drohnensichtung am Münchner Flughafen",
+  "created_at": 1759469435.5995061,
+  "hash": "7537841e6261e161b00ead36111013270326a07e74b85614ae461d7fc5d3efa7",
+  "id": "BLK_1759469435_def8ac",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "5v3uZyqPtbQBe29m1JlBHw/G8cgfa6jz1fqMrT7/IE3GoGGbYC+A4zRVtI0tklxUqBmtibpmpH2l3GX7m4YnCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 07:30",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I Trained a Small Language Model from Scratch\n • Hacker News: Microcomputers – The Second Wave: Toward a Mass Market\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Flugausfälle wegen Drohnensichtung am Münchener Flughafen",
+  "created_at": 1759464033.1943355,
+  "hash": "2d87da3f2cab8a1c989f7495a5a5ea630a77f72af8b05dae2a87651a9a0c22a4",
+  "id": "BLK_1759464033_b5817c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "3dvcPsTIjP7TZrvbMlpOnDbKqhtwx6Vvl8mJj18Wup0FTLkn8XPP8Wx8XRuDjt/hU71Iu8SHvfW9vLggBVXfBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 06:00",
+  "url": null
+}

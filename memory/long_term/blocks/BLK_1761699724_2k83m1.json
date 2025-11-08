@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Keeping the Internet fast and secure: introducing Merkle Tree Certificates\n • Hacker News: Tor Browser 15.0\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "hash": "93c9cfd80b6c841554a4ca271030ec40108005e2b7c76e20c0442f6ab7ae0a46",
+  "id": "BLK_1761699724_2k83m1",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "HCQ7h8gdQQnzUsW39T8tSm82aigqzWU5bcgbljlfnf1/m2/zDD+pbLyXN8E3eKu0ieIn8JElObP0U/lXFjb7Dg==",
+  "signed_at": "2025-10-29T01:02:04Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-29 02:02",
+  "ts": 1761699724,
+  "url": ""
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758672133_vkx9ww",
-  "title": "Web Digest 2025-09-24 02:02",
   "content": "• Hacker News: From Rust to reality: The hidden journey of fetch_max\n • Hacker News: Context Engineering for AI Agents: Lessons\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russlands Angriffskrieg : Trumps Kehrtwende in der Ukraine-Politik?",
+  "hash": "f045b0e49454d1845ea43b80be751dcaafac0a412d8b589c9b26815f8f58f484",
+  "id": "BLK_1758672133_vkx9ww",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ikmMTjw4Hge8UKvNyTbr2hlGQsE1tU8mKu3Yq8muoNXBnzATD1UEVGznde6SUaaWFYX01aoTkw8Gq3Jk313nCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 02:02",
   "ts": 1758672133,
-  "meta": {},
-  "hash": "f045b0e49454d1845ea43b80be751dcaafac0a412d8b589c9b26815f8f58f484"
+  "url": ""
 }

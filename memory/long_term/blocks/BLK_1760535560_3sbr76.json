@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Apple Vision Pro\n • Hacker News: Apple introduces the powerful new iPad Pro with the M5 chip\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Signa-Gründer Benko teilweise schuldig gesprochen - zwei Jahre Haft",
+  "hash": "8e28b736d9b8aa15d9daf8a9b1ad8c01b2a41fe0a769a839d6ac3dab2d53e674",
+  "id": "BLK_1760535560_3sbr76",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "LMy/lq1eC7v3vNLE8F4qochcK4/VmrGjEFqcpoMTXQn95225MwuKiYm9DHSKxGWb5CZ6XsIsMyyYZ4ujImdZDQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 15:39",
+  "ts": 1760535560,
+  "url": ""
+}

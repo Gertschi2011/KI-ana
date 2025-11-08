@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Americans can't afford their cars any more and Wall Street is worried\n • Hacker News: Building a message queue with only two UNIX signals\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Terrororganisation Hamas übergibt weitere tote Geisel an Israel",
+  "created_at": 1761007372.9153671,
+  "hash": "4765dfcb0d775b5a72838741d4db6e00d9c674cf7c7d17f90e2e842834da9102",
+  "id": "BLK_1761007372_433425",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "MmMWOKtAI3InwjAlkPP0kKJWCJPsAji971FNOQIVJTsW1WzHvx3md1Rkv4eabHWMwS4hX3upUrauEL+m8R3hAA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 02:42",
+  "url": null
+}

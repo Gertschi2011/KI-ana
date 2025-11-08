@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Provision (YC S22) Is Hiring\n • Hacker News: disk-perf-git-and-pnpm aims to prove that something is wrong with APFS on macOS\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Neue Bürgermeisterin von Herdecke bei Messerangriff verletzt",
+  "created_at": 1759842223.5006201,
+  "hash": "e84be015cf9b4a9c633af6860c09a2392e3e0d1310d99ac2987526b59bc4d51a",
+  "id": "BLK_1759842223_b8a629",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "zG93OpAP8O6eJMdPptlc/QE3xLeH8wD8oAufrepWUSLy6BXdU2/Sp+M0nrlJ4lPaG7fnXorfQIH4uye4wyg9Bg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 15:03",
+  "url": null
+}

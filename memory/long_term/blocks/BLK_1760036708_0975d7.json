@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 2025 MacArthur Fellows\n • Hacker News: Sea Rise Simulator (2023)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz im Interview: \"Machen Weg für Rückkehr in den Arbeitsmarkt frei\"",
+  "created_at": 1760036708.0788405,
+  "hash": "a6ef7beb25c183f03c110d92877152bcca77f3a28a12549a0b421e456c1842e6",
+  "id": "BLK_1760036708_0975d7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "BX3rIsMpmHI7x1N52T1dWQsMBdB67GYI9hCzynZEm6g9DoF56p1GqSHWpHHTByrKeWxXdWIhdvAFhbHt/QLaDA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 21:05",
+  "url": null
+}

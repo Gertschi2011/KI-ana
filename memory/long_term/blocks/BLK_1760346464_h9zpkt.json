@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: HTTP3 Explained\n • Hacker News: Countering Trusting Trust Through Diverse Double-Compiling (DDC)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Alle lebenden Geiseln aus dem Gazastreifen frei",
+  "hash": "7a0d7c2a76789abcbce6c4f0ec0bba924b5d89ff5753ae2381dcbb6d61ba743c",
+  "id": "BLK_1760346464_h9zpkt",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "V/fhbEQ656jrdX3plWnj4ZqFuWH0rQlIQJN3HHh2qoc6mI84zO6hrok0RnIKPzAVGBUKRZMYDmXQjVBJ4gB+Dw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 11:07",
+  "ts": 1760346464,
+  "url": ""
+}

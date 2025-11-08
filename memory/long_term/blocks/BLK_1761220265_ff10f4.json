@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: SpaceX disables 2,500 Starlink terminals allegedly used by Asian scam centers\n • Hacker News: Egg prices vs. Consumer Price Index since 1980\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Steuereinnahmen nach Schätzung bis 2029 höher als erwartet",
+  "created_at": 1761220265.5837352,
+  "hash": "13b71344820a599d1dfed35cda6ee08bf1b215f7d7e7e62916106d1b5e6b5066",
+  "id": "BLK_1761220265_ff10f4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "l0wvQUI5JASimRGxYeQbR9BJl2IilVL16RlTMO0Sc6Z7g2EyAWw8bUPst707UJmF0O/2VZ+YDkCH7fDHyGrsBA==",
+  "signed_at": "2025-10-23T11:51:05Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 13:51",
+  "url": null
+}

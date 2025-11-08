@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Space Elevator\n • Hacker News: Entire Linux Network stack diagram (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump will Donbass für Frieden \"zerteilen\"",
+  "created_at": 1760942543.9167857,
+  "hash": "5f25a8991b237b76a87a87dd10ad428ee98306495e204d3984c24cb67bbdc527",
+  "id": "BLK_1760942543_ab000b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "J9uR4YpOJCt1+IacTch/36XCCKRa1snYtmZeXdZVyG0ri8tlcRSO+zPxQm+E6qSkmHlTBcpotK5yu/KhpZZMCg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 08:42",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Euro cops take down cybercrime network with 49M fake accounts\n • Hacker News: Claudeskills.cc – Share, Discover, and Reuse Claude/OpenAI Agent Skills\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ASEAN-Gipfel: Wie umgehen mit der \"Sandwich-Position\"?",
+  "created_at": 1761375785.5409591,
+  "hash": "36c99ecce1616879b4ad9a995e30cdb8e60f7c4061218ff033a89463730d4201",
+  "id": "BLK_1761375785_eb968e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "RBM9InZh/4V4XemTYlyILb8YPAI0+mDRguvz++NtAr+lVqhgUzr2aducER4szEy4VL1Tsd0XfsOkJAC0iNHXDw==",
+  "signed_at": "2025-10-25T07:03:05Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 09:03",
+  "url": null
+}

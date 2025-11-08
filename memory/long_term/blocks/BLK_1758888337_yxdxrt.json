@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758888337_yxdxrt",
-  "title": "Web Digest 2025-09-26 14:05",
   "content": "• Hacker News: ParadeDB (YC S23) Is Hiring Database Internals Engineers\n • Hacker News: UK officially rolls out digital ID scheme\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU sieht Pharmaexporte vor neuen US-Zöllen geschützt",
+  "hash": "082f41a07e82af208c55cfdc668ab89a5017761240b7a9b2498d529c88063d36",
+  "id": "BLK_1758888337_yxdxrt",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "E9UBr4qbG5uoaMO9nrgw2dl+ki7I2X2FvQ3AeZRiXK6L5NWXDs6E7GQaMlS1yK5wu32aoiMHsUk0DhbQ7Fm8BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 14:05",
   "ts": 1758888337,
-  "meta": {},
-  "hash": "082f41a07e82af208c55cfdc668ab89a5017761240b7a9b2498d529c88063d36"
+  "url": ""
 }

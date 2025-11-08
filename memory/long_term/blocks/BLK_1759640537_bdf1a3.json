@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: You can't parse XML with regex. Let's do it anyways\n • Hacker News: Parrot – type-safe SQL in Gleam, supports SQlite, PostgreSQL and MySQL\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vor Parlamentswahl: Syriens Minderheiten im Ungewissen",
+  "created_at": 1759640537.4461565,
+  "hash": "d490cf0fda48b7506fccf70e5a9b70860a031da0feaac45802f089ec9e7acb0c",
+  "id": "BLK_1759640537_bdf1a3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "YRCjGQAfqi367C4ka5/PH06ifLyqkCXsAlNEs07F+kynxH9RX1joZUcGOee4c/GxIXusyfRG2w2zmUmCy0o5Cw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 07:02",
+  "url": null
+}

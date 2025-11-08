@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: A visual AI interface to understand papers/books/topics\n • Hacker News: TrueVault (YC W14) Is Hiring a BDR (Ex-ECommerce Manager)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas erklärt sich zur Freilassung aller Geiseln bereit",
+  "created_at": 1759530673.2036846,
+  "hash": "36c7d0cfa70fee4d6e908521cfbdbd214283cdd524ec4ff1208d6748d8c25fcb",
+  "id": "BLK_1759530673_f7e056",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "D9M4eWnajbQhPzGrOBkNHCjc3L/EsbReTHdV1ywWDii1TxZ4WsJl+hWBfdWaJE6fpkYNOu5NnSxoLoNeS81ADg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 00:31",
+  "url": null
+}

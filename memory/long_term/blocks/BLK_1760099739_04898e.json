@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Weave (YC W25) is hiring a founding AI engineer\n • Hacker News: AI is an attack from above on wages\": cognitive scientist Hagen Blix\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost: Waffenruhe in Kraft, Israel zieht seine Truppen ab",
+  "created_at": 1760099739.1087048,
+  "hash": "093c998ff1426feb24c15475a767339fb26dd68950597f0447ce3a81ded4d223",
+  "id": "BLK_1760099739_04898e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "48SJ8dG4rkzGwpdeibX32fyw4Ulg/q9x+y7JrcZRHeMrKDiG0+/36H0fHvWvmbCFhYQ9dDoCJ1EZmNhZ+nokCg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 14:35",
+  "url": null
+}

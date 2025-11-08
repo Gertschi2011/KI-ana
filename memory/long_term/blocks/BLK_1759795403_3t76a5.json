@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Microsoft is plugging more holes that let you use Windows 11 without MS account\n • Hacker News: RediShell: Critical remote code execution vulnerability in Redis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krise nach Lecornus Rücktritt: Der einsame Präsident",
+  "hash": "b979afc0030831ff7bb737b77d18f50e77c5b03eb967a4f3e1a5d74fe6e377c8",
+  "id": "BLK_1759795403_3t76a5",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "1Sad3BMho0SpthLk9dCoW7akpdh80qngaymNZB+XBbT5siaZ4rXHjsAxjpugMKbRaZ7fm4V26hfn+E+KvSZhBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 02:03",
+  "ts": 1759795403,
+  "url": ""
+}

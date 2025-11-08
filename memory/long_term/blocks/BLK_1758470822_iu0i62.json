@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758470822_iu0i62",
-  "title": "Web Digest 2025-09-21 18:07",
   "content": "• Hacker News: How to Stop Functional Programming\n • Hacker News: New thermoelectric cooling breakthrough nearly doubles efficiency\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Großbritannien, Kanada und Australien erkennen Palästinenserstaat an",
+  "hash": "4deeb25f999c1128f3a815da60d8eb5fb168fc8602aae6d435e25b7183d46b22",
+  "id": "BLK_1758470822_iu0i62",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "VZcxPkqdDNABLOI7wr41NakoS/u9fz49KEOLqQYyvTjOwpA/L7U26WERI6UZQf3IwI6pcQ1Qgo9qlTC3wNhvCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 18:07",
   "ts": 1758470822,
-  "meta": {},
-  "hash": "4deeb25f999c1128f3a815da60d8eb5fb168fc8602aae6d435e25b7183d46b22"
+  "url": ""
 }

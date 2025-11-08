@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How the AI bubble ate Y Combinator\n • Hacker News: Deml: The Directed Acyclic Graph Elevation Markup Language\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Urteil gegen Ex-Mitarbeiter: Für AfD-Politiker Krah ist es noch nicht vorbei",
+  "created_at": 1759245263.1982474,
+  "hash": "245c654511c62715aa9c08a91f2ab8b2a8a084e0f5e13abf4ffa8f15de472e47",
+  "id": "BLK_1759245263_9df111",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "mHG6+oJ+NRGkxEanCe9nuRe0H/2u18rfatFS6j2W85uXJOXvKzmiqA7hEsCYapUraTq09t/QwNAjK+010HepDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 17:14",
+  "url": null
+}

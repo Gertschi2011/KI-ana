@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Spyware maker NSO Group confirms acquisition by US investors\n • Hacker News: Pipelining in psql (PostgreSQL 18)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Hamas bestätigt Freilassung der Geiseln ab Montag ++",
+  "created_at": 1760251016.9437354,
+  "hash": "dafaecd02efd145488bd02e7d7b742ddd741e38ba9191da27116b3efd39d6eee",
+  "id": "BLK_1760251016_9e79bc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "1gSYPqgla+d1pDHwC14/ctIpMMW/wjNB88PUHZ2AQR4kUXoMCJVRykBXPQepil/bwCWGX+1ukYm0yca+b5goBA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 08:36",
+  "url": null
+}

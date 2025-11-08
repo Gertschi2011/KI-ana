@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Introducing Figure 03\n • Hacker News: The C++ programmer and educator Rainer Grimm has passed away\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Einigung zwischen Hamas und Israel: Wie geht es für Gaza weiter?",
+  "created_at": 1760018699.3189793,
+  "hash": "cdf6e5e6f4f0900bb9fa866f3aeb1f08bf620f66eb03808e942f12f6aa56a340",
+  "id": "BLK_1760018699_c289cc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Cz7hBK8y5ompJ+K3oK1Ox1xC161aEsM+Fjj9pWQuEZV6CfhEu9jO3B+c8OwS+QY8IEyOU99fZEAXINC7cE9TAg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 16:04",
+  "url": null
+}

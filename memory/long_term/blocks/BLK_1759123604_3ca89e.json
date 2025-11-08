@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Zero ASIC releases Wildebeest, the highest performance FPGA synthesis tool\n • Hacker News: High-Level Synthesis Synthesis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Polen-Reise von Pistorius und Wadephul: Zeichen setzen an der NATO-Ostflanke",
+  "created_at": 1759123604.402966,
+  "hash": "cd6d05dca3b10963749812ed66e9af34d71442da41e648833185e993b3beb239",
+  "id": "BLK_1759123604_3ca89e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "GK7wFk/cnQnigPcoEDm9ae/mZpL0ExhkrKmEg1IaPEzB9A2EnM07bJB9WgkwDeGbwiwMnkCbzo7DTo27HnRpAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 07:26",
+  "url": null
+}

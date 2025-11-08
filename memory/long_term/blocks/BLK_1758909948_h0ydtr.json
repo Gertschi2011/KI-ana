@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758909948_h0ydtr",
-  "title": "Web Digest 2025-09-26 20:05",
   "content": "• Hacker News: Suno Studio, a Generative AI DAW\n • Hacker News: Informed poll\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor UN-Vollversammlung: Eine Rede im Kampfmodus",
+  "hash": "6eb60c9ed133022502f65ab3978959beac08301cd275eedf9e07dc20b894c9d5",
+  "id": "BLK_1758909948_h0ydtr",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "2h6+zqulVTA3Rj+hplGHsK8mZXAIgtl1K84VwuA5VxZBRH+Ifv76Meo8vgazv24HSgjZut2ulRh0ORC9tJQ1Dw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 20:05",
   "ts": 1758909948,
-  "meta": {},
-  "hash": "6eb60c9ed133022502f65ab3978959beac08301cd275eedf9e07dc20b894c9d5"
+  "url": ""
 }

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Meditating with mongooses: Backyard wildlife phtotography lessons\n • Hacker News: State Department Revokes Visas over Charlie Kirk Comments\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienberichte: Einigung zu Wehrdienst offenbar vorerst geplatzt",
+  "created_at": 1760490536.9155283,
+  "hash": "830cc8756c21a1bb969062294ad9ae0375c7713927e372566f384e90ace6c7f7",
+  "id": "BLK_1760490536_7df4de",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "1qaVbbF/0LcAL/jcawsZ+0+5ACV6hK+C5XmKj0NLfAQp2hG3Qa3JRGpJkV8UQGZBFG9vdv/pWyfD6IRJOuZXBw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 03:08",
+  "url": null
+}

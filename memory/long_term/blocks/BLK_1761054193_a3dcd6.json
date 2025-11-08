@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ilo – a Forth system running on UEFI\n • Hacker News: Our modular, high-performance Merkle Tree library for Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Datenanalyse: So sehr ist der Gazastreifen zerstört",
+  "created_at": 1761054193.0590231,
+  "hash": "45e35616d491960a43b4304c56f1e9e2e787789e1784f1a6c54a4f312322ab14",
+  "id": "BLK_1761054193_a3dcd6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "RNfkiY8MVWXh7psZ86ZL0CYn44WmWOkTz5r6h0i5ON9kj5cL+57l9L7ekJppV1IhRPoyEssaKw1HHdxFPGhTAw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 15:43",
+  "url": null
+}

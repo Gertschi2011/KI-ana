@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758505514_mcn70l",
-  "title": "Web Digest 2025-09-22 03:45",
   "content": "• Hacker News: Be Careful with Go Struct Embedding\n • Hacker News: EU to block Big Tech from new financial data sharing system\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump bezeichnet erschossenen Kirk bei Trauerfeier als \"Märtyrer\"",
+  "hash": "78b7b9553bf18e89ca4c68c5021ed84c12f31199e4ccda2210308daf1bd801eb",
+  "id": "BLK_1758505514_mcn70l",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "01tcOGjWyWNvxLXaGr6tyj7BS47S5BWFas2S/SCyzpIMpKcHwe3tcPg7/pAZEgT3L64szH83MK7IAEkiqBwWAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 03:45",
   "ts": 1758505514,
-  "meta": {},
-  "hash": "78b7b9553bf18e89ca4c68c5021ed84c12f31199e4ccda2210308daf1bd801eb"
+  "url": ""
 }

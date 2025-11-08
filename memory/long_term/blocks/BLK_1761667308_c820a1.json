@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Nvidia takes $1B stake in Nokia\n • Hacker News: How to build a 747 – A WorldFlight Story\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jusos sammeln Unterschriften gegen die Bürgergeldreform",
+  "created_at": 1761667308.2688603,
+  "hash": "6d19e93d1cd065649a5aef164c14693e19e6611f8d2b81c019a68412d5c254bf",
+  "id": "BLK_1761667308_c820a1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "G3t+EJtahieFaHHYonmHv1kl9Vp+KzTURJLrfwuTc8zTIuhT50TVnswWeyyRUAqY5cLxmasSB+0k3c4qHQK9Bw==",
+  "signed_at": "2025-10-28T16:01:48Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 17:01",
+  "url": null
+}

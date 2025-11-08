@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Alaska Airlines' statement on IT outage\n • Hacker News: RFC 863 – Discard Protocol\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ministerin Reiche verspricht in der Ukraine Hilfe für Energieversorgung",
+  "created_at": 1761295980.0756235,
+  "hash": "aa595fb547c0fbd1c0cb4f9ded43f68fd91d70bf63abe84d687fb04395d791be",
+  "id": "BLK_1761295980_c5b307",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "xd2UIcdx4tr9FKaOZn//8WWtWpOY03Cm2zWRUVTnhhRnHi+QZTl9oVDUAaR6ZnCg+f/MIg422yVOHxasxkQ5CQ==",
+  "signed_at": "2025-10-24T08:53:00Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 10:52",
+  "url": null
+}

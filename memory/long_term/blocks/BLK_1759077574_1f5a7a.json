@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759077574_1f5a7a",
-  "title": "Web Digest 2025-09-28 18:39",
   "content": "• Hacker News: Detaching GraalVM from the Java Ecosystem Train\n • Hacker News: Why I'm not rushing to take sides in the RubyGems fiasco\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Milliardenloch: Pflegegrad 1 streichen - oder nicht?",
+  "created_at": 1759077574.8378894,
+  "hash": "9466b0d231cd7b27a6ca64b70c9b4c8f0e10d8fb87f5d394ec7efea37c318064",
+  "id": "BLK_1759077574_1f5a7a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "EWIxsoQ2qSZobN2XmTfYc62uuw1cAohBdPOqtnWejekSdDu2g7mNSujyKyDkQVw1eoSCJAEbztrxrNumGb/xBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759077574.8378894,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 18:39",
+  "url": null
 }

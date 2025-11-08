@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Live Stream from the Namib Desert\n • Hacker News: Ruby Core Takes Ownership of Rubygems and Bundler\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nord-Stream-Sabotage: Polnisches Gericht lehnt Auslieferung ab",
+  "hash": "4129e7aaf29a2ee3b27df637a9a168e2abcec4f7a89796efc91360093163b272",
+  "id": "BLK_1760706641_625ago",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "Rj/rKuaA0ODTjrnb4pTnS/G+2spGWXuoeM+m30eTqg7STsuy9j6gHFkMoUNFn+VDBdM4UuTpldTEHPsgBD+UBQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 15:10",
+  "ts": 1760706641,
+  "url": ""
+}

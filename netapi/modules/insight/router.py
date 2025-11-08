@@ -12,7 +12,7 @@ from system import self_reflection  # type: ignore
 
 router = APIRouter(prefix="/api/insight", tags=["insight"])
 
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 KG_PATH = BASE_DIR / "memory" / "index" / "knowledge_graph.json"
 
 

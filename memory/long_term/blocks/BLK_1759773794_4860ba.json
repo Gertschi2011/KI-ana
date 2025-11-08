@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: UpCodes (YC S17) is hiring remote engineers across the Americas\n • Hacker News: Ladybird passes the Apple 90% threshold on web-platform-tests\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was andere Staaten für die Drohnenabwehr von der Ukraine lernen können",
+  "created_at": 1759773794.2043412,
+  "hash": "819f859bd1d44291edf9c5d2cc99a9f30f9e8aae7d3280d0ea1f8dc25d13b76e",
+  "id": "BLK_1759773794_4860ba",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fQSHZTehz7GWFllBN0RwljwStBfBf90mVJIWimWHy/Il6r4vSSMv7SRoWgFPt3JQmQtVmuSEu5nHYzbm/geABQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 20:03",
+  "url": null
+}

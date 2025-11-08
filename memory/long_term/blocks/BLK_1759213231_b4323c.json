@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI tools I wish existed\n • Hacker News: Show HN: Devbox – Containers for better dev environments\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump sieht Nahen Osten \"mehr als nah dran\" an einer Friedenslösung",
+  "created_at": 1759213231.3450792,
+  "hash": "f6794e5b491127cd69a2eefb34f9b407ae944c6b539846d2c5c00e30cd50aa5c",
+  "id": "BLK_1759213231_b4323c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Z6P9LAQe+Fc3tj5N+LSEzqh7CVmMZeoZ8DRIF9nFMht7SpfRTB/mZupIKCknIxsPP0f5duGb35fyzVk2AEGxDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 08:20",
+  "url": null
+}

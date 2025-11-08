@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Sysco Is Not \"Ruining Restaurants\"\n • Hacker News: Learn Turbo Pascal – a video series originally released on VHS\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die 20 noch lebenden Geiseln im Gazastreifen",
+  "created_at": 1760189785.3442678,
+  "hash": "50ff9ccda635e32544d24324334734ca318ac0895114dd1b3c72d6d517ad9b4e",
+  "id": "BLK_1760189785_38ba7d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Sf8d9jN30bukSAcxHRLrBSPehiRy+ptCxz3HFL0ITRETNv1tc3UeITz5SeZxfT2XnMLMUJcg5ZE9EYpGIf8sAA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 15:36",
+  "url": null
+}

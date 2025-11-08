@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Inside Amazon's engineering culture: Lessons from their senior principals\n • Hacker News: Boring Is What We Wanted\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "created_at": 1761685317.7196167,
+  "hash": "2c715c003009a70604cce9818d755f45831b84da516ee0ae015662a0ad9ec942",
+  "id": "BLK_1761685317_c037d1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "xx5xm/QeowGOmfHDtiEuSBTx/G8dk4/MHrxhiSU5eZVFpihcA6/ei57Dy/qeRUXRTO7N0duZyC3HFCTT+cYeCg==",
+  "signed_at": "2025-10-28T21:01:57Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 22:01",
+  "url": null
+}

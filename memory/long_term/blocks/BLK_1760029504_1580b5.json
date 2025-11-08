@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Fireman Sam (Commodore 64)\n • Hacker News: Python 3.14 Is Here. How Fast Is It? – Miguelgrinberg.com\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz im Interview: \"Machen Weg für Rückkehr in den Arbeitsmarkt frei\"",
+  "created_at": 1760029504.5721364,
+  "hash": "d241ab61a972404baac064d01028ef3856a3c531bd53a988e5609b47237be77d",
+  "id": "BLK_1760029504_1580b5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "9bek2PvcQf33g2LLBm5Wj6cb9haWgMSg1c29PweoBl5j9pk+SEONEZ6n/y+VGLGBt2Np/s7yiIcu8mEkwlPOCA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 19:05",
+  "url": null
+}

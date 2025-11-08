@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Project Shadowglass\n • Hacker News: Keeping the Internet fast and secure: introducing Merkle Tree Certificates\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Hurrikan \"Melissa\": Jamaika zum Katastrophengebiet erklärt",
+  "hash": "8967409c0dce44c90430ca95ed7d62d8e76fa682d2ae6417b7c89bccacae15c7",
+  "id": "BLK_1761703326_e2wxih",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "f/G6ZZBf2fr+r+xk0qZKlviK5hMGmM6AdYJgdIcz47joRq4ippV8zSl7mCNiSLZeVpQc8Gm4wv3A3T+RRMkuCQ==",
+  "signed_at": "2025-10-29T02:02:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-29 03:02",
+  "ts": 1761703326,
+  "url": ""
+}

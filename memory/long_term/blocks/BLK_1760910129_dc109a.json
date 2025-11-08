@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Bible and Quran apps flagged NSFW by F-Droid\n • Hacker News: Ask HN: Those who applied to the OpenAI Grove program, did you ever hear back?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel will Gaza-Waffenruhe wieder einhalten",
+  "created_at": 1760910129.954734,
+  "hash": "faa8d78ba75e49119af7a8fffe3ae7cf1e8e01bbb377d196f90a6155bdb5d8a1",
+  "id": "BLK_1760910129_dc109a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "QXg7kTDF4lSEgyQce6+b5NwkFx3xFHvRZ8qhD6lcnOvurFJsEx7mNgB8LZRt/2r/k38X34mivULe6d4Q2a/9Bg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 23:42",
+  "url": null
+}

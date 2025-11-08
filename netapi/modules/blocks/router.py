@@ -4,7 +4,7 @@ from typing import List, Optional
 from importlib.machinery import SourceFileLoader
 from pathlib import Path
 
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 UTILS_PATH = BASE_DIR / "system" / "block_utils.py"
 
 _utils = SourceFileLoader("block_utils", str(UTILS_PATH)).load_module()  # type: ignore

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: PCB Edge USB C Connector Library\n • Hacker News: President Reagan's Radio Address to the Nation on Tarrifs, 1987\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wenn der Stadt die Wohnung bezahlt und die Aktionäre kassieren",
+  "created_at": 1761454469.3453286,
+  "hash": "bd0d88e664e37dda8042d68e52c0d4d67b656e6ebc1cecfdc4d4fcce5cd056a5",
+  "id": "BLK_1761454469_2c957c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jhIcgjmH/MtFA9yLTrnb5oDBnASwToUC/9pEmXlK8Jo/sWtoLgIzx2EGSYpRl/BaEKdLE5TTbOkSVXPBLklJCQ==",
+  "signed_at": "2025-10-26T04:54:29Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 05:54",
+  "url": null
+}

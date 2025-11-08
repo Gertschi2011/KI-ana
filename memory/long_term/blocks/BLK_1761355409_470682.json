@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Carmack on Operating Systems\n • Hacker News: Vibe Coding in the 90s\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Verlorene Posten: Machtkämpfe in Chinas Führung?",
+  "created_at": 1761355409.4034958,
+  "hash": "b8ac8895767fdf6757932c0933b61a802b66132ee55dcf64c2e0fb3bb86e25ed",
+  "id": "BLK_1761355409_470682",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "U3wwE5IE7RhBZ2FSZxuVnzoywqmHdKj9QOxxEoT2itoVwfHy1cpXKQpQ2REpNe7BsyjpeD1PhvUoUSxyNYZCDw==",
+  "signed_at": "2025-10-25T01:23:29Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 03:23",
+  "url": null
+}

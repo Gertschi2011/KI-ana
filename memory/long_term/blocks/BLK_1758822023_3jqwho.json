@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758822023_3jqwho",
-  "title": "Web Digest 2025-09-25 19:40",
   "content": "• Hacker News: ChatGPT Pulse\n • Hacker News: Amazon Reaches $2.5B Settlement over Allegations It Misled Prime Users\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundestag wählt drei neue Richter für Bundesverfassungsgericht",
+  "hash": "e06aed48768e8725b34e97a8c5b379a85c448e2902f7de85747afdf6931d0c51",
+  "id": "BLK_1758822023_3jqwho",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "bbgzXdaIH+QRvUMdTq0ggO1cc+W2/iu7gDxhA2i4aa9CvFAIBl9cxTxwIbJovb1hxHxL8UxRJLXbcxfyEZAlBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 19:40",
   "ts": 1758822023,
-  "meta": {},
-  "hash": "e06aed48768e8725b34e97a8c5b379a85c448e2902f7de85747afdf6931d0c51"
+  "url": ""
 }

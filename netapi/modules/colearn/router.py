@@ -6,7 +6,7 @@ from pathlib import Path
 import json
 
 router = APIRouter(prefix="/colearn", tags=["colearn"])
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 
 # Optional modules
 try:

@@ -1,11 +1,13 @@
 from __future__ import annotations
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from typing import Any, Dict
+from pydantic import BaseModel
 import json, time
+from werkzeug.security import generate_password_hash
 
 from ...deps import get_current_user_required, require_role
 from ...db import SessionLocal
-from ...models import AdminAudit
+from ...models import AdminAudit, User
 
 router = APIRouter(prefix="/api/admin", tags=["admin"])
 
@@ -82,3 +84,160 @@ def run_plan_enforcer(user = Depends(get_current_user_required)):
         return {"ok": True, "suspended": n}
     except Exception:
         return {"ok": False, "error": "plan_enforcer_failed"}
+
+
+# ========== USER MANAGEMENT ==========
+
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    password: str
+    role: str = "user"
+    is_papa: bool = False
+    plan: str = "free"
+
+
+class UserUpdate(BaseModel):
+    username: str | None = None
+    email: str | None = None
+    role: str | None = None
+    is_papa: bool | None = None
+    plan: str | None = None
+
+
+@router.get("/users")
+def list_users(user = Depends(get_current_user_required)):
+    """List all users (admin only)"""
+    require_role(user, {"admin", "creator"})
+    
+    try:
+        with SessionLocal() as db:
+            users = db.query(User).all()
+            return {
+                "ok": True,
+                "users": [
+                    {
+                        "id": u.id,
+                        "username": u.username,
+                        "email": u.email,
+                        "role": u.role,
+                        "roles": [u.role] if u.role else [],
+                        "is_papa": u.is_papa,
+                        "plan": u.plan,
+                        "created_at": u.created_at,
+                        "updated_at": u.updated_at
+                    }
+                    for u in users
+                ]
+            }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.post("/users")
+def create_user(data: UserCreate, user = Depends(get_current_user_required)):
+    """Create new user (admin only)"""
+    require_role(user, {"admin", "creator"})
+    
+    try:
+        with SessionLocal() as db:
+            # Check if username/email exists
+            existing = db.query(User).filter(
+                (User.username == data.username) | (User.email == data.email)
+            ).first()
+            
+            if existing:
+                raise HTTPException(status_code=400, detail="Username or email already exists")
+            
+            # Create user
+            now = int(time.time())
+            new_user = User(
+                username=data.username,
+                email=data.email,
+                password_hash=generate_password_hash(data.password),
+                role=data.role,
+                is_papa=data.is_papa,
+                plan=data.plan,
+                created_at=now,
+                updated_at=now
+            )
+            
+            db.add(new_user)
+            db.commit()
+            db.refresh(new_user)
+            
+            # Audit
+            write_audit("user_created", actor_id=int(user.get("id") or 0), target_type="user", target_id=new_user.id)
+            
+            return {"ok": True, "user_id": new_user.id}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.patch("/users/{user_id}")
+def update_user(user_id: int, data: UserUpdate, user = Depends(get_current_user_required)):
+    """Update user (admin only)"""
+    require_role(user, {"admin", "creator"})
+    
+    try:
+        with SessionLocal() as db:
+            target_user = db.query(User).filter(User.id == user_id).first()
+            
+            if not target_user:
+                raise HTTPException(status_code=404, detail="User not found")
+            
+            # Update fields
+            if data.username is not None:
+                target_user.username = data.username
+            if data.email is not None:
+                target_user.email = data.email
+            if data.role is not None:
+                target_user.role = data.role
+            if data.is_papa is not None:
+                target_user.is_papa = data.is_papa
+            if data.plan is not None:
+                target_user.plan = data.plan
+            
+            target_user.updated_at = int(time.time())
+            
+            db.commit()
+            
+            # Audit
+            write_audit("user_updated", actor_id=int(user.get("id") or 0), target_type="user", target_id=user_id)
+            
+            return {"ok": True}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.delete("/users/{user_id}")
+def delete_user(user_id: int, user = Depends(get_current_user_required)):
+    """Delete user (admin only)"""
+    require_role(user, {"admin", "creator"})
+    
+    try:
+        with SessionLocal() as db:
+            target_user = db.query(User).filter(User.id == user_id).first()
+            
+            if not target_user:
+                raise HTTPException(status_code=404, detail="User not found")
+            
+            # Prevent self-deletion
+            if target_user.id == user.get("id"):
+                raise HTTPException(status_code=400, detail="Cannot delete yourself")
+            
+            db.delete(target_user)
+            db.commit()
+            
+            # Audit
+            write_audit("user_deleted", actor_id=int(user.get("id") or 0), target_type="user", target_id=user_id)
+            
+            return {"ok": True}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

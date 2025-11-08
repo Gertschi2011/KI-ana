@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Britain has wasted £1,112,293,718 switching off wind turbines in 2025\n • Hacker News: Europe's Digital Sovereignty Paradox – \"Chat Control\" Update\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum es bei Schwarz-Rot knirscht",
+  "created_at": 1760528356.7792835,
+  "hash": "5de9e768ef020a0047159ceafa68a7ffecbbdfb75ef77de14d3d18e9f7e23d93",
+  "id": "BLK_1760528356_dc8dd5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "4t1ijMpiRGPSyAmLK5grV/rHnbe8PfvJjiBQZRQK1SbtpI+Mj8nE+vlz9FbWKT+jzgQ3FyuZSvxpCP4RlLyzAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 13:39",
+  "url": null
+}

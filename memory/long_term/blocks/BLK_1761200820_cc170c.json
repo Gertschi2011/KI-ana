@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: VST3 audio plugin format is now MIT\n • Hacker News: The mild mannered Englishman who was the most prolific ghost hunter\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russland schützt Atomarsenal mit westlicher Technik",
+  "created_at": 1761200820.0104074,
+  "hash": "37102bc8eefde73a37dd4033ca379805a1cc5d100f9f9eb76600caeaa4bbe5ae",
+  "id": "BLK_1761200820_cc170c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "aZv/Xb1gQ1iWGupKk5ZUeMQJ1ZBx8cudAYF7jI4TKnhLUWfkgHeSJrtjFXOk6jaqzW5q9m5ooOCgkqPbOccICA==",
+  "signed_at": "2025-10-23T06:27:00Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 08:26",
+  "url": null
+}

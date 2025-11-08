@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Casey Muratori: I can always tell a good programmer in an interview\n • Hacker News: I spent a year of my life making an ASN.1 compiler in D\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russland-Sanktionen treiben Ölpreise - Trump hat Indien im Visier",
+  "hash": "90941c699fb62b4edb5f323489b594620d4ce6aca264fbd21d33ed09dd21d2df",
+  "id": "BLK_1761225744_bhfew5",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "7opqpeZO7G6U5og/5qPLXBN4/BNCT09ZfZJ0tkjkxpTsfnUTpEiqY+k4UTipZ+LCNoOkslNwRzC2d0OU8w21Aw==",
+  "signed_at": "2025-10-23T13:22:24Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 15:22",
+  "ts": 1761225744,
+  "url": ""
+}

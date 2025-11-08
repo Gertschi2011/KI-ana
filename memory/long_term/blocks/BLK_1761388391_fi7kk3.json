@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: That Time Ken Thompson Wrote a Backdoor into the C Compiler\n • Hacker News: Euro cops take down cybercrime network with 49M fake accounts\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Militär vor Südamerika: Mit Flugzeugträgern gegen Drogenboote?",
+  "hash": "d6b6e003110edd34699e9080061be3e6ae76e73442b0ba4808c8ff2cb3769cbf",
+  "id": "BLK_1761388391_fi7kk3",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ZVB00zcEnFklkcuiHy/Zqns0JdjNWpbpQyumfgCOzYLmY5IE1zs578k4Op7QaezWRRgFQ4m5lZRyuM6Te6ngDg==",
+  "signed_at": "2025-10-25T10:33:11Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 12:33",
+  "ts": 1761388391,
+  "url": ""
+}

@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759064968_527182",
-  "title": "Web Digest 2025-09-28 15:09",
   "content": "• Hacker News: The Post-American Order Starts in Riyadh and Islamabad\n • Hacker News: EPA tells some scientists to stop publishing studies\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Deutsche kaufen Elektronikgeräte lieber neu als gebraucht",
+  "created_at": 1759064968.3037772,
+  "hash": "406086fae094a7f4bdd3ec16df647d7e7571fe72c117b77cd1e8f3a96b27a139",
+  "id": "BLK_1759064968_527182",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "D+99vrsqtjsSZtljCM7Nf/WwrLSr9narAWBlANbta7nPCtM485XB7A6ODJEjm/belsv9TdIlRNfIrQ1kX4YbCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759064968.3037772,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 15:09",
+  "url": null
 }

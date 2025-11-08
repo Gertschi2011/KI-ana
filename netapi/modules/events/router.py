@@ -8,7 +8,7 @@ from pathlib import Path
 
 router = APIRouter(tags=["events"])
 
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 BUS_PATH = BASE_DIR / "system" / "events_bus.py"
 
 def _load_bus():

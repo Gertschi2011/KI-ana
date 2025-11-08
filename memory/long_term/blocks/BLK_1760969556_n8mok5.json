@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Rethinking Async Loops in JavaScript\n • Hacker News: Servo v0.0.1 Released\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz sagt AfD den Kampf an - und bleibt bei \"Stadtbild\"-Satz",
+  "hash": "e0ad8cb49fbcd5ac301fe5708b316c48235cb4ce41d5bf8f719562330be19bbe",
+  "id": "BLK_1760969556_n8mok5",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "Ngn7Uh+JWP8WLjoj+7J9QXVSizm39GF0sTeyY0At8DXlEiscRP+qY4xL1LLjB+q0YOaWeYT9r1g5/50TUQ0ODw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 16:12",
+  "ts": 1760969556,
+  "url": ""
+}

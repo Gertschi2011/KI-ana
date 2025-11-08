@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758579800_sbxhcj",
-  "title": "Web Digest 2025-09-23 00:23",
   "content": "• Hacker News: Show HN: Perfect your presentation with a panel of AI reviewers\n • Hacker News: Paper2Agent: Stanford Reimagining Research Papers as Interactive AI Agents\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Auch Frankreich und Belgien erkennen Palästinenserstaat an",
+  "hash": "ca0f353b73e61faaf50e643686eeb97f2f43dd4b3ea06707524560067c3eb16f",
+  "id": "BLK_1758579800_sbxhcj",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "SGdMPpB+yMXWQ0L4+F309nPuK1/JWDnvlxXwi70XtQOcYG5BFlMCd7SyGiGsx2wfdD+GgLjCwwYLzRayOLS0Cw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 00:23",
   "ts": 1758579800,
-  "meta": {},
-  "hash": "ca0f353b73e61faaf50e643686eeb97f2f43dd4b3ea06707524560067c3eb16f"
+  "url": ""
 }

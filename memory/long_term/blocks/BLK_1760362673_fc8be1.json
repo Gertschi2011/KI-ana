@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: SQLite Online – 11 years of solo development, 11K daily users\n • Hacker News: US Junk Bonds Post Worst Losses in Six Months, Spreads Widen\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Knesset-Rede: Trump spricht von Beginn \"dauerhafter Harmonie\"",
+  "created_at": 1760362673.0804784,
+  "hash": "e28ad3e592a0770ec9c97563b5d59ca8d202897b445a1f52505332108ad6701a",
+  "id": "BLK_1760362673_fc8be1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "vDn/M278V6vxvmCgSxPItNFS9RQPZnk0+auUd3PfLjJPOS9ROSd4UHHZ53/Pzrp1nB56QPRZpWEiH8IKJP5LAw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 15:37",
+  "url": null
+}

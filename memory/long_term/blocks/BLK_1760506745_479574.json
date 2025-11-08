@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Can we know whether a profiler is accurate?\n • Hacker News: Disk Prices\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NATO-Staaten erwarten neuen Druck der USA bei Treffen in Brüssel",
+  "created_at": 1760506745.1855786,
+  "hash": "93e29393968842a186130b72a63db7ffba15b246c417a1e72a67dd2344b62310",
+  "id": "BLK_1760506745_479574",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "wRvlm2uLWcp2jFYSH8v5tLE8dJIGw6ZpgjxHZajVRCuBPPrjxgD/QrktMOAqwxnmI41/fCfuaH+gurU1H3YhAA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 07:39",
+  "url": null
+}

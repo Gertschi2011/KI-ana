@@ -7,7 +7,7 @@ from typing import Any, Dict
 
 router = APIRouter(prefix="/api/reflection", tags=["reflection"])
 
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 REFLECT_PATH = BASE_DIR / "system" / "reflection_engine.py"
 THOUGHT_LOGGER_PATH = BASE_DIR / "system" / "thought_logger.py"
 

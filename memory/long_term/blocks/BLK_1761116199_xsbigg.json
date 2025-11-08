@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Evaluating the Infinity Cache in AMD Strix Halo\n • Hacker News: OpenBSD 7.8\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ein Polizeigewerkschafter und seine steilen Thesen",
+  "hash": "7f4185f0c09c682b05de766cc2c10a507b8a121972990d2408391e0bbc508273",
+  "id": "BLK_1761116199_xsbigg",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "XHvYhdS0m0f8kQQFd4qNuNrsRcgdmJKKep0zi0RqtKehw6+wpy1rkFw2Mp5FZbh/8H/GjAC97/64mx132qM4Bw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 08:56",
+  "ts": 1761116199,
+  "url": ""
+}

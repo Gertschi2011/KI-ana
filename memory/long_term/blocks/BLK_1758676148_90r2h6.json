@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758676148_90r2h6",
-  "title": "Web Digest 2025-09-24 03:09",
   "content": "• Hacker News: Baldur's Gate 3 Steam Deck – Native Version\n • Hacker News: The Top Programming Languages 2025\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russlands Angriffskrieg : Trumps Kehrtwende in der Ukraine-Politik?",
+  "hash": "8fa6fcccb763192ac1842c2bebfcec9e5de41d28a4ba672d2d02a3b39a29ea8c",
+  "id": "BLK_1758676148_90r2h6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "acAQ3SMqrkt74oV7jU46kd1+aUXkfy3oEZFWCd2Ed3cmfv6SiSm7bIXlxVnt1AV4iqO9iqIvDA2T55gMMdKUCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 03:09",
   "ts": 1758676148,
-  "meta": {},
-  "hash": "8fa6fcccb763192ac1842c2bebfcec9e5de41d28a4ba672d2d02a3b39a29ea8c"
+  "url": ""
 }

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Zipper Is Getting Its First Major Upgrade in 100 Years\n • Hacker News: Why an abundance of choice is not the same as freedom\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel bestätigt Angriffe auf Gaza nach Vorwürfen gegen Hamas",
+  "created_at": 1760888519.8378394,
+  "hash": "790dd68c63eff5d1caf9f2b792860b3d7e1a0082f789705d59d0b245de7f31a1",
+  "id": "BLK_1760888519_7aa079",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Egvaw2/8uVNRtLfWpOFksvOcZ6fI64FGQ+okVpdjoM2NUoFg0VEIKPN/rqWNsGmKqe8BjwSj4yQal1DAagsJCQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 17:41",
+  "url": null
+}

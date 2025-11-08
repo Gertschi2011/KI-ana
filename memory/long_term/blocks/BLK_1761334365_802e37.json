@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Mainframe Six (2022)\n • Hacker News: Asahi Linux Still Working on Apple M3 Support, M1n1 Bootloader Going Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die US-Politik deutsche Ford-Standorte ausbremst",
+  "created_at": 1761334365.6571174,
+  "hash": "dfc2f060ffbbeeea44b0d3aa2f634038eb7afdac0b347d20d27a5d328a852376",
+  "id": "BLK_1761334365_802e37",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "AZU+DedyGBzyE4MHT2ri72abKshn19/iqJq2AiHrRhNJHxmxGF1ly+WASLWwBACFixBkas9TY8+oxRAw7KBUDA==",
+  "signed_at": "2025-10-24T19:32:45Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 21:32",
+  "url": null
+}

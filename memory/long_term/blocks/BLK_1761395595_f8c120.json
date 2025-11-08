@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Chonky – a neural text semantic chunking goes multilingual\n • Hacker News: The Missing Semester of Your CS Education (2020)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Social Media und Konsum: Bestimmt TikTok, was im Regal steht?",
+  "created_at": 1761395595.773019,
+  "hash": "c0570266c270b679415847946c64fd85f5ea7073ecf6b2dd7a01dbb238d52dfa",
+  "id": "BLK_1761395595_f8c120",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "qVbJ4uKHjH9STCYjZEB0DUEJrtXLWiEiCNNH/MVf/ZFtPAzSTJraFTY9IM1Kz8XLvejIU2RFqfvhclVM8hG1AA==",
+  "signed_at": "2025-10-25T12:33:15Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 14:33",
+  "url": null
+}

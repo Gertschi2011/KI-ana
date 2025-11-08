@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Rust cross-platform GPUI components\n • Hacker News: WorldGrow: Generating Infinite 3D World\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Debatte nach Merz-Äußerung: SPD-Abgeordnete fordern \"Stadtbild\"-Gipfel",
+  "hash": "4c5c72ed81b42c6253d572cc6c7ef4f0b8398e69cff343e1b4d82bde2fa867e4",
+  "id": "BLK_1761562857_a4wfnp",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "3tgEvcJJbXUMlILFDcciikCLbUJbhUo2EYCfxG2efPpfmn6BxSvNYJQjf5fzOWNZeXJZ2ZEXtRSLYM6j7pxiCA==",
+  "signed_at": "2025-10-27T11:00:57Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 12:00",
+  "ts": 1761562857,
+  "url": ""
+}

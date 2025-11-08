@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: What is \"good taste\" in software engineering?\n • Hacker News: Zero ASIC releases Wildebeest, the highest performance FPGA synthesis tool\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lufthansa plant Abbau von 4.000 Stellen bis 2030",
+  "hash": "9fedd98e948c6fbe67e612b685c8d5a38b98b784bd0bb203e99dfef9bc4ab18c",
+  "id": "BLK_1759132436_6s5n4t",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Om/aUyni/kbhUAJk+M66b2SohmNnMc+Vsh7e4tpT3/pmmkJgC5kA8ipByuVe3A/0p2QLewA2PSKU+oHznLpzBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 09:53",
+  "ts": 1759132436,
+  "url": ""
+}

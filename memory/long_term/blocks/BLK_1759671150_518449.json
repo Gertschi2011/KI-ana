@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 86 GB/s bitpacking with ARM SIMD (single thread)\n • Hacker News: Laptops create systems. Phones feed algorithms. The asymmetry determines power\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach der Kommunalwahl in Georgien triumphiert die Regierungspartei",
+  "created_at": 1759671150.4644177,
+  "hash": "47c9962682ac4d16aa74b95c0180127349c915f68e1db52e88b0d0482c2169d1",
+  "id": "BLK_1759671150_518449",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "kpURHK6KMha6jlpxmXQHoom+yBZCX9KkuWr2U90zfF7ajdmaFc7QnOq1yZ5XDWG8OAq9i1r07g1SPRzCTm5rBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 15:32",
+  "url": null
+}

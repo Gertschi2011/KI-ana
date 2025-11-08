@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758904545_kavc4k",
-  "title": "Web Digest 2025-09-26 18:35",
   "content": "• Hacker News: Flagship mobile phone with hardware kill switches for privacy\n • Hacker News: SpaceX – Evolving the Multi-User Spaceport\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor UN-Vollversammlung: Eine Rede im Kampfmodus",
+  "hash": "5c9b9b358f8edd1c3f831778f4d2fc1539fa5a5aa39ec4a2392affade64ab433",
+  "id": "BLK_1758904545_kavc4k",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "zsZbWuAAw5zz2/IFYE+tUHVvGv4Irj+uXH5LTzUItYg9K3eJnLX+thI3AmJrIwsJTWos7K232KcU3Hplnb+/CA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 18:35",
   "ts": 1758904545,
-  "meta": {},
-  "hash": "5c9b9b358f8edd1c3f831778f4d2fc1539fa5a5aa39ec4a2392affade64ab433"
+  "url": ""
 }

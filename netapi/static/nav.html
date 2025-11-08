@@ -6,29 +6,33 @@
     <a href="/static/pricing.html#plans" class="nav-item menu-guest" title="Preise" id="nav-pricing">💳 Preise</a>
   </div>
   <div class="nav-right">
-    <a href="/static/viewer.html" class="nav-item menu-auth" data-role="user" title="Wissen" id="nav-wissen" style="display:none">📚 Wissen</a>
+    <a href="/static/help.html" class="nav-item" title="Hilfe" id="nav-help">❓ Hilfe</a>
     <a href="/static/login.html" class="nav-item menu-guest" title="Login" id="nav-login">🔑 Login</a>
     <a href="/static/register.html" class="nav-item menu-guest" title="Registrieren" id="nav-register">📝 Registrieren</a>
     <div class="dropdown menu-papa" data-role="papa" style="display:none">
-      <button class="dropbtn">👨‍👩‍👧 Papa ▾</button>
+      <button class="dropbtn">🛠️ Tools ▾</button>
       <div class="dropdown-content">
-        <a href="/static/papa.html">👥 Benutzerverwaltung</a>
+        <a href="/static/dashboard.html">📊 Dashboard</a>
+        <a href="/static/papa_tools_new.html">⚙️ System Tools</a>
+        <a href="/static/timeflow.html">⏰ TimeFlow</a>
+        <a href="/static/addressbook.html">🗂️ Adressbuch</a>
+        <a href="/static/admin_users.html">👥 Benutzerverwaltung</a>
         <a href="/static/admin_logs.html">📜 Logs</a>
-        <a href="/static/block_viewer.html">🧩 Block Viewer</a>
+        <a href="/static/block_viewer.html">🔍 Block Viewer</a>
       </div>
     </div>
     <div class="dropdown menu-admin" style="display:none">
-      <button class="dropbtn">🔑 Admin ▾</button>
+      <button class="dropbtn" id="user-menu-btn">👤 <span id="user-name">Admin</span> ▾</button>
       <div class="dropdown-content">
-        <a href="/static/papa.html" class="admin-only">👥 Benutzerverwaltung</a>
-        <a href="/static/admin_users.html" class="admin-only">👥 User</a>
-        <a href="/static/papa_tools.html" class="admin-only">🛠️ Tools</a>
-        <a href="/static/settings.html" id="nav-settings-link">⚙️ Einstellungen</a>
-        <a href="#" id="nav-change-pw">🔒 Passwort ändern</a>
+        <a href="/static/settings.html">⚙️ Einstellungen</a>
+        <a href="#" id="nav-change-pw-menu">🔒 Passwort ändern</a>
+        <div style="height:1px;background:#e5e7eb;margin:4px 0"></div>
+        <a href="/static/dashboard.html" class="show-for-papa" style="display:none">📊 Dashboard</a>
+        <a href="/static/addressbook.html" class="show-for-all">🗂️ Adressbuch</a>
       </div>
     </div>
-    <span id="status-dot" title="Serverstatus">🔴</span>
-    <span id="user-badge">👤 Gast</span>
+    <span id="status-dot" title="Serverstatus" style="display:none">🔴</span>
+    <span id="user-badge" style="display:none">👤 Gast</span>
     <button id="burger-btn" class="nav-item" aria-label="Menü" title="Menü" style="display:none">☰</button>
     <button id="logout-btn" class="nav-item menu-auth" data-role="user" style="display:none">🚪 Logout</button>
   </div>
@@ -65,8 +69,6 @@
         localStorage.setItem('kiana_username', uname);
         if (me.plan) localStorage.setItem('kiana_plan', String(me.plan));
       }catch{}
-      // Show Wissen on the right
-      document.getElementById('nav-wissen').style.display = 'inline';
       // Show Chat on the left when authenticated
       try{ const c = document.getElementById('nav-chat'); if(c) c.style.display='inline'; }catch{}
       // Settings now lives in Admin dropdown; hide any standalone icon if present
@@ -101,8 +103,12 @@
         el.style.display='inline-block';
         try{
           const btn = el.querySelector('.dropbtn');
-          if (btn) btn.textContent = '🔑 ' + (me.username || 'User') + ' ▾';
+          if (btn) btn.textContent = '👤 ' + (me.username || 'User') + ' ▾';
         }catch{}
+        // Show papa links if user is papa
+        if (roles.has('papa') || roles.has('creator') || roles.has('admin')) {
+          el.querySelectorAll('.show-for-papa').forEach(a=>{ a.style.display = 'block'; });
+        }
         // Admin-only links visibility
         try{
           el.querySelectorAll('.admin-only').forEach(a=>{ a.style.display = roles.has('admin') ? 'block' : 'none'; });
@@ -217,24 +223,22 @@
         const L = (String(lang||'de').toLowerCase() === 'en') ? 'en' : 'de';
         const t = {
           de: {
-            start: '🏠 Start', skills: '✨ Fähigkeiten', knowledge: '📚 Wissen', pricing: '💳 Preise',
+            start: '🏠 Start', skills: '✨ Fähigkeiten', pricing: '💳 Preise',
             login: '🔑 Login', register: '📝 Registrieren', settings_title: 'Einstellungen'
           },
           en: {
-            start: '🏠 Home', skills: '✨ Skills', knowledge: '📚 Knowledge', pricing: '💳 Pricing',
+            start: '🏠 Home', skills: '✨ Skills', pricing: '💳 Pricing',
             login: '🔑 Login', register: '📝 Register', settings_title: 'Settings'
           }
         }[L];
         const aStart = document.querySelector(".nav-left a[href='/static/index.html']");
         const aSkills = document.querySelector(".nav-left a[href='/static/skills.html']");
-        const aKnow = document.getElementById('nav-wissen');
         const aPrice = document.getElementById('nav-pricing');
         const aLogin = document.getElementById('nav-login');
         const aReg = document.getElementById('nav-register');
         const aSett = document.getElementById('nav-settings');
         if (aStart) aStart.textContent = t.start;
         if (aSkills) aSkills.textContent = t.skills;
-        if (aKnow) aKnow.textContent = t.knowledge;
         if (aPrice) aPrice.textContent = t.pricing;
         if (aLogin) aLogin.textContent = t.login;
         if (aReg) aReg.textContent = t.register;

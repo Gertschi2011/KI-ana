@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The Peter Principle and exploiting overconfident workers\n • Hacker News: New OSM file format: 30% smaller than PBF, 5x faster to import\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Großbritannien drängt auf Nutzung russischen Vermögens für die Ukraine",
+  "hash": "e6252f150a5bfbdfa519cdf85d4490b196c3426c3e36afc4bcbcf6ded84f59f1",
+  "id": "BLK_1761350573_ksbm7t",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "SDvh32g0ehyYrdJO3PX+MzamIyuIXP7EAuvIGI68a/rP7CP+NQoCOoAafX2pCrQBEgLjzYODP0DFRTEFqKkIBw==",
+  "signed_at": "2025-10-25T00:02:53Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 02:02",
+  "ts": 1761350573,
+  "url": ""
+}

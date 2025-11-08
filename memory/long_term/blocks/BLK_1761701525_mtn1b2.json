@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Keeping the Internet fast and secure: introducing Merkle Tree Certificates\n • Hacker News: Tor Browser 15.0\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Hurrikan \"Melissa\": Jamaika zum Katastrophengebiet erklärt",
+  "hash": "831fd427370a787a0cadf445fe841871cb7f4e1bec552859e974e72f66dbb747",
+  "id": "BLK_1761701525_mtn1b2",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "R7CkJJMCCXHNVSzX2l8nVH44wDoAPeGQ7xKewLkmxk2/In1vJNMDdu2bARePPLJVT++3+oyk7kRFznekMeGbCA==",
+  "signed_at": "2025-10-29T01:32:05Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-29 02:32",
+  "ts": 1761701525,
+  "url": ""
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758654169_aajcdo",
-  "title": "Web Digest 2025-09-23 21:02",
   "content": "• Hacker News: Find SF parking cops\n • Hacker News: Android users can now use conversational editing in Google Photos\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rede bei UN-Vollversammlung: Trumps Frontalangriff",
+  "hash": "f87006033ab093e3b055caba13b306a2c2ad7048ffaa44364443264b2f42f6d9",
+  "id": "BLK_1758654169_aajcdo",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "m1uF2mjQz4WJ9NFlZmhx9RHDW189cfj2FrSaxc43IVMUPJ9qnVY0HFbTNk8qYfMaEyAdYVvwmI64iKXj2rsKBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 21:02",
   "ts": 1758654169,
-  "meta": {},
-  "hash": "f87006033ab093e3b055caba13b306a2c2ad7048ffaa44364443264b2f42f6d9"
+  "url": ""
 }

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758900944_u1ru75",
-  "title": "Web Digest 2025-09-26 17:35",
   "content": "• Hacker News: Context is the bottleneck for coding agents now\n • Hacker News: Did a US Chess Champion Cheat?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor UN-Vollversammlung: Eine Rede im Kampfmodus",
+  "hash": "abd28265840a340603a85504d0747cc256efa6c7da7d0db63948d7f0de548310",
+  "id": "BLK_1758900944_u1ru75",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "/yc6ajPUYUWwBPwFJIHP0a43HYjHfQP5giKP5ydP8GDn7jKdO78cRdyCHuNEFu5s/l2OLYewdEKbvRbWArHyBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 17:35",
   "ts": 1758900944,
-  "meta": {},
-  "hash": "abd28265840a340603a85504d0747cc256efa6c7da7d0db63948d7f0de548310"
+  "url": ""
 }

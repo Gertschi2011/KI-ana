@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: OpenSnowcat – A fork of Snowplow to keep open analytics alive\n • Hacker News: What happened to Apple's legendary attention to detail?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "hash": "77e291eea8686161eadf92cc34c62fd763df5ca699092197453e3f3d67a7e8ee",
+  "id": "BLK_1761249157_uh4iz0",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "3TzvV+yywwnfkLCaM5uQ08/rlIw/tfZk/R1iIZDSJcTJZoppw8kc1urG7I1QvHlRKTZ3cdgWswssoyB4hBMgBA==",
+  "signed_at": "2025-10-23T19:52:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 21:52",
+  "ts": 1761249157,
+  "url": ""
+}

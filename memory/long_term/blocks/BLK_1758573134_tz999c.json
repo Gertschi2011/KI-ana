@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758573134_tz999c",
-  "title": "Web Digest 2025-09-22 22:32",
   "content": "• Hacker News: Unweaving warp specialization on modern tensor core GPUs\n • Hacker News: Fine-grained HTTP filtering for Claude Code\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Auch Frankreich erkennt Palästinenserstaat an",
+  "hash": "8d34521ba805023a728f02b8a9ad453d355e24d9b36f17a396669b12efa606cf",
+  "id": "BLK_1758573134_tz999c",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "4v7ZQ9DvrvyvoiaHHJKAd95K7K8OT2HrEutV8bwam0xN5eb892oT7pYYlocuGKLM1U9LOFbNHOv8z+WNCEI9BA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 22:32",
   "ts": 1758573134,
-  "meta": {},
-  "hash": "8d34521ba805023a728f02b8a9ad453d355e24d9b36f17a396669b12efa606cf"
+  "url": ""
 }

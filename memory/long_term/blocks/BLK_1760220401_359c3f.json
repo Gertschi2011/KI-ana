@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Japan's summers have lengthened by 3 weeks over 42 years, say resaerchers\n • Hacker News: Diane Keaton has died\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jubel für Trump, Pfiffe für Netanjahu in Tel Aviv",
+  "created_at": 1760220401.431725,
+  "hash": "01db56dfdaad8f3cb5d5c0bd1a110804014963c684ac7d5f0dd3413dca05e899",
+  "id": "BLK_1760220401_359c3f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "SrhrVN0rNudSjprcx/QO6hPgSR5ga/iSXC9bDnu6Uu21utIdkk0GlrXvlL7ftm4/UVOPRq1p6VVA/SBbi+yUBQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 00:06",
+  "url": null
+}

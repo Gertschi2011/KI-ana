@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Google, Meta and Microsoft opts to stop showing political ads in EU\n • Hacker News: Illegible Nature of Software Development Talent\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Palästinenser kehren zurück - Israel wartet auf Geisel-Freilassung",
+  "created_at": 1760124952.0786905,
+  "hash": "48e88a7cce0c9ebeb425d65b42f13aa4773a1673b3742d48ed866b73a28dd8da",
+  "id": "BLK_1760124952_560c39",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "t/T83P4GxWoijN0Eu1FLsFNEdU18/3ZSQpxp6h5cpUsqf7bx3Iol4Lw5f6lVNlL3YrM+EZSs/1h0LOEZWLLaBw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 21:35",
+  "url": null
+}

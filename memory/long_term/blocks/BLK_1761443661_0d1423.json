@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A worker fell into a nuclear reactor pool\n • Hacker News: I'm drowning in AI features I never asked for and I hate it\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761443661.987161,
+  "hash": "816056fcbfcf3d14e74800ed50693734ad46a55e3d98abacd549d3c3da48f326",
+  "id": "BLK_1761443661_0d1423",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "UG7Flf1NdyxdabUIw7AnA9yJ3DyD+jzz7jCgT19BDT8jv8CoKfsPkrZMoueJc6RyNropma6LPHwgrPXD8j/8CA==",
+  "signed_at": "2025-10-26T01:54:21Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 02:54",
+  "url": null
+}

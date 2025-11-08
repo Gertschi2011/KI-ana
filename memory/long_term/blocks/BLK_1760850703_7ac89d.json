@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Accountability Problem\n • Hacker News: Friendship Begins at Home\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"No Kings\"-Proteste: Demonstrationen gegen Trump in vielen US-Städten",
+  "created_at": 1760850703.5604768,
+  "hash": "0616873603704eb875fac18feba7c6d5a6c8ce420dcb76e7a07a158809bb1a73",
+  "id": "BLK_1760850703_7ac89d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "W/OcOhq4HkC2asRWTF2ECZgBBjOlyiKdB5Bhb98Tvw3gTvvs+RXWGIaLiQFw75YG8yYH65d8s521RzswVoZNCA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 07:11",
+  "url": null
+}

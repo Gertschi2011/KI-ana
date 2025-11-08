@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Computer Science Courses That Don't Exist, but Should (2015)\n • Hacker News: React Flow, open source libraries for node-based UIs with React or Svelte\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Minimalkompromiss bei Verwendung von russischem Geld",
+  "created_at": 1761277971.6883974,
+  "hash": "fd4d510a0bfea212395fb11b9038f508ac7ac4241900e8e757a66788c8b8ccd3",
+  "id": "BLK_1761277971_cc7f14",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "VZdezTozXZMOEyIHeskS4FbqcHJlN+X28HT60/hvuvCGpXjrfM2aM9LM6rs1P7iGb/Uwmc268btIFCG61hJaAA==",
+  "signed_at": "2025-10-24T03:52:51Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 05:52",
+  "url": null
+}

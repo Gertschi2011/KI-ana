@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Why TigerBeetle is the most interesting database in the world\n • Hacker News: FlowSynx – Orchestrate Declarative, Plugin-Driven DAG Workflows on .NET\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Oktoberfest in München nach Bombendrohung geschlossen",
+  "hash": "0015dc1db6c8074e4c42044177be167184a93e486f82fd8f5f910f284aa4c335",
+  "id": "BLK_1759321172_7dwwqo",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "IFT7Eun+5yE4lV3PSx7vNKj4MOCpzFrQ0KbRNq2iv5HBN3khOoAAvv14+XY5o/xL3i7yj43QEGv8nmaR5SK3BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 14:19",
+  "ts": 1759321172,
+  "url": ""
+}

@@ -5,7 +5,7 @@ from pathlib import Path
 from importlib.machinery import SourceFileLoader
 
 router = APIRouter(prefix="/genesis", tags=["genesis"])
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 
 
 def _load_loader():

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Category Theory Illustrated – Natural Transformations\n • Hacker News: Type Theory and Functional Programming (1999) [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Oktoberfest in München nach Bombendrohung geschlossen",
+  "hash": "a428827e46de6b3d064778d254be59bda7de8fd5cf6398289db3e61cb53c14f5",
+  "id": "BLK_1759310366_s8069p",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "dA6itFZ5bSDgmNNAX5wocDVM1y54kMujVIklHg1mSET/aiUwCuoMSH7ReFflmWC/DBt8iaBy9KD4gSlOWDniBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 11:19",
+  "ts": 1759310366,
+  "url": ""
+}

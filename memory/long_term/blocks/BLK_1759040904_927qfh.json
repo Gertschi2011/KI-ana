@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759040904_927qfh",
-  "title": "Web Digest 2025-09-28 08:28",
   "content": "• Hacker News: IBM Intellistation 185 AIX workstation (2016)\n • Hacker News: Do not do this unless you want magic black smoke\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Neue Bürgermeister und Landräte: Stichwahl in 147 Städten und Kreisen",
+  "hash": "3a83f052a37742b666b9d7b1c0b243213e3dc93d666cab1dde685d13dd686a93",
+  "id": "BLK_1759040904_927qfh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "0T5kfENjuMb6vZLg9Yvs2tzu8MdhA7ZMBfzCsjRt1/e0mGMe2y44zUulMchyXoHc72qXU99eT6ftukme/In0Cw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 08:28",
   "ts": 1759040904,
-  "meta": {},
-  "hash": "3a83f052a37742b666b9d7b1c0b243213e3dc93d666cab1dde685d13dd686a93"
+  "url": ""
 }

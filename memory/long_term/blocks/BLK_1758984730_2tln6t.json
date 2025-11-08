@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758984730_2tln6t",
-  "title": "Web Digest 2025-09-27 16:52",
   "content": "• Hacker News: First Malicious MCP in the Wild: The Postmark Backdoor Stealing Your Emails\n • Hacker News: Show HN: An open source Launchpad for macOS 26\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Zwischenfällen in Europa: Dobrindt plant Drohnenabwehrzentrum",
+  "hash": "f67e379d67639fcbccb4f006f45ff1025eade7efbea492eeaaffd8313a4e8beb",
+  "id": "BLK_1758984730_2tln6t",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Gq5LIDmyeDxTbpRfwwNkG4/hZKWCK80U+KlF+yXp0GyRTxnPAUYeRAcH14OfueZXb1IFdBNWg0FN8Zx2msSOCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 16:52",
   "ts": 1758984730,
-  "meta": {},
-  "hash": "f67e379d67639fcbccb4f006f45ff1025eade7efbea492eeaaffd8313a4e8beb"
+  "url": ""
 }

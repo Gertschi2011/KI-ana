@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759030099_454e4c",
-  "title": "Web Digest 2025-09-28 05:28",
   "content": "• Hacker News: Bonding twelve 56K modems together to set dial-up broadband records\n • Hacker News: UK government underwriting £1.5B loan to Jaguar Land Rover after cyber-attack\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Neue Bürgermeister und Landräte: Stichwahl in 147 Städten und Kreisen",
+  "created_at": 1759030099.3883398,
+  "hash": "8f482892d9dde021045cf67168404e2bd8184837c93cb48770f54861e56f7a34",
+  "id": "BLK_1759030099_454e4c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "m52m/HV6uHuIf3qXVa/sUgpblEyJUnqXCKRqbK7ctZZ27D7NGa3fCkZjrjshzalyqTI2pSWw4KOMUtutgjDMAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759030099.3883398,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 05:28",
+  "url": null
 }

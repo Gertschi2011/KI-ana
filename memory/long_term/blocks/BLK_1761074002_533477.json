@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Magit Is Amazing\n • Hacker News: Time to build a GPU OS? Here is the first step\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demo vor CDU-Parteizentrale: Demonstrantinnen kritisieren Merz",
+  "created_at": 1761074002.2208397,
+  "hash": "15f02f4fc239a3cae1359212b966440fd1580f9a7a546506e22616dcbc6b0d6b",
+  "id": "BLK_1761074002_533477",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "m+AxbH9WBOEXmz2huu2tsjzr3Hd2TVAZ6CNfQEAf7CpFM+LhBcOnEQqg1+8+lm4Fph6FDwodAQGBmNuipG4RBQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 21:13",
+  "url": null
+}

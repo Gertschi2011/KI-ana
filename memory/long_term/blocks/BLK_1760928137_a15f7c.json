@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Look at how unhinged GPU box art was in the 2000s\n • Hacker News: Forth: The programming language that writes itself\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Reaktionen auf Kunstdiebstahl: \"Das ist der französische Familienschmuck\"",
+  "created_at": 1760928137.8085241,
+  "hash": "89a8b78d9cbf0d9e1636859dc9bec41ce0019584f76596ae409542682751f480",
+  "id": "BLK_1760928137_a15f7c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ICezboJ0lroxGXb0nGinhHATcoPTq+KOzDHCPKi9xMiNmJAM5us3rI759kpvV9S4f34kvAG97AK1AmoZkJ1dAw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 04:42",
+  "url": null
+}

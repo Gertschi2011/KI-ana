@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Using AI to negotiate a $195k hospital bill down to $33k\n • Hacker News: Nvidia takes $1B stake in Nokia\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Musks Grokipedia gestartet: Wikipedia-Konkurrent mit rechten Tendenzen?",
+  "created_at": 1761669109.1520755,
+  "hash": "ac774a1c1b77e88e7b7f263ad53a7c4c76b92176ef3bf530236350bd33b5fd36",
+  "id": "BLK_1761669109_2c66b7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jgIe30pdtNzD/Jwonf8LhmDrq86Gchj+fTCAMENzZ00VhcH0WlMQaQd33HFxEVkiRcfkoy12SLQ74MkLhE9JBw==",
+  "signed_at": "2025-10-28T16:31:49Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 17:31",
+  "url": null
+}

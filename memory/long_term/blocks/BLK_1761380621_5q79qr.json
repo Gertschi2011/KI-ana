@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: That Time Ken Thompson Wrote a Backdoor into the C Compiler\n • Hacker News: Euro cops take down cybercrime network with 49M fake accounts\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ASEAN-Gipfel: Wie umgehen mit der \"Sandwich-Position\"?",
+  "hash": "f41c93dc2f4b4238317f76d4b93621738796230828375ca79ef8a633531eb208",
+  "id": "BLK_1761380621_5q79qr",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "2ElpHltlDECthl0dYPPvWTzWPoE5aonTn/hpfh9ON81Z3kHkWqdh0RfPlEhKOXf3gL7yLKvIevqogTaTXc8hCw==",
+  "signed_at": "2025-10-25T08:23:41Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 10:23",
+  "ts": 1761380621,
+  "url": ""
+}

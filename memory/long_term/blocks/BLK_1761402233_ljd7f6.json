@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Synadia and TigerBeetle Commit $512k USD to the Zig Software Foundation\n • Hacker News: Making a micro Linux distro (2023)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Familienpolitik auf dem Prüfstand - was kommt, was nicht?",
+  "hash": "5cbaa67be28e446c6b8653f5d33b6f31709187d0a2c2875eac73de36fdfc42b5",
+  "id": "BLK_1761402233_ljd7f6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "EN35gWfAvY0PzNSk/6lJz6duXk5j7b5WT+aWSUeaGIMNKsHWA+ZQwW3pNMYeGSkkLAFszg8EyfA5fqEJCvyzAw==",
+  "signed_at": "2025-10-25T14:23:53Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 16:23",
+  "ts": 1761402233,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI-generated 'poverty porn' fake images being used by aid agencies\n • Hacker News: AWS Outage: A Single Cloud Region Shouldn't Take Down the World. But It Did\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz sagt AfD den Kampf an - und bleibt bei \"Stadtbild\"-Satz",
+  "created_at": 1760965954.44857,
+  "hash": "84e98ee0dbccc7b9eeb107afe63aca6703c25c35360dd15d046e73df995e6246",
+  "id": "BLK_1760965954_86dbd5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "KJECobZ66QMiGSe4dGGCshNa8GYiyv+1Ow1Th7zi+4TGnWqyockzwYsgQAnEqV33ll/zTIuNVJKAnf9K4QRMBw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 15:12",
+  "url": null
+}

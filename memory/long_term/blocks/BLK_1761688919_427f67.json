@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Generative AI Image Editing Showdown\n • Hacker News: Inside Amazon's engineering culture: Lessons from their senior principals\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "created_at": 1761688919.4060943,
+  "hash": "6e8a53ca36b42ed1920ecae5ae03d7776c9f5bb0b6d76404ef79b8aadc524e9c",
+  "id": "BLK_1761688919_427f67",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "e3G3n2NevK7e7xqRW4XD2fFxWssLpcgSAmN8pXVUAOOXhKG9hhiC7BEOR/FJo00jPev6j4MBUTEZAyER7AvtAQ==",
+  "signed_at": "2025-10-28T22:01:59Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 23:01",
+  "url": null
+}

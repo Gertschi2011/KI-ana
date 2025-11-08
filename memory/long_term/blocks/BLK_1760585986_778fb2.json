@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: We're losing the war against drug-resistant infections faster than we thought\n • Hacker News: New Alzheimer's Treatment Clears Plaques from Brains of Mice Within Hours\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Von der Leyen präsentiert Fahrplan für europäische Verteidigungsstrategie",
+  "created_at": 1760585986.2175567,
+  "hash": "73b4663a10d61aa1162409728c8ced38f4353ab18c261bd5e784b06eef022aa2",
+  "id": "BLK_1760585986_778fb2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "q3tkraaF8HGBaFcs/Z2osOGnbyy6SOeoPEgSjfccodutC3Y9l7qjmvPVZkR89zJyYLT5v4NWY46OZIa7WOZWBA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 05:39",
+  "url": null
+}

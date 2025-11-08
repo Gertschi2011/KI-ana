@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: You Should Feed the Bots\n • Hacker News: My favorite cult sci-fi and fantasy books you may not have heard of before\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Verdächtige nach Diebstahl im Pariser Louvre festgenommen",
+  "created_at": 1761483612.9963655,
+  "hash": "7311a4db6d8d6cfba1b3a43791004be70450f6d4a8605282999e6cafdbf0405e",
+  "id": "BLK_1761483612_b0aa54",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ce6DWCPpCrfPgPqwIzsTageTn1XuS0njcFtQ3aPlCtjFON2qqkARtrRTZJTWfflOF2Z7HbaDrkYApVU3fCbbAw==",
+  "signed_at": "2025-10-26T13:00:12Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 14:00",
+  "url": null
+}

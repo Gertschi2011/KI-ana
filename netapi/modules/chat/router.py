@@ -2399,7 +2399,8 @@ async def chat_once(body: ChatIn, request: Request, db=Depends(get_db), current=
                 out_text = (out_text + "\n\n" + consent_note).strip()
             _topic = extract_topic(user_msg)
             quick_replies = _quick_replies_for_topic(_topic, user_msg)
-            return {"ok": True, "reply": out_text, "conv_id": conv_id, "auto_modes": auto_modes, "role_used": role_used, "memory_ids": (_retr_ids or []), "quick_replies": quick_replies, "topic": _topic, "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
+            conv_out = conv_id if conv_id is not None else (body.conv_id or None)
+            return {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "role_used": role_used, "memory_ids": (_retr_ids or []), "quick_replies": quick_replies, "topic": _topic, "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
         # Wenn Planner keine Antwort liefert, falle auf klassische Pipeline zurück
     except asyncio.TimeoutError:
         pass
@@ -2560,7 +2561,8 @@ async def chat_once(body: ChatIn, request: Request, db=Depends(get_db), current=
             reply = (reply + "\n\n" + consent_note).strip()
         # Backend log channel (empty for this path)
         backend_log = {}
-        return {"ok": True, "reply": reply, "conv_id": conv_id, "auto_modes": auto_modes, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
+        conv_out = conv_id if conv_id is not None else (body.conv_id or None)
+        return {"ok": True, "reply": reply, "conv_id": conv_out, "auto_modes": auto_modes, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
 
     # Deliberation‑Pipeline (Planner→Researcher→Writer→Critic)
     try:
@@ -2599,7 +2601,8 @@ async def chat_once(body: ChatIn, request: Request, db=Depends(get_db), current=
             if consent_note:
                 out_text = (out_text + "\n\n" + consent_note).strip()
             backend_log = {"plan": plan_b, "critic": critic_b}
-            return {"ok": True, "reply": out_text, "conv_id": conv_id, "auto_modes": auto_modes, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
+            conv_out = conv_id if conv_id is not None else (body.conv_id or None)
+            return {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
     except Exception:
         pass
 
@@ -2786,7 +2789,8 @@ async def chat_once(body: ChatIn, request: Request, db=Depends(get_db), current=
         reply = (reply + "\n\n" + style_prompt).strip()
     if consent_note:
         reply = (reply + "\n\n" + consent_note).strip()
-    return {"ok": True, "reply": reply, "conv_id": conv_id, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
+    conv_out = conv_id if conv_id is not None else (body.conv_id or None)
+    return {"ok": True, "reply": reply, "conv_id": conv_out, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
 
 # -------------------------------------------------
 # Streaming (SSE)
@@ -4267,3 +4271,75 @@ async def chat_stream_post(request: Request):
         web_ok=web_ok,
         autonomy=autonomy,
     )
+
+
+# -------------------------------------------------
+# OpenAI-compatible /completions endpoint
+# -------------------------------------------------
+@router.post("/completions")
+async def chat_completions(request: Request):
+    """OpenAI-compatible chat completions endpoint"""
+    import httpx
+    import os
+    
+    try:
+        body = await request.json()
+        model = body.get("model", os.getenv("OLLAMA_MODEL_DEFAULT", "llama3.2:3b"))
+        messages = body.get("messages", [])
+        stream = body.get("stream", False)
+        max_tokens = body.get("max_tokens", 2000)
+        temperature = body.get("temperature", 0.7)
+        
+        if not messages:
+            return {"error": "messages required"}
+        
+        # Forward to Ollama
+        ollama_host = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+        
+        ollama_payload = {
+            "model": model,
+            "messages": messages,
+            "stream": stream,
+            "options": {
+                "temperature": temperature,
+                "num_predict": max_tokens
+            }
+        }
+        
+        async with httpx.AsyncClient(timeout=120.0) as client:
+            if stream:
+                # Stream response
+                from fastapi.responses import StreamingResponse
+                async def generate():
+                    async with client.stream("POST", f"{ollama_host}/api/chat", json=ollama_payload) as resp:
+                        async for line in resp.aiter_lines():
+                            if line:
+                                yield f"{line}\n"
+                return StreamingResponse(generate(), media_type="text/event-stream")
+            else:
+                # Non-stream response
+                resp = await client.post(f"{ollama_host}/api/chat", json=ollama_payload)
+                data = resp.json()
+                
+                # Convert Ollama format to OpenAI format
+                return {
+                    "id": f"chatcmpl-{int(time.time())}",
+                    "object": "chat.completion",
+                    "created": int(time.time()),
+                    "model": model,
+                    "choices": [{
+                        "index": 0,
+                        "message": {
+                            "role": "assistant",
+                            "content": data.get("message", {}).get("content", "")
+                        },
+                        "finish_reason": "stop"
+                    }],
+                    "usage": {
+                        "prompt_tokens": data.get("prompt_eval_count", 0),
+                        "completion_tokens": data.get("eval_count", 0),
+                        "total_tokens": data.get("prompt_eval_count", 0) + data.get("eval_count", 0)
+                    }
+                }
+    except Exception as e:
+        return {"error": str(e), "detail": "Chat completion failed"}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758547913_7p1a0w",
-  "title": "ja, vergleiche",
   "content": "Vergleich zu ja, vergleiche – neue Punkte, Unterschiede, Widersprüche:\n\nNeu:\n(keine klaren neuen Punkte)",
+  "hash": "ccf2c331fd569cc72b97a6a167b96dfb2018c70c7543345aeb9eed70c3d6d20a",
+  "id": "BLK_1758547913_7p1a0w",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "p/jz3/o6LnNiyAzaYuwZE0UqTzToXsIs1h+8VL4gg84eGHow1DN6ulr//utfF/LLRM0w3pZomoRMnpGcs/+MBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "comparison",
     "learned",
     "vision"
   ],
-  "url": "",
+  "title": "ja, vergleiche",
   "ts": 1758547913,
-  "meta": {},
-  "hash": "ccf2c331fd569cc72b97a6a167b96dfb2018c70c7543345aeb9eed70c3d6d20a"
+  "url": ""
 }

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: GoGoGrandparent (YC S16) Is Hiring Back End and Full-Stack Engineers\n • Hacker News: Bevy TLDR – Game development with Bevy summarized\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"No Kings\"-Proteste: Demonstrationen gegen Trump in vielen US-Städten",
+  "created_at": 1760838098.2145343,
+  "hash": "4b1e4fbc9994c65967fd7a4508bd1a9174532b0f68182579c1e469d1a408e653",
+  "id": "BLK_1760838098_48301b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "lhqFSHBR+zrYUMEMtbb7sS7UzIK9388r1l62RQp25reQZhWWNQLBAcoH3jKeVhxQc+pr7+yXEX3zhboOWbqiAQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 03:41",
+  "url": null
+}

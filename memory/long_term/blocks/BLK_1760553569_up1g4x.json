@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Clone-Wars: 100 open-source clones of popular sites\n • Hacker News: Claude Haiku 4.5 System Card [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Irans Machtverlust im Nahen Osten",
+  "hash": "2350f9f8f5f9c145ddbb65b23a3b58d6f19eefa1734016bc5fd44492b47132bd",
+  "id": "BLK_1760553569_up1g4x",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "pbkzLaI+nYQi8VsPMBsBtunG59uhsqVj881/u1TJzAjBGXiYI8Qo50h4FkVC/pIxP9LkXdfew1zUY3FE4uAeAg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 20:39",
+  "ts": 1760553569,
+  "url": ""
+}

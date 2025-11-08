@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Scientists create 'Superwood' that's 10 times stronger than steel\n • Hacker News: Astronomers 'image' a mysterious dark object in the distant Universe\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Verhandler von Union und SPD einig bei Wehrdienst-Losverfahren",
+  "created_at": 1760454518.7829578,
+  "hash": "5cb8ed10d0dcb0f10a8526f40d4e715fbe176801aac3995f8e6d62d3c8adc4f6",
+  "id": "BLK_1760454518_b1d93d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "YGDEqdSBaVJq00Wh6Or2SOYMDJ4mkaH3zG00A+0Q9SLYQbTeKmk3RIwBPllmykFf2S6POJ5eDQVRs2sz7BMlCg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 17:08",
+  "url": null
+}

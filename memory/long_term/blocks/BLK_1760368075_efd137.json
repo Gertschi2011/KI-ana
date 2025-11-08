@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Software update bricks some Jeep 4xe hybrids over the weekend\n • Hacker News: Smartphones and Being Present\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die 20 freigelassenen Geiseln",
+  "created_at": 1760368075.6471913,
+  "hash": "2c3b5fbf8b144146cd1abc574056d517704abe77eaa84e9db25c50178d351ee4",
+  "id": "BLK_1760368075_efd137",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "nTEeb8Gmew0BA62vcqiP7/tpgkB81KMItHFD1l38KG6Z8sv4z8PxBS8qx3TIikaFCdExDWE2L9is2QH3g8d5Bg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 17:07",
+  "url": null
+}

@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759061366_9f2a26",
-  "title": "Web Digest 2025-09-28 14:09",
   "content": "• Hacker News: Why I gave the world wide web away for free\n • Hacker News: 1982: Fred Dibnah shows how to erect a CHIMNEY SCAFFOLD at 200 feet [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ost- versus Westverbände: Streit in der AfD über die Wehrpflicht",
+  "created_at": 1759061366.3463821,
+  "hash": "a8df5ff0ad1df0be05c05e57a2cfdb5b33c993073647a8be6a3c6dea135ce2c5",
+  "id": "BLK_1759061366_9f2a26",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "b0MfsMTu2aduclPl521a77vRzPpzdzpH7nPMXs0tJun/rrIPR5Hi2bp3vD9s9JfFIabcldtHP+aKSAESJ8luAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759061366.3463821,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 14:09",
+  "url": null
 }

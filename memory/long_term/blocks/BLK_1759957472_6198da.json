@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Young lives cut short an unimaginable scale: the 18,457 children on Gaza's dead\n • Hacker News: I played 1k hands of online poker and built a web app with Cursor AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs geschäftsführender Premier Lecornu sieht Ausweg aus der Krise",
+  "created_at": 1759957472.988339,
+  "hash": "bd9d01607068766b37d8b99540d5772f815e58fb12adc9d005e6efddc689bb97",
+  "id": "BLK_1759957472_6198da",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "MN07FM4biv4HtRV0Vaf992uDMSbw6IeOQ9UGUYDjoaBlWeTIiLz6X7qPEEfLDZ59RRzK86aTDyNkJcBZLTovAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 23:04",
+  "url": null
+}

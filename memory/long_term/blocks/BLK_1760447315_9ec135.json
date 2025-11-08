@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: PyreFly: Python type checker and language server in Rust\n • Hacker News: Kyber (YC W23) Is Hiring an Enterprise AE\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Rückkehr der Geisel: Durchatmen nach dem Tag der Emotionen",
+  "created_at": 1760447315.0097206,
+  "hash": "56eb1a69c11c1a38d11202ab8a508f0cb2884e3fb2e4b5456c15720f01d1a83f",
+  "id": "BLK_1760447315_9ec135",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "MVp3zg9sHKHgR+mTlNzOw5VeRkthTZN6tRwyaQkxJssIZbUDHyjpi7G2p+zESWuCS2AZGx7iLERCAvXvzQV9BA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 15:08",
+  "url": null
+}

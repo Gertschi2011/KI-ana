@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Type Theory and Functional Programming (1999) [pdf]\n • Hacker News: High-resolution efficient image generation from WiFi Mapping\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Oktoberfest in München wegen Bombendrohung geschlossen",
+  "hash": "205ad5a41f837ba4d8f7db12fa03fa59c63cd4aea4b4fa9922a8bdc21a7adcb1",
+  "id": "BLK_1759306765_ew9upu",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "FQUoJ2yFdLgBiaCz6Lp2+EtCIzYpwgd4PoAzN9T9j1CGlkrm5LUABFONjRt1fWB3U5CIWL/vo5mKTd0wZ0nBCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 10:19",
+  "ts": 1759306765,
+  "url": ""
+}

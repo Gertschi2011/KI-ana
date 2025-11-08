@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Everything You Need to Know About [California] SB 79\n • Hacker News: Novelty Automation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lecornu stellt Kabinett vor: Neue Regierung in Frankreich steht",
+  "created_at": 1760319452.0452168,
+  "hash": "1de858ff093cc0e579042ff4a466f7a5c00e7c96964aaef76632aeb450b6af13",
+  "id": "BLK_1760319452_9300ec",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "uuX7ttsjEbwyw42W+PYeYdlC7LxGI48Q8pMps5aOo9VnKI5FyyzWhOgrrOAUsYY8Nezo0gFIWrRP9EXUCfZtCg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 03:37",
+  "url": null
+}

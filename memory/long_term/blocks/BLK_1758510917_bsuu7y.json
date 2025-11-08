@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758510917_bsuu7y",
-  "title": "Web Digest 2025-09-22 05:15",
   "content": "• Hacker News: South Korea's President says US investment demands would spark financial crisis\n • Hacker News: Be careful with Go struct embedding\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump bezeichnet erschossenen Kirk bei Trauerfeier als \"Märtyrer\"",
+  "hash": "94856a95f38d6d727e7f92edcff42008fc3219ddd8b6ad2b4d77ec6e996cb88f",
+  "id": "BLK_1758510917_bsuu7y",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "M6JqlHqTZt6u2EryYL4yB6VTciF0iJjlsvSVF00cU/dXeEMxo/zlGJAAyc1J4BesgUWz93DEvM+7o0GdIEbhDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 05:15",
   "ts": 1758510917,
-  "meta": {},
-  "hash": "94856a95f38d6d727e7f92edcff42008fc3219ddd8b6ad2b4d77ec6e996cb88f"
+  "url": ""
 }

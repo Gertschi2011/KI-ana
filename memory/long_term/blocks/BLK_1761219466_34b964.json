@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Egg prices vs. Consumer Price Index since 1980\n • Hacker News: C64 Blood Money\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Steuereinnahmen nach Schätzung bis 2029 höher als erwartet",
+  "created_at": 1761219466.9529448,
+  "hash": "0e0acc299b5e9a5599e4692cf9365afb58dfe9615ce2ac3a62dc25ac8f6f565c",
+  "id": "BLK_1761219466_34b964",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "PwZWQ930JfYDAThl+K10q7vfv+HkKYdX8gfDJcWQHtTFbUscs4dn1jAvBSH7OKmBuKRvmEjLJN0NVYVvNPeQDA==",
+  "signed_at": "2025-10-23T11:37:46Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 13:37",
+  "url": null
+}

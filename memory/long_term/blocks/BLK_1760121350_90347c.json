@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Modeling the Human Body in Rust So I Can Cmd+Click Through It\n • Hacker News: Illegible Nature of Software Development Talent\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Wiederaufbau: Was Deutschland leisten kann - und will",
+  "created_at": 1760121350.2336636,
+  "hash": "f07e7be55336ad70c6f12f2d7e6e5758965940d2385bd49161aa1a509cebe661",
+  "id": "BLK_1760121350_90347c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "DlJNssAz2zZHXzs0nni5Ek4+x71HAl4Hu6O2FC0ZevrFInjY949eoXQc7dHQek7Wu+DrQYbLKjCO5gdsMrsoAA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 20:35",
+  "url": null
+}

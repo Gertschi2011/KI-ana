@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759070370_a956d6",
-  "title": "Web Digest 2025-09-28 16:39",
   "content": "• Hacker News: Failing to Understand the Exponential, Again\n • Hacker News: The Post-American Order Starts in Riyadh and Islamabad\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Deutsche kaufen Elektronikgeräte lieber neu als gebraucht",
+  "created_at": 1759070370.977852,
+  "hash": "80e902d44f53e26bb676e9526304f482dc16681c526cc3b16ef98720afd0e441",
+  "id": "BLK_1759070370_a956d6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7BIX/mBKM7fDPGuRTRxBkZ9hDokUiFf2irBGXQldcvZn9R2g+sDpO9VeqW64XYoO69mqtf962Rr45oDOpWj5Dg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759070370.977852,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 16:39",
+  "url": null
 }

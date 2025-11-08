@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: I Switched from Htmx to Datastar\n • Hacker News: Reasoning LLMs are wandering solution explorers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gazastreifen: US-Soldaten sollen Waffenruhe überwachen",
+  "hash": "c3554145649a3ef34ae8b9ee4d8394a85786898b89da8990c835f144ce8c3ddb",
+  "id": "BLK_1760083530_pfovl4",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "eEr1n/cdlw9Bvuhj4RydgYH2DD90xfyWKjwkXJa7LYEH7WB5f11fAOf9w5bfbLxrg6OFKfAlZ8xT+gqicbwxDg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 10:05",
+  "ts": 1760083530,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Microsoft CTO says he wants to swap most AMD and Nvidia GPUs for homemade chips\n • Hacker News: Webbol: A minimal static web server written in COBOL\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ehemalige innerdeutsche Grenze: Vom Todesstreifen zum Naturparadies",
+  "created_at": 1759503654.414478,
+  "hash": "c3d965a1e9d4c072737e8eb89667d89b86f543e6048709dc1ea2fe388a482d57",
+  "id": "BLK_1759503654_e23f89",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "aZyC1FfWTDyPEvdV7xX4RWNnxtECenEhQdYJTE4rQmEkouq1MG5Q103yrW7hmRWnzj6eOCDH6X05nrLU0+uaBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 17:00",
+  "url": null
+}

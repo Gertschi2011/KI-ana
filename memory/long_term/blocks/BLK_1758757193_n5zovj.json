@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758757193_n5zovj",
-  "title": "Web Digest 2025-09-25 01:39",
   "content": "• Hacker News: Do YC after you graduate: Early decision for students\n • Hacker News: Helium Browser\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): China macht beim UN-Klima-Gipfel eine überraschende Ankündigung",
+  "hash": "6d09a929fa2a7806969f09d102e6eb693040aa2ea12e288c1544e9b4d0c3c915",
+  "id": "BLK_1758757193_n5zovj",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "/MnJNDyC19UHvaz3h0E9eVx1fTBIGmj/BeF7f4BlQtZTQXKdNYz3cRHo3CLoRyLsa/WQApELLBNd98H7BFklCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 01:39",
   "ts": 1758757193,
-  "meta": {},
-  "hash": "6d09a929fa2a7806969f09d102e6eb693040aa2ea12e288c1544e9b4d0c3c915"
+  "url": ""
 }

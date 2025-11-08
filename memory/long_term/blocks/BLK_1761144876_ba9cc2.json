@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How Apple's walled garden protects ICE\n • Hacker News: Cryptographic Issues in Cloudflare's Circl FourQ Implementation (CVE-2025-8556)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Möglicher Produktionsstopp bei Volkswagen wegen Chip-Problemen",
+  "created_at": 1761144876.618624,
+  "hash": "89c6057f0ad834203ed51e7eee018d9f51c3f9907261658374fe5770344ecdcd",
+  "id": "BLK_1761144876_ba9cc2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gajD8yzQVpW+4dN1Gw//bQTcLIyWwJYGL/i/lE7xT+KeLdfkQiPrSjcwcAlyaliLJA+gbhDy2qeusGeYjgYiCg==",
+  "signed_at": "2025-10-22T14:54:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 16:54",
+  "url": null
+}

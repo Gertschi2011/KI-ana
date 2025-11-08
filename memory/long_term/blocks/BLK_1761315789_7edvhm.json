@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: I built an 8-bit CPU simulator in Python from scratch\n • Hacker News: A sharded DuckDB on 63 nodes runs 1T row aggregation challenge in 5 sec\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Fragen und Antworten: Wie gefährlich ist die Vogelgrippe?",
+  "hash": "7a1dd4423f81609654fc2d648f6110cb22fca6e1766209dc556870c2b6f4e598",
+  "id": "BLK_1761315789_7edvhm",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "MunX7oRjeHZU499i4N+6UN4sgFP5bwNeNW2SVRMzcs9UI9qZ/v05I0ZGmszoChpKbyJk5gyMsfPakQhztn2GDw==",
+  "signed_at": "2025-10-24T14:23:09Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 16:23",
+  "ts": 1761315789,
+  "url": ""
+}

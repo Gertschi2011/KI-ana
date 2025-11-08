@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Moving PHP open source forward\n • Hacker News: Visual loading states for Turbo Frames with CSS only\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Drohnenabwehr: Wer darf wann schießen?",
+  "created_at": 1759411802.994202,
+  "hash": "348a8625abf32b5620e73fc8a31ae17586d3d4e1f536eee34c1714b06bf46485",
+  "id": "BLK_1759411802_90a97a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "3dVBM+HFf96sdoIASx6j4Sr+5KlTTi5U5gBfKPrDNeCr1HrFsxDoh86CWvM0HNpHy07lJhqC/nRXXC4asmqwDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 15:30",
+  "url": null
+}

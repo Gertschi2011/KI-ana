@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to Write in Cuneiform, the Oldest Writing System in the World\n • Hacker News: Show HN: 100% open source, logical multi-master PostgreSQL replication\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "created_at": 1760054716.8217769,
+  "hash": "99ef7dd961f48ded8541337722dcaa5495b42e0fa04f4cf98c982d72c5e0ce44",
+  "id": "BLK_1760054716_1997c4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Zk43TLHIq7IrbCZYQvq5BdI21MtxeT0zJ1WedRN1msiQ5eATBacKF05PHfQ8wKfLC8aCUqXx+8JEcPSw2VseAw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 02:05",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Building a Browser for Reverse Engineers\n • Hacker News: You're Doing Rails Wrong\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Kommission will Zölle auf Stahl auf 50 Prozent verdoppeln",
+  "hash": "3b2225473dc4ae101ee1f697a5f7b5ed2cc32da5122dc7f082b084e49e5375b1",
+  "id": "BLK_1759858430_gtk0wo",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "n/lSdOByzoId8WkuGWsB5EW1Jw0ULroyfa4UL0MoVonE8aD8XlojOaVqRWOV1WXSeisjbVr5hki4e9Zt5Wk2Cg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 19:33",
+  "ts": 1759858430,
+  "url": ""
+}

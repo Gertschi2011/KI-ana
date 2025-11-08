@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Belittled Magazine: Thirty years after the Sokal affair\n • Hacker News: How programs get run: ELF binaries (2015)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761431053.7982464,
+  "hash": "44f622bdfa00102933d79b7cfd1bfb9b3983d24c086150dbf5331326942335c8",
+  "id": "BLK_1761431053_e945e0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jIndLEbAEkkseTAUmqeS9aTbZvoPQIIfn7jIsNUlEJiL6OUfF0LhcbPIHFc515IbghkJYSQ8b6F7U7RzXflyCw==",
+  "signed_at": "2025-10-25T22:24:13Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 00:24",
+  "url": null
+}

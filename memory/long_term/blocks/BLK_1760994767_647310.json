@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Should MS Replace Satya Nadella with an AI CEO?\n • Hacker News: iOS 26.1 lets users control Liquid Glass transparency\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Terrororganisation Hamas übergibt weitere tote Geisel an Israel",
+  "created_at": 1760994767.3208518,
+  "hash": "86ea8e21f5672847abd230e9146a224635dcce854eef4b024eefa50a8e6b46f3",
+  "id": "BLK_1760994767_647310",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "qp/3tDtkKmwfXzRGb+wxkYAAYL5ZNIOvTMIN3TbsQea82DdG+2ektEoaEfK4Z0IRglJI45xuqzS6V97RbXB6BA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 23:12",
+  "url": null
+}

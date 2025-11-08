@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758766198_310a04",
-  "title": "Web Digest 2025-09-25 04:09",
   "content": "• Hacker News: The \"Wage Level\" Mirage: H-1B proposal could help outsourcers and hurt US talent\n • Hacker News: How did sports betting become legal in the US?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): China macht beim UN-Klima-Gipfel eine überraschende Ankündigung",
+  "hash": "f4831f3602392b9a954dd89dede54e774632b31ec0dfa43c171afee1cd39ab4a",
+  "id": "BLK_1758766198_310a04",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "O3Vt2B+tz+c/d3ECOkh9kgw8b9V/bvKeN9C8cgXummqAJNcxbqixIFL3jMVX4t3ME6Yt00vOvls+UtoXB+XYDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 04:09",
   "ts": 1758766198,
-  "meta": {},
-  "hash": "f4831f3602392b9a954dd89dede54e774632b31ec0dfa43c171afee1cd39ab4a"
+  "url": ""
 }

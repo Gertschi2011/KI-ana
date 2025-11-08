@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759099186_ii3p7b",
-  "title": "Web Digest 2025-09-29 00:39",
   "content": "• Hacker News: Tai Lopez charged by SEC in ponzi scheme\n • Hacker News: Farewell Friends\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie teuer wird der Emissionshandel im Verkehrs- und Gebäudesektor?",
+  "hash": "7365181bd39857afe5278e8296905aba0e33859e105b0f235e688075364b4589",
+  "id": "BLK_1759099186_ii3p7b",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "2a5aWU+PPOz37cdVTyhyohiiLDl8oATNsrQ7HAtAa9Qz58OlqzDG8SSGHwGS7kMfmV1IQ73Cpc+XwxfwoHUCCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-29 00:39",
   "ts": 1759099186,
-  "meta": {},
-  "hash": "7365181bd39857afe5278e8296905aba0e33859e105b0f235e688075364b4589"
+  "url": ""
 }

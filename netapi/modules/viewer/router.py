@@ -14,7 +14,13 @@ from importlib.machinery import SourceFileLoader
 
 router = APIRouter(prefix="/viewer", tags=["viewer"])
 
-PROJECT_ROOT   = Path(__file__).resolve().parents[3]
+# Use KI_ROOT environment variable or fallback to calculated path
+KI_ROOT_ENV = os.getenv("KI_ROOT")
+if KI_ROOT_ENV:
+    PROJECT_ROOT = Path(KI_ROOT_ENV)
+else:
+    PROJECT_ROOT = Path(__file__).resolve().parents[3]
+
 CHAIN_DIR      = PROJECT_ROOT / "system" / "chain"
 MEM_BLOCKS_DIR = PROJECT_ROOT / "memory" / "long_term" / "blocks"
 STATIC_DIR     = PROJECT_ROOT / "netapi" / "static"
@@ -230,6 +236,13 @@ def _summarize_block(p: Path, origin: str) -> Dict[str, Any]:
         trust_score = max(0.0, min(1.0, round(raw, 3)))
     except Exception:
         trust_score = float(rating_avg or 0.0)
+    # Extract content preview for search
+    content = data.get("content") or data.get("text") or ""
+    if isinstance(content, str):
+        content_preview = content[:500]  # First 500 chars for preview/search
+    else:
+        content_preview = ""
+    
     return {
         "id": data.get("id") or p.stem,
         "title": data.get("title") or data.get("topic") or "",
@@ -250,6 +263,7 @@ def _summarize_block(p: Path, origin: str) -> Dict[str, Any]:
         "author": author,
         "rating_avg": rating_avg,
         "rating_count": rating_count,
+        "content_preview": content_preview,
         "trust": {
             "score": trust_score,
             "signals": {
@@ -334,11 +348,14 @@ async def list_blocks(
         if verified_only:
             items = [it for it in items if it.get("sig_valid") and it.get("valid")]
 
-        # server-side quick search filter (title/topic/source/origin)
+        # server-side quick search filter (title/topic/source/origin/content/tags)
         qq = (q or "").strip().lower()
         if qq:
             def _hay(it: Dict[str, Any]) -> str:
-                return f"{it.get('title','')} {it.get('topic','')} {it.get('source','')} {it.get('origin','')}".lower()
+                # Include title, topic, source, origin, content preview, and tags
+                tags_str = ' '.join(it.get('tags', []))
+                content = it.get('content_preview', '')
+                return f"{it.get('title','')} {it.get('topic','')} {it.get('source','')} {it.get('origin','')} {content} {tags_str}".lower()
             items = [it for it in items if qq in _hay(it)]
 
         # sorting

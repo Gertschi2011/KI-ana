@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How bad can a $2.97 ADC be?\n • Hacker News: Prefix sum: 20 GB/s (2.6x baseline)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Neuwahlen sind in Frankreich vom Tisch - zunächst",
+  "created_at": 1760465324.260332,
+  "hash": "d9c81ea6af363ca7dab01006730b4d649ad09a9739f341d756048f9eabd150d9",
+  "id": "BLK_1760465324_dd0483",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "l7QkO0y9Q2CQs42YqErnxEI1fzR7itw2Af1oa0H8nfFbPAmaf31fdBl1hNttsllmO3FQWkf9ws+3+Ancw66DBw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 20:08",
+  "url": null
+}

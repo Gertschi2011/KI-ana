@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Man buys used Tesla only to discover it's banned from Supercharger network\n • Hacker News: The UK is still trying to backdoor encryption for Apple users\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was zum Frieden im Gazastreifen fehlt",
+  "hash": "b6ac53d8c196a94ee24a381e9e9a38f28c757738995e382a9d92031093acd308",
+  "id": "BLK_1759611724_nkb3yq",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "HBiyxrzq4YevYVEzSlEkPAzOMCI80T51G76IiqSizp1cVhmK3y9vH+CvHRQhvJ8goEQwZQz7GMU+XWPkjnN8DA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 23:02",
+  "ts": 1759611724,
+  "url": ""
+}

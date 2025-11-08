@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Things I've learned in my 7 years implementing AI\n • Hacker News: Recursive Language Models (RLMs)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensvereinbarung zwischen Israel und der Hamas auf dünnem Eis",
+  "created_at": 1760562574.0443084,
+  "hash": "5e7508f3d3feb7f469f9c9cf884648fd00fbe12732d4d94b4adde08f874cd29a",
+  "id": "BLK_1760562574_cbe8a5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "yWOT5erIU8rvxUPDGIrpfLTDeGa021vFlU89iCAcb7nRrGJ40izlDgV/tEBYXSXNSvIxLdmlZGERFBXOMS95CA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 23:09",
+  "url": null
+}

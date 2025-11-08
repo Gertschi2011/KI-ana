@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Greenland Ditches Starlink for French Satellite Service\n • Hacker News: MinIO (apparently) becomes source-only\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum Sabotage in der Ostsee kaum beweisbar ist",
+  "created_at": 1761124815.097309,
+  "hash": "71584bc3c2359a73c8fc0acc39f1c532ddb74486001830f5bc0ce562b3eb65cd",
+  "id": "BLK_1761124815_4f9e61",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "/nJ6eat3y66Bl/dwj6LFPOQhCLHZpHQ+8J43ZvTIxmTDe2ij/yMcER43CdkS5o7rWNRIvk7fzon/OVj4DrjoBA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 11:20",
+  "url": null
+}

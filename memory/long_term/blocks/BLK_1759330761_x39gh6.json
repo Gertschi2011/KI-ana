@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Unix philosophy and filesystem access makes Claude Code amazing\n • Hacker News: Cursor 1.7\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Bombendrohung in München: Oktoberfest öffnet ab 17.30 Uhr wieder",
+  "hash": "589adbc74dc514095231cfb4c01db160e19c3a26c3aaf8a2bbf577f27681deca",
+  "id": "BLK_1759330761_x39gh6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "nYnFR36JgccnQREKivS4z5taVY+en3wv9ZDl8XEz7yCqakfoByvEpi9tjgshzyLp/i8rWcsmTcxdQsleaPvzAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 16:59",
+  "ts": 1759330761,
+  "url": ""
+}

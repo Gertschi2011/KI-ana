@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758926156_i1axk7",
-  "title": "Web Digest 2025-09-27 00:35",
   "content": "• Hacker News: Game over for pure LLMs. Even Rich Sutton has gotten off the bus\n • Hacker News: GriffonAD: A new tool to exploit bad configurations in Active Directory\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor Vereinten Nationen: Ich gegen euch",
+  "hash": "dffc6d9a38ba6681433f3a216ad32ae655f13a53c141e25813d5928dbe7b11ee",
+  "id": "BLK_1758926156_i1axk7",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "RGLr3EsV+36SPsv5AXHwvZw4ksXQ2BOIstr+Srw0dvB2VJhG3wzbo9PCfjapKmQwzhBNysTA/DrmerLc9HHCCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 00:35",
   "ts": 1758926156,
-  "meta": {},
-  "hash": "dffc6d9a38ba6681433f3a216ad32ae655f13a53c141e25813d5928dbe7b11ee"
+  "url": ""
 }

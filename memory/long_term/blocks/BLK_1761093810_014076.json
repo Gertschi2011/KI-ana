@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: \"Butt breathing\" might soon be a real medical treatment\n • Hacker News: The Lottery-fication of Everything\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Foltervorwürfe gegen Israel nach Übergabe von Leichen Gefangener",
+  "created_at": 1761093810.7543104,
+  "hash": "98dd769932ee3e64572872e153bad1b2fdb7f0aa62101e79fc683c86f43a8ddc",
+  "id": "BLK_1761093810_014076",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "TJ2r+o/ON3tJxNgzWiLgDOjWSAjnqn2d2jeMQKYEcWgFtagoUh0+U0+DVxZTsZJrcIVRyTbqNOhZS5Do85KSAA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 02:43",
+  "url": null
+}

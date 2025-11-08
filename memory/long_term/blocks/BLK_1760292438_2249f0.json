@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Kuzu DB devs no longer supporting the project\n • Hacker News: Wireguard FPGA\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rückkehr in den Gazastreifen: Zwischen Hoffnung und Entsetzen",
+  "created_at": 1760292438.3089807,
+  "hash": "38870764a81bf8ee6dce98b3352e2d9090551382c6641cf701f205ecc17cc013",
+  "id": "BLK_1760292438_2249f0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "UbVcd6KPzHr5QDYcri9hsF7twuu7JBkFqovfN4rEuNIlcLTWcd7bonufHgtQca0k6piuAkzi+dpJr7g2bGjcBg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 20:07",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Old Computer Challenge – Modern Web for the ZX Spectrum\n • Hacker News: Building a message queue with only two UNIX signals\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach \"Stadtbild\"-Äußerungen: Der Stil des Kanzlers steht in der Kritik",
+  "created_at": 1761021779.197174,
+  "hash": "a25e2b8b1764572dcdebcad41fdc801f8d3ee53ca089ece211f4427b95c49cf7",
+  "id": "BLK_1761021779_a3d40a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Cg6YaugoY60ys573NPOyafsJuCKRKNvKgTKZHe9oLvvOnhKXta6NuY1oMuVcg6Mf8vMUUl9LQu9njY6NtbDHCA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 06:42",
+  "url": null
+}

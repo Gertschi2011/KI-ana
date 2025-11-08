@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758893740_6k6ram",
-  "title": "Web Digest 2025-09-26 15:35",
   "content": "• Hacker News: Abu Dhabi royal family to take stake in TikTok US\n • Hacker News: 'Independent' auditors overvalue credits of carbon projects, study finds\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Drohnen: Was wissen wir über die neue Gefahr von oben?",
+  "hash": "ce7795de56e8447883169cf49742b6193db5c5834e4b55aaef957bcf2efcb644",
+  "id": "BLK_1758893740_6k6ram",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "sooh9YxSCk1YXQekDRK/2OYo8NkAiYpUoVkW1MsG7C8Ea89nhGjt5X8T4+g7b9ilIUj7Q9wnk+Ttmr9cf+JgCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 15:35",
   "ts": 1758893740,
-  "meta": {},
-  "hash": "ce7795de56e8447883169cf49742b6193db5c5834e4b55aaef957bcf2efcb644"
+  "url": ""
 }

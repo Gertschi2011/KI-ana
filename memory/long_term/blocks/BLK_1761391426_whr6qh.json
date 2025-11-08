@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The Missing Semester of Your CS Education (2020)\n • Hacker News: React vs. Backbone in 2025\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Social Media und Konsum: Bestimmt TikTok, was im Regal steht?",
+  "hash": "650c95da42d33bf61ffc77abd7aaa6614da24f84b2e9227bab25d146baa7b684",
+  "id": "BLK_1761391426_whr6qh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "z1x3pJ276LRUQAL+wmYhNSEU+y1gJZGvHVmgFIz9Ingd/OYPA60Du7LlLqKAXTuvIOe1hrerePS0GPwRboGbBw==",
+  "signed_at": "2025-10-25T11:23:46Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 13:23",
+  "ts": 1761391426,
+  "url": ""
+}

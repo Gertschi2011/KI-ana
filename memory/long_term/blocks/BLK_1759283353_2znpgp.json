@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Rio Terminal: A hardware-accelerated GPU terminal emulator\n • Hacker News: Economics of sportsbooks and why they ban the best bettors\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "hash": "6d6809dd06af996e47e473c6087f36e0769d6888ee0e7ba27f247f810c86d390",
+  "id": "BLK_1759283353_2znpgp",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "UPc0TjipEUAmpPydDklnRScLDewgzaZ4xBwTdLaczLvI33zq1/DnPNpviocz4q8Ex/Nx7XuEmwFoC8PT7xe6CQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 03:49",
+  "ts": 1759283353,
+  "url": ""
+}

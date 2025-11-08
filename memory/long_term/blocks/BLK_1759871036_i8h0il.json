@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A tiny recursive reasoning model achieves 45% on ARC-AGI-1 and 8% on ARC-AGI-2\n • Hacker News: Gemini 2.5 Computer Use model\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre nach Hamas-Überfall: Israel gedenkt der Opfer",
+  "hash": "bdbdb89693b2ec2b4e73f525efac498c86a94c48010ec877641b04deecdac113",
+  "id": "BLK_1759871036_i8h0il",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "WhOieAX7OD/Xyi2u3yvAOLd7xf50VoQSZUwMpEKuxgsYoeoXspPGjosbx7NYyD04+2xzj1nACQp5hGIHzRXvBg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 23:03",
+  "ts": 1759871036,
+  "url": ""
+}

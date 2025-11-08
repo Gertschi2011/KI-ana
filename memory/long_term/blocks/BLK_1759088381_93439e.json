@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759088381_93439e",
-  "title": "Web Digest 2025-09-28 21:39",
   "content": "• Hacker News: mRNA vaccines linked to increased risks of various cancers\n • Hacker News: Why some USB C cables work, or not, J-Link\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie teuer wird der Emissionshandel im Verkehrs- und Gebäudesektor?",
+  "created_at": 1759088381.5149596,
+  "hash": "045a55917a28794593961312481793b494ac1e748a83709de1429ff3b42bb4a2",
+  "id": "BLK_1759088381_93439e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ug7s+mpaY5vGlKscNw0gszFWpEXn/aB7p8CWojErEDXMmDVuMDhojEplbNtBBOPvI9XX8dq7xmNaWVnKH+oEBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759088381.5149596,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 21:39",
+  "url": null
 }

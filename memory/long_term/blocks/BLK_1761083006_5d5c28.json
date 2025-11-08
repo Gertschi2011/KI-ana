@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: rlsw – Raylib software OpenGL renderer in less than 5k LOC\n • Hacker News: We rewrote OpenFGA in pure Postgres\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demo vor CDU-Parteizentrale: Demonstrantinnen kritisieren Merz",
+  "created_at": 1761083006.2375238,
+  "hash": "19cb724582ba180d49dfffc10e2f6b5e3eaea146c94dad8812d80970efa27f87",
+  "id": "BLK_1761083006_5d5c28",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "UaFkmqk89gLdSwgYb3DKsviMozdmFtJI561gBT688R3mKQt305ZLbRjnAq5PMtLMlw7AwB6hB7rFbk05WAQzDA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 23:43",
+  "url": null
+}

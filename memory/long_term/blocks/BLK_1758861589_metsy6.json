@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758861589_metsy6",
-  "title": "Web Digest 2025-09-26 06:39",
   "content": "• Hacker News: My Deus Ex lipsyncing fix mod\n • Hacker News: Writing Memory Safe JIT Compilers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Früherer FBI-Chef und Trump-Widersacher Comey angeklagt",
+  "hash": "c966914b1a8a6ae73719d0f88bb81367fa41e70750a0fd51ae4b67fe5e27cdd9",
+  "id": "BLK_1758861589_metsy6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "J/i8nPO/361Xr/xytToY/QL5KWvVRyj5O0ngNqHJIaFYBBsX10NwbNkx9EnQtw//EijQalfWM39bLJZNnLAkBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 06:39",
   "ts": 1758861589,
-  "meta": {},
-  "hash": "c966914b1a8a6ae73719d0f88bb81367fa41e70750a0fd51ae4b67fe5e27cdd9"
+  "url": ""
 }

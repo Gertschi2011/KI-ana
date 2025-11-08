@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What happens to college towns after peak 18-year-old?\n • Hacker News: Programming in the Sun: A Year with the Daylight Computer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Extra-Zölle von 100 Prozent für China an",
+  "created_at": 1760155567.607399,
+  "hash": "01c10d5314ca7e12f10239210e644fdc469aca3422999a9368d888ea38b2d58b",
+  "id": "BLK_1760155567_0b0d59",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "C2N8e8sX8wATaYu4NWlGuHEQqjQ8uyL+C9Kxeg6K/YBcw94T5HXHcez9/Gr/9ZcAJgjDZicTUQXaUDAWZW8jCA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 06:06",
+  "url": null
+}

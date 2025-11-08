@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Marc Benioff: I no longer believe National Guard is needed for SF\n • Hacker News: US car repossessions surge as more Americans default on auto loans\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Liveblog: ++ Selenskyj: \"Haben über 'Tomahawks' gesprochen\"  ++",
+  "created_at": 1760740855.8915992,
+  "hash": "ebc151396ab65584195a94a1c6ef9ee4c4293718786154ebb3e445e89e22476b",
+  "id": "BLK_1760740855_127f21",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "S+ho1YGwVMBAk0nhTfM+FW70lG2kXAhgWU/rBrEZrtDVbM/0PEcZvCRXMEwOxOMoKCU/ZLFk37t0gI1X9rifAA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 00:40",
+  "url": null
+}

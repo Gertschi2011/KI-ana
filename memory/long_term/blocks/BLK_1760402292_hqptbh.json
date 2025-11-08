@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Hackers can steal 2FA codes and private messages from Android phones\n • Hacker News: DDoS Botnet Aisuru Blankets US ISPs in Record DDoS\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "hash": "241a9ae60173387be48a73561dee00def6e144d7d1e1973bc82a49bb99bc5334",
+  "id": "BLK_1760402292_hqptbh",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "EXkm/gYXUUNbOXv/UdOmv9c1UEKxTnxrbSkqZHoXqwCF5VdlEpcLARtmlP4c+ctlXjvM9b2WxAB2fQz1kiaRBw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 02:38",
+  "ts": 1760402292,
+  "url": ""
+}

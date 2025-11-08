@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Are-we-fast-yet: Benchmark suite in Oberon, C++, C, Pascal, Micron and Luon\n • Hacker News: AI Mafia Network – An interactive visualization\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht aus Berlin: Spahn stärkt Merz in \"Stadtbild\"-Debatte",
+  "hash": "a78cc5aa07577ff119579d913f726dd2fe6c769ebfdb9008589e2b5ed0ba9e07",
+  "id": "BLK_1761523239_8wjtrt",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "CyhitCn7OpFS2YlRI/n2mWg+40hiTgbOa+coGMhegDI+cGAQNSzmQs59DBt4vqUQeJlcCP/rSbsagQzFed0/Cw==",
+  "signed_at": "2025-10-27T00:00:39Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 01:00",
+  "ts": 1761523239,
+  "url": ""
+}

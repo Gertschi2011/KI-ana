@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I'm drowning in AI features I never asked for and I hate it\n • Hacker News: The Linux Boot Process: From Power Button to Kernel\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761441860.4400418,
+  "hash": "63637a20bcee0344379c938932da44de6d615b088a3d516a4724d33795bdf8bb",
+  "id": "BLK_1761441860_6ce62a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "L/Sq8dmPj+ocJJbOd79KDFEoh+gw5WEjkJJ9jR+ZFaZx6v+SusfPAVpkgbL/Qz/DZnP5Ic/9Oc+nO0QZEpVgAw==",
+  "signed_at": "2025-10-26T01:24:20Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 02:24",
+  "url": null
+}

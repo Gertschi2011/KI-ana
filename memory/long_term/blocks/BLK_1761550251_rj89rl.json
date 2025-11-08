@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Diphtheria, a once vanquished killer of children, is resurgent\n • Hacker News: How I turned Zig into my favorite language to write network programs in\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Präsident Milei kann nach Zwischenwahl in Argentinien jubeln",
+  "hash": "0497d45817568b2e8cdc10610d1ad4b3af3ae27e908fafb20839498e91bfd469",
+  "id": "BLK_1761550251_rj89rl",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "HsQqyfM3FzS789zqTe4r7Qg3J8JPBBPhQcUuxZgb23SY2A7+w2SXRJUuc1T+mvI8+3A9wCmKgubGLyaWqUxwAA==",
+  "signed_at": "2025-10-27T07:30:51Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 08:30",
+  "ts": 1761550251,
+  "url": ""
+}

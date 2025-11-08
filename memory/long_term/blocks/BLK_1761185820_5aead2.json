@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: VortexNet: Neural network based on fluid dynamics\n • Hacker News: Iceland reports the presence of mosquitoes as climate warms\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sacharow-Preis für Poczobut: \"Seinen Kampfgeist kann man ihm nicht nehmen\"",
+  "created_at": 1761185820.7334917,
+  "hash": "cdbb178a5d8b48497d1316b3c106268e8b13883cb95a74600d3853d91387ba6c",
+  "id": "BLK_1761185820_5aead2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fi3BPnIpXbY7600fxO4Gh87OHijZObKK+etdunh/Gm+ddTLDVrg8aHXHV5isZ+Olw8YM4YxUANjoRcGaPxCbAA==",
+  "signed_at": "2025-10-23T02:17:00Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 04:17",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why the push for Agentic when models can barely follow a simple instruction?\n • Hacker News: Why Study Programming Languages\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Britischer Ex-Premier Blair - geeignet als Friedensbringer für Nahost?",
+  "created_at": 1760432907.7904177,
+  "hash": "2b3a9ad8875c13032112e0937b3735b56bfd8e76fad729e1ca38fca15d9caf91",
+  "id": "BLK_1760432907_8fff77",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "oDIPe4ctqQ5fCXhDMBZmkeC67enx4OerwrevkEuHBGzJem6BYr+orUI5YxODqYvQDcbKa6IS+OYRbKJ3T+zDCQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 11:08",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: You did no fact checking, and I must scream\n • Hacker News: Zorin OS 18\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine \"nennenswerten Einsparungen\" durch Bürgergeld-Reform",
+  "created_at": 1760713844.2323875,
+  "hash": "a27516e37cc9acd5f2f7c5fbfe91522f0f3be238f0d648a19d7333b9bf643c7b",
+  "id": "BLK_1760713844_067de8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "g008Y0HsYsqRfMLnjo87iw7YCftL2UF8y+eYoMUgXvNVdr0FAetSk4xQrp4iOWwC2H2ng6mGtzO2XtAXlsIpDQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 17:10",
+  "url": null
+}

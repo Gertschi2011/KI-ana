@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launch HN: Inkeep (YC W23) – Open Source Agent Builder\n • Hacker News: A stateful browser agent using self-healing DOM maps\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pläne des Verkehrsministerium: Mit Simulator und App zum günstigeren Führerschein",
+  "created_at": 1760623804.9756565,
+  "hash": "eb32dd9ca7126cb5d24e70c67fd18db8bd60f3da04de19943051b101461da9b8",
+  "id": "BLK_1760623804_ac136a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "rA9Rj8ri8xYNW3mQFUVmUDorGi3jOIPwKbravnw75G7Hobua8QxRzhOZsKLH7+bKnS09lMk4yWE8zJsCm/BOBA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 16:10",
+  "url": null
+}

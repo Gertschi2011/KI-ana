@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 79-year-old US citizen injured in immigration raid files $50M claim\n • Hacker News: FCC Accidentally Leaked iPhone Schematics\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Worin sich die Deutschen einig sind",
+  "created_at": 1759170012.611974,
+  "hash": "ac87c2936c9ad5bf76190a42b7649afac6de653d9f518f6459b0c4f6bb1cc717",
+  "id": "BLK_1759170012_083faa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TkSJbQgy0qc1GFwydGAeL2H8ChlBXtdC3F4uzL5hu+LCbFx4+o3hlyLh2KKJiM+tnZhPn+ahyFXItyTNSAIfDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 20:20",
+  "url": null
+}

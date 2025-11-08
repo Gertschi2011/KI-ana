@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Are-we-fast-yet implementations in Oberon, C++, C, Pascal, Micron and Luon\n • Hacker News: Microsoft 365 Copilot – Arbitrary Data Exfiltration via Mermaid Diagrams\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht aus Berlin: Spahn stärkt Merz in \"Stadtbild\"-Debatte",
+  "created_at": 1761526841.0087576,
+  "hash": "2d8bb5d1ed2607fe9a944f24ad8d4d48030facf9e3ff2e14efbd53b7db8bb211",
+  "id": "BLK_1761526841_b50a9e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "mA2pB24KFIWjxQysjALcGJKy2b9icsxjdk9qLDr1ZyeKnJ7EPaWCU6wKYYbSAm3pAgrUGLEKNySNdrzlMYa2DA==",
+  "signed_at": "2025-10-27T01:00:41Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 02:00",
+  "url": null
+}

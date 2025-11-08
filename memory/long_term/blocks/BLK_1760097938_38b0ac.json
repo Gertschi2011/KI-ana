@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Digital euro could drain up to 700B euros of deposits in bank run, ECB says\n • Hacker News: Vite+ – The Unified Toolchain for the Web\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost: Waffenruhe in Kraft, Israel zieht seine Truppen ab",
+  "created_at": 1760097938.1426675,
+  "hash": "a7e46f2ed5ba70dcf2e90bc8c7e75b61871d91ddee79a35d8459808fd837a17b",
+  "id": "BLK_1760097938_38b0ac",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "7Iq+Lb9JaduCQcsIlKJ2ebetGv1+7cS1LdQxCsh5c4nVCOL6qipCVOv3bUMFnzigxKL6JSl3iDa/8FsCrZXnDw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 14:05",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ants Trapped in a Soviet Nuclear Bunker Survived for Years\n • Hacker News: Depot (YC W23) Is Hiring a Principal Design Engineer (Remote US/EU)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Präsident Trump setzt Hamas Ultimatum für Friedensabkommen",
+  "created_at": 1759512664.6622117,
+  "hash": "08fd901afd98e5fa313394a2524293d9d6c8c4f1b0e1635a593257232583a221",
+  "id": "BLK_1759512664_93ff25",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "n+3xh6ZI884ycfXYUFyZK9JdxSpJo0kGrAB5FKh9lPgDZknDK/wZQrgv3ZWhqFdfbEKjCOwTqPS8+lo9vyOqBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 19:31",
+  "url": null
+}

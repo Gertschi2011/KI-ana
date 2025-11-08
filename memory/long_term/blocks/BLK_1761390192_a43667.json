@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Missing Semester of Your CS Education (2020)\n • Hacker News: Euro cops take down cybercrime network with 49M fake accounts\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Social Media und Konsum: Bestimmt TikTok, was im Regal steht?",
+  "created_at": 1761390192.3332052,
+  "hash": "81a64b71d55967fb109b53e385a05280ddb7d164f95ae2960042626a24ff438b",
+  "id": "BLK_1761390192_a43667",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "sx9Xouu4xJtWFy3G4xUIAwwCodfBb6d+0orYHR0hDcvgSq+zTLSUxEkIXPz+jttWNjYFSa1PIvUpQFutXYarBQ==",
+  "signed_at": "2025-10-25T11:03:12Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 13:03",
+  "url": null
+}

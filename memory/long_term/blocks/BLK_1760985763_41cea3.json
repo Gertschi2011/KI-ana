@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Demise of the Flynn Effect\n • Hacker News: Claude Code on the Web\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundeskanzler Merz: Zwischen Brandmauer und AfD-Rhetorik",
+  "created_at": 1760985763.3561594,
+  "hash": "ab951f96329dc9ee89ac0c06bafba9ab7983db528396e173a627e05eda260a30",
+  "id": "BLK_1760985763_41cea3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "am0qtyTUkiD6y0TIDDBKVqIeyjbgwF9/QGbotvtoVBd8ZKOhBPPfBTFdRjFYX9ek30gMC+pUGxPsREypHExcCQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 20:42",
+  "url": null
+}

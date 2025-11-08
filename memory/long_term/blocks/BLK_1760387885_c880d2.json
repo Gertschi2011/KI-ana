@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Reverse Engineering a 1979 Camera's Spec\n • Hacker News: Strudel REPL – a music live coding environment living in the browser\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "created_at": 1760387885.6896462,
+  "hash": "47d786f5fcb4728a0392cb9d269957f489954600922fcbe17eda4a6cb533bcec",
+  "id": "BLK_1760387885_c880d2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "4ew3WXmrlZg+Eed2/Eqmskl63X+hyvSvUdAgk/UxVGmxszHCiCLmBCABOcPWT8TnCF2QpAQRqqRTabyhF83ADA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 22:38",
+  "url": null
+}

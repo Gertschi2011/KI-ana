@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Liquid Glass Is Cracked, and Usability Suffers in iOS 26\n • Hacker News: How to save the world with ZFS and 12 USB sticks: 4th anniversary video (2011)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron ernennt Lecornu erneut zu Frankreichs Premierminister",
+  "created_at": 1760135757.7568989,
+  "hash": "fe139388865a9581f601832808e85b01ba5d94c3852a1f39fd83b298976d5fdd",
+  "id": "BLK_1760135757_e6574c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Bnl+W/fnPQENjigrCDr0SG9NQDPaZZfytmjOeyhLghjZXv6K4d2ZCVY3W1U9EcK+MrlLb7zUAJMF37cuCif/Dg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 00:35",
+  "url": null
+}

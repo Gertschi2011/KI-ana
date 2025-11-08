@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Evaluating the Infinity Cache in AMD Strix Halo\n • Hacker News: Show HN: AutoLearn Skills for self-improving agents\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Project 2025 die USA verändert",
+  "created_at": 1761108217.2830703,
+  "hash": "607fda8f667ce117e68d12c7eb2ef063e3246cf316f28d9c67cefe40168ab80e",
+  "id": "BLK_1761108217_d42129",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "XHvQ9T/vECQFx5kUN9bfR1siKDYIzcFmQr/UctpFFESHedrvZ67UCXk2C1BMdA2K3H3PGVJkk7XnmZJiwCdIBA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 06:43",
+  "url": null
+}

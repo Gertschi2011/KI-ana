@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Reasoning LLMs are wandering solution explorers\n • Hacker News: My approach to building large technical projects (2023)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gazastreifen: US-Soldaten sollen Waffenruhe überwachen",
+  "created_at": 1760079929.1761937,
+  "hash": "2916840ad93373145d3d110a048c45a51c4e047efe6deed498d5e87842c775cd",
+  "id": "BLK_1760079929_cdf991",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "WuDljubCs0Lf18rFjcviXw67cU0ny3xtsmkeYTBFlz9zw3yrMWMSdvOD3/LVC3qBpWq2640XgeJDr3x9gLehAg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 09:05",
+  "url": null
+}

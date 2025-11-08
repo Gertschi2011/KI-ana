@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758710365_qb7hzv",
-  "title": "Web Digest 2025-09-24 12:39",
   "content": "• Hacker News: That Secret Service SIM farm story is bogus\n • Hacker News: You didn't see it coming\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Liveblog zur Generaldebatte: ++ Grüne werfen Merz \"Rückwärtsgang\" vor ++",
+  "hash": "00eb696a9f41531654a4577860531f156e6966c0b34848db785779f49b2d15b5",
+  "id": "BLK_1758710365_qb7hzv",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "IFJtH/P6pdZLDzG6LKZVQXYIIRBWZZ6Hgx61JZayk88RfaR6GAS9t5FUCNqGAaT6aA8gLd1EDqbOS4QVxyWSAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 12:39",
   "ts": 1758710365,
-  "meta": {},
-  "hash": "00eb696a9f41531654a4577860531f156e6966c0b34848db785779f49b2d15b5"
+  "url": ""
 }

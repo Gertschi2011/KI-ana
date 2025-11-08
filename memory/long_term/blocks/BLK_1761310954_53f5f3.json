@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Typst 0.14: Now Accessible\n • Hacker News: Padlet (YC W13) Is Hiring in San Francisco and Singapore\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Fragen und Antworten: Wie gefährlich ist die Vogelgrippe?",
+  "created_at": 1761310954.0390446,
+  "hash": "b61ae863d2b7487bbc89721fcc5e46754a65699f1fc3501ca7382ae05a130966",
+  "id": "BLK_1761310954_53f5f3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HmOafj8+YZfZjEhy+PU5AwyCY6B95RERHlDSJcE1au3j9S4apMjSYeUG9Sdpm2YVrMIphAGQ51aAsF4BdU+dDw==",
+  "signed_at": "2025-10-24T13:02:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 15:02",
+  "url": null
+}

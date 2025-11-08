@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758535245_cyjlt1",
-  "title": "Web Digest 2025-09-22 12:00",
   "content": "• Hacker News: SGI demos from long ago in the browser via WASM\n • Hacker News: You did this with an AI and you do not understand what you're doing here\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schnieder verschiebt Pünktlichkeitsziele der Bahn nach hinten",
+  "hash": "e9fabb3946e96b468e32710dd1e7d285156f5f9690f5fe93777101976e5eade1",
+  "id": "BLK_1758535245_cyjlt1",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "44pPyk9u4vUJJQauJfSW7bJuUtsWvSvo2J8O+8DPXVOOEv1MItSGaErygYUUxs68wAgZJSg3Ff1ip1p1OMIOAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 12:00",
   "ts": 1758535245,
-  "meta": {},
-  "hash": "e9fabb3946e96b468e32710dd1e7d285156f5f9690f5fe93777101976e5eade1"
+  "url": ""
 }

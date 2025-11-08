@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Asbestosis\n • Hacker News: What If Tariffs?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Verdächtige nach Raub im Pariser Louvre festgenommen",
+  "created_at": 1761474599.685631,
+  "hash": "9515b4ea8a5ddcb54d5e55753be342847318a8b11f7647328ad217ae11d44db1",
+  "id": "BLK_1761474599_cd7d00",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "2X0+jfpRkSgLMyH+kWiYXw71uQNtvIPSNMVzTuZdN7Y+Gi0E3pWP/9Y9q7FqTkOjug31lVjgRg/Fk5m7MpjPAQ==",
+  "signed_at": "2025-10-26T10:29:59Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 11:29",
+  "url": null
+}

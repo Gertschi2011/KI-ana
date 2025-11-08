@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Artificial Writing and Automated Detection [pdf]\n • Hacker News: Sieve (YC X25) Is Hiring Engineers to build video datasets for frontier AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Studie: KI-Chatbots lügen bei 40 Prozent der Antworten",
+  "created_at": 1761586269.5841746,
+  "hash": "b7ba1d9c3df9124f5a552506373076b63abbda0780114340b4a0d3859f265311",
+  "id": "BLK_1761586269_5873bf",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Ob7xKJ92c3e/jvnaRN1OJbGCr3psHZbQYVvnfdtR84WQRFCVQUmFs/SdpUJjY2wSt0GbBvzjb7lwsH5PGv2PAw==",
+  "signed_at": "2025-10-27T17:31:09Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 18:31",
+  "url": null
+}

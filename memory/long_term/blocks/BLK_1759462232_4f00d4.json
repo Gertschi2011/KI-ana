@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Microcomputers – The Second Wave: Toward a Mass Market\n • Hacker News: Researchers develop molecular qubits that communicate at telecom frequencies\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Flugausfälle wegen Drohnensichtung am Münchener Flughafen",
+  "created_at": 1759462232.4562721,
+  "hash": "783d94383952c76419d6a37a6c21b3e39647cf30ea5715aa52702f2059d5071d",
+  "id": "BLK_1759462232_4f00d4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "L+S7S6NZ71rOgd4EutRg8GXG6ngy03Py8EmKgryjwxx9UjBqfd04gqG9bu6v4Nr7zero4BwUncLexAwEH1onBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 05:30",
+  "url": null
+}

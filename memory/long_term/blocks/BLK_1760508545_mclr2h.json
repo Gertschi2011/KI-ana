@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: I am a programmer, not a rubber-stamp that approves Copilot generated code\n • Hacker News: Can we know whether a profiler is accurate?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NATO-Staaten erwarten neuen Druck der USA bei Treffen in Brüssel",
+  "hash": "8fe35f780365ae75da8876caf808542298c4c4e8783417de942d1ec6d68e09b8",
+  "id": "BLK_1760508545_mclr2h",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "HANGQ6FKz9ma2hpCWpVDcr7mdkdRR6XYE/nN4FaDsnsjv+IfRgZlkOITQai7UuIiI6bBg0G7NXtMlb8OtB3CAQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 08:09",
+  "ts": 1760508545,
+  "url": ""
+}

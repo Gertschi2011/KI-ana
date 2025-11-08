@@ -170,16 +170,25 @@ def search_memory(q: str, limit: int = 10):
 # -----------------------
 
 def _db_path_from_env() -> str:
-    db_url = os.getenv("DATABASE_URL", "sqlite:///db.sqlite3")
+    # Use separate env variable for knowledge blocks SQLite DB
+    knowledge_db = os.getenv("KNOWLEDGE_DB_PATH")
+    if knowledge_db:
+        return os.path.expanduser(knowledge_db)
+    
+    # Fallback: Check if DATABASE_URL is SQLite
+    db_url = os.getenv("DATABASE_URL", "")
     try:
         if db_url.startswith("sqlite:///"):
             return os.path.expanduser(db_url[len("sqlite:///"):])
         if db_url.startswith("sqlite://"):
             return os.path.expanduser(db_url[len("sqlite://"):])
-        # if plain path
-        return os.path.expanduser(db_url)
     except Exception:
-        return "db.sqlite3"
+        pass
+    
+    # Default: Use KI_ROOT if available
+    ki_root = os.getenv("KI_ROOT", "/app")
+    default_path = f"{ki_root}/memory/knowledge.db"
+    return default_path
 
 
 @router.get("/list")

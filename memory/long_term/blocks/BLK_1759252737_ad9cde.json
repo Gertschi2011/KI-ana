@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Sora 2\n • Hacker News: Bild AI (YC W25) Is Hiring\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kabinettsklausur: Schwarz-Rot will Aufbruchsstimmung anheizen",
+  "created_at": 1759252737.577248,
+  "hash": "b341b87666b4afe29abbb1a1ea87f2e100e5146a26420c6f80ad45a4e1ffdc70",
+  "id": "BLK_1759252737_ad9cde",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "pbSrAvLDCQGFWUvfAfoHNOsIk4j5Tw0Rse0fSEoK/Degq3z21C33FSzp66qNWzjgMJZ8Y2NJVisApFyBT+4tDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 19:18",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Microsoft to Get 27% of OpenAI, Access to AI Models Until 2032\n • Hacker News: Sick: Indexed deduplicated binary storage for JSON-like data structures\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Liegenschaften die Bundeswehr nun doch behalten will",
+  "created_at": 1761660104.7375472,
+  "hash": "a46f8254fb0bdfe25e3fb0446702f309ea486f5eee6286e8b8f6e54451212a0c",
+  "id": "BLK_1761660104_2e870e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KiQJsxjXg6uRd4AhuV7d42bIrwPo2XOfXnuGfiDwjMd5uZfv7yV9W1w2FsxVo2/I8qVglX3dJl/h0FCxKnCMAA==",
+  "signed_at": "2025-10-28T14:01:44Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 15:01",
+  "url": null
+}

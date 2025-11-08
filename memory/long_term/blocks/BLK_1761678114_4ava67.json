@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Passkeys: They're not perfect but they're getting better\n • Hacker News: Chrome to warn on unencrypted HTTP by default\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "hash": "02ef729754a9a348f9a1b6aee1f45f7a4c1fcb002c7c0101b3f74a2ffd84ad9a",
+  "id": "BLK_1761678114_4ava67",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ilgTmn7Pxzj8LOJ5z/vGzt5nG5+jP+bZmfktvgAKEKiVS41CiplgDVSL9X2N/NqeCI2Xz4QV4rcdvfaGZ9i5DA==",
+  "signed_at": "2025-10-28T19:01:54Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 20:01",
+  "ts": 1761678114,
+  "url": ""
+}

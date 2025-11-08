@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: ./Watch\n • Hacker News: StageConnect: Behringer protocol is open source\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Mehr Angebote in Apotheken geplant - Kritik von Verbänden",
+  "hash": "486c0bc89c800b3f190d6bee2d7f7e89da548234c055b4f4856eaa396cb6f92f",
+  "id": "BLK_1760785875_huk71u",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "D02haUkbjXrn8a/K4nCh7PDJ1gNkyyYRjOn1qSdToxitOXPOdij52EshDW9YkH+ikyNFQDvzILQ1L/BTEl5hCQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 13:11",
+  "ts": 1760785875,
+  "url": ""
+}

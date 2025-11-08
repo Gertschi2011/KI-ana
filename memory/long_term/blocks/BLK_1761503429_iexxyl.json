@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Alzheimer's disrupts circadian rhythms of plaque-clearing brain cells\n • Hacker News: Show HN: FlashRecord – 2MB Python-native CLI screen recorder\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Beschädigung von Seekabeln - Sorge um Taiwans Lebensadern",
+  "hash": "5f48ff09538105ade481ede54827e6bd38b3cc49592b0c5132237527951df14c",
+  "id": "BLK_1761503429_iexxyl",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "nHDe7iJvhsF+qpxnFWZ8Q+rG6uZKMeMzS0YLFzBzEbXP8mDxlq2zK9rEPHjIDEqD2IGgCetkHuk+LMoMctuBCA==",
+  "signed_at": "2025-10-26T18:30:29Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 19:30",
+  "ts": 1761503429,
+  "url": ""
+}

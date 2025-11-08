@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Winter 2025/2026 weather outlook\n • Hacker News: PWA Browser Scorecards\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump gibt Einigung bei Gaza-Gesprächen bekannt",
+  "created_at": 1759970078.3318484,
+  "hash": "6e673bcc97d497c148cd02d3d573ab0cbe23b8c6938a89b480c4e52e0e33b806",
+  "id": "BLK_1759970078_dfcaa0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "wrWpWOo2YFoIzevlCavgZE4cVy2HQ6dLEZ9mqbeeuhiVz4APHIl5TXtldN+0g5PS+B9w17OD7M2ytg+QavNCBQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 02:34",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Build a VPN Tunnel with Wintun on Windows – Part 1\n • Hacker News: Nobel Prize in Physiology or Medicine 2025 awarded to immune system researchers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Woran ist Frankreichs Premier Lecornu gescheitert?",
+  "hash": "ac1615dd417ffafe643ca083288338cee90aac2d494bee7bdc13000587d3bbb4",
+  "id": "BLK_1759753985_hhi8bt",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "/0n02dm2Qkv5HRBxRZ8IY/mmDTdvQO+HzxsV1sowuLPfeNvqX2ni6DxnL26hvZPGaEoFGw1piZDQxcdxRCfuAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 14:33",
+  "ts": 1759753985,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Did Space Debris Hit A United Flight Over The Rockies Thursday?\n • Hacker News: The Case for the Return of Fine-Tuning\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Diebe erbeuten Schmuck aus dem Louvre",
+  "created_at": 1760872312.82035,
+  "hash": "93853c60f8e74170ff5f1fb552db0662e6f808d7edbb9ac81d1488ce81045896",
+  "id": "BLK_1760872312_015fbd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "QVEFTUssM6JjYzcanMSW0qiw/zSupMeL6V8WCdtKEt4mKgAVbOTlGQv2+sQsYGsF9HmufGdD8thiHzBuQ95SAw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 13:11",
+  "url": null
+}

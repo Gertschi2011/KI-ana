@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: C64 Blood Money\n • Hacker News: Radios, how do they work? (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Steuereinnahmen nach Schätzung bis 2029 höher als erwartet",
+  "created_at": 1761216021.1308136,
+  "hash": "e4ef75bd22fa7eb8e00c710f1603e90f8bd103cdabeb34e49638331d038f8be2",
+  "id": "BLK_1761216021_56c220",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cunZLTHG4N9z6cin5ZU4P2S27dpe/UuCKJC5EHEprqxE4tCdMa/3TsDbQmOEaRDhl9imto3ti+CB+AoCFFXQAQ==",
+  "signed_at": "2025-10-23T10:40:21Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 12:40",
+  "url": null
+}

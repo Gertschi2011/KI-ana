@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Waymo is bringing autonomous, driverless ride-hailing to London in 2026\n • Hacker News: Homeless Man AI Prank Prompt: Risks, Ethics, and How to Use AI Responsibly\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Regierungserklärung von Kanzler Merz: \"Nur Stärke bewahrt Frieden\"",
+  "created_at": 1760609397.8962033,
+  "hash": "e9c523ff0417f2f3052368aaccf9cc991e6ac67af1c97db432989c513f4990c9",
+  "id": "BLK_1760609397_11d760",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "zDVYQO9sWFFcTwEtH8k+d4DctJmKKHc8CiDCic6nqWFyAVMHXCKPQ/w/J3cSQE+WjUuEyCEZ+3VucfUwAILxDw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 12:09",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Space junk falls on Western Australian minesite\n • Hacker News: GoFundMe CEO: economy is so bad his customers crowdfund to pay for groceries\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brandmauer-Debatte: CDU-Spitze berät bei Klausur über Umgang mit AfD",
+  "created_at": 1760865109.6397426,
+  "hash": "864f6ec5c6b53551c68912ddc6f578ab97bb512850488f07865e10aa190d0513",
+  "id": "BLK_1760865109_69a7c9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "o/LNbNbu3/IFiYAjIajE11vIkaJ06ODlUCZlz7xJyQbr6t1GT7tLBUAfTcY8nyzoPxE0epeHAbaHH0WcM8f+Cw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 11:11",
+  "url": null
+}

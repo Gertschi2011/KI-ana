@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Reasoning LLMs are wandering solution explorers\n • Hacker News: Apple Took Down These ICE-Tracking Apps. The Developers Aren't Giving Up\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "created_at": 1760072725.705687,
+  "hash": "c50167d71f9f70d1dde7172b8f47f8dc679fe9b40194ec6e44910d15e69745b2",
+  "id": "BLK_1760072725_d9f7c2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "U+WNeDZQ5frbOLueoncXOBnrVUlcyV57QdeTq9Ao1ysQca8uiaIEGrXi5X4I933erJmHtcdJAWUtM9PvNp1zAA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 07:05",
+  "url": null
+}

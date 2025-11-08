@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Windows 10 Deadline Boosts Mac Sales\n • Hacker News: Xubuntu website hacked and served malware\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Familienpolitik auf dem Prüfstand - was kommt, was nicht?",
+  "hash": "ffb5c59845cdc138a9b519b78bda65e755d6151bf52340f966aa15438882d7de",
+  "id": "BLK_1761409439_3hs2ev",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "YUY/tx1ztD3F71iSHPDI3p6FKlSd1X0AS/IZtiHM7vaV4WMv3masAUP63XGdZHGdc7ZVKGk+dn4Xus5F6VJpDw==",
+  "signed_at": "2025-10-25T16:23:59Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 18:23",
+  "ts": 1761409439,
+  "url": ""
+}

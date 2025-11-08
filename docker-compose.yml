@@ -10,6 +10,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     networks: [kiana]
 
   redis:
@@ -42,11 +44,13 @@ services:
     networks: [kiana]
 
   backend:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: netapi/Dockerfile
     restart: unless-stopped
     env_file: .env
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: postgresql+psycopg2://kiana:kiana_pass@postgres:5432/kiana
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
       QDRANT_HOST: ${QDRANT_HOST}
@@ -56,14 +60,18 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
       JWT_SECRET: ${JWT_SECRET}
       OLLAMA_MODEL_DEFAULT: ${OLLAMA_MODEL_DEFAULT}
+      OLLAMA_HOST: ${OLLAMA_HOST}
       EMERGENCY_OVERRIDE_SHA256: ${EMERGENCY_OVERRIDE_SHA256}
+      KI_ROOT: /home/kiana/ki_ana
+    volumes:
+      - /home/kiana/ki_ana/memory:/home/kiana/ki_ana/memory:ro
+      - /home/kiana/ki_ana/system:/home/kiana/ki_ana/system:ro
+      - /home/kiana/ki_ana/data:/home/kiana/ki_ana/data:ro
     depends_on:
       - postgres
       - redis
       - qdrant
       - minio
-    ports:
-      - "8000:8000"
     networks: [kiana]
 
   worker:
@@ -71,6 +79,8 @@ services:
     command: ["bash","-lc","celery -A workers.celery_app.celery worker -l info"]
     restart: unless-stopped
     env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg2://kiana:kiana_pass@postgres:5432/kiana
     depends_on:
       - backend
       - redis
@@ -92,12 +102,25 @@ services:
     image: nginx:1.27-alpine
     restart: unless-stopped
     volumes:
-      - ./infra/nginx/ki_ana.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./infra/nginx/:/etc/nginx/conf.d/:ro
+      - ./infra/nginx/www:/var/www/certbot:ro
+      - ./infra/certbot:/etc/letsencrypt
+      - /home/kiana/ki_ana/netapi/static:/home/kiana/ki_ana/netapi/static:ro
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - frontend
       - backend
+    networks: [kiana]
+
+  certbot:
+    image: certbot/certbot:latest
+    entrypoint: "/bin/sh"
+    command: "-c 'echo certbot container ready'"
+    volumes:
+      - ./infra/nginx/www:/var/www/certbot
+      - ./infra/certbot:/etc/letsencrypt
     networks: [kiana]
 
 volumes:

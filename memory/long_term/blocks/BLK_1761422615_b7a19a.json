@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Journey Before main()\n • Hacker News: Ask HN: Advice for creating a USB device linking 2 computers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761422615.1749525,
+  "hash": "41709bd267c68223ae2db6a5587d8fce5132e61cadf8899f680baffe0b807131",
+  "id": "BLK_1761422615_b7a19a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/a60ZrCPo6S6Pzwh4r6FAdVaOGaSBXhBdfm5+7UnM4OizHhqS+fKAygmCAxpV4zeAd4A3B3AZ+FCyyzCqMLgAg==",
+  "signed_at": "2025-10-25T20:03:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 22:03",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ring cameras are about to get increasingly chummy with law enforcement\n • Hacker News: NeXT Computer Offices\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine Klarheit über Tomahawk-Lieferung an die Ukraine",
+  "created_at": 1760749859.9062705,
+  "hash": "2e711cdf2abf24c109d68c6223c15ebffe44676b512008fb6e4162201ae209c6",
+  "id": "BLK_1760749859_1d32ac",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "htncs5miBRCtVhOahFzoX6mULLrAGTpmd3rrEmsNCdzYkPUdqZVYT64agnoQGS87PG1/2aFRH9zS46hul0x6Cw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 03:10",
+  "url": null
+}

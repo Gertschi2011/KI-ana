@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Ask HN: Why is software quality collapsing? (Apple Calculator leaks 32GB RAM)\n • Hacker News: A Comparison of Ada and Rust, Using Solutions to the Advent of Code\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demonstrationen in Italien - Gaza-Aktivisten abgeschoben",
+  "hash": "4673267f170a424709d698e8298a29f8890d1e369c0d362670bb3f7b21cc2b19",
+  "id": "BLK_1759597314_rk586g",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "MB4Uy+b9n5ZcIHYyzQBQuKfSNWre+ZoStJZgdbQBrbploxFdYQZZ7ux8U4ZV0chr1/IdLxLpRnTKpjymZzT2AQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 19:01",
+  "ts": 1759597314,
+  "url": ""
+}

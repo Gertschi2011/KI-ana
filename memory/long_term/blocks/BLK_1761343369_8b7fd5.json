@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Conductor (YC S24) Is Hiring a Founding Engineer in San Francisco\n • Hacker News: MRI Contrast Agent Causes Harmful Metal Buildup in Some Patients [study]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Großbritannien drängt auf Nutzung russischen Vermögens für die Ukraine",
+  "created_at": 1761343369.9186034,
+  "hash": "059dea6b05e0fe280165dd422bcedfdce8eeb092fc82331380770c6e5c4fb83e",
+  "id": "BLK_1761343369_8b7fd5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "DUXaZvLzffcHGQlVbwfhG3PoHynYjGt6m4GUrvt5ieZUj0+r7o/XWBJf8SqC5+19b1VRU+Q38HEqAZiHZNSVDQ==",
+  "signed_at": "2025-10-24T22:02:49Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 00:02",
+  "url": null
+}

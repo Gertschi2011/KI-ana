@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Less Is More: Recursive Reasoning with Tiny Networks\n • Hacker News: German government comes out against Chat Control\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre nach Hamas-Überfall: Israel gedenkt der Opfer",
+  "created_at": 1759862032.1154387,
+  "hash": "1a467293f57f45c1e28687ee52c84e9fdf351096373f809d99b4f5e27361271c",
+  "id": "BLK_1759862032_f348bd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ExLOZ1dZhLVE5YmkdkRu4WzLttXLJ+WvrTUn+Pjn3rDepm5ZS5NuHTApSGyruHr/85maVR79Ptn1+HBwVv01Dw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 20:33",
+  "url": null
+}

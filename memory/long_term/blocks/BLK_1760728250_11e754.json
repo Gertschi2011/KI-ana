@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Forgejo v13.0 Is Available\n • Hacker News: OpenAI Needs $400B In The Next 12 Months\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Epstein-Affäre: Prinz Andrew verzichtet auf royale Titel",
+  "created_at": 1760728250.5628464,
+  "hash": "b1f4030165914e3a5fd49417a1858669b9bb7f00ca555874db16319b09ba379b",
+  "id": "BLK_1760728250_11e754",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "+sKFWfEHGUUcfLi/U3QFY+wrvK25eX/N0IBebCIsE3kXjOWvrqgKXe2Zvr7rq9dyFVaZLlJZVv9GG/4EGFIMCg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 21:10",
+  "url": null
+}

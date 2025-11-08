@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Iceland reports the presence of mosquitoes as climate warms\n • Hacker News: InpharmD (YC W21) Is Hiring – NLP Engineer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Staaten einigen sich auf schärfere Sanktionen gegen Russland",
+  "created_at": 1761173214.256761,
+  "hash": "c7f36c6b62269b59149701f9d3de304873416a15e12a0c3cd558c949209980a1",
+  "id": "BLK_1761173214_0b73e1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Osw/nZfx2Ash1sUbEbj5XZ156qSxa7aqQkt7M+jNl9i7A88MR0oMt5faFUCFHknbnKFzEilhrreSUjWJ6dW6Dw==",
+  "signed_at": "2025-10-22T22:46:54Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 00:46",
+  "url": null
+}

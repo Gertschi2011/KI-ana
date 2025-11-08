@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple Bows to MAGA Demands on ICE Goon Tracker Apps\n • Hacker News: QuestDB (YC S20) Is Hiring a Core Database Engineer – C++ and Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schnellgesetz geplant: Söder will Abschuss von Drohnen beschleunigen",
+  "created_at": 1759494649.0467236,
+  "hash": "766e2caa872ba0d3caff130386b64ca6d3e6942d93a323cd1566ecb6ec3fc9a8",
+  "id": "BLK_1759494649_7fdc7e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bnxMoIGOdLQklJNsHMyxpNUtcEiICvvx4XZC76lzPa4MIHuo81Vur+WURTTP/Pk0C0GijQpnV0lYZVK69W60BA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 14:30",
+  "url": null
+}

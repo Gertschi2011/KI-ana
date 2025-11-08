@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759055963_18ced3",
-  "title": "Web Digest 2025-09-28 12:39",
   "content": "• Hacker News: Beyond OpenMP in C++ and Rust: Taskflow, Rayon, Fork Union\n • Hacker News: Ed Zitron is mad as hell\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ost- versus Westverbände: Streit in der AfD über die Wehrpflicht",
+  "created_at": 1759055963.6453714,
+  "hash": "7322282f68aec1bc27a534a9477516c8f56f83810eecdaf1655e804af0c8a1e6",
+  "id": "BLK_1759055963_18ced3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "lMTVcDA26WXY/5he2fp8FaPSzpveznOt0Ax6cSJqn+LTYzTibXn3kCvV6o+ehZm56Y3iicZuQXViFqrZGmrfDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759055963.6453714,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 12:39",
+  "url": null
 }

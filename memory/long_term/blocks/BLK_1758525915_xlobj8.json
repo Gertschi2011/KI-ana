@@ -1,17 +1,20 @@
 {
-  "id": "BLK_1758525915_xlobj8",
-  "title": "Was weißt du über den Planeten Mars?",
   "content": "TL;DR: Kurzüberblick zu Was weißt du über den Planeten Mars? – ich prüfe bestehendes Wissen und aktuelle Quellen.",
+  "hash": "f5f5930a28814e056d27f16d24eacedcbda93ae8d1bede7ec492fb6ae479ac74",
+  "id": "BLK_1758525915_xlobj8",
+  "meta": {
+    "chain_hint": false,
+    "source": "chat"
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "9DLSkWKVjCy0tO8OpB+PHzF+2rnKJEfHMuNL6BQpRo3vxH4GGY94IVCidv/AMf3gFjmfcYRana6Krl0i90jXAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "vision",
     "learned",
     "web"
   ],
-  "url": "",
+  "title": "Was weißt du über den Planeten Mars?",
   "ts": 1758525915,
-  "meta": {
-    "source": "chat",
-    "chain_hint": false
-  },
-  "hash": "f5f5930a28814e056d27f16d24eacedcbda93ae8d1bede7ec492fb6ae479ac74"
+  "url": ""
 }

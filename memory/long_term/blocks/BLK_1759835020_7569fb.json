@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: MacBook Lid Angle Sensor\n • Hacker News: Like Vercel, but open source and for all language\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Physik-Nobelpreis geht an drei Quantenforscher",
+  "created_at": 1759835020.4499393,
+  "hash": "c34c7fcf8da8972b1890a676c74a5f38d2a89644bede20f5701f2b985dda30d6",
+  "id": "BLK_1759835020_7569fb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9yU6rrDL05G8r29cjyHTPsZMedQ8IPu9BvUMws3sofQp08kMLNS3BNFGp7MGb6J9pEfBKTG5ezai6DsVVqWXDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 13:03",
+  "url": null
+}

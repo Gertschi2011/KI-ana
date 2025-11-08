@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: JPDB, GDB for Your Waveforms\n • Hacker News: Pre-Emptive Multi-Tasking on Arm Cortex-M\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "created_at": 1759270747.1146214,
+  "hash": "f7f4de55c1507a7a3ced89df203d16935c5b29cf95c6cda4023ea8c81ec63216",
+  "id": "BLK_1759270747_8b56ed",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jSKYV30EkdgYTFQr7b9zVS/K7nVsxxRXX/9BVachepH1e5uknjoAQtD5G8cgM+rNCRLpBzZ47MTQYq/nO4+FBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 00:19",
+  "url": null
+}

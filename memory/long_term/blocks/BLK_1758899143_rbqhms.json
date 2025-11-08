@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758899143_rbqhms",
-  "title": "Web Digest 2025-09-26 17:05",
   "content": "• Hacker News: DeepFabric – Generate High-Quality Synthetic Datasets at Scale\n • Hacker News: 'Independent' auditors overvalue credits of carbon projects, study finds\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Drohnen: Was wissen wir über die neue Gefahr von oben?",
+  "hash": "0be33164542d892f94b695fc743b58ce0e8ea3766356f3b9be88a541f090ba47",
+  "id": "BLK_1758899143_rbqhms",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "OxLKe3sZRjcAP9RMBlE40HRFYuHCNNv3gI6vztVc4RcDfKsyZk9TX0EBP77/V+ckNy99DFdn1nxiT8HbsxRfBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 17:05",
   "ts": 1758899143,
-  "meta": {},
-  "hash": "0be33164542d892f94b695fc743b58ce0e8ea3766356f3b9be88a541f090ba47"
+  "url": ""
 }

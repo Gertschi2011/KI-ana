@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Understanding Spec-Driven-Development: Kiro, Spec-Kit, and Tessl\n • Hacker News: Hacker News – The Good Parts\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Treffen mit Putin in Ungarn an",
+  "created_at": 1760658020.3764684,
+  "hash": "360b2d48fa335ac33d44dd84d7005e8b51e41a54ac3b9a00f02e346c2c970986",
+  "id": "BLK_1760658020_d87a18",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "szy2KQkYcLH6tumPwz7vC6/jbAk++JJkZzN0lKRMidVN4q0gMdkhUvMOgfBL7JWrV7KReGeo3l2Ghzl6KOgZBg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 01:40",
+  "url": null
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758990132_gh6edm",
-  "title": "Web Digest 2025-09-27 18:22",
   "content": "• Hacker News: AI model trapped in a Raspberry Pi\n • Hacker News: Fundamental of Virtual Memory\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump will Militär nach Portland schicken",
+  "hash": "4913083ed5953a51edae10b54285e885238dc58a08a10f900b1cba4d54550657",
+  "id": "BLK_1758990132_gh6edm",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "9uRmb4euuY/B47nlCeJnR0RK85r2WHptP30uK8twsGMCoijcSwj9RaINTjAY3I4Z6wifOn2dwJU4fVW0ShHfDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 18:22",
   "ts": 1758990132,
-  "meta": {},
-  "hash": "4913083ed5953a51edae10b54285e885238dc58a08a10f900b1cba4d54550657"
+  "url": ""
 }

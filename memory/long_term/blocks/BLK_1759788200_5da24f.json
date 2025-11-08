@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: WebGPU and the Price of Compiling WGSL\n • Hacker News: Valorant's 128-Tick Servers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron will von Ministerpräsident Lecornu letzten Versuch",
+  "created_at": 1759788200.309812,
+  "hash": "717a4eb38ea730db210c39faaaddf69717615e4d63ea41e7f6a9a26ff6eb166b",
+  "id": "BLK_1759788200_5da24f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "0Q3uL+Ts+bfDVYWUgSETyTPWXpo8MlGImvFB6TPjOp0ZWsM1NU7qGy9DRnVG/idTdSDod1OuZbg/OutZ2PV1Ag==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 00:03",
+  "url": null
+}

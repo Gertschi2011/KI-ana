@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Making sure AI serves people and knowledge stays human\n • Hacker News: Boeing has started working on a 737 MAX replacement\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "created_at": 1759263543.5045967,
+  "hash": "1adf99ee2a437c47b39aae72305ff830e8da55299989251783df547ac1614eb4",
+  "id": "BLK_1759263543_a97c44",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MRMEI776SiKw6WAYsFPP0uP1FxvVfYPR7HjM9mi1fx243NM6HHLp7F4wx05oYW+LpWJ/0jej71Q84ZnQl3pzDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 22:19",
+  "url": null
+}

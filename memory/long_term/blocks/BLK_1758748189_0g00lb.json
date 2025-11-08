@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758748189_0g00lb",
-  "title": "Web Digest 2025-09-24 23:09",
   "content": "• Hacker News: Diffusion Finetuning Myself\n • Hacker News: How fast is Go? simulating particles on a smart TV\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Handelsabkommen mit der EU: US-Autozölle werden rückwirkend gesenkt",
+  "hash": "8087db7404fe770127adca503c7636da3d5c5e6fb41a522579ccbb4b1b4f4987",
+  "id": "BLK_1758748189_0g00lb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "55Ww0lxIchti5eZniQTmsB0auMaScdNZkebep1EbIG9sFgF+kuwAEnl7lofC6yMJE3Br8Q/kOegrj8w3WrE0Dw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 23:09",
   "ts": 1758748189,
-  "meta": {},
-  "hash": "8087db7404fe770127adca503c7636da3d5c5e6fb41a522579ccbb4b1b4f4987"
+  "url": ""
 }

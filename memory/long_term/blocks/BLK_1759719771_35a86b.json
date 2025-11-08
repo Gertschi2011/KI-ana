@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Revocation Confusion\n • Hacker News: Should I choose Ada, SPARK, or Rust over C/C++?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz vermutet Russland hinter vielen Drohnen-Flügen",
+  "created_at": 1759719771.6043184,
+  "hash": "805c6c71840d1c55bf9e486bb9136086e80aaa7f6320b8ed68e5ea2e329c1c46",
+  "id": "BLK_1759719771_35a86b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "UG/vtXXS6wHgViZW9EcmAzOLYbzNvxaMtsCbFJhsHshlEREkv5hkj/C3iD0QqwRp2o1zHlQtEBX+rjI3nfc/AQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 05:02",
+  "url": null
+}

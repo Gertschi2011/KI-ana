@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Space Mission Options for Reconnaissance and Mitigation of Asteroid 2024 YR4\n • Hacker News: Probiotics Finder\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was zum Frieden im Gazastreifen fehlt",
+  "created_at": 1759626131.1962187,
+  "hash": "d4e5b40f625d2a07eebbb3361b50a9ebecb5c8c89cdc32534bc2977f47da4f32",
+  "id": "BLK_1759626131_ea8605",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bG90hcvPko3L7h9QiFc+yQAdvCh5tYbgds9jjxIGhyVYeGvwYT5EZqruVeCT6LdFhJbtv9X8ly7viZJQjrA9BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 03:02",
+  "url": null
+}

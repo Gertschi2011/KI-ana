@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759084778_406d52",
-  "title": "Web Digest 2025-09-28 20:39",
   "content": "• Hacker News: UK Petition: Do not introduce Digital ID cards\n • Hacker News: Denmark bans civil drones after more sightings\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Milliardenloch: Pflegegrad 1 streichen - oder nicht?",
+  "created_at": 1759084778.8635495,
+  "hash": "7699728f4fe9e111a29043014f70a0ac6a848e733ef577724eef23665110e680",
+  "id": "BLK_1759084778_406d52",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MDQQ6g+qcBaenym9XGsSuP5LDYcuc/0xnvKx5cyl9bMLfl+FuiUUP2Hsr1TZNTIMVyicfFgZYCfapuqcB3UGAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759084778.8635495,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 20:39",
+  "url": null
 }

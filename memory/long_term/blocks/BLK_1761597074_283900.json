@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Creating an all-weather driver\n • Hacker News: Carl Bohland's Auto Wash Bowl (2015)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD Anschluss in den USA sucht",
+  "created_at": 1761597074.7062507,
+  "hash": "7374d4caccfce593f58e356217f4a54f164aabc7d4fde33c93f0aebb88cf6d3a",
+  "id": "BLK_1761597074_283900",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vU8NiKl/SnsZ2wI2kVVPYlD7mzxjEPGoAw0vBoQWdCQkWkgjE0RoOGgsVwhMq2e0FrvK5eZ/pglQ5cD9apVEBA==",
+  "signed_at": "2025-10-27T20:31:14Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 21:31",
+  "url": null
+}

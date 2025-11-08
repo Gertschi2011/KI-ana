@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Most Expensive Laptops\n • Hacker News: Language Support for Marginalia Search\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs Ex-Präsident Sarkozy tritt Haftstrafe an",
+  "created_at": 1761034384.5671823,
+  "hash": "64a41b419d0296b1b160b0ff29f99c735993254d3b8ce4ff78bccdfb21f7be90",
+  "id": "BLK_1761034384_e73a29",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "u3iKk9FPDitO6mf7IfmnU5eZtejO/TO0GHvwBxcNQC4Y8iZTIW1OuP6d3dwGbkxUiVzzU4/m0ws3cGLODd1+DA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 10:13",
+  "url": null
+}

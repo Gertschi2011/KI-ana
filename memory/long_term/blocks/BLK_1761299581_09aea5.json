@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ChatGPT Launches 'Company Knowledge'\n • Hacker News: Britain's most tattooed man says UK's age check told him to \"remove his face\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ministerin Reiche verspricht in der Ukraine Hilfe für Energieversorgung",
+  "created_at": 1761299581.8598862,
+  "hash": "44160ddaafcb5390d1dc8df0a99d2a70015e55b717e4d7bd9aa91f3b7c0567b9",
+  "id": "BLK_1761299581_09aea5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "XmQ/1F5t5AIYtb1qOHrIdU5q9YenSGFnk3cPgmi99eSLACbs07aoYoI2ZYIy7Ie+gvtEdHMdGsWxKDc22Sg4AA==",
+  "signed_at": "2025-10-24T09:53:01Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 11:53",
+  "url": null
+}

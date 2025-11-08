@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Valorant's 128-Tick Servers\n • Hacker News: My Life in Ambigrammia\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron will von Ministerpräsident Lecornu letzten Versuch",
+  "created_at": 1759784598.7686288,
+  "hash": "4e414c163f8dce4fe1d04461c0662540c6f98a5d462ec4ae5ec942619e154555",
+  "id": "BLK_1759784598_d46bf2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Z+swkMZ3Pd7qbYERAN4Ktnd0u5MPAiV4cEKvwv+RQPqSeyM0Gtz0DeqTp+n2BBncU0kBjdrnmCtNNveIfUIqAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 23:03",
+  "url": null
+}

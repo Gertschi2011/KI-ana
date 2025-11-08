@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A brief history of random numbers\n • Hacker News: Washington Post editorials omit a key disclosure: Bezos' financial ties\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jusos sammeln Unterschriften gegen die Bürgergeldreform",
+  "created_at": 1761663706.4974968,
+  "hash": "1669c9a41852af80b96d62c771b56cba81f314d33dbac040269fc74c46a81f65",
+  "id": "BLK_1761663706_c3765f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "p9vV+olNXDEEymOy2IcKB4CUJG41CCxGZMop+QZuQN3WwxkVc3yavNzZc6QajbFfdt6eUhjzbqR58kLQj4rWDA==",
+  "signed_at": "2025-10-28T15:01:46Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 16:01",
+  "url": null
+}

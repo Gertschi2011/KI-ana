@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: StageConnect: Behringer protocol is open source\n • Hacker News: The Majority AI View\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Pistorius in der Wehrdienst-Debatte mit der Union streitet",
+  "created_at": 1760773270.0750809,
+  "hash": "bc5d4334291730d53186cf0e4939864a4c98cb2ffc55d5b8a1feed7c5c9fb8f5",
+  "id": "BLK_1760773270_960881",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "MK1wmY7G27107rE/NYG6ExhAxCfcIysvjJw3+WmzbgaZjXttKU4bz1RfZelglmv9FTHLRS1crO7qjsKjlhoYCQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 09:41",
+  "url": null
+}

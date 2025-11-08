@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why We're Leaving Serverless\n • Hacker News: I analyzed 200 e-commerce sites and found 73% of their traffic is fake\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum es bei Schwarz-Rot knirscht",
+  "created_at": 1760530157.5506897,
+  "hash": "459c5190e4bf09f468f2059b4bb260d445fb522d4a36efa209f62fcd44c05a9d",
+  "id": "BLK_1760530157_70477d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "aWZVMnG6JypOcaCeh8sCJHJBbasayLM7uhbHV6b9Hy1Bmwh4IrXAMPOyvs/pmgsb1M5sOt910kI5u1rJNgP9DQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 14:09",
+  "url": null
+}

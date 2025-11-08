@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Origami Patterns Solve a Major Physics Riddle\n • Hacker News: Hardware Stockholm Syndrome\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Palästinenser und Israelis: Sich annähern - trotz des Schmerzes",
+  "created_at": 1759808008.89704,
+  "hash": "d914f2b20d92faeaac51cd80f9735eab849534ff1cabe33d2418965f63e20993",
+  "id": "BLK_1759808008_b38847",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "dxwi/Mru+9Bo6bX59RbaAkDCm5X2GcFy3M8zT2CwGqXABQDXaVyie6BHa8HVyf0zRqMN9QFSNCGrkl8Yi6FkDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 05:33",
+  "url": null
+}

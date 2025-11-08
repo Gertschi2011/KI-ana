@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758539498_rs94e4",
-  "title": "Web Digest 2025-09-22 13:11",
   "content": "• Hacker News: Tell the EU: Don't Break Encryption with \"Chat Control\"\n • Hacker News: M4.6 Earthquake – 2 km ESE of Berkeley, CA\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schnieder verschiebt Pünktlichkeitsziele der Bahn nach hinten",
+  "hash": "69ca9d7043a4efeda9cbdbf3313811131ed527a836aacae4a036e116117de426",
+  "id": "BLK_1758539498_rs94e4",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "k3hRnNgJm6HEfsqrM2K1EKV7187RxDXq/fEJpq7H9Tx3chZ83SDPWRz4K+pn1N9vW5HxdLAdYI1EPafPb5jMCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 13:11",
   "ts": 1758539498,
-  "meta": {},
-  "hash": "69ca9d7043a4efeda9cbdbf3313811131ed527a836aacae4a036e116117de426"
+  "url": ""
 }

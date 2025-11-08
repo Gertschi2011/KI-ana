@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Linux Boot Process: From Power Button to Kernel\n • Hacker News: NewPipe Is Turning 10\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761434656.5020938,
+  "hash": "6f82a920d58a961a2ef22631d053395451c7008f59e8861f7591522c50b8efb4",
+  "id": "BLK_1761434656_c4f0af",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "5j0CDKibLhNXrYXc6SHBMhEsMjn/Ev9M2/7osG0MusxJkPtfLrg7LZ3r0N14gftB53zOA2PRUpl15nnCOuk+Dg==",
+  "signed_at": "2025-10-25T23:24:16Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 01:24",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Starship's Eleventh Flight Test\n • Hacker News: Why Toyota Runs a Car-Hacking Event (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas erklärt sich zur Freilassung aller Geiseln bereit",
+  "created_at": 1759554088.2598803,
+  "hash": "d23c602f7134907bd1abde1a2ae8cf24761575f45794b2ac234d6916f65645a6",
+  "id": "BLK_1759554088_28efa4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7Kn/BApH+1/GPbLp26fwOTnmuw1PHAO+t88a7R3HI1P/oCRSEUjBoLyhe6kvX335bRP4jMylNKGmfvFa/Sa6AQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 07:01",
+  "url": null
+}

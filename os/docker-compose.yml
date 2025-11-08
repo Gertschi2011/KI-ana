@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  kiana-os:
+    build: .
+    container_name: kiana-os
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    volumes:
+      - kiana-data:/root/.kiana
+      - kiana-sync:/root/.kiana_sync
+      - ./logs:/app/logs
+    environment:
+      - KIANA_ENV=production
+      - SYNC_URL=http://host.docker.internal:8080/api/sync
+    networks:
+      - kiana-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Ollama service for LLM
+  ollama:
+    image: ollama/ollama:latest
+    container_name: kiana-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - kiana-network
+
+volumes:
+  kiana-data:
+  kiana-sync:
+  ollama-data:
+
+networks:
+  kiana-network:
+    driver: bridge

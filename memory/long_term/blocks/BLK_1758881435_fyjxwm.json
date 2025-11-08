@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758881435_fyjxwm",
-  "title": "Web Digest 2025-09-26 12:10",
   "content": "• Hacker News: Show HN: The Little Notebook for Learning Linear Algebra with Python\n • Hacker News: Pop OS is getting beta\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundesverfassungsgericht: Wofür steht die künftige Vizepräsidentin Kaufhold?",
+  "hash": "732cfb03e46275001501923412d8fd66ef13175915a634c90f883ab3c9783695",
+  "id": "BLK_1758881435_fyjxwm",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "gV8ZJ/2ZKR56fGLqGZRNI2KoCbOZ7rhpWkZgeNTTFEf5i9zChEZl8NeqEq50hTLmaGhgsHSFwMtQ4897f5ivBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 12:10",
   "ts": 1758881435,
-  "meta": {},
-  "hash": "732cfb03e46275001501923412d8fd66ef13175915a634c90f883ab3c9783695"
+  "url": ""
 }

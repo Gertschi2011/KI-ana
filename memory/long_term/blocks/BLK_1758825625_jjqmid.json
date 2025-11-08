@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758825625_jjqmid",
-  "title": "Web Digest 2025-09-25 20:40",
   "content": "• Hacker News: Athlon 64: How AMD turned the tables on Intel\n • Hacker News: Immich mobile app sync V2\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Erfolgreiche Richterwahl: Vom Regelfall zum Stresstest",
+  "hash": "7b29b7b651ae3d2b69f84fb2c585b89adc6cec4b6351936717be5f093de024d7",
+  "id": "BLK_1758825625_jjqmid",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ylzDr7yTVnaYG0CCd8PB9pqrFbXmimXJYSMgR17sZ9dS65wYQyuE/gkIsR4gg5LMLIwhuMg00UWUDrIw+s7ECQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 20:40",
   "ts": 1758825625,
-  "meta": {},
-  "hash": "7b29b7b651ae3d2b69f84fb2c585b89adc6cec4b6351936717be5f093de024d7"
+  "url": ""
 }

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758481083_fmlwjj",
-  "title": "Web Digest 2025-09-21 20:58",
   "content": "• Hacker News: Modern life makes us sick\n • Hacker News: The link between trauma, drug use, and our search to feel better\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu erteilt Palästinenserstaat Absage",
+  "hash": "edd1388c8abd38ff206987cf58de35997b4b7cd909427c04a32565fd45f49061",
+  "id": "BLK_1758481083_fmlwjj",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "NjopraP/DiUva3LCdbI2EiHR14dtbq6ouq6aIS8/BMr9Eu+je6GkKIIReSIH7AIAni0HkShVmFZVl0uVg0ZGCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 20:58",
   "ts": 1758481083,
-  "meta": {},
-  "hash": "edd1388c8abd38ff206987cf58de35997b4b7cd909427c04a32565fd45f49061"
+  "url": ""
 }

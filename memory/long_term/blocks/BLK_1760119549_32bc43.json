@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 2025.41: It's OpenAI's World, We're Just Living in It\n • Hacker News: Regarding the Compact\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Wiederaufbau: Was Deutschland leisten kann - und will",
+  "created_at": 1760119549.0984302,
+  "hash": "044b50b9e795e4e371df1da732342cc8603e88790f990d4f44b78cb4a1874cd8",
+  "id": "BLK_1760119549_32bc43",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "FCRUrUh4h9G4I7UcfkEo9xSoFLJHyEq/+B7XfadrqvHrVF5hN/HlZ8DNYB3F/gjEoS0x51/QZg9C/vMDdrF0Ag==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 20:05",
+  "url": null
+}

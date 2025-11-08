@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Germany Embraces Balkonkraftwerke – Balcony Solar for Apartments – CleanTechnica\n • Hacker News: Ken Parker, famed luthier, has died\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Söder äußert sich im Bericht aus Berlin zu Drohnenabschüssen",
+  "created_at": 1759707166.1817575,
+  "hash": "b1e7dc993a1e2a32cabc9c0e7bf20d93d033657d4866fbd1c3774152ed829611",
+  "id": "BLK_1759707166_9272d6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KcMB5iuoQ9FSYQQzzkDynecHPvM1SRTumScW3vEDXf4PEGhJGNvs9xaf6jJdFLpr7lCAYYxtpIOjhe1oT1hHDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 01:32",
+  "url": null
+}

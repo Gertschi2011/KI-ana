@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759081176_p0kyam",
-  "title": "Web Digest 2025-09-28 19:39",
   "content": "• Hacker News: Ask HN: How Do I Get over My Existential Crisis?\n • Hacker News: Testing \"Exotic\" P2P VPN\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Milliardenloch: Pflegegrad 1 streichen - oder nicht?",
+  "hash": "1f50578acd990679126ba299568dc2f98c883c07e528cddd5ff077a7095828af",
+  "id": "BLK_1759081176_p0kyam",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "k4B9b6HG/DULjOilz6Bjyq2KvhJ6MhMfYmBh6FWcuAuOVV61C0HS67EkGrUf14yz5U6ehso/FsBZi7is4gLxDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 19:39",
   "ts": 1759081176,
-  "meta": {},
-  "hash": "1f50578acd990679126ba299568dc2f98c883c07e528cddd5ff077a7095828af"
+  "url": ""
 }

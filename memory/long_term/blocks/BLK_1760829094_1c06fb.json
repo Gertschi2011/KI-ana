@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to sequence your DNA for <$2k\n • Hacker News: Most users cannot identify AI bias, even in training data\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"No Kings\"-Proteste: Demonstrationen gegen Trump in vielen US-Städten",
+  "created_at": 1760829094.337398,
+  "hash": "81cde1caa7c3051cf329035716be8eeac4ce93468789a8bf9e318cce301ef86b",
+  "id": "BLK_1760829094_1c06fb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "tvPfTzsnCzY5RjsbwB83ALuvOgIxfxfjMmGTuGZbpgCUMjoLXRBtR9puQsEfgi0bjx9MOnOoMiqIM4JczVdsCQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 01:11",
+  "url": null
+}

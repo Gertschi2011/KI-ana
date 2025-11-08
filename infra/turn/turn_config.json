@@ -1,0 +1,14 @@
+{
+  "servers": [
+    {
+      "urls": ["turn:localhost:3478", "turn:localhost:3478?transport=tcp"],
+      "username": "kiana",
+      "credential": "kiana_turn_password"
+    }
+  ],
+  "notes": [
+    "For production, replace localhost with your public TURN server",
+    "Generate secure credentials with: turnadmin -k -u username -r kiana.local -p password",
+    "Consider using TURNS (TLS) for production: turns:your-server:5349"
+  ]
+}

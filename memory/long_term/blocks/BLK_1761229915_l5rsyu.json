@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: US axes website for reporting human rights abuses by US-armed foreign forces\n • Hacker News: I spent a year of my life making an ASN.1 compiler in D\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bekommt die Ukraine bald russisches Vermögen als Darlehen?",
+  "hash": "6b016e1b99ca5933d1e70bec50a968143696269f50c459b791096f76ac426f5f",
+  "id": "BLK_1761229915_l5rsyu",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "LAPkrkWI0ypDLqFpkyBVt8kllyo33dMl4w7rch1F2uIQg9b+Zy+WWgaQ5zhCu4E580QSOR0xboB2D9GnKkPSBw==",
+  "signed_at": "2025-10-23T14:31:55Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 16:31",
+  "ts": 1761229915,
+  "url": ""
+}

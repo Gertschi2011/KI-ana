@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759031900_1bbe66",
-  "title": "Web Digest 2025-09-28 05:58",
   "content": "• Hacker News: Do Not Do This Unless You Want Magic Black Smoke\n • Hacker News: Bonding twelve 56K modems together to set dial-up broadband records\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Neue Bürgermeister und Landräte: Stichwahl in 147 Städten und Kreisen",
+  "created_at": 1759031900.1311903,
+  "hash": "83da9c3bff3fc48e60b292e20522de79094ab557ce78fdbba51efb4317d4bcab",
+  "id": "BLK_1759031900_1bbe66",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "VAbaLjYNH4/W5I5eLnVNHjrNXi8X/7QghvAwL72gvA4jdjh6VWMrGipG5T4n+3/KysISddcUbarrg22XeXC/Cw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759031900.1311903,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 05:58",
+  "url": null
 }

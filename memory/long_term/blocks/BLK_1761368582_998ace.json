@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Underdetermined Weaving with Machines (2021) [video]\n • Hacker News: Advice for New Principal Tech ICs (I.e., Notes to Myself)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Verlorene Posten: Machtkämpfe in Chinas Führung?",
+  "created_at": 1761368582.1106873,
+  "hash": "f9abfd2eb6bf47ad1fa4ac1508cc6eef9fb70fc2405689ebee58ac534e4e36ae",
+  "id": "BLK_1761368582_998ace",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9WL4AwQ9PxWnG9prKkx19WHLLz6295NshFuGLiO8FpnvksIpcHi8sAqrbByhr+liIE7qU1Ws6Wa/rmFIFTeJDA==",
+  "signed_at": "2025-10-25T05:03:02Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 07:03",
+  "url": null
+}

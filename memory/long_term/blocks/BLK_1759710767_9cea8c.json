@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Germany outfitted half a million balconies with solar panels\n • Hacker News: Ken Parker, famed luthier, has died\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz vermutet Russland hinter vielen Drohnen-Flügen",
+  "created_at": 1759710767.6961517,
+  "hash": "3aaedb5a610082c19091de755e4770bb1bb8caab9e0399a3142aa4af578fa6a9",
+  "id": "BLK_1759710767_9cea8c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "V4IdFQ5DWMsiEFTFaV1V1ng16dPjPEekBhH18jjKvQDiPBJL089C5llsAjd/uRmkLLmJGob6iGlkpYrql8ZEAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 02:32",
+  "url": null
+}

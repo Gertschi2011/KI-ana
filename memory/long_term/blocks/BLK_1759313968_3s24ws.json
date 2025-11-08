@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Our efforts, in part, define us\n • Hacker News: Self-hosting email in 2025 is easy actually (apart from M365)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Oktoberfest in München nach Bombendrohung geschlossen",
+  "hash": "9db71c3e52acb84f0daacd8717d0dd0ed70ec91151f2d9e3150b5aaf9f6ad6d0",
+  "id": "BLK_1759313968_3s24ws",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "DRDDad5kSw4qF3UnIH+odFAiQiSt2dK8t0E1HX6txqaF2yTkK+v4sc3eS/3bmGnsGap/2IH0oRx9+dhJYj8GAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 12:19",
+  "ts": 1759313968,
+  "url": ""
+}

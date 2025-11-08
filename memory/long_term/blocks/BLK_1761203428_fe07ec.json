@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Radios, how do they work? (2024)\n • Hacker News: VST3 audio plugin format is now MIT\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russland schützt Atomarsenal mit westlicher Technik",
+  "created_at": 1761203428.907022,
+  "hash": "c04e19faf469c133162978904be825684502e5441c799e0420959ca18c8cffcf",
+  "id": "BLK_1761203428_fe07ec",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "LVyr3tfCsmNyVfEloaBRvfc6GPFEGnJcImNRPq+7LPAPU6OREj7GBL3yPOB5WSpfVlYABZhaRQY6WWVvhsaOBw==",
+  "signed_at": "2025-10-23T07:10:28Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 09:10",
+  "url": null
+}

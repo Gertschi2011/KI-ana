@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Diphtheria, a once vanquished killer of children, is resurgent\n • Hacker News: We're in the wrong moment\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump reist nach Japan: Beim Handel könnte es knirschen",
+  "created_at": 1761546650.291479,
+  "hash": "59d73fd9dac0125110036ed75a0fbadc32218527eac192431ba9d801bba63b93",
+  "id": "BLK_1761546650_443aae",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "3phhkUu3d+7dCsg/F9QrHMQNNaF0fAMVX3FJ7yFKH8ynWUmrntmk+IfgcVIz8OrLzVo3XHyxxXRhTICGZe4AAQ==",
+  "signed_at": "2025-10-27T06:30:50Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 07:30",
+  "url": null
+}

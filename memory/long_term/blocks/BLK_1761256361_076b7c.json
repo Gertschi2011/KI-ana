@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Date bug in Rust-based coreutils affects Ubuntu 25.10 automatic updates\n • Hacker News: Zram Performance Analysis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "created_at": 1761256361.051669,
+  "hash": "6965aec14f7200ea874b0ea7131ac991598be0522a4efcbbd769608fe3598691",
+  "id": "BLK_1761256361_076b7c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "PSkq5J2Moi4X/ROlSMC+dTqzfbHWwRQpnYS8aNEju4eveq94nFTKGKYiRMoKDNxxC8z+butBglDEStRLDDm/DQ==",
+  "signed_at": "2025-10-23T21:52:41Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 23:52",
+  "url": null
+}

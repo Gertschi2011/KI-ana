@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Smartphones manipulate our emotions and trigger our reflexes\n • Hacker News: A Definition of AGI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht aus Berlin: Spahn stärkt Merz in \"Stadtbild\"-Debatte",
+  "created_at": 1761508832.2412486,
+  "hash": "f2f4395b464b6d6b67502669b579c7fc5804a6afc1be6dee4439eea9245172cc",
+  "id": "BLK_1761508832_732f3a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "al9apSojhC0nIoWcSNMlWefc89+0ad+jZvT/REJ6rRFBMBfAmUNjU/p5U2oRWwj2Nk7OWZlkegf9hJtTx4BhCQ==",
+  "signed_at": "2025-10-26T20:00:32Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 21:00",
+  "url": null
+}

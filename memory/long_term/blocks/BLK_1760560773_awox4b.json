@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Getting syntax highlighting wrong\n • Hacker News: Things I've learned in my 7 years implementing AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensvereinbarung zwischen Israel und der Hamas auf dünnem Eis",
+  "hash": "dcc8fd6b53ce58bda4fcdbd473749c163a5b102ab7b55dcfd0b7dfd5d7a59307",
+  "id": "BLK_1760560773_awox4b",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "Nfcl4quCZ9r6VDpaqT3DO65GgeRkYwg3Z38WxTG6sVS50JiPmogmxBkcwKO4DBX1IYUlRpCQRcJYgjHjzX1LDw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 22:39",
+  "ts": 1760560773,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why Tech Inevitability is Self-Defeating\n • Hacker News: Supreme Court lets Fed Governor Cook keep job pending oral argument in January\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Bombendrohung in München: Oktoberfest wieder geöffnet - Weiterer Toter gefunden",
+  "created_at": 1759341567.4538512,
+  "hash": "fabcf689f76aa3d918e6df43bc248f36e1462e6dc085f4c67fd8512d3b89a6ff",
+  "id": "BLK_1759341567_d10e88",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Rbjh7wzQI0DT760Qk+VD3b3R3J/Lk+ku+jqj3CVVihaUi8oRtNtmaZe0egh9LW6RcuGMeC0/mpPuX4RbcuExDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 19:59",
+  "url": null
+}

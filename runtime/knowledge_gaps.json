@@ -1,0 +1,65 @@
+[
+  {
+    "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+    "gap_type": "high_demand",
+    "evidence": [
+      "Frequently asked but limited coverage"
+    ],
+    "priority_score": 0.7,
+    "identified_at": 1761245521.8493752
+  },
+  {
+    "topic": "Machine Learning Algorithmen",
+    "gap_type": "high_demand",
+    "evidence": [
+      "Frequently asked but limited coverage"
+    ],
+    "priority_score": 0.7,
+    "identified_at": 1761245521.849381
+  },
+  {
+    "topic": "Python Best Practices",
+    "gap_type": "high_demand",
+    "evidence": [
+      "Frequently asked but limited coverage"
+    ],
+    "priority_score": 0.7,
+    "identified_at": 1761245521.8493826
+  },
+  {
+    "topic": "Quantencomputing",
+    "gap_type": "incomplete",
+    "evidence": [
+      "High demand, insufficient coverage"
+    ],
+    "priority_score": 0.8,
+    "identified_at": 1761245521.8494425
+  },
+  {
+    "topic": "Blockchain Technologie",
+    "gap_type": "incomplete",
+    "evidence": [
+      "High demand, insufficient coverage"
+    ],
+    "priority_score": 0.75,
+    "identified_at": 1761245521.8494444
+  },
+  {
+    "topic": "Neural Networks Architectures",
+    "gap_type": "missing",
+    "evidence": [
+      "Related to existing knowledge, not yet covered"
+    ],
+    "priority_score": 0.6,
+    "identified_at": 1761245521.8494508
+  },
+  {
+    "topic": "Transformer Models",
+    "gap_type": "missing",
+    "evidence": [
+      "Related to existing knowledge, not yet covered"
+    ],
+    "priority_score": 0.6,
+    "identified_at": 1761245521.849452
+  }
+]

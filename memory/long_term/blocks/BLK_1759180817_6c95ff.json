@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ask HN: What Are You Working On? (September 2025)\n • Hacker News: California governor signs AI transparency bill into law\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Weißes Haus veröffentlicht Trumps Nahost-Friedensplan",
+  "created_at": 1759180817.3183851,
+  "hash": "2ef47d3beb4ab9aa889dcee780b1f358ada34841cd6a5f6624e76269528a0e9d",
+  "id": "BLK_1759180817_6c95ff",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7GmuyxyoYGoroCkmsYNYFjei023o51RBRkyd7jTbyqvz2DEzFOpzkepp6XeUvm4bfZ7CurG3NFnU8/dIBb0TCQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 23:20",
+  "url": null
+}

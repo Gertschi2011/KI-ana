@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I'm in Vibe Code Hell\n • Hacker News: Ryanair flight landed at Manchester airport with six minutes of fuel left\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensnobelpreis: Wer ist María Corina Machado?",
+  "created_at": 1760112345.526952,
+  "hash": "a74d567287bb9ad797c5b2e472b73f572bbff7711105be257747c3b6bd3e91a6",
+  "id": "BLK_1760112345_791139",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "/gduEY+XIAPO+6u++wpxd3ruuww9ythtF/TnpohuLii/tT1nztsy1la4OMeOeaTOLlVFkWRkzd8B54FCaDA7DQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 18:05",
+  "url": null
+}

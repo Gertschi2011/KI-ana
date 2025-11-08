@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A deep dive into the RSS feed reader landscape\n • Hacker News: After 2 decades of tinkering, MAME cracks the Hyper Neo Geo 64\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Innere Sicherheit: So will Deutschland Drohnen bekämpfen",
+  "created_at": 1759941265.8947833,
+  "hash": "14f94f12dc4e01589ff620eb1d2deefee3dcd4b0b5c3a3e8cba3c7e30145499b",
+  "id": "BLK_1759941265_e56d77",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "mH4pNlJCszBJl65aBtAoaFTCjvXwLT3ZYXcLZa0ekasAQJTJVtfk31+BYHYxIVb+Hiv5jCOxTuGFRzIK6JtVAQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 18:34",
+  "url": null
+}

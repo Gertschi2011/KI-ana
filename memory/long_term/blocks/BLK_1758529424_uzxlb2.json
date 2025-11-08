@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758529424_uzxlb2",
-  "title": "Web Digest 2025-09-22 10:23",
   "content": "• Hacker News: Download responsibly\n • Hacker News: Privacy and Security Risks in the eSIM Ecosystem [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trauerfeier für Charlie Kirk: Anhänger von rechtem Aktivisten nehmen Abschied",
+  "hash": "34da3bdffab34383c0c7eef80d0af8074edc9952f3289962d8e8ca031f047128",
+  "id": "BLK_1758529424_uzxlb2",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "rhRCMnc9RNjaxfSe6VrhNWKRn1V6wSrE/aS+MKdZX8LlyiXvwgThb/4wSQFmFXmcRbAeRdcaJCGifEp5eGoBAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 10:23",
   "ts": 1758529424,
-  "meta": {},
-  "hash": "34da3bdffab34383c0c7eef80d0af8074edc9952f3289962d8e8ca031f047128"
+  "url": ""
 }

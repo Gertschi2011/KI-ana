@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Like Vercel, but open source and for all language\n • Hacker News: Nobel Prize in Physics Awarded to John Clarke, Michel Devoret and John Martinis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Physik-Nobelpreis geht an drei Quantenforscher",
+  "hash": "2a86d983dd2f42d9239a391632ae341c6157bde024084b75f1813880cd1227cc",
+  "id": "BLK_1759833219_dv3l24",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "xySWaWHSZIoKjW/CQlx1PytO0eorqbyKiP5LYAuNMhiHmQ6cZQ1K+LdkoRk09PuFeXp6XqCJBA+eZshAWR0lDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 12:33",
+  "ts": 1759833219,
+  "url": ""
+}

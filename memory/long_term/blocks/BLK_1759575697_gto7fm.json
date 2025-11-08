@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Alibaba cloud FPGA: the $200 Kintex UltraScale+\n • Hacker News: Toyota runs a car-hacking event to boost security (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas akzeptiert Teile des Gaza-Plans - die Hoffnung auf Frieden wächst",
+  "hash": "7e31de8043faf2688ec9bb05b19406c5de5a9d7d24334662dfac159b76465389",
+  "id": "BLK_1759575697_gto7fm",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "MsPC8GzIwrRVdKeo4r7pWBff6qzYkt4PGmv0oHRBa+MWIqXhFAB8Xps8HSwwihK6ltB4JAvTNM0qwV1blHHwDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 13:01",
+  "ts": 1759575697,
+  "url": ""
+}

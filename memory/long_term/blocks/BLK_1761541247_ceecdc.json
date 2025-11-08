@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The striking Swedish workers taking on carmaker Tesla\n • Hacker News: Severe performance penalty found in VSCode rendering loop\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump reist nach Japan: Beim Handel könnte es knirschen",
+  "created_at": 1761541247.8112047,
+  "hash": "2ed0f3810f65a7c4d8ca4e321782fe35130abdea137385c4c931b13fe88f6245",
+  "id": "BLK_1761541247_ceecdc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "JSgOIOYPNKoRfdkXkAcWvQ2cdhjGFqY18FKby06T1zVJT8vRHCI7jwwyRXYvO4Ohl11jBIVU+jiZBLLFeejKDQ==",
+  "signed_at": "2025-10-27T05:00:47Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 06:00",
+  "url": null
+}

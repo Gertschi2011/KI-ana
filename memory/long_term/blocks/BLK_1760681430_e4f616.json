@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Free the Internet: The Tor Project's annual fundraiser\n • Hacker News: Meow.camera\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Treffen mit Trump: Selenskyjs Drahtseilakt in Washington",
+  "created_at": 1760681430.4249616,
+  "hash": "5970c49fbda97773147714f68de3f994918b7164a6034982bf9801b414b6607e",
+  "id": "BLK_1760681430_e4f616",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "FKNMOHLNMGj7fq9LpliYo4cTBT1BDSZ3BPpiLcm4E4HqieUh/+UjzEsPy/xCQIKG1t9a2JLuj0utY9sXR/54Cg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 08:10",
+  "url": null
+}

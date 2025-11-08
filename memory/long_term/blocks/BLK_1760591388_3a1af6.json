@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What Does George Orwell's '1984' Mean in 2024?\n • Hacker News: TaxCalcBench: Evaluating Frontier Models on the Tax Calculation Task\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Von der Leyen präsentiert Fahrplan für europäische Verteidigungsstrategie",
+  "created_at": 1760591388.8487859,
+  "hash": "3bbc6056f8f84fc44555b0c784883fc6ba0d0f72b488419fd9da17f4c66e9c30",
+  "id": "BLK_1760591388_3a1af6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "7IssKQM47lzdnM+PJejbcpVQ+FRuZqoaQYpQz+J4Zhx5l4iUzczY5z3NKFdpxVdLBV7E+cAZ9Oa30boVFk6+Bg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 07:09",
+  "url": null
+}

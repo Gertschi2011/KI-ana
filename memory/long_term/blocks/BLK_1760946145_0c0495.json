@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Major AWS Outage Happening\n • Hacker News: Bat v0.26.0 Released\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump will Donbass für Frieden \"zerteilen\"",
+  "created_at": 1760946145.499927,
+  "hash": "c1c8f1a1432a9f85e8ebcdef7438a0a215893ed5b063e964362298030c82927b",
+  "id": "BLK_1760946145_0c0495",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "uanrSxSxvsuBVnxiYUo5NaR14jlHM8N47JuUTVG5RTrKoP+SfxjpHbYct2WVXTzyoTbP+AOpuTMLkrmDpGzQCQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 09:42",
+  "url": null
+}

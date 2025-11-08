@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The last European train that travels by sea\n • Hacker News: What Happened to Running What You Wanted on Your Own Machine?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Debatte nach Merz-Äußerung: SPD-Abgeordnete fordern \"Stadtbild\"-Gipfel",
+  "created_at": 1761559256.2558258,
+  "hash": "4bc522c20a8dd87b2ea7e37c94d9b79027f56ad6555d3bafeb99c5336513c4e7",
+  "id": "BLK_1761559256_de4e16",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "IFp6DaoGJC+VArvAIBaHj1bmQP/8zt3eV2mYEKsZjhJ6R6GM00x/Pax8a7pXCa2sbRFMMDf6iDPGJbKzOsKKDg==",
+  "signed_at": "2025-10-27T10:00:56Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 11:00",
+  "url": null
+}

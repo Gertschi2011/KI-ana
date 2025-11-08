@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Artifact (YC W25) is hiring engineers in NYC to build modern ECAD\n • Hacker News: Isomorphic JS/TS Functions Orchestrator\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Studie: KI-Chatbots lügen bei 40 Prozent der Antworten",
+  "created_at": 1761573663.1164355,
+  "hash": "fe842200c7764e1677f925103edb24122125e5271f636500f04f47a1bb46e950",
+  "id": "BLK_1761573663_86bfea",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "XCEVUW1X6eb3ZRJECklqoEhRxw9He1fFUIHBQxcLewRS2mcQCkRJ0aIc+l46Kkz75sPJLz+y8TmhJPKc5ojyCw==",
+  "signed_at": "2025-10-27T14:01:03Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 15:01",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Extreme weather caused more than $100B in damage by June\n • Hacker News: Quantification of fibrinaloid clots in plasma from pediatric Long COVID patients\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Geiseln sollen in wenigen Stunden freikommen",
+  "created_at": 1760279831.8965704,
+  "hash": "40928254fb7bf46162995696aea2550326c4324047969c06567460bc148f40fb",
+  "id": "BLK_1760279831_087266",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "WGBMWnqk6ieJamt6aEVDnE6yy+EhHiTQhW9qkhvNwKXUemzZ2Svn4PZJMf+3pK0Q3qvKvZHEhyXQMWnOZYzoDQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 16:37",
+  "url": null
+}

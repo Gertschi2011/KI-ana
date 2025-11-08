@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What Happened to Apple's Legendary Attention to Detail?\n • Hacker News: Can \"second life\" EV batteries work as grid-scale energy storage?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "created_at": 1761247924.580938,
+  "hash": "83486f65e712e7df919b32e959997e73ff8ac80d185bb2b195f537652dacaef6",
+  "id": "BLK_1761247924_f57f57",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "emDAbsiCGql4hqT/Aus9KR3PD6YZQMBtVlmqBqInro3f5PvizFXyejZ6VCe6hcmUU0CBaRYqn9zjhr9uhbIaCw==",
+  "signed_at": "2025-10-23T19:32:04Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 21:32",
+  "url": null
+}

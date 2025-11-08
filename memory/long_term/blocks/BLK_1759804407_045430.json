@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The least amount of CSS for a decent looking site (2023)\n • Hacker News: Microsoft is plugging more holes that let you use Windows 11 without MS account\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Gespräche enden in \"positiver Atmosphäre\"",
+  "created_at": 1759804407.3721402,
+  "hash": "ca3370cd56cd4bf6578d3ddd47780a1aa7977c45e0a98912a68c2d9dba8b6376",
+  "id": "BLK_1759804407_045430",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "l5Kg0cQu8Nmcv+NOHPRETvoySldwPYZibKNi9qevZRpx4VdYbp+M4xS2y3ljLfz5MMfXWL3tOzzxLFpn9QuPBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 04:33",
+  "url": null
+}

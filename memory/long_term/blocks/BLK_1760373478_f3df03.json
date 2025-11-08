@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Jeep software update bricks vehicles, leaves owners stranded\n • Hacker News: Android's sideloading limits are its most anti-consumer move yet\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Die deutschen Geheimdienstchefs warnen deutlich vor Russland",
+  "created_at": 1760373478.4847066,
+  "hash": "828129dffa7f415bfc04830b795bef4287c9a01e0e74eb8325043ae1ca1ee23a",
+  "id": "BLK_1760373478_f3df03",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "LA923EebffjO6T8zVmtH9RN63iu01931sDOydV9cxjgT5Z3v9RmdgqAm4aCJ47o1iPQu8sOFo6ZFl9XJXdLTAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 18:37",
+  "url": null
+}

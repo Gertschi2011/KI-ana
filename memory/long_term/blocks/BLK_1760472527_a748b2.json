@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to Turn Liquid Glass into a Solid Interface – TidBITS\n • Hacker News: America Is Sliding Toward Illiteracy\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienberichte: Einigung zu Wehrdienst offenbar vorerst geplatzt",
+  "created_at": 1760472527.7567537,
+  "hash": "fadec21788e13e539ef935b50e58507a8ec924d77ae15675c60f9fe9a1275d3c",
+  "id": "BLK_1760472527_a748b2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "D8tDJbszE1prHL9eXHJPJEZQcrgkUWtwGi4Gv2bqmBJFQJ87oSgcimTW1OyMytZyQAlUT2IS5GA8oNoKr45TAQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 22:08",
+  "url": null
+}

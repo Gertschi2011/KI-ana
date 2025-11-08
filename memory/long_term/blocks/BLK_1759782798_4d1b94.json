@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apps SDK\n • Hacker News: Beginnings: The Dempster Dumpster\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron will von Ministerpräsident Lecornu letzten Versuch",
+  "created_at": 1759782798.0226252,
+  "hash": "a1233d6a822571039cdb3d0e51a6b946a85ca87e34f8a4c2b509edb5a23a1b20",
+  "id": "BLK_1759782798_4d1b94",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "CD5gTSfWo62bEeJ9NJmRGavgOoCjhVhzdK3ozh06MoUi0p/rohxPd9vvBd10aYmpga+amiNp0gTOwrvdawk9BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 22:33",
+  "url": null
+}

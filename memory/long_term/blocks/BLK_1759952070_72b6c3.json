@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Julia 1.12 Highlights\n • Hacker News: Show HN: Open-source UI for running multiple coding agents\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs geschäftsführender Premier Lecornu sieht Ausweg aus der Krise",
+  "created_at": 1759952070.604538,
+  "hash": "ec8ca2fb948dd95f090f8bbdb6fb3a82b1db25769a235c6d4be1c88abdb0a890",
+  "id": "BLK_1759952070_72b6c3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "O6q679IEfZXrjFCwAys/OKvx9HIF55mhkxVuyEWD0pOWLsODI6c6JmYnFAI/uIXi/L61365HQfyxGH+LkKJbDA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 21:34",
+  "url": null
+}

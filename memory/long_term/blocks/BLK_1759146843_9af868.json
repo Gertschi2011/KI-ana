@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What if I don't want videos of my hobby time available to the world?\n • Hacker News: DeepSeek-v3.2-Exp\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NRW-Stichwahlen: CDU und SPD erleichtert, AfD als \"Verliererin\"",
+  "created_at": 1759146843.4586847,
+  "hash": "2bc7eb85de2bd6c2ff38b480955483f9f4c9bfa30e5e50033d6fcef239d61ccb",
+  "id": "BLK_1759146843_9af868",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gBEXGeyBZcyOx2is/ZsJ896UNUZy/yQKhkB5e1PZdG3pIfoPpRv0vUq8C4SdzU0ixAp1mJXgh4wgS0uZW32LAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 13:54",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: In Praise of RSS and Controlled Feeds of Information\n • Hacker News: 'Western Qwen': IBM Wows with Granite 4 LLM Launch and Hybrid Mamba/Transformer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie steht es um die deutsche Einheit?",
+  "created_at": 1759480241.2833676,
+  "hash": "facba67e5d9d4d6ed571a649269bd1aada7c1388c2a28a5446cdd43cf9fd5b91",
+  "id": "BLK_1759480241_4ebd30",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ytbl1JnwPmKFyXgEoobQC+E9dyw9YR1dBWZ/mkMuGk+WsjGmNmEP1dgOXCzqPCSJ2STqesjQhx+AwNcTZchuDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 10:30",
+  "url": null
+}

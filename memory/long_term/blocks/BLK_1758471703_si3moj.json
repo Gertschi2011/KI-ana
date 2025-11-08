@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758471703_si3moj",
-  "title": "Web Digest 2025-09-21 18:21",
   "content": "• Hacker News: Review: Project Xanadu – The Internet That Might Have Been\n • Hacker News: LaLiga's Anti-Piracy Crackdown Triggers Widespread Internet Disruptions in Spain\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Großbritannien, Kanada und Australien erkennen Palästinenserstaat an",
+  "hash": "2d45d8af1ede109a86b566cdf402cece56ca6738686bbf51437aa6911b4f2606",
+  "id": "BLK_1758471703_si3moj",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "C4CQ3KpuiMeU2PTZAK9v3i26K/JEOS8xyUwSOytroR/q+GBDjvMD2XK3WTVr91jOfsy2dSK1J8S9WBw2FtVyCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 18:21",
   "ts": 1758471703,
-  "meta": {},
-  "hash": "2d45d8af1ede109a86b566cdf402cece56ca6738686bbf51437aa6911b4f2606"
+  "url": ""
 }

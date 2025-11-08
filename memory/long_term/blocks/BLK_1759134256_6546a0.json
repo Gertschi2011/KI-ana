@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Queueing to publish in AI and CS\n • Hacker News: What is \"good taste\" in software engineering?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lufthansa plant Abbau von 4.000 Stellen bis 2030",
+  "created_at": 1759134256.1627266,
+  "hash": "652d2693147f04cc516362c1c32e856fbd0a911a977be575e41672f8d751e420",
+  "id": "BLK_1759134256_6546a0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "DmaBNRG/BPFMOkBfs0cinl6GtnqlaZpz821lDHdFr7tBjZ4oa+KNNmD/7AZrr+udPF53N0/r04Q1tGuWSvRrAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 10:24",
+  "url": null
+}

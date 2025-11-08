@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Pdoc – Generate API documentation for Python projects\n • Hacker News: Origami Patterns Solve a Major Physics Riddle\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Palästinenser und Israelis: Sich annähern - trotz des Schmerzes",
+  "created_at": 1759813411.1763577,
+  "hash": "71985a96db768800b32bafbe62ebf54a0b262f15033e671978b6e229dbf380a8",
+  "id": "BLK_1759813411_f6a97f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OS2qu/xtt3B1ebNAuptVWDJy08O1dK2fLGJnVo7SQ5sGIw1JaMfYyudtRBkk8XJPCOOjsnPrzMHjNqXcCGzNDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 07:03",
+  "url": null
+}

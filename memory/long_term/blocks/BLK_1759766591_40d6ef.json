@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launch HN: Grapevine (YC S19) – A company GPT that actually works\n • Hacker News: Apple's Unlawful Evil\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): CDU für gesellschaftliches Pflichtjahr - SPD skeptisch",
+  "created_at": 1759766591.102374,
+  "hash": "a3ef2ff428a77b0b8c88e7df590ba757e2d746d8f180972b7ea276408d874853",
+  "id": "BLK_1759766591_40d6ef",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bhSST5clTCdvDcBah/f03KOLXAU+oONdPBdjXpzNABOYuTwhiTHvoVaLiRv6awq3dvo8JIOmPbNjUbVBny+9Bw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 18:03",
+  "url": null
+}

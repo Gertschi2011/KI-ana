@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Privacy Harm Is Harm\n • Hacker News: A Comparison of Ada and Rust, Using Solutions to the Advent of Code\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was zum Frieden im Gazastreifen fehlt",
+  "hash": "a041459593e167362b2d0eb3f1b14598e74dab848bcfdd7c1f460dc00e3f1010",
+  "id": "BLK_1759600918_wt3clg",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "8SsiZne3CMheGsjnq3YA2APEwf/fDYjJZ1z+K+1w3aqq87DhFsVOc+0WxXEjum1VoVPew12h2FuoqHpcepvDAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 20:01",
+  "ts": 1759600918,
+  "url": ""
+}

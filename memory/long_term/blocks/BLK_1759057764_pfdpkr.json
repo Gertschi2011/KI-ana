@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759057764_pfdpkr",
-  "title": "Web Digest 2025-09-28 13:09",
   "content": "• Hacker News: 1982: Fred Dibnah shows how to erect a CHIMNEY SCAFFOLD at 200 feet [video]\n • Hacker News: US Military struggling to deploy AI weapons\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ost- versus Westverbände: Streit in der AfD über die Wehrpflicht",
+  "hash": "16017f4f51212c66824c3de4b1b65f40b6ea38a95d36ee5d9ec273053e3176c1",
+  "id": "BLK_1759057764_pfdpkr",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "h35OrpqKzi43GspPFi28bsDHrcry81Q9MTIyw2fNzcbqwx9irgzTevaQUCbD4CxQ6y+seassoU9zip+W9I6+Dw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 13:09",
   "ts": 1759057764,
-  "meta": {},
-  "hash": "16017f4f51212c66824c3de4b1b65f40b6ea38a95d36ee5d9ec273053e3176c1"
+  "url": ""
 }

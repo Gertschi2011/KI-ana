@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A Comparison of Ada and Rust, Using Solutions to the Advent of Code\n • Hacker News: How I influence tech company politics as a staff software engineer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demonstrationen in Italien - Gaza-Aktivisten abgeschoben",
+  "hash": "aec1776e8dd13f9227e6adbff6084ceb420648e4254140dcfd215b890383a6be",
+  "id": "BLK_1759595513_zctiam",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Aj64qCxW7OBDnABQTrjaOhmEHovYjCpA8XAi0Sl/yWRR+wacKp/PX7Xx5I417RYzJGS8Oj2d8dxmHTWy7OB1Bg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 18:31",
+  "ts": 1759595513,
+  "url": ""
+}

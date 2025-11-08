@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A Stateful Browser Agent Using Self-Healing DOM Maps\n • Hacker News: Jiga (YC W21) Is Hiring Full Stacks\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): KI bei Suchmaschinen - was ändert sich im Verhalten?",
+  "created_at": 1760618402.4645262,
+  "hash": "2fa1d6d7dc9b7fbbd02da4d9b1ec66427e628730547ac5d8d427094895fcf069",
+  "id": "BLK_1760618402_2ae071",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "PZ3GKwr++ym9SyIQhBTkqoecynidDamO8PovnqruyKXUsNBxeJRnt/wxtiCDuuSlPZNkGz3KNYu9UtgXVKsLAw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 14:40",
+  "url": null
+}

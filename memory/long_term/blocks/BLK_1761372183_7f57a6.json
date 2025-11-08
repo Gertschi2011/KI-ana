@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Key IOCs for Pegasus and Predator Spyware Removed with iOS 26 Update\n • Hacker News: Underdetermined Weaving with Machines (2021) [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ASEAN-Gipfel: Wie umgehen mit der \"Sandwich-Position\"?",
+  "created_at": 1761372183.8215752,
+  "hash": "a4052597379549a93582e4a3a328c3a346277f1ef601b24c1a3bc71a31f5ff71",
+  "id": "BLK_1761372183_7f57a6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "2ICygl/mel+vcOnemDwSeqgN9/BIdpKVFXrKNHDNqgHSGEV2bQp23J293gkodZG7J6yHD7jVV0l15IBTJQotDQ==",
+  "signed_at": "2025-10-25T06:03:03Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 08:03",
+  "url": null
+}

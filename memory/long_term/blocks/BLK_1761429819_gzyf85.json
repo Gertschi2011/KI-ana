@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: How programs get run: ELF binaries\n • Hacker News: An Efficient Implementation of Self, a Dynamically-Typed Object-Oriented Langua [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "hash": "d0ed28e0d0418bcc354eba60e13f8bde0fa05d8cbf65bc9eec5be4fa66111d6c",
+  "id": "BLK_1761429819_gzyf85",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "cp49e6b/YTg2vv1VpRL7mOEnhoYL7+BR4h6NECEi+1JROooAG2Qj1rOtWvW1BjYMhS+cMLgc0OeF0anNZW6sBQ==",
+  "signed_at": "2025-10-25T22:03:39Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 00:03",
+  "ts": 1761429819,
+  "url": ""
+}

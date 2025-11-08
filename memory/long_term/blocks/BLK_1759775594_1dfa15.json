@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How Europe crushes innovation\n • Hacker News: OpenAI Is Good at Deals\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron will von Ministerpräsident Lecornu letzten Versuch",
+  "created_at": 1759775594.9618607,
+  "hash": "12459d0bd634381b8c1ed92d35c820e3c618e91c7d7bd81bedff1898e866a1b4",
+  "id": "BLK_1759775594_1dfa15",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "e+3hUVMwWCJOCzUMsWNMi82ya/JiiQD+WSmeG34uA2BXk48aVH5rPaus0aiEX4uYZws4ZkaAOMtPRvBfUlujAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 20:33",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: 86 GB/s bitpacking with ARM SIMD (single thread)\n • Hacker News: The deadline isn't when AI outsmarts us – it's when we stop using our own minds\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach der Kommunalwahl in Georgien triumphiert die Regierungspartei",
+  "hash": "a633d4b369e91dd1c9ec488fb4679a7135f5e119671bf8250602ce772d47a5a5",
+  "id": "BLK_1759672951_hc204f",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "sMf9WZpnbeFqoJbFBMgxgkC9+HPO/kv5/fTbYjgnDZNHKJ2Q131g9uNNX/Dt6zXEbHWu7noaJtgND8ChfI3zCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 16:02",
+  "ts": 1759672951,
+  "url": ""
+}

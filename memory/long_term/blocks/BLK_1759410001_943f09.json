@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Piracy Operator Goes from Jail to Getting Hired by a Tech Unicorn in a Month\n • Hacker News: Activeloop (YC S18) Is Hiring AI Search Engineer and MTS(Back End)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Tote bei Angriff vor Synagoge in Manchester",
+  "created_at": 1759410001.3143685,
+  "hash": "27f30d30669b6f9761e97d4675234bcfb812b7f88250a8c6442473c8e82c7930",
+  "id": "BLK_1759410001_943f09",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "EXFIrdFHu/8lkJlYLlAnPRjOqh5pTB2x2rD8OW9GeS1OtqLgkL2tZqOtGOq9kpBDd5949XyHRa2rYhiIdNZPAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 15:00",
+  "url": null
+}

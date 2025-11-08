@@ -1327,7 +1327,10 @@
     if (!chatEl) return null;
     const div = document.createElement('div');
     div.className = `msg ${role==='user' ? 'me' : role}`;
-    div.innerHTML = `<div class="content">${escapeHTML(text)}</div>`;
+    
+    // Format AI messages with markdown-like formatting
+    const formattedText = (role === 'ai' || role === 'assistant') ? formatMessage(text) : escapeHTML(text);
+    div.innerHTML = `<div class="content">${formattedText}</div>`;
     chatEl.appendChild(div);
 
     // Add quick replies if any
@@ -1351,6 +1354,99 @@
 
   function escapeHTML(s){
     try { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])); } catch { return String(s||''); }
+  }
+
+  function formatMessage(text) {
+    if (!text) return '';
+    let html = escapeHTML(text);
+    
+    // Code blocks (```code```) - must be done before inline code
+    html = html.replace(/```([\s\S]*?)```/g, '<pre class="code-block">$1</pre>');
+    
+    // Inline code (`code`)
+    html = html.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
+    
+    // Bold text (**text** or __text__)
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+    
+    // Italic text (*text* or _text_) - nur wenn nicht Teil von **
+    html = html.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>');
+    html = html.replace(/(?<!_)_([^_]+)_(?!_)/g, '<em>$1</em>');
+    
+    // Links [text](url)
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" class="chat-link">$1</a>');
+    
+    // Auto-detect URLs
+    html = html.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener" class="chat-link">$1</a>');
+    
+    // Split into paragraphs (double newline)
+    const paragraphs = html.split(/\n\n+/);
+    
+    html = paragraphs.map(para => {
+      para = para.trim();
+      if (!para) return '';
+      
+      const lines = para.split('\n');
+      
+      // Check for mixed content (lists + text)
+      const listLines = [];
+      const otherLines = [];
+      
+      lines.forEach(line => {
+        const trimmed = line.trim();
+        if (/^\d+\.\s/.test(trimmed) || /^[•\-*+]\s/.test(trimmed)) {
+          listLines.push(line);
+        } else if (trimmed) {
+          otherLines.push(line);
+        }
+      });
+      
+      // If we have list items, format them
+      if (listLines.length > 0) {
+        const isNumbered = /^\d+\.\s/.test(listLines[0].trim());
+        const items = listLines.map(line => {
+          const match = isNumbered 
+            ? line.match(/^\d+\.\s*(.*)/)
+            : line.match(/^[•\-*+]\s*(.*)/);
+          return match ? `<li>${match[1]}</li>` : '';
+        }).filter(Boolean).join('');
+        
+        const listHtml = isNumbered 
+          ? `<ol class="chat-list">${items}</ol>`
+          : `<ul class="chat-list">${items}</ul>`;
+        
+        // If we also have other lines, wrap them in paragraphs
+        if (otherLines.length > 0) {
+          const otherHtml = otherLines.map(l => `<p class="chat-paragraph">${l}</p>`).join('');
+          return listHtml + otherHtml;
+        }
+        return listHtml;
+      }
+      
+      // Headers (# Header)
+      if (/^#{1,3}\s/.test(para)) {
+        const level = para.match(/^(#{1,3})/)[1].length;
+        const text = para.replace(/^#{1,3}\s*/, '');
+        return `<h${level + 2} class="chat-heading">${text}</h${level + 2}>`;
+      }
+      
+      // Quote (> text)
+      if (/^>\s/.test(para)) {
+        const text = para.replace(/^>\s*/, '');
+        return `<blockquote class="chat-quote">${text}</blockquote>`;
+      }
+      
+      // Regular paragraph - but break on single newlines too for better readability
+      const subParas = para.split('\n').filter(l => l.trim());
+      if (subParas.length > 1) {
+        return subParas.map(sp => `<p class="chat-paragraph">${sp}</p>`).join('');
+      }
+      
+      return `<p class="chat-paragraph">${para}</p>`;
+    }).join('');
+    
+    return html;
   }
 
   function appendMsgHTML(role, html, plainText) {
@@ -1437,7 +1533,7 @@
       }
     }catch{}
     const cnt = previewEl.querySelector('.content');
-    if (cnt) cnt.textContent = txt;
+    if (cnt) cnt.innerHTML = formatMessage(txt);
     if (autoScroll){ scrollToBottom(false); }
     applyScrollUI();
   }
@@ -1459,7 +1555,7 @@
         cnt.className = 'content';
         previewEl.appendChild(cnt);
       }
-      cnt.textContent = txt;
+      cnt.innerHTML = formatMessage(txt);
     }
   }
   
@@ -2270,7 +2366,20 @@
     if (!chatEl) return;
     chatEl.innerHTML = '';
     const msgs = loadMessages(activeConv);
-    msgs.forEach(m => { const wrap = document.createElement('div'); wrap.className = `msg ${m.role==='user'?'me':(m.role==='system'?'system':'ai')}`; const b = document.createElement('div'); b.className='bubble'; b.textContent = m.text; wrap.appendChild(b); chatEl.appendChild(wrap); });
+    msgs.forEach(m => { 
+      const wrap = document.createElement('div'); 
+      wrap.className = `msg ${m.role==='user'?'me':(m.role==='system'?'system':'ai')}`; 
+      const b = document.createElement('div'); 
+      b.className='bubble'; 
+      // Format AI messages, escape user messages
+      if (m.role === 'ai' || m.role === 'assistant') {
+        b.innerHTML = formatMessage(m.text);
+      } else {
+        b.textContent = m.text;
+      }
+      wrap.appendChild(b); 
+      chatEl.appendChild(wrap); 
+    });
     chatEl.scrollTop = chatEl.scrollHeight;
     // Lazy-load from server if logged in and no local msgs
     try{
@@ -2504,4 +2613,262 @@
   }
   function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c])); }
   function escapeAttr(s){ try{ return String(s).replace(/"/g, '%22'); }catch{return s;} }
+
+  // ========== SERVER-FIRST STORAGE ==========
+  // New: Server-first approach with localStorage as backup
+  
+  let syncInProgress = false;
+  let syncQueue = [];
+
+  // Check if user is logged in
+  function isLoggedIn() {
+    try {
+      const token = localStorage.getItem('ki_token');
+      return !!token;
+    } catch {
+      return false;
+    }
+  }
+
+  // Save messages: Server-first, localStorage as backup
+  async function saveMessagesToServer(convId, messages) {
+    if (!isLoggedIn()) return false;
+    
+    try {
+      const serverConvId = getServerConvId(convId);
+      if (!serverConvId) return false;
+
+      // Save each message to server
+      for (const msg of messages) {
+        if (msg._synced) continue; // Already synced
+        
+        await fetch(`/api/conversations/${serverConvId}/messages`, {
+          method: 'POST',
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+            role: msg.role,
+            text: msg.text,
+            created_at: msg.ts || Date.now()
+          })
+        });
+        
+        msg._synced = true;
+      }
+      
+      return true;
+    } catch (e) {
+      console.warn('Server save failed:', e);
+      return false;
+    }
+  }
+
+  // Load messages: Server-first, localStorage as fallback
+  async function loadMessagesFromServer(convId) {
+    if (!isLoggedIn()) return null;
+    
+    try {
+      const serverConvId = getServerConvId(convId);
+      if (!serverConvId) return null;
+
+      const r = await fetch(`/api/conversations/${serverConvId}/messages`, {
+        headers: {
+          'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
+        },
+        credentials: 'include'
+      });
+      
+      if (r.ok) {
+        const data = await r.json();
+        if (data.ok && Array.isArray(data.items)) {
+          return data.items.map(m => ({
+            role: m.role,
+            text: m.text,
+            ts: m.created_at || Date.now(),
+            _synced: true
+          }));
+        }
+      }
+    } catch (e) {
+      console.warn('Server load failed:', e);
+    }
+    
+    return null;
+  }
+
+  // Enhanced saveMessages: Try server first, always save to localStorage
+  const originalSaveMessages = saveMessages;
+  saveMessages = async function(id, msgs) {
+    // Always save to localStorage immediately
+    originalSaveMessages(id, msgs);
+    
+    // Try to sync to server in background
+    if (isLoggedIn() && !syncInProgress) {
+      syncInProgress = true;
+      try {
+        await saveMessagesToServer(id, msgs);
+      } catch (e) {
+        console.warn('Background sync failed:', e);
+      } finally {
+        syncInProgress = false;
+      }
+    }
+  };
+
+  // Enhanced loadMessages: Try server first, fallback to localStorage
+  const originalLoadMessages = loadMessages;
+  loadMessages = async function(id) {
+    // Try server first
+    if (isLoggedIn()) {
+      const serverMsgs = await loadMessagesFromServer(id);
+      if (serverMsgs && serverMsgs.length > 0) {
+        // Update localStorage with server data
+        originalSaveMessages(id, serverMsgs);
+        return serverMsgs;
+      }
+    }
+    
+    // Fallback to localStorage
+    return originalLoadMessages(id);
+  };
+
+  // ========== FOLDER SUPPORT ==========
+  
+  let folders = [];
+  let currentFolder = null;
+
+  async function loadFolders() {
+    if (!isLoggedIn()) return;
+    
+    try {
+      const r = await fetch('/api/folders', {
+        headers: {
+          'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
+        },
+        credentials: 'include'
+      });
+      
+      if (r.ok) {
+        const data = await r.json();
+        if (data.ok && Array.isArray(data.folders)) {
+          folders = data.folders;
+          renderFolders();
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to load folders:', e);
+    }
+  }
+
+  async function createFolder(name, icon = '📁', color = '#667eea') {
+    if (!isLoggedIn()) return null;
+    
+    try {
+      const r = await fetch('/api/folders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
+        },
+        credentials: 'include',
+        body: JSON.stringify({ name, icon, color })
+      });
+      
+      if (r.ok) {
+        const data = await r.json();
+        if (data.ok) {
+          await loadFolders();
+          return data.folder;
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to create folder:', e);
+    }
+    
+    return null;
+  }
+
+  async function moveConversationToFolder(convId, folderId) {
+    if (!isLoggedIn()) return false;
+    
+    try {
+      const serverConvId = getServerConvId(convId);
+      if (!serverConvId) return false;
+
+      const r = await fetch(`/api/folders/${folderId}/conversations`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
+        },
+        credentials: 'include',
+        body: JSON.stringify({ conversation_ids: [serverConvId] })
+      });
+      
+      return r.ok;
+    } catch (e) {
+      console.warn('Failed to move conversation:', e);
+      return false;
+    }
+  }
+
+  function renderFolders() {
+    const sidebar = document.querySelector('.sidebar');
+    if (!sidebar || folders.length === 0) return;
+    
+    // Check if folders section already exists
+    let foldersSection = sidebar.querySelector('.folders-section');
+    if (!foldersSection) {
+      foldersSection = document.createElement('div');
+      foldersSection.className = 'folders-section';
+      sidebar.insertBefore(foldersSection, sidebar.querySelector('.conversations-section'));
+    }
+    
+    const foldersHTML = folders.map(f => `
+      <div class="folder-item" data-folder-id="${f.id}">
+        <span class="folder-icon">${f.icon}</span>
+        <span class="folder-name">${escapeHtml(f.name)}</span>
+        <span class="folder-count">${f.conversation_count || 0}</span>
+      </div>
+    `).join('');
+    
+    foldersSection.innerHTML = `
+      <div class="folders-header">
+        <h3>Ordner</h3>
+        <button class="btn-icon" onclick="createFolderDialog()" title="Neuer Ordner">+</button>
+      </div>
+      <div class="folders-list">${foldersHTML}</div>
+    `;
+    
+    // Add click handlers
+    foldersSection.querySelectorAll('.folder-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const folderId = parseInt(item.dataset.folderId);
+        filterByFolder(folderId);
+      });
+    });
+  }
+
+  function filterByFolder(folderId) {
+    currentFolder = folderId;
+    renderConversationList();
+  }
+
+  function createFolderDialog() {
+    const name = prompt('Ordner-Name:');
+    if (!name) return;
+    
+    const icon = prompt('Icon (Emoji):', '📁') || '📁';
+    const color = prompt('Farbe (Hex):', '#667eea') || '#667eea';
+    
+    createFolder(name, icon, color);
+  }
+
+  // Initialize folders on login
+  if (isLoggedIn()) {
+    loadFolders();
+  }
 })();

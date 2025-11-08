@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Project Shadowglass\n • Hacker News: Database backups, dump files and restic\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Hurrikan \"Melissa\": Jamaika zum Katastrophengebiet erklärt",
+  "hash": "51414aca3121b6244c0869382cd37680830d6352adfddaf2c9f0124b3bff135d",
+  "id": "BLK_1761710529_r28y7e",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "k7Dz4laoAGhpEHVbuA7hisnJonhkytmOVXRFFP7nBLCjpKfgHIRPJ9meBPrjeLWurRX/heSL5W1ifMg/ugBoDQ==",
+  "signed_at": "2025-10-29T04:02:09Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-29 05:02",
+  "ts": 1761710529,
+  "url": ""
+}

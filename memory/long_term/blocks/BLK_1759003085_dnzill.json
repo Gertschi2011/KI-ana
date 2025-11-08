@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759003085_dnzill",
-  "title": "Web Digest 2025-09-27 21:58",
   "content": "• Hacker News: Docker Was Too Slow, So We Replaced It: Nix in Production [video]\n • Hacker News: LLM Observability in the Wild – Why OpenTelemetry Should Be the Standard\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzungen: NATO prüft Verteidigungseinsatz",
+  "hash": "9779238f371c910305c7bde1dc1e0f83c3f98ec29d699e66ebcc81cdcc25c4e6",
+  "id": "BLK_1759003085_dnzill",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "S+uExzbXiVJnayNEhf4O2vNTid6p7tGJcxksU5t22QVB0ELmNOf0Uh+UWIKAMRRsbPxmIgmrV6zh5O9lsLRMAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 21:58",
   "ts": 1759003085,
-  "meta": {},
-  "hash": "9779238f371c910305c7bde1dc1e0f83c3f98ec29d699e66ebcc81cdcc25c4e6"
+  "url": ""
 }

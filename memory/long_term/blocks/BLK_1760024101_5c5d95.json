@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The great software quality collapse or, how we normalized catastrophe\n • Hacker News: Why Self-Host?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gegensätze prallen im Bundestag bei EU-Asylreform aufeinander",
+  "created_at": 1760024101.7812464,
+  "hash": "0d590fd2cc1a03dd333829916e2b60d2b91d8df2ec75a9ed3c0b356f4679cdcb",
+  "id": "BLK_1760024101_5c5d95",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "J/W7aLOwRQj6M3YIBmxangIQ9JRTviN9vBAqa+zQthA0yx4cKO+/EhI5HwBfbl1Mu0AM736n6YvxTT1GeisiBQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 17:35",
+  "url": null
+}

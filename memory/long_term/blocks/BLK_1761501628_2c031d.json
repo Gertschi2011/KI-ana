@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: FlashRecord – 2MB Python-native CLI screen recorder\n • Hacker News: Books by People – Defending Organic Literature in an AI World\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Beschädigung von Seekabeln - Sorge um Taiwans Lebensadern",
+  "created_at": 1761501628.2487612,
+  "hash": "535fa3ad19c45e1d05cf34f92bcc694d60efb8c81849b2d0f0660fa7c8ef4df4",
+  "id": "BLK_1761501628_2c031d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fNSJIjLl1GYB44YAG40v8jIToBPw8xLwEA3QWjtnWVzGJMlg59T2YyjUtPr/horGSnPE5Y4+4ZUtYAlvd0bwDA==",
+  "signed_at": "2025-10-26T18:00:28Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 19:00",
+  "url": null
+}

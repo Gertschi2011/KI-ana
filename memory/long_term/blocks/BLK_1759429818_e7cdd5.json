@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I Keep Blogging with Emacs\n • Hacker News: Liva AI (YC S25) Is Hiring\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ARD-DeutschlandTrend: AfD zieht in Umfrage mit Union gleich",
+  "created_at": 1759429818.286656,
+  "hash": "e3d20578cc8ab0bea1d55d877ea7281ea3eadf83c9dabc062ffb1c38a973c385",
+  "id": "BLK_1759429818_e7cdd5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HqoCWFVInVcYczb/1KmxDzNKP9ack1KQV5i1DZHvlE07wc29Ae0nmmOoru1M2/s6mR9YBcffiHAYiItZ3XpTAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 20:30",
+  "url": null
+}

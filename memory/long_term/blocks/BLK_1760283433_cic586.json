@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Germany's Schleswig-Holstein Completes Migration to Open Source Email\n • Hacker News: Jeep pushed software update that bricked all 2024 Wrangler 4xe models\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Geiseln sollen in wenigen Stunden freikommen",
+  "hash": "88f1f1b02112e3761a95654496197b65cb46871a20c603059dcf13dc96f19645",
+  "id": "BLK_1760283433_cic586",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "58D/Q4tEAkYogCxP+PpazV2OhcOhF4eoInv4+ZLS6+nhe1b4Tj7l2KovQKX/KxHOFFG2LITDEa/kJnFaGR11DA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 17:37",
+  "ts": 1760283433,
+  "url": ""
+}

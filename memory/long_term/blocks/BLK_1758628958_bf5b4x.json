@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758628958_bf5b4x",
-  "title": "Web Digest 2025-09-23 14:02",
   "content": "• Hacker News: Cache of Devices Capable of Crashing Cell Network Is Found Near U.N\n • Hacker News: Walking Michigan City (Indiana)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump vor UN-Vollversammlung: Rede mit vielen Unbekannten",
+  "hash": "607fdba6563076a5bb9f2af5688ab46f28bba33716d2e4c2a7869206d0602656",
+  "id": "BLK_1758628958_bf5b4x",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ELkxvhMNZK7S0MfsZyzCcQUEA1YfhfhCnPg9tdYNeQtKfUAGM3EyJqLCMFE7EYOTT5oD0hy1A+5zwKmBOHb+Cw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 14:02",
   "ts": 1758628958,
-  "meta": {},
-  "hash": "607fdba6563076a5bb9f2af5688ab46f28bba33716d2e4c2a7869206d0602656"
+  "url": ""
 }

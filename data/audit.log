@@ -1,0 +1,3 @@
+{"timestamp": 1761204380.2812655, "event_type": "anomaly_detected", "user_id": "system", "action": "Anomaly in test_metric", "details": {"metric": "test_metric", "value": 100.0}, "severity": "warning"}
+{"timestamp": 1761204380.2815628, "event_type": "blacklist_add", "user_id": "system", "action": "User blacklisted: Spam detected", "details": {"user_id": "bad-user", "reason": "Spam detected"}, "severity": "critical"}
+{"timestamp": 1761204380.28165, "event_type": "test_event", "user_id": "user-1", "action": "Test action", "details": {"test": "data"}, "severity": "info"}

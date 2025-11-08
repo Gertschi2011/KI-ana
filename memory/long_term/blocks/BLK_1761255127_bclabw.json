@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Expanding Our Use of Google Cloud TPUs and Services\n • Hacker News: I wrote about parallel prompts: from 3D shoe renders to swipe-ready videos\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "hash": "ac6ec9f2c89a24fc61c0399584cf95aae1c669876a2dff9824057d7f4ab054f4",
+  "id": "BLK_1761255127_bclabw",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "+V6TKth6+R0pHkQFmWaeo7iNjmX0b110oQoIb1INEuUsHhrZ699kcIkTT6uln+aRr8Ks1nAUtQEtwOh11u4OBA==",
+  "signed_at": "2025-10-23T21:32:07Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 23:32",
+  "ts": 1761255127,
+  "url": ""
+}

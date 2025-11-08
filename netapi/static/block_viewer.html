@@ -8,17 +8,28 @@
   <link href="/static/styles.css" rel="stylesheet">
   <link href="/static/chat.css" rel="stylesheet">
   <style>
-    .container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+    body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
     .toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
     .muted { opacity: .75; }
-    table { width:100%; border-collapse: collapse; margin-top: 10px; }
-    th, td { text-align:left; padding: 8px 10px; border-bottom: 1px solid #eee; }
-    th { background: #f5f5f5; }
-    .tag { display:inline-block; padding:2px 6px; border-radius:6px; background:#eef; color:#334; font-size:12px; margin-right: 4px; }
-    .ok { color: #2f8f2f; }
-    .bad { color: #c33; }
-    .pill { padding:2px 8px; border-radius: 999px; background: #eee; font-size: 12px; }
-    .row-actions a { margin-right: 8px; }
+    
+    /* Table Styling */
+    table { width:100%; border-collapse: collapse; background:white; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    th, td { text-align:left; padding: 12px 15px; border-bottom: 1px solid #f3f4f6; }
+    th { background: linear-gradient(to bottom, #f9fafb, #f3f4f6); font-weight:600; color:#374151; font-size:13px; text-transform:uppercase; letter-spacing:0.5px; }
+    tbody tr:hover { background: #fafbfc; }
+    tbody tr { transition: background 0.15s ease; }
+    
+    /* Status Badges */
+    .tag { display:inline-block; padding:4px 10px; border-radius:6px; background:#e0e7ff; color:#4338ca; font-size:11px; font-weight:600; margin-right: 4px; }
+    .ok { color: #10b981; font-weight:600; }
+    .bad { color: #ef4444; font-weight:600; }
+    .pill { padding:6px 14px; border-radius: 8px; background: #f3f4f6; font-size: 13px; font-weight:500; border:none; cursor:pointer; transition: all 0.2s ease; }
+    .pill:hover { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+    .pill:active { transform: translateY(0); }
+    
+    .row-actions a { margin-right: 8px; color:#3b82f6; text-decoration:none; font-weight:500; }
+    .row-actions a:hover { text-decoration:underline; }
     .controls { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
     .toolbar { flex-wrap: wrap; }
     input[type="text"] { padding:8px; border:1px solid #ddd; border-radius:8px; min-width: 240px; }
@@ -74,59 +85,90 @@
 <body>
   <div id="navbar"></div>
   <main class="container">
-    <h1>KI_ana Block Viewer</h1>
-    <div class="toolbar">
-      <div class="controls">
-        <input id="q" type="text" placeholder="Suche in Titel/Topic/Quelle…">
-        <label class="muted"><input id="verifiedOnly" type="checkbox" checked> Nur verifizierte</label>
-        <label class="muted">Sortieren:
-          <select id="sortBy">
-            <option value="none">–</option>
-            <option value="trust">Trust (absteigend)</option>
-            <option value="rating">Rating (absteigend)</option>
-            <option value="time">Zeit (neu → alt)</option>
-          </select>
-        </label>
-        <label class="muted">Ansicht:
-          <select id="viewMode">
-            <option value="table" selected>Tabelle</option>
-            <option value="cards">Karten</option>
-          </select>
-        </label>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <div>
+        <h1 style="margin:0; font-size:28px;">🔍 KI_ana Block Viewer</h1>
+        <p style="margin:5px 0 0; color:#666; font-size:14px;"><span id="count">0 Blöcke</span> · <span id="healthPill" style="display:inline;"></span></p>
       </div>
-      <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
-        <span id="healthPill" class="pill" title="Signer/Keys Status" style="display:none"></span>
-        <span id="coveragePill" class="pill" title="Verifikationsabdeckung" style="display:none"></span>
-        <button id="rehashAllBtn" class="pill" title="Alle Blöcke prüfen und fehlende/abweichende Hashes korrigieren">Rehash alle</button>
+      <div style="display:flex; gap:8px;">
+        <button id="exportCsv" class="pill" style="background:#10b981; color:white;" title="Aktuelle Ansicht als CSV exportieren">📥 CSV Export</button>
+        <button id="rehashAllBtn" class="pill" style="background:#3b82f6; color:white;" title="Alle Blöcke prüfen und Hashes neu berechnen">🔄 Rehash</button>
+        <button id="signAllBtn" class="pill" style="background:#8b5cf6; color:white;" title="Alle Blöcke mit Ed25519 signieren">🔐 Signieren</button>
+      </div>
+    </div>
+
+    <!-- Search & Filter Section -->
+    <div style="background:white; border-radius:12px; padding:20px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+      <div style="display:grid; grid-template-columns: 1fr auto; gap:15px; margin-bottom:15px;">
+        <div>
+          <label style="display:block; font-weight:600; margin-bottom:8px; color:#374151;">🔎 Suche</label>
+          <input id="q" type="text" placeholder="Suche nach Titel, Topic, Quelle oder Inhalt..." 
+                 style="width:100%; padding:10px 15px; border:2px solid #e5e7eb; border-radius:8px; font-size:14px;">
+        </div>
+        <div style="min-width:200px;">
+          <label style="display:block; font-weight:600; margin-bottom:8px; color:#374151;">📊 Ansicht</label>
+          <select id="viewMode" style="width:100%; padding:10px 15px; border:2px solid #e5e7eb; border-radius:8px; font-size:14px; cursor:pointer;">
+            <option value="table">📋 Tabelle</option>
+            <option value="cards">🎴 Karten</option>
+          </select>
+        </div>
+      </div>
+      
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px;">
+        <div>
+          <label style="display:block; font-weight:600; margin-bottom:8px; color:#374151;">🔐 Status</label>
+          <label style="display:flex; align-items:center; padding:10px 15px; background:#f9fafb; border-radius:8px; cursor:pointer;">
+            <input id="verifiedOnly" type="checkbox" checked style="width:18px; height:18px; margin-right:10px; cursor:pointer;">
+            <span style="font-size:14px;">Nur verifizierte Blöcke</span>
+          </label>
+        </div>
+        
+        <div>
+          <label style="display:block; font-weight:600; margin-bottom:8px; color:#374151;">📑 Sortierung</label>
+          <select id="sortBy" style="width:100%; padding:10px 15px; border:2px solid #e5e7eb; border-radius:8px; font-size:14px; cursor:pointer;">
+            <option value="none">Standard (ID)</option>
+            <option value="trust">⭐ Trust Score (höchste zuerst)</option>
+            <option value="rating">👍 Rating (beste zuerst)</option>
+            <option value="time">🕒 Zeit (neueste zuerst)</option>
+          </select>
+        </div>
+        
+        <div>
+          <label style="display:block; font-weight:600; margin-bottom:8px; color:#374151;">📄 Pro Seite</label>
+          <select id="pageSize" style="width:100%; padding:10px 15px; border:2px solid #e5e7eb; border-radius:8px; font-size:14px; cursor:pointer;">
+            <option value="25">25 Blöcke</option>
+            <option value="50" selected>50 Blöcke</option>
+            <option value="100">100 Blöcke</option>
+            <option value="200">200 Blöcke</option>
+          </select>
+        </div>
+      </div>
+      
+      <div style="display:flex; gap:8px; margin-top:15px; flex-wrap:wrap;">
+        <span id="coveragePill" class="pill" style="background:#f3f4f6; color:#374151; display:none;"></span>
         <span id="rehashAllStatus" class="muted"></span>
-        <button id="signAllBtn" class="pill" title="Alle Blöcke signieren (erfordert Papa/Admin/Worker)">Signiere alle</button>
         <span id="signAllStatus" class="muted"></span>
-        <span id="count" class="muted"></span>
       </div>
     </div>
     <div id="list">
       <p>Lade Blöcke…</p>
     </div>
-    <div id="pager" class="toolbar" style="justify-content: space-between; margin-top:8px;">
-      <div class="muted" id="pagerInfo">—</div>
-      <div style="display:flex; gap:8px; align-items:center;">
-        <label class="muted">Pro Seite:
-          <select id="pageSize">
-            <option value="25">25</option>
-            <option value="50" selected>50</option>
-            <option value="100">100</option>
-            <option value="200">200</option>
-          </select>
-        </label>
-        <label class="muted">Seite:
-          <input id="pageJump" type="number" min="1" value="1" style="width:80px; padding:6px; border:1px solid #ddd; border-radius:8px;" />
-        </label>
-        <button id="goPage" class="pill">Gehe</button>
-        <label class="muted" title="Alle Treffer unter aktuellen Filtern exportieren (Client-seitig)"><input id="exportAllToggle" type="checkbox" /> Alle</label>
-        <button id="exportCsv" class="pill" title="CSV exportieren">CSV</button>
-        <button id="prevPage" class="pill">◀ Zurück</button>
-        <button id="nextPage" class="pill">Weiter ▶</button>
+    <!-- Pagination -->
+    <div style="background:white; border-radius:12px; padding:15px 20px; margin-top:20px; box-shadow:0 2px 8px rgba(0,0,0,0.1); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
+      <div id="pagerInfo" style="font-size:14px; color:#6b7280; font-weight:500;">—</div>
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <button id="prevPage" class="pill" style="background:#f3f4f6; color:#374151; padding:8px 16px; font-weight:600;">◀ Zurück</button>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <label style="font-size:14px; color:#6b7280;">Seite:</label>
+          <input id="pageJump" type="number" min="1" value="1" style="width:70px; padding:8px; border:2px solid #e5e7eb; border-radius:8px; text-align:center; font-weight:600;" />
+          <button id="goPage" class="pill" style="background:#3b82f6; color:white; padding:8px 12px;">→</button>
+        </div>
+        <button id="nextPage" class="pill" style="background:#f3f4f6; color:#374151; padding:8px 16px; font-weight:600;">Weiter ▶</button>
       </div>
+      <label style="display:flex; align-items:center; font-size:14px; color:#6b7280;">
+        <input id="exportAllToggle" type="checkbox" style="margin-right:6px;" />
+        Alle exportieren
+      </label>
     </div>
     <!-- Detail Modal -->
     <div id="detail-modal" class="modal">

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple Pulls ICEBlock from the App Store\n • Hacker News: Talent Is Alignment\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rückkehr der Populisten bei Wahl in Tschechien?",
+  "created_at": 1759483843.0928159,
+  "hash": "ba5db4aebcdc8992bce15d0dc09e0d60391a15222b56116789f9e709e56a8ba7",
+  "id": "BLK_1759483843_028989",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jfVAoqJqEPbqiWtaLpJvVbX1WFb21st1oy2/VWz0e5pDP7UlqXRh+xFLKlQcuGZ1w9nTqEcpdbQoR/w3efctAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 11:30",
+  "url": null
+}

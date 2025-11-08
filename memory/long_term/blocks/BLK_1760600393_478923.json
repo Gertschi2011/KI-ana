@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Journalists turn in access badges, exit Pentagon rather than agreeing new rules\n • Hacker News: New coding models and integrations\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): So funktioniert das dänische Losverfahren beim Wehrdienst",
+  "created_at": 1760600393.6167111,
+  "hash": "7d417940f741c801903f0ad21639b29b4bc3e72d285b6d26f91a8f1e3e99156d",
+  "id": "BLK_1760600393_478923",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "bVsofVFy3aTL5MYaHe+Dgc1Qza4vObFy3h1yrpxQ62m4NgrOhzEUJMNiq/I+9G+W+rrpMe8DqkJdEudDnkcVAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 09:39",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: How to Make a Smith Chart\n • Hacker News: Asahi Linux Still Working on Apple M3 Support, M1n1 Bootloader Going Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die US-Politik deutsche Ford-Standorte ausbremst",
+  "hash": "1a75b514fca17e05073d77f31828cdef234e751546fbbf2724db907bbe024b64",
+  "id": "BLK_1761336166_qafqlb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "IhqxaXBYaB7INcy2BC0hyZwMnIqu0rJUQAsErCcgzqBKXgxe3MnHIuSciv3bRYaWLsM/tHi7QttSWqMxTur+Dw==",
+  "signed_at": "2025-10-24T20:02:46Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 22:02",
+  "ts": 1761336166,
+  "url": ""
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758863390_3pbm2f",
-  "title": "Web Digest 2025-09-26 07:09",
   "content": "• Hacker News: A platform-jumping prince – History of Prince of Persia's 1990s Ports\n • Hacker News: Flock Reinstalls Cameras Without City Approval After Unlawful Govt Access\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Früherer FBI-Chef und Trump-Widersacher Comey angeklagt",
+  "hash": "ecd69a14d815b121286dc4a916c94abf7ddf732a87cec6358e5bf23fba214b55",
+  "id": "BLK_1758863390_3pbm2f",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "MS2vj7FCIvetrxZtmDdjhn/NSM5p/e+qvYWVVa66KavpT+iXsxobKgCN9E8UD7Kh2G7AQFKReNyiB1iQJyQ9BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 07:09",
   "ts": 1758863390,
-  "meta": {},
-  "hash": "ecd69a14d815b121286dc4a916c94abf7ddf732a87cec6358e5bf23fba214b55"
+  "url": ""
 }

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Write Node.js code in Rust to achieve massive HTTP throughput\n • Hacker News: Picture gallery: Amiga prototype \"Lorraine\" at the Amiga 40 event\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump-Besuch: Japan will \"neues goldenes Zeitalter\" mit den USA",
+  "created_at": 1761636693.5561237,
+  "hash": "f183a29ce245e412f5c9021fec06a2e01ed3064850c61c5fe30d14d195fa8dd9",
+  "id": "BLK_1761636693_1320ef",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "IWsUV/cBfbgj94KJOp/oN4FjvehYIwpDpzfmWDXwmjo02BWez8xuzphdtR9CRsC8p2Y6/e3D6LBN/GVceHu4Cw==",
+  "signed_at": "2025-10-28T07:31:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 08:31",
+  "url": null
+}

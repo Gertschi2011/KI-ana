@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758503280_f6n0bg",
-  "title": "Web Digest 2025-09-22 03:08",
   "content": "• Hacker News: Be Careful with Go Struct Embedding\n • Hacker News: Why is Venus hell and Earth an Eden?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump bezeichnet erschossenen Kirk bei Trauerfeier als \"Märtyrer\"",
+  "hash": "63d1f5e1cc50aa019c108474e6f1b909333368ea66d124a9247a4d3091e58a6b",
+  "id": "BLK_1758503280_f6n0bg",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "sMkWIRWXMsfrggsokiTsvTXT2q3HeUP5LsrxBeH1fM13FK8vEx86C6wf7JAFD9LBLxmXnFSqYM19vkQ1OWnmAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 03:08",
   "ts": 1758503280,
-  "meta": {},
-  "hash": "63d1f5e1cc50aa019c108474e6f1b909333368ea66d124a9247a4d3091e58a6b"
+  "url": ""
 }

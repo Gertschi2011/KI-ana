@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758796812_bsii5y",
-  "title": "Web Digest 2025-09-25 12:40",
   "content": "• Hacker News: Some interesting stuff I found on IX LANs\n • Hacker News: RTO: WTAF\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs Ex-Präsident Sarkozy schuldig gesprochen - aber nur teilweise",
+  "hash": "bdd645bba12fdd056a5001873a697f8272146a21c1005d401ae09fdd34304f92",
+  "id": "BLK_1758796812_bsii5y",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "mRl1gIudMdcKOGm3gExMlPalaQrCymBL43ZciEkwh8vQ3fOhZBiUYaVkwOPVHghey4P2sktzdCAj55LQxkjSCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 12:40",
   "ts": 1758796812,
-  "meta": {},
-  "hash": "bdd645bba12fdd056a5001873a697f8272146a21c1005d401ae09fdd34304f92"
+  "url": ""
 }

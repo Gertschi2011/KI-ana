@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758463619_dfuwpp",
-  "title": "Web Digest 2025-09-21 16:06",
   "content": "• Hacker News: Why your outdoorsy friend suddenly has a gummy bear power bank\n • Hacker News: That DEA agent's 'credit card' could be eavesdropping on you\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Großbritannien, Kanada und Australien erkennen Palästinenserstaat an",
+  "hash": "2470aca8a5b68b459c8e8bc6e20e2ac2c00ac3ed45a29da08560c3a0425f3211",
+  "id": "BLK_1758463619_dfuwpp",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "m2ny6f7XfCqzC6xYeZwNX6pT59KPVnsqPooxhM3cWH8s2s+rrA/KMJZ1Xwubs6+wiG9LCYDU5lo+2Vk/7tS5CQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 16:06",
   "ts": 1758463619,
-  "meta": {},
-  "hash": "2470aca8a5b68b459c8e8bc6e20e2ac2c00ac3ed45a29da08560c3a0425f3211"
+  "url": ""
 }

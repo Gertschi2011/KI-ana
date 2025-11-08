@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FlowSynx – Orchestrate Declarative, Plugin-Driven DAG Workflows on .NET\n • Hacker News: Our efforts, in part, define us\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Oktoberfest in München nach Bombendrohung geschlossen",
+  "created_at": 1759315769.5731869,
+  "hash": "a51b04ddaaf0be6d80598ba079ba5611ea619aae47eccba50329886141e9bc60",
+  "id": "BLK_1759315769_e7902a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "dm0gHJG7nPFdOCaGvlemv66W9TPCvHzNpmr2XTzCIp2bBWF5oDUTJPLFCGuyD7DorcETkB7qENpftJRZUf9xAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 12:49",
+  "url": null
+}

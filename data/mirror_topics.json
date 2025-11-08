@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "updated": "2025-10-29T17:00:00+01:00",
+  "description": "Topics for automated web mirroring",
+  
+  "topics": [
+    {
+      "name": "CVE Feed",
+      "url": "https://cve.mitre.org/data/downloads/allitems.csv",
+      "topics_path": ["Security", "CVE", "Vulnerabilities"],
+      "frequency": "daily",
+      "trust": 9,
+      "ttl_days": 1,
+      "description": "Common Vulnerabilities and Exposures database"
+    },
+    {
+      "name": "Ubuntu Security Notices",
+      "url": "https://ubuntu.com/security/notices",
+      "topics_path": ["Security", "Ubuntu", "Updates"],
+      "frequency": "daily",
+      "trust": 9,
+      "ttl_days": 1,
+      "description": "Official Ubuntu security updates"
+    },
+    {
+      "name": "Debian Security Advisories",
+      "url": "https://www.debian.org/security/",
+      "topics_path": ["Security", "Debian", "Updates"],
+      "frequency": "weekly",
+      "trust": 9,
+      "ttl_days": 7,
+      "description": "Debian security announcements"
+    },
+    {
+      "name": "Python Package Index",
+      "url": "https://pypi.org/",
+      "topics_path": ["Development", "Python", "Packages"],
+      "frequency": "weekly",
+      "trust": 8,
+      "ttl_days": 7,
+      "description": "Latest Python packages and versions"
+    },
+    {
+      "name": "Kernel News",
+      "url": "https://www.kernel.org/",
+      "topics_path": ["System", "Linux", "Kernel"],
+      "frequency": "weekly",
+      "trust": 9,
+      "ttl_days": 7,
+      "description": "Linux kernel releases and updates"
+    }
+  ],
+  
+  "mirror_settings": {
+    "max_retries": 3,
+    "timeout_seconds": 30,
+    "rate_limit_seconds": 5,
+    "user_agent": "KI_ana Mirror Bot/1.0"
+  }
+}

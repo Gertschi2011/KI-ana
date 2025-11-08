@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ChatGPT Atlas\n • Hacker News: OpenAI Set to Challenge Google with New ChatGPT Atlas Browser\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Heilbronn soll Europas Hauptstadt für KI werden",
+  "created_at": 1761068599.614944,
+  "hash": "03bda9e9827283adf42b6178bcff40327d05d04471cb6f892049fbf1a26ffa25",
+  "id": "BLK_1761068599_c38269",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "urB0k/+kKocDQs07UdOELhH6HZZAANEAHRCcBHL5/3hJGYF89UGulnyLBt5RqY4hyUO/2jN/6DqpHD9t7IEwCA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 19:43",
+  "url": null
+}

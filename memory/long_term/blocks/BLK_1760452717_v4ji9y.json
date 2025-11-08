@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Wireshark 4.6.0 Supports macOS Pktap Metadata (PID, Process Name, etc.)\n • Hacker News: Let's Not Encrypt\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Verhandler von Union und SPD einig bei Wehrdienst-Losverfahren",
+  "hash": "60ce94bce9482c96faa22b5dfb9f51c1192f8ea102f58ada4b1053b6f3cd9555",
+  "id": "BLK_1760452717_v4ji9y",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "OliCV4Anaer0qZ31/xc30XSwaF0OnPwKn0+X61A1OMLDziud+nVfbXfERo3O5wVRiFFxs4bYGwu6eZBCO3jMAQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 16:38",
+  "ts": 1760452717,
+  "url": ""
+}

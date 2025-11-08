@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758542410_wo40ob",
-  "title": "Web Digest 2025-09-22 14:00",
   "content": "• Hacker News: Watches Are for the Poor\n • Hacker News: Kmart's use of facial recognition to tackle refund fraud unlawful\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schnieder verschiebt Pünktlichkeitsziele der Bahn nach hinten",
+  "hash": "4a502f2188c65effba0d80b6cd2183dbbbe2b17241a76900cabda6e983b4762d",
+  "id": "BLK_1758542410_wo40ob",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "JAKSla9SCd20mD3zBM/R6A4puVoubiyYDzVnfVATq5VZGnET0WLIxRV17Ssvnvp4eoI2FE0QmwQZg8EEenjNBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 14:00",
   "ts": 1758542410,
-  "meta": {},
-  "hash": "4a502f2188c65effba0d80b6cd2183dbbbe2b17241a76900cabda6e983b4762d"
+  "url": ""
 }

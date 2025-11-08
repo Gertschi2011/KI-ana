@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759093784_5ioxe2",
-  "title": "Web Digest 2025-09-28 23:09",
   "content": "• Hacker News: Roe (YC W24) Is Hiring\n • Hacker News: Swiss voters back e-ID legislation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie teuer wird der Emissionshandel im Verkehrs- und Gebäudesektor?",
+  "hash": "1e50de382b10a9fd3dd0931218d8380d5775e61bfc22b89427f1a6087aae1891",
+  "id": "BLK_1759093784_5ioxe2",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "4ZWKwl1ideMBACImD4JON8HxmFwIu7rx9qHEtjDosCGdHtOPfpe52+5SB4legVmnoakxAeQTJWmMWM6YaKAVDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 23:09",
   "ts": 1759093784,
-  "meta": {},
-  "hash": "1e50de382b10a9fd3dd0931218d8380d5775e61bfc22b89427f1a6087aae1891"
+  "url": ""
 }

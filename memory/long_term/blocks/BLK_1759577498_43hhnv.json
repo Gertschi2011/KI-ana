@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Paged Out Issue #7 [pdf]\n • Hacker News: Alibaba cloud FPGA: the $200 Kintex UltraScale+\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas akzeptiert Teile des Gaza-Plans - die Hoffnung auf Frieden wächst",
+  "hash": "233a104f42574fecaf95a6b1304110ed723ef858809f54eaffc7d93573af1d42",
+  "id": "BLK_1759577498_43hhnv",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "n1fXwY1oxKkS6KzQvj9LrhTdIFpY7IqUTGM9zWdvizcfhm2fNdly0n1LstLPyangCUVXvYcyPZMqePFwDhASAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 13:31",
+  "ts": 1759577498,
+  "url": ""
+}

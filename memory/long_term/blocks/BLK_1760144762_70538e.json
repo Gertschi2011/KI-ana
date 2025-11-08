@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Climate goals go up in smoke as US datacenters turn to coal\n • Hacker News: They Don't Have the Money: OpenAI Edition\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Extra-Zölle von 100 Prozent für China an",
+  "created_at": 1760144762.24254,
+  "hash": "eba5db33a9224736bc20c1e6e487f8a795e493c362b82b69a78e70126246c124",
+  "id": "BLK_1760144762_70538e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "oiHlguOMUGsjVLELPlw9US4cSL36wJXVSgN1y2QyqH2WBudpjYXDKeIIMxdmbO7vNT5vEMK1yq28GV9jpKsMBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 03:06",
+  "url": null
+}

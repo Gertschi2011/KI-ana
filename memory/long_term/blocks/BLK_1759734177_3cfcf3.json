@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Structured Procrastination\n • Hacker News: CHERI with a Linux on Top\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz vermutet Russland hinter vielen Drohnen-Flügen",
+  "created_at": 1759734177.427093,
+  "hash": "d90bc0bb46846b3d974b28726c275f75393736e9221841dd91a09e2fa57f5702",
+  "id": "BLK_1759734177_3cfcf3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "EEe3PE/Uzqdk4M6dkbU2RGD2P+oXz7zUFKE5W/ySAbWClno1iH8JnZQryUm8gQsDWelvntgN8mBvmUDACwINAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 09:02",
+  "url": null
+}

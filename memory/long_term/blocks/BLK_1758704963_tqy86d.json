@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758704963_tqy86d",
-  "title": "Web Digest 2025-09-24 11:09",
   "content": "• Hacker News: Ruby Central Is Not Behaving in Good Faith, and I've Got Receipts\n • Hacker News: The Hardware Knowledge That Every Programmer Should Know\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Liveblog zur Generaldebatte: ++ \"Vielleicht größte Bewährungsprobe\" ++",
+  "hash": "8ff4e952706cd6828bddd9a3be30fe13dbf98c45e02ae2892634c4f7977a0325",
+  "id": "BLK_1758704963_tqy86d",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "bHyH6T9FjvMGvArIRMebBp7xmVBUBgYwExacIuLXpyOLd5ttxcKx08t7EuNlg6fgI8SjM81JXGG7vpjBGElwCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 11:09",
   "ts": 1758704963,
-  "meta": {},
-  "hash": "8ff4e952706cd6828bddd9a3be30fe13dbf98c45e02ae2892634c4f7977a0325"
+  "url": ""
 }

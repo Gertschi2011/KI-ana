@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Bild AI (YC W25) Is Hiring a Founding AI Engineer\n • Hacker News: Meta is axing 600 roles across its AI division\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demokratie-Monitor: 17 Prozent vertreten populistisches Weltbild",
+  "created_at": 1761153403.9094715,
+  "hash": "30c5cd2bf46c87af68df847f6ab2f99d3fccb4b8304c27bdfb4f26fca13a5de2",
+  "id": "BLK_1761153403_5c9d4b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "AnBYtrPmD+pqYEyNwvhtLsMO774jGCnQHCZb/dbHlGXT1xamr7kTIyah65RSVNPJRy9VfrY8ZrnXDAM/eJOxAg==",
+  "signed_at": "2025-10-22T17:16:43Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 19:16",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ChatGPT Atlas\n • Hacker News: Flexport Is Hiring SDRs in Chicago\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Heilbronn soll Europas Hauptstadt für KI werden",
+  "created_at": 1761072201.4702952,
+  "hash": "0cd7c32f499543fa36e89cc53316b985d466166d49e02844b08cfcd296f737a0",
+  "id": "BLK_1761072201_1ffe01",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "bfwyjE8B1i47EiHANqTMiXA2dnrlFwC8atsP5VKxzjMPgBqHdCHHm1GyC21GbUZ7kKQj5A5xJlQ9TPH/Tc8KAw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 20:43",
+  "url": null
+}

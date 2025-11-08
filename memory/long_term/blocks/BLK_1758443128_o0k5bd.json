@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758443128_o0k5bd",
-  "title": "Web Digest 2025-09-21 10:25",
   "content": "• Hacker News: Vibe Coding Cleanup as a Service\n • Hacker News: Representing Heterogeneous Data (2023)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Katerstimmung bei den Vereinten Nationen vor Vollversammlung",
+  "hash": "3ca77f5edc9ff4355922f88b50714f01fccbde71e280bd815536a6519d2cc35b",
+  "id": "BLK_1758443128_o0k5bd",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "0Z6+YOeGe0ZvvOLwRujV43+/PHMOvmrRtFHgZg7yyvEIrjNhxvW5mscGGuAAbbxyicY4xesL1A3Fq6i5iaUPAA==",
+  "signed_at": "2025-10-29T12:53:41Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 10:25",
   "ts": 1758443128,
-  "meta": {},
-  "hash": "3ca77f5edc9ff4355922f88b50714f01fccbde71e280bd815536a6519d2cc35b"
+  "url": ""
 }

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758661268_bdwy5z",
-  "title": "Web Digest 2025-09-23 23:01",
   "content": "• Hacker News: YouTube Will Let Users Booted for Violations of COVID, Elections Policies Rejoin\n • Hacker News: Privacy Commissioners find TikTok collected sensitive data from children\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rede bei UN-Vollversammlung: Trumps Frontalangriff",
+  "hash": "430156fd226662708faedb0392f9a3337702f4b07c87214aee84722b070871c5",
+  "id": "BLK_1758661268_bdwy5z",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "bh43EyhWXQ7oWw//TjQ/iuq58bJGF9bFofEiAp5tGwD7mQuzb/FCjDFguIrZ3/PAMkIeZe3BCIj+ECHn1M22Dw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 23:01",
   "ts": 1758661268,
-  "meta": {},
-  "hash": "430156fd226662708faedb0392f9a3337702f4b07c87214aee84722b070871c5"
+  "url": ""
 }

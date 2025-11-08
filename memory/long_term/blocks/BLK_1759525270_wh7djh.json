@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Sweden's National Bank Introduces Mandate for Offline Card Payments\n • Hacker News: Arenas in Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas erklärt sich zur Freilassung aller Geiseln bereit",
+  "hash": "06af6225c1b1f205835074fbefcbf826ffab3a1f1e553d3110bc0d7e6428065d",
+  "id": "BLK_1759525270_wh7djh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "grGsf+G2O4wO1qk5jiGnAAFMe5kJhcmdPDThrijdSBGmnYQTvcewh7OHyAQ8bDQqgl/8/X/F9nzJPHndzWUMDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 23:01",
+  "ts": 1759525270,
+  "url": ""
+}

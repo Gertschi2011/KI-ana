@@ -1,0 +1,157 @@
+{
+  "version": "1.0",
+  "updated": "2025-10-29T17:45:00+01:00",
+  "description": "Sub-Minds Netzwerk Konfiguration",
+  
+  "network": {
+    "enabled": false,
+    "note": "Set to true when Sub-Minds are deployed",
+    "topology": "mesh",
+    "protocols": ["webrtc", "websocket", "ipfs"],
+    "discovery": {
+      "method": "broadcast",
+      "interval_seconds": 60,
+      "ttl": 300
+    }
+  },
+  
+  "node_types": {
+    "mother": {
+      "description": "Haupt-KI_ana (dieser Server)",
+      "role": "coordinator",
+      "capabilities": ["full_ai", "consensus", "signing"],
+      "priority": 100
+    },
+    "child": {
+      "description": "Spezialisierte Sub-KI_ana (Raspberrys/Laptops)",
+      "role": "specialist",
+      "capabilities": ["specialized_ai", "learning", "caching"],
+      "priority": 50
+    },
+    "edge": {
+      "description": "Minimal-Nodes (IoT)",
+      "role": "collector",
+      "capabilities": ["sensing", "basic_processing"],
+      "priority": 10
+    }
+  },
+  
+  "specializations": {
+    "vision_node": {
+      "focus": "Computer Vision",
+      "topics": ["Images", "Video", "Recognition"],
+      "hardware": "GPU preferred"
+    },
+    "language_node": {
+      "focus": "NLP & Translation",
+      "topics": ["Language", "Translation", "Text"],
+      "hardware": "CPU sufficient"
+    },
+    "data_node": {
+      "focus": "Data Analysis",
+      "topics": ["Statistics", "Analysis", "Patterns"],
+      "hardware": "RAM intensive"
+    },
+    "creative_node": {
+      "focus": "Creative Tasks",
+      "topics": ["Art", "Music", "Poetry"],
+      "hardware": "Balanced"
+    }
+  },
+  
+  "consensus_learning": {
+    "enabled": true,
+    "algorithm": "proof_of_insight",
+    "quorum": 0.51,
+    "voting": {
+      "trust_weighted": true,
+      "mother_veto": true,
+      "timeout_seconds": 300
+    },
+    "knowledge_propagation": {
+      "method": "blockchain_sync",
+      "verification": "signature_chain",
+      "conflict_resolution": "trust_weighted_average"
+    }
+  },
+  
+  "proof_of_insight": {
+    "description": "Sub-Minds proposieren Wissen mit Vertrauens-Score",
+    "steps": [
+      "Child-Node findet Muster/Wissen",
+      "Proposiert Block mit Trust-Score",
+      "Andere Nodes validieren",
+      "Mother-Node mittelt & signiert",
+      "Konsens-Block wird verteilt"
+    ],
+    "scoring": {
+      "novelty": 0.3,
+      "verification": 0.3,
+      "usefulness": 0.2,
+      "source_quality": 0.2
+    }
+  },
+  
+  "sync_protocol": {
+    "p2p": {
+      "webrtc": {
+        "enabled": true,
+        "stun_servers": ["stun:stun.l.google.com:19302"],
+        "turn_servers": [],
+        "ice_candidates": "gather_auto"
+      },
+      "websocket": {
+        "enabled": true,
+        "fallback": true,
+        "port_range": [9000, 9100]
+      }
+    },
+    "ipfs": {
+      "enabled": false,
+      "note": "For large knowledge blocks",
+      "gateway": "localhost:8080",
+      "pin_important": true
+    },
+    "blockchain": {
+      "enabled": true,
+      "chain_file": "/home/kiana/ki_ana/data/knowledge_chain.json",
+      "block_size_kb": 64,
+      "proof": "proof_of_insight"
+    }
+  },
+  
+  "federation": {
+    "learning_pool": {
+      "enabled": true,
+      "aggregation": "federated_averaging",
+      "privacy": {
+        "differential_privacy": false,
+        "secure_aggregation": true
+      }
+    },
+    "distributed_training": {
+      "enabled": false,
+      "note": "For future: distributed model training"
+    }
+  },
+  
+  "node_registry": {
+    "file": "/home/kiana/ki_ana/data/nodes.json",
+    "fields": [
+      "node_id",
+      "type",
+      "specialization",
+      "address",
+      "last_seen",
+      "trust_score",
+      "capabilities"
+    ]
+  },
+  
+  "security": {
+    "authentication": "shared_secret",
+    "encryption": "tls",
+    "signature": "ed25519",
+    "node_verification": true
+  }
+}

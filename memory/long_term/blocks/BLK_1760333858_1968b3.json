@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Fastmail Desktop App\n • Hacker News: Countering Trusting Trust Through Diverse Double-Compiling (DDC)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Geisel-Übergabe hat begonnen ++",
+  "created_at": 1760333858.9823604,
+  "hash": "b143cef78f7f401f6db0d1df712b0fff412f6ae8234dfd7e810b493834cd23d6",
+  "id": "BLK_1760333858_1968b3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "807/7+wTjNmMzqhWf+I/LlYFGI9L4Rh3aP+ANvSwaibHETYFaRD7NHr/X8aySdBteywhCvm/btKcUw/EknUmBQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 07:37",
+  "url": null
+}

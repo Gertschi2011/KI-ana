@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Zero ASIC releases Wildebeest, the highest performance FPGA synthesis tool\n • Hacker News: High-Level Synthesis Synthesis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lufthansa plant Abbau von 4.000 Stellen bis 2030",
+  "hash": "cdc29792746d06bec1a23c5c6bdb8fcb7df3d240903cd21cb56bd77e5fbab11f",
+  "id": "BLK_1759127417_qx90me",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "VmEe0ND2D7QMDfpoVzCQ5c2ZPW+Ke/e8WpFFmoVho5yI5lMILivio4Hw19gj9o6a5TTVPRJYcA9jNDYCoFfOBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 08:30",
+  "ts": 1759127417,
+  "url": ""
+}

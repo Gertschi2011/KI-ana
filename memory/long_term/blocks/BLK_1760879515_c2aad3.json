@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Uber will offer gig work like AI data labeling to drivers while not on the road\n • Hacker News: Pebble is officially back on iOS and Android\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Diebe erbeuten Schmuck aus dem Louvre",
+  "created_at": 1760879515.8403594,
+  "hash": "950c63f4f9189dd8bbf6ebd4411fdae9bba39e48b0d1a1dce50aa046eb2524bf",
+  "id": "BLK_1760879515_c2aad3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "A2A/kE0Ouma8pYESPjcqCOwYuUc8Kc4KwP0HsqGv8v7Tr9opesMsRiVUnRvK7sFRK3Ol+DTihyJYpJmmibxhCQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 15:11",
+  "url": null
+}

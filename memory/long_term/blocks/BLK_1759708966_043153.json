@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Germany outfitted half a million balconies with solar panels\n • Hacker News: Ken Parker, famed luthier, has died\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Söder äußert sich im Bericht aus Berlin zu Drohnenabschüssen",
+  "created_at": 1759708966.9424121,
+  "hash": "8815fc9d3f2d8c60469983686d86ef1f50bc2aa830024af1c119d8f2c9b0bffb",
+  "id": "BLK_1759708966_043153",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Vhd42TeFa/piWOdWjE7WKB+jgqD/xp/tqCNhaWfgDyR+hNhA50Y9TbvXEImIAKTjBp+S1JQ2gaeTpmE++PptDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 02:02",
+  "url": null
+}

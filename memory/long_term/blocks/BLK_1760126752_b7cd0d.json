@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Does our \"need for speed\" make our Wi-Fi suck? Yes.\n • Hacker News: Toyota aims to launch the ' first' all-solid-state EV batteries\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Palästinenser kehren zurück - Israel wartet auf Geisel-Freilassung",
+  "created_at": 1760126752.8527298,
+  "hash": "031b56bfe58008759289653800406ff2434520566fb8eac0634cf9de61237fd1",
+  "id": "BLK_1760126752_b7cd0d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "F/RqwFWXe49/xx+F5lJ2WHLnbKFFkdKy1uGY31Cs9egipZNeRwjthCYlTdZJlEKweEzIppaOH0drjfV5nygkAw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 22:05",
+  "url": null
+}

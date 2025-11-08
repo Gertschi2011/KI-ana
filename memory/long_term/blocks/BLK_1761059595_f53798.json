@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Sell tickets to concerts agentically – Hive (YC S14) is hiring\n • Hacker News: UA 1093\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine: Einfrieren der Front als Ausgangspunkt für Verhandlungen?",
+  "created_at": 1761059595.4372313,
+  "hash": "b33dfb3234dcaf313cb2caa8779360035af5f16c7865bd36ae064944e971aba1",
+  "id": "BLK_1761059595_f53798",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "xLa4dtMorXW9zW/UJ/75Ko7AUWALhs8t2Z2Pd7eEif+olmjh8WVw/Ak1BsWxCLaAtOEcJ186ygmGVI4DV4WtDA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 17:13",
+  "url": null
+}

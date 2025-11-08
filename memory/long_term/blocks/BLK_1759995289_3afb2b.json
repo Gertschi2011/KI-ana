@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Forecasting Company (YC S24) Is Hiring a Machine Learning Engineer\n • Hacker News: Download all of your GitHub data\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Koalition einig bei Bürgergeld, Aktivrente und Infrastruktur",
+  "created_at": 1759995289.1970115,
+  "hash": "f7b1c1c198c84b7eb168f3bfce583f6325a1ad6d0c52faab85f95a9d1de68f9b",
+  "id": "BLK_1759995289_3afb2b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "3E7HnM/beJ7rQeFzbWxn0O0wflJdhbIM2FuD8O9JGNn9p2DmMYIMxmzA/ZklO1GZ+4ay2Zlk2DZ9BIZ3dUSlCw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 09:34",
+  "url": null
+}

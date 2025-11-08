@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Become unbannable from your email\n • Hacker News: Metriport (YC S22) is hiring a founding recruiter\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre nach Hamas-Überfall: Israel gedenkt der Opfer",
+  "created_at": 1759881840.5760832,
+  "hash": "55a1640e921d371903900caeaed1abc3051ad20431ec984414b9c00485afd209",
+  "id": "BLK_1759881840_44985f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "UVdwLIRzm3E+Mh3k1Mn/SJkoTCDPxnCCdsUvhZ+EXOWCVzPjhsWjfDloKLSwQwr1uVzQVwMTgrSGOFsD3nHtAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 02:04",
+  "url": null
+}

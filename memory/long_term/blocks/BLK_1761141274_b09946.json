@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Sentence Transformers is joining Hugging Face\n • Hacker News: The Stagnant Order. and the End of Rising Powers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Möglicher Produktionsstopp bei Volkswagen wegen Chip-Problemen",
+  "created_at": 1761141274.9900458,
+  "hash": "4606379fa69e9f12a83ec10c20bca18a4dad38e84e5591abe42a186df0c88d0a",
+  "id": "BLK_1761141274_b09946",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "IBbjqXEfzAOBwtYOHQEieL/Pec7eaFB+nDM0qwfYRSfpKPBIZz/wrJiOpqaz4AUifVXurSjHyAuG+0BnnDhADg==",
+  "signed_at": "2025-10-22T13:54:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 15:54",
+  "url": null
+}

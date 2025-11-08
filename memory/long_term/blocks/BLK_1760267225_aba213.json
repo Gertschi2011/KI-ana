@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 4x faster LLM inference (Flash Attention guy's company)\n • Hacker News: Show HN: Sober not Sorry – free iOS tracker to help you quit bad habits\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stephan Brandner rückt die Grenzen des Sagbaren nach rechts außen",
+  "created_at": 1760267225.4193673,
+  "hash": "1c49b1bb239b03c38a75df4f4a15dcf29f29ecbe504a6af9bf13f6cb49afe288",
+  "id": "BLK_1760267225_aba213",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Fgp7kPlsnfE9KNFoUgEySLCIGuT+NX6OsffGDcebUNX68ugEgcP+rSWZZmkYWInM1wqA3pO1Lk33jCwk3akCDQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 13:07",
+  "url": null
+}

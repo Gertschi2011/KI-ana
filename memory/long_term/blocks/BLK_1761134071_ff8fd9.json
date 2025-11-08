@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Starcloud\n • Hacker News: HarmonyOS 6 Full Overview: New Design, AI Features and Privacy Upgrades [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sacharow-Preis geht an inhaftierte Journalisten in Belarus und Georgien",
+  "created_at": 1761134071.652557,
+  "hash": "c6c7e1cb71a441e60aaa79f61d1cfc2d0ae2a909f73003fe6871ecf9822426f0",
+  "id": "BLK_1761134071_ff8fd9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "52d9jiZ63uLMerg+lCvbs8rQzEBUsDUW6XO4I7y/jEtkrcj4b24o39nuBiCqy10TU2Sv0Evpl5mXyUX2RXFyAQ==",
+  "signed_at": "2025-10-22T11:54:31Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 13:54",
+  "url": null
+}

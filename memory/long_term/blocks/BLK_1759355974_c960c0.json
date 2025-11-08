@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Edge264 – Minimalist, high-performance software decoder for H.264/AVC video\n • Hacker News: DARPA project for automated translation from C to Rust (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Aus dem schwarz-roten Ruckeln soll ein Ruck werden",
+  "created_at": 1759355974.7922626,
+  "hash": "d7882797703c6833e475847bcce4bc25a608cfd8ea43a23cea95f6a3f2ea4676",
+  "id": "BLK_1759355974_c960c0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Pd1S/6hEO6BiGw3l9CyjuFD7yBcFM+A05hh3rnjTptkUlOGkwShRyz0JjkQK8Vvt6Vow0I9datmIEyt89w9kDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 23:59",
+  "url": null
+}

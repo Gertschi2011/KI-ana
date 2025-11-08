@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Typst 0.14: Now Accessible\n • Hacker News: Intel hamstrung by supply shortages across its business\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Fragen und Antworten: Wie gefährlich ist die Vogelgrippe?",
+  "created_at": 1761312187.7715666,
+  "hash": "bc5b180b212523f60c7eb8db01e655a7c48aec7e3a1455b96a154a05d626d59e",
+  "id": "BLK_1761312187_6ba1bb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "nhh5Op37ELpoVANacZp+5/zO15P0KaxFX7IlB9LsLR3PdzRH8nh+cdzA4OdM5V4E5BXnu++dLVgcV/BDTgdNDQ==",
+  "signed_at": "2025-10-24T13:23:07Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 15:23",
+  "url": null
+}

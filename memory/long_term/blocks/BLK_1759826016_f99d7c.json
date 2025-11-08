@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Learning a foreign language–before you're born\n • Hacker News: The NIH ordered me to stop my 'dangerous' gain-of-function research\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kibbuz zwei Jahre nach Hamas-Angriff: \"Sehr traumatisch hier\"",
+  "created_at": 1759826016.5906482,
+  "hash": "f36f237e1b653b8efc03d1a35c24dd51abd8a08a7ac356c48ee61e4d6eaa1ac9",
+  "id": "BLK_1759826016_f99d7c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "R2t6XnzZgoEokGLgoXkOr7+Ocg4PWgT1QgNGnmSGVtoobT3sp7MBemCujGSd5JPnD1O3hXLR5u4Xxpvij+IjBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 10:33",
+  "url": null
+}

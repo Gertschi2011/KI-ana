@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: AI can code, but it can't build software\n • Hacker News: Iroh-blobs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump-Besuch: Japan will \"neues goldenes Zeitalter\" mit den USA",
+  "hash": "cf32d7f0d55038fda1ef256e14bbb33d20ec31b63353f7c02d2a4aa6932c41cf",
+  "id": "BLK_1761627689_pqcalx",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "TJrJ5YbFbJT+2ePLgpycpgd3mq+Luuc5lUKq12B6KwmNsJ1jUOtLZH4aouRhbT2HtX39/iRSUhUm0gt8W1ecBw==",
+  "signed_at": "2025-10-28T05:01:29Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 06:01",
+  "ts": 1761627689,
+  "url": ""
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Twake Drive – The open-source alternative to Google Drive\n • Hacker News: Debian Technical Committee overrides systemd change\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Fragen und Antworten: Wie gefährlich ist die Vogelgrippe?",
+  "hash": "006c75499d73018f316e0bbd24b0cfc5f12460a17521d2cbc406bcbb97146eb0",
+  "id": "BLK_1761306785_o2op1e",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "of7hBGsX52Of3co/3cklubo6N+ZCJcVQszUMudC6A4rf7ujswYU85x4vEJad8hntwSPJyVFOs1ooGbZGnRHzCQ==",
+  "signed_at": "2025-10-24T11:53:05Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 13:53",
+  "ts": 1761306785,
+  "url": ""
+}

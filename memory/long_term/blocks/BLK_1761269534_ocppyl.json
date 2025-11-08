@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Counter-Strike's player economy is in a multi-billion dollar freefall\n • Hacker News: React Flow, open source libraries for node-based UIs with React or Svelte\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Minimalkompromiss bei Verwendung von russischem Geld",
+  "hash": "303c6dac74836c2c4731f053bb89af31ab1417ae64029d3d0c11f65e50c73152",
+  "id": "BLK_1761269534_ocppyl",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "hbx7Nkn7m/t0SIbuAH3g62veVaOhGkThYFCm72F4U0XNjUBpG0pXRn7ucU4kMUTJfr9KyX4G+Ueg0ng1cBzVAQ==",
+  "signed_at": "2025-10-24T01:32:14Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 03:32",
+  "ts": 1761269534,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: DNA reveals the real killers that brought down Napoleon's army\n • Hacker News: Synadia and TigerBeetle Commit $512k USD to the Zig Software Foundation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Familienpolitik auf dem Prüfstand - was kommt, was nicht?",
+  "created_at": 1761405835.8247337,
+  "hash": "56cb964012ddbec5510adbc6427eff6d5d39afa4511a18e1ac01c63f3f5940b9",
+  "id": "BLK_1761405835_3020fa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "bHqc6+VtndtKux5DYkEr/hpvt+6ukZmKuPGgqLYc7mLAMi5mEVAijOag5GznRU88R4LNE3uFxVxQUQDYAxaGCA==",
+  "signed_at": "2025-10-25T15:23:55Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 17:23",
+  "url": null
+}

@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759082977_2a9627",
-  "title": "Web Digest 2025-09-28 20:09",
   "content": "• Hacker News: Denmark bans civil drones after more sightings\n • Hacker News: Bayesian Data Analysis, Third edition [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Milliardenloch: Pflegegrad 1 streichen - oder nicht?",
+  "created_at": 1759082977.8930242,
+  "hash": "7a6ac0891c02c376c951d65a53ac20a13ffc7ee0dd8412a6ccb1f391fc63c393",
+  "id": "BLK_1759082977_2a9627",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "DUTnU2JJl0TdoFjbHroba9gns4OE8xK+6d0Lp73nJi6h6GL3GZV4T//vexiHBiQewfjauHi6dvHb/Q7rvoq+Aw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759082977.8930242,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 20:09",
+  "url": null
 }

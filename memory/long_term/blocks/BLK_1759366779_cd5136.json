@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The biggest semantic mess in Futhark\n • Hacker News: Cormac McCarthy's personal library\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Aus dem schwarz-roten Ruckeln soll ein Ruck werden",
+  "created_at": 1759366779.940901,
+  "hash": "8b569519abdc28b04147c239d91b593821eabc8b0bfc25989d340f8188575e9c",
+  "id": "BLK_1759366779_cd5136",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "kaISMngsN4TNdOqz3UdkCY6zIEjtKxvoo/iewiZ41Xazk53AHOVzSkFjhkw2pbyfs0uIr3NL49mdC91SLFIeDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 02:59",
+  "url": null
+}

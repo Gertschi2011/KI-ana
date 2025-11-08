@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The (economic) AI apocalypse is nigh\n • Hacker News: Build a VPN Tunnel with Wintun on Windows – Part 1\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Woran ist Frankreichs Premier Lecornu gescheitert?",
+  "created_at": 1759750384.3053236,
+  "hash": "a26a2cb28811777da7c3b32f523f5cce29b3637baeb00ff0cde6ba53a7811b96",
+  "id": "BLK_1759750384_ef1b2d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9KS4zZHC4kdSzuHPpQT+8sPEgZWraJsu8j7EBu/2GFNvTkLl1joYQnxVVix2QiL2zBY/PPAhaQ+6QpwHZAElBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 13:33",
+  "url": null
+}

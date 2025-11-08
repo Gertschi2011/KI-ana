@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Jax: Fast Combinations Calculation\n • Hacker News: Big Tech Told Kids to Code. The Jobs Didn’t Follow [audio]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Weißes Haus veröffentlicht Trumps Nahost-Friedensplan",
+  "created_at": 1759184418.844637,
+  "hash": "5584fc1fb42adc10a461f72551e9e57a069a9f93b34155c8d713d8376cc652ff",
+  "id": "BLK_1759184418_b5ed27",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "qH9GR6nz1I8wvRVtjOFoxHMhWBMteGzXCqHLtM6QpDMAjSOHxHoSr8MxOgu0pO8RgpicMSxfb+KHPiaBkDSvDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 00:20",
+  "url": null
+}

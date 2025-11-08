@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🗂️ KI_ana Adressbuch</title>
+  <link href="/static/styles.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed!important;
+      top: 0!important;
+      left: 0!important;
+      right: 0!important;
+      z-index: 1000!important;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 20px;
+      max-width: 1400px;
+      margin: 70px auto 20px;
+      padding: 20px;
+      height: calc(100vh - 110px);
+    }
+
+    .panel {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      font-weight: 600;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    /* Tree View */
+    .tree {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tree-item {
+      margin: 4px 0;
+    }
+
+    .tree-node {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .tree-node:hover {
+      background: #f3f4f6;
+    }
+
+    .tree-node.active {
+      background: #667eea;
+      color: white;
+    }
+
+    .tree-icon {
+      font-size: 1.2em;
+      width: 20px;
+      text-align: center;
+    }
+
+    .tree-toggle {
+      cursor: pointer;
+      width: 16px;
+      font-size: 0.9em;
+      opacity: 0.6;
+    }
+
+    .tree-label {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .tree-count {
+      font-size: 0.85em;
+      opacity: 0.7;
+      background: rgba(0,0,0,0.05);
+      padding: 2px 8px;
+      border-radius: 12px;
+      min-width: 24px;
+      text-align: center;
+    }
+
+    .tree-node.active .tree-count {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .tree-children {
+      list-style: none;
+      padding-left: 24px;
+      margin: 0;
+      display: none;
+    }
+
+    .tree-children.open {
+      display: block;
+    }
+
+    /* Block List */
+    .block-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .block-item {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 16px;
+      border-left: 4px solid #667eea;
+      transition: all 0.2s;
+    }
+
+    .block-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateX(4px);
+    }
+
+    .block-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+
+    .block-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.85em;
+      color: #6b7280;
+    }
+
+    .block-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #9ca3af;
+    }
+
+    .empty-state-icon {
+      font-size: 3em;
+      margin-bottom: 16px;
+    }
+
+    .search-box {
+      position: sticky;
+      top: 0;
+      background: white;
+      padding: 12px;
+      border-bottom: 1px solid #e5e7eb;
+      margin: -16px -16px 16px -16px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 0.95em;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #9ca3af;
+    }
+
+    .error {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 16px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 16px;
+      padding: 12px;
+      background: #f3f4f6;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      font-size: 0.9em;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-label {
+      opacity: 0.6;
+      font-size: 0.85em;
+    }
+
+    .stat-value {
+      font-weight: 600;
+      color: #667eea;
+    }
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+
+  <div class="container">
+    <!-- Left Panel: Tree -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>📁</span>
+        <span>Themenbaum</span>
+      </div>
+      <div class="panel-body">
+        <div class="search-box">
+          <input 
+            type="text" 
+            class="search-input" 
+            placeholder="Themen durchsuchen..." 
+            id="searchInput"
+          >
+        </div>
+        <div id="tree"></div>
+      </div>
+    </div>
+
+    <!-- Right Panel: Blocks -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>📄</span>
+        <span id="breadcrumb">Willkommen</span>
+      </div>
+      <div class="panel-body">
+        <div class="stats" id="stats" style="display:none">
+          <div class="stat-item">
+            <div class="stat-label">Gesamt Blöcke</div>
+            <div class="stat-value" id="statBlocks">0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Themen</div>
+            <div class="stat-value" id="statTopics">0</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-label">Zuletzt aktualisiert</div>
+            <div class="stat-value" id="statUpdated">-</div>
+          </div>
+        </div>
+        <div id="blockList"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/nav.js?v=20251029"></script>
+  <script>
+    let treeData = null;
+    let currentPath = [];
+
+    // Load tree on page load
+    async function loadTree() {
+      try {
+        const r = await fetch('/api/addressbook/tree');
+        const data = await r.json();
+        
+        if (data.ok) {
+          treeData = data.tree;
+          renderTree(data.tree);
+          updateStats(data.stats);
+        } else {
+          showError('Fehler beim Laden des Baums');
+        }
+      } catch (e) {
+        showError('Index nicht gefunden. Bitte führe zuerst den Indexer aus.');
+      }
+    }
+
+    function renderTree(tree, container = null, level = 0) {
+      if (!container) {
+        container = document.getElementById('tree');
+        container.innerHTML = '';
+      }
+
+      const ul = document.createElement('ul');
+      ul.className = level === 0 ? 'tree' : 'tree-children';
+
+      const children = tree.children || [];
+      
+      for (const child of children) {
+        const li = document.createElement('li');
+        li.className = 'tree-item';
+
+        const node = document.createElement('div');
+        node.className = 'tree-node';
+
+        // Toggle button (if has children)
+        if (child.children && child.children.length > 0) {
+          const toggle = document.createElement('span');
+          toggle.className = 'tree-toggle';
+          toggle.textContent = '▶';
+          toggle.onclick = (e) => {
+            e.stopPropagation();
+            const childrenEl = li.querySelector('.tree-children');
+            if (childrenEl) {
+              childrenEl.classList.toggle('open');
+              toggle.textContent = childrenEl.classList.contains('open') ? '▼' : '▶';
+            }
+          };
+          node.appendChild(toggle);
+        } else {
+          const spacer = document.createElement('span');
+          spacer.style.width = '16px';
+          node.appendChild(spacer);
+        }
+
+        // Icon
+        const icon = document.createElement('span');
+        icon.className = 'tree-icon';
+        icon.textContent = child.children && child.children.length > 0 ? '📁' : '📄';
+        node.appendChild(icon);
+
+        // Label
+        const label = document.createElement('span');
+        label.className = 'tree-label';
+        label.textContent = child.name;
+        node.appendChild(label);
+
+        // Count
+        const count = document.createElement('span');
+        count.className = 'tree-count';
+        count.textContent = child.count || 0;
+        node.appendChild(count);
+
+        // Click handler
+        node.onclick = () => {
+          // Deselect all
+          document.querySelectorAll('.tree-node').forEach(n => n.classList.remove('active'));
+          // Select this
+          node.classList.add('active');
+          // Load blocks
+          selectPath(child.path, child.name);
+        };
+
+        li.appendChild(node);
+
+        // Recursively render children
+        if (child.children && child.children.length > 0) {
+          const childrenUl = document.createElement('ul');
+          childrenUl.className = 'tree-children';
+          renderTree(child, childrenUl, level + 1);
+          li.appendChild(childrenUl);
+        }
+
+        ul.appendChild(li);
+      }
+
+      container.appendChild(ul);
+    }
+
+    function selectPath(path, name) {
+      currentPath = path;
+      document.getElementById('breadcrumb').textContent = path.join(' / ') || 'Root';
+      loadBlocks(path.join('/'));
+    }
+
+    async function loadBlocks(path) {
+      const container = document.getElementById('blockList');
+      container.innerHTML = '<div class="loading">Lade Blöcke...</div>';
+
+      try {
+        const r = await fetch(`/api/addressbook/list?path=${encodeURIComponent(path)}`);
+        const data = await r.json();
+
+        if (data.ok) {
+          renderBlocks(data.blocks || [], data.node);
+        } else {
+          showError('Fehler beim Laden der Blöcke');
+        }
+      } catch (e) {
+        showError('Fehler beim Laden der Blöcke: ' + e.message);
+      }
+    }
+
+    function renderBlocks(blocks, node) {
+      const container = document.getElementById('blockList');
+      
+      if (blocks.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📭</div>
+            <div><strong>${node ? node.count : 0} Blöcke</strong> in diesem Thema</div>
+            <div style="margin-top:8px;font-size:0.9em">
+              ${node && node.blocks_count > 0 ? 'Blockliste noch nicht implementiert' : 'Keine Blöcke vorhanden'}
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      const list = document.createElement('div');
+      list.className = 'block-list';
+
+      blocks.forEach(block => {
+        const item = document.createElement('div');
+        item.className = 'block-item';
+
+        const title = document.createElement('div');
+        title.className = 'block-title';
+        title.textContent = block.title || 'Ohne Titel';
+        item.appendChild(title);
+
+        const meta = document.createElement('div');
+        meta.className = 'block-meta';
+        
+        meta.innerHTML = `
+          <div class="block-meta-item">📅 ${new Date(block.timestamp * 1000).toLocaleDateString('de-DE')}</div>
+          <div class="block-meta-item">⭐ Trust: ${block.trust}/10</div>
+          <div class="block-meta-item">🔑 ${block.id}</div>
+        `;
+        
+        item.appendChild(meta);
+        list.appendChild(item);
+      });
+
+      container.innerHTML = '';
+      container.appendChild(list);
+    }
+
+    function updateStats(stats) {
+      if (!stats) return;
+      
+      document.getElementById('stats').style.display = 'flex';
+      document.getElementById('statBlocks').textContent = stats.indexed_blocks || 0;
+      document.getElementById('statTopics').textContent = stats.topics || 0;
+      
+      if (stats.last_updated) {
+        const date = new Date(stats.last_updated * 1000);
+        document.getElementById('statUpdated').textContent = date.toLocaleString('de-DE');
+      }
+    }
+
+    function showError(message) {
+      const container = document.getElementById('blockList');
+      container.innerHTML = `<div class="error">${message}</div>`;
+    }
+
+    // Search functionality
+    let searchTimeout;
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      const query = e.target.value.trim();
+      
+      if (query.length < 2) {
+        if (treeData) renderTree(treeData);
+        return;
+      }
+
+      searchTimeout = setTimeout(async () => {
+        try {
+          const r = await fetch(`/api/addressbook/search?q=${encodeURIComponent(query)}`);
+          const data = await r.json();
+          
+          if (data.ok) {
+            renderSearchResults(data.results);
+          }
+        } catch (e) {
+          console.error('Search failed:', e);
+        }
+      }, 300);
+    });
+
+    function renderSearchResults(results) {
+      const container = document.getElementById('tree');
+      container.innerHTML = '';
+
+      if (results.length === 0) {
+        container.innerHTML = '<div class="empty-state">Keine Ergebnisse</div>';
+        return;
+      }
+
+      const ul = document.createElement('ul');
+      ul.className = 'tree';
+
+      results.forEach(result => {
+        const li = document.createElement('li');
+        li.className = 'tree-item';
+
+        const node = document.createElement('div');
+        node.className = 'tree-node';
+
+        const icon = document.createElement('span');
+        icon.className = 'tree-icon';
+        icon.textContent = '🔍';
+        node.appendChild(icon);
+
+        const label = document.createElement('span');
+        label.className = 'tree-label';
+        label.textContent = result.path.join(' / ');
+        node.appendChild(label);
+
+        const count = document.createElement('span');
+        count.className = 'tree-count';
+        count.textContent = result.count || 0;
+        node.appendChild(count);
+
+        node.onclick = () => {
+          document.querySelectorAll('.tree-node').forEach(n => n.classList.remove('active'));
+          node.classList.add('active');
+          selectPath(result.path, result.name);
+        };
+
+        li.appendChild(node);
+        ul.appendChild(li);
+      });
+
+      container.appendChild(ul);
+    }
+
+    // Load tree on page load
+    loadTree();
+  </script>
+</body>
+</html>

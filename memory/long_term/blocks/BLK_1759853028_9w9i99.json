@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Launch HN: LlamaFarm (YC W22) – Open-source framework for distributed AI\n • Hacker News: Gold Prices Top $4k for First Time\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Kommission will Zölle auf Stahl auf 50 Prozent verdoppeln",
+  "hash": "16d813704c72099456fbc2b9f8cddcbaa46684b67f35f17bcaf7479632f63e2a",
+  "id": "BLK_1759853028_9w9i99",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "RmN7AlryNLpMikJAx+eYgxQlrGdFnl4aB2A8y+Kwz5hF6HPL1RzF6Vz4B99T5ausO+khL1O9Oa+rTgxDjwWnCw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 18:03",
+  "ts": 1759853028,
+  "url": ""
+}

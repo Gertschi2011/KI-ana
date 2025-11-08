@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: We priced basic needs in work hours (global ranking and CSVs)\n • Hacker News: Benjie's Humanoid Olympic Games\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Treffen mit Putin in Ungarn an",
+  "created_at": 1760647215.8029368,
+  "hash": "72efefa881a2df9136b958118ce3b5bc861a48a9195cd968fb4860fbda1a137b",
+  "id": "BLK_1760647215_0f8d05",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "68INbAuozCosjIvDUCXi3srS2kDhmp18qyLu4VX7EP/ltVhaWEJD//Uu3Go3wXrTu2qKFd+QsTBJP1Qpesq5DQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 22:40",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Coral Protocol Open Infrastructure Connecting the Internet of Agents\n • Hacker News: China's New Rare Earth and Magnet Restrictions Threaten US Defense Supply Chains\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Hamas bestätigt Freilassung der Geiseln ab Montag ++",
+  "created_at": 1760247415.17025,
+  "hash": "bd79587867dfc170b8f1b89d92e4377fdae738ae51e78fea934b020653ef5156",
+  "id": "BLK_1760247415_cf83ee",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ZBL7vpq9NZ1YgkIoSSCcqhEzw0euW9OOr6HX+AF5Q9DaMuSZxJA1br/1Af+PjIBxyz/GoPqssXi4WafkIf1uBQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 07:36",
+  "url": null
+}

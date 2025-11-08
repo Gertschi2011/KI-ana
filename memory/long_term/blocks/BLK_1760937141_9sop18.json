@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Entire Linux Network stack diagram (2024)\n • Hacker News: Introduction to reverse-engineering vintage synth firmware\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Reaktionen auf Kunstdiebstahl: \"Das ist der französische Familienschmuck\"",
+  "hash": "000048f3683af93c86bd5522e129085773c1cfac08d4daf64d9804f4f8688683",
+  "id": "BLK_1760937141_9sop18",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "1JOICBnFDRLSWI6uLCxrNsLYA7aj00IAPeOzOGOjjx+EUOCFPcHfwj8RaqL6bRh1yfxCQUkYJFBfdj+Ds1Z+Aw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 07:12",
+  "ts": 1760937141,
+  "url": ""
+}

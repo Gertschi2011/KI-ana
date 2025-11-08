@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: GrapheneOS is finally ready to break free from Pixels and it may never look back\n • Hacker News: Surveillance data challenges what we thought we knew about location tracking\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienberichte: Einigung zu Wehrdienst offenbar vorerst geplatzt",
+  "created_at": 1760483333.1233697,
+  "hash": "eaf7977e2bfe1a2d783cc4258071beff392b841648699fc822d213293d370445",
+  "id": "BLK_1760483333_6af70b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "3ngbuTbKb2wGzxZx567TRYHbqNJwbGS++Fk8vbJFbNK+uePYVfGo75R53xBiaXOYkEacpHEjJ5xLjrRmoMCYBA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 01:08",
+  "url": null
+}

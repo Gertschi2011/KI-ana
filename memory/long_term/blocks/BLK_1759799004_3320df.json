@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Microsoft are removing mechanisms for creating a local account in Windows Setup\n • Hacker News: Analytical Review of Depression and Suicidality from Finasteride\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Gespräche enden in \"positiver Atmosphäre\"",
+  "created_at": 1759799004.9841676,
+  "hash": "2ee77ca235d2d245e71231b4ed760f48e55dfaa9953a0f57a98bf6e4a32dc7e1",
+  "id": "BLK_1759799004_3320df",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "dF3OzlhtxHCv3b6MBq2y6nbBsTmDdgQJrw3X7RWuv1su7LzNQLJOVfz+vFlbm59MIH5WK9EF7svQOT1hlZMpAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 03:03",
+  "url": null
+}

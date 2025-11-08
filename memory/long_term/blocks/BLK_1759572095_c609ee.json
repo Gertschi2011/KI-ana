@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Alibaba cloud FPGA: the $200 Kintex UltraScale+\n • Hacker News: Optimizing a 6502 image decoder – part II: assembly\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zweites Migrationstreffen: Dobrindt will \"mehr Schärfe und Härte\"",
+  "created_at": 1759572095.838272,
+  "hash": "d49fe540ef384b85d98ae299aad8a3ec57cf698e89da5d2c8c5f68b6a26da4b3",
+  "id": "BLK_1759572095_c609ee",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/0bSCoTQd3avnWMkdx5YoGQSFI58+W7mj6FLHTlefFLgxwLTT3z6TaDzd1cSmWOnVTVNkkWiWu/1rFc6N+E/Cw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 12:01",
+  "url": null
+}

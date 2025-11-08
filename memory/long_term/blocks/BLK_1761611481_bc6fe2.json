@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI can code, but it can't build software\n • Hacker News: Iroh-blobs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD Anschluss in den USA sucht",
+  "created_at": 1761611481.4070082,
+  "hash": "c0baafb054ef14f25b2cdca6095ac4435f4f9c00891833a7212896fdd4c68fbf",
+  "id": "BLK_1761611481_bc6fe2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ordl9LXgANBNNfluNsQSjO4/ykHMgiprIM+BbN5BQNhH7YSvnjuoye7PE7GUsj/dEtNrNCG/FPXjyFRj9qKzBQ==",
+  "signed_at": "2025-10-28T00:31:21Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 01:31",
+  "url": null
+}

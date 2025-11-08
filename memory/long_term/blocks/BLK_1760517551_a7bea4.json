@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Firm, a text-based work management system\n • Hacker News: Pixnapping Attack\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Worum geht es beim Streit um die neuen Bundeswehrpläne?",
+  "created_at": 1760517551.5020165,
+  "hash": "7f9494c6ec8253e74ff4baf6d281aee1bb71e3884d384541d4202e10c52fa43e",
+  "id": "BLK_1760517551_a7bea4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "12oR7f+50/G18VX/InN5JEI8wDpe42APyV0h8fiPRz664wb1hw2JQ4ghYF2jFRyDgweZw670tcZTFKB0W8aiBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 10:39",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: OpenAI's H1 2025: $4.3B in income, $13.5B in loss\n • Hacker News: Gemini 3.0 Pro – early tests\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Krieg: Europäer streiten über russisches Vermögen",
+  "created_at": 1759433419.8837452,
+  "hash": "e77572382c0b9dc229c22948915e776f561747cabc4493fba11727a4a1018840",
+  "id": "BLK_1759433419_50fd02",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oW9Jh9oUSyntoJA8hY4BAeKaHzghkCK9G39y6SydArnYnbj/wwSFIElq5wpEi8OhyrGhQ6DlixuWyWyc931jDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 21:30",
+  "url": null
+}

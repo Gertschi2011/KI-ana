@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Can we know whether a profiler is accurate?\n • Hacker News: Disk Prices\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pistorius verteidigt seine Kritik am Wehrdienst-Kompromiss",
+  "created_at": 1760504944.2087913,
+  "hash": "9603c1f38d091f795d4093f707311237b7537b35e7e382266ef64a21a46a099a",
+  "id": "BLK_1760504944_53146c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "TcoKFOHkwAphmdt4U5I7SwDhQ/Su2qlKSMi1vH6n/mpx/R/fmovlXoWeX9k2ump38tYbYWt9AN7EqkfTROM/Cw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 07:09",
+  "url": null
+}

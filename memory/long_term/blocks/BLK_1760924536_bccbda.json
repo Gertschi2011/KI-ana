@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: From Hollywood to horticulture: Cate Blanchett on a mission to save seeds\n • Hacker News: QuickDrawViewer: A Mac OS X utility to visualise QuickDraw (PICT) files\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Reaktionen auf Kunstdiebstahl: \"Das ist der französische Familienschmuck\"",
+  "created_at": 1760924536.2384462,
+  "hash": "b31399bb75ff5b7b3ad79bce29f6263ce1ea0283dc5bdda6856846577c61d99e",
+  "id": "BLK_1760924536_bccbda",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "tMLX/eXOV6IGpauRQaw5/rfPL/mjN7mUZ7KsJeCf2fQxpoZ3aF4Ffas+2y9eXSE8nz155YqEgogEKFzRHjJhDw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 03:42",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Do Orthodox men wear suits 24/7? (2018)\n • Hacker News: ARM Memory Tagging: how it improves C/C++ memory safety (2018) [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761428018.4759586,
+  "hash": "757db4363b421cdcbe0f1c3269a64f0915063acc0e456e55907619d4d49e15c5",
+  "id": "BLK_1761428018_3164db",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "6n7PFEb3Zdwh6nqJJhEw/zOUkzDmvArij6ynJ+9X1ousMZB1vb0MeUHEmT2WXOGIanFWkGOvEJ++fEEAJpvPBg==",
+  "signed_at": "2025-10-25T21:33:38Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 23:33",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Introduction to the concept of likelihood and its applications (2018)\n • Hacker News: AI discovers a 5x faster MoE load balancing algorithm than human experts\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "hash": "fac499cd9ccd20c0a29f84406437bd51e957fb470aa7014a6a521050dca57408",
+  "id": "BLK_1761264132_rnwb5u",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "hu/jxy7oMWM4s+XGjvrhGwqYHrRFPce4YEsLSKirf5kUMdBZk0obAjviN0YaZJEIIxURtUEOYpvltvHgHOCOCQ==",
+  "signed_at": "2025-10-24T00:02:12Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 02:02",
+  "ts": 1761264132,
+  "url": ""
+}

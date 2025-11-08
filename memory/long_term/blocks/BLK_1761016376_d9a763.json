@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Argentine peso weakens to fresh low despite US interventions\n • Hacker News: Wikipedia says traffic is falling due to AI search summaries and social video\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach \"Stadtbild\"-Äußerungen: Der Stil des Kanzlers steht in der Kritik",
+  "created_at": 1761016376.881468,
+  "hash": "281c572dbdf8524caf47a47b28f99a11803cd349d3778a7608c435899e7d34f3",
+  "id": "BLK_1761016376_d9a763",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "UfqmqlelmxMTONcYSGZuAz/oOpLPXLruk+G6O5rDizUbALtXAbVqleNLG0bWEcJDZEfsbGh2n5086wSYaLIvCQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 05:12",
+  "url": null
+}

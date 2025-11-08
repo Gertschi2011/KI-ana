@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Myth of Outrunning Your Diet\n • Hacker News: Sodium-ion batteries have started to appear in cars and home storage\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russland schützt Atomarsenal mit westlicher Technik",
+  "created_at": 1761194725.9139822,
+  "hash": "2e18ae64e3934771772fd8580cfe1409f61a1d242fd42734c3b32249d15cad93",
+  "id": "BLK_1761194725_a140fa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Jb6kGKIfVd9HMwDSJ/fPUqjMOe+E3mBR2I0ESQhNdPR+HU2Vm47sKgk3xKBq4DDWAALb6KRKWR2IHy2vUozMAQ==",
+  "signed_at": "2025-10-23T04:45:25Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 06:45",
+  "url": null
+}

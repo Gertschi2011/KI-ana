@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Doctorow: American tech cartels use apps to break the law\n • Hacker News: Ortega Hypothesis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Innere Sicherheit: So will Deutschland Drohnen bekämpfen",
+  "created_at": 1759948469.0253088,
+  "hash": "a641975c1eea5f22b141e38efda9950324803b1e815da6dc8b320f6570e2cdc8",
+  "id": "BLK_1759948469_cd38a7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "NG6QBGXAoLB4osOG0jiUma6D8/F8blfW/CrufWkWxkCxofUiFZC/94k7opz2O9xs3EHn7ZroCSpIUdQLHclYCA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 20:34",
+  "url": null
+}

@@ -248,11 +248,8 @@
   }
 
   function render(){
-    let q = (qEl?.value || '').trim().toLowerCase();
-    let data = !q ? items.slice() : items.filter(it => {
-      const hay = `${it.title||''} ${it.topic||''} ${it.source||''} ${it.origin||''}`.toLowerCase();
-      return hay.includes(q);
-    });
+    // Server-side filtering is now used, so we display all items directly
+    let data = items.slice();
     // Sortierschalter anwenden
     const mode = sortSel?.value || 'none';
     try{
@@ -334,7 +331,7 @@
     </table>`;
   }
 
-  qEl?.addEventListener('input', debounce(()=>{ page = 1; updateUrl(); render(); }, 200));
+  qEl?.addEventListener('input', debounce(()=>{ page = 1; updateUrl(); load(); }, 300));
   verifiedEl?.addEventListener('change', ()=>{ page = 1; updateUrl(); load(); });
   sortSel?.addEventListener('change', ()=>{ page = 1; updateUrl(); render(); });
   // Also reload from server when sort changes to apply server-side sort

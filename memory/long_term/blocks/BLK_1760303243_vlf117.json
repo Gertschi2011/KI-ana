@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Microsoft's \"EdgeAI for Beginners\":Learn How to Run AI Models Locally on Devices\n • Hacker News: Emacs agent-shell (powered by ACP)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Selenskyj spricht mit Trump: \"Tomahawks\" für die Ukraine?",
+  "hash": "694ad0491419f4b8f42cb77e9eb003f6516139a4788d6ae09dd7e1c3bc111feb",
+  "id": "BLK_1760303243_vlf117",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "8kryZxstotyrUo6Y5m5VaYlOMLLJxIq/3+1PXSy+OsPvhL+tqjn3bQpTlXKRWEEM8+R9KMyfJvCKKMVn1xI3CQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 23:07",
+  "ts": 1760303243,
+  "url": ""
+}

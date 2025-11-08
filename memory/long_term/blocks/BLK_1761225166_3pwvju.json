@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Casey Muratori: I can always tell a good programmer in an interview\n • Hacker News: I spent a year of my life making an ASN.1 compiler in D\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Airbus, Thales und Leonardo formen europäischen Satelliten-Konzern",
+  "hash": "0c9d7467eb7da7f39f3aa863dcbb72579c7b728c94f8bf70f83b5ef4e70ce3e4",
+  "id": "BLK_1761225166_3pwvju",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "eFrvyDmTjVnzgL2StvRX3l8cIuDsRJw4n+MtJnq3Aez8XG76Feq7nJtRzzNjGlg3M3sIsFZF1EZR7eR8YwFHDA==",
+  "signed_at": "2025-10-23T13:12:46Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 15:12",
+  "ts": 1761225166,
+  "url": ""
+}

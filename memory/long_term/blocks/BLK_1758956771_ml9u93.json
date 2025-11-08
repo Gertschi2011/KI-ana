@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758956771_ml9u93",
-  "title": "Web Digest 2025-09-27 09:06",
   "content": "• Hacker News: The Amazon Kindle War Against Piracy\n • Hacker News: Why Today's Humanoids Won't Learn Dexterity\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienbericht: Dobrindt will Drohnenabwehr besser regeln",
+  "hash": "b309bf866b702f5634feaa57497e14ed3b83a9748460d9d36569bdcc741cdeb7",
+  "id": "BLK_1758956771_ml9u93",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "TniPfJNIX1B1hjxXsWbIHxaUR5tsmQFlGtrYABLMWL8woc3XiEVTbfvHvo5oRhwdT1bH8OohEBs+CjL6e1fHDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 09:06",
   "ts": 1758956771,
-  "meta": {},
-  "hash": "b309bf866b702f5634feaa57497e14ed3b83a9748460d9d36569bdcc741cdeb7"
+  "url": ""
 }

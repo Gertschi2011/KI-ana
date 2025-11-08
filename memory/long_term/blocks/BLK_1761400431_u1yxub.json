@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Synadia and TigerBeetle Commit $512k USD to the Zig Software Foundation\n • Hacker News: Making a micro Linux distro (2023)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Social Media und Konsum: Bestimmt TikTok, was im Regal steht?",
+  "hash": "532717d0fadb53574e70d0e35cf8d3d3054cf922e56fe367f04eb92a0d06c4bf",
+  "id": "BLK_1761400431_u1yxub",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "yMWeZ4W1lAYozqKNrJQpFvqMMQRld8QvTfQoaMqOoAyl9DxXc9E6Vgdb+/uookreTsiT9NoBI1lBP9zjXUe9Bg==",
+  "signed_at": "2025-10-25T13:53:51Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 15:53",
+  "ts": 1761400431,
+  "url": ""
+}

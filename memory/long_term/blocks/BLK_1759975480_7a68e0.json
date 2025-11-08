@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A competitor crippled a $23.5M bootcamp by becoming a Reddit moderator\n • Hacker News: Radio Garten\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump gibt Einigung bei Gaza-Gesprächen bekannt",
+  "created_at": 1759975480.7317574,
+  "hash": "fcc068185e25ed8822ab3e6a739e802fdc390528e427f8eae0b26d03155c4dfa",
+  "id": "BLK_1759975480_7a68e0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "k2me7I6WFmK5FkdoTuBzBQcPLaMaj8gauqPPQRzJ/QdO+dXwXA6SARuhGvZHew70paIwINLu0FMkKlRKld78DQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 04:04",
+  "url": null
+}

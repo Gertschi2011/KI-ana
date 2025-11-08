@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ld_preload, the Invisible Key Theft\n • Hacker News: Why more SaaS companies are hiring chief trust officers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was hinter Merz' Satz zum \"Stadtbild\" steckt",
+  "created_at": 1760631008.3857436,
+  "hash": "340a97732d5c4d99d1b7d4794d8812e1f79244b389e5393534291c2d3fcc3b98",
+  "id": "BLK_1760631008_de58f7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ijntorRG/MpbltEsmSq9TnN24lrsjLuTL6FKIcw+jwte1YQApRFZFZORJOYqJFM6WXols4RsNqZADZEdIBx9Ag==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 18:10",
+  "url": null
+}

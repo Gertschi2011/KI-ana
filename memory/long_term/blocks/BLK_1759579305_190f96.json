@@ -1,0 +1,21 @@
+{
+  "content": "• tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas akzeptiert Teile des Gaza-Plans - die Hoffnung auf Frieden wächst",
+  "created_at": 1759579305.631882,
+  "hash": "ed5fa2a6e5a7cd601a0daae926211bda66938e907b3713225ade3bdee1cc3e3e",
+  "id": "BLK_1759579305_190f96",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "JjSo8/27vFTvpq1btbk5uYySWHgRXJsNZpRqcw2wCoijYzB8IGA4W443ZQe1R2g5wl7akXqPFuig3sedawD/Cg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 14:01",
+  "url": null
+}

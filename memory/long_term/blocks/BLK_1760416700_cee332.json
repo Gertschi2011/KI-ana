@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Wordle but you have to predict your score before playing\n • Hacker News: New York Times, AP, Newsmax and others say they won't sign new Pentagon rules\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Innenminister ringen um härteren Asylkurs - und die Solidarität",
+  "created_at": 1760416700.0085073,
+  "hash": "373afedd5fa13775fb3b5bdc99dd9320f85f43d59cb1774f0e9f84d3e1d7a13e",
+  "id": "BLK_1760416700_cee332",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "0IW2JnsAJDnVRivM++pxDKVJIWSDy+smTXA0GCBJqX2BSjiwKvGTqIVcQU7BnxI+1w+YmTVcMBQhNOcNfpd+CQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 06:38",
+  "url": null
+}

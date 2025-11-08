@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758740985_0gcu7j",
-  "title": "Web Digest 2025-09-24 21:09",
   "content": "• Hacker News: Giving users choice with Cloudflare's new Content Signals Policy\n • Hacker News: Tinder, Hinge, and their corporate owner keep rape under wraps\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Handelsabkommen mit der EU: US-Autozölle werden rückwirkend gesenkt",
+  "hash": "a13dc5c37d5d90688299c752dc5a7d246f84250ffcc3acca2e5535ad7bebee74",
+  "id": "BLK_1758740985_0gcu7j",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "4nMRKlR4uf/L0wbG8tjghOW9o5HUI6I5yeEqrDQT21sPfV3xH3c9Dr5APL8ZjHhfwUN05V4Cj6MbqKF5YJBeBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 21:09",
   "ts": 1758740985,
-  "meta": {},
-  "hash": "a13dc5c37d5d90688299c752dc5a7d246f84250ffcc3acca2e5535ad7bebee74"
+  "url": ""
 }

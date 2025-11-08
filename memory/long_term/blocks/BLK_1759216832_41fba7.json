@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Geolocation and Starlink\n • Hacker News: The ABS Programming Language\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump sieht Nahen Osten \"mehr als nah dran\" an einer Friedenslösung",
+  "created_at": 1759216832.8745167,
+  "hash": "209373136ac604063ac89a8150f5d5445c4652bdbbe3a740b65765754b11001b",
+  "id": "BLK_1759216832_41fba7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ieXfj7hewZSX07dA5XN7cq/NE8wZCKM05GgUZbZIIpju8URv1qwsUC4P5XMP6AWK3oGa6BY1Ww2xujoK26QlAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 09:20",
+  "url": null
+}

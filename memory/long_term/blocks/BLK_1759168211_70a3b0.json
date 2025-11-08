@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: S&P affirms 'AA+' credit rating for US, cites impact of tariff revenue\n • Hacker News: 79-year-old US citizen injured in immigration raid files $50M claim\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Worin sich die Deutschen einig sind",
+  "created_at": 1759168211.730701,
+  "hash": "fbd553cb437c98a1c1e74660d67f32b8815c7ee300d6a4f3e99aaf7829d3b6dc",
+  "id": "BLK_1759168211_70a3b0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "hIXlTjoGFIIu7pTCEPFUbz8dLzdJGtsuZKHvbpc38+IST2doP2ptK5IthkC31Js1Wr/A+b5j8ABj8w4AKh1BBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 19:50",
+  "url": null
+}

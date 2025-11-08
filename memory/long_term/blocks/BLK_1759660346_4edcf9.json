@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Personal data storage is an idea whose time has come\n • Hacker News: Why I Choose Email over Messaging\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach der Parlamentswahl: Biegt Tschechien von der Europa-Straße ab?",
+  "created_at": 1759660346.0229256,
+  "hash": "871efb74cf470f18d068df20a122c0bf406adeedc647ceeb7a3485c9dc10c662",
+  "id": "BLK_1759660346_4edcf9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Iz0UCJN6sOO1X6P2cWW86Wqa77dnswCaYLGh1pO2GNrMRdxDhPZ4mFfA5dPGsDnmxNOV+dd8QCfiQzGmCC3/Dw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 12:32",
+  "url": null
+}

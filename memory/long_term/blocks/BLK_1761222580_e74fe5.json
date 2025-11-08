@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Nango (YC W23) is hiring Staff Back end Engs (remote)\n • Hacker News: The Game Theory of How Algorithms Can Drive Up Prices\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Airbus, Thales und Leonardo formen europäischen Satelliten-Konzern",
+  "created_at": 1761222580.7384048,
+  "hash": "ab63f8e0d322641ed570dc2d447eeef7fc208c4da7b3c5f2ef6f26a74e4b3e36",
+  "id": "BLK_1761222580_e74fe5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "3OzqKNfaZCrxmcHSYoceKeaKQaz6oCrYgLGw/V+xdvA541vl9I7K5tHQYdLKZuCuGqyoadL82bq2OZs0LQyiAg==",
+  "signed_at": "2025-10-23T12:29:40Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 14:29",
+  "url": null
+}

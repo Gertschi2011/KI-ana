@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: You can't parse XML with regex. Let's do it anyways\n • Hacker News: Parrot – type-safe SQL in Gleam, supports SQlite, PostgreSQL and MySQL\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump entsendet Nationalgarde nach Chicago",
+  "hash": "83d3fd3208356fe0019642ed96b198a5be7eee650fae8831bfe15f1e42e70291",
+  "id": "BLK_1759635135_aqbv4n",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Iu0+HF3TWnnjZQ430+MvBXTi0HXUOtHSsl9+670vOTajJV0z20HWpOS/2CDhUA8I+Z0iPzgILF5EUW0oW9S0AQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 05:32",
+  "ts": 1759635135,
+  "url": ""
+}

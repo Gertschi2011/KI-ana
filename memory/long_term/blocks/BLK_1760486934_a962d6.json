@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FSF Announces Librephone Project\n • Hacker News: Interior cancels largest solar project in North America\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienberichte: Einigung zu Wehrdienst offenbar vorerst geplatzt",
+  "created_at": 1760486934.9787977,
+  "hash": "29586c1486e93aed4d608f768b1fc68be2047e717c45e319c319acdb8c0c71e6",
+  "id": "BLK_1760486934_a962d6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "KHQZeHXZhxdLAKFxw+6SPaPi07/dmsgAIj69lDyX0yxIp/aVEHf2johx4aqOvkuQ9y8RGQikuqM08QJxOA4uDQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 02:08",
+  "url": null
+}

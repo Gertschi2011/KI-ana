@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: HTTP3 Explained\n • Hacker News: Countering Trusting Trust Through Diverse Double-Compiling (DDC)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Alle Hamas-Geiseln frei: Medien melden zweite Übergabe",
+  "created_at": 1760344664.227459,
+  "hash": "748c1dcdf7c9779157bde8a9ed706fe811fbf4582b1ecedfc33f9bed063c21ef",
+  "id": "BLK_1760344664_d8abbc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "x9EyKK4cFqCdYYdn0objK8/DzvP7K8HSHbbw1wnyLXCr+GRLh8sUAzjiZ3EG1JeGUy0Hdge2Oo4BLSwXg8UzDA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 10:37",
+  "url": null
+}

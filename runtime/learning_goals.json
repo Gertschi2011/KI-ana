@@ -1,0 +1,1122 @@
+[
+  {
+    "id": "goal_1761145243_711",
+    "topic": "Blockchain Technologie",
+    "description": "Learn about Blockchain Technologie to fill knowledge gap",
+    "gap": {
+      "topic": "Blockchain Technologie",
+      "gap_type": "incomplete",
+      "evidence": [
+        "High demand, insufficient coverage"
+      ],
+      "priority_score": 0.75,
+      "identified_at": 1761145243.7461479
+    },
+    "priority": 0.9,
+    "status": "pending",
+    "created_at": 1761145243.747018,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Blockchain Technologie",
+      "Blockchain Technologie Grundlagen",
+      "Blockchain Technologie Erkl\u00e4rung",
+      "Blockchain Technologie Tutorial",
+      "Was ist Blockchain Technologie"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Blockchain Technologie'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_9069",
+    "topic": "Quantencomputing",
+    "description": "Learn about Quantencomputing to fill knowledge gap",
+    "gap": {
+      "topic": "Quantencomputing",
+      "gap_type": "incomplete",
+      "evidence": [
+        "High demand, insufficient coverage"
+      ],
+      "priority_score": 0.8,
+      "identified_at": 1761145243.7461462
+    },
+    "priority": 0.8500000000000001,
+    "status": "pending",
+    "created_at": 1761145243.7470078,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Quantencomputing",
+      "Quantencomputing Grundlagen",
+      "Quantencomputing Erkl\u00e4rung",
+      "Quantencomputing Tutorial",
+      "Was ist Quantencomputing"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Quantencomputing'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_7937",
+    "topic": "Machine Learning Algorithmen",
+    "description": "Learn about Machine Learning Algorithmen to fill knowledge gap",
+    "gap": {
+      "topic": "Machine Learning Algorithmen",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.7461343
+    },
+    "priority": 0.85,
+    "status": "pending",
+    "created_at": 1761145243.7469847,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Machine Learning Algorithmen",
+      "Machine Learning Algorithmen Grundlagen",
+      "Machine Learning Algorithmen Erkl\u00e4rung",
+      "Machine Learning Algorithmen Tutorial",
+      "Was ist Machine Learning Algorithmen"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Machine Learning Algorithmen'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_3712",
+    "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+    "description": "Learn about K\u00fcnstliche Intelligenz Grundlagen to fill knowledge gap",
+    "gap": {
+      "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.7461283
+    },
+    "priority": 0.75,
+    "status": "pending",
+    "created_at": 1761145243.74694,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "K\u00fcnstliche Intelligenz Grundlagen",
+      "K\u00fcnstliche Intelligenz Grundlagen Grundlagen",
+      "K\u00fcnstliche Intelligenz Grundlagen Erkl\u00e4rung",
+      "K\u00fcnstliche Intelligenz Grundlagen Tutorial",
+      "Was ist K\u00fcnstliche Intelligenz Grundlagen"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'K\u00fcnstliche Intelligenz Grundlagen'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_3897",
+    "topic": "Python Best Practices",
+    "description": "Learn about Python Best Practices to fill knowledge gap",
+    "gap": {
+      "topic": "Python Best Practices",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.7461357
+    },
+    "priority": 0.75,
+    "status": "pending",
+    "created_at": 1761145243.7469966,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Python Best Practices",
+      "Python Best Practices Grundlagen",
+      "Python Best Practices Erkl\u00e4rung",
+      "Python Best Practices Tutorial",
+      "Was ist Python Best Practices"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Python Best Practices'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_9395",
+    "topic": "Neural Networks Architectures",
+    "description": "Learn about Neural Networks Architectures to fill knowledge gap",
+    "gap": {
+      "topic": "Neural Networks Architectures",
+      "gap_type": "missing",
+      "evidence": [
+        "Related to existing knowledge, not yet covered"
+      ],
+      "priority_score": 0.6,
+      "identified_at": 1761145243.7461543
+    },
+    "priority": 0.65,
+    "status": "pending",
+    "created_at": 1761145243.747028,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Neural Networks Architectures",
+      "Neural Networks Architectures Grundlagen",
+      "Neural Networks Architectures Erkl\u00e4rung",
+      "Neural Networks Architectures Tutorial",
+      "Was ist Neural Networks Architectures"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Neural Networks Architectures'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_4503",
+    "topic": "Transformer Models",
+    "description": "Learn about Transformer Models to fill knowledge gap",
+    "gap": {
+      "topic": "Transformer Models",
+      "gap_type": "missing",
+      "evidence": [
+        "Related to existing knowledge, not yet covered"
+      ],
+      "priority_score": 0.6,
+      "identified_at": 1761145243.7461553
+    },
+    "priority": 0.65,
+    "status": "pending",
+    "created_at": 1761145243.7470386,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Transformer Models",
+      "Transformer Models Grundlagen",
+      "Transformer Models Erkl\u00e4rung",
+      "Transformer Models Tutorial",
+      "Was ist Transformer Models"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Transformer Models'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_711",
+    "topic": "Blockchain Technologie",
+    "description": "Learn about Blockchain Technologie to fill knowledge gap",
+    "gap": {
+      "topic": "Blockchain Technologie",
+      "gap_type": "incomplete",
+      "evidence": [
+        "High demand, insufficient coverage"
+      ],
+      "priority_score": 0.75,
+      "identified_at": 1761145243.7609031
+    },
+    "priority": 0.9,
+    "status": "pending",
+    "created_at": 1761145243.76207,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Blockchain Technologie",
+      "Blockchain Technologie Grundlagen",
+      "Blockchain Technologie Erkl\u00e4rung",
+      "Blockchain Technologie Tutorial",
+      "Was ist Blockchain Technologie"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Blockchain Technologie'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_9069",
+    "topic": "Quantencomputing",
+    "description": "Learn about Quantencomputing to fill knowledge gap",
+    "gap": {
+      "topic": "Quantencomputing",
+      "gap_type": "incomplete",
+      "evidence": [
+        "High demand, insufficient coverage"
+      ],
+      "priority_score": 0.8,
+      "identified_at": 1761145243.7609017
+    },
+    "priority": 0.8500000000000001,
+    "status": "pending",
+    "created_at": 1761145243.7620597,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Quantencomputing",
+      "Quantencomputing Grundlagen",
+      "Quantencomputing Erkl\u00e4rung",
+      "Quantencomputing Tutorial",
+      "Was ist Quantencomputing"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Quantencomputing'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_7937",
+    "topic": "Machine Learning Algorithmen",
+    "description": "Learn about Machine Learning Algorithmen to fill knowledge gap",
+    "gap": {
+      "topic": "Machine Learning Algorithmen",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.7608743
+    },
+    "priority": 0.85,
+    "status": "pending",
+    "created_at": 1761145243.7620368,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Machine Learning Algorithmen",
+      "Machine Learning Algorithmen Grundlagen",
+      "Machine Learning Algorithmen Erkl\u00e4rung",
+      "Machine Learning Algorithmen Tutorial",
+      "Was ist Machine Learning Algorithmen"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Machine Learning Algorithmen'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_3712",
+    "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+    "description": "Learn about K\u00fcnstliche Intelligenz Grundlagen to fill knowledge gap",
+    "gap": {
+      "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.7608685
+    },
+    "priority": 0.75,
+    "status": "pending",
+    "created_at": 1761145243.7620027,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "K\u00fcnstliche Intelligenz Grundlagen",
+      "K\u00fcnstliche Intelligenz Grundlagen Grundlagen",
+      "K\u00fcnstliche Intelligenz Grundlagen Erkl\u00e4rung",
+      "K\u00fcnstliche Intelligenz Grundlagen Tutorial",
+      "Was ist K\u00fcnstliche Intelligenz Grundlagen"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'K\u00fcnstliche Intelligenz Grundlagen'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_3897",
+    "topic": "Python Best Practices",
+    "description": "Learn about Python Best Practices to fill knowledge gap",
+    "gap": {
+      "topic": "Python Best Practices",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.7608757
+    },
+    "priority": 0.75,
+    "status": "pending",
+    "created_at": 1761145243.7620494,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Python Best Practices",
+      "Python Best Practices Grundlagen",
+      "Python Best Practices Erkl\u00e4rung",
+      "Python Best Practices Tutorial",
+      "Was ist Python Best Practices"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Python Best Practices'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_9395",
+    "topic": "Neural Networks Architectures",
+    "description": "Learn about Neural Networks Architectures to fill knowledge gap",
+    "gap": {
+      "topic": "Neural Networks Architectures",
+      "gap_type": "missing",
+      "evidence": [
+        "Related to existing knowledge, not yet covered"
+      ],
+      "priority_score": 0.6,
+      "identified_at": 1761145243.7609093
+    },
+    "priority": 0.65,
+    "status": "pending",
+    "created_at": 1761145243.76208,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Neural Networks Architectures",
+      "Neural Networks Architectures Grundlagen",
+      "Neural Networks Architectures Erkl\u00e4rung",
+      "Neural Networks Architectures Tutorial",
+      "Was ist Neural Networks Architectures"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Neural Networks Architectures'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_4503",
+    "topic": "Transformer Models",
+    "description": "Learn about Transformer Models to fill knowledge gap",
+    "gap": {
+      "topic": "Transformer Models",
+      "gap_type": "missing",
+      "evidence": [
+        "Related to existing knowledge, not yet covered"
+      ],
+      "priority_score": 0.6,
+      "identified_at": 1761145243.7609103
+    },
+    "priority": 0.65,
+    "status": "pending",
+    "created_at": 1761145243.7620895,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Transformer Models",
+      "Transformer Models Grundlagen",
+      "Transformer Models Erkl\u00e4rung",
+      "Transformer Models Tutorial",
+      "Was ist Transformer Models"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Transformer Models'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_711",
+    "topic": "Blockchain Technologie",
+    "description": "Learn about Blockchain Technologie to fill knowledge gap",
+    "gap": {
+      "topic": "Blockchain Technologie",
+      "gap_type": "incomplete",
+      "evidence": [
+        "High demand, insufficient coverage"
+      ],
+      "priority_score": 0.75,
+      "identified_at": 1761145243.8027408
+    },
+    "priority": 0.9,
+    "status": "pending",
+    "created_at": 1761145243.8043869,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Blockchain Technologie",
+      "Blockchain Technologie Grundlagen",
+      "Blockchain Technologie Erkl\u00e4rung",
+      "Blockchain Technologie Tutorial",
+      "Was ist Blockchain Technologie"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Blockchain Technologie'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_9069",
+    "topic": "Quantencomputing",
+    "description": "Learn about Quantencomputing to fill knowledge gap",
+    "gap": {
+      "topic": "Quantencomputing",
+      "gap_type": "incomplete",
+      "evidence": [
+        "High demand, insufficient coverage"
+      ],
+      "priority_score": 0.8,
+      "identified_at": 1761145243.8027391
+    },
+    "priority": 0.8500000000000001,
+    "status": "pending",
+    "created_at": 1761145243.8043768,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Quantencomputing",
+      "Quantencomputing Grundlagen",
+      "Quantencomputing Erkl\u00e4rung",
+      "Quantencomputing Tutorial",
+      "Was ist Quantencomputing"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Quantencomputing'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_7937",
+    "topic": "Machine Learning Algorithmen",
+    "description": "Learn about Machine Learning Algorithmen to fill knowledge gap",
+    "gap": {
+      "topic": "Machine Learning Algorithmen",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.8027256
+    },
+    "priority": 0.85,
+    "status": "pending",
+    "created_at": 1761145243.8043537,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Machine Learning Algorithmen",
+      "Machine Learning Algorithmen Grundlagen",
+      "Machine Learning Algorithmen Erkl\u00e4rung",
+      "Machine Learning Algorithmen Tutorial",
+      "Was ist Machine Learning Algorithmen"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Machine Learning Algorithmen'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_3712",
+    "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+    "description": "Learn about K\u00fcnstliche Intelligenz Grundlagen to fill knowledge gap",
+    "gap": {
+      "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.8027196
+    },
+    "priority": 0.75,
+    "status": "pending",
+    "created_at": 1761145243.8043187,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "K\u00fcnstliche Intelligenz Grundlagen",
+      "K\u00fcnstliche Intelligenz Grundlagen Grundlagen",
+      "K\u00fcnstliche Intelligenz Grundlagen Erkl\u00e4rung",
+      "K\u00fcnstliche Intelligenz Grundlagen Tutorial",
+      "Was ist K\u00fcnstliche Intelligenz Grundlagen"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'K\u00fcnstliche Intelligenz Grundlagen'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_3897",
+    "topic": "Python Best Practices",
+    "description": "Learn about Python Best Practices to fill knowledge gap",
+    "gap": {
+      "topic": "Python Best Practices",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.8027275
+    },
+    "priority": 0.75,
+    "status": "pending",
+    "created_at": 1761145243.804367,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Python Best Practices",
+      "Python Best Practices Grundlagen",
+      "Python Best Practices Erkl\u00e4rung",
+      "Python Best Practices Tutorial",
+      "Was ist Python Best Practices"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Python Best Practices'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_9395",
+    "topic": "Neural Networks Architectures",
+    "description": "Learn about Neural Networks Architectures to fill knowledge gap",
+    "gap": {
+      "topic": "Neural Networks Architectures",
+      "gap_type": "missing",
+      "evidence": [
+        "Related to existing knowledge, not yet covered"
+      ],
+      "priority_score": 0.6,
+      "identified_at": 1761145243.8027475
+    },
+    "priority": 0.65,
+    "status": "pending",
+    "created_at": 1761145243.8043976,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Neural Networks Architectures",
+      "Neural Networks Architectures Grundlagen",
+      "Neural Networks Architectures Erkl\u00e4rung",
+      "Neural Networks Architectures Tutorial",
+      "Was ist Neural Networks Architectures"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Neural Networks Architectures'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_4503",
+    "topic": "Transformer Models",
+    "description": "Learn about Transformer Models to fill knowledge gap",
+    "gap": {
+      "topic": "Transformer Models",
+      "gap_type": "missing",
+      "evidence": [
+        "Related to existing knowledge, not yet covered"
+      ],
+      "priority_score": 0.6,
+      "identified_at": 1761145243.802749
+    },
+    "priority": 0.65,
+    "status": "pending",
+    "created_at": 1761145243.8044078,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Transformer Models",
+      "Transformer Models Grundlagen",
+      "Transformer Models Erkl\u00e4rung",
+      "Transformer Models Tutorial",
+      "Was ist Transformer Models"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Transformer Models'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_711",
+    "topic": "Blockchain Technologie",
+    "description": "Learn about Blockchain Technologie to fill knowledge gap",
+    "gap": {
+      "topic": "Blockchain Technologie",
+      "gap_type": "incomplete",
+      "evidence": [
+        "High demand, insufficient coverage"
+      ],
+      "priority_score": 0.75,
+      "identified_at": 1761145243.8801754
+    },
+    "priority": 0.9,
+    "status": "pending",
+    "created_at": 1761145243.8826334,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Blockchain Technologie",
+      "Blockchain Technologie Grundlagen",
+      "Blockchain Technologie Erkl\u00e4rung",
+      "Blockchain Technologie Tutorial",
+      "Was ist Blockchain Technologie"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Blockchain Technologie'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_9069",
+    "topic": "Quantencomputing",
+    "description": "Learn about Quantencomputing to fill knowledge gap",
+    "gap": {
+      "topic": "Quantencomputing",
+      "gap_type": "incomplete",
+      "evidence": [
+        "High demand, insufficient coverage"
+      ],
+      "priority_score": 0.8,
+      "identified_at": 1761145243.8801737
+    },
+    "priority": 0.8500000000000001,
+    "status": "pending",
+    "created_at": 1761145243.882581,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Quantencomputing",
+      "Quantencomputing Grundlagen",
+      "Quantencomputing Erkl\u00e4rung",
+      "Quantencomputing Tutorial",
+      "Was ist Quantencomputing"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Quantencomputing'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_7937",
+    "topic": "Machine Learning Algorithmen",
+    "description": "Learn about Machine Learning Algorithmen to fill knowledge gap",
+    "gap": {
+      "topic": "Machine Learning Algorithmen",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.8801608
+    },
+    "priority": 0.85,
+    "status": "pending",
+    "created_at": 1761145243.8825576,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Machine Learning Algorithmen",
+      "Machine Learning Algorithmen Grundlagen",
+      "Machine Learning Algorithmen Erkl\u00e4rung",
+      "Machine Learning Algorithmen Tutorial",
+      "Was ist Machine Learning Algorithmen"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Machine Learning Algorithmen'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_3712",
+    "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+    "description": "Learn about K\u00fcnstliche Intelligenz Grundlagen to fill knowledge gap",
+    "gap": {
+      "topic": "K\u00fcnstliche Intelligenz Grundlagen",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.880155
+    },
+    "priority": 0.75,
+    "status": "pending",
+    "created_at": 1761145243.8825188,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "K\u00fcnstliche Intelligenz Grundlagen",
+      "K\u00fcnstliche Intelligenz Grundlagen Grundlagen",
+      "K\u00fcnstliche Intelligenz Grundlagen Erkl\u00e4rung",
+      "K\u00fcnstliche Intelligenz Grundlagen Tutorial",
+      "Was ist K\u00fcnstliche Intelligenz Grundlagen"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'K\u00fcnstliche Intelligenz Grundlagen'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_3897",
+    "topic": "Python Best Practices",
+    "description": "Learn about Python Best Practices to fill knowledge gap",
+    "gap": {
+      "topic": "Python Best Practices",
+      "gap_type": "high_demand",
+      "evidence": [
+        "Frequently asked but limited coverage"
+      ],
+      "priority_score": 0.7,
+      "identified_at": 1761145243.8801622
+    },
+    "priority": 0.75,
+    "status": "pending",
+    "created_at": 1761145243.8825698,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Python Best Practices",
+      "Python Best Practices Grundlagen",
+      "Python Best Practices Erkl\u00e4rung",
+      "Python Best Practices Tutorial",
+      "Was ist Python Best Practices"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Python Best Practices'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_9395",
+    "topic": "Neural Networks Architectures",
+    "description": "Learn about Neural Networks Architectures to fill knowledge gap",
+    "gap": {
+      "topic": "Neural Networks Architectures",
+      "gap_type": "missing",
+      "evidence": [
+        "Related to existing knowledge, not yet covered"
+      ],
+      "priority_score": 0.6,
+      "identified_at": 1761145243.880181
+    },
+    "priority": 0.65,
+    "status": "pending",
+    "created_at": 1761145243.8826623,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Neural Networks Architectures",
+      "Neural Networks Architectures Grundlagen",
+      "Neural Networks Architectures Erkl\u00e4rung",
+      "Neural Networks Architectures Tutorial",
+      "Was ist Neural Networks Architectures"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Neural Networks Architectures'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  },
+  {
+    "id": "goal_1761145243_4503",
+    "topic": "Transformer Models",
+    "description": "Learn about Transformer Models to fill knowledge gap",
+    "gap": {
+      "topic": "Transformer Models",
+      "gap_type": "missing",
+      "evidence": [
+        "Related to existing knowledge, not yet covered"
+      ],
+      "priority_score": 0.6,
+      "identified_at": 1761145243.880182
+    },
+    "priority": 0.65,
+    "status": "pending",
+    "created_at": 1761145243.8826745,
+    "started_at": null,
+    "completed_at": null,
+    "keywords": [
+      "Transformer Models",
+      "Transformer Models Grundlagen",
+      "Transformer Models Erkl\u00e4rung",
+      "Transformer Models Tutorial",
+      "Was ist Transformer Models"
+    ],
+    "sources": [
+      "wikipedia.org",
+      "britannica.com"
+    ],
+    "steps": [
+      "1. Recherchiere Grundlagen zu 'Transformer Models'",
+      "2. Sammle 3-5 verl\u00e4ssliche Quellen",
+      "3. Erstelle Zusammenfassung",
+      "4. Identifiziere Unterthemen",
+      "5. Erweitere Wissen zu Unterthemen"
+    ],
+    "blocks_created": 0,
+    "research_attempts": 0,
+    "success_rate": 0.0
+  }
+]

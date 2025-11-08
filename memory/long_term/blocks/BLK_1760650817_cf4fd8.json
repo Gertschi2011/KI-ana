@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hacker News – The Good Parts\n • Hacker News: Silicon Valley's capture of our political institutions is all but complete\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Treffen mit Putin in Ungarn an",
+  "created_at": 1760650817.3415875,
+  "hash": "676c8b77f93a1a05a0ae5721d923bb2fdf1a0bb4d528328c971bc735f43f53e4",
+  "id": "BLK_1760650817_cf4fd8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "C3O3VYdE6meP6wTAau3dX+oDTcv80ScHeJcCvRDSVUTsNL9ydOOsZPlq+TEMWYZYpJMij82VjMTpRZuujxjcBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 23:40",
+  "url": null
+}

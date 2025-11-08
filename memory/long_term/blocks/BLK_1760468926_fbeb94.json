@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: New lab-grown human embryo model produces blood cells\n • Hacker News: How bad can a $2.97 ADC be?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienberichte: Einigung zu Wehrdienst offenbar vorerst geplatzt",
+  "created_at": 1760468926.041492,
+  "hash": "bdab5fae9196ee9ac7207adf463ab65e101614c79dcb0208c92b860ada074c6f",
+  "id": "BLK_1760468926_fbeb94",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "H4TiWJjK16bDbh/2+DXnlbESU5ThZf+6lPPjUt2fxF1DLqI7xNzZrNwnbkENUHTb7koxyj730vdUZpc+2dk0Cw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 21:08",
+  "url": null
+}

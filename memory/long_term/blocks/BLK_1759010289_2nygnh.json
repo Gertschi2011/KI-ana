@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759010289_2nygnh",
-  "title": "Web Digest 2025-09-27 23:58",
   "content": "• Hacker News: New in Firefox: Visual search powered by Google Lens\n • Hacker News: iPhone 17 chip becomes the fastest single-core CPU in the world on PassMark\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzungen: NATO prüft Verteidigungseinsatz",
+  "hash": "5f5bb8e147125c0c80a8f7f13bc57ea7954641f35f5306688bff6ba7a6d7f7f5",
+  "id": "BLK_1759010289_2nygnh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "niSm+8uCCgJq3PaXYSWGIj7HFRrAmFhb+2GjSNpFtzvx/Ibz/RTvR1CFJefvDED+E5R1JvK7wdb5Pg04jJTCBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 23:58",
   "ts": 1759010289,
-  "meta": {},
-  "hash": "5f5bb8e147125c0c80a8f7f13bc57ea7954641f35f5306688bff6ba7a6d7f7f5"
+  "url": ""
 }

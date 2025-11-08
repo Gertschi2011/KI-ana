@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 4Chan Lawyer publishes Ofcom correspondence. Irony is overwhelming\n • Hacker News: Flight Simulator for the Brain Reveals How We Learn and Why Minds Go Off Course\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Angriffe auf den Energiesektor: Wie die Ukraine Putin zu Verhandlungen zwingen will",
+  "created_at": 1760690434.1435554,
+  "hash": "d3cef112cca485ffa62c47b1f41f31130deef9df796726204768bbee6830d432",
+  "id": "BLK_1760690434_b3559b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "vtrzK32P2KcfAibC/1nfJ1IT7SuHl51ivs3L6AcD6cQKees9k45BaXogdhUTOYXrWWXElRqP6k5JCMsVF2oXBw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 10:40",
+  "url": null
+}

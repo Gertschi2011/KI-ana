@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: ProcASM v1.1\n • Hacker News: Imgur pulls out of UK as data watchdog threatens fine\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukrainer wegen Verdachts der Sabotage an Nord Stream festgenommen",
+  "created_at": 1759241661.586565,
+  "hash": "bef90e4a51b3bf9ec4d26a1d3a8c1c062bc9dece760b47e4fcfeffa366b685e4",
+  "id": "BLK_1759241661_f72e78",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "72u76Rrzka0vxEx/dfpxRFbjqkWtiC6CbSY/jDJsY4YU9X7JoLUOpnZsTfJJ8BKm1/ss1K3Q5PSVQIxKtQt1DQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 16:14",
+  "url": null
+}

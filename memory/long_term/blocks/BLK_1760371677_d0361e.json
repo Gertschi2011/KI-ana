@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: More than 130k Vodafone customers report outage\n • Hacker News: Supermassive black holes locked in a stable orbit around each other\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Die deutschen Geheimdienstchefs warnen deutlich vor Russland",
+  "created_at": 1760371677.5153186,
+  "hash": "cac7e79b7be07219712b3871d58f63a769342d69fecf9e276203461a735d6af3",
+  "id": "BLK_1760371677_d0361e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "debCbjfJSfmwTheqUGycjVAEHjdl0yEsDMY9FJ7VL2Nwd3BRU1vUwiVCixMYErPUXcFr/oEcDzbwaMmdIGgKDA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 18:07",
+  "url": null
+}

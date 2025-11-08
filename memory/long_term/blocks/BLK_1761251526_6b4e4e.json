@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Muscular Compassion of \"Paper Girl\"\n • Hacker News: Show HN: OpenSnowcat – A fork of Snowplow to keep open analytics alive\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "created_at": 1761251526.2362738,
+  "hash": "b844a904367406f801df7417c239e80c1dbb6067ab4f2a6d25c1db647bd80354",
+  "id": "BLK_1761251526_6b4e4e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4pUJeptW8FAsSakGZ3NbHv12RDFciwUgCK6KooAyVfsazXBnJj82Hym8eEeeotIp8v4I7uRWB9xAiyI5TfG9BQ==",
+  "signed_at": "2025-10-23T20:32:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 22:32",
+  "url": null
+}

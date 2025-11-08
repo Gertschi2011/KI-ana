@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Blood test detecting Long Covid in kids with 94% accuracy microclots\n • Hacker News: Why Wikipedia cannot claim the Earth is not flat\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stephan Brandner rückt die Grenzen des Sagbaren nach rechts außen",
+  "created_at": 1760270827.2642145,
+  "hash": "e4b4ab3e1794864c7f7d949ed1cb9f880b4787f33c4e7caf277928ff0ba1cbdd",
+  "id": "BLK_1760270827_f2a465",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "53Fw0WjJwlNkyVYJzo/Yiro7+u7ni5wUjruTVnwUd0/vIhROHKyfnR4mIb61TcgMYa87vGamBSrJcGJtMsz5Aw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 14:07",
+  "url": null
+}

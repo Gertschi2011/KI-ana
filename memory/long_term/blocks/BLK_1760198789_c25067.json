@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tech megacaps lose $770B in value as Nasdaq suffers steepest drop since April\n • Hacker News: Nue 2.0 Beta released! The Unix of the web\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die 20 noch lebenden Geiseln im Gazastreifen",
+  "created_at": 1760198789.7815402,
+  "hash": "f7fd5b6c8c6dbdb4a0b11cde7518fe1ef82ac4f324ac5b69bab730a7b05335d4",
+  "id": "BLK_1760198789_c25067",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "rpzUDe0fmcGG3nvsqsvYFODKvEvf8IxdX0CdUzXn3JAUl0MnazijOD7P0f6iFn5nAMv/aRsBdGf+AJhzkFGACA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 18:06",
+  "url": null
+}

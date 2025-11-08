@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ring to partner with Flock, a network of cameras used by ICE, feds, and police\n • Hacker News: Frank founder Charlie Javice sentenced for JPMorgan fraud\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Angriffe auf den Energiesektor: Wie die Ukraine Putin zu Verhandlungen zwingen will",
+  "created_at": 1760695836.441286,
+  "hash": "8a401dfc64072898ba6f90cf3012ce6437c0f95b55f85c0e8ecc19856f00e06e",
+  "id": "BLK_1760695836_4d1e5e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "z5E7EDIzVQBOhTGTqEBBkDAmcRIuQBQmY3r0t/c4ISUPiGxyx0vbknktFmqlq4biUuLI5qrGeks8UhpJeaZiBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 12:10",
+  "url": null
+}

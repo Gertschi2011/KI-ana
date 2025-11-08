@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: You are the scariest monster in the woods\n • Hacker News: Oops It's a kernel stack use-after-free: Exploiting Nvidia's GPU Linux drivers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): WMO: CO2-Konzentration in der Atmosphäre 2024 so stark gestiegen wie nie",
+  "created_at": 1760540962.9065523,
+  "hash": "e92387e1bfd61098964832515eb751255e52ac666da63881bed850844e7f1f8d",
+  "id": "BLK_1760540962_e19c5e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "wX2AQ6cRgSCPp9anc5+I5MwVvKvrgexoFm6DI1S9XnKv3ppozy4ZN5uFdL0zGadT0Khsu2BK6Xl1sQBSjjBdBA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 17:09",
+  "url": null
+}

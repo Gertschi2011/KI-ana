@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Americans increasingly see legal sports betting as a bad thing for society\n • Hacker News: You can't parse XML with regex. Let's do it anyways\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vor Parlamentswahl: Syriens Minderheiten im Ungewissen",
+  "hash": "aafaed6b2f014cc07470776bd74801360c5908eddd4422fa39039decbd37ac14",
+  "id": "BLK_1759642338_y5huuv",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "WQrEj3Z6N5CpvDa13Kf9BvhOuGZ+1SDAiuloOTyXiOROb1U0xjWss4Hr3zVj6JSh3JKyO8A+SehXr3GGuAfVBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 07:32",
+  "ts": 1759642338,
+  "url": ""
+}

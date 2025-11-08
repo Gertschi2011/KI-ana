@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: You are the scariest monster in the woods\n • Hacker News: Pwning the Entire Nix Ecosystem\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ist ein Losverfahren für den Wehrdienst rechtlich zulässig?",
+  "hash": "850dfd170064707b0a8790aabe3a8a884ee78857f29ffd48799da069f2577d13",
+  "id": "BLK_1760539162_uvl273",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "Mie7XRgRu99/BZlbEvblQCCFqaXq2UUApXHGe8mlcNFWnxfzWiJGDKQ3MzPlhsZhZsH0bAKIwnujyrnwCzaeDw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 16:39",
+  "ts": 1760539162,
+  "url": ""
+}

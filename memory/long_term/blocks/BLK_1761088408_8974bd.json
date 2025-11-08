@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Lottery-fication of Everything\n • Hacker News: rlsw – Raylib software OpenGL renderer in less than 5k LOC\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Foltervorwürfe gegen Israel nach Übergabe von Leichen Gefangener",
+  "created_at": 1761088408.4670799,
+  "hash": "bb9096616699189dfcb06ffcb4f470f57ac432044a51f0a3e9ee16028557ec11",
+  "id": "BLK_1761088408_8974bd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "dAR5VMorS7EHBdEoNEHjAer4hA5LK4CGOoIxsZGoe5Oy/pZv9ytRFSBi43omdlvtR0USlitXekCXVCv1imXiAg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 01:13",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The biggest semantic mess in Futhark\n • Hacker News: Keyhive\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israels Marine fängt Schiffe der Gaza-Hilfsflotte ab",
+  "created_at": 1759373983.6466765,
+  "hash": "89228e330db23c5bcedbf2860f840a756cc02d87b369ae099e607b0f352829a1",
+  "id": "BLK_1759373983_a3155a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "xHGYDRYgsi62tM9RKZIPsr1/DTfxhd50yubp7MTA/hrupIAJ5CZdxDiRgZ+oj6rulfe5MtELaRnEFuctwFZyDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 04:59",
+  "url": null
+}

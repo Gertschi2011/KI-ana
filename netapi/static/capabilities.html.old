@@ -1,0 +1,63 @@
+<\!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Fähigkeiten – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/chat.css">
+</head>
+<body class="page">
+  <div id="navbar"></div>
+  <main class="container">
+    <h1 style="text-align:center; margin:40px 0;">🎯 Fähigkeiten von KI_ana</h1>
+    <p style="text-align:center; font-size:18px; color:#667085; margin-bottom:60px;">
+      Entdecke alle Features und Möglichkeiten
+    </p>
+    
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px;">
+      <div style="background:#fff; padding:24px; border-radius:16px; border:1px solid #e5e7eb;">
+        <div style="font-size:48px; margin-bottom:16px;">💬</div>
+        <h3>Natürlicher Chat</h3>
+        <p style="color:#667085;">Unterhalte dich wie mit einem Menschen</p>
+      </div>
+      
+      <div style="background:#fff; padding:24px; border-radius:16px; border:1px solid #e5e7eb;">
+        <div style="font-size:48px; margin-bottom:16px;">🎤</div>
+        <h3>Voice-Chat</h3>
+        <p style="color:#667085;">Sprich mit KI_ana per Sprache</p>
+      </div>
+      
+      <div style="background:#fff; padding:24px; border-radius:16px; border:1px solid #e5e7eb;">
+        <div style="font-size:48px; margin-bottom:16px;">🧠</div>
+        <h3>Subminds</h3>
+        <p style="color:#667085;">Spezialisierte KI-Instanzen</p>
+      </div>
+      
+      <div style="background:#fff; padding:24px; border-radius:16px; border:1px solid #e5e7eb;">
+        <div style="font-size:48px; margin-bottom:16px;">📝</div>
+        <h3>Texte schreiben</h3>
+        <p style="color:#667085;">E-Mails, Artikel, Geschichten</p>
+      </div>
+      
+      <div style="background:#fff; padding:24px; border-radius:16px; border:1px solid #e5e7eb;">
+        <div style="font-size:48px; margin-bottom:16px;">💻</div>
+        <h3>Programmierung</h3>
+        <p style="color:#667085;">Code schreiben & debuggen</p>
+      </div>
+      
+      <div style="background:#fff; padding:24px; border-radius:16px; border:1px solid #e5e7eb;">
+        <div style="font-size:48px; margin-bottom:16px;">🔄</div>
+        <h3>Multi-Device Sync</h3>
+        <p style="color:#667085;">Synchronisation über Geräte</p>
+      </div>
+    </div>
+    
+    <div style="text-align:center; margin:60px 0;">
+      <a href="/static/help.html" class="btn primary">📖 Mehr erfahren</a>
+      <a href="/static/chat.html" class="btn">💬 Jetzt ausprobieren</a>
+    </div>
+  </main>
+  <script src="/static/nav.js"></script>
+</body>
+</html>

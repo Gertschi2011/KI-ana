@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hackers leak Qantas data on 5 million customers after ransom deadline passes\n • Hacker News: Learn Turbo Pascal – a video series originally released on VHS\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die 20 noch lebenden Geiseln im Gazastreifen",
+  "created_at": 1760193387.2297175,
+  "hash": "6c6a33139055051598ad63fae973af2e17cf19d2cc7e7beaf4a91fdf84071e80",
+  "id": "BLK_1760193387_f07d8f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "drte7meS0mAciJxHf+jitGEuWbZziOBsm0dgvaYBbrs7HsOzEM+/sy63Qdf3IE5PEP5QQW8XEAKC8uRTl5e3DQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 16:36",
+  "url": null
+}

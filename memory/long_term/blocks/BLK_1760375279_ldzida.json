@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Environment variables are a legacy mess: Let's dive deep into them\n • Hacker News: $19B Wiped Out in Crypto's Biggest Liquidation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Die deutschen Geheimdienstchefs warnen deutlich vor Russland",
+  "hash": "430b54fdc7d5ceeb41e261fd60d7def7fea978cb352ccc6b36ec67c5d1839e22",
+  "id": "BLK_1760375279_ldzida",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "mOBCM73g61mepIYhMieX78qUHMQGU9aUuK0uold/VocICsvjmpZWX1rFtzjC4yMYOaBIc2fFx0hyk4jTe5QIAw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 19:07",
+  "ts": 1760375279,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Type Theory and Functional Programming (1999) [pdf]\n • Hacker News: High-resolution efficient image generation from WiFi Mapping\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Gipfel in Dänemark: Arbeiten am Projekt \"Drohnenwall\"",
+  "created_at": 1759303162.8559463,
+  "hash": "ee8822e5a2ab6ae86bbe28fa2642db87f45bb7ca01379dc80c3c6e2384185eb3",
+  "id": "BLK_1759303162_835a67",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "lGNJVDHZjMeI6fdROOY6Z3YTUET5sqvT/XG4Zunp/0J+r5XkFcH6Ze2k+ek8pgegXNGD8GCzh8fYoL3DpvoHAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 09:19",
+  "url": null
+}

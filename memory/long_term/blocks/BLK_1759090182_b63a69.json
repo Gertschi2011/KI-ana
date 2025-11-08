@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759090182_b63a69",
-  "title": "Web Digest 2025-09-28 22:09",
   "content": "• Hacker News: Chinese scientists set world record with magnetic field 700k times Earth's\n • Hacker News: The QMA Singularity\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie teuer wird der Emissionshandel im Verkehrs- und Gebäudesektor?",
+  "created_at": 1759090182.5012364,
+  "hash": "f160a7219a0c044a9f8dac2c01e20c52b6f69a49ce7d74382c74e2ec3b84f9e5",
+  "id": "BLK_1759090182_b63a69",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "zhtdm/PxyLnnKXkXzWhuwQs7g6gzRJuhCcLmcuZYJMGDFcN9T4F4t/lxjEONcAOjRrMcfDcorkiOtcQ3S8oBDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759090182.5012364,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 22:09",
+  "url": null
 }

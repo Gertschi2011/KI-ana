@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Regarding the Compact – MIT President\n • Hacker News: Boring Company cited for almost 800 environmental violations in Las Vegas\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensnobelpreis: Wer ist María Corina Machado?",
+  "created_at": 1760115947.2774425,
+  "hash": "2d35f22aa5e13ff98e246cdc9f835ee1fd9efcb834926a54083c5592fae6e0af",
+  "id": "BLK_1760115947_7fb29e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "THu8djzONcZXl4lRsV/v/z4tAoTNpq+x3/m69/yLeHn9nbVrk6Dh+KMnm6JHkgyBmbREDqHTZogkXofagxHJDw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 19:05",
+  "url": null
+}

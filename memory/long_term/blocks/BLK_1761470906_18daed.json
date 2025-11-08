@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Asbestosis\n • Hacker News: What If Tariffs?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump nimmt zum Auftakt seiner Asien-Reise an ASEAN-Gipfel teil",
+  "created_at": 1761470906.6083972,
+  "hash": "ea38b54ec05a5c115f434ba0e9c4b907fb7932f40b4c3701eb9efffa9d1a5184",
+  "id": "BLK_1761470906_18daed",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "744wElj6Qhqmat8/ZL4xQN07e+9EkiI4jQuIOB/ZCz9F2lQYoeHgR4D8WZamCiz5uF1R+iIXZv5iqVbfZvOpCA==",
+  "signed_at": "2025-10-26T09:28:26Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 10:28",
+  "url": null
+}

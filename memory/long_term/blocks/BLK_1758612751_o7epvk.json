@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758612751_o7epvk",
-  "title": "Web Digest 2025-09-23 09:32",
   "content": "• Hacker News: Telli (YC F24) is hiring ambitious engineers [Berlin, on-site]\n • Hacker News: Altoids by the Fistful\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Anerkennung von Palästina: \"Die Zeit für Frieden ist gekommen\"",
+  "hash": "ca7f72e336a4d356d16e7ed2b9c782065ad047d08fb37d9ea9650027e856be6f",
+  "id": "BLK_1758612751_o7epvk",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "zwZmBhkXGFNyKU5CfN7c8XYiDsnIW7Kszzc2c99z36jpTt069kxxWYjgDXw4lh1483PalvbYGPDy5Ed6VcZ3Cw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 09:32",
   "ts": 1758612751,
-  "meta": {},
-  "hash": "ca7f72e336a4d356d16e7ed2b9c782065ad047d08fb37d9ea9650027e856be6f"
+  "url": ""
 }

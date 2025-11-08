@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Making a micro Linux distro (2023)\n • Hacker News: The Great SaaS Gaslight\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Social Media und Konsum: Bestimmt TikTok, was im Regal steht?",
+  "hash": "34afdada5412c97a4185205ef0518dadcf6fb18934bb9747e55cdfad75247d2e",
+  "id": "BLK_1761399197_kpsakm",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "o0zvS79o1q5/oamkdbCrIIyVqgYEcYJ8H4GqVmE+PdrHWLBfyHkBgjJ6vtuXAfwQoXGFMKsUG3piXI+c7wpJDQ==",
+  "signed_at": "2025-10-25T13:33:17Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 15:33",
+  "ts": 1761399197,
+  "url": ""
+}

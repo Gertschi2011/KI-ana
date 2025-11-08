@@ -1,16 +1,19 @@
 {
-  "id": "BLK_1758443719_8ipc59",
-  "title": "Was weißt du über den Planeten Mars?",
   "content": "TL;DR:\nKurze Einschätzung zu Was weißt du über den Planeten Mars?: Ich kann direkt recherchieren oder vorhandene Notizen prüfen.\n\nKernpunkte:\n• Kurze Einschätzung zu Was weißt du über den Planeten Mars?: Ich kann direkt recherchieren oder vorhandene Notizen prüfen.",
+  "hash": "0504bb15bfcb886b273129f48817e5cbcfc6a96f5b4f25b68ef381f366ff61c1",
+  "id": "BLK_1758443719_8ipc59",
+  "meta": {
+    "chain_hint": false,
+    "source": "chat"
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "/PWiJxsN/d81vPqtdl8qIm8M1I0++vNsnlyPrmdZJZIQq3kAfR3bqvRPFt4G0UGsFu5samlJ5i6UvAvev4QCDg==",
+  "signed_at": "2025-10-29T12:53:41Z",
   "tags": [
     "learned",
     "vision"
   ],
-  "url": "",
+  "title": "Was weißt du über den Planeten Mars?",
   "ts": 1758443719,
-  "meta": {
-    "source": "chat",
-    "chain_hint": false
-  },
-  "hash": "0504bb15bfcb886b273129f48817e5cbcfc6a96f5b4f25b68ef381f366ff61c1"
+  "url": ""
 }

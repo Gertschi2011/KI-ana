@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: America Is Sliding Toward Illiteracy\n • Hacker News: What do Americans die from vs. what the news report on\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienberichte: Einigung zu Wehrdienst offenbar vorerst geplatzt",
+  "created_at": 1760470727.0116098,
+  "hash": "a1e45beebe5ff42b60aa83b263a1915b002e4425018cd157e2f34318dbc91c3e",
+  "id": "BLK_1760470727_de9d3f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "mzmmYcwXEVKfM1xJvproFqeInSrz9zAfEvAggtGD4WRIH7c66zAvqrqbz3KnEw9gzfQ8kjx05gFNWDNyv+YRAA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 21:38",
+  "url": null
+}

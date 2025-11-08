@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Waymo is bringing autonomous, driverless ride-hailing to London in 2026\n • Hacker News: Liquibase continues to advertise itself as \"open source\" despite license switch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Regierungserklärung von Kanzler Merz: \"Nur Stärke bewahrt Frieden\"",
+  "created_at": 1760607597.1100605,
+  "hash": "1fe65691befbd58931497345a093d65f5dfe5877d2f9a04e5b24797e91214d0c",
+  "id": "BLK_1760607597_a20ea6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "BWPWkS7aKAR1d/TZt6evzr2qibvXBD71zzljknOe4OQht7MB1gDRVzww0zDHm4tBEXHMgOR4HT+Jr4JbYLvvBA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 11:39",
+  "url": null
+}

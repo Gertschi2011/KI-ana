@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Tor Browser 15.0\n • Hacker News: If you don't tinker, you don't have taste\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "hash": "5b5f0b769efd6aaefbe9cc40efe9149c10f6b25003a5d145e5c0cace1a7c203e",
+  "id": "BLK_1761694322_d6qxj3",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "hmnzSeJkKAX00sD9cKjuKo9UoVc5koz2A06x0gru8GjJy9jl7ThIy+rHgcIWSNodPq2RHqYcT2ngRFNgN93MBg==",
+  "signed_at": "2025-10-28T23:32:02Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-29 00:32",
+  "ts": 1761694322,
+  "url": ""
+}

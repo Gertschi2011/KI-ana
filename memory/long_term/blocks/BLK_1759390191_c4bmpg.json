@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The biggest semantic mess in Futhark\n • Hacker News: Keyhive – Local-first access control\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rede vor Generälen: \"Trump hat sich nächste Institution vorgenommen\"",
+  "hash": "86237156e3b4369539b571ab0656229ba501fd08d5e78dbb59b27c56da8060c6",
+  "id": "BLK_1759390191_c4bmpg",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Uu7h84o1ucOqOLZ8EwgGKSp/TzTg8VST5N54AZpGkjDKx2uH+zmHR6G+jA+15duGrJZP0CcTnlSQLmw2Wvk6AQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 09:29",
+  "ts": 1759390191,
+  "url": ""
+}

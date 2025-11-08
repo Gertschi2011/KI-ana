@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Way past its prime: how did Amazon get so rubbish?\n • Hacker News: Scientists debunk claims of seed oil health risks\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vor Parlamentswahl: Syriens Minderheiten im Ungewissen",
+  "created_at": 1759645939.7417173,
+  "hash": "83f3d8ad126b60b36316311a1ad19ecc46053b71062527e5fc88f8675bbe9fdf",
+  "id": "BLK_1759645939_ecfe42",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fyd+nfK/liSsURsyS/+Ta0yVFrZo8WbSbIT7QSq9Vi3pIQ7iz6pAc/3l86TSRQhUwI9QcIHhLELlaMcH5K83DQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 08:32",
+  "url": null
+}

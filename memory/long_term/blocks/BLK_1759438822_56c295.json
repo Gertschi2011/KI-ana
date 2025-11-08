@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Austria's Armed Forces Gets Rid of Microsoft Office (Mostly) for LibreOffice\n • Hacker News: Anti-aging breakthrough: Stem cells reverse signs of aging in monkeys\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Putin wirft Frankreich wegen Festsetzung von Tanker Piraterie vor",
+  "created_at": 1759438822.1289716,
+  "hash": "ae2bd61edfeff2fb7598912f4ecf57aef554e65d8f93249b1203b7d0ff1a17b6",
+  "id": "BLK_1759438822_56c295",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "IachNS2blNV2RpG4v5SkZyMD/w0uCdmoPmE8x2QIIRCtwoT4+X/A1btmltAU+faFwqZ1HbFrCdPn4EzJJOEkAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 23:00",
+  "url": null
+}

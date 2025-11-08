@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: California enacts law enabling people to universally opt out of data sharing\n • Hacker News: Designing a Low Latency 10G Ethernet Core (2023)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump gibt Einigung bei Gaza-Gesprächen bekannt",
+  "created_at": 1759989886.8907413,
+  "hash": "90b2635367e2f3e957673643eef4a5d11ee04fa0cd31ca183d83c186c9cb3aff",
+  "id": "BLK_1759989886_674576",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "x4dc5EOA9IA5CbadL0slwpsOF9aGE42HGTbo2OFCFyrFO2DxYmdmaV8wC0OnpUWIAqgib3lBefXJfSDXDvR6Dg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 08:04",
+  "url": null
+}

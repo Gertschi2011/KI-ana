@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758703162_qfbdfk",
-  "title": "Web Digest 2025-09-24 10:39",
   "content": "• Hacker News: Show HN: Inferencer – Run and deeply control local AI models (macOS release)\n • Hacker News: Greatest irony of the AI age: Humans hired to clean AI slop\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kimmel: Rückkehr voller Emotionen - und mit einem Plädoyer",
+  "hash": "17dcd1c4befd76e4a86eb9158866e05ab99055a065b0192a0684d1516219f296",
+  "id": "BLK_1758703162_qfbdfk",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "oDJ5wBE/3RmRHJhvmEv3AI6aMdzB8zHDoRq3oR1VDIJcCKDwpVv+E0XR9jEhBBELFE0erwgMrKF3Bv2PUgXmBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 10:39",
   "ts": 1758703162,
-  "meta": {},
-  "hash": "17dcd1c4befd76e4a86eb9158866e05ab99055a065b0192a0684d1516219f296"
+  "url": ""
 }

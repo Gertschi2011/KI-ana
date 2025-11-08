@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to Create an OS from Scratch\n • Hacker News: All the sad young terminally online men\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Weißes Haus veröffentlicht Trumps Nahost-Friedensplan",
+  "created_at": 1759191621.8082664,
+  "hash": "a85366bb9aaae61fdca8efab407126c1577db9fb99fe795e3ee459f342f2083a",
+  "id": "BLK_1759191621_58c62a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gos/sKheZ0LawdwfNk1rCVcS3hK+jRz+Ju0UZYIv2jjQPDtuwV/aEU42h+QFH7YmpdthKe0Sh5unWv3kHdAZCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 02:20",
+  "url": null
+}

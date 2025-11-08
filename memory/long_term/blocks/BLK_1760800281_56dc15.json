@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 1,180 root system drawings\n • Hacker News: Ripgrep 15.0.0\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Laura Loomer Jagd auf Trump-Skeptiker macht",
+  "created_at": 1760800281.9334314,
+  "hash": "e66699afd7b2b5e83dd6e9f4fb17e703b67b3f272d8e98f4e85217cd898429d3",
+  "id": "BLK_1760800281_56dc15",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "REmF3bjBMgnGojQYvK3hlTSZ3KhJTSkd02Jwmg7K37fZjVqSd1PVvjOomPA/4rW2ZhG1LN2Xx8hDcWYcBY1FCQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 17:11",
+  "url": null
+}

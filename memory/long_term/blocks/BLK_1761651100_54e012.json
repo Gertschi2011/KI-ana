@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Understanding the Worst .NET Vulnerability\n • Hacker News: Situated Software – Clay Shirky (2004)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Liegenschaften die Bundeswehr nun doch behalten will",
+  "created_at": 1761651100.399463,
+  "hash": "9cd3a6d5d32250983d1e34ec43a64b153eac4aa58b332bf60364aa8acedf6d05",
+  "id": "BLK_1761651100_54e012",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/OcrRZBleNX0gDl8qhhspb1W0QmOuzKLsw5Xm1plalRFu3lyfk2yFMgUWp0CiDP6cGTskZb5PbHctsvBRbaECQ==",
+  "signed_at": "2025-10-28T11:31:40Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 12:31",
+  "url": null
+}

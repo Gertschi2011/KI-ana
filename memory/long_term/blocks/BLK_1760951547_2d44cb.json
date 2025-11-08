@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Major AWS outage takes down Fortnite, Alexa, Snapchat, and more\n • Hacker News: Docker Systems Status: Full Service Disruption\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump will Donbass für Frieden \"zerteilen\"",
+  "created_at": 1760951547.8541536,
+  "hash": "93381bc5c4efa8ad1dcb2dde8a94e2165ee194ff9d6ecbcbc22486794cf935b7",
+  "id": "BLK_1760951547_2d44cb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "RoAyo2C9n8U1gfYIiLuTOMHseu/xrT0EhdwLx2JzWYlxby/oWTV5JaO/dgVpQwvPCrTWeXinH7lzlnQLEZfNAg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 11:12",
+  "url": null
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758856187_clpk4u",
-  "title": "Web Digest 2025-09-26 05:09",
   "content": "• Hacker News: Writing Memory Safe JIT Compilers\n • Hacker News: All British adults to require a digital ID 'Brit Card'\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Früherer FBI-Chef und Trump-Widersacher Comey angeklagt",
+  "hash": "f2c842ce4025bafe4cdc026bd9cb71cfd730f7cc51486e5fc6954a66b4fd98cc",
+  "id": "BLK_1758856187_clpk4u",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "r41V1Mhccgaqk1OkKtDmRtriyS60bgmUNHGAHhBMWPkqDj/lN9S6HNl0+a5XAOsgl0VluD2I8wt6O7ew0WtoCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 05:09",
   "ts": 1758856187,
-  "meta": {},
-  "hash": "f2c842ce4025bafe4cdc026bd9cb71cfd730f7cc51486e5fc6954a66b4fd98cc"
+  "url": ""
 }

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758865411_6jipya",
-  "title": "Web Digest 2025-09-26 07:43",
   "content": "• Hacker News: The effect of H-1B quota on employment and selection of foreign-born labor (2018)\n • Hacker News: A platform-jumping prince – History of Prince of Persia's 1990s Ports\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Früherer FBI-Chef und Trump-Widersacher Comey angeklagt",
+  "hash": "96ca6cb9d4b8e964aac7947a0b7714df4544c9a3077ae1547441eda3a1bbcf66",
+  "id": "BLK_1758865411_6jipya",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "pPBUIUd4Yz0xAIdMC9ziXsbIAqp6GWcgWbpfvn4wXx4L+JYC8VpizbDnQPFm5jXmZsybn4coIZrFotSQhzLBDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 07:43",
   "ts": 1758865411,
-  "meta": {},
-  "hash": "96ca6cb9d4b8e964aac7947a0b7714df4544c9a3077ae1547441eda3a1bbcf66"
+  "url": ""
 }

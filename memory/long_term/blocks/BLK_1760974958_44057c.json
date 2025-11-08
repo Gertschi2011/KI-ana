@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Anthropic and Cursor Spend This Much on Amazon Web Services\n • Hacker News: Commodore 64 Ultimate\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz sagt AfD den Kampf an - und bleibt bei \"Stadtbild\"-Satz",
+  "created_at": 1760974958.4372902,
+  "hash": "18dbae66e7b514ce7ddb4e16c482f88bbf656463a0845d7ce3432342e46ef2b4",
+  "id": "BLK_1760974958_44057c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "jas68q27Gry7erwslhXCvvC3OIE2BEB/NVJXqC9N0YTJyzdZhaYP/pt+uO0Xa1iqfE1yhQEkR36H0vQ9pmjCBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 17:42",
+  "url": null
+}

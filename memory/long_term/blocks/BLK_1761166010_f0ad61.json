@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why SSA Compilers?\n • Hacker News: Django 6.0 beta 1 released\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stadtbild-Debatte: Merz sieht Migranten als \"unverzichtbaren Bestandteil\"",
+  "created_at": 1761166010.5612776,
+  "hash": "db9eb5900487de5763c72b16e2e6d744a6b341bbf44a4d6fbe84952cf4b4560f",
+  "id": "BLK_1761166010_f0ad61",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "K/BCD62hqeRMxu0wc28INd/1QuMn1sLoJq3CP4Ul/CvZfk+op6BClWtF1pABNOJ1leS34Qs0T1++vGTSnSlWCw==",
+  "signed_at": "2025-10-22T20:46:50Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 22:46",
+  "url": null
+}

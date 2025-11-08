@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI predicts antibiotic's IBD mechanism–scientists later confirm\n • Hacker News: Track which Electron apps slow down macOS 26 Tahoe\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas erklärt sich zur Freilassung aller Geiseln bereit",
+  "created_at": 1759548686.0409777,
+  "hash": "2928cfbdccbcfa8fd349728fdf75137c174816816e9c6cf3ca49071f23b7a5b8",
+  "id": "BLK_1759548686_175c60",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8Y3kqOELRXnmQu7uZSEoCy79HD5kbNxJXsQ7TfYNqgA0C88vi04OZWTS7fKOjYb2ZMrpQQRW8pvkfcDEYEwEAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 05:31",
+  "url": null
+}

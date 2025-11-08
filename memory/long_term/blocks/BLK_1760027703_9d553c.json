@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launch HN: Extend (YC W23) – Turn your messiest documents into data\n • Hacker News: A small number of samples can poison LLMs of any size\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz im Interview: \"Machen Weg für Rückkehr in den Arbeitsmarkt frei\"",
+  "created_at": 1760027703.7090776,
+  "hash": "50804457c9b0a24ec8037f5576967b7e35fe8932fa5655f86861aa1995dc6620",
+  "id": "BLK_1760027703_9d553c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Ltv0tUU6HlViXue1ZBZ1WtLr6SYI+jqvGc8Nf7rP/JyIslZSQyUl+A2WxzGtEfVAG/XI2ZhKNLQwCJZTEJz7Dg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 18:35",
+  "url": null
+}

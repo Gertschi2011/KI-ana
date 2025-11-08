@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Carl Bohland's Auto Wash Bowl (2019)\n • Hacker News: Why Nigeria Accepted GMOs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD Anschluss in den USA sucht",
+  "created_at": 1761593473.043591,
+  "hash": "e879753daf731e5ce7ff776bab317d25badfff75bac2449fac1dc67326277518",
+  "id": "BLK_1761593473_1789fd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ShOyAnxgdIxRfVbFlSAZVy8fDwUlhX+ndgm4rrmVD8nTFHNPuazV/dviypRuez+sCe/pXEC4lK5NZdoidhkbBg==",
+  "signed_at": "2025-10-27T19:31:13Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 20:31",
+  "url": null
+}

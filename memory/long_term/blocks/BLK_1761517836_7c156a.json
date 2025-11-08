@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: MyraOS – My 32-bit operating system in C and ASM (Hack Club project)\n • Hacker News: Smartphones manipulate our emotions and trigger our reflexes\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht aus Berlin: Spahn stärkt Merz in \"Stadtbild\"-Debatte",
+  "created_at": 1761517836.8109362,
+  "hash": "3e8e74279b5846ba456cdfb369c5467391b5ffac3cff20527f66df80d4e147ab",
+  "id": "BLK_1761517836_7c156a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "r0IVIdXlfvPy8YUfkkrtJVCebcpxK8C6TiA944k/A3+NBmLIFwlJnHyFXutRAiDkoXwIMTSocB4FNMncI3DQDg==",
+  "signed_at": "2025-10-26T22:30:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 23:30",
+  "url": null
+}

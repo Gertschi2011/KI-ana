@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: TiVo exiting legacy DVR business\n • Hacker News: The paradoxical efficient market hypothesis (2024)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gouverneur: Nationalgarde aus Texas in Illinois angekommen",
+  "created_at": 1759898047.516735,
+  "hash": "23837854337817fd2308d94a847063a0a68b9199db8619d32025c380cb00d411",
+  "id": "BLK_1759898047_460e8d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "4pdbEc4xmgpazVhOMTOfpm4Oy1OSeDLgAu+wlIZ3F2ezDhBP9OvPPsVNqXh6xtxQqqbrCEY7/Mw1/M0jgZHUCw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 06:34",
+  "url": null
+}

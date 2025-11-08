@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: In Praise of RSS and Controlled Feeds of Information\n • Hacker News: Fp8 runs ~100 tflops faster when the kernel name has \"cutlass\" in it\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schnellgesetz geplant: Söder will Abschuss von Drohnen beschleunigen",
+  "created_at": 1759491047.1929874,
+  "hash": "a2083b42e1e9282e0618664d84731483a73032b163506b88808b113b6e5a7336",
+  "id": "BLK_1759491047_3d2353",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "WIq7pEn4EUG4lBQZm8iSNyhJ95IZp1J6gqn8Vw1AFWhTVZR32WuQVvtq8BmXY+4Tgf1nMy1ZtDKcXNh/sfchCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 13:30",
+  "url": null
+}

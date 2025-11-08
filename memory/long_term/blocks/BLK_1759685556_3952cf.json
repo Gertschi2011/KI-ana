@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Implicit Actor Critic Coupling via a Supervised Learning Framework for RLVR\n • Hacker News: Lina Khan I told you so: The Activision-Blizzard buyout harms gamers&developers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Söder äußert sich im Bericht aus Berlin zu Drohnenabschüssen",
+  "created_at": 1759685556.7526581,
+  "hash": "915bc5a3dd85b99f918e5131ce0c81b6a972fd06ef2c3ca2917fdb10d161968b",
+  "id": "BLK_1759685556_3952cf",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Lqnv05IQ8tC27nvJt8NHyOA3XRjdlZ9VFeJqPJ0+HZgJXV7foTo0s/c3B+vpNQbnA053GJi4OcEb/8TRsOpZAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 19:32",
+  "url": null
+}

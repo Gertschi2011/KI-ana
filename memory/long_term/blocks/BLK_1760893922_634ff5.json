@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: When Pollution Spikes in Southeast Asia, Rainfall Shifts from Land to Sea\n • Hacker News: Windows 11 25H2 October Update Bug Renders Recovery Environment Unusable\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel bestätigt Angriffe auf Gaza nach Vorwürfen gegen Hamas",
+  "created_at": 1760893922.5449383,
+  "hash": "aa97920d66b5509c22266b28eec9f0b1cb69f1cad3b9a8ec4c31efe146388425",
+  "id": "BLK_1760893922_634ff5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "/WFG15cbyke8CGAJR5Q3EW6pRNpB+wh5wvfKIp20iXf1DIwLgWvDyVFOy2kYz7qqJ6XrXA2lHZuv7DEfgaegAg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 19:12",
+  "url": null
+}

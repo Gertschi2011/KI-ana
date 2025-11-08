@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759063167_2694bd",
-  "title": "Web Digest 2025-09-28 14:39",
   "content": "• Hacker News: Why I gave the world wide web away for free\n • Hacker News: 1982: Fred Dibnah shows how to erect a CHIMNEY SCAFFOLD at 200 feet [video]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Deutsche kaufen Elektronikgeräte lieber neu als gebraucht",
+  "created_at": 1759063167.2992218,
+  "hash": "f67d4990ff2c7eeeddbd910d27c0627a7b2bf8cd4631dd9ea6e9734488f902f5",
+  "id": "BLK_1759063167_2694bd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "yqTPDt+CvEO4TuoKx43ekLCEys7YJbQiclRg9gfanknLv87i8WzcDzkHeg0N2NHBKo6GAi7l6sVm5BjnrrJvCQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759063167.2992218,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 14:39",
+  "url": null
 }

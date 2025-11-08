@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: PEP 810 – Explicit lazy imports\n • Hacker News: ICE Wants to Build Out a 24/7 Social Media Surveillance Team\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas erklärt sich zur Freilassung aller Geiseln bereit",
+  "hash": "deb816451242bc9f5d8c898e75614c7314e9e7fe1bb820e6dc886a78ac8cbcd2",
+  "id": "BLK_1759523470_e6fc1k",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "qU+xfyQ601+d+7wsntR6tWaUmr/tKcZ49fjcIUT+RRifiKV4tfowRXBBaZb01hWRFeYraex+72Y36ziEHurnAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 22:31",
+  "ts": 1759523470,
+  "url": ""
+}

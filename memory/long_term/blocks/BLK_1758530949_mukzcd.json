@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758530949_mukzcd",
-  "title": "Was weißt du über den Mars?",
   "content": "TL;DR: Kurzüberblick zu Was weißt du über den Mars? – ich prüfe bestehendes Wissen und aktuelle Quellen.",
+  "hash": "abd72d93471b75c548b2b3a6817959b83dc3254b0f18c0ea9b6bd74ba6af1f18",
+  "id": "BLK_1758530949_mukzcd",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "tNux++ZJrWaenDA8EkG7jftYI2960vsaW6cgLUg6ixCvJPEQ1JoE4tQwM+rrSyHwMJyKoYFawaoWmMgWLA3dAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "vision",
     "learned",
     "web"
   ],
-  "url": "",
+  "title": "Was weißt du über den Mars?",
   "ts": 1758530949,
-  "meta": {},
-  "hash": "abd72d93471b75c548b2b3a6817959b83dc3254b0f18c0ea9b6bd74ba6af1f18"
+  "url": ""
 }

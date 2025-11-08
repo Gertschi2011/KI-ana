@@ -1,0 +1,167 @@
+{
+  "version": "6.0.0",
+  "updated": "2025-10-29T16:35:00+01:00",
+  "name": "KI_ana",
+  "description": "Fortgeschrittene KI mit lernfähigem Gedächtnis und eigenständigem Verhalten",
+  
+  "core": [
+    "memory_bridge",
+    "addressbook",
+    "conversation_folders",
+    "router_ask",
+    "persona_engine",
+    "auth_system"
+  ],
+  
+  "io": {
+    "input": ["chat_ui", "voice_stt", "api_http", "web_fetch"],
+    "output": ["chat_ui", "voice_tts", "api_http", "block_writer"]
+  },
+  
+  "learning": {
+    "methods": ["conversation_learning", "web_fetch", "block_writer", "topic_indexing"],
+    "memory": {
+      "short_term": "session_context",
+      "long_term": "blocks",
+      "organization": "addressbook_tree"
+    }
+  },
+  
+  "capabilities": {
+    "out_of_box_thinking": true,
+    "lateral_reasoning": true,
+    "context_sensitive_responses": true,
+    "addressbook_navigation": true,
+    "folder_organization": true,
+    "server_sync": true,
+    "offline_capable": true,
+    "multi_device": true
+  },
+  
+  "reasoning": {
+    "styles": ["analytical", "creative", "lateral", "reflective"],
+    "persona_modes": {
+      "formal": "Wissenschaftlich präzise, sachlich",
+      "casual": "Persönlich, zugänglich, lernend"
+    },
+    "ethical_guidelines": [
+      "Transparenz über Grenzen",
+      "Unsicherheit kommunizieren",
+      "Quellen nennen",
+      "Nicht-Empfindungsfähigkeit klar stellen"
+    ]
+  },
+  
+  "knowledge": {
+    "storage": "filesystem_blocks",
+    "indexing": "addressbook_tree",
+    "total_blocks": 0,
+    "total_topics": 0,
+    "organization": {
+      "hierarchical": true,
+      "searchable": true,
+      "filterable": true
+    },
+    "quality_control": {
+      "trust_ratings": true,
+      "timestamps": true,
+      "source_tracking": true,
+      "conflict_detection": false
+    }
+  },
+  
+  "safety": {
+    "authentication": true,
+    "role_based_access": true,
+    "rate_limiting": true,
+    "emergency_override": true,
+    "audit_logging": true,
+    "user_isolation": true
+  },
+  
+  "infrastructure": {
+    "backend": {
+      "framework": "FastAPI",
+      "language": "Python 3.11",
+      "workers": 2,
+      "async": true
+    },
+    "frontend": {
+      "technologies": ["HTML5", "JavaScript ES6", "CSS3"],
+      "responsive": true,
+      "offline_support": true
+    },
+    "storage": {
+      "database": "PostgreSQL",
+      "cache": "Redis",
+      "vector_db": "Qdrant",
+      "object_storage": "MinIO",
+      "filesystem": "JSON blocks"
+    },
+    "deployment": {
+      "containerized": true,
+      "orchestration": "Docker Compose",
+      "reverse_proxy": "Nginx",
+      "ssl": true
+    }
+  },
+  
+  "api_endpoints": {
+    "chat": ["/api/chat/stream", "/api/chat/once"],
+    "memory": ["/api/memory/knowledge", "/api/addressbook/*"],
+    "organization": ["/api/folders", "/api/conversations"],
+    "admin": ["/api/admin/users", "/api/admin/audit"],
+    "system": ["/api/system/map", "/api/system/metrics", "/api/me"],
+    "auth": ["/api/auth/login", "/api/auth/register", "/api/auth/logout"]
+  },
+  
+  "features": {
+    "implemented": [
+      "Chat mit Formatierung",
+      "Server-First Speicherung",
+      "Ordner-System",
+      "Addressbook-Navigation",
+      "Out-of-Box Denken",
+      "Kontextsensitive Antworten",
+      "Moderne Benutzerverwaltung",
+      "User-spezifische Gespräche",
+      "Geräte-übergreifende Sync",
+      "Live-Suche",
+      "Role-Based Access",
+      "System Map (Self-Knowledge)",
+      "Knowledge Audit",
+      "Ethik-Framework",
+      "Mirror System",
+      "Auto-Scheduler"
+    ],
+    "in_development": [],
+    "planned": [
+      "Drag & Drop Ordner",
+      "Auto-Tagging",
+      "Graph Visualization",
+      "Semantic Clustering"
+    ]
+  },
+  
+  "metadata": {
+    "deployment_date": "2025-10-29",
+    "last_major_update": "2025-10-29T16:30:00+01:00",
+    "total_lines_of_code": 4100,
+    "api_endpoints_count": 30,
+    "modules_count": 25,
+    "active_users": 0,
+    "uptime_target": "99.9%"
+  },
+  
+  "self_awareness": {
+    "knows_architecture": true,
+    "knows_limitations": true,
+    "can_explain_decisions": true,
+    "tracks_knowledge_quality": true,
+    "ethical_reasoning": true,
+    "continuous_improvement": true,
+    "audits_knowledge": true,
+    "updates_from_web": true,
+    "scheduled_maintenance": true
+  }
+}

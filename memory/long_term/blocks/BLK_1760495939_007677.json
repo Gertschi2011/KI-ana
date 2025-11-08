@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: New England's last coal plant has stopped operating, according to its owners\n • Hacker News: Ally Petitt: Youngest OSCP at 16yo. Over 11 CVEs by 18\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pistorius verteidigt seine Kritik am Wehrdienst-Kompromiss",
+  "created_at": 1760495939.9126062,
+  "hash": "fef569848232d74cc2e3ca7401b8d2e24b6ee9b3b5a9701f06fc1472443c0d95",
+  "id": "BLK_1760495939_007677",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "WCf2tNszuUu4KskrkhpxpMnI02UPr0aIaY41PmVwFARifZXHRmHWidzBhkDTXxeseORGddhiBxkdEtPVb/mWBw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 04:38",
+  "url": null
+}

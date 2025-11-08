@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Twake Drive – The open-source alternative to Google Drive\n • Hacker News: Debian Technical Committee overrides systemd change\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wadephul verschiebt China-Reise kurzfristig",
+  "hash": "6bf21cc8f6c2d7c2be4ea5285d8fc0fcafc80e97730cc309ca6a1bc9d3104e24",
+  "id": "BLK_1761303750_47niww",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "nH4VfBoS4njhegqISRKfLN2rikHHNS+onZj/fWYn/YDL/4NuwNyizG0BoZBEemTHTxA/lhLkXziQDpWcOfB+AQ==",
+  "signed_at": "2025-10-24T11:02:30Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 13:02",
+  "ts": 1761303750,
+  "url": ""
+}

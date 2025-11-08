@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Things I've learned in my 7 Years Implementing AI\n • Hacker News: Clone-Wars: 100 open-source clones of popular sites\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensvereinbarung zwischen Israel und der Hamas auf dünnem Eis",
+  "hash": "0c1aaeee943ac197682d7c3fad3c6fe40e1a3730f274a88472778fb5ea35c055",
+  "id": "BLK_1760557171_wmk51b",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "2VC5JAlhHZUc6lDVjo7hmDSYhi63ymetnKEHutTIyflBlu0L9EcRzF0jhzy44QTa27rf3Bu6pnO7qxesnBAIBw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 21:39",
+  "ts": 1760557171,
+  "url": ""
+}

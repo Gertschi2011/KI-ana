@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Nvidia DGX Spark and Apple Mac Studio = 4x Faster LLM Inference with EXO 1.0\n • Hacker News: Lead Limited Brain and Language Development in Neanderthals and Other Hominids?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Treffen mit Trump: Selenskyjs Drahtseilakt in Washington",
+  "created_at": 1760674227.3577914,
+  "hash": "9872f53dc6fca7c76d2c0814aeb860e2da6afea5e427ee752f21fe8fea93bdb6",
+  "id": "BLK_1760674227_88a96e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "hlm696zXzrDBVo7yp4X8X/aThYZa2EUKl2m4/Iy3m+UxNVoXOLbCcBI2Ha8ZjQvtURx2VgVf5RBj73PHPHy7CQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 06:10",
+  "url": null
+}

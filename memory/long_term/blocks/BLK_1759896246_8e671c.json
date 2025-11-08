@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Paradoxical Efficient Market Hypothesis (2024)\n • Hacker News: Bob Ross paintings to be auctioned to fund US public broadcasting\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gouverneur: Nationalgarde aus Texas in Illinois angekommen",
+  "created_at": 1759896246.763293,
+  "hash": "2dd5c3060d0cb30b0358a7402d928aca11b1530475d766d8c41d47277d871650",
+  "id": "BLK_1759896246_8e671c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "1YSkjGLVIZNVrgv1d4jvDZ3DvrEVyNGFsY9QrC/Rzjis5Dd8vcPxvHDd1DJYvKvMJlMicJWP9XF/VnsMLXRqBQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 06:04",
+  "url": null
+}

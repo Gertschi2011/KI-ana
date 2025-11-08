@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758778804_1755ak",
-  "title": "Web Digest 2025-09-25 07:40",
   "content": "• Hacker News: Homeowner baffled after washing machine uses 3.6GB of internet data a day (2024)\n • Hacker News: The \"Wage Level\" Mirage: H-1B proposal could help outsourcers and hurt US talent\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Dänemark meldet erneut Drohnen über Flughäfen - Aalborg gesperrt",
+  "hash": "fcfc7c8474f86d94c35ddbef4b0db7edbf1348206bb5fd4726d7a387947d15ed",
+  "id": "BLK_1758778804_1755ak",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "pJ5YnHrE+bOO4Osq3QEgZ95dh806pf9CeM8IGHTmp0csosKIq570hf6HeZqLniKUe20C8wrpzmAsSeszXf7lAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 07:40",
   "ts": 1758778804,
-  "meta": {},
-  "hash": "fcfc7c8474f86d94c35ddbef4b0db7edbf1348206bb5fd4726d7a387947d15ed"
+  "url": ""
 }

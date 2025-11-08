@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ImapGoose\n • Hacker News: How First Wap Tracks Phones Around the World\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensvereinbarung zwischen Israel und der Hamas auf dünnem Eis",
+  "created_at": 1760571578.7297933,
+  "hash": "817c0bcfb30a0875e08c0d30cd9b2f16fb292b7e23f2ddf25399eed29b71da27",
+  "id": "BLK_1760571578_45b867",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "XdwT1G5m6TPy3UGl8YK+4lXlf1lB2N+/MquU3ThD53S9t6K5Ths3fb4KcuTyDIxZig8dDEZ5XGCH0dz/LvgSAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 01:39",
+  "url": null
+}

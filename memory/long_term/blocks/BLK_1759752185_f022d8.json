@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The (economic) AI apocalypse is nigh\n • Hacker News: Disney+ Subscribers Face a Wave of Cancellations\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Woran ist Frankreichs Premier Lecornu gescheitert?",
+  "created_at": 1759752185.0551574,
+  "hash": "7372ff22ce4454175ac66889c9ea2b0ba3d520b44e918f3d10416ef99b25ae7f",
+  "id": "BLK_1759752185_f022d8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Qa8bjonSs0CPOZRZNaOu7CbrtQ81/+D02+pvpYjYFyyBzlsHt5TUV85MrWuRriUxYH3WMDONT/lARkSLxE5TBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 14:03",
+  "url": null
+}

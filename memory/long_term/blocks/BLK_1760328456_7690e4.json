@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Countering Trusting Trust Through Diverse Double-Compiling (DDC)\n • Hacker News: Despite what's happening in the USA, renewables are winning globally\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rotes Kreuz wartet auf israelische Geiseln",
+  "created_at": 1760328456.2627037,
+  "hash": "e23eb344c5b1245ca6dd01519711e6fedd7ab9c73d950931b15a5788acbd6579",
+  "id": "BLK_1760328456_7690e4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "3Y+lvAo8x2PNs2EoyairaeK5M+/3oGmIFqYzYRD3UJQU1Hj6uckYdb2lCXZKucPME2iuNmXo2+L7FxCUh98AAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 06:07",
+  "url": null
+}

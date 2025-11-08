@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI_ana OS - Dezentrales KI-Betriebssystem</title>
+    <meta name="description" content="100% lokal, offline-fähig, privacy-first. Dein persönliches KI-Betriebssystem.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg flex items-center justify-center font-bold text-xl">
+                        K
+                    </div>
+                    <span class="text-2xl font-bold">KI_ana OS</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="hover:text-purple-400 transition-colors">Features</a>
+                    <a href="#download" class="hover:text-purple-400 transition-colors">Download</a>
+                    <a href="#docs" class="hover:text-purple-400 transition-colors">Docs</a>
+                    <a href="#community" class="hover:text-purple-400 transition-colors">Community</a>
+                    <a href="https://github.com/your-org/ki_ana" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors">
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto text-center">
+            <div class="float-animation inline-block mb-8">
+                <div class="w-32 h-32 bg-gradient-to-br from-purple-600 to-purple-800 rounded-3xl flex items-center justify-center text-6xl">
+                    🤖
+                </div>
+            </div>
+            
+            <h1 class="text-6xl md:text-7xl font-bold mb-6">
+                Dein <span class="gradient-text">Persönliches</span><br>
+                KI-Betriebssystem
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-3xl mx-auto">
+                100% lokal • Offline-fähig • Privacy-First<br>
+                Multi-Device • Open Source • Kostenlos
+            </p>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-12">
+                <a href="#download" class="px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-lg text-lg font-semibold transition-colors">
+                    🚀 Jetzt Downloaden
+                </a>
+                <a href="/onboarding.html" class="px-8 py-4 bg-gray-800 hover:bg-gray-700 rounded-lg text-lg font-semibold transition-colors">
+                    📖 Quick Start
+                </a>
+            </div>
+            
+            <div class="flex items-center justify-center gap-8 text-sm text-gray-500">
+                <div>✅ Linux</div>
+                <div>✅ macOS</div>
+                <div>✅ Windows</div>
+                <div>✅ Docker</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-20 px-6 bg-gray-800/50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                Warum <span class="gradient-text">KI_ana OS</span>?
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-800 rounded-xl p-8 hover:bg-gray-750 transition-colors">
+                    <div class="text-5xl mb-4">🔒</div>
+                    <h3 class="text-2xl font-bold mb-4">100% Privacy</h3>
+                    <p class="text-gray-400">
+                        Alle Daten bleiben auf deinen Geräten. Keine Cloud, kein Tracking, keine Abhängigkeit.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-gray-800 rounded-xl p-8 hover:bg-gray-750 transition-colors">
+                    <div class="text-5xl mb-4">📴</div>
+                    <h3 class="text-2xl font-bold mb-4">Offline-Fähig</h3>
+                    <p class="text-gray-400">
+                        Funktioniert komplett ohne Internet. Embeddings, Voice, Vector Search - alles lokal.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-gray-800 rounded-xl p-8 hover:bg-gray-750 transition-colors">
+                    <div class="text-5xl mb-4">🌐</div>
+                    <h3 class="text-2xl font-bold mb-4">Multi-Device</h3>
+                    <p class="text-gray-400">
+                        P2P-Sync zwischen deinen Geräten. WebRTC, E2E-verschlüsselt, keine zentrale Server.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-gray-800 rounded-xl p-8 hover:bg-gray-750 transition-colors">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold mb-4">Schnell</h3>
+                    <p class="text-gray-400">
+                        2-5x schneller als Cloud. Embeddings in 92ms, Vector Search in 100ms.
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-gray-800 rounded-xl p-8 hover:bg-gray-750 transition-colors">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-2xl font-bold mb-4">Kostenlos</h3>
+                    <p class="text-gray-400">
+                        Open Source, keine Abos, keine versteckten Kosten. Spare $240-480/Jahr.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-gray-800 rounded-xl p-8 hover:bg-gray-750 transition-colors">
+                    <div class="text-5xl mb-4">🤖</div>
+                    <h3 class="text-2xl font-bold mb-4">Mit Persönlichkeit</h3>
+                    <p class="text-gray-400">
+                        2D-Avatar, Voice-Interface, Desktop-App. KI mit Gesicht und Stimme.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">
+                <span class="gradient-text">Screenshots</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 rounded-xl p-4">
+                    <div class="bg-gray-900 rounded-lg aspect-video flex items-center justify-center text-gray-600">
+                        📊 Dashboard Screenshot
+                    </div>
+                    <p class="mt-4 text-center text-gray-400">Modern Dashboard mit Vue.js</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-4">
+                    <div class="bg-gray-900 rounded-lg aspect-video flex items-center justify-center text-gray-600">
+                        🤖 Avatar Screenshot
+                    </div>
+                    <p class="mt-4 text-center text-gray-400">2D-Avatar mit Animationen</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-4">
+                    <div class="bg-gray-900 rounded-lg aspect-video flex items-center justify-center text-gray-600">
+                        🧩 Block-Editor Screenshot
+                    </div>
+                    <p class="mt-4 text-center text-gray-400">Visueller Block-Editor</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-4">
+                    <div class="bg-gray-900 rounded-lg aspect-video flex items-center justify-center text-gray-600">
+                        💬 Messaging Screenshot
+                    </div>
+                    <p class="mt-4 text-center text-gray-400">P2P Messaging (E2E encrypted)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download -->
+    <section id="download" class="py-20 px-6 bg-gray-800/50">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">
+                <span class="gradient-text">Download</span> KI_ana OS
+            </h2>
+            
+            <p class="text-xl text-gray-400 mb-12">
+                Version 3.0.0 • 23. Oktober 2025
+            </p>
+            
+            <div class="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <a href="#" class="bg-gray-800 hover:bg-gray-700 rounded-xl p-6 transition-colors">
+                    <div class="text-4xl mb-4">🐧</div>
+                    <div class="font-bold mb-2">Linux</div>
+                    <div class="text-sm text-gray-400">AppImage, .deb</div>
+                </a>
+                
+                <a href="#" class="bg-gray-800 hover:bg-gray-700 rounded-xl p-6 transition-colors">
+                    <div class="text-4xl mb-4">🍎</div>
+                    <div class="font-bold mb-2">macOS</div>
+                    <div class="text-sm text-gray-400">.dmg, .pkg</div>
+                </a>
+                
+                <a href="#" class="bg-gray-800 hover:bg-gray-700 rounded-xl p-6 transition-colors">
+                    <div class="text-4xl mb-4">🪟</div>
+                    <div class="font-bold mb-2">Windows</div>
+                    <div class="text-sm text-gray-400">.msi, .exe</div>
+                </a>
+                
+                <a href="#" class="bg-gray-800 hover:bg-gray-700 rounded-xl p-6 transition-colors">
+                    <div class="text-4xl mb-4">🐳</div>
+                    <div class="font-bold mb-2">Docker</div>
+                    <div class="text-sm text-gray-400">docker-compose</div>
+                </a>
+            </div>
+            
+            <div class="mt-12">
+                <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors">
+                    📖 Installation Guide →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section id="community" class="py-20 px-6">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">
+                Join the <span class="gradient-text">Community</span>
+            </h2>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <a href="https://github.com/your-org/ki_ana" class="flex items-center gap-3 px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+                    <span class="text-2xl">💻</span>
+                    <div class="text-left">
+                        <div class="font-bold">GitHub</div>
+                        <div class="text-sm text-gray-400">Source Code & Issues</div>
+                    </div>
+                </a>
+                
+                <a href="https://discord.gg/kiana" class="flex items-center gap-3 px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+                    <span class="text-2xl">💬</span>
+                    <div class="text-left">
+                        <div class="font-bold">Discord</div>
+                        <div class="text-sm text-gray-400">Chat & Support</div>
+                    </div>
+                </a>
+                
+                <a href="https://forum.kiana.ai" class="flex items-center gap-3 px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
+                    <span class="text-2xl">📝</span>
+                    <div class="text-left">
+                        <div class="font-bold">Forum</div>
+                        <div class="text-sm text-gray-400">Discussions</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 bg-gray-800/50 border-t border-gray-800">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold mb-4">KI_ana OS</h3>
+                    <p class="text-sm text-gray-400">
+                        Dezentrales KI-Betriebssystem.<br>
+                        100% Privacy-First.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Docs</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="/QUICKSTART.md" class="hover:text-purple-400">Quick Start</a></li>
+                        <li><a href="/FAQ.md" class="hover:text-purple-400">FAQ</a></li>
+                        <li><a href="/TROUBLESHOOTING.md" class="hover:text-purple-400">Troubleshooting</a></li>
+                        <li><a href="/DEPLOYMENT_GUIDE.md" class="hover:text-purple-400">Deployment</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Legal</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="/PRIVACY_POLICY.md" class="hover:text-purple-400">Privacy Policy</a></li>
+                        <li><a href="/LICENSE" class="hover:text-purple-400">License (MIT)</a></li>
+                        <li><a href="/CHANGELOG.md" class="hover:text-purple-400">Changelog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold mb-4">Community</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="https://github.com/your-org/ki_ana" class="hover:text-purple-400">GitHub</a></li>
+                        <li><a href="https://discord.gg/kiana" class="hover:text-purple-400">Discord</a></li>
+                        <li><a href="https://twitter.com/kiana_os" class="hover:text-purple-400">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center text-sm text-gray-500 pt-8 border-t border-gray-800">
+                © 2025 KI_ana OS • Open Source (MIT License) • Made with ❤️ for Privacy
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

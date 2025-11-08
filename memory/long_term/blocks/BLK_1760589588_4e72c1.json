@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: TaxCalcBench: Evaluating Frontier Models on the Tax Calculation Task\n • Hacker News: Free applicatives, the handle pattern, and remote systems\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Von der Leyen präsentiert Fahrplan für europäische Verteidigungsstrategie",
+  "created_at": 1760589588.0589685,
+  "hash": "5611f20607d284b3a67a3f777cb7f9e9390662dabe1ca1f7188a8cffafacdea2",
+  "id": "BLK_1760589588_4e72c1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "1yK2jHfSPRGlxCgSb1Mm3Qg6wkN9x5nTBR3Hzm8GCRM0YT2XlUo8tYYx3MlEc13adplLA0TqwAKS84cNUOKwBg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 06:39",
+  "url": null
+}

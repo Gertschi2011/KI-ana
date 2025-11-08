@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Gemini 3.0 spotted in the wild through A/B testing\n • Hacker News: Claude Skills\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was hinter Merz' Satz zum \"Stadtbild\" steckt",
+  "hash": "10d40fcdbc15cb5be052bcadf73feec5dce8232125b9fea75d76f70b7243d419",
+  "id": "BLK_1760636410_zuhep2",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "Qc7WlYm8wXfL4ySL4MPmaS2OgroDVhLUxKeG8F4bMUYMihrIj8zgVYk3PYTvCY7e8O9EZjY1xLY81uEezGqOBg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 19:40",
+  "ts": 1760636410,
+  "url": ""
+}

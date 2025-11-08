@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Myth of Outrunning Your Diet\n • Hacker News: The Sodium-Ion Battery Revolution Has Started\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russland schützt Atomarsenal mit westlicher Technik",
+  "created_at": 1761194425.0227635,
+  "hash": "70a090840d40a2f0076ee3a5e31632f6e4cbb5abb75c5c707c68e80b5cf14508",
+  "id": "BLK_1761194425_b4ec13",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8hgx3HjXwr2ciwTh/NBBKVkKvNxsXpJE0DWlxkGhEo5Uvp1/SVj0QbO94gC4dSbAd1TybrQtF/sO3/+xnHNPBg==",
+  "signed_at": "2025-10-23T04:40:25Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 06:40",
+  "url": null
+}

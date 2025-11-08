@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Spyware maker NSO Group confirms acquisition by US investors\n • Hacker News: Pipelining in psql (PostgreSQL 18)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): China droht den USA nach Zollankündigung mit Gegenmaßnahmen",
+  "hash": "1c8977f83c404621695f1a211d322b104832ca788ba09da6084ed79459f09256",
+  "id": "BLK_1760252817_f5u9wc",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "XpVQVUFPCDniL7wdzE8hMXOXIJHPnEiyMOKtMBGmsdCWZggMd7PHeFX1vRtjO4sl4wLyPsV1catgAxDRtjQeAg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 09:06",
+  "ts": 1760252817,
+  "url": ""
+}

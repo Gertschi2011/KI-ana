@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Language Agnostic Programming: Why you may still need code\n • Hacker News: Small Nuclear Reactors Will Not Save the Day\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Abschiebungen: Dobrindt-Abgesandter trifft Taliban-Vertreter",
+  "created_at": 1759680154.2853396,
+  "hash": "f1ff6024eb5c80525df2e7f0fbe95520a42580b472666a45fe8e2ba7143c8a90",
+  "id": "BLK_1759680154_c3a6af",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/Xuip4r/SvvIPwOKHKUze/yKfaiSihgsgvFxT0EJTXbsrZYczIfmmW1W+UPc+dSdQ4plCHLTS+mXpvQZ86I0Bw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 18:02",
+  "url": null
+}

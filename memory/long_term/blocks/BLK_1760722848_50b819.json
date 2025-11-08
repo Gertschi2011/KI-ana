@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Rapper 50 Cent, Adjusted for Inflation\n • Hacker News: AI has a cargo cult problem\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Beispiel Düsseldorf: Wie der \"Bau-Turbo\" in der Praxis wirkt",
+  "created_at": 1760722848.1188784,
+  "hash": "3935443b8e7275e61155f6390a7b1621f6c67a7d3dc0e9dd34042d8e5fe6e014",
+  "id": "BLK_1760722848_50b819",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "qV860wlupN9hLXUTQMYgH2rtFcOixpvR+RbkXwnjyMZzFQ3Rlx0uqqfF0V4dNL52jioOASnjbVxArNLEAKTXBw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 19:40",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The C++ programmer and educator Rainer Grimm has passed away\n • Hacker News: Nobel Prize in Literature 2025: László Krasznahorkai\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Einigung zwischen Hamas und Israel: Wie geht es für Gaza weiter?",
+  "created_at": 1760016898.5465784,
+  "hash": "342fe37a3122f04a334b1a55eb8e8b1252ddfcf51b6d504b2bdb77ffcb7fb595",
+  "id": "BLK_1760016898_42bda5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "mdw3U6eLlm7Mp98nCbo90fnkt2atZcl/Ej9mNBs8k84vsx1ib9U/eTY1AnNmxMsW752jUn/wJA3hgkbpTxiMBg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 15:34",
+  "url": null
+}

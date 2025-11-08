@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The Linux Boot Process: From Power Button to Kernel\n • Hacker News: D2: Diagram Scripting Language\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "hash": "ac7d578579c6233005e364c05df3aa12ea38085208e67a47b95705b029007d0d",
+  "id": "BLK_1761440626_yza5p2",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "MGjIoIcxlyTg5d6LWiKz6LYUl35/PxwNkmElW+wRvpcEzFehOW2Gu0+D0SBYZix9Fk9nm5kLTanxXGml6Z19DQ==",
+  "signed_at": "2025-10-26T01:03:46Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 02:03",
+  "ts": 1761440626,
+  "url": ""
+}

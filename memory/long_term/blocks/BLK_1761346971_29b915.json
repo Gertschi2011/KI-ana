@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: New OSM file format: 30% smaller than PBF, 5x faster to import\n • Hacker News: Conductor (YC S24) Is Hiring a Founding Engineer in San Francisco\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Großbritannien drängt auf Nutzung russischen Vermögens für die Ukraine",
+  "created_at": 1761346971.6784885,
+  "hash": "90ff1452b58c4c5f4631ba5f98059793ebf6b76a6b2f074d94be3b56722806f5",
+  "id": "BLK_1761346971_29b915",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jKrJ8b6eBCOIUDLC2ACeZ0AebBrDJs3zV5Y4MyOQKAAGFsBIhWsWdc2U/PxjkXRO+nyJ95IwVDfTCiPikeLsCA==",
+  "signed_at": "2025-10-24T23:02:51Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 01:02",
+  "url": null
+}

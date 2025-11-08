@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Sodium-Ion Battery Revolution Has Started\n • Hacker News: VortexNet: Neural network based on fluid dynamics\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sacharow-Preis für Poczobut: \"Seinen Kampfgeist kann man ihm nicht nehmen\"",
+  "created_at": 1761192623.9501634,
+  "hash": "1daf25d2f9e355a41926f6c55f1f4b0d4ea3a02430cfdbc4a66370bbbd3bec07",
+  "id": "BLK_1761192623_562457",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "0nrnkRFQEv/FT1CkGlkYCkTjjNci5RMjTquGrjFu9aGHD+f93WErRCYoAEXj8d+Uhvc8keZvSFbcNTbjRNZXAQ==",
+  "signed_at": "2025-10-23T04:10:23Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 06:10",
+  "url": null
+}

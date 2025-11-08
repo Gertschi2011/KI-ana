@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Subverting Telegram's end-to-end encryption\n • Hacker News: GPT-5o-mini hallucinates medical residency applicant grades\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Regierungskrise in Frankreich: Premier Lecornu setzt Rentenreform aus",
+  "hash": "3cbb21ea177cdbcf589e59d5e15e0535398c98db4d3b271322d8b72cd4474598",
+  "id": "BLK_1760458120_boyddf",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "qK49kvzhGrfMaSab4XQSDS3UeJOPeIUgWcbjrrgtlvBapzchWLiWu6NAbk5rbZLNRwXYvHDTEBe42wtbfUCvAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 18:08",
+  "ts": 1760458120,
+  "url": ""
+}

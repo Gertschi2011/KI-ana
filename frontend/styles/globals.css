@@ -1,0 +1,59 @@
+/* Global styles for KI_ana app */
+:root {
+  color-scheme: light dark;
+}
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: #0b0c10;
+  color: #e5e7eb;
+}
+/* Light mode */
+html:not(.dark) body {
+  background: #ffffff;
+  color: #111827;
+}
+
+/* Container */
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+/* Navbar */
+.navbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 1rem; backdrop-filter: blur(6px);
+  background: rgba(255,255,255,0.7);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.dark .navbar { background: rgba(17,24,39,0.6); border-bottom-color: rgba(255,255,255,0.08); }
+.nav-left { display: flex; gap: 1rem; align-items: center; }
+.nav-right { display: flex; gap: 0.75rem; align-items: center; }
+.brand { font-weight: 700; text-decoration: none; color: inherit; margin-right: .5rem; }
+.nav-link { color: inherit; text-decoration: none; opacity: .85; transition: opacity .15s, transform .15s; }
+.nav-link:hover { opacity: 1; transform: translateY(-1px); }
+.user { opacity: .8; }
+.btn { border: 1px solid rgba(0,0,0,0.12); padding: .35rem .7rem; border-radius: .5rem; background: transparent; color: inherit; cursor: pointer; }
+.dark .btn { border-color: rgba(255,255,255,0.2); }
+.btn.ghost { border-color: transparent; }
+
+/* Headings & text */
+.title { font-size: clamp(1.8rem, 2.5vw, 2.4rem); line-height: 1.2; margin: 0 0 .75rem; }
+.lead { opacity: .85; margin: 0 0 1.25rem; }
+
+/* Cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.card { display: grid; gap: .35rem; padding: 1rem; border-radius: .75rem; text-decoration: none; color: inherit;
+  border: 1px solid rgba(0,0,0,0.08); background: rgba(255,255,255,0.7);
+  transition: transform .15s, background .15s, border-color .15s; }
+.dark .card { border-color: rgba(255,255,255,0.08); background: rgba(31,41,55,0.6); }
+.card:hover { transform: translateY(-2px); border-color: rgba(59,130,246,0.5); }
+.card span { font-weight: 600; }
+.card small { opacity: .8; }
+
+/* Forms */
+input, button { font: inherit; }
+input { padding: .55rem .7rem; border: 1px solid rgba(0,0,0,0.12); border-radius: .5rem; background: transparent; color: inherit; }
+.dark input { border-color: rgba(255,255,255,0.2); }
+button { padding: .55rem .9rem; border-radius: .5rem; border: 1px solid rgba(59,130,246,0.6); background: rgba(59,130,246,0.1); color: inherit; cursor: pointer; }
+button:hover { background: rgba(59,130,246,0.2); }

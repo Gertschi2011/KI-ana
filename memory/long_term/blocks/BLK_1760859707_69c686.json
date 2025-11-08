@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Accountability Problem\n • Hacker News: Friendship Begins at Home\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brandmauer-Debatte: CDU-Spitze berät bei Klausur über Umgang mit AfD",
+  "created_at": 1760859707.327556,
+  "hash": "8e543c4954cab1031388e1c60486fc46012f794c3b41d3327411491571b8bc8c",
+  "id": "BLK_1760859707_69c686",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "RVR7M6ctd36oWketikLAqMhg4GhamtArWJaL8EJFxeMXaMKkkDrBqx+nGBE0DvIfAzPRFsjiBFmpQMkC6FY+BQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 09:41",
+  "url": null
+}

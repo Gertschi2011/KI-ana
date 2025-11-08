@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758685153_vml48n",
-  "title": "Web Digest 2025-09-24 05:39",
   "content": "• Hacker News: Quadratic memory reductions for Zero-knowledge Proofs\n • Hacker News: Zutty: Zero-cost Unicode Teletype, high-end terminal for low-end systems\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russlands Angriffskrieg : Trumps Kehrtwende in der Ukraine-Politik?",
+  "hash": "63ccb723e96bcb41730b67890c179be0d0be8d5bf916d46ce12663476ac8c992",
+  "id": "BLK_1758685153_vml48n",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "JPulBD/rzVnle1GU4qOjVJXTJbAv3E3y2SARfIlu2hWgVlAUznKxpKHiXau2y55fmrZf2DlHOQT0QKC2n4WCAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 05:39",
   "ts": 1758685153,
-  "meta": {},
-  "hash": "63ccb723e96bcb41730b67890c179be0d0be8d5bf916d46ce12663476ac8c992"
+  "url": ""
 }

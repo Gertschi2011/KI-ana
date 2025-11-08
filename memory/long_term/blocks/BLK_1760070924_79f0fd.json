@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple Took Down These ICE-Tracking Apps. The Developers Aren't Giving Up\n • Hacker News: Open-Source Agentic AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "created_at": 1760070924.9307501,
+  "hash": "f1e47af4ab05014cdfc501f345f19f047c99403040b056148553ed20d5442055",
+  "id": "BLK_1760070924_79f0fd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "8WqBf0CEVaY5nncH5EwQLziCO9wWgm6AkOHH5y4eI6uI+0geKNGXtL99r8t7jSGRzTSGkz3ZdCkAfcYIqloRDw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 06:35",
+  "url": null
+}

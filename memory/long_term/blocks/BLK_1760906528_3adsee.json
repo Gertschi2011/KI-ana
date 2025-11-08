@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Dosbian: Boot to DOSBox on Raspberry Pi\n • Hacker News: US Government Uptime Monitor\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel will Gaza-Waffenruhe wieder einhalten",
+  "hash": "fe3588a40e3eddac3178f23ea3456ae53b88758301150927054dbfcb64d297b9",
+  "id": "BLK_1760906528_3adsee",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "jwo0BwhkXUgVclxwnFPExoJEPGuckBvkVVaOSyKxxStiEH2966ZQsibA3DB/SEWFeEYIBQS0ilt5imrbTV0FBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 22:42",
+  "ts": 1760906528,
+  "url": ""
+}

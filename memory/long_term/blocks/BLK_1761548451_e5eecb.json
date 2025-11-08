@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Diphtheria, a once vanquished killer of children, is resurgent\n • Hacker News: The striking Swedish workers taking on carmaker Tesla\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump reist nach Japan: Beim Handel könnte es knirschen",
+  "created_at": 1761548451.1408691,
+  "hash": "b4e0ffadb1c150d84495b77371bb9a4fe06d01ae4a8836aa96e35b177f676b70",
+  "id": "BLK_1761548451_e5eecb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/CEX5l/3Wdyz6HpbYfvuYySLdHmZxMkOjJf/ebtFUuBNPaOJNtWz+O+6q2cWwnlt/8Ht97uGsIkUqVDl1tLpDQ==",
+  "signed_at": "2025-10-27T07:00:51Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 08:00",
+  "url": null
+}

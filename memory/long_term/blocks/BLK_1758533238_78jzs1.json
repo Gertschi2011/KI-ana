@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758533238_78jzs1",
-  "title": "Web Digest 2025-09-22 11:27",
   "content": "• Hacker News: Australian telco cut off emergency calls, firewall upgrade linked to 3 deaths\n • Hacker News: Show HN: Software Freelancers Contract Template\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schnieder verschiebt Pünktlichkeitsziele der Bahn nach hinten",
+  "hash": "f2e5eafb3678706bc0c8baf4b4af22f65c90d8eaa8d90054df0191c850024d6c",
+  "id": "BLK_1758533238_78jzs1",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "QvmJxRLN4yB9A+8mlg36HEFgQ9y6iz7xaT5DA3+YddtOR7u6iwOWuJ4wJbxebugIAkb6coe3q8N0ZH0HAu3TAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 11:27",
   "ts": 1758533238,
-  "meta": {},
-  "hash": "f2e5eafb3678706bc0c8baf4b4af22f65c90d8eaa8d90054df0191c850024d6c"
+  "url": ""
 }

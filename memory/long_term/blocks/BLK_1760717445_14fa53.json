@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Searchable compression for JSON – ~99% page skip and sub-ms lookups\n • Hacker News: Dead or Alive creator Tomonobu Itagaki, 58 passes away\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Beispiel Düsseldorf: Wie der \"Bau-Turbo\" in der Praxis wirkt",
+  "created_at": 1760717445.7500074,
+  "hash": "7e6a70ab46137a35ed1773e3847e6bb486dccd5e9e8601a55462375537ab275d",
+  "id": "BLK_1760717445_14fa53",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "MJWjcl2RhlV5n9NrGEZC3rSEg89f/hENhc/WYddvoevl8OeTI0IEnxhiK2pIpPK2OmfIkq3VbbGAGKRGnLKfAQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 18:10",
+  "url": null
+}

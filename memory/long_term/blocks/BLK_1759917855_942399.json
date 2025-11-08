@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Synology Reverses Policy Banning Third-Party HDDs After NAS Sales Plummet\n • Hacker News: Show HN: Oh Yah – Routine management app I built for my sons\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum der Goldpreis über 4.000 Dollar gestiegen ist",
+  "created_at": 1759917855.8212235,
+  "hash": "451249aafd947efaef9bad2ddf47ce73ca44b932884a63d909c17a16b4061773",
+  "id": "BLK_1759917855_942399",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "MXta4Jo5X6tJdf+x6itAIWjYDsudig8BsyNJsNG/MSck+5C5jCAHWjQ9xxf2awHTb3WOazOyamBFuk05Ww0OBQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 12:04",
+  "url": null
+}

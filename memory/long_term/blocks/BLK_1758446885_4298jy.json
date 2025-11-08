@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758446885_4298jy",
-  "title": "Web Digest 2025-09-21 11:28",
   "content": "• Hacker News: Universities should be more than toll gates\n • Hacker News: Vibe coding cleanup as a service\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gewalt gegen Pflegepersonal: Wenn Patienten ausrasten",
+  "hash": "589a59ad8b2c213913daa48de65cb94d57d0a925d77e1b9c25829670ac1a967b",
+  "id": "BLK_1758446885_4298jy",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "XrXa9MBkDORzCX47HTnZoXG5s8pPvCHXUJFrMaRedKZFKmnndJ9wv1VJuGihonbiSEUGct3GPg0rhbVpmalrBg==",
+  "signed_at": "2025-10-29T12:53:41Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 11:28",
   "ts": 1758446885,
-  "meta": {},
-  "hash": "589a59ad8b2c213913daa48de65cb94d57d0a925d77e1b9c25829670ac1a967b"
+  "url": ""
 }

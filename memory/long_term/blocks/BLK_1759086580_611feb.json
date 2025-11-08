@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759086580_611feb",
-  "title": "Web Digest 2025-09-28 21:09",
   "content": "• Hacker News: VMScape and why Xen dodged it\n • Hacker News: UK Petition: Do not introduce Digital ID cards\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie teuer wird der Emissionshandel im Verkehrs- und Gebäudesektor?",
+  "created_at": 1759086580.6943848,
+  "hash": "7c2728e262901692cf401f898501ad44ea06a00f26099a5dbdda9340ef4d5da3",
+  "id": "BLK_1759086580_611feb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gcD+5PYMRDfybj6EP0gRSCtruingcO+kTLNdqphWQbdDPqV9LbhhWstsQXU4d2QgQBOHB9iBVxawM4o1N/kBAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759086580.6943848,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 21:09",
+  "url": null
 }

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758834629_42s9tl",
-  "title": "Web Digest 2025-09-25 23:10",
   "content": "• Hacker News: Can a model trained on satellite data really find brambles on the ground?\n • Hacker News: Ollama Web Search\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Erfolgreiche Richterwahl: Vom Regelfall zum Stresstest",
+  "hash": "330c30fd6861dc1f3cf4a80952ee4d8708748ce53170b9149f068e3bc558eeef",
+  "id": "BLK_1758834629_42s9tl",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "vKpC/gmyBEiTXu1uAj9l8xxznm/dTE/4Q7Rsy4MXRjqmas7/xH4UhrxiatL1BtI5EeJOmcXp9PYWm/wdTuaGBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 23:10",
   "ts": 1758834629,
-  "meta": {},
-  "hash": "330c30fd6861dc1f3cf4a80952ee4d8708748ce53170b9149f068e3bc558eeef"
+  "url": ""
 }

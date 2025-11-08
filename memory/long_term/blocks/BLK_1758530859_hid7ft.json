@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758530859_hid7ft",
-  "title": "Web Digest 2025-09-22 10:47",
   "content": "• Hacker News: Australian telco cut off emergency calls, firewall upgrade linked to 3 deaths\n • Hacker News: Download responsibly\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schnieder verschiebt Pünktlichkeitsziele der Bahn nach hinten",
+  "hash": "f6f30f8eb51de20b24c497012dce5d42443404ac96b2ebbc72b23b561a37e03d",
+  "id": "BLK_1758530859_hid7ft",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "U1pQLASXh/jK6m58ahO18+qpQvtszoaRtopWZXDYdf+9hwYv9OufvmGh4N4w9aIm0jvA0kbjJDAFrFZEIAlGDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 10:47",
   "ts": 1758530859,
-  "meta": {},
-  "hash": "f6f30f8eb51de20b24c497012dce5d42443404ac96b2ebbc72b23b561a37e03d"
+  "url": ""
 }

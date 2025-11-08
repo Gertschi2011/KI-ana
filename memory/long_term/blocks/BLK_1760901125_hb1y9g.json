@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Compare Single Board Computers\n • Hacker News: Ask HN: What are people doing to get off of VMware?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): So gelang der Einbruch in das Kunstmuseum Louvre in Paris",
+  "hash": "d8fd627bdfc0f56a99f1cc222ae8a0a1978897a67e6c62a0229f51955b221578",
+  "id": "BLK_1760901125_hb1y9g",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "5l3otcGlqtQMJMiEmXY2q7qOAm+zoNTeCnAF1IpiXks+g/wHyGP2vaNuhLUoLHYIh78Zo8RGKyn52SH7Gkg0Dw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 21:12",
+  "ts": 1760901125,
+  "url": ""
+}

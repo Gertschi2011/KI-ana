@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launch HN: Simplex (YC S24) – Browser automation platform for developers\n • Hacker News: Signal's New PQ Ratchet\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ARD-DeutschlandTrend: AfD zieht in Umfrage mit Union gleich",
+  "created_at": 1759422614.6042802,
+  "hash": "e52d6adf14de932e5a65c09601667dc5965296b73fa7609b233f0924ea82ce63",
+  "id": "BLK_1759422614_9d0f00",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Xkr4JXQKN7P8Sy525qQS+pYW8hLpzK4T8+uYh6r/2T/cCoI7/E1Yl+AkMs2zNJFvEo9QOHHQGzy+sQSLIvVmBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 18:30",
+  "url": null
+}

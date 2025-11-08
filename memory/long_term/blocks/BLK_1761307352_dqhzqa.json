@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: ChunkLLM: A Lightweight Pluggable Framework for Accelerating LLMs Inference\n • Hacker News: Bring Your 3D Models to Life\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Fragen und Antworten: Wie gefährlich ist die Vogelgrippe?",
+  "hash": "68dc13dc4527660ddac9dbdd573c448f66f2ac8e0e9455a85ded882b6f68e9af",
+  "id": "BLK_1761307352_dqhzqa",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "mdf8PfwSMNMb9+BEYTiv31NDEUQcX+J50rv1xnctJTelaDW1z7beTBfcDgsTMCUwbsHiXf1fQyg80R6cxKLYBw==",
+  "signed_at": "2025-10-24T12:02:32Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 14:02",
+  "ts": 1761307352,
+  "url": ""
+}

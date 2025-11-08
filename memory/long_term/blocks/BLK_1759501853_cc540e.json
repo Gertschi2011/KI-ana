@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple removes ICEBlock and similar tracking apps from the App Store\n • Hacker News: California Needs to Learn from Houston and Dallas about Homelessness\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wiedervereinigung: Merz ruft zu neuer Einheit für Deutschland auf",
+  "created_at": 1759501853.5127537,
+  "hash": "61e0f630a75bbb37a893725dce95ecb4ac5b7a247bb9028378262a3c5891651c",
+  "id": "BLK_1759501853_cc540e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jEfx+tYKsgXYtQOf8Lvt/wltmdbZae+Jw+tZBSselt7JOygCH7/tSUxHBtI575khDqE0nZpVEtS7ubgGAKJcCQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 16:30",
+  "url": null
+}

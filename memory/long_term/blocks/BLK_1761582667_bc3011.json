@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ask HN: Is AWS Down Again?\n • Hacker News: PSF has withdrawn $1.5M proposal to US Government grant program\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Studie: KI-Chatbots lügen bei 40 Prozent der Antworten",
+  "created_at": 1761582667.6965075,
+  "hash": "06c18ee9bea12249b2cec5519545ae4a506948de167664324061f02eb804bca8",
+  "id": "BLK_1761582667_bc3011",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "0swDem0ZNDFDE9G34XgYd9hziSnl0xMNdfu/Woreg7pGD3yO0g0t08rBJdU51MWa02RMjn1AD4n/TAAAWqkRAw==",
+  "signed_at": "2025-10-27T16:31:07Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 17:31",
+  "url": null
+}

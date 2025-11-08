@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Can You Use GDPR to Circumvent Bluesky's Adult Content Blocks?\n • Hacker News: Disqus Turned My Blog into an Ad Farm – So I Killed It\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensplan für Gaza: Arabische Welt applaudiert - Hamas kritisiert",
+  "created_at": 1759232657.7086399,
+  "hash": "16904371735d848838cf49afe1cf7f9ef49a1424967647376964435300591723",
+  "id": "BLK_1759232657_9e1286",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "rhmVtLQ9GyJim/ytXD1R3wkOJXMEsfkeqiI0O0ffX1qZPDrGBihGVHXZH0zUg1f8oCvEmm5DaewVTJ1zJvrtDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 13:44",
+  "url": null
+}

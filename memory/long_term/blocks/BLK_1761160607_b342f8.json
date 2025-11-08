@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Body Keeps the Score Is Bullshit\n • Hacker News: Rivian's Also E-bike is like nothing you've ever seen\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stadtbild-Debatte: Merz sieht Migranten als \"unverzichtbaren Bestandteil\"",
+  "created_at": 1761160607.9405637,
+  "hash": "fd122286f11174f79678115dd5f1e1864c478b8f54e28b38406da24bc9a98aaf",
+  "id": "BLK_1761160607_b342f8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "yo9yENNbPnIIVAobQB2pQuoXyPrAjOcf1YTAroR8DdxECAfhrS0F7yeRxAgnWN6IiBEnJlZ2At2j7BNPfw7pBA==",
+  "signed_at": "2025-10-22T19:16:47Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 21:16",
+  "url": null
+}

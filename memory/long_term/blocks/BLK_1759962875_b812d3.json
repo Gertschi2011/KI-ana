@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Kurt Got Got\n • Hacker News: I played 1k hands of online poker and built a web app with Cursor AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs geschäftsführender Premier Lecornu sieht Ausweg aus der Krise",
+  "created_at": 1759962875.254058,
+  "hash": "707e4d17ed7a84333e1d9c4511695a953e3c0a7f1d3ab9f0384334f708aa2615",
+  "id": "BLK_1759962875_b812d3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "phxt8vgCs8F3JzZ92TlYgHMXllLHwIxBuLlvtniVUbALDUv3lXNKPs3kfIU3ZmUCzaLMCIgLj8bkr53KYBieBw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 00:34",
+  "url": null
+}

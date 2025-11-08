@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758674347_oghinz",
-  "title": "Web Digest 2025-09-24 02:39",
   "content": "• Hacker News: The Top Programming Languages 2025\n • Hacker News: NYC Telecom Raid: What's Up with Those Weird SIM Banks?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russlands Angriffskrieg : Trumps Kehrtwende in der Ukraine-Politik?",
+  "hash": "016c4d60fc1400a4a52afe78439e2c6f204ed9d3dd5df361bb37169b72745693",
+  "id": "BLK_1758674347_oghinz",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ZtI8e/XzFxsyNmc+2xsZ8I9U8jkX7Y/k7kejSYp1OBzcI1y4mwQbe1qndjAzSXyodWGfHtbe8HF4j05zsY0jBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 02:39",
   "ts": 1758674347,
-  "meta": {},
-  "hash": "016c4d60fc1400a4a52afe78439e2c6f204ed9d3dd5df361bb37169b72745693"
+  "url": ""
 }

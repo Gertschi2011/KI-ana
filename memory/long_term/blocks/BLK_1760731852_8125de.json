@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Asking AI to build scrapers should be easy right?\n • Hacker News: GOG Has Had to Hire Private Investigators to Track Down IP Rights Holders\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Epstein-Affäre: Prinz Andrew verzichtet auf royale Titel",
+  "created_at": 1760731852.0703378,
+  "hash": "abacce07e8236f0bf8f8e96be40765512425531996a445d56edeaae66ca90cf5",
+  "id": "BLK_1760731852_8125de",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "/u5AoWnxV69Iy4rbEPmJpyGdygvcR6g9Bcy2XjCqF189mcg7TJG5m/NE3tYX5pTLd0QlDVqNG5fNIK4VRA/UBg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 22:10",
+  "url": null
+}

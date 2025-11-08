@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Moving PHP open source forward\n • Hacker News: Windows 10 refuses to go gentle into that good night\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Drohnenabwehr: Wer darf wann schießen?",
+  "hash": "008e7f124993ac2a92d653db0e7f272be8fee9c8e3c5bd8a7082826fdf9f3377",
+  "id": "BLK_1759413606_vx9l8z",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "yY3KB+QhZGhtbFsnGfSshByqRuUF/PICD1gq/L8TYYNxYknC0P+VtbdL0zMaeXhp60oxGd8hahvKOthrp3RlCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 16:00",
+  "ts": 1759413606,
+  "url": ""
+}

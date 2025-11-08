@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Roc Camera\n • Hacker News: Fast-DLLM: Training-Free Acceleration of Diffusion LLM\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Unterwasser-Sensorik - Das Spionage-Geheimnis der \"Estonia\"",
+  "hash": "51523dcdc7b6a472ecd950589bb8fdc699e50ad6cf95f06e6080e9a112ef8a64",
+  "id": "BLK_1761285175_g2u9kr",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "iR9lBwc89LeIDj52d+QwhnTE2sAWumnsWq5T28u4XvwdPIJEsICK099Yf4mYihy9OaSckvNod3Ph4xbthyQKCw==",
+  "signed_at": "2025-10-24T05:52:55Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 07:52",
+  "ts": 1761285175,
+  "url": ""
+}

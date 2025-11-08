@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: OpenAI's hunger for computing power has Sam Altman dashing around the globe\n • Hacker News: XiangShan Vector Floating-Point Unit Design\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was zum Frieden im Gazastreifen fehlt",
+  "created_at": 1759620728.8324974,
+  "hash": "e2a00d27315c0b8ba8beb6e455d231156429a3f621428d32ba49d3a64e05c1a9",
+  "id": "BLK_1759620728_e2009a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "S1ebpsakBO+z6pAr+0pfkaYjxJS5KKo3jdzixwPXEErtaiZTVTcKm8UvO9i+awUePguYY+avgxsduv8PDzTaCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 01:32",
+  "url": null
+}

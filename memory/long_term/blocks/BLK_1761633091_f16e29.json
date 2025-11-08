@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I Built the Same App 10 Times: Evaluating Frameworks for Mobile Performance\n • Hacker News: Tough truths about climate\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump-Besuch: Japan will \"neues goldenes Zeitalter\" mit den USA",
+  "created_at": 1761633091.785627,
+  "hash": "608a280da8e73fd04a190d6b27217309132d8b028cb8cc199ff7c4bd7355998c",
+  "id": "BLK_1761633091_f16e29",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "w+GnvtBiujxbjyHj/2tlZlmeLP7R6z1KHHSjD+Kc1rvuNlcNEbGF+PQPh780z2ZF6JaGQfkFqCGfpy9uYCFUBQ==",
+  "signed_at": "2025-10-28T06:31:31Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 07:31",
+  "url": null
+}

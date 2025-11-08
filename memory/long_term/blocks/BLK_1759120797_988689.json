@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759120797_988689",
-  "title": "Web Digest 2025-09-29 06:39",
   "content": "• Hacker News: Zero ASIC releases Wildebeest, the highest performance FPGA synthesis tool\n • Hacker News: Reader Response to \"AI Overinvestment\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Polen-Reise von Pistorius und Wadephul: Zeichen setzen an der NATO-Ostflanke",
+  "created_at": 1759120797.3723352,
+  "hash": "d8d0c70a01a365ed8b00c1b822dd9debd8626142fa8c851f2737375684e9efb1",
+  "id": "BLK_1759120797_988689",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cTfOdZ7vtNd34Uq+sYOGYPJxHW5vxambSNtAB2SpXNZ2sL18swlK2PIgqgendfJZCSwsOEhrFsDgpTlUHBkiBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759120797.3723352,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-29 06:39",
+  "url": null
 }

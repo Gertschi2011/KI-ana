@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758980923_ye6svg",
-  "title": "Web Digest 2025-09-27 15:48",
   "content": "• Hacker News: The Other Linux Logo\n • Hacker News: Show HN: I spent 4 months building Duolingo but for your life\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): FAQ: Wie es um die russische Wirtschaft steht",
+  "hash": "786c1766c2b25814f21abc1209f0e8811d421e1b2277dcf50920dcd47eb78d73",
+  "id": "BLK_1758980923_ye6svg",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "3qV7iNBN/dXVwTucYD8GdEV2i6NUNtSMa14+4pGzThmYWKFJOyYBy4TQrhivJxBBwzqC4xRhR25IfX9IZ88cBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 15:48",
   "ts": 1758980923,
-  "meta": {},
-  "hash": "786c1766c2b25814f21abc1209f0e8811d421e1b2277dcf50920dcd47eb78d73"
+  "url": ""
 }

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Fastmail Desktop App\n • Hacker News: Countering Trusting Trust Through Diverse Double-Compiling (DDC)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Übergabe verbleibender Hamas-Geiseln hat begonnen",
+  "created_at": 1760337460.7283146,
+  "hash": "97190182ae0e821db7e3d1ac57e95431378cefb59bcb58fa4fea9cc8dc4a4e4d",
+  "id": "BLK_1760337460_20d8f5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "89XcDAQSVO9FdLVXUhZpWYXPhe/nPKPwIGsE9T3LDPEw+fVq0aCvM/jIjQtTRs1sXgmfHwZYcWV/IVE/uCfUCg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 08:37",
+  "url": null
+}

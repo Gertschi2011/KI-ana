@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759013891_186faa",
-  "title": "Web Digest 2025-09-28 00:58",
   "content": "• Hacker News: US to retire its only icebreaker, stranding polar research\n • Hacker News: Handy – Free open-source speech-to-text app written in Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzungen: NATO prüft Verteidigungseinsatz",
+  "created_at": 1759013891.0563264,
+  "hash": "57c0955e359281220966e5783c437da9f1a41b38b5f1b637f6b1b85f340d5690",
+  "id": "BLK_1759013891_186faa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ZOt2isikFbm4TlLgtBQUIfYmQn4V7k+DGT6HitAajbpImk+qEy5kqQO/uJt1nImHm3tmXypymZxedvViAtj5Cw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759013891.0563264,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 00:58",
+  "url": null
 }

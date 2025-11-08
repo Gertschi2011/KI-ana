@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Ruby Core Takes Ownership of Rubygems and Bundler\n • Hacker News: Codebase is 250% AI generated\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nord-Stream-Sabotage: Polnisches Gericht lehnt Auslieferung ab",
+  "hash": "773d5e73f068a65409cf6dd1fe5e6fe649ccf1b5a9d7e317058716e1fcd62917",
+  "id": "BLK_1760704840_zd0bcc",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "o+2UmRP3xyOSFSS7hUEp2m+jNpDs91Dn0/9mgBquId4lMedoRY9AQb4BFVSDJrJMm3QBaio23aOuYv/kG0PLCw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 14:40",
+  "ts": 1760704840,
+  "url": ""
+}

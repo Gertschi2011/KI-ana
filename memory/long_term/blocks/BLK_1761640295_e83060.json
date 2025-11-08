@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Poker Tournament for LLMs\n • Hacker News: Why IP address truncation fails at anonymization\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Prominente fordern von Kanzler Merz mehr Sicherheit für Frauen",
+  "created_at": 1761640295.2639046,
+  "hash": "fc6e67bd4119743888788652dd527b8633f939576ff594ac0ac8783bfae01b78",
+  "id": "BLK_1761640295_e83060",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/f9ZIfEqvSw6OdBmhBZqBao/tPHgvJG61fskhX5OLpoHfKPj1dFgB9XeV3UaaxriT8Ho4CwEN7ANqZVWrvYtDw==",
+  "signed_at": "2025-10-28T08:31:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 09:31",
+  "url": null
+}

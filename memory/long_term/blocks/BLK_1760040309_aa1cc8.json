@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: US anti-fascism expert blocked from flying to Spain at airport\n • Hacker News: The Government Ate My Name\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Hamas erklärt Gaza-Krieg für beendet ++",
+  "created_at": 1760040309.8637006,
+  "hash": "7f436bad9459fdc3eeb3ef9151576ca1907f1d2094ad18eb0e4ef901bfd42b18",
+  "id": "BLK_1760040309_aa1cc8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "PY/cMNGwDcTbeFYlaY8G1PAbeQZOlmS8v2PkhD1qTIJbjZrXggXWAQ4jhnxn/EA9vxL6vkEdZJLbPIdViOrMAg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 22:05",
+  "url": null
+}

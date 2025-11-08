@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: SigNoz (YC W21) Is Hiring DevRel Engineers in the US – Open Source O11y Platform\n • Hacker News: HOPL: The Human Only Public License\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "created_at": 1761672711.0689127,
+  "hash": "39a0daa58a2eefe51e6d208d78de36d24d80a203973673e333ea4f060d7a0f04",
+  "id": "BLK_1761672711_e2265a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "KnILBe7eu9jEjjD1QJNQlblO1ul4KShApMvUV83ceSOA3sc46VBJLakei+95WPPkQKoLZ5OcMdI737FndTtrCg==",
+  "signed_at": "2025-10-28T17:31:51Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 18:31",
+  "url": null
+}

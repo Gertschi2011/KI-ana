@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Vietnam Airlines Data Breach\n • Hacker News: HTML's Best Kept Secret: The Output Tag\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wahlkreisreform in Kalifornien: Mit Trump-Methoden Trump ausbremsen?",
+  "created_at": 1760180780.5082595,
+  "hash": "22788d3cabf75c892dd5d566ac84028763c8e9584c63b470b662326de6bdee85",
+  "id": "BLK_1760180780_3e4e3a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "25pp5idj3c90M2CySj9yCL9arKrOAehq8Hu3+wqNOPfA1GDJupmanU8sfAOJFwgXMdiXoeuK0vquzlMmh8jsDQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 13:06",
+  "url": null
+}

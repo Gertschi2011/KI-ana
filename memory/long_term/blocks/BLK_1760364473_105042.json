@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: SQLite Online – 11 years of solo development, 11K daily users\n • Hacker News: The Sveriges Riksbank Prize in Economic Sciences in Memory of Alfred Nobel 2025\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Knesset-Rede: Trump spricht von Beginn \"dauerhafter Harmonie\"",
+  "created_at": 1760364473.836323,
+  "hash": "40ceb31592ada45b8d7fde8976eddecb21df087b8542e8a5c667e7f258047d57",
+  "id": "BLK_1760364473_105042",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "l9ZbqC/UUEf/CkI7krHUCeE8yqchep4nfLURiIWyPB4t3mO04eV2X2EIh44SrqbSIEDJlkcjjK/FR5aytewKDA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 16:07",
+  "url": null
+}

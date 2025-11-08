@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: US car repossessions surge as more Americans default on auto loans\n • Hacker News: Making Every Windows 11 PC an AI PC\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Epstein-Affäre: Prinz Andrew verzichtet auf royale Titel",
+  "created_at": 1760737254.3983462,
+  "hash": "0109487754b9fd500602fd2915511d643d1f08affe67917b423ec39682b07d97",
+  "id": "BLK_1760737254_780df0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "DpyBpxhtPSksFVBstyBYmgmeUZbCo1DaxlLCiZ8c6mpiAwNS09qhwdqkJnw7FA850kQw3fAv07nHY7Z6iLIXCg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 23:40",
+  "url": null
+}

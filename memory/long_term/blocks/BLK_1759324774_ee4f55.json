@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hackers strike Harrods in latest UK cyberattack\n • Hacker News: People want platforms (not governments) to be responsible for moderating content\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Von der Leyen auf EU-Gipfel: \"Russland versucht, Angst zu säen\"",
+  "created_at": 1759324774.0507767,
+  "hash": "eff9a58b46b5b86bf444caef402f498e7bb7bef2ace9979ee41e36e86985b3d9",
+  "id": "BLK_1759324774_ee4f55",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "iQI8ef2ihDGduH6iy0SQnecxLd3gmO4ulQsAk1doqU5LXfnrbKLv4GHyENvXjPV7wfZpewF47n6uygIKp6HFBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 15:19",
+  "url": null
+}

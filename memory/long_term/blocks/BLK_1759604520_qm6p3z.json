@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Use theorem provers to ensure the correctness of your LLM's reasoning\n • Hacker News: Knowledge Infusion Scaling Law for Pre-Training Large Language Models\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was zum Frieden im Gazastreifen fehlt",
+  "hash": "382b936309afdf48634185270beab65b1e12e0f671e329bf65dea0cc4f32710e",
+  "id": "BLK_1759604520_qm6p3z",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "T7fNKhz/kgpzi1+Nfphd+aJlbzq5bCdxvSSJY71mkntgvucj/ioAuKa0U605fFnIxEwC/VTJI8VToXY/dXlgBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 21:02",
+  "ts": 1759604520,
+  "url": ""
+}

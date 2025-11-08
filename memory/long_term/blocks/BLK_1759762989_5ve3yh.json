@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Mise: Monorepo Tasks\n • Hacker News: Show HN: Kent Dybvig's Scheme Machine in 400 Lines of C (Heap-Memory Model)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): CDU für gesellschaftliches Pflichtjahr - SPD skeptisch",
+  "hash": "87e3b126304ede78f38d048745b6735c87f8c323ee44ed654f4a7fb3746b9ae4",
+  "id": "BLK_1759762989_5ve3yh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "wMft0OZIzuLORLOOlCCqFm8iQTEoGDLo1gtMAjEARO7vhDuSdaBpt/XIqbkWdTDrJe2vCY6ryg0Jg7dBwCQOCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 17:03",
+  "ts": 1759762989,
+  "url": ""
+}

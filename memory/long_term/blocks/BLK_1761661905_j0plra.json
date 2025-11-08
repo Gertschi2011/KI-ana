@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Sick: Indexed deduplicated binary storage for JSON-like data structures\n • Hacker News: Austrian Ministry Kicks Out Microsoft in Favor of Nextcloud\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Liegenschaften die Bundeswehr nun doch behalten will",
+  "hash": "14489dffe296743b24442d34335aeec94008296f66c1a6d5e0b23e3e732ed55c",
+  "id": "BLK_1761661905_j0plra",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "OjBSAYjm+PjEsUBSMyaadTqMJPHuGnniiLigB/NycjEwYgt3Y9bOsly0SHiOjvNcPtoqGuP8tsvf0AtQETWTCg==",
+  "signed_at": "2025-10-28T14:31:45Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 15:31",
+  "ts": 1761661905,
+  "url": ""
+}

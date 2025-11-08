@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: US opens Tesla probe after more crashes involving its \"full self-driving\"\n • Hacker News: Introducing Figure 03\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gegensätze prallen im Bundestag bei EU-Asylreform aufeinander",
+  "created_at": 1760022301.0092344,
+  "hash": "3f56233b2159db2993bd8b3a89b4c60363e8cec4234925d3fe45f74d234e6ad8",
+  "id": "BLK_1760022301_88b0ac",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "a/w2FJUZUSXR1yE5hMgTif7KkDWeAAjZxm0act1aIQ8nrzlH+0x/CT6ceSAu5766LnZ+TYYMeVfyDmkMoyXfDQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 17:05",
+  "url": null
+}

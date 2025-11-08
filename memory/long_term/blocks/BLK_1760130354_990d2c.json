@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple Decides ICE Agents Are a Protected Class\n • Hacker News: Does our “need for speed” make our wi-fi suck?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron ernennt Lecornu erneut zu Frankreichs Premierminister",
+  "created_at": 1760130354.8351736,
+  "hash": "c41b9f9ea0e5bb4ef264f4e716ed3002bbbb826814f6e318c629317cc8fc1c41",
+  "id": "BLK_1760130354_990d2c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "/6r3Z9Jv9Fcl/B2lX1KNUPbF03IFpNKSbZ3jh2yOVjPSlKNV8IP/5wmSo61CKxQ3SXpsKMuMm9xvSI+ujyTRDA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 23:05",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: If Your Adversary Is the Mossad (2014) [pdf]\n • Hacker News: Recall for Linux\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Debatte nach Merz-Äußerung: SPD-Abgeordnete fordern \"Stadtbild\"-Gipfel",
+  "created_at": 1761555654.5029364,
+  "hash": "77233fd55bd17125b2fd8822721d0ffa1b4d22442ee98563d8b0da437025afd4",
+  "id": "BLK_1761555654_dc6298",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "UuXZ6Xoe6twTmfLFQ6cJW+5ttcXDbMF3yMCEvJJOSuuxYM46vzlt2/ERMQz+bhMizdSMmJTZrx6WX+EuhXF/AQ==",
+  "signed_at": "2025-10-27T09:00:54Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 10:00",
+  "url": null
+}

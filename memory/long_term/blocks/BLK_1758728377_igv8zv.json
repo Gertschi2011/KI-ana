@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758728377_igv8zv",
-  "title": "Web Digest 2025-09-24 17:39",
   "content": "• Hacker News: Replace PostgreSQL with Git for your next project\n • Hacker News: The Lambda Calculus – Stanford Encyclopedia of Philosophy\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Generaldebatte im Bundestag: Ein Kanzler im Verteidigungsmodus",
+  "hash": "c3d945ff01b5a54fb9a87895264a58d6723cf1f72f856507c95cb5ba6a14691f",
+  "id": "BLK_1758728377_igv8zv",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "P+NuqIshmzRuuFKPcEI1k9vs3f6JJi8gbHqdAFSe5dMNBA+d/n7Wm/bC00OFwP+J9/T13IFGEk8lzr268sf0Bg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 17:39",
   "ts": 1758728377,
-  "meta": {},
-  "hash": "c3d945ff01b5a54fb9a87895264a58d6723cf1f72f856507c95cb5ba6a14691f"
+  "url": ""
 }

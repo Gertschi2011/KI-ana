@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Traffic lights with four colors and a new white light are coming\n • Hacker News: StreamingVLM: Real-Time Understanding for Infinite Video Streams\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "created_at": 1760407695.5236642,
+  "hash": "0720cf41188e3a6bdfcaa09adcb7fa362ea391cb7a902f9e749348ea68ffc5d3",
+  "id": "BLK_1760407695_47b5b4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "8emUE8vke85DqfssnCczEnvUzg7fbg1oSEMy5GzXo0eB1Sqdwd6WUFN0hB391efkkajG5Ngwhx99Jhfq7/ICBw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 04:08",
+  "url": null
+}

@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "created_at": 1761198255,
+  "subminds": [
+    {
+      "id": "4c8b6eae-0151-4b26-9ac7-2ad4f284e82b",
+      "name": "Main Desktop",
+      "device_type": "desktop",
+      "role": "creator",
+      "capabilities": [
+        "compute",
+        "storage",
+        "display",
+        "network"
+      ],
+      "trust_level": 0.6,
+      "created_at": 1761198255,
+      "last_seen": 1761198255,
+      "status": "active",
+      "metadata": {
+        "hostname": "kiana-desktop",
+        "os": "Linux"
+      }
+    }
+  ],
+  "revoked": []
+}

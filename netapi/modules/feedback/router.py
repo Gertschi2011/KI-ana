@@ -8,7 +8,7 @@ from netapi.deps import get_current_user_required
 import time, json
 
 router = APIRouter(prefix="/feedback", tags=["feedback"])
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 BLOCKS_DIR = BASE_DIR / "memory" / "long_term" / "blocks"
 
 

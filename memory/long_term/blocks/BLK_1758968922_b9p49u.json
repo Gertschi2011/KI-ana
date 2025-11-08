@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758968922_b9p49u",
-  "title": "Web Digest 2025-09-27 12:28",
   "content": "• Hacker News: Typst: A Possible LaTeX Replacement\n • Hacker News: Property-Based Testing of OCaml 5's Runtime System [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Atomstreit: Was würden die UN-Sanktionen für den Iran bedeuten?",
+  "hash": "7abcf504ba8b342f75854fb9fff9003dc72ae9f555e9140fc792327906f6f9b3",
+  "id": "BLK_1758968922_b9p49u",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "JxEmeBpSumE3LYhyX7Ni0Dy6te05kOzjJVx3O8mmOKWZwIwuw5Vc16gZYiFSD/ZkFvPoVWpIkQhq7J5mppKdAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 12:28",
   "ts": 1758968922,
-  "meta": {},
-  "hash": "7abcf504ba8b342f75854fb9fff9003dc72ae9f555e9140fc792327906f6f9b3"
+  "url": ""
 }

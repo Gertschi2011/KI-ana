@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759021094_ae4734",
-  "title": "Web Digest 2025-09-28 02:58",
   "content": "• Hacker News: UK government underwriting £1.5B loan to Jaguar Land Rover after cyber-attack\n • Hacker News: Spending on AI Is at Epic Levels. Will It Ever Pay Off?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzungen: NATO prüft Verteidigungseinsatz",
+  "created_at": 1759021094.913998,
+  "hash": "c611b74c06470f48abb6322ad4f46abd8c79c75c86eebcb013c646e782f051c2",
+  "id": "BLK_1759021094_ae4734",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MtHjisIg/Ke0/5G1Y1jOMIDoGz7e1UjZnJOGlF9IykxbrdDLA9L5wHVqtbi7h8xMCszJAdGmUTgXxX9bZO3uDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759021094.913998,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 02:58",
+  "url": null
 }

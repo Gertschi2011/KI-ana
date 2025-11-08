@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Disable AI in Firefox\n • Hacker News: The Mainframe Six (2022)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die US-Politik deutsche Ford-Standorte ausbremst",
+  "created_at": 1761328395.6857433,
+  "hash": "0fc30231d8a6529276af9ac40ace979b36320e58f33591de0353f833fffc9e94",
+  "id": "BLK_1761328395_28d3d9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "iaUQXnt6YSvkeQJqr/UCBIUhrxFYCicbdfAi/TZqXB6MMgjPj8Cs3Rii9QGVo+qEbvBGM61lUSIjeDQpM12jDg==",
+  "signed_at": "2025-10-24T17:53:15Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 19:53",
+  "url": null
+}

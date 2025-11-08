@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759050498_7a5hk8",
-  "title": "Web Digest 2025-09-28 11:08",
   "content": "• Hacker News: Beyond OpenMP in C++ and Rust: Taskflow, Rayon, Fork Union\n • Hacker News: Ed Zitron is mad as hell\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Krieg: Tote und Verletzte nach russischen Angriffen",
+  "hash": "c77e7db08d98cf3f0da7fb09ef598841b134ea1d593ece2935e66be7dc01ba3a",
+  "id": "BLK_1759050498_7a5hk8",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "0/d8UQg93wlpJkymdeL1Y+eCibrancCZz6oWj8DfIuM11qe9xQ5MgqrtAinq2r729Xl6c/Okh3XRrmPB5/7mCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 11:08",
   "ts": 1759050498,
-  "meta": {},
-  "hash": "c77e7db08d98cf3f0da7fb09ef598841b134ea1d593ece2935e66be7dc01ba3a"
+  "url": ""
 }

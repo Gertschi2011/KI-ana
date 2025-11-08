@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Easy RISC-V: An interactive introduction to RISC-V assembly programming\n • Hacker News: Study finds growing social circles may fuel polarization\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD Anschluss in den USA sucht",
+  "hash": "7771a8839995cb3255f47938b242a338f5c3c31ccd0e87e598ab49b420d000c6",
+  "id": "BLK_1761602477_6hxbe3",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "IGUrlexToSsbz9UFJuIHXF+E9Sdj/4bwyEHdcaMS6C8jTfYwuS/fNi/0ueaun56+5KAZa5P6n3X9OFxLMzHWAA==",
+  "signed_at": "2025-10-27T22:01:17Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 23:01",
+  "ts": 1761602477,
+  "url": ""
+}

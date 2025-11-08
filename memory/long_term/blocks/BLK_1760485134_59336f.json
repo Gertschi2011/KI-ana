@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Meta Erases Gaza Journalist's Instagram\n • Hacker News: GrapheneOS is finally ready to break free from Pixels and it may never look back\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienberichte: Einigung zu Wehrdienst offenbar vorerst geplatzt",
+  "created_at": 1760485134.1740687,
+  "hash": "4578ac0c04cdf6c43f7ebb02a1912c7a47338cb5a2c183a7953b6bea13725584",
+  "id": "BLK_1760485134_59336f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "i3zqDkp+3j2HDECIdmz9VUyNYAPZDUPrwZhY70tHrX7PTQjueHjMmREzP6xF3uFEAdePm/9Z6sC5LMrR/1TIAg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 01:38",
+  "url": null
+}

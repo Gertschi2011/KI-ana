@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Any level of alcohol consumption increases risk of dementia\n • Hacker News: Technology Without Humanity Means Nothing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Weißes Haus veröffentlicht Trumps Nahost-Friedensplan",
+  "created_at": 1759188020.2975867,
+  "hash": "cc39d71537f8e98ab62cd5a259973b738fb1852727d3c61b8bbc11021506f506",
+  "id": "BLK_1759188020_99fcd8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Ys56O1h0GpUleD4XctpcFmp0Onx3M6ztLe37a9OcNC+uRINHhfHVivzjUDRAv/l6fwSYuROGA1gSZTHC0lXKCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 01:20",
+  "url": null
+}

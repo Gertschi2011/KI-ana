@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758962174_aqeoxu",
-  "title": "Web Digest 2025-09-27 10:36",
   "content": "• Hacker News: Typst: A Possible LaTeX Replacement\n • Hacker News: AI Investment Is Starting to Look Like a Slush Fund\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Atomstreit: Was würden die UN-Sanktionen für den Iran bedeuten?",
+  "hash": "a52b6617cd8109c4debe5526c30d4c92ec582085cb3b18b18e016af1cfef7cfc",
+  "id": "BLK_1758962174_aqeoxu",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "g4EEAfCdcjbkgTJiIdVwC52gVEO3/UunHl2IkFxhlTTE1s1bYe9KfJNvxIgxFci1ZXNF59dL0tmKwuVnuy5sAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 10:36",
   "ts": 1758962174,
-  "meta": {},
-  "hash": "a52b6617cd8109c4debe5526c30d4c92ec582085cb3b18b18e016af1cfef7cfc"
+  "url": ""
 }

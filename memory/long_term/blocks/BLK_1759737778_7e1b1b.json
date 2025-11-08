@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FSF turns forty with a groundbreaking new project and a new president\n • Hacker News: Flightcontrol: AWS PaaS\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wadephul hofft auf Frieden und will Beitrag leisten",
+  "created_at": 1759737778.956527,
+  "hash": "d27f916a847aa09f362c289df8988aabd6d4aad340400339ecd925744690c240",
+  "id": "BLK_1759737778_7e1b1b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "lhvoq3WH1HrM+mHaqANpFzRSS012PeAB7sV6He18q+nmnyUCz4jLkLvNOJ/n+LQ5CCmBfGvT6lbUvKHtYvbWDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 10:02",
+  "url": null
+}

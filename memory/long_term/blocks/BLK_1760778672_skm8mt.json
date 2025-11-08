@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: StageConnect: Behringer protocol is open source\n • Hacker News: AMD's Chiplet APU: An Overview of Strix Halo\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Pistorius in der Wehrdienst-Debatte mit der Union streitet",
+  "hash": "9a2a09dd87c2502fca449ba7882ec0aae617f3f1e90fb2e74f64d34ae6d32f41",
+  "id": "BLK_1760778672_skm8mt",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "aaWfB+RgeVE3v+KXT/Jms/3eE3dOl00X686RwzfPNGwvUK8u5PjxDrW3cssr8wmYbZlWugdKFtOwbTQEvIfPBQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 11:11",
+  "ts": 1760778672,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launch HN: Airweave (YC X25) – Let agents search any app\n • Hacker News: The right wing is coming for Wikipedia\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Urteil gegen Ex-Mitarbeiter: Für AfD-Politiker Krah ist es noch nicht vorbei",
+  "created_at": 1759250666.3476548,
+  "hash": "351216b7eea67429aa35bae34a0fbe6b3293e240dfc198da35396edea79d50a6",
+  "id": "BLK_1759250666_298b61",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "5GJzsn6VH2FK2QYegJY/WQMHi1aapv5eh2hOGcESNwMeKQ8y5yBttra/5ImqTnHob3Iwntn/vW51sze7mKjnAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 18:44",
+  "url": null
+}

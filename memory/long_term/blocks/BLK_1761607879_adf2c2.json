@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Easy RISC-V\n • Hacker News: Study finds growing social circles may fuel polarization\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD Anschluss in den USA sucht",
+  "created_at": 1761607879.721538,
+  "hash": "b33c3d47e2db4a92a65263616abdb5da37f08c7ed074e396ae2182d6dff0c519",
+  "id": "BLK_1761607879_adf2c2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fVEA2fx8nAgTT7jYsBNJAzKMxhSHUGm4VCp7f8CnaqLAJk+/w4TMeng1lcEIGiqLIQYaF9rph1VjSB0v93+aAw==",
+  "signed_at": "2025-10-27T23:31:19Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 00:31",
+  "url": null
+}

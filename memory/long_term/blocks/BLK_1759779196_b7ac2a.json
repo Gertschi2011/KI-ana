@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apps SDK\n • Hacker News: OpenAI is good at deals\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron will von Ministerpräsident Lecornu letzten Versuch",
+  "created_at": 1759779196.5544546,
+  "hash": "3054dcb7d7cd46eabbc8f2c0eb28be5a9115c5c8ba52c1542dda5d8a662b194d",
+  "id": "BLK_1759779196_b7ac2a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "YNQ6aplgiaDXVNJ+Sw3xpET6iHSBf/HRYTRpGHUl4IhPuRVNgePRlAJhjhI/hBv6qOzcAVqtp97GaErLgth1Cg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 21:33",
+  "url": null
+}

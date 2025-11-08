@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KI_ana TimeFlow Monitor</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="stylesheet" href="/static/chat.css" />
+  <style>
+    /* TimeFlow spezifische Styles im hellen Theme */
+    .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; }
+    .card { background: #fff; border: 1px solid #eee; border-radius: 10px; padding:16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .label { font-size:12px; color: #667085; font-weight: 500; }
+    .value { font-size: 22px; font-weight: 600; color: #1f2430; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+    .row { display:flex; justify-content: space-between; align-items: baseline; }
+    .bar { background:#e5e7eb; height: 12px; border-radius: 6px; overflow:hidden; }
+    .bar > span { display:block; height:100%; background: linear-gradient(90deg, #f59e0b, #22c55e); width:0%; transition: width 240ms ease; }
+    .muted { color: #667085; font-size: 12px; }
+    .ok { color: #22c55e; }
+  </style>
+</head>
+<body class="page">
+  <div id="navbar"></div>
+  <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6"/><path d="M6 20v-4"/><path d="M18 20v-2"/><path d="M2 7h20"/><path d="M12 7V4"/></svg>
+    <h1 style="margin:0;">TimeFlow Monitor</h1>
+    <span id="status" class="muted">Verbinde…</span>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="label">Tick</div>
+      <div class="value mono" id="tick">-</div>
+      <div class="muted" id="ts">-</div>
+    </div>
+    <div class="card">
+      <div class="label">Subjektive Zeit</div>
+      <div class="value mono" id="subj">-</div>
+      <div class="muted">integriert: 1.0 + 0.5 * Aktivierung</div>
+      <div class="card">
+        <div class="label">Subjektive Zeit</div>
+        <div class="value mono" id="subj">-</div>
+        <div class="muted">integriert: 1.0 + 0.5 * Aktivierung</div>
+      </div>
+      <div class="card">
+        <div class="label">Aktivierung</div>
+        <div class="bar" aria-label="Aktivierung"><span id="actbar"></span></div>
+        <div class="row"><span class="muted">0</span><span class="muted">1.0</span></div>
+        <div class="value mono" id="act">-</div>
+      </div>
+      <div class="card">
+        <div class="label">Events / Min</div>
+        <div class="value mono" id="epm">-</div>
+        <div class="muted" id="ewin">Events im Fenster</div>
+      </div>
+      <div class="card">
+        <div class="label">Requests / Min</div>
+        <div class="value mono" id="rpm">-</div>
+        <div class="muted" id="rwin">Requests im Fenster</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="label">Memory‑Delta</div>
+      <div class="row">
+        <div><span class="muted">Score</span> <span class="mono" id="mds">-</span></div>
+      </div>
+      <div class="muted mono" id="mhash" style="word-break: break-all; opacity:.8; margin-top:8px">-</div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="label">Verlauf (Sparklines)</div>
+      <canvas id="spark-activation" width="600" height="60" class="mono" style="width:100%; max-width:100%;"></canvas>
+      <canvas id="spark-emotion" width="600" height="60" class="mono" style="width:100%; max-width:100%; margin-top:8px"></canvas>
+      <div class="muted">Aktivierung (oben), Emotion (unten)</div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="label">Intensität (Heatmap)</div>
+      <div id="heat" style="display:grid; grid-template-columns: repeat(30, 1fr); gap:2px"></div>
+      <div class="muted">Letzte ~30 Ticks (je Kästchen), je dunkler desto höher die Aktivierung</div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="label">SLO</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span id="slo-badge" style="display:inline-block; padding:2px 6px; border-radius:6px; background:#9ca3af; color:#fff; font-size:12px;" title="SLO status">SLO</span>
+        <span id="slo-text" class="muted"></span>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="label">Admin</div>
+      <div class="row" style="gap:12px; align-items:flex-end; flex-wrap:wrap;">
+        <div>
+          <label class="muted" for="cfg-stim">stimulus_weight</label>
+          <input id="cfg-stim" type="number" step="0.01" style="min-width:120px">
+        </div>
+        <div>
+          <label class="muted" for="cfg-decay">activation_decay</label>
+          <input id="cfg-decay" type="number" step="0.01" style="min-width:120px">
+        </div>
+        <div>
+          <label class="muted" for="cfg-circ">circadian_enabled</label>
+          <input id="cfg-circ" type="checkbox">
+        </div>
+        <div>
+          <label class="muted" for="cfg-camp">circadian_amplitude</label>
+          <input id="cfg-camp" type="number" step="0.01" style="min-width:120px">
+        </div>
+        <div>
+          <button id="btn-load" class="btn">Config laden</button>
+          <button id="btn-apply" class="btn primary">Anwenden</button>
+        </div>
+      </div>
+      <div class="row" style="gap:12px; align-items:flex-end; margin-top:8px; flex-wrap:wrap;">
+        <div>
+          <label class="muted" for="mute-kind">Alert‑Typ</label>
+          <input id="mute-kind" type="text" placeholder="z. B. activation_warn" style="min-width:180px">
+        </div>
+        <div>
+          <label class="muted" for="mute-dur">Mute‑Dauer</label>
+          <select id="mute-dur" style="min-width:140px">
+            <option value="300">5 Minuten</option>
+            <option value="1800">30 Minuten</option>
+            <option value="7200">2 Stunden</option>
+          </select>
+        </div>
+        <div>
+          <button id="btn-mute" class="btn">Mute</button>
+        </div>
+      </div>
+      <div class="row" style="gap:12px; margin-top:8px; flex-wrap:wrap;">
+        <div>
+          <label class="muted" for="x-from">von (ISO)</label>
+          <input id="x-from" type="text" placeholder="2025-03-30T00:00:00+02:00" style="min-width:220px">
+        </div>
+        <div>
+          <label class="muted" for="x-to">bis (ISO)</label>
+          <input id="x-to" type="text" placeholder="2025-03-31T00:00:00+02:00" style="min-width:220px">
+        </div>
+        <div>
+          <label class="muted" for="x-tz">TZ</label>
+          <input id="x-tz" type="text" placeholder="Europe/Vienna" style="min-width:160px">
+        </div>
+      </div>
+      <div class="row" style="gap:12px; margin-top:8px; flex-wrap:wrap;">
+        <button id="btn-export-raw" class="btn btn-ghost">Export CSV (raw)</button>
+        <button id="btn-export-min" class="btn btn-ghost">Export CSV (per Minute)</button>
+        <button id="btn-export-json-min" class="btn btn-ghost">Export JSON (per Minute)</button>
+        <span id="admin-msg" class="muted"></span>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <div class="label">Alerts</div>
+      <ul id="alerts" style="list-style:none; padding-left:0; margin:0; display:flex; flex-direction:column; gap:6px"></ul>
+      <div class="muted" style="margin-top:6px">Schwellenwert-Überschreitungen (nur bei Übergängen)</div>
+    </div>
+  </main>
+  <script>
+    const E = id => document.getElementById(id);
+    const fmt = n => typeof n === 'number' ? n.toFixed(3) : '-';
+    async function poll(){
+      try{
+        const r = await fetch('/api/system/timeflow', {cache:'no-store'});
+        const j = await r.json();
+        if(!j || !j.ok){ throw new Error('bad'); }
+        const tf = j.timeflow || {};
+        E('status').textContent = 'Live'; E('status').className = 'ok';
+        E('tick').textContent = String(tf.tick ?? '-');
+        E('ts').textContent = tf.ts_ms ? new Date(tf.ts_ms).toLocaleTimeString() : '-';
+        E('subj').textContent = fmt(tf.subjective_time);
+        const a = Number(tf.activation ?? 0);
+        E('act').textContent = fmt(a);
+        E('actbar').style.width = Math.max(0, Math.min(100, a*100)).toFixed(1) + '%';
+        E('epm').textContent = fmt(tf.events_per_min);
+        E('ewin').textContent = `Neue Events im Fenster: ${tf.events_last_window ?? 0}`;
+        E('mds').textContent = fmt(tf.mem_delta_score);
+        E('mhash').textContent = tf.mem_hash || '(kein Hash)';
+        // requests tile
+        E('rpm').textContent = fmt(tf.reqs_per_min);
+        E('rwin').textContent = `Requests im Fenster: ${tf.reqs_last_window ?? 0}`;
+      }catch(e){
+        E('status').textContent = 'offline'; E('status').className = 'muted';
+      }finally{
+        setTimeout(poll, 1000);
+      }
+    }
+    poll();
+
+    function drawSparkline(canvasId, arr, key, color){
+      const c = document.getElementById(canvasId);
+      if(!c) return;
+      const ctx = c.getContext('2d');
+      const W=c.width, H=c.height;
+      ctx.clearRect(0,0,W,H);
+      if (!arr || !arr.length) return;
+      const values = arr.map(x => Number(x[key] ?? 0));
+      const n = values.length;
+      const min = Math.min(...values), max = Math.max(...values);
+      const norm = v => max>min ? (v-min)/(max-min) : 0.5;
+      ctx.strokeStyle = color || "#22c55e"; ctx.lineWidth=2; ctx.beginPath();
+      values.forEach((v,i)=>{
+        const x = i*(W/Math.max(1,(n-1)));
+        const y = H - norm(v)*H;
+        if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+    }
+
+    function renderHeatmap(arr){
+      const root = document.getElementById('heat');
+      if(!root) return;
+      root.innerHTML = '';
+      const last = arr.slice(-30);
+      last.forEach(x=>{
+        const a = Number(x.activation ?? 0);
+        const intensity = Math.max(0, Math.min(1, a));
+        const d = document.createElement('div');
+        d.style.width='100%'; d.style.paddingTop='100%';
+        d.style.background = `rgba(34,197,94, ${0.15 + 0.75*intensity})`;
+        d.style.borderRadius = '2px';
+        root.appendChild(d);
+      });
+    }
+
+    async function refreshHistory(){
+      try{
+        const r = await fetch('/api/system/timeflow/history?limit=120', {cache:'no-store'});
+        const j = await r.json();
+        const hist = j.history || [];
+        drawSparkline('spark-activation', hist, 'activation', '#22c55e');
+        drawSparkline('spark-emotion', hist, 'emotion', '#60a5fa');
+        renderHeatmap(hist);
+      }catch(e){}
+      setTimeout(refreshHistory, 2000);
+    }
+    refreshHistory();
+
+    function tsToTime(tsMs){
+      try{ return new Date(tsMs).toLocaleTimeString(); }catch{ return '' }
+    }
+    async function refreshAlerts(){
+      try{
+        const r = await fetch('/api/system/timeflow/alerts?limit=30', {cache:'no-store'});
+        const j = await r.json();
+        const list = Array.isArray(j.alerts) ? j.alerts : [];
+        const ul = document.getElementById('alerts');
+        if(!ul) return;
+        ul.innerHTML = '';
+        list.slice(-15).reverse().forEach(a=>{
+          const li = document.createElement('li');
+          li.className = 'mono';
+          const kind = String(a.kind || 'alert');
+          const sev = String(a.severity || '').toLowerCase();
+          const badgeColor = sev === 'crit' ? '#ef4444' : (sev === 'warn' ? '#f59e0b' : '#94a3b8');
+          const full = (()=>{ try { return JSON.stringify(a) } catch { return '' } })();
+          li.innerHTML = `<span style="display:inline-block; min-width:8px; min-height:8px; background:${badgeColor}; border-radius:999px; margin-right:8px" title="${full}"></span>`+
+                         `<strong>${kind}</strong> · <span class="muted">${tsToTime(a.ts)}</span>`+
+                         `${a.activation!==undefined? ' · act='+Number(a.activation).toFixed(3):''}`+
+                         `${a.reqs_per_min!==undefined? ' · rpm='+Number(a.reqs_per_min).toFixed(1):''}`+
+                         `${a.emotion!==undefined? ' · emo='+Number(a.emotion).toFixed(3):''}`;
+          ul.appendChild(li);
+        });
+      }catch(e){}
+      setTimeout(refreshAlerts, 3000);
+    }
+    refreshAlerts();
+
+    async function refreshSLO(){
+      try{
+        const r = await fetch('/api/system/timeflow/slo?threshold=0.85&window_min=1440&max_fraction=0.01');
+        const j = await r.json();
+        const b = document.getElementById('slo-badge');
+        const t = document.getElementById('slo-text');
+        const pass = !!j.pass;
+        const insuff = j.reason === 'insufficient_data' || j.fraction === null;
+        if (insuff){
+          b.style.background = '#9ca3af';
+          t.textContent = 'insufficient data';
+        } else if (pass){
+          b.style.background = '#22c55e';
+          t.textContent = `pass (fraction=${Number(j.fraction||0).toFixed(4)})`;
+        } else {
+          b.style.background = '#ef4444';
+          t.textContent = `fail (fraction=${Number(j.fraction||0).toFixed(4)})`;
+        }
+        const tip = `threshold=${j.threshold} window_min=${j.window_min}\nfrom=${j.from_iso||''} to=${j.to_iso||''} tz=${j.tz_used||''} n=${j.n}`;
+        b.title = tip; t.title = tip;
+      }catch{}
+      setTimeout(refreshSLO, 20000);
+    }
+    refreshSLO();
+
+    // Admin panel logic
+    async function loadConfig(){
+      try{
+        const r = await fetch('/api/system/timeflow/config', {cache:'no-store'});
+        const j = await r.json();
+        const c = j.config || {};
+        (E('cfg-stim').value = (c.stimulus_weight ?? ''));
+        (E('cfg-decay').value = (c.activation_decay ?? ''));
+        (E('cfg-circ').checked = !!c.circadian_enabled);
+        (E('cfg-camp').value = (c.circadian_amplitude ?? ''));
+        E('admin-msg').textContent = 'Config geladen';
+      }catch(e){ E('admin-msg').textContent = 'Fehler beim Laden'; }
+      setTimeout(()=>{E('admin-msg').textContent=''}, 2000);
+    }
+    async function applyConfig(){
+      try{
+        const body = {
+          stimulus_weight: parseFloat(E('cfg-stim').value),
+          activation_decay: parseFloat(E('cfg-decay').value),
+          circadian_enabled: !!E('cfg-circ').checked,
+          circadian_amplitude: parseFloat(E('cfg-camp').value),
+        };
+        const r = await fetch('/api/system/timeflow/config', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)});
+        const j = await r.json();
+        E('admin-msg').textContent = j.ok? 'Übernommen' : ('Fehler: ' + (j.error||''));
+      }catch(e){ E('admin-msg').textContent = 'Fehler beim Anwenden'; }
+      setTimeout(()=>{E('admin-msg').textContent=''}, 2000);
+    }
+    async function muteAlert(){
+      const kind = E('mute-kind').value.trim();
+      const dur = parseInt(E('mute-dur').value, 10) || 0;
+      if(!kind || !dur){ E('admin-msg').textContent='Ungültig'; return; }
+      try{
+        const r = await fetch('/api/system/timeflow/alerts/suppress', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({kind, duration_sec: dur})});
+        const j = await r.json();
+        if(j.ok){
+          // fetch mute status
+          try{
+            const ms = await fetch(`/api/system/timeflow/alerts/mute_status?kind=${encodeURIComponent(kind)}`);
+            const mj = await ms.json();
+            if(mj.ok && typeof mj.mute_until === 'number' && mj.mute_until>0){
+              const d = new Date(mj.mute_until*1000);
+              E('admin-msg').textContent = `Muted bis ${d.toLocaleTimeString()}`;
+            } else {
+              E('admin-msg').textContent = 'Muted';
+            }
+          }catch{ E('admin-msg').textContent = 'Muted'; }
+        } else {
+          E('admin-msg').textContent = 'Fehler: ' + (j.error||'');
+        }
+      }catch(e){ E('admin-msg').textContent='Fehler beim Mute'; }
+      setTimeout(()=>{E('admin-msg').textContent=''}, 2000);
+    }
+    function buildRangeParams(){
+      const f = (E('x-from').value || '').trim();
+      const t = (E('x-to').value || '').trim();
+      const z = (E('x-tz').value || '').trim();
+      const parts = [];
+      if (f) parts.push('from=' + encodeURIComponent(f));
+      if (t) parts.push('to=' + encodeURIComponent(t));
+      if (z) parts.push('tz=' + encodeURIComponent(z));
+      return parts.length ? ('&' + parts.join('&')) : '';
+    }
+    function exportCsv(downsample){
+      const range = buildRangeParams();
+      const url = downsample? ('/api/system/timeflow/history.csv?limit=2000&downsample=minute' + range) : '/api/system/timeflow/history.csv?limit=2000';
+      window.open(url, '_blank');
+    }
+    function exportJsonMinutely(){
+      const range = buildRangeParams();
+      const url = '/api/system/timeflow/history?downsample=minute' + range;
+      window.open(url, '_blank');
+    }
+    // Bind
+    try{
+      E('btn-load').addEventListener('click', loadConfig);
+      E('btn-apply').addEventListener('click', applyConfig);
+      E('btn-mute').addEventListener('click', muteAlert);
+      E('btn-export-raw').addEventListener('click', ()=>exportCsv(false));
+      E('btn-export-min').addEventListener('click', ()=>exportCsv(true));
+      E('btn-export-json-min').addEventListener('click', exportJsonMinutely);
+    }catch{}
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: QuickDrawViewer: A Mac OS X utility to visualise QuickDraw (PICT) files\n • Hacker News: Replua.nvim – an Emacs-style scratch buffer for executing Lua\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Reaktionen auf Kunstdiebstahl: \"Das ist der französische Familienschmuck\"",
+  "created_at": 1760922735.4066057,
+  "hash": "8a725c515bd46b7f583bb3e088a17287011cb2b91bd3b3d41ecc36a28e6d0faf",
+  "id": "BLK_1760922735_48c1e6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "vykuH1PsGFGs8wYKRY0ltJlkWsKcozbbkGJCvNNXC0FZkDEKgYYnhNHlUkDGuDBBQNumQUYHXrnMkqUa6U7vAw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 03:12",
+  "url": null
+}

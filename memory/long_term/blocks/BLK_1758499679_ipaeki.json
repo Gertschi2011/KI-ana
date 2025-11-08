@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758499679_ipaeki",
-  "title": "Web Digest 2025-09-22 02:07",
   "content": "• Hacker News: Ask HN: Am I the only person who hates mobile apps but adores computer software?\n • Hacker News: Be Careful with Go Struct Embedding\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump bezeichnet erschossenen Kirk bei Trauerfeier als \"Märtyrer\"",
+  "hash": "b3aca3508cd61b644f15bba4f7b683440ebc40b044ed783a13389a2e80a29bb9",
+  "id": "BLK_1758499679_ipaeki",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "wvg6yVeR63f0ofdQW6DXiWjnPuLwzozulzTx+EhZQz2Q1n5bkjuvm8d+NRUN2WUILsDmzbfuHI7pxAdIUipODQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 02:07",
   "ts": 1758499679,
-  "meta": {},
-  "hash": "b3aca3508cd61b644f15bba4f7b683440ebc40b044ed783a13389a2e80a29bb9"
+  "url": ""
 }

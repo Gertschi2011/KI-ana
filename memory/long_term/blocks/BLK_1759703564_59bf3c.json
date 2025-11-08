@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ken Parker, famed luthier, has passed\n • Hacker News: The dangerous intimacy of social location sharing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Söder äußert sich im Bericht aus Berlin zu Drohnenabschüssen",
+  "created_at": 1759703564.654769,
+  "hash": "7937aa93da448b6f3a6ea1715a6039303ecf11e1b1a6aca5ab648bb5e77064fa",
+  "id": "BLK_1759703564_59bf3c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "LHjApMPGmVLK82LdiCVZcUFFHuuF8WN4cvgi7w9bPna8gOLCpNDTUwc2mNxRY5vWu98LSHjL4/gWV1PGR1AKAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 00:32",
+  "url": null
+}

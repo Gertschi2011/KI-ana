@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Anduril and Palantir battlefield comms system has deep flaws: Army\n • Hacker News: Microsoft CTO says he wants to swap most AMD and Nvidia GPUs for homemade chips\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Präsident Trump setzt Hamas Ultimatum für Friedensabkommen",
+  "created_at": 1759507259.566236,
+  "hash": "f4f2e11e8c5af9727526529764d16249286dd619faea4945c758b82d4a8fc93b",
+  "id": "BLK_1759507259_d58625",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gveZGtd/Cpt9fLN/+eLaUK5DYpAk4SONkugZz88lM/DcR81FwyYeUbelthYzHqn3qhqaQvYdi347iJ72X5LbBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 18:00",
+  "url": null
+}

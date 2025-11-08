@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Situated Software – Clay Shirky (2004)\n • Hacker News: Geometry and Physics of Wrinkling (2003) [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Martinsgans und Frühstücksei: Lässt die Vogelgrippe die Preise steigen?",
+  "created_at": 1761649299.573107,
+  "hash": "2a3917ea1fc19dd1056b3bcbda26c05098491f470b66be3da6e48a9f89e95863",
+  "id": "BLK_1761649299_a52a07",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vHvbEdhGRczeurJHMkSIEpDR9x5+z2OSewIWTrRhvDQ+abkhrF9GViRv3KPuioYGsmeZhHiSHb+jcjZ9eOsRCQ==",
+  "signed_at": "2025-10-28T11:01:39Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 12:01",
+  "url": null
+}

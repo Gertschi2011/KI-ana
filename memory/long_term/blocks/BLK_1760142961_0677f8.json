@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Verge Genomics (YC S15) Is Hiring for Multiple Engineering and Product Roles\n • Hacker News: Liquid Glass Is Cracked, and Usability Suffers in iOS 26\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Extra-Zölle von 100 Prozent für China an",
+  "created_at": 1760142961.447357,
+  "hash": "3a0d9aa9cb6a7d067f96a3c1d930530f0e139dd6d68d056fbe34431d5acd9507",
+  "id": "BLK_1760142961_0677f8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "WtJtExCyq17nd/O8tuLu7dsMU/top2oDCuSycYvaYk3FrqjyYh5xebVumjh7+rD7QD5sXhkCngteF2bh7u4uBA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 02:36",
+  "url": null
+}

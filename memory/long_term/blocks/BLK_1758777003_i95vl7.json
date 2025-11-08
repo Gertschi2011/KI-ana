@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758777003_i95vl7",
-  "title": "Web Digest 2025-09-25 07:10",
   "content": "• Hacker News: Homeowner baffled after washing machine uses 3.6GB of internet data a day (2024)\n • Hacker News: The \"Wage Level\" Mirage: H-1B proposal could help outsourcers and hurt US talent\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Abstimmung über Verfassungsrichter: Sichere Mehrheit oder erneute Krise?",
+  "hash": "6d34a2468f461517f6d78889b3b1e51708d8055a9a5779e23c9a9551ea15018a",
+  "id": "BLK_1758777003_i95vl7",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "44EriRRZWnerMHq8uunTmifoVTnnrS53iEJazHT3mGYLjQiAlYX9XKKXn98APsPPqk5odQa2VZ6u6UdbtbBbBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 07:10",
   "ts": 1758777003,
-  "meta": {},
-  "hash": "6d34a2468f461517f6d78889b3b1e51708d8055a9a5779e23c9a9551ea15018a"
+  "url": ""
 }

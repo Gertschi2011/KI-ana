@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Bitmovin (YC S15) Is Hiring Engineering ICs and Managers in Europe\n • Hacker News: Tsdown – The Elegant Bundler for Libraries\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump nimmt zum Auftakt seiner Asien-Reise an ASEAN-Gipfel teil",
+  "created_at": 1761467113.203333,
+  "hash": "a31619ea1d33e3f2a74c8d3dc394273943e95706ff1ee0a4a9191cc0b4536edd",
+  "id": "BLK_1761467113_356990",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8enYE8gmRSDdYDSRZVBPDll81pU1hxe1gFvmV8t790U75QcounCA5s+MIvAma5thNfBAO1egdWPW9Cy0AASLBA==",
+  "signed_at": "2025-10-26T08:25:13Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 09:25",
+  "url": null
+}

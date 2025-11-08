@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: ServiceRadar – open-source Network Observability Platform\n • Hacker News: The Unix Executable as a Smalltalk Method (and Unix-Smalltalk Unification) [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine Klarheit über Tomahawk-Lieferung an die Ukraine",
+  "created_at": 1760757063.1808681,
+  "hash": "8ed72d33e497e6fb2433000d676db0729ab9565feeee8848bdbd8a6197d4f34b",
+  "id": "BLK_1760757063_606696",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "+zAIeKhEyXXBTAEEiEe3eJJhn7F3BedL9kBbAA5Dywq4vqRrGiex/HpBZ+XWQ+gVTB42wuB+TDbszkyXkWPwCg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 05:11",
+  "url": null
+}

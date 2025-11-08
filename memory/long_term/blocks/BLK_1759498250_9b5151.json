@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: TikTok 'directs child accounts to pornographic content within a few clicks'\n • Hacker News: A Thermometer for Measuring Quantumness\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wiedervereinigung: Merz ruft zu neuer Einheit für Deutschland auf",
+  "created_at": 1759498250.9720545,
+  "hash": "48ca83580c07cd8558818b7d5465f196a814126ad7740b8f898b13dea9711237",
+  "id": "BLK_1759498250_9b5151",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "CENhoomEb/Nkn3LjGnAFnjNtcizfEWozPmODwunbDDOd49bvgO/mio48gePr0ILMW6qtDYyY0X8KNLs3Ltg7BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 15:30",
+  "url": null
+}

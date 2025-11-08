@@ -1,17 +1,20 @@
 {
-  "id": "BLK_1758517799_8h5xrw",
-  "title": "Was weißt du über Wasserspeicher?",
   "content": "TL;DR: Kurzüberblick zu Was weißt du über Wasserspeicher? – ich prüfe bestehendes Wissen und aktuelle Quellen.",
+  "hash": "f14ce01792c2e739a8e6ca5ad977ebdbf33ba26a5616f9447b1644a7c2e30586",
+  "id": "BLK_1758517799_8h5xrw",
+  "meta": {
+    "chain_hint": false,
+    "source": "chat"
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "VvsaXVuQ+3TLFYW1NrnUerJtppPqHS0+AbJMFLbOOxE5tZ9dRn782J/VRf/o37mL8gKdT2gFKqfbmdVgg4lzCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "vision",
     "learned",
     "web"
   ],
-  "url": "",
+  "title": "Was weißt du über Wasserspeicher?",
   "ts": 1758517799,
-  "meta": {
-    "source": "chat",
-    "chain_hint": false
-  },
-  "hash": "f14ce01792c2e739a8e6ca5ad977ebdbf33ba26a5616f9447b1644a7c2e30586"
+  "url": ""
 }

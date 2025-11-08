@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Greg Newby, CEO of the Project Gutenberg Literary Archive Foundation, Has Died\n • Hacker News: Knocker, a knock based access control system for your homelab\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Sacharow-Preis geht an inhaftierte Journalisten in Belarus und Georgien",
+  "hash": "25669d5bfdcfe5cd8f923703f281be936c9283cab344d4a5cc7522883c8f8e84",
+  "id": "BLK_1761132270_rm43xr",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "EPAsDCd5bfpJym6q1KNauSXS1gVgNqC/SqiS9MeWRt8uQsLx7XftKZ8lAgo1gV+trhqpi+MF/Pg0atsBMbsPCg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 13:24",
+  "ts": 1761132270,
+  "url": ""
+}

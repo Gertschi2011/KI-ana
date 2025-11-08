@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A Definition of AGI\n • Hacker News: Alzheimer's disrupts circadian rhythms of plaque-clearing brain cells\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht aus Berlin: Spahn stärkt Merz in \"Stadtbild\"-Debatte",
+  "created_at": 1761507031.2079504,
+  "hash": "ebd60bb0105ed69ce64b908f356639179165cd497b44e48a2ed1661fe40c5c03",
+  "id": "BLK_1761507031_239a13",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "r73xW7mfstrJn9myUdN3excFiCFubruKR2jgX9OKXigNpuYc5HpuOgX/7ZR4P3FyFdY68C+Aigp6Q3VHgf4bAQ==",
+  "signed_at": "2025-10-26T19:30:31Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 20:30",
+  "url": null
+}

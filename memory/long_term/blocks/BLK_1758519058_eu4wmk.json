@@ -1,17 +1,20 @@
 {
-  "id": "BLK_1758519058_eu4wmk",
-  "title": "ja, speichern",
   "content": "Kurzüberblick zu ja, speichern",
+  "hash": "86bbbe4d5049bfb28c9bfd4b2f08e178f147a40a2315d8ea4db05ef834ae1ded",
+  "id": "BLK_1758519058_eu4wmk",
+  "meta": {
+    "chain_hint": false,
+    "source": "chat"
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "lhzpYAklLT3+K0H8mrX6WzpnhaCs+UXKq5KkKp9uVKaArbgKFKDTJv5LMnYfJPA1Nq9pSa5mlWY7FzTB8a+vDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "vision",
     "learned",
     "web"
   ],
-  "url": "",
+  "title": "ja, speichern",
   "ts": 1758519058,
-  "meta": {
-    "source": "chat",
-    "chain_hint": false
-  },
-  "hash": "86bbbe4d5049bfb28c9bfd4b2f08e178f147a40a2315d8ea4db05ef834ae1ded"
+  "url": ""
 }

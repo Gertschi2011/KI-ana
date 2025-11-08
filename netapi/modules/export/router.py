@@ -11,7 +11,7 @@ from fastapi.responses import StreamingResponse
 
 router = APIRouter(prefix="/api/export", tags=["export"])
 
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 BLOCKS_DIR = BASE_DIR / "memory" / "long_term" / "blocks"
 SUBKI_TRUST = BASE_DIR / "memory" / "subki" / "trust.json"
 INDEX_MAIN = BASE_DIR / "memory" / "index" / "index.json"

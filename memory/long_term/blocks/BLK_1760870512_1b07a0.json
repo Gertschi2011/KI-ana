@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Did Space Debris Hit A United Flight Over The Rockies Thursday?\n • Hacker News: Space junk falls on Western Australian minesite\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Raubüberfall auf Pariser Louvre - offenbar Schmuck gestohlen",
+  "created_at": 1760870512.0013652,
+  "hash": "39899a7765640dc186461d5e592bc5484c06f6071faa328cdd2e6261ef499807",
+  "id": "BLK_1760870512_1b07a0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "TEYbHSLi/HS/X8QaneudT5xrc+KuXkH5cPoVDcSsnzAVEvMsUS4SGPBbtzrHePtfjEh4cg+4yTZy4cDeRI48Dw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 12:41",
+  "url": null
+}

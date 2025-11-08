@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 50 Things I Know\n • Hacker News: Hedge funds have to be big\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kabinettsklausur: Schwarz-Rot will Aufbruchsstimmung anheizen",
+  "created_at": 1759258140.635917,
+  "hash": "403ea7a62ae9bd964223b0f395bc415d5ece0d9ee5484cf492a96d6e9ff3307d",
+  "id": "BLK_1759258140_b05864",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "M4UUBGcd5btnWPBClgjGrKaM3ctcuZBW/8jcpEjzebxUeGNrCkCEThZyUZiJGA19ngITUednlxLXeES8DlpjDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 20:49",
+  "url": null
+}

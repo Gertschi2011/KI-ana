@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Asked to do something illegal at work? Here's what these software engineers did\n • Hacker News: Immich v2.0.0 – First stable release\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Manchester: Mehrere Verletzte bei Angriff vor Synagoge",
+  "created_at": 1759400996.8105645,
+  "hash": "e23698b16558d53e08ff36e4760eedc0c738ad349a9c8844ec3809adfe269e6d",
+  "id": "BLK_1759400996_86ae31",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "UiRaBydnvGdKLVghbpCKClH+ZS2YghyS5CV0QmZj6O8+9tpLTZQEQOsgdw+mGr/REU0nSnqORF5dNRxy8u0SAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 12:29",
+  "url": null
+}

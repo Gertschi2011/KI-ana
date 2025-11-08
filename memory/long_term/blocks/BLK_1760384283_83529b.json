@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ask HN: Has AI stolen the satisfaction from programming?\n • Hacker News: Reverse Engineering a 1979 Camera's Spec\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "created_at": 1760384283.8827846,
+  "hash": "0174f68c2d42e00a831042a616b496740a9adaf2491947acff44ec145a7cc90f",
+  "id": "BLK_1760384283_83529b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "tkREHNaEeu7Px1T+I1cSk0FhZ7DwpV7vwWUhJyDNbYVvSUApfdW0fDgmN3utHwb/SNpmeifatSzJOeueqZIlCQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 21:38",
+  "url": null
+}

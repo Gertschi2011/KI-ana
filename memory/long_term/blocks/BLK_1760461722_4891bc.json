@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hold Off on Litestream 0.5.0\n • Hacker News: Swarm reveals growing weak spot in Earth's magnetic field\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Neuwahlen sind in Frankreich vom Tisch - zunächst",
+  "created_at": 1760461722.319352,
+  "hash": "83055accb174e0149b909c4f73e4ff224cffcd58b795dc54974a789656aafcb9",
+  "id": "BLK_1760461722_4891bc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "sooidVXkSRmrSNmo99hRp3V60iIPBkgwuUa8I5u6AOCzLmLWaV1D8CO+nmu3tw/QXbSJS4t+ohSsjBZeYtYcAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 19:08",
+  "url": null
+}

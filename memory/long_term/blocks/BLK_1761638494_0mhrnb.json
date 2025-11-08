@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Why IP address truncation fails at anonymization\n • Hacker News: Picture gallery: Amiga prototype \"Lorraine\" at the Amiga 40 event\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump-Besuch: Japan will \"neues goldenes Zeitalter\" mit den USA",
+  "hash": "e99b44dd5511ae785972922b1a9f10d1ec18e0d052005dd395e3e1d4ed97012e",
+  "id": "BLK_1761638494_0mhrnb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "KLRgSTPldGaWMRMPc+Wpo3qFZnW+pTmgc0zDuq5Kla4kYVwZ9sypgznwv1NSXtf0t8W7fjV4EjQN/8XlcRyjCA==",
+  "signed_at": "2025-10-28T08:01:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 09:01",
+  "ts": 1761638494,
+  "url": ""
+}

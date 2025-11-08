@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Addictive-like behavioural traits in pet dogs with extreme motivation for toys\n • Hacker News: No I don't want to turn on Windows Backup with One Drive\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rückkehr in den Gazastreifen: Zwischen Hoffnung und Entsetzen",
+  "created_at": 1760287035.60819,
+  "hash": "d701f167bdbfc97e5b8e9f50db986ae867b518d521430e36d899be8dc9ba6a2a",
+  "id": "BLK_1760287035_5c6f1b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "LlfJ0YEGxe93ciC9xLg91L73eDRyQNb5pAVNhjcKg+P9onFIc1uFr7tvQolrxIQ4npYeP7j0w94cmU+vYXStDQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 18:37",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Claude Haiku 4.5\n • Hacker News: David Byrne Radio\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Irans Machtverlust im Nahen Osten",
+  "hash": "f9aa45e4830761f840ded7bd4bd72252dbc7b1cb17427fd00ed9727d26190053",
+  "id": "BLK_1760551768_tzqcjc",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "sdainvmNueD1C5u95flZB1mlBunDoDGPMyQb9KeZpN2fkEHACQgyJ/csr89q2Bz8bSs52oZMuyMCBW+td5JRAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 20:09",
+  "ts": 1760551768,
+  "url": ""
+}

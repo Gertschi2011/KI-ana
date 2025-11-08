@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Neighbor shielded 7-year-old during South Shore federal raid\n • Hacker News: China's New Rare Earth and Magnet Restrictions Threaten US Defense Supply Chains\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Hamas bestätigt Freilassung der Geiseln ab Montag ++",
+  "created_at": 1760245614.172891,
+  "hash": "4442c1b3d73e4f3d9387ca55486b6bc0617aa364a2d01509ffd7acb59b411d10",
+  "id": "BLK_1760245614_7addb7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "D1DY36cq8rIy1mYU+M7fzlOoLHCI6Q4H6pXgPjbUpA/nhe6pUmbw1DkeGU0SUwBkR3ZfuLnopnp1Fo17aXAGCg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 07:06",
+  "url": null
+}

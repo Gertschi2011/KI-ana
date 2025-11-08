@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Asahi Linux Still Working on Apple M3 Support, M1n1 Bootloader Going Rust\n • Hacker News: Show HN: I built an 8-bit CPU simulator in Python from scratch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ministerpräsidenten fordern Lockerung beim Verbrenner-Aus",
+  "hash": "ab466f2b28aba5173de5dbbb77de9652a8a795dac62e538f064b70a21cdab91d",
+  "id": "BLK_1761319391_5dfvp3",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Fnb2kyDpwpKmK8jIBP57LCUqOyImutqikQfmTc17mg0dZqh63UhIh9cPfj9zH9EK51IO83ogPu/gFs6aa3heAA==",
+  "signed_at": "2025-10-24T15:23:11Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 17:23",
+  "ts": 1761319391,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tiny sugar spoons are popping up on NYC fast-food menus\n • Hacker News: AI assistants misrepresent news content 45% of the time\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Möglicher Produktionsstopp bei Volkswagen wegen Chip-Problemen",
+  "created_at": 1761143075.801566,
+  "hash": "01bfb7a7888052f4b74f932f858a308b86513b2ad7676e7a717a5094e955d372",
+  "id": "BLK_1761143075_92964d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "++0Ayhcn1+txpDzWYkN5ZNnNrhl6hiEfdHbgg8fui/m38FkZjUPfLjcjE5E3MJfv/q0EEcopH5Mb8wksgidLDA==",
+  "signed_at": "2025-10-22T14:24:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 16:24",
+  "url": null
+}

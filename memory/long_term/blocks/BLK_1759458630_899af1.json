@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: We Gave Our AI Agents Twitter and Now They're Demanding Lambos\n • Hacker News: I spent the day teaching seniors how to use an iPhone\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Flugausfälle wegen Drohnensichtung am Münchener Flughafen",
+  "created_at": 1759458630.7710114,
+  "hash": "61c7b3b3d1e1d32cb124e1fc7dc10c8916e13a076042443a30f8fd9a4366a0a3",
+  "id": "BLK_1759458630_899af1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QRsBOP0tQFqvpG1Q8Yewt12sYEP/wlvyE6RR/WXPsxCX6tMmRcFaf4/tzfiHCxJnCdHo1+o71EZ2yfMqiFAGBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 04:30",
+  "url": null
+}

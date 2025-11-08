@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ask HN: How to stop an AWS bot sending 2B requests/month\n • Hacker News: Meow.camera\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Treffen mit Trump: Selenskyjs Drahtseilakt in Washington",
+  "created_at": 1760683231.1543217,
+  "hash": "326b7a6a8c9953ec0d286ce999e887cb9964a380aac43b10a951bbe0dc50b329",
+  "id": "BLK_1760683231_03f247",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "dawpfArUCSWEKLNv6wzvpI85N7tkr++KcVd3EioGNV6qWLibmIg6nODuyOvcgUi3tSfZQLYuIsOWUMltd8heAQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 08:40",
+  "url": null
+}

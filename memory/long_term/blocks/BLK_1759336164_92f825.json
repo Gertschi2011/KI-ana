@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: MIT technology can see microbes from 90 meters away\n • Hacker News: Building a 30 PB storage cluster in the heart of SF\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Bombendrohung in München: Oktoberfest wieder geöffnet - Weiterer Toter gefunden",
+  "created_at": 1759336164.7664669,
+  "hash": "d6363e7e60d6c014a3b0be8eab7ea0dacb6eaffae5f4060acf3f8e0f73d2ba90",
+  "id": "BLK_1759336164_92f825",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "zb2x4EZexS816JUe2QleuUuZiNyVnVwffbzUra7GwBJCUyVTtNPEuc7J3qAGpgKFaPKAyuuM1n5hPxSjKRS2CQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 18:29",
+  "url": null
+}

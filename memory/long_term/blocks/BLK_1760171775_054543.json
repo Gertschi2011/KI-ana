@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AMD and Sony's PS6 chipset aims to rethink the current graphics pipeline\n • Hacker News: What is going on with all this radioactive shrimp?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs Premier Lecornu steht vor fast unlösbaren Problemen",
+  "created_at": 1760171775.7952616,
+  "hash": "4ec8957b57de9cee3c315abe29fbd24c0d002beb974f95fb2ea81a724dfd8a34",
+  "id": "BLK_1760171775_054543",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "95UyKi7vMdea3tuVzVjq4wfg+tWz8fE1xhptJdVucade6yF263wjMuxXHcM8bzlv21hahkcm+92bqxpTWy6ADg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 10:36",
+  "url": null
+}

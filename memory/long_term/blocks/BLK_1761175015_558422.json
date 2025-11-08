@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: VortexNet: Neural network based on fluid dynamics\n • Hacker News: Iceland reports the presence of mosquitoes as climate warms\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Staaten einigen sich auf schärfere Sanktionen gegen Russland",
+  "created_at": 1761175015.0354466,
+  "hash": "0dcbfd6442a797f6080b8555aad0e6a99672d8556c376e625231f57587ca2e5e",
+  "id": "BLK_1761175015_558422",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fJ42ecPy4L0sbTO6lxF6/J4h+pbYy2KYITXyVuTWaj2EY1o1PHuc+v16twJw1m88isQPODD/jc/XS89Du66aBw==",
+  "signed_at": "2025-10-22T23:16:55Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 01:16",
+  "url": null
+}

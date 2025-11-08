@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: $912 energy independence without red tape\n • Hacker News: The UK is still trying to backdoor encryption for Apple users\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was zum Frieden im Gazastreifen fehlt",
+  "hash": "8ba5079d67d2494c2bce7ca073951f6e50b4db890118f71ba0ea02470ac13740",
+  "id": "BLK_1759618928_c9z5xr",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "VWXm8onzQ87LXuqtusa26+XgDa0tZi5fysQh50GPbqSuuOiJLj9yJ44s4gJ0G6Q/v3gLKeDi9i7mb0vo1fhaBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 01:02",
+  "ts": 1759618928,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What If Tariffs?\n • Hacker News: Bitmovin (YC S15) Is Hiring Engineering ICs and Managers in Europe\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump nimmt zum Auftakt seiner Asien-Reise an ASEAN-Gipfel teil",
+  "created_at": 1761468915.254065,
+  "hash": "d2ee9b2279ecf05f75d6fa041e9bb51f8dd3011cc992a05e10fc34f674d9356c",
+  "id": "BLK_1761468915_875648",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ym1ME+hgExsgT0c68GJDWE6MgiYse1WV/wpWQSQQpzrJf44OZQ6lNDEP0W7Z5qZoN9qG1oLzC3GrWf31+pd9BA==",
+  "signed_at": "2025-10-26T08:55:15Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 09:55",
+  "url": null
+}

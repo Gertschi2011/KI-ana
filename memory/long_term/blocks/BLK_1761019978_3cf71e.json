@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Wikipedia says traffic is falling due to AI search summaries and social video\n • Hacker News: Old Computer Challenge – Modern Web for the ZX Spectrum\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach \"Stadtbild\"-Äußerungen: Der Stil des Kanzlers steht in der Kritik",
+  "created_at": 1761019978.405396,
+  "hash": "048b797c0eb6b61f6071f2f61973d6a085668ece949747809b4ca20439fcbc8e",
+  "id": "BLK_1761019978_3cf71e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "9qVISz7Tbqv39KqNbXEIZ4hXbpFWiJ6IKi4y+Yx1o8I6KHJY4puybV11/TLsQuH2RwVZcD2mFBR+NCaEJ7rnBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 06:12",
+  "url": null
+}

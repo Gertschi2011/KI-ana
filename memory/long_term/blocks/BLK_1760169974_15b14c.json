@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AMD and Sony's PS6 chipset aims to rethink the current graphics pipeline\n • Hacker News: What is going on with all this radioactive shrimp?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie der Gaza-Friedensplan verhandelt wurde",
+  "created_at": 1760169974.6992238,
+  "hash": "357cf18de47c59a8f74df74aa5052ca5114d8726fb42be1c331b75dde54763ef",
+  "id": "BLK_1760169974_15b14c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "eS1Xw4Lq71BTa8nIbXHp2fmgnPcqv7RaQWp/vhJ4ajyyf8X1E/wfW2QtYAgb1QXaOHgtHKiZUFXM0I7IHXmbDQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 10:06",
+  "url": null
+}

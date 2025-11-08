@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Rivian's Also E-bike is like nothing you've ever seen\n • Hacker News: 42,600 ton ship to break the world record for the deepest drill at 7 miles\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stadtbild-Debatte: Merz sieht Migranten als \"unverzichtbaren Bestandteil\"",
+  "created_at": 1761158806.9453177,
+  "hash": "92190318675f71a74840b4a2e9ef866fc3d0e95c322521bd38566c634e68f9f6",
+  "id": "BLK_1761158806_19affb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "wvdqZn1J910zyRbpe8FK/sCe2ADB9WfmvJtWEx/xu8m/VUtL1PlJqdsovgHN6fxgR39TNeDHVrICGsc3NS+4AA==",
+  "signed_at": "2025-10-22T18:46:46Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 20:46",
+  "url": null
+}

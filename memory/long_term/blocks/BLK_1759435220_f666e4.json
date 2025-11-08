@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why most product planning is bad and what to do about it\n • Hacker News: OpenAI's H1 2025: $4.3B in income, $13.5B in loss\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Krieg: Europäer streiten über russisches Vermögen",
+  "created_at": 1759435220.6530745,
+  "hash": "f2bd1e02c73af7c9229a78313ad09385ce9fa64f9ffa9cef2589490ae1ee7b2d",
+  "id": "BLK_1759435220_f666e4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "A3XkJ8nnbvnFnGvazRmJ+8jjsOMwS4zjwxdf8CvFOikICFbN+NFxA8r4ausdUkyffybjc1ecsn+QEAqb/NUBBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 22:00",
+  "url": null
+}

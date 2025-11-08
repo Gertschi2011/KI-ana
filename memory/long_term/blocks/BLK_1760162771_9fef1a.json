@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: What Is Going on with All This Radioactive Shrimp?\n • Hacker News: Naked mole rats reveal genetic secret to long life\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie der Gaza-Friedensplan verhandelt wurde",
+  "created_at": 1760162771.0812495,
+  "hash": "970be98410d73520fc615e533ccd4ffe5a61076f08f8e2c4cb124f537f2b303e",
+  "id": "BLK_1760162771_9fef1a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Q1MwyoC+d0/VEr55MeMDdtoTcRhEXPhdjQYbEfKnkSldrYmemmu8xaBdUpRPzMKjHsevkJ8oTGhxmvT1ZxkvDA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 08:06",
+  "url": null
+}

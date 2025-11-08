@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Free software hasn't won\n • Hacker News: MAML – a new configuration language (similar to JSON, YAML, and TOML)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lecornu stellt Kabinett vor: Neue Regierung in Frankreich steht",
+  "created_at": 1760312248.3683398,
+  "hash": "dc1d02043ab5e41e5cc2f109f45f72c69d3e0d9ae3878cb32389e0aedcad7db4",
+  "id": "BLK_1760312248_a83f8d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "QEZxBsNEjvjtNp8RslFnCSc6hkoSE1PM3TnvUA/o9jZ0FuEiHBFxtSYGJVJZ2VK7miQ5ca2+bnkcQeZwWaDbBA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 01:37",
+  "url": null
+}

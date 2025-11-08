@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: C64 Blood Money\n • Hacker News: Female spies are waging 'sex warfare' to steal Silicon Valley secrets\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Staaten beschließen weitere Russland-Sanktionen",
+  "created_at": 1761212433.0478303,
+  "hash": "d0a906a35b57d98ced46495962dc56ee6e9f105a6b451e1e4cfe7db19c47256c",
+  "id": "BLK_1761212433_9609b7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "b8T1oSiFyyIc+Jkk7bYgGcdF8xXLROKCVwGOc+mDYc871RMJwQcVGCzcGNgFKk9dA3jiotETC7DZ6PMvDrtrAg==",
+  "signed_at": "2025-10-23T09:40:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 11:40",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Pivot\n • Hacker News: Asking AI to build scrapers should be easy right?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Epstein-Affäre: Prinz Andrew verzichtet auf royale Titel",
+  "created_at": 1760733652.831071,
+  "hash": "e10774a4dcdd71410da3871c7d2d2e2f2d5df1cfce08116c7cb7c08b1bce828d",
+  "id": "BLK_1760733652_586f4e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "XGBQaVnqmMMnmb3jSXVfTuraPndyzBIX14bDeyb7ay33S/4gfZXK3I5fgJCmDG9Cf/OxGSSO4DKgos+o/VnaAQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 22:40",
+  "url": null
+}

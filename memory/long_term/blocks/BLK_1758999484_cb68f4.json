@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1758999484_cb68f4",
-  "title": "Web Digest 2025-09-27 20:58",
   "content": "• Hacker News: I made a public living room and the internet keeps putting weirder stuff in it\n • Hacker News: Americans Are Using PTO to Sleep, Not for Vacation–Report\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump will Militär nach Portland schicken",
+  "created_at": 1758999484.1742988,
+  "hash": "0103bc6303426a7e4c5702ed0b61e676753145581138542a7e827a1d1a1876b2",
+  "id": "BLK_1758999484_cb68f4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "0WSr/xcVn6YQ1uMrElrb0A4EScbmxdWCTeZP1z1pOnCWJNXXoRTGpysupSgPU0kVB+FaGMWR0r4EGo0/B+lNDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1758999484.1742988,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-27 20:58",
+  "url": null
 }

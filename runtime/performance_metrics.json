@@ -1,0 +1,18 @@
+[
+  {
+    "metric_name": "test_metric",
+    "value": 0.85,
+    "timestamp": 1761145658.2504113,
+    "context": {
+      "test": true
+    }
+  },
+  {
+    "metric_name": "test_metric",
+    "value": 0.9,
+    "timestamp": 1761145658.250835,
+    "context": {
+      "test": true
+    }
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: US hits $38T in debt. Fastest accumulation of $1T outside pandemic\n • Hacker News: US axes website for reporting human rights abuses by US-armed foreign forces\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bekommt die Ukraine bald russisches Vermögen als Darlehen?",
+  "created_at": 1761234750.303523,
+  "hash": "1e33b21efa6120adb0dfa12ba9724a895375dae1e656d8d62f8f7469722b61f6",
+  "id": "BLK_1761234750_ff1459",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MKgLntHUPOZDtB0f5hdCM7WDF7NQ8yxBDME4H1v56zi23IvGIxcs5KoxxsAl2Q4BG6OBjaC1nailzDUC5i8wCA==",
+  "signed_at": "2025-10-23T15:52:30Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 17:52",
+  "url": null
+}

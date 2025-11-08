@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Roc Camera\n • Hacker News: Computer Science Courses That Don't Exist, but Should (2015)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Minimalkompromiss bei Verwendung von russischem Geld",
+  "created_at": 1761278538.89232,
+  "hash": "54c2957624788c44a06588ab5212f79590dac181c5059ab53f523144e377fbf9",
+  "id": "BLK_1761278538_d52611",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "w5ZbHcj4I8yeB5QXcCwSx62XukiodBhPzufM6vZu5sokK5ZrBgCcjN+ALyVJKgUoZqNSM7/c7UbGsyWaSoDrAQ==",
+  "signed_at": "2025-10-24T04:02:18Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 06:02",
+  "url": null
+}

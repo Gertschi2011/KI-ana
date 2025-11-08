@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: All the sad young terminally online men\n • Hacker News: Technology without humanity means nothing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Weißes Haus veröffentlicht Trumps Nahost-Friedensplan",
+  "created_at": 1759189821.027921,
+  "hash": "10b112cad1035ecc55237866cf49dca6e595e078c10c24635f95ece2109b4632",
+  "id": "BLK_1759189821_89427a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4+mUCSGr5pjQEjDgzhGbk7zZam+EdPQ+u0iO8ntDWcNU9O6V7IXr1ifhPd7vblXeUt71wC6n4gSPXu/fAEo1Cg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 01:50",
+  "url": null
+}

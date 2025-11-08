@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758991933_fbjlgl",
-  "title": "Web Digest 2025-09-27 18:52",
   "content": "• Hacker News: Greenland Is a Beautiful Nightmare\n • Hacker News: Norway to Monitor Airborne Radioactivity in Svalbard\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump will Militär nach Portland schicken",
+  "hash": "84f005bd3589d8aba6aca197bc8986fa0cdd15ea521c15439a27021716e666f7",
+  "id": "BLK_1758991933_fbjlgl",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "6pBMcGEIW72NQv3sr5cpy/RqfcrQ/bURwMkLeZBMX/4zIOMDcKtMFdRSEpW++CcL+VevQp7IpIiJ9nPCzq4qCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 18:52",
   "ts": 1758991933,
-  "meta": {},
-  "hash": "84f005bd3589d8aba6aca197bc8986fa0cdd15ea521c15439a27021716e666f7"
+  "url": ""
 }

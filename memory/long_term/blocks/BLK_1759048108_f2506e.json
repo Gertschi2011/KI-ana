@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759048108_f2506e",
-  "title": "Web Digest 2025-09-28 10:28",
   "content": "• Hacker News: Ed Zitron is mad as hell\n • Hacker News: Dismissed as a joke, UK's first rice crop ripe for picking after hot summer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Krieg: Tote und Verletzte nach russischen Angriffen",
+  "created_at": 1759048108.0416973,
+  "hash": "3e52d9cffb865d72a602358b7664fba77a5088aae9e0c0ceafae50adedfa6a0e",
+  "id": "BLK_1759048108_f2506e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "lYbg1RvreLnlFJE4yQtOa+4KmZR00s+nwBSUtlhXM5mUlSt/8ELIhU1oC8jt4/n4aCkbla1+VnI+m4e7HV0IBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759048108.0416973,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 10:28",
+  "url": null
 }

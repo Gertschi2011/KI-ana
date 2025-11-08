@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Economics of sportsbooks and why they ban the best bettors\n • Hacker News: Pre-Emptive Multi-Tasking on Arm Cortex-M\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "created_at": 1759276149.8568556,
+  "hash": "c924c5e0848926b1055e24fe2f97a540a28787388004702577ce90549fd3e42f",
+  "id": "BLK_1759276149_2782ef",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7+goTT5+Q6iJqQWZW/i69P8ewlMOchFMdydxjuoL0eKtABPyF3OZwfVxTTaVSaFvSz3lY5vVaLFde0QeU46hBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 01:49",
+  "url": null
+}

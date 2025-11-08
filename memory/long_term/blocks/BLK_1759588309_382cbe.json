@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Circular Financing: Does Nvidia's $110B Bet Echo the Telecom Bubble?\n • Hacker News: Functional Programming Shaped (and Twisted) Front End Development\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Babis-Partei liegt bei Parlamentswahl in Tschechien klar vorn",
+  "created_at": 1759588309.0211246,
+  "hash": "57414ae2814d2e1c224055e244eeec5e8e1aeac6073b47225ac745a8ce0f4e34",
+  "id": "BLK_1759588309_382cbe",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oDAA1Y+JFJhBRx+vl/C+IZ4Svlf54sNrftAcKJUy8BFta+SyW160NkzCZT6lqMa5fIiEKwpEC62svpoDRkSnCQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 16:31",
+  "url": null
+}

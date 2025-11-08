@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Fossabot: AI code review for Dependabot/Renovate on breaking changes and impacts\n • Hacker News: MIT technology can see microbes from 90 meters away\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Bombendrohung in München: Oktoberfest wieder geöffnet - Weiterer Toter gefunden",
+  "created_at": 1759337965.7068892,
+  "hash": "0dd1979bf6dd6a76b050dd56ed7586aa038e625fe8b60615069ed8485aecea3b",
+  "id": "BLK_1759337965_8123b0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "FaS3Fvg68qFEZcP1Iv+UuGLlZ7mBMEm5vZB3FJ751W8FHs8KMV5dP9XVS7+6ctp1i/HVdU6bIrcg/Lra8M68Cg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 18:59",
+  "url": null
+}

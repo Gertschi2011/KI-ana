@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Major AWS outage takes down Fortnite, Alexa, Snapchat, and more\n • Hacker News: Docker Systems Status: Full Service Disruption\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Louvre-Einbruch: Polizei fahndet mit Hochdruck nach vier Tätern",
+  "created_at": 1760960551.8932202,
+  "hash": "716e8f5723ac17418139d8f1baede309e43a85c893b8f1e8db4dac062f26a5ca",
+  "id": "BLK_1760960551_9c1551",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "lI/EsEtKHe9YMs3OOr9u82oYTPReg83+7h8g7eIi+HWpxHzSJQc/iLnHw9snXkosJwxEguum4bY+eXD2GAMhBA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 13:42",
+  "url": null
+}

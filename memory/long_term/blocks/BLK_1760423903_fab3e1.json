@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Copy-and-Patch: A Copy-and-Patch Tutorial\n • Hacker News: New York Times, AP, Newsmax and others say they won't sign new Pentagon rules\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Britischer Ex-Premier Blair - geeignet als Friedensbringer für Nahost?",
+  "created_at": 1760423903.5471737,
+  "hash": "7a9520e228a6c79fa780d49d8bcd344161f817200cc12586091993c835d865fb",
+  "id": "BLK_1760423903_fab3e1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "cy697mizLim5XuF5nTIWQZmRdiFf/n/mstLK1t7KNcCnOnaIvNhV760yRIU+2uHmojJzGtcc8/RC7nucbnIBAg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 08:38",
+  "url": null
+}

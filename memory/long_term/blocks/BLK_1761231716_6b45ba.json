@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: US axes website for reporting human rights abuses by US-armed foreign forces\n • Hacker News: Why China is winning the trade war\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bekommt die Ukraine bald russisches Vermögen als Darlehen?",
+  "created_at": 1761231716.2713175,
+  "hash": "cd225089a80bb28da9bf88c789d57e9a8f999fb62bf006e897d8dac18679c1d8",
+  "id": "BLK_1761231716_6b45ba",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "pKjsrIwkyfcbf/+X6tpME0Khassd0TpPhW/aQKNq9nzMT6bw4V3+1oWwHCcI2JGvD3yRKgu3LiTGnuNAJtSpBQ==",
+  "signed_at": "2025-10-23T15:01:56Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 17:01",
+  "url": null
+}

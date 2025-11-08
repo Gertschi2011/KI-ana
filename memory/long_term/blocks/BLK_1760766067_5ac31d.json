@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Majority AI View\n • Hacker News: Show HN: ServiceRadar – open-source Network Observability Platform\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine Klarheit über Tomahawk-Lieferung an die Ukraine",
+  "created_at": 1760766067.0576324,
+  "hash": "c17d743afd5ec8a3d1542be6079e8a12057a4f47914f239845a088abf6e1b881",
+  "id": "BLK_1760766067_5ac31d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "BsA7BJ24k2bQqu/GkS+8qAog4oD5ms2xSPtlo7Spt8tJUrJSij6qiixzqlJOwraHXqY0eeF/i20Qy8YBtkD3CA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 07:41",
+  "url": null
+}

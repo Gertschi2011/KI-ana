@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: IKEA Catalogs 1951-2021\n • Hacker News: Launch HN: LlamaFarm (YC W22) – Open-source framework for distributed AI\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Kommission will Zölle auf Stahl auf 50 Prozent verdoppeln",
+  "created_at": 1759854829.0003362,
+  "hash": "6ca1acf921d30bee11e4642b5b254254ef70fc9d5ee6c847ff94401565a60d20",
+  "id": "BLK_1759854829_9c0f2a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "HJd+OtgpsNwb4GDlCnSYakRmkj5zLmm9PJDpQF6cYIpgtcdO+Sh+A2D6tOwBTcJX2jq4wWORnurpgfXACfzDAw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 18:33",
+  "url": null
+}

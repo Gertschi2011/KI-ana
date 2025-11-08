@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Claude Code on the Web\n • Hacker News: Peanut Allergies Have Plummeted in Children\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU fordert Trump auf, Druck auf Putin hochzuhalten",
+  "created_at": 1760989364.9880896,
+  "hash": "6de779f2cc4e17fcd79328b40ec64cff4daccd6bfe51baf20614357a215be55f",
+  "id": "BLK_1760989364_4f3f79",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "+h+XU0pUDP9wfqHIvaleu4xEoza8ayqfJ29Hr6sEzCBaAjS96MarKP0ZP5kllW3aMA7o3uRHW2t8dUCoFG9uAg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 21:42",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: 3x performance for 1/4 of the price by migrating from AWS to Hetzner\n • Hacker News: Ring to partner with Flock, a network of cameras used by ICE, feds, and police\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Angriffe auf den Energiesektor: Wie die Ukraine Putin zu Verhandlungen zwingen will",
+  "hash": "9680bcc07a2fd4ed647ae740fb45854ba38bcad5f602950b52c4967f1b1a188a",
+  "id": "BLK_1760697637_lgtnm3",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "S8o9KA37Ae3McSO92wd+NTK81U0MQRAOx16vhuNt09rk+sCZX+TaWU+TD0xFHUQwh7TXoJUxQ+Y1lxwggAzeBg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 12:40",
+  "ts": 1760697637,
+  "url": ""
+}

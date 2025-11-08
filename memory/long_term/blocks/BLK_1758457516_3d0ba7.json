@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758457516_3d0ba7",
-  "title": "Web Digest 2025-09-21 14:25",
   "content": "• Hacker News: They Thought They Were Free (1955)\n • Hacker News: Universities should be more than toll gates\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gewalt gegen Pflegepersonal: Wenn Patienten ausrasten",
+  "hash": "927da9b29369d3729f6be684e80bc81380d2cea61b6159ccf24603860e2bf528",
+  "id": "BLK_1758457516_3d0ba7",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "VdPAdt29kMJYDwYfnRRVJitfYvDqXCTSDEX0/QWU7jjsWmlogxKdvttovq4Bmxsc0qpaZWie6+lDe5j+JaUiBw==",
+  "signed_at": "2025-10-29T12:53:41Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 14:25",
   "ts": 1758457516,
-  "meta": {},
-  "hash": "927da9b29369d3729f6be684e80bc81380d2cea61b6159ccf24603860e2bf528"
+  "url": ""
 }

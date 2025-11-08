@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758490674_cti8wb",
-  "title": "Web Digest 2025-09-21 23:37",
   "content": "• Hacker News: Apple Silicon GPU Support in Mojo\n • Hacker News: Rail travel is booming in America\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu erteilt Palästinenserstaat Absage",
+  "hash": "480ab885e3279e779b633c65fed3f1b4721852c9402504bf1a3a9e76c493150c",
+  "id": "BLK_1758490674_cti8wb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "U9R7XBRGxp3dWBSkamhbJPLpHUeCqnGy2BaaxZdT9uabQtentjTxWrLnPAwK7ifpF7RTQbDRicXppWNVPKZKAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 23:37",
   "ts": 1758490674,
-  "meta": {},
-  "hash": "480ab885e3279e779b633c65fed3f1b4721852c9402504bf1a3a9e76c493150c"
+  "url": ""
 }

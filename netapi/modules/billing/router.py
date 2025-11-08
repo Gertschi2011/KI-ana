@@ -12,7 +12,7 @@ from ...models import User
 
 router = APIRouter(prefix="/api", tags=["billing"])
 
-KI_ROOT = Path.home() / "ki_ana"
+KI_ROOT = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 RUNTIME = KI_ROOT / "system" / "submind_runtime"
 SUBM_DIR = KI_ROOT / "subminds"
 SUBM_DIST = SUBM_DIR / "dist"

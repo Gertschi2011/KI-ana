@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Computer Science Courses That Don't Exist, but Should (2015)\n • Hacker News: Counter-Strike's player economy is in a multi-billion dollar freefall\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Minimalkompromiss bei Verwendung von russischem Geld",
+  "created_at": 1761276170.849835,
+  "hash": "25aa72d1507273acf30ec106fda4ccc4affc007d233fb1a007ad91b3082759d6",
+  "id": "BLK_1761276170_319bd9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Jl+ExWNV08QBt5V/hxbNv4pbA+9gWC5GZgrGvBN5IH8b2wI5DEK6QKchC9V2XJO6ozQ8wzJSEj726Q9po48cBg==",
+  "signed_at": "2025-10-24T03:22:50Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 05:22",
+  "url": null
+}

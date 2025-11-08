@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: To AI or Not to AI\n • Hacker News: Tuning async IO in PostgreSQL 18\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warschau-Treffen zu Drohnen-Abwehr: Wadephul will EU und NATO enger vernetzen",
+  "hash": "8b3028b08ab7d4f490ee77765d85041adce09ee5b5b66f0b04ce25bd243698e9",
+  "id": "BLK_1759150202_614bja",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "4zJ+Bpp0JPaBUcsdMQcq+g7oq+HCs9+XD8xCvTGFTHLhoZoIig7rzX2y/dphusbc+6gNepAdUmXv0Lkh3WjQDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 14:50",
+  "ts": 1759150202,
+  "url": ""
+}

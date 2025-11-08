@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: I played 1k hands of online poker and built a web app with Cursor AI\n • Hacker News: Expanding access to Opal, our no-code AI mini-app builder\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs geschäftsführender Premier Lecornu sieht Ausweg aus der Krise",
+  "hash": "af90406c662bebe325473fbd96c38af4f022e5b9e55c0f1352a12be366c9913e",
+  "id": "BLK_1759959273_rstty0",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "c4ltjERq5Ac+MT1a9RBjR+AHObKnevLAsNGr0haEGn16SF9C2JKWxWyFVAs2aWxwYfxRRnylIiLXAcn11hakDw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 23:34",
+  "ts": 1759959273,
+  "url": ""
+}

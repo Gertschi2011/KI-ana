@@ -15,6 +15,8 @@ passlib[bcrypt]>=1.7,<2.0
 itsdangerous>=2.2,<3.0
 python-multipart>=0.0.9           # Form/File-Uploads
 email-validator>=2.1,<3.0         # falls du E-Mail-Felder validierst
+cryptography>=42.0,<43.0          # Ed25519 signatures für Block-Verification
+PyNaCl>=1.5,<2.0                  # Alternative für Ed25519 (fallback)
 
 # --- Datenbank ---
 SQLAlchemy>=2.0,<2.1

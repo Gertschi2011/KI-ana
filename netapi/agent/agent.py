@@ -181,6 +181,16 @@ _WEBMISS_COOLDOWN_SECS = 20
 _fallback_loop_guard: dict = {}
 _FALLBACK_LOOP_COOLDOWN_SECS = 25
 
+# Remember last reply per conversation to avoid repeating the exact same fallback
+_last_reply_map: dict = {}
+
+def _record_last_reply(conv_id: str, reply: str) -> None:
+    try:
+        key = str(conv_id or "global")
+        _last_reply_map[key] = (reply or "")[:200]
+    except Exception:
+        pass
+
 def _allow_webmiss_clarifier(conv_id: str, now_ts: float) -> bool:
     key = str(conv_id or "global")
     last = float(_clarify_cooldown.get(key, 0.0) or 0.0)
@@ -466,7 +476,13 @@ def run_agent(message: str, *, persona: str = "friendly", lang: str = "de-DE", c
             tools_used.append({"tool": "mem", "ok": True, "meta": {"hits": 1}})
         else:
             reply = "Ich habe dazu leider keine gespeicherten Informationen. Möchtest du, dass ich im Web recherchiere?"
-        return {"ok": True, "reply": reply, "trace": trace, "sources": sources, "used_memory_ids": used_mem_ids, "tools_used": tools_used}
+        # Last-reply guard and quick replies
+        key = str(conv_id or "global")
+        if (reply or "").strip() == (_last_reply_map.get(key) or ""):
+            reply = "Ich formuliere es kurz und pragmatisch: " + _short(user, 60)
+        _record_last_reply(conv_id, reply)
+        quick = CLARIFY_QUICK_REPLIES if reply in (CLARIFY_FALLBACK, KIDS_CLARIFY_FALLBACK, WEBMISS_CLARIFIER) else []
+        return {"ok": True, "reply": reply, "trace": trace, "sources": sources, "used_memory_ids": used_mem_ids, "tools_used": tools_used, "quick_replies": quick, "conv_id": conv_id or ""}
     
     elif any(pattern in user_lower for pattern in [
         "ja, recherchier", "recherchiere bitte", "bitte recherchier", "ja recherchier",
@@ -774,7 +790,13 @@ def run_agent(message: str, *, persona: str = "friendly", lang: str = "de-DE", c
             else:
                 reply = "Ich formuliere es kurz und pragmatisch: " + _short(user, 60)
 
-    return {"ok": True, "reply": _finalize(reply), "trace": trace, "sources": sources, "used_memory_ids": used_mem_ids}
+    # Finalize with anti-loop and quick replies
+    key = str(conv_id or "global")
+    if (reply or "").strip() == (_last_reply_map.get(key) or ""):
+        reply = "Ich formuliere es kurz und pragmatisch: " + _short(user, 60)
+    _record_last_reply(conv_id, reply)
+    quick = CLARIFY_QUICK_REPLIES if reply in (CLARIFY_FALLBACK, KIDS_CLARIFY_FALLBACK, WEBMISS_CLARIFIER) else []
+    return {"ok": True, "reply": _finalize(reply), "trace": trace, "sources": sources, "used_memory_ids": used_mem_ids, "quick_replies": quick, "conv_id": conv_id or ""}
 
 
 __all__ = ["run_agent"]

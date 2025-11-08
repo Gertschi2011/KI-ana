@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Publishing Industry Has a Gambling Problem\n • Hacker News: The murky economics of the data-centre investment boom\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre nach Hamas-Überfall: Israel gedenkt der Opfer",
+  "created_at": 1759865633.761305,
+  "hash": "ffcfc75ad1e7b98c87da0cb9716e2b1a9da4b44eed5fad7233970637d326912b",
+  "id": "BLK_1759865633_38e327",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "9u86XWuWu5wFy2kNGvHhxVBQZjwefxE08BVhMYYiJpBUd61R/H/FKj5A8lgqWixkAMTA4jaEwjpCPThlbRe/Bw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 21:33",
+  "url": null
+}

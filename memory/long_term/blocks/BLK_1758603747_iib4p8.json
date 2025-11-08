@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758603747_iib4p8",
-  "title": "Web Digest 2025-09-23 07:02",
   "content": "• Hacker News: The Latest Linux File-System: TernFS\n • Hacker News: 9 Things I Learned in 90 Years – From the Creator of Choose Your Own Adventure [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die Knackpunkte beim Etat 2026",
+  "hash": "bfb6e25d3d8a4f0faa0c2c16c75d5e0d4dffbf278fb4f4897828af2ace628b1a",
+  "id": "BLK_1758603747_iib4p8",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Is7ywtb+LF0syTTYz0HenmhY/1/Bh1z09hayXijtz0bRbL2lVsNqk8GdjpnzRhPh5IqdMqMwiS/f3UnUp3YhAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 07:02",
   "ts": 1758603747,
-  "meta": {},
-  "hash": "bfb6e25d3d8a4f0faa0c2c16c75d5e0d4dffbf278fb4f4897828af2ace628b1a"
+  "url": ""
 }

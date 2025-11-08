@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FAA decides it trusts Boeing enough to certify safety of its own planes again\n • Hacker News: How to create an OS from scratch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump sieht Nahen Osten \"mehr als nah dran\" an einer Friedenslösung",
+  "created_at": 1759202426.6881912,
+  "hash": "7169c8fa625a6a05bb7f733470eb49d52f48a4bae56aa896cd2f44137e589854",
+  "id": "BLK_1759202426_2e46c2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/DevIzMPbnc6lpcaBP1y2GNxD1xdWwh6T8JCuh/y1bSwQseoBHbqqQiZ3E8M+/o9z9FWJ9uMAa4ZiGcm8wKGBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 05:20",
+  "url": null
+}

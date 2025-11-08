@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Interstellar Mission to a Black Hole\n • Hacker News: Alaska Airlines' statement on IT outage\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wadephul verschiebt China-Reise kurzfristig",
+  "created_at": 1761303183.5998743,
+  "hash": "199bde6b88d95eaa510fd56241a6a06f2d20287594acf57fe3fefcd342af217e",
+  "id": "BLK_1761303183_16c3a0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Ft/mtvAS7cMkNMZmikgQrYFh8gPF8voSOOkRhG7mXRVjStfKaxr+QU55duou6grRJzR09u43NLT4PfxWFrelAQ==",
+  "signed_at": "2025-10-24T10:53:03Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 12:53",
+  "url": null
+}

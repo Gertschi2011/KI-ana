@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Friendship Begins at Home\n • Hacker News: GoGoGrandparent (YC S16) Is Hiring Back End and Full-Stack Engineers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"No Kings\"-Proteste: Demonstrationen gegen Trump in vielen US-Städten",
+  "created_at": 1760843500.561111,
+  "hash": "3a392dbe38d2ae2cca26c89e22937de324ce56542ffcb22a15f8417d76f04a99",
+  "id": "BLK_1760843500_2ef33c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "k1APgztN6WslLi+6vZW0/lAERSGL7BapTzeBqnI0N1NUDh10gGE7mwNP2hIPmIQL1lBX5l3xcpibaI73CXQPDQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 05:11",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Today is when the Amazon brain drain sent AWS down the spout\n • Hacker News: iOS 26.1 lets users control Liquid Glass transparency\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Terrororganisation Hamas übergibt weitere tote Geisel an Israel",
+  "created_at": 1761001970.3651004,
+  "hash": "24c193fef8fa094453bdf8d5ddc93950ad5688858337cfb121c83d6af30bd839",
+  "id": "BLK_1761001970_c704d7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "iLDQviqRhTg0bBU9lT/zFXQ9zZjuTgVkA8hcqxjSvikk0VoXIgyp77FBHFsARfz4lPepibwhQsIrKzi5a90yCg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 01:12",
+  "url": null
+}

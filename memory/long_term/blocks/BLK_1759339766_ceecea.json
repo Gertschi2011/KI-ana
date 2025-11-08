@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Supreme Court lets Fed Governor Cook keep job pending oral argument in January\n • Hacker News: Why Is Python So Popular in 2025? – The PyCharm Blog\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Bombendrohung in München: Oktoberfest wieder geöffnet - Weiterer Toter gefunden",
+  "created_at": 1759339766.7040143,
+  "hash": "cf7df9729aad83d0b50ea7b0cb718ebe607cb6e0aac4e6871b9c3cca83f50741",
+  "id": "BLK_1759339766_ceecea",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "qkh/R687Tb5QgUIV4rqNOzSG1PSCJOgrdVI34MFyv28B/SVKRcNH3o/Bqvpgk9hVlNZO7rfu4sc5mqqe/wtFBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 19:29",
+  "url": null
+}

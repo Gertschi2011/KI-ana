@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Libera Chat receives legal advice that the Online Safety Act does not apply to\n • Hacker News: Rock Tumbler Instructions: Turning Rough Rocks into Beautiful Tumbled Stones\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761420813.6812422,
+  "hash": "49ce2a4979a30c983dc96bfd0a8ec84af6f12154839f70a8f00b96420cff3341",
+  "id": "BLK_1761420813_7a3825",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/jT/ftHVmlGA2x9QMuyzSP0NKPQsTvElqrXTiLlgbGrUmLQyOErYT8PgQS0E7D9lgQbxVgLzihcPDaINXgJpDg==",
+  "signed_at": "2025-10-25T19:33:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 21:33",
+  "url": null
+}

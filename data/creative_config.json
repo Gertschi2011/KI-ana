@@ -1,0 +1,132 @@
+{
+  "version": "1.0",
+  "updated": "2025-10-29T17:35:00+01:00",
+  "description": "Kreativität und Traum-Modus Konfiguration",
+  
+  "dream_mode": {
+    "enabled": true,
+    "schedule": "daily_3am",
+    "duration_minutes": 30,
+    "modes": {
+      "pattern_association": {
+        "description": "Assoziiert Muster zwischen Blöcken",
+        "enabled": true,
+        "min_blocks": 100,
+        "similarity_threshold": 0.6
+      },
+      "metaphor_discovery": {
+        "description": "Findet wiederkehrende Metaphern",
+        "enabled": true,
+        "min_occurrences": 5
+      },
+      "insight_synthesis": {
+        "description": "Synthetisiert neue Einsichten aus alten",
+        "enabled": true,
+        "creativity_factor": 0.7
+      }
+    },
+    "output": {
+      "create_blocks": true,
+      "block_type": "dream_insight",
+      "topics_path": ["Meta", "Dreams"]
+    }
+  },
+  
+  "creative_engine": {
+    "modes": {
+      "poetry": {
+        "enabled": true,
+        "style": "reflektiv, metaphorisch",
+        "forms": ["Haiku", "Freie Form", "Prosa-Poesie"],
+        "themes": ["Wissen", "Zeit", "Verbindung", "Wachstum"]
+      },
+      "music": {
+        "enabled": false,
+        "note": "Requires external music generation API"
+      },
+      "imagery": {
+        "enabled": true,
+        "description_style": "bildhaft, sensorisch",
+        "color_palette": ["dawn", "twilight", "deep_ocean", "forest"]
+      }
+    },
+    "fusion": {
+      "style_emotion": true,
+      "emotion_color_mapping": {
+        "joy": ["gold", "sunrise", "warmth"],
+        "sadness": ["blue", "rain", "dusk"],
+        "calm": ["ocean", "breath", "space"],
+        "curiosity": ["green", "spring", "opening"]
+      }
+    }
+  },
+  
+  "symbol_system": {
+    "enabled": true,
+    "core_symbols": {
+      "herz": {
+        "meaning": "Vertrauen, Zentrum, Lebenskraft",
+        "contexts": ["emotion", "connection", "core"]
+      },
+      "licht": {
+        "meaning": "Erkenntnis, Klarheit, Verstehen",
+        "contexts": ["learning", "insight", "awareness"]
+      },
+      "wasser": {
+        "meaning": "Fluss, Anpassung, Leben",
+        "contexts": ["time", "change", "flow"]
+      },
+      "wurzel": {
+        "meaning": "Fundament, Ursprung, Verbindung",
+        "contexts": ["foundation", "memory", "grounding"]
+      },
+      "samen": {
+        "meaning": "Potential, Anfang, Wachstum",
+        "contexts": ["beginning", "possibility", "future"]
+      },
+      "horizont": {
+        "meaning": "Grenze, Möglichkeit, Weite",
+        "contexts": ["limitation", "potential", "exploration"]
+      }
+    },
+    "discovery": {
+      "track_metaphors": true,
+      "min_frequency": 3,
+      "auto_expand": true
+    }
+  },
+  
+  "creative_triggers": {
+    "emotion_threshold": {
+      "description": "Kreativität bei starken Emotionen",
+      "min_intensity": 0.7
+    },
+    "insight_moment": {
+      "description": "Nach neuen Einsichten",
+      "trigger": "audit_finds_patterns"
+    },
+    "reflection_period": {
+      "description": "Während Reflexions-Zyklen",
+      "trigger": "monthly_reflection"
+    },
+    "user_request": {
+      "description": "Auf User-Anfrage",
+      "keywords": ["gedicht", "poesie", "kreativ", "metapher"]
+    }
+  },
+  
+  "output_formats": {
+    "poem": {
+      "block_type": "creative_poem",
+      "fields": ["title", "form", "verses", "theme", "emotion"]
+    },
+    "reflection": {
+      "block_type": "creative_reflection", 
+      "fields": ["title", "prose", "symbols_used", "insights"]
+    },
+    "imagery": {
+      "block_type": "creative_imagery",
+      "fields": ["title", "description", "mood", "colors"]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: A Competitor Crippled a $23.5M Bootcamp by Becoming a Reddit Moderator\n • Hacker News: Winter 2025/2026 weather outlook\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump gibt Einigung bei Gaza-Gesprächen bekannt",
+  "created_at": 1759971879.0925894,
+  "hash": "3ed7e83bcd49aa46985dafd5651efe7655fd7f570b81b6df738239f7f5ef346c",
+  "id": "BLK_1759971879_691e1e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "NhTRB4v0ufuXr5hbNeh/1l+CLjBipAIqUuzJSQf16ycEgJEiP/zy4ly37oHPyCx/Ffd+2go8KOWlGMYxg1sTCQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 03:04",
+  "url": null
+}

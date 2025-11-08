@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Prairie Farmers Preserving the Most Threatened Ecosystem – Forever\n • Hacker News: PSA: Always use a separate domain for user content\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Waffenruhe im Gazastreifen: \"Man muss Trump Respekt zollen\"",
+  "created_at": 1760106942.9790275,
+  "hash": "f79e5d256ebc5593b940cf179e030cc9c46e3e27e8141bf1a05919ee56bcb396",
+  "id": "BLK_1760106942_fccdf8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "NsHt7OCpzv4IO65cZJl1r/M/dlGl5M1s+8SVY7BXCFBxfPntR/cOTtX+0Oqh3Ql5FxoINLZ2XMWaM976hYLcCQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 16:35",
+  "url": null
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI_ana OS - Onboarding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div id="app" class="min-h-screen flex items-center justify-center px-6">
+        <div class="max-w-2xl w-full">
+            <!-- Progress -->
+            <div class="mb-8">
+                <div class="h-2 bg-gray-800 rounded-full">
+                    <div class="h-full bg-purple-600 transition-all" :style="{ width: (step / 6 * 100) + '%' }"></div>
+                </div>
+            </div>
+
+            <!-- Step 1: Welcome -->
+            <div v-if="step === 1" class="bg-gray-800 rounded-xl p-8">
+                <div class="text-6xl mb-4 text-center">🤖</div>
+                <h1 class="text-4xl font-bold mb-4 text-center">Willkommen!</h1>
+                <p class="text-gray-400 mb-8 text-center">Dein KI-Betriebssystem in 5 Schritten</p>
+                <button @click="step++" class="w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg">
+                    Los geht's! →
+                </button>
+            </div>
+
+            <!-- Step 2: Device Name -->
+            <div v-if="step === 2" class="bg-gray-800 rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-4">Gerätename</h2>
+                <input v-model="deviceName" placeholder="Mein Laptop" class="w-full px-4 py-3 bg-gray-700 rounded-lg mb-6">
+                <div class="flex gap-4">
+                    <button @click="step--" class="px-6 py-3 bg-gray-700 rounded-lg">← Zurück</button>
+                    <button @click="step++" :disabled="!deviceName" class="flex-1 px-6 py-3 bg-purple-600 rounded-lg">Weiter →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Role -->
+            <div v-if="step === 3" class="bg-gray-800 rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-4">Rolle wählen</h2>
+                <div class="space-y-4 mb-6">
+                    <label class="flex gap-4 p-4 bg-gray-700 rounded-lg cursor-pointer">
+                        <input type="radio" v-model="role" value="mother">
+                        <div><div class="font-semibold">👑 Mother (Erstes Gerät)</div></div>
+                    </label>
+                    <label class="flex gap-4 p-4 bg-gray-700 rounded-lg cursor-pointer">
+                        <input type="radio" v-model="role" value="submind">
+                        <div><div class="font-semibold">🤝 Submind (Weiteres Gerät)</div></div>
+                    </label>
+                </div>
+                <div class="flex gap-4">
+                    <button @click="step--" class="px-6 py-3 bg-gray-700 rounded-lg">← Zurück</button>
+                    <button @click="step++" :disabled="!role" class="flex-1 px-6 py-3 bg-purple-600 rounded-lg">Weiter →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Trust Level -->
+            <div v-if="step === 4" class="bg-gray-800 rounded-xl p-8">
+                <h2 class="text-3xl font-bold mb-4">Trust-Level</h2>
+                <input type="range" v-model="trustLevel" min="0" max="1" step="0.1" class="w-full mb-4">
+                <div class="text-center mb-6">{{ trustLevel }}</div>
+                <div class="flex gap-4">
+                    <button @click="step--" class="px-6 py-3 bg-gray-700 rounded-lg">← Zurück</button>
+                    <button @click="step++" class="flex-1 px-6 py-3 bg-purple-600 rounded-lg">Weiter →</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Complete -->
+            <div v-if="step === 5" class="bg-gray-800 rounded-xl p-8 text-center">
+                <div class="text-6xl mb-4">🎉</div>
+                <h2 class="text-3xl font-bold mb-4">Fertig!</h2>
+                <p class="text-gray-400 mb-8">KI_ana OS ist bereit</p>
+                <a href="/dashboard.html" class="inline-block px-8 py-3 bg-purple-600 rounded-lg">Zum Dashboard →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    step: 1,
+                    deviceName: '',
+                    role: '',
+                    trustLevel: 0.5
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

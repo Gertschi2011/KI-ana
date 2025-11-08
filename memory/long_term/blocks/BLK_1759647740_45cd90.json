@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Way past its prime: how did Amazon get so rubbish?\n • Hacker News: Americans increasingly see legal sports betting as a bad thing for society\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vor Parlamentswahl: Syriens Minderheiten im Ungewissen",
+  "created_at": 1759647740.485194,
+  "hash": "46916c33cbe5cda42df76d0f1ddf0bd5c45643f30e9efd72cf89fb84b62dcf26",
+  "id": "BLK_1759647740_45cd90",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "nc2gemJkA5+lmIWJCXTgy3ODxjiMoMOdjxBDzGQ7BGPfK1BTTs/m08HVDyAT36vTvgL+fSI8p9vsIZMnISP2CQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 09:02",
+  "url": null
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758949568_b0xqw5",
-  "title": "Web Digest 2025-09-27 07:06",
   "content": "• Hacker News: Why Today's Humanoids Won't Learn Dexterity\n • Hacker News: GPT-OSS Reinforcement Learning\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Verstoß gegen Atomabkommen: Warum der Iran wieder mit UN-Sanktionen rechnen muss",
+  "hash": "e75703299dbae67ec2a612df6db0800997b8ccbf61c3a065f2546b559ecf4c21",
+  "id": "BLK_1758949568_b0xqw5",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "klaxfzxkXLAagwuPMRT1m2apn7+pNPpoTXvNjbPOgZuh7Uc49LfJP+/BW72ECZCDB2Os183iVF8CF50Nq7ePBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 07:06",
   "ts": 1758949568,
-  "meta": {},
-  "hash": "e75703299dbae67ec2a612df6db0800997b8ccbf61c3a065f2546b559ecf4c21"
+  "url": ""
 }

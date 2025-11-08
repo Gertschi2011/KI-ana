@@ -1,0 +1,22 @@
+[Unit]
+Description=KI-ana OS - AI Operating System
+After=network.target
+
+[Service]
+Type=simple
+User=kiana
+WorkingDirectory=/home/kiana/ki_ana/os
+ExecStart=/usr/bin/python3 /home/kiana/ki_ana/os/start_api.py
+Restart=on-failure
+RestartSec=10
+
+# Environment
+Environment="PYTHONUNBUFFERED=1"
+Environment="KIANA_ENV=production"
+
+# Logging
+StandardOutput=append:/var/log/kiana-os.log
+StandardError=append:/var/log/kiana-os-error.log
+
+[Install]
+WantedBy=multi-user.target

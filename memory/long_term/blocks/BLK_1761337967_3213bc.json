@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Swift SDK for Android\n • Hacker News: How to Make a Smith Chart\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Großbritannien drängt auf Nutzung russischen Vermögens für die Ukraine",
+  "created_at": 1761337967.4112277,
+  "hash": "8768d912a97427e388754a84b18cb21046bbd99ab20a00f02eb5969f8fa345c6",
+  "id": "BLK_1761337967_3213bc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "yFCA77DUmm9FwwNOe1bwwwNzaAdhKBhzxAOxGp0YSBZlF5ay2qUX0tnqV7y4Rv10MrkBrmQoxrg5lgU/j4UVAQ==",
+  "signed_at": "2025-10-24T20:32:47Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 22:32",
+  "url": null
+}

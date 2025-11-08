@@ -1,0 +1,3 @@
+{"metric_name": "latency", "value": 245.0, "timestamp": 1761209190.1812286, "tags": {"operation": "embedding"}}
+{"metric_name": "latency", "value": 126.0, "timestamp": 1761209190.1814938, "tags": {"operation": "vector_search"}}
+{"metric_name": "peer_count", "value": 3.0, "timestamp": 1761209190.1816044, "tags": {}}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: China Can't Win\n • Hacker News: Introduction to reverse-engineering vintage synth firmware\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Reaktionen auf Kunstdiebstahl: \"Das ist der französische Familienschmuck\"",
+  "created_at": 1760931739.3069816,
+  "hash": "7fefb824bc2790c2b93d2cd0c333d3888e5911d25d5b373247cf1d802124cfc7",
+  "id": "BLK_1760931739_f95abc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "xlQPvxeuyMU9oRKu2tNOS6N/zGMxr/uW2et6zFss3VWRMQiw4D0Ml25wzhnQH1w8Hnm5sQI1xpeuJPFmOkg4Ag==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 05:42",
+  "url": null
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-ana OS – Das intelligente Betriebssystem</title>
+  <link href="/static/chat.css" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+    .os-hero {
+      text-align: center;
+      color: #fff;
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .os-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .os-hero .tagline {
+      font-size: 1.4rem;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+    }
+    .os-download-box {
+      background: rgba(255,255,255,0.95);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      max-width: 800px;
+      margin: 2rem auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .os-download-box h2 {
+      color: #764ba2;
+      margin-bottom: 1.5rem;
+    }
+    .download-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 1rem 3rem;
+      border-radius: 3rem;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-decoration: none;
+      margin: 1rem 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 20px rgba(118, 75, 162, 0.4);
+    }
+    .download-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(118, 75, 162, 0.6);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .feature-card h3 {
+      color: #764ba2;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    .feature-card p {
+      color: #555;
+      line-height: 1.6;
+    }
+    .specs-box {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      color: #fff;
+    }
+    .specs-box h3 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    .specs-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .specs-box li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .specs-box li:last-child {
+      border-bottom: none;
+    }
+    .price-highlight {
+      background: rgba(255,255,255,0.15);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      margin: 2rem 0;
+      color: #fff;
+    }
+    .price-highlight .price {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+    .price-highlight .sub {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="os-hero">
+    <h1>💿 KI-ana OS</h1>
+    <div class="tagline">Das erste Betriebssystem mit integrierter KI-Assistenz</div>
+    <p style="font-size:1.1rem; opacity:0.9;">
+      Erlebe KI-ana in ihrer vollsten Form – offline, sicher und leistungsstark
+    </p>
+  </div>
+
+  <div class="os-download-box">
+    <h2>🚀 Über KI-ana OS</h2>
+    <p style="font-size:1.1rem; color:#555; margin-bottom:1.5rem;">
+      KI-ana OS ist ein vollständiges Linux-basiertes Betriebssystem, das speziell für KI-gestützte 
+      Arbeit entwickelt wurde. Mit vorinstallierter KI-ana, optimierten Entwicklertools und 
+      maximaler Privatsphäre ist es die perfekte Lösung für alle, die ihre KI-Assistenz 
+      immer und überall dabei haben wollen.
+    </p>
+
+    <div class="price-highlight">
+      <div style="font-size:1.2rem; font-weight:bold;">🎉 Pre-Order Special</div>
+      <div class="price" style="text-decoration:line-through; opacity:0.6; font-size:2rem;">199 €</div>
+      <div class="price" style="color:#ffd79a;">149 €</div>
+      <div class="sub">Pre-Order bis Launch • 50 € gespart!</div>
+      <div class="sub" style="margin-top:0.5rem; opacity:0.9;">🚀 Launch Q1 2026 • Keine Abo-Gebühren</div>
+    </div>
+
+    <div style="text-align:center; margin:2rem 0;">
+      <a href="#download" class="download-btn">📥 Jetzt herunterladen</a>
+    </div>
+
+    <h2 style="margin-top:3rem;">✨ Features & Fähigkeiten</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>🧠 Integrierte KI</h3>
+        <p>KI-ana läuft komplett offline auf deinem System. Alle Daten bleiben lokal – maximale Privatsphäre garantiert.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🖥️ Desktop-Umgebung</h3>
+        <p>Moderne, benutzerfreundliche Oberfläche mit KDE Plasma. Alles was du brauchst, vorinstalliert.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🛠️ Entwickler-Tools</h3>
+        <p>VS Code, Python, Node.js, Docker und mehr – alles ready-to-use für sofortiges Arbeiten.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔒 Sicher & Privat</h3>
+        <p>Keine Telemetrie, keine Cloud-Abhängigkeit. Deine Daten gehören dir.</p>
+      </div>
+      <div class="feature-card">
+        <h3>⚡ Optimiert</h3>
+        <p>Speziell angepasster Kernel und System-Tuning für maximale Performance mit KI-Workloads.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📦 Vollständig</h3>
+        <p>Alle notwendigen Tools und Libraries vorinstalliert. Starte sofort durch.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:3rem;">⚙️ Was ist enthalten?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>🤖 KI-ana Desktop Client</h3>
+        <p>Native Desktop-Anwendung mit vollem Funktionsumfang</p>
+      </div>
+      <div class="feature-card">
+        <h3>🧩 Lokale LLM Engine</h3>
+        <p>Ollama mit vorinstallierten Modellen (Llama, Mistral, etc.)</p>
+      </div>
+      <div class="feature-card">
+        <h3>💾 Wissensdatenbank</h3>
+        <p>Persistente Speicherung mit ChromaDB</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔧 Entwicklerumgebung</h3>
+        <p>Python, Node.js, Rust, Go – alles dabei</p>
+      </div>
+      <div class="feature-card">
+        <h3>📚 Dokumentation</h3>
+        <p>Umfassendes Handbuch & Tutorials</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔄 Auto-Updates</h3>
+        <p>Automatische Updates für System und KI-ana</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="specs-box" style="max-width:800px; margin:2rem auto;">
+    <h3>💻 Systemanforderungen</h3>
+    <ul>
+      <li><strong>Prozessor:</strong> x86_64 CPU mit mindestens 4 Kernen (8+ empfohlen)</li>
+      <li><strong>RAM:</strong> Minimum 16 GB (32 GB empfohlen für große Modelle)</li>
+      <li><strong>Speicher:</strong> 50 GB freier SSD-Speicher</li>
+      <li><strong>GPU:</strong> Optional – NVIDIA GPU für beschleunigtes Inference</li>
+      <li><strong>Internet:</strong> Nur für Download und Updates erforderlich</li>
+    </ul>
+  </div>
+
+  <div class="os-download-box" id="preorder">
+    <h2>🎁 Pre-Order</h2>
+    <p style="color:#555; margin-bottom:1.5rem;">
+      Sichere dir jetzt KI-ana OS zum Pre-Order Preis von nur 149 € (statt 199 €).
+      Du erhältst sofortigen Zugang zur Beta und die finale Version bei Launch (Q1 2026).
+    </p>
+    
+    <div style="background:#f8f9fa; border-radius:1rem; padding:1.5rem; margin:1.5rem 0;">
+      <h3 style="color:#764ba2; margin-bottom:1rem;">📋 Pre-Order Vorteile</h3>
+      <ul style="list-style:none; padding:0; color:#555;">
+        <li>🎁 <strong>50 € Rabatt</strong> (149 € statt 199 €)</li>
+        <li>🧪 Sofortiger Zugang zur Beta (ab Dezember 2025)</li>
+        <li>✅ Finale Version bei Launch (Q1 2026)</li>
+        <li>✅ KI-ana OS ISO (bootfähig, ~8 GB)</li>
+        <li>✅ Installationsanleitung (PDF)</li>
+        <li>✅ Lizenzschlüssel (lebenslang)</li>
+        <li>✅ Priority E-Mail-Support (180 Tage)</li>
+        <li>✅ Lebenslange Updates</li>
+        <li>🏆 Early Adopter Badge (exklusiv)</li>
+      </ul>
+    </div>
+
+    <div style="text-align:center; margin:2rem 0;">
+      <a href="/static/register.html?plan=os_preorder" class="download-btn">
+        🎁 Pre-Order sichern – nur 149 €
+      </a>
+      <p style="color:#555; margin-top:1rem; font-size:1rem;">
+        💰 Spare 50 € beim Pre-Order!
+      </p>
+    </div>
+
+    <p style="text-align:center; color:#777; font-size:0.9rem; margin-top:1rem;">
+      Alle Preise inkl. MwSt. • 30 Tage Geld-zurück-Garantie • Keine Abo-Gebühren
+    </p>
+    
+    <div style="background:#fff7e6; border:2px solid #ffc46b; border-radius:1rem; padding:1.5rem; margin-top:2rem;">
+      <h3 style="color:#7a4b00; margin-bottom:1rem;">⏰ Development Timeline</h3>
+      <ul style="list-style:none; padding:0; color:#555;">
+        <li><strong>November 2025:</strong> Base System & Desktop</li>
+        <li><strong>Dezember 2025:</strong> KI-Integration & Beta Release 🧪</li>
+        <li><strong>Januar 2026:</strong> Testing & Polish</li>
+        <li><strong>Februar 2026:</strong> Final Release 🚀</li>
+      </ul>
+      <p style="margin-top:1rem; color:#555; font-size:0.95rem;">
+        Pre-Order Kunden erhalten Beta-Zugang ab Dezember 2025!
+      </p>
+    </div>
+  </div>
+
+  <div style="text-align:center; padding:2rem; color:#fff;">
+    <p style="opacity:0.8;">
+      Fragen? Schreib uns an <a href="mailto:support@ki-ana.at" style="color:#fff; text-decoration:underline;">support@ki-ana.at</a>
+    </p>
+  </div>
+
+  <script>
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n=document.getElementById('navbar');
+          if(!n) return;
+          n.innerHTML=html;
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
+  </script>
+</body>
+</html>

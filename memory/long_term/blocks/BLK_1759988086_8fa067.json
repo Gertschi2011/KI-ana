@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Starlink is burning up one or two satellites a day in Earth's atmosphere\n • Hacker News: California enacts law enabling people to universally opt out of data sharing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump gibt Einigung bei Gaza-Gesprächen bekannt",
+  "created_at": 1759988086.130201,
+  "hash": "3678f6157072ddd61814c1f04be66d237a3b543a88fc8a8a289f0f29eb64a8c0",
+  "id": "BLK_1759988086_8fa067",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "FBwlkymuqwpbqO4/FV5TJIk8PxD+qlFnT4dz7r2WzduATQLTG/hbw/58I/XaxRg6F+m8lVO4XaxoKxWJdJL9Ag==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 07:34",
+  "url": null
+}

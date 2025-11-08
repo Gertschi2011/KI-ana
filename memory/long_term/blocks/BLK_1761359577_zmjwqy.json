@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Carmack on Operating Systems (1997)\n • Hacker News: New OSM file format: 30% smaller than PBF, 5x faster to import\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Verlorene Posten: Machtkämpfe in Chinas Führung?",
+  "hash": "3d22c6e79b0b62a80ed3316a3d81abff1ac7089b5ea00e23e7c2d75e1b0c1881",
+  "id": "BLK_1761359577_zmjwqy",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "IUIn6B1dAWPCa60oeAw1lEVOO53q63nApVsvj/jFmCxamx5ikPJ5c7j2JoivTIl/EPhXfV8WAHdfBVuko8SgCA==",
+  "signed_at": "2025-10-25T02:32:57Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 04:32",
+  "ts": 1761359577,
+  "url": ""
+}

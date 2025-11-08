@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Sora might have a 'pervert' problem on its hands\n • Hacker News: The Linux Boot Process: From Power Button to Kernel\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761440059.4815986,
+  "hash": "eb36022bda01489e5e0a13e5d57493892f9d02fcc8974442ff851e9bd064b23b",
+  "id": "BLK_1761440059_bf2da0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "FZeWnqym/L+/r6ZP/NpRzfHJlNDjTs+3bmogjVKh79PXkLBTGd03bouLh41U6D56137t0QH80UK6xkHd7bS/BA==",
+  "signed_at": "2025-10-26T00:54:19Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 02:54",
+  "url": null
+}

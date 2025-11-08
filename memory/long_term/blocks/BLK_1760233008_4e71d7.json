@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: rift – a tiling window manager for macOS\n • Hacker News: LineageOS 23\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jubel für Trump, Pfiffe für Netanjahu in Tel Aviv",
+  "created_at": 1760233008.0175097,
+  "hash": "2037697156d1299e04465c82f30b3c8ba14301d0759df497a4b8cda32e7af6b2",
+  "id": "BLK_1760233008_4e71d7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "g1NGM09DNyMXAnrTnm4KInkBGJTSYgr0P3pCwC5TQxucaaQaSH8eH83fe0Rp2+DmSnml5um3cGLEXnbBG1g1Bg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 03:36",
+  "url": null
+}

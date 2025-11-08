@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: TernFS – an exabyte scale, multi-region distributed filesystem\n • Hacker News: AWS outage shows internet users 'at mercy' of too few providers, experts say\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundeskanzler Merz: Zwischen Brandmauer und AfD-Rhetorik",
+  "hash": "1144a64263df62ee149713c084f4ca3dfdeb838535c7d1723e7262ee18c44eb5",
+  "id": "BLK_1760983962_y61b2c",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "I/enaDv4Mfd1EOX6s9UVAlD8G7FKm/7AmzGRJJBUEOdBqympPNyhgv1RiOVBryskpjbEU+czGK3zqkNbahfOBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 20:12",
+  "ts": 1760983962,
+  "url": ""
+}

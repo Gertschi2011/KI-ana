@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Optery (YC W22) – Hiring Tech Lead with Node.js Experience (U.S. & Latin America)\n • Hacker News: Environment variables are a legacy mess: Let's dive deep into them\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "created_at": 1760382482.8710861,
+  "hash": "d5357c91989329a48abc0bb1fd7fdb13a5d8bb93b41c1759286e86f3eb156e12",
+  "id": "BLK_1760382482_aef2c4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "EmfveMo/Yl/pnfKFpnsGFR+pWjCz4cd/gF45+w62xgai5YE5jmmCmxjLrIZeNbel9Jhpy7AZtQLCMIcG3snHBg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 21:08",
+  "url": null
+}

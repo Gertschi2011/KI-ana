@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Our Stewardship: Where We Are, What's Changing and How We'll Engage\n • Hacker News: U.S. Army confirms Tesla Cybertruck can't be imported in Europe\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "created_at": 1759268946.3367882,
+  "hash": "c2efb9ee8c99cd2b54854a714985f44fcffd728b5b2551026b53154abd6ec3d2",
+  "id": "BLK_1759268946_40c9d8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HJUpbKOZmaJHROvs7TGNmS+OE2Uz4wMd02yiHFDDkut56eVfu+AiQTjhHHXov+8G4xWBZ61P0C2wgvWKaZJJDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 23:49",
+  "url": null
+}

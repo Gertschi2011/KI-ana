@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The White House is already one of the most blocked accounts on Bluesky\n • Hacker News: Dosbian: Boot to DOSBox on Raspberry Pi\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel will Gaza-Waffenruhe wieder einhalten",
+  "hash": "ef4794bcd8863db46f96fbb0fbebd790f0076f98fedbc147a85e852b617b81e2",
+  "id": "BLK_1760908329_62lkmt",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "u6oFOFEylJSKBApRVeCaGLIJtLp0+0JrUo4yeYqlDO2Hj2RiBG/oQPewxZ7X6GF7WhEgbC5npTkFf/CrYX1SBA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 23:12",
+  "ts": 1760908329,
+  "url": ""
+}

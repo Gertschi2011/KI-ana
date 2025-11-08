@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758880673_p8klpz",
-  "title": "Web Digest 2025-09-26 11:57",
   "content": "• Hacker News: The great sameness: a comic on how AI makes us more alike\n • Hacker News: Ode to Libraries from a Remote Worker\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundesverfassungsgericht: Wofür steht die künftige Vizepräsidentin Kaufhold?",
+  "hash": "6f7d8cc41bdac0eb3c6e087062e25a6c07d2a19447c663e08b90b9b2186f0775",
+  "id": "BLK_1758880673_p8klpz",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "SdiVxU22vxs2SVMq39SeYzTFC/g0EUZiAEOczLsycsbSDsQ7hZ1V0qPn/gq2aJYoXfaZ7lI+GBLwl4HfTyS2Bg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 11:57",
   "ts": 1758880673,
-  "meta": {},
-  "hash": "6f7d8cc41bdac0eb3c6e087062e25a6c07d2a19447c663e08b90b9b2186f0775"
+  "url": ""
 }

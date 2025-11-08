@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Nvidia has produced the first Blackwell wafer on US soil\n • Hacker News: Look at how unhinged GPU box art was in the 2000s\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Reaktionen auf Kunstdiebstahl: \"Das ist der französische Familienschmuck\"",
+  "created_at": 1760929938.5606132,
+  "hash": "cf7767e11e0aa658380b78659ae59c17d818830715c0133479ff3af22f2c192b",
+  "id": "BLK_1760929938_0d1281",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "kM1U69beKYW9jIW1k0+dk1vGK+XC0YduVu+ykbSM8zfarRPGDzdJShNUDJS1Z5yMlNNBdfPPAtWxQ+PG258uAQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 05:12",
+  "url": null
+}

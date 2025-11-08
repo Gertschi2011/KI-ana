@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Daniel J. Bernstein updated cdb (Constant database) to go beyond 4GB\n • Hacker News: \"Butt breathing\" might soon be a real medical treatment\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Foltervorwürfe gegen Israel nach Übergabe von Leichen Gefangener",
+  "created_at": 1761095611.580159,
+  "hash": "f4648002e0fa532afbd816caf718613404bc886fcb28445ac3757bdc1be93ae0",
+  "id": "BLK_1761095611_c6806a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ea4mOVhyKk0GzPJWiWBs7+vu7SfZ/KU017QLZPC8Ug5FUO0H5/pPWv5PjIX+kWn4LCecv7o/VA8KfhjtNuagAw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 03:13",
+  "url": null
+}

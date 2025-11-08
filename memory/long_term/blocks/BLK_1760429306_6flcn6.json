@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: I let my AI agents run unsupervised and they burned $200 in 2 hours\n • Hacker News: Why the push for Agentic when models can barely follow a simple instruction?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Britischer Ex-Premier Blair - geeignet als Friedensbringer für Nahost?",
+  "hash": "68ae8b96177a09a085097341dc2545b8168f152f3c5244c90eccfa7151202ebf",
+  "id": "BLK_1760429306_6flcn6",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "tEVLRTrPGvofm18w6AdsN8/fqg4MWDd3CAydQCyuwU9RL01LnW0ZeD1lIfwyyN/MiUr/W7hb3gz5QfCIaUrFAA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 10:08",
+  "ts": 1760429306,
+  "url": ""
+}

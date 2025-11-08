@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Irish privacy regulator picks ex-Meta lobbyist as third commissioner\n • Hacker News: Helpcare AI (YC F24) Is Hiring\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Signa-Gründer Benko teilweise schuldig gesprochen - zwei Jahre Haft",
+  "created_at": 1760531958.5820823,
+  "hash": "5c7ad114d95b396e0c75215bf5a36d0da97690aaaf6931ae2ca5ae3bd19b9c00",
+  "id": "BLK_1760531958_569bb5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ATyiXGGDCmV/1KvQOl1EKfbueH7G8TH7+ac2bOhBVu7c7dp9VsNSxCirXqa6/8QuwYK5mTKlvQpF/PTN4ohlAg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 14:39",
+  "url": null
+}

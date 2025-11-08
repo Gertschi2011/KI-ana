@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: One-man spam campaign ravages EU 'Chat Control' bill\n • Hacker News: Nobel Prize in Chemistry 2025\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Drei Materialforscher erhalten Chemie-Nobelpreis für \"molekulare Architektur\"",
+  "created_at": 1759925058.876479,
+  "hash": "c494960e3ae4586553f7227e44050d8cb4ee879484a7393293fc3a182f5f54f0",
+  "id": "BLK_1759925058_b96402",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "o6/TsMUH+W8n1Z+YIUu7I+2swLybs0RcC2votAHv8VCiLJec74vlrIR1Y2OtPDzxpKscbG/ejqhNG9ZVZmdwAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 14:04",
+  "url": null
+}

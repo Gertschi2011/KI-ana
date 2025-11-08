@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tests Show That a Pennsylvania Town's Water Was Contaminated by Fracking\n • Hacker News: Wall Street is worried the private credit bubble will burst\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lecornu stellt Kabinett vor: Neue Regierung in Frankreich steht",
+  "created_at": 1760315850.180916,
+  "hash": "1ba819a22e003c2f331351e0083d6c5f8eaecba1f89849de40cee9cf9ca84b4e",
+  "id": "BLK_1760315850_5a0ad7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "lb4ti58pdhIrqPAJNWB645q/d3bTKuRoFfynQfS38wsONrVpFCTlVUmpRtLsr6ryB0Kl3JOq4FTI0qD29Wk2AA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 02:37",
+  "url": null
+}

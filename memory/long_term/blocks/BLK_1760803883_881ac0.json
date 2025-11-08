@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Meta convinces Blue Owl to cut $30B check for its Hyperion AI super cluster\n • Hacker News: 1,180 root system drawings\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Laura Loomer Jagd auf Trump-Skeptiker macht",
+  "created_at": 1760803883.4112973,
+  "hash": "73e4647f60bff3c4bce069607f97dacb4265550f48c333ce29283fdac81f8194",
+  "id": "BLK_1760803883_881ac0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "n7GafhSXUmz0ZkWI8KOnecpHlksd5njWDM3PccWu/WIBCVSH/YUVfAHW82/L76SYV1TuTR6Bfifm505bY9DgAA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 18:11",
+  "url": null
+}

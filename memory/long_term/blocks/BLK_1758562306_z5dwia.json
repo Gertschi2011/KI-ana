@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758562306_z5dwia",
-  "title": "Web Digest 2025-09-22 19:31",
   "content": "• Hacker News: Mentra (YC W25) Is Hiring to build smart glasses\n • Hacker News: A board member's perspective of the RubyGems controversy\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russische Luftraumverletzungen: USA verteidigen \"jeden Zentimeter des NATO-Gebiets\"",
+  "hash": "a3edb7fe6829207e13ef67a4845806807c7bd5613309c632d0e91709daa2dd4c",
+  "id": "BLK_1758562306_z5dwia",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "YOGWtVQ9i41BCooqVFh1cIonXvkAQ9W1PRb58z2yNxmzFEwqP30NsA4vapvOv+GkVxN/xnxuGlzcaJaJBPpzDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 19:31",
   "ts": 1758562306,
-  "meta": {},
-  "hash": "a3edb7fe6829207e13ef67a4845806807c7bd5613309c632d0e91709daa2dd4c"
+  "url": ""
 }

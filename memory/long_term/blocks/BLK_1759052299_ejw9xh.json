@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759052299_ejw9xh",
-  "title": "Web Digest 2025-09-28 11:38",
   "content": "• Hacker News: Beyond OpenMP in C++ and Rust: Taskflow, Rayon, Fork Union\n • Hacker News: Dismissed as a joke, UK's first rice crop ripe for picking after hot summer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Krieg: Tote und Verletzte nach russischen Angriffen",
+  "hash": "16d352709599dea087bd4a5f2c01dbcafc3125d8dda9d0fcc76b78761c7f1362",
+  "id": "BLK_1759052299_ejw9xh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "45gIm70nnCxf5730s/Bwo9+pP3spLibFRHMGwMo1s4f+3+2Hw8CAfmnyFIG4Tgqqr9BiE5s7mJ+Yp/wh3RhFAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 11:38",
   "ts": 1759052299,
-  "meta": {},
-  "hash": "16d352709599dea087bd4a5f2c01dbcafc3125d8dda9d0fcc76b78761c7f1362"
+  "url": ""
 }

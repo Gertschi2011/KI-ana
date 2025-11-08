@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Auto Dark Mode for Windows\n • Hacker News: Tsdown – The Elegant Bundler for Libraries\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wenn der Stadt die Wohnung bezahlt und die Aktionäre kassieren",
+  "created_at": 1761459871.9570189,
+  "hash": "19869cb42bb8469c141282b435047bb58769bbbf366f7f984c65735e605edec2",
+  "id": "BLK_1761459871_9e415c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "no0V/Xz5KzcF6ue0pYTGz8HerqSEPwHgEWkUoSy+AJq7P4Ub5OYHZaXa6077OxKmSuypot4z7KqKp96VaXU+AQ==",
+  "signed_at": "2025-10-26T06:24:31Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 07:24",
+  "url": null
+}

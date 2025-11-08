@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 4x faster LLM inference (Flash Attention guy's company)\n • Hacker News: The App Store was always authoritarian\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stephan Brandner rückt die Grenzen des Sagbaren nach rechts außen",
+  "created_at": 1760265424.6609838,
+  "hash": "79287ad20daa4c71d86ccd23093ce72c485d249a4386a1144a042f502c124c7e",
+  "id": "BLK_1760265424_217ab8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "fWis9RkfOWVQcnuDlf8AxYZHy2J8WiHctl7cI61DO0ic4R0nle2eo7NN7OupoqSr+VkAZ6PdJK90JWhMEqelDw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 12:37",
+  "url": null
+}

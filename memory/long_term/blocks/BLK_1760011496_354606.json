@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tumbleweed rover tests demonstrate technology for low-cost Mars exploration\n • Hacker News: Zippers: Making Functional \"Updates\" Efficient (2010)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Einigung zwischen Hamas und Israel: Wie geht es für Gaza weiter?",
+  "created_at": 1760011496.2520638,
+  "hash": "f8e1a177dfe1f9f3eb2ae90cca95c097b2fba460469156d32b1efa97c0ecfeef",
+  "id": "BLK_1760011496_354606",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "4nvCGljhuQRVIYVRCtWhk/5jXRem2VPLSIHK8Sram2AoGXH4FkyxzPc+dv1F4CukfobCGZU/jCDjgMxWRM9qCQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 14:04",
+  "url": null
+}

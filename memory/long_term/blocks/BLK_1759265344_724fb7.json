@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Diff Algorithms\n • Hacker News: Inflammation now predicts heart disease more strongly than cholesterol\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "created_at": 1759265344.5861077,
+  "hash": "ad530758a5d5ad6041c57d4ffe6d2504eb0f6bd32dd552c048271d5ac1ea1d49",
+  "id": "BLK_1759265344_724fb7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oerbR7zDsbTMeSKXfU5aQDriPMEazMey4bUybMyEA6iB9PiwCZY8CW68Co6YhP0emobK23UDxnlXCgQLp5v3Dw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 22:49",
+  "url": null
+}

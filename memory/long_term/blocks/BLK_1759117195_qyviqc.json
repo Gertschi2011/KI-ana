@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759117195_qyviqc",
-  "title": "Web Digest 2025-09-29 05:39",
   "content": "• Hacker News: Primer on FedEx's Distribution Network (2024)\n • Hacker News: Cleaning house in Nx monorepo, how i removed unused deps safely\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Polen-Reise von Pistorius und Wadephul: Zeichen setzen an der NATO-Ostflanke",
+  "hash": "5e3eab3225ba4ce242233b855669d96cefc6228027a02fd27ea9c5b6904442d5",
+  "id": "BLK_1759117195_qyviqc",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "myM162SfB0y1R05PAzVzVBAf5jrUmDpVNGp7g/9bqm1fAbZSNl4RLkr9Ksth/KqZwZBI0QRaFOfqqtsdLlUzAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-29 05:39",
   "ts": 1759117195,
-  "meta": {},
-  "hash": "5e3eab3225ba4ce242233b855669d96cefc6228027a02fd27ea9c5b6904442d5"
+  "url": ""
 }

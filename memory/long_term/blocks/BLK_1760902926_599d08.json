@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The AI bubble is 17 times bigger than the dot-com bust\n • Hacker News: Compare Single Board Computers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel will Gaza-Waffenruhe wieder einhalten",
+  "created_at": 1760902926.4823427,
+  "hash": "6347a892ea6d81c3fcd724f254a261130291c58117e41a5dbd8c115242750e6d",
+  "id": "BLK_1760902926_599d08",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "DyG8iWP74AEMrI9GTw3W5AoIxV8g1fnin8peQRm/ddlMZIWNwcVsimCnhnE+2i6YnDoenvVDIle1MZvMiQ7gAA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 21:42",
+  "url": null
+}

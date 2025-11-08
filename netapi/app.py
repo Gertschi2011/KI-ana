@@ -54,7 +54,47 @@ try:
 except Exception as _e_chat_router:
     chat_router = None  # type: ignore
     try:
-        print(f"❌ Import chat_router failed: {_e_chat_router}")
+        print("❌ Chat router failed to load:", _e_chat_router)
+    except Exception:
+        pass
+try:
+    from netapi.modules.chat.folders_router import router as folders_router
+except Exception as _e_folders_router:
+    folders_router = None  # type: ignore
+    try:
+        print("❌ Folders router failed to load:", _e_folders_router)
+    except Exception:
+        pass
+try:
+    from netapi.modules.addressbook import router as addressbook_router
+except Exception as _e_addressbook_router:
+    addressbook_router = None  # type: ignore
+    try:
+        print("❌ Addressbook router failed to load:", _e_addressbook_router)
+    except Exception:
+        pass
+try:
+    from netapi.modules.audit import router as audit_router
+except Exception as _e_audit_router:
+    audit_router = None  # type: ignore
+    try:
+        print("❌ Audit router failed to load:", _e_audit_router)
+    except Exception:
+        pass
+try:
+    from netapi.modules.emotion import router as emotion_router
+except Exception as _e_emotion_router:
+    emotion_router = None  # type: ignore
+    try:
+        print("❌ Emotion router failed to load:", _e_emotion_router)
+    except Exception:
+        pass
+try:
+    from netapi.modules.timeflow.router import router as timeflow_router
+except Exception as _e_timeflow_router:
+    timeflow_router = None  # type: ignore
+    try:
+        print("❌ TimeFlow router failed to load:", _e_timeflow_router)
     except Exception:
         pass
 try:
@@ -145,6 +185,10 @@ try:
     from netapi.modules.self.router import router as self_router
 except Exception:
     self_router = None  # type: ignore
+try:
+    from netapi.modules.dashboard_mock.router import router as dashboard_mock_router
+except Exception:
+    dashboard_mock_router = None  # type: ignore
 try:
     from netapi.modules.blocks.router import router as blocks_router
 except Exception:
@@ -729,6 +773,109 @@ def api_brain_status():
     st.update({"autopilot_running": False})
     return {"ok": True, "status": st}
 
+@app.get("/api/system/timeflow", include_in_schema=False)
+def api_system_timeflow():
+    """TimeFlow monitoring endpoint for activity tracking and system metrics."""
+    try:
+        import psutil  # type: ignore
+        has_psutil = True
+    except Exception:
+        has_psutil = False
+    
+    # Calculate uptime
+    uptime_seconds = 0
+    try:
+        if has_psutil and hasattr(psutil, 'boot_time'):
+            uptime_seconds = int(time.time() - psutil.boot_time())
+        else:
+            try:
+                with open('/proc/uptime','r') as f:
+                    uptime_seconds = int(float(f.read().split()[0]))
+            except Exception:
+                pass
+    except Exception:
+        pass
+    
+    # Count active processes (simplified)
+    active_count = 0
+    try:
+        if has_psutil:
+            active_count = len([p for p in psutil.process_iter(['name']) if 'python' in p.info.get('name', '').lower() or 'uvicorn' in p.info.get('name', '').lower()])
+        else:
+            # Fallback: count running python processes
+            import subprocess
+            result = subprocess.run(['pgrep', '-c', 'python'], capture_output=True, text=True)
+            if result.returncode == 0:
+                active_count = int(result.stdout.strip() or 0)
+    except Exception:
+        active_count = 1  # At least this process
+    
+    # Activations today (mock data - could be pulled from logs/db)
+    activations_today = 0
+    try:
+        from pathlib import Path as _P
+        _KI_ROOT = _P(os.getenv("KI_ROOT", str(_P.home() / "ki_ana")))
+        # Count blocks created today
+        blocks_dir = _KI_ROOT / "memory" / "long_term" / "blocks"
+        if blocks_dir.exists():
+            import datetime
+            today_start = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0).timestamp()
+            for block_file in blocks_dir.glob("*.json"):
+                if block_file.stat().st_mtime >= today_start:
+                    activations_today += 1
+    except Exception:
+        pass
+    
+    # Timeline events (last 10 significant events)
+    timeline = []
+    try:
+        from pathlib import Path as _P
+        _KI_ROOT = _P(os.getenv("KI_ROOT", str(_P.home() / "ki_ana")))
+        
+        # Add system start event
+        timeline.append({
+            "timestamp": int(time.time() - uptime_seconds) * 1000,
+            "title": "System gestartet",
+            "description": "KI_ana Backend initialisiert"
+        })
+        
+        # Add recent chat events from logs if available
+        logs_dir = _KI_ROOT / "logs"
+        if logs_dir.exists():
+            chat_log = logs_dir / "audit_chat.jsonl"
+            if chat_log.exists():
+                try:
+                    lines = chat_log.read_text().strip().split('\n')
+                    for line in lines[-5:]:  # Last 5 chat events
+                        try:
+                            import json as _json
+                            event = _json.loads(line)
+                            timeline.append({
+                                "timestamp": int(event.get("ts", time.time()) * 1000),
+                                "title": "Chat-Aktivität",
+                                "description": f"Nutzer: {event.get('user', 'unbekannt')}"
+                            })
+                        except Exception:
+                            pass
+                except Exception:
+                    pass
+        
+        # Sort by timestamp descending
+        timeline.sort(key=lambda x: x.get("timestamp", 0), reverse=True)
+        timeline = timeline[:10]  # Keep only last 10
+        
+    except Exception:
+        pass
+    
+    return {
+        "ok": True,
+        "active_count": active_count,
+        "uptime": uptime_seconds,
+        "activations_today": activations_today,
+        "status": "active",
+        "timeline": timeline
+    }
+
 # ---- Root & icons ----------------------------------------------------------
 @app.get("/", include_in_schema=False)
 def root_index():
@@ -782,13 +929,13 @@ except Exception as e:
 
 # Alle übrigen Router automatisch einbinden (ohne Chat/Settings doppelt zu laden)
 router_list = [
-    autopilot_router, pages_router,
+    autopilot_router, pages_router, folders_router, addressbook_router, audit_router, emotion_router, timeflow_router,
     # memory_router handled explicitly with prefix later
     web_router, viewer_router, os_router,
     kernel_router, subminds_router, guardian_router, billing_router,
     media_router, voice_router, stt_router, ingest_router, agent_router,
     devices_router, stats_router, colearn_router, genesis_router,
-    feedback_router, subki_router, self_router, blocks_router,
+    feedback_router, subki_router, self_router, dashboard_mock_router, blocks_router,
     events_router, reflection_router, persona_router, knowledge_router,
     ethics_router, crawler_router, crawler_ui_router, export_router,
     logs_router, telemetry_router, admin_router, insight_router, goals_router, jobs_router, plan_router, autonomy_router

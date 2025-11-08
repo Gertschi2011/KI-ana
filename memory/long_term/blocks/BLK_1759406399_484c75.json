@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How the AI Bubble Will Pop\n • Hacker News: Greg Kroah-Hartman explains the Cyber Resilience Act for open source developers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Tote bei Angriff vor Synagoge in Manchester",
+  "created_at": 1759406399.3255684,
+  "hash": "fe67d6f3a89be7658f1a5ab9451abafa3306139009102830c5a5dbe5a60aae9c",
+  "id": "BLK_1759406399_484c75",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "WNH539TE83sAEwip8Ni9ZxXwAwrEqNB1X12z7CilVxCyli9Pbq5FSgz2HXA3XxHGc4NSJKYvPgvilaWrHwZAAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 13:59",
+  "url": null
+}

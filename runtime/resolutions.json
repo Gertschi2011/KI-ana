@@ -1,0 +1,32 @@
+[
+  {
+    "conflict": {
+      "block_a_id": "winner",
+      "block_b_id": "loser",
+      "conflict_type": "contradiction",
+      "topic": "Test",
+      "detected_at": 1234567890.0,
+      "confidence": 0.9
+    },
+    "winner_id": "winner",
+    "loser_id": "loser",
+    "reason": "Test reason",
+    "resolved_at": 1234567891.0,
+    "method": "trust_score"
+  },
+  {
+    "conflict": {
+      "block_a_id": "winner",
+      "block_b_id": "loser",
+      "conflict_type": "contradiction",
+      "topic": "Test",
+      "detected_at": 1234567890.0,
+      "confidence": 0.9
+    },
+    "winner_id": "winner",
+    "loser_id": "loser",
+    "reason": "Test reason",
+    "resolved_at": 1234567891.0,
+    "method": "trust_score"
+  }
+]

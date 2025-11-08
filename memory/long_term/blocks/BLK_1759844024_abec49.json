@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Qualcomm to Acquire Arduino\n • Hacker News: The evolution of Lua, continued [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Neue Bürgermeisterin von Herdecke bei Messerangriff verletzt",
+  "created_at": 1759844024.2704692,
+  "hash": "466d55258d7338e3e2d1cdf56abbeaa26d02b5367232e1e1af00ee3f8ddacc4d",
+  "id": "BLK_1759844024_abec49",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "YJn2Pu23reV1+Sz/ZShof31FC6qjzhhqZ0u9jT/9nsU8BjXU1NxiUBNsCnwEiTrNoZloTxQCqxccKvR3PctDCg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 15:33",
+  "url": null
+}

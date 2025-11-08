@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI_ana Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        [v-cloak] { display: none; }
+        .block-card {
+            transition: all 0.3s ease;
+        }
+        .block-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="app" v-cloak>
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-3xl font-bold">🤖 KI_ana Dashboard</h1>
+                        <p class="text-purple-100 mt-1">Dezentrales P2P KI-System</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="text-right">
+                            <div class="text-sm text-purple-100">Status</div>
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+                                <span class="font-semibold">Online</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Blocks Card -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Wissens-Blöcke</p>
+                            <p class="text-3xl font-bold text-purple-600">{{ stats.blocks }}</p>
+                        </div>
+                        <div class="bg-purple-100 p-3 rounded-full">
+                            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peers Card -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Verbundene Peers</p>
+                            <p class="text-3xl font-bold text-blue-600">{{ stats.peers }}</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages Card -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Nachrichten</p>
+                            <p class="text-3xl font-bold text-green-600">{{ stats.messages }}</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chain Length Card -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-500 text-sm">Chain Length</p>
+                            <p class="text-3xl font-bold text-orange-600">{{ stats.chain_length }}</p>
+                        </div>
+                        <div class="bg-orange-100 p-3 rounded-full">
+                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="bg-white rounded-lg shadow-md mb-8">
+                <div class="border-b border-gray-200">
+                    <nav class="flex space-x-8 px-6" aria-label="Tabs">
+                        <button 
+                            @click="activeTab = 'blocks'"
+                            :class="activeTab === 'blocks' ? 'border-purple-500 text-purple-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                            📦 Wissens-Blöcke
+                        </button>
+                        <button 
+                            @click="activeTab = 'peers'"
+                            :class="activeTab === 'peers' ? 'border-purple-500 text-purple-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                            🌐 Peers
+                        </button>
+                        <button 
+                            @click="activeTab = 'messages'"
+                            :class="activeTab === 'messages' ? 'border-purple-500 text-purple-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                            💬 Nachrichten
+                        </button>
+                        <button 
+                            @click="activeTab = 'settings'"
+                            :class="activeTab === 'settings' ? 'border-purple-500 text-purple-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
+                            class="py-4 px-1 border-b-2 font-medium text-sm transition-colors">
+                            ⚙️ Einstellungen
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="p-6">
+                    <!-- Blocks Tab -->
+                    <div v-if="activeTab === 'blocks'">
+                        <div class="mb-4 flex items-center space-x-4">
+                            <input 
+                                v-model="blockFilter"
+                                type="text" 
+                                placeholder="Suche nach Blöcken..."
+                                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <button 
+                                @click="loadBlocks"
+                                class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                                🔄 Aktualisieren
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div v-for="block in filteredBlocks" :key="block.id" class="block-card bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <div class="flex items-start justify-between">
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-2">
+                                            <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded">
+                                                {{ block.metadata.topic || 'General' }}
+                                            </span>
+                                            <span class="text-xs text-gray-500">
+                                                {{ formatDate(block.timestamp) }}
+                                            </span>
+                                        </div>
+                                        <p class="text-gray-800 mb-2">{{ block.content }}</p>
+                                        <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                            <span>🔑 {{ block.hash.substring(0, 8) }}...</span>
+                                            <span>📱 {{ block.device_id.substring(0, 8) }}...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div v-if="filteredBlocks.length === 0" class="text-center py-12 text-gray-500">
+                            Keine Blöcke gefunden
+                        </div>
+                    </div>
+
+                    <!-- Peers Tab -->
+                    <div v-if="activeTab === 'peers'">
+                        <div class="space-y-4">
+                            <div v-for="peer in peers" :key="peer.id" class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-blue-400 rounded-full flex items-center justify-center text-white font-bold">
+                                            {{ peer.name.substring(0, 2).toUpperCase() }}
+                                        </div>
+                                        <div>
+                                            <h3 class="font-semibold text-gray-800">{{ peer.name }}</h3>
+                                            <p class="text-sm text-gray-500">{{ peer.id.substring(0, 16) }}...</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                                        <span class="text-sm text-gray-600">Online</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div v-if="peers.length === 0" class="text-center py-12 text-gray-500">
+                            Keine Peers verbunden
+                        </div>
+                    </div>
+
+                    <!-- Messages Tab -->
+                    <div v-if="activeTab === 'messages'">
+                        <div class="mb-4">
+                            <textarea 
+                                v-model="newMessage"
+                                placeholder="Nachricht eingeben..."
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                rows="3"></textarea>
+                            <button 
+                                @click="sendMessage"
+                                class="mt-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                                📤 Senden
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div v-for="msg in messages" :key="msg.id" class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full flex items-center justify-center text-white text-xs font-bold">
+                                        {{ msg.sender.substring(0, 2).toUpperCase() }}
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-1">
+                                            <span class="font-semibold text-gray-800">{{ msg.sender }}</span>
+                                            <span class="text-xs text-gray-500">{{ formatDate(msg.timestamp) }}</span>
+                                        </div>
+                                        <p class="text-gray-700">{{ msg.text }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div v-if="messages.length === 0" class="text-center py-12 text-gray-500">
+                            Keine Nachrichten
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div v-if="activeTab === 'settings'">
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">🔒 Sicherheit</h3>
+                                <div class="space-y-3">
+                                    <label class="flex items-center space-x-3">
+                                        <input type="checkbox" v-model="settings.encryption" class="w-5 h-5 text-purple-600">
+                                        <span class="text-gray-700">E2E Verschlüsselung aktiviert</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3">
+                                        <input type="checkbox" v-model="settings.autoSync" class="w-5 h-5 text-purple-600">
+                                        <span class="text-gray-700">Automatische Synchronisation</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">🌐 Netzwerk</h3>
+                                <div class="space-y-3">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-1">TURN Server</label>
+                                        <input 
+                                            v-model="settings.turnServer"
+                                            type="text" 
+                                            placeholder="turn:server:3478"
+                                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button 
+                                @click="saveSettings"
+                                class="px-6 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                                💾 Einstellungen speichern
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    activeTab: 'blocks',
+                    blockFilter: '',
+                    newMessage: '',
+                    stats: {
+                        blocks: 0,
+                        peers: 0,
+                        messages: 0,
+                        chain_length: 0
+                    },
+                    blocks: [],
+                    peers: [],
+                    messages: [],
+                    settings: {
+                        encryption: true,
+                        autoSync: true,
+                        turnServer: 'turn:localhost:3478'
+                    }
+                }
+            },
+            computed: {
+                filteredBlocks() {
+                    if (!this.blockFilter) return this.blocks;
+                    const filter = this.blockFilter.toLowerCase();
+                    return this.blocks.filter(block => 
+                        block.content.toLowerCase().includes(filter) ||
+                        (block.metadata.topic && block.metadata.topic.toLowerCase().includes(filter))
+                    );
+                }
+            },
+            methods: {
+                async loadStats() {
+                    try {
+                        // Load from API
+                        const response = await fetch('/api/stats');
+                        if (response.ok) {
+                            const data = await response.json();
+                            this.stats = data;
+                        }
+                    } catch (e) {
+                        // Demo data
+                        this.stats = {
+                            blocks: 113,
+                            peers: 3,
+                            messages: 12,
+                            chain_length: 113
+                        };
+                    }
+                },
+                async loadBlocks() {
+                    try {
+                        // Load from API
+                        const response = await fetch('/api/blocks');
+                        if (response.ok) {
+                            const data = await response.json();
+                            this.blocks = data.blocks || [];
+                        }
+                    } catch (e) {
+                        // Demo data
+                        this.blocks = [
+                            {
+                                id: '1',
+                                hash: 'a1b2c3d4e5f6',
+                                content: 'Erstes Wissens-Block im System',
+                                metadata: { topic: 'test' },
+                                timestamp: Date.now() / 1000,
+                                device_id: 'device-1'
+                            }
+                        ];
+                    }
+                },
+                async loadPeers() {
+                    try {
+                        const response = await fetch('/api/p2p/peers');
+                        if (response.ok) {
+                            const data = await response.json();
+                            this.peers = data.peers || [];
+                        }
+                    } catch (e) {
+                        this.peers = [];
+                    }
+                },
+                async sendMessage() {
+                    if (!this.newMessage.trim()) return;
+                    
+                    // Send via API
+                    this.messages.push({
+                        id: Date.now(),
+                        sender: 'You',
+                        text: this.newMessage,
+                        timestamp: Date.now() / 1000
+                    });
+                    
+                    this.newMessage = '';
+                },
+                saveSettings() {
+                    alert('Einstellungen gespeichert!');
+                },
+                formatDate(timestamp) {
+                    const date = new Date(timestamp * 1000);
+                    return date.toLocaleString('de-DE');
+                }
+            },
+            mounted() {
+                this.loadStats();
+                this.loadBlocks();
+                this.loadPeers();
+                
+                // Auto-refresh every 10 seconds
+                setInterval(() => {
+                    this.loadStats();
+                    if (this.activeTab === 'blocks') this.loadBlocks();
+                    if (this.activeTab === 'peers') this.loadPeers();
+                }, 10000);
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

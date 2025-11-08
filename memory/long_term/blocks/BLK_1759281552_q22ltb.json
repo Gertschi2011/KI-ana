@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Rio Terminal: A hardware-accelerated GPU terminal emulator\n • Hacker News: Top US researchers rush to relocate to Europe\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "hash": "d5c8ddd296f79432102e54fdc8bea5bf20852df5c8da4e2fbb38b71963dc823f",
+  "id": "BLK_1759281552_q22ltb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "DSJOI/4ZXviAvl+InB16nlPCo+qbjWhpEhx4E3h+4jqwXUvAEngkuNKtIzbc3f6rDO0+pEtffo0LGQbTk6CpBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 03:19",
+  "ts": 1759281552,
+  "url": ""
+}

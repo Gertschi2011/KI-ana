@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Duck-UI – Browser-Based SQL IDE for DuckDB\n • Hacker News: Did Space Debris Hit A United Flight Over The Rockies Thursday?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Diebe erbeuten Schmuck aus dem Louvre",
+  "created_at": 1760875914.325636,
+  "hash": "439161d2466ab4a19a2256b3322d91770ca69295b148d2fc82b28cf3ac403dc1",
+  "id": "BLK_1760875914_1b43ed",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Onw5K/oDi6rQJOj2D2qL1bWiS5GfkLjkKyt3FPn6EMTor5wj13HF5KHjbAQ07Z2W7NJpYTp73wgxJpyoooqcCQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 14:11",
+  "url": null
+}

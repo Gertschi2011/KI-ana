@@ -8,7 +8,7 @@ from importlib.machinery import SourceFileLoader
 
 router = APIRouter(prefix="/persona", tags=["persona"]) 
 
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 DATA_DIR = BASE_DIR / "persona"
 REGISTRY = DATA_DIR / "registry.json"
 BLOCK_UTILS_PATH = BASE_DIR / "system" / "block_utils.py"

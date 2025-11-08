@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Talent Is Alignment\n • Hacker News: In Praise of RSS and Controlled Feeds of Information\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rückkehr der Populisten bei Wahl in Tschechien?",
+  "created_at": 1759482042.183294,
+  "hash": "e266b0d9bfd55a42d0f451779a4ffd3bdca83768e117f16af32789fd38a3976a",
+  "id": "BLK_1759482042_da72c4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "b2cvpoyRbkqvK1ZLKXJi44aSGZZxMvQelQAfDUZ6AnUKMLEuSxTtmHT6SthkbasFNFDmZPyHgFy38QT8QMmyAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 11:00",
+  "url": null
+}

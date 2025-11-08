@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758755392_qg5gyu",
-  "title": "Web Digest 2025-09-25 01:09",
   "content": "• Hacker News: Helium Browser\n • Hacker News: Everything that's wrong with Google Search in one image\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): China macht beim UN-Klima-Gipfel eine überraschende Ankündigung",
+  "hash": "efc9269c92755983c6a2da85a7c889484b70d371cd09e6a38fc1d10b3422297d",
+  "id": "BLK_1758755392_qg5gyu",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "oeDoxrzmZuj5iwJHyXGo/8d9JqpCAg939eLB9d7cgTKtHj6ngFt22agD6e5BaKZwyHdfkDuukLY/ed92BzQ4Bw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 01:09",
   "ts": 1758755392,
-  "meta": {},
-  "hash": "efc9269c92755983c6a2da85a7c889484b70d371cd09e6a38fc1d10b3422297d"
+  "url": ""
 }

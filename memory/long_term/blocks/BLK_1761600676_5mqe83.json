@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Easy RISC-V: An interactive introduction to RISC-V assembly programming\n • Hacker News: The PSF has withdrawn a $1.5M proposal to US Government grant program\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie die AfD Anschluss in den USA sucht",
+  "hash": "62826a55a11bea245be94c14a8a6778d1320a06861c9704ebfa1096be7fb04b6",
+  "id": "BLK_1761600676_5mqe83",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "D+BnEFxU1KNw7jHOdjrJcgQ+1z4SxUg9cQb4CRKz2dznkuXRtYDbn7mmJ/4qXa5lhMjdz9DMFEMah703ySAsAQ==",
+  "signed_at": "2025-10-27T21:31:16Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 22:31",
+  "ts": 1761600676,
+  "url": ""
+}

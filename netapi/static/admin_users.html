@@ -1,286 +1,734 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>KI_ana – Benutzerverwaltung</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>👥 Benutzerverwaltung - KI_ana</title>
   <link href="/static/styles.css" rel="stylesheet">
-  <link href="/static/chat.css" rel="stylesheet">
   <style>
-    body{background:#f7f9fc;color:#0b1020}
-    .container{max-width:1100px;margin:64px auto 24px;padding:0 16px}
-    h1{margin:12px 0 8px}
-    .card{background:#fff;border-radius:12px;padding:12px;border:1px solid #eef0f5;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:16px 0}
-    .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-    .muted{color:#666}
-    .btn{padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;cursor:pointer}
-    .btn:hover{background:#f2f6fb}
-    input,select{padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px}
-    .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef3fb;color:#23408f;border:1px solid #d7e2f3;font-size:12px}
-    .list-row{display:flex;gap:10px;justify-content:space-between;align-items:flex-start;border-top:1px solid #eef0f5;padding:10px 0}
-    .toast-wrap{position:fixed;right:16px;top:16px;display:flex;flex-direction:column;gap:8px;z-index:10000}
-    .toast{background:#101c3a;color:#e6efff;border:1px solid #2a3d70;border-radius:8px;padding:10px 14px;box-shadow:0 6px 20px rgba(0,0,0,.35);max-width:60vw;opacity:0;transform:translateY(-6px);transition:opacity .2s, transform .2s}
-    .toast.ok{background:#0f2a0f;border-color:#2c7a2c}
-  </style>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/static/sw.js').catch(()=>{});
-      });
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
     }
-  </script>
+
+    .navbar {
+      position: fixed!important;
+      top: 0!important;
+      left: 0!important;
+      right: 0!important;
+      z-index: 1000!important;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 80px auto 20px;
+      padding: 20px;
+    }
+
+    .header {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.8em;
+      font-weight: 600;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 16px 12px 44px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 0.95em;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2em;
+      opacity: 0.5;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+    }
+
+    .btn-ghost {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .btn-ghost:hover {
+      background: #e5e7eb;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .stat-label {
+      font-size: 0.85em;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 2em;
+      font-weight: 600;
+      color: #667eea;
+    }
+
+    .users-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .user-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .user-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .user-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .user-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5em;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .user-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .user-name {
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-bottom: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .user-email {
+      font-size: 0.85em;
+      color: #6b7280;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .user-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.75em;
+      font-weight: 500;
+    }
+
+    .badge-admin {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .badge-papa {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .badge-user {
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .badge-free {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .badge-pro {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .user-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 0.85em;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .user-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.85em;
+      border-radius: 8px;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      width: min(500px, 90vw);
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+
+    .close-btn:hover {
+      opacity: 1;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #374151;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      padding: 10px 14px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 0.95em;
+      transition: all 0.2s;
+    }
+
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      margin-top: 24px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: white;
+      font-size: 1.2em;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .empty-icon {
+      font-size: 4em;
+      margin-bottom: 16px;
+    }
+
+    .filter-bar {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .filter-label {
+      font-weight: 500;
+      color: #6b7280;
+    }
+
+    .filter-btn {
+      padding: 8px 16px;
+      border: 2px solid #e5e7eb;
+      background: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      border-color: #667eea;
+      background: #ede9fe;
+      color: #667eea;
+    }
+  </style>
 </head>
 <body>
-  <div id="navbar"></div>
-  <div class="container">
-    <h1>Benutzerverwaltung</h1>
+  <div id="nav"></div>
 
-    <div class="card">
-      <div class="toolbar">
-        <input id="q" placeholder="Suche (Name/Email/ID)" style="flex:1 1 280px">
-        <button class="btn" id="reload">↻ Aktualisieren</button>
-        <button class="btn" id="csv">⬇ CSV</button>
-        <button class="btn" id="runPlan">⚡ Plan Enforcer</button>
+  <div class="container">
+    <div class="header">
+      <div class="header-title">
+        <span>👥</span>
+        <span>Benutzerverwaltung</span>
       </div>
-      <div class="toolbar" style="margin-top:8px">
-        <input id="cName" placeholder="Username" style="min-width:140px">
-        <input id="cEmail" placeholder="E‑Mail" style="min-width:200px">
-        <input id="cPw" placeholder="Passwort" type="password" style="min-width:140px">
-        <select id="cRole" aria-label="Rolle">
-          <option value="user">user</option>
-          <option value="admin">admin</option>
-          <option value="creator">creator</option>
-        </select>
-        <button class="btn" id="create">+ Anlegen</button>
-        <span class="muted" id="summary" style="margin-left:auto">—</span>
-      </div>
-      <div style="overflow:auto;">
-        <table style="width:100%; border-collapse:collapse;">
-          <thead>
-            <tr style="background:#f3f6fb">
-              <th style="text-align:left; padding:8px; border-bottom:1px solid #eef0f5; width:60px;">ID</th>
-              <th style="text-align:left; padding:8px; border-bottom:1px solid #eef0f5;">Username</th>
-              <th style="text-align:left; padding:8px; border-bottom:1px solid #eef0f5;">E‑Mail</th>
-              <th style="text-align:left; padding:8px; border-bottom:1px solid #eef0f5; width:140px;">Rolle</th>
-              <th style="text-align:left; padding:8px; border-bottom:1px solid #eef0f5; width:180px;">Status</th>
-              <th style="text-align:left; padding:8px; border-bottom:1px solid #eef0f5;">Grund</th>
-              <th style="text-align:left; padding:8px; border-bottom:1px solid #eef0f5; width:120px;">Aktion</th>
-            </tr>
-          </thead>
-          <tbody id="rows">
-            <tr><td colspan="7" class="muted" style="padding:10px;">Lade Nutzer…</td></tr>
-          </tbody>
-        </table>
+      <div class="header-actions">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            class="search-input" 
+            placeholder="Benutzer suchen..."
+            id="searchInput"
+          >
+        </div>
+        <button class="btn btn-primary" onclick="openCreateModal()">
+          <span>➕</span>
+          <span>Neuer Benutzer</span>
+        </button>
       </div>
     </div>
 
-    <div class="card">
-      <h3 style="margin:0 0 8px">Audit</h3>
-      <div class="toolbar">
-        <input id="aq" placeholder="Suche (q)" style="min-width:220px">
-        <select id="aa">
-          <option value="">Alle Aktionen</option>
-          <option>user_create</option>
-          <option>set_role</option>
-          <option>user_set_status</option>
-          <option>plan_enforcer_run</option>
-        </select>
-        <button class="btn" id="aload">↻ Aktualisieren</button>
-        <button class="btn" id="acsv">⬇ CSV</button>
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-label">Gesamt Benutzer</div>
+        <div class="stat-value" id="statTotal">0</div>
       </div>
-      <div id="alist" style="margin-top:10px" class="muted">—</div>
+      <div class="stat-card">
+        <div class="stat-label">Admins</div>
+        <div class="stat-value" id="statAdmins">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Papa Users</div>
+        <div class="stat-value" id="statPapas">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Aktive heute</div>
+        <div class="stat-value" id="statActive">0</div>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" data-filter="all">Alle</button>
+      <button class="filter-btn" data-filter="admin">Admins</button>
+      <button class="filter-btn" data-filter="papa">Papas</button>
+      <button class="filter-btn" data-filter="user">Normale User</button>
+    </div>
+
+    <div id="usersContainer"></div>
+  </div>
+
+  <!-- Create/Edit Modal -->
+  <div class="modal-backdrop" id="userModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Neuer Benutzer</h2>
+        <button class="close-btn" onclick="closeModal()">×</button>
+      </div>
+      <form id="userForm">
+        <div class="form-group">
+          <label class="form-label">Benutzername *</label>
+          <input type="text" class="form-input" id="inputUsername" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-Mail *</label>
+          <input type="email" class="form-input" id="inputEmail" required>
+        </div>
+        <div class="form-group" id="passwordGroup">
+          <label class="form-label">Passwort *</label>
+          <input type="password" class="form-input" id="inputPassword" minlength="8">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Rolle</label>
+          <select class="form-select" id="inputRole">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">
+            <input type="checkbox" id="inputPapa"> Papa-Zugang
+          </label>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Plan</label>
+          <select class="form-select" id="inputPlan">
+            <option value="free">Free</option>
+            <option value="pro">Pro</option>
+            <option value="unlimited">Unlimited</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" onclick="closeModal()">Abbrechen</button>
+          <button type="submit" class="btn btn-primary">Speichern</button>
+        </div>
+      </form>
     </div>
   </div>
-  <div id="toasts" class="toast-wrap"></div>
+
+  <script src="/static/nav.js?v=20251029"></script>
   <script>
-    function toast(msg, ok){
-      try{
-        const wrap = document.getElementById('toasts');
-        const el = document.createElement('div');
-        el.className = 'toast' + (ok? ' ok':'');
-        el.textContent = msg;
-        wrap.appendChild(el);
-        requestAnimationFrame(()=>{ el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
-        setTimeout(()=>{ el.style.opacity = '0'; el.style.transform = 'translateY(-6px)'; setTimeout(()=>{ try{ wrap.removeChild(el);}catch{} }, 250); }, 3200);
-      }catch{ alert(msg); }
-    }
-    function rootPrefix(){
-      const p = location.pathname||'/'; const i = p.indexOf('/static/'); return (i>=0)? p.slice(0,i): '';
-    }
-    function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+    let users = [];
+    let currentFilter = 'all';
+    let currentSearch = '';
+    let editingUserId = null;
 
-    // Users
-    let cache = [];
-    function rowHtml(u){
-      const role = String(u.role||'user').toLowerCase();
-      const status = String(u.status||'active').toLowerCase();
-      const reason = String(u.suspended_reason||'');
-      return `<tr data-id="${u.id}" data-role="${role}" data-status="${status}" data-reason="${escapeHtml(reason)}">
-        <td style="padding:8px;border-bottom:1px solid #eef0f5;">${u.id}</td>
-        <td style="padding:8px;border-bottom:1px solid #eef0f5;">${escapeHtml(u.username||'')}</td>
-        <td style="padding:8px;border-bottom:1px solid #eef0f5;">${escapeHtml(u.email||'')}</td>
-        <td style="padding:8px;border-bottom:1px solid #eef0f5;">
-          <select class="btn role">
-            <option value="user" ${role==='user'? 'selected':''}>user</option>
-            <option value="admin" ${role==='admin'? 'selected':''}>admin</option>
-            <option value="creator" ${role==='creator'? 'selected':''}>creator</option>
-          </select>
-        </td>
-        <td style="padding:8px;border-bottom:1px solid #eef0f5;">
-          <select class="btn status">
-            <option value="active" ${status==='active'? 'selected':''}>active</option>
-            <option value="suspended" ${status==='suspended'? 'selected':''}>suspended</option>
-            <option value="banned" ${status==='banned'? 'selected':''}>banned</option>
-            <option value="deleted" ${status==='deleted'? 'selected':''}>deleted</option>
-          </select>
-        </td>
-        <td style="padding:8px;border-bottom:1px solid #eef0f5;">
-          <input class="btn reason" placeholder="Grund…" value="${escapeHtml(reason)}" ${status==='active'?'disabled':''} style="width:100%" />
-        </td>
-        <td style="padding:8px;border-bottom:1px solid #eef0f5;">
-          <button class="btn save">Speichern</button>
-        </td>
-      </tr>`;
-    }
-    function renderTable(items){
-      const rows = document.getElementById('rows');
-      if (!items.length){ rows.innerHTML = '<tr><td colspan="7" class="muted" style="padding:10px;">Keine Nutzer</td></tr>'; return; }
-      rows.innerHTML = items.map(rowHtml).join('');
-      rows.querySelectorAll('select.status').forEach(sel=>{
-        sel.addEventListener('change', ()=>{
-          const tr = sel.closest('tr'); const status = sel.value;
-          const reasonEl = tr.querySelector('input.reason');
-          reasonEl.disabled = (status==='active');
+    // Load users
+    async function loadUsers() {
+      try {
+        const r = await fetch('/api/admin/users', {
+          credentials: 'include'
         });
+        
+        if (!r.ok) throw new Error('Fehler beim Laden');
+        
+        const data = await r.json();
+        users = data.users || [];
+        
+        updateStats();
+        renderUsers();
+      } catch (e) {
+        console.error('Load error:', e);
+        document.getElementById('usersContainer').innerHTML = 
+          '<div class="empty-state"><div class="empty-icon">⚠️</div><div>Fehler beim Laden der Benutzer</div></div>';
+      }
+    }
+
+    function updateStats() {
+      const admins = users.filter(u => (u.roles || [u.role]).includes('admin')).length;
+      const papas = users.filter(u => u.is_papa).length;
+      const today = Math.floor(Date.now() / 1000) - 86400;
+      const active = users.filter(u => (u.last_login || 0) > today).length;
+
+      document.getElementById('statTotal').textContent = users.length;
+      document.getElementById('statAdmins').textContent = admins;
+      document.getElementById('statPapas').textContent = papas;
+      document.getElementById('statActive').textContent = active;
+    }
+
+    function renderUsers() {
+      const container = document.getElementById('usersContainer');
+      
+      // Filter
+      let filtered = users.filter(u => {
+        // Role filter
+        const roles = u.roles || [u.role];
+        if (currentFilter === 'admin' && !roles.includes('admin')) return false;
+        if (currentFilter === 'papa' && !u.is_papa) return false;
+        if (currentFilter === 'user' && (roles.includes('admin') || u.is_papa)) return false;
+        
+        // Search filter
+        if (currentSearch) {
+          const search = currentSearch.toLowerCase();
+          const username = (u.username || '').toLowerCase();
+          const email = (u.email || '').toLowerCase();
+          if (!username.includes(search) && !email.includes(search)) return false;
+        }
+        
+        return true;
       });
-      rows.querySelectorAll('button.save').forEach(btn=>{
-        btn.addEventListener('click', async ()=>{
-          const tr = btn.closest('tr'); const id = Number(tr.getAttribute('data-id'))||0; if(!id) return;
-          const oldRole = tr.getAttribute('data-role')||'user';
-          const oldStatus = tr.getAttribute('data-status')||'active';
-          const oldReason = tr.getAttribute('data-reason')||'';
-          const role = tr.querySelector('select.role').value;
-          const status = tr.querySelector('select.status').value;
-          const reason = tr.querySelector('input.reason').value||'';
-          try{
-            if (role !== oldRole){
-              const r1 = await fetch(rootPrefix()+ '/api/admin/users/set-role', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ user_id:id, role }) });
-              const j1 = await r1.json(); if (!r1.ok || !j1 || j1.ok!==true){ toast('Fehler beim Rollen-Update'); return; }
-            }
-            if (status !== oldStatus || (status!=='active' && reason !== oldReason)){
-              if (status==='deleted' && oldStatus!=='deleted' && !confirm('Benutzer wirklich löschen (Soft-Delete)?')) return;
-              if (status==='banned' && oldStatus!=='banned' && !confirm('Benutzer wirklich sperren (banned)?')) return;
-              const r2 = await fetch(rootPrefix()+ '/api/admin/users/set-status', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ user_id:id, status, reason }) });
-              const j2 = await r2.json(); if (!r2.ok || !j2 || j2.ok!==true){ toast('Fehler beim Status-Update'); return; }
-            }
-            toast('Gespeichert', true); loadUsers();
-          }catch{ toast('Fehler beim Speichern'); }
+
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="empty-state"><div class="empty-icon">😔</div><div>Keine Benutzer gefunden</div></div>';
+        return;
+      }
+
+      container.innerHTML = '<div class="users-grid">' + filtered.map(u => renderUserCard(u)).join('') + '</div>';
+    }
+
+    function renderUserCard(user) {
+      const roles = user.roles || [user.role];
+      const isAdmin = roles.includes('admin');
+      const isPapa = user.is_papa;
+      const initial = (user.username || 'U')[0].toUpperCase();
+      
+      const rolesBadges = [];
+      if (isAdmin) rolesBadges.push('<span class="badge badge-admin">Admin</span>');
+      if (isPapa) rolesBadges.push('<span class="badge badge-papa">Papa</span>');
+      if (!isAdmin && !isPapa) rolesBadges.push('<span class="badge badge-user">User</span>');
+      
+      const plan = user.plan || 'free';
+      const planBadge = plan === 'free' 
+        ? '<span class="badge badge-free">Free</span>'
+        : '<span class="badge badge-pro">Pro</span>';
+
+      return `
+        <div class="user-card">
+          <div class="user-card-header">
+            <div class="user-avatar">${initial}</div>
+            <div class="user-info">
+              <div class="user-name">${user.username || 'Unbekannt'}</div>
+              <div class="user-email">${user.email || '-'}</div>
+            </div>
+          </div>
+          <div class="user-badges">
+            ${rolesBadges.join('')}
+            ${planBadge}
+          </div>
+          <div class="user-meta">
+            <div>🆔 ${user.id}</div>
+            <div>📅 ${formatDate(user.created_at)}</div>
+          </div>
+          <div class="user-actions">
+            <button class="btn btn-ghost btn-sm" onclick="editUser(${user.id})">✏️ Bearbeiten</button>
+            <button class="btn btn-ghost btn-sm" onclick="deleteUser(${user.id}, '${user.username}')">🗑️ Löschen</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function formatDate(timestamp) {
+      if (!timestamp) return 'Unbekannt';
+      const date = new Date(timestamp * 1000);
+      return date.toLocaleDateString('de-DE');
+    }
+
+    // Modal functions
+    function openCreateModal() {
+      editingUserId = null;
+      document.getElementById('modalTitle').textContent = 'Neuer Benutzer';
+      document.getElementById('userForm').reset();
+      document.getElementById('passwordGroup').style.display = 'block';
+      document.getElementById('userModal').classList.add('active');
+    }
+
+    function editUser(userId) {
+      const user = users.find(u => u.id === userId);
+      if (!user) return;
+
+      editingUserId = userId;
+      document.getElementById('modalTitle').textContent = 'Benutzer bearbeiten';
+      document.getElementById('inputUsername').value = user.username || '';
+      document.getElementById('inputEmail').value = user.email || '';
+      document.getElementById('inputRole').value = (user.roles || [user.role])[0] || 'user';
+      document.getElementById('inputPapa').checked = user.is_papa || false;
+      document.getElementById('inputPlan').value = user.plan || 'free';
+      document.getElementById('passwordGroup').style.display = 'none';
+      document.getElementById('userModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('userModal').classList.remove('active');
+    }
+
+    async function deleteUser(userId, username) {
+      if (!confirm(`Benutzer "${username}" wirklich löschen?`)) return;
+
+      try {
+        const r = await fetch(`/api/admin/users/${userId}`, {
+          method: 'DELETE',
+          credentials: 'include'
         });
+
+        if (!r.ok) throw new Error('Löschen fehlgeschlagen');
+
+        alert('Benutzer gelöscht!');
+        loadUsers();
+      } catch (e) {
+        alert('Fehler: ' + e.message);
+      }
+    }
+
+    // Form submit
+    document.getElementById('userForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        username: document.getElementById('inputUsername').value,
+        email: document.getElementById('inputEmail').value,
+        role: document.getElementById('inputRole').value,
+        is_papa: document.getElementById('inputPapa').checked,
+        plan: document.getElementById('inputPlan').value
+      };
+
+      if (!editingUserId) {
+        data.password = document.getElementById('inputPassword').value;
+      }
+
+      try {
+        const url = editingUserId ? `/api/admin/users/${editingUserId}` : '/api/admin/users';
+        const method = editingUserId ? 'PATCH' : 'POST';
+
+        const r = await fetch(url, {
+          method,
+          headers: {'Content-Type': 'application/json'},
+          credentials: 'include',
+          body: JSON.stringify(data)
+        });
+
+        if (!r.ok) {
+          const err = await r.json();
+          throw new Error(err.detail || 'Fehler beim Speichern');
+        }
+
+        alert(editingUserId ? 'Benutzer aktualisiert!' : 'Benutzer erstellt!');
+        closeModal();
+        loadUsers();
+      } catch (e) {
+        alert('Fehler: ' + e.message);
+      }
+    });
+
+    // Search
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      currentSearch = e.target.value;
+      renderUsers();
+    });
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderUsers();
       });
-    }
-    function filterUsers(items){
-      const q = (document.getElementById('q').value||'').toLowerCase().trim();
-      if (!q) return items;
-      return items.filter(u=>(`${u.id} ${u.username||''} ${u.email||''} ${u.role||''} ${u.status||''}`).toLowerCase().includes(q));
-    }
-    async function loadUsers(){
-      try{
-        const r = await fetch(rootPrefix()+ '/api/admin/users', { credentials:'include' });
-        const j = await r.json(); if (!r.ok || !j || j.ok===false){ document.getElementById('list').textContent='Fehler beim Laden'; return; }
-        cache = Array.isArray(j.items)? j.items: [];
-        const f = filterUsers(cache);
-        document.getElementById('summary').innerHTML = `Gesamt: <b>${cache.length}</b> · gefiltert: <b>${f.length}</b>`;
-        renderTable(f);
-      }catch{ document.getElementById('list').textContent='Fehler beim Laden'; }
-    }
-
-    // Audit
-    async function loadAudit(){
-      try{
-        const q = (document.getElementById('aq').value||'').trim();
-        const a = (document.getElementById('aa').value||'').trim();
-        const params = new URLSearchParams(); params.set('limit','50'); if(q) params.set('q', q); if(a) params.set('action', a);
-        const r = await fetch(rootPrefix()+ '/api/admin/audit?' + params.toString(), { credentials:'include' });
-        const j = await r.json();
-        const items = (r.ok && j && Array.isArray(j.items))? j.items: [];
-        const html = items.map(it=>{
-          const ts = new Date((it.ts||0)*1000).toLocaleString();
-          return `<div class="list-row"><div><b>${escapeHtml(it.action||'')}</b> · ${escapeHtml(it.target_type||'')}:${it.target_id} <span class="muted">(${ts})</span><div class="muted">${escapeHtml(JSON.stringify(it.meta||{}))}</div></div></div>`;
-        }).join('');
-        document.getElementById('alist').innerHTML = html || '<div class="muted">Keine Einträge</div>';
-      }catch{ document.getElementById('alist').textContent='Fehler beim Laden'; }
-    }
-
-    // CSV helpers
-    document.getElementById('csv').addEventListener('click', ()=>{
-      try{
-        const items = filterUsers(cache);
-        const csv = ['id,username,email,role,status,plan,plan_until,daily_quota'];
-        items.forEach(u=>csv.push([u.id, `"${(u.username||'').replaceAll('"','""')}"`, `"${(u.email||'').replaceAll('"','""')}"`, u.role||'', u.status||'', u.plan||'', u.plan_until||0, (u.daily_quota!=null?u.daily_quota:'')].join(',')));
-        const blob = new Blob([csv.join('\n')], {type:'text/csv'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download='users.csv'; a.click(); setTimeout(()=>URL.revokeObjectURL(url), 500);
-      }catch{}
     });
 
-    // Buttons + inputs
-    document.getElementById('reload').addEventListener('click', loadUsers);
-    document.getElementById('q').addEventListener('input', ()=>{ const f = filterUsers(cache); document.getElementById('summary').innerHTML = `Gesamt: <b>${cache.length}</b> · gefiltert: <b>${f.length}</b>`; renderTable(f); });
-    document.getElementById('create').addEventListener('click', async ()=>{
-      try{
-        const username = (document.getElementById('cName').value||'').trim();
-        const email = (document.getElementById('cEmail').value||'').trim();
-        const password = (document.getElementById('cPw').value||'').trim();
-        const role = (document.getElementById('cRole').value||'user').trim();
-        if (!username || !email || !password){ toast('Bitte Username, E‑Mail und Passwort angeben.'); return; }
-        if (password.length < 8){ toast('Passwort muss mindestens 8 Zeichen haben.'); return; }
-        if (!email.includes('@') || email.startsWith('@') || email.endsWith('@')){ toast('Bitte gültige E‑Mail angeben.'); return; }
-        const r = await fetch(rootPrefix()+ '/api/admin/users/create', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username, email, password, role }) });
-        const j = await r.json(); if (r.ok && j && j.ok){ toast('Benutzer angelegt', true); document.getElementById('cName').value=''; document.getElementById('cEmail').value=''; document.getElementById('cPw').value=''; document.getElementById('cRole').value='user'; loadUsers(); } else { toast('Fehler beim Anlegen'); }
-      }catch{ toast('Fehler beim Anlegen'); }
-    });
-
-    document.getElementById('aload').addEventListener('click', loadAudit);
-    document.getElementById('acsv').addEventListener('click', ()=>{
-      try{
-        const div = document.getElementById('alist');
-        const lines = Array.from(div.querySelectorAll('.list-row')).map(x=>x.innerText.replace(/\n/g,' '));
-        const blob = new Blob([lines.join('\n')], {type:'text/plain'}); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href=url; a.download='audit.txt'; a.click(); setTimeout(()=>URL.revokeObjectURL(url), 500);
-      }catch{}
-    });
-
-    document.getElementById('runPlan').addEventListener('click', async ()=>{
-      try{
-        if (!confirm('Plan Enforcer jetzt ausführen?')) return;
-        const r = await fetch(rootPrefix()+ '/api/admin/plan-enforcer/run', { method:'POST', credentials:'include' });
-        const j = await r.json(); if (r.ok && j && j.ok){ toast('Plan Enforcer: '+(j.suspended||0)+' Nutzer suspendiert', true); loadUsers(); loadAudit(); } else { toast('Plan Enforcer Fehler'); }
-      }catch{ toast('Plan Enforcer Fehler'); }
-    });
-
-    // Initial
-    loadUsers(); loadAudit();
-  </script>
-  <script>
-    // Navbar loader (cache-busting + script execution)
-    (function(){
-      try{
-        fetch('/static/nav.html?v=' + Date.now())
-          .then(r=>r.text())
-          .then(html=>{
-            const n=document.getElementById('navbar');
-            if(!n) return;
-            n.innerHTML=html;
-            try{
-              n.querySelectorAll('script').forEach(old=>{
-                const s=document.createElement('script');
-                if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
-                else { s.textContent = old.textContent || ''; }
-                document.body.appendChild(s);
-                old.remove();
-              });
-            }catch{}
-          })
-          .catch(()=>{});
-      }catch{}
-    })();
+    // Load on start
+    loadUsers();
   </script>
 </body>
 </html>

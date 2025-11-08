@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: David Byrne Radio\n • Hacker News: Recreating the Canon Cat document interface\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Irans Machtverlust im Nahen Osten",
+  "hash": "78ccce5058245b9924b0d898bad358389ec2013bc4e8868846722d4e73b12153",
+  "id": "BLK_1760544564_6rxqxo",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "H5hwic8JKh9Zix1MQVYZ3Y0g5xPH0eVO0dAySL4ckdqGLJnzeoYaBurP7HtsTJPPZxcnmhgQCBj48fbOxJD8AA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 18:09",
+  "ts": 1760544564,
+  "url": ""
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758630759_0gbs7j",
-  "title": "Web Digest 2025-09-23 14:32",
   "content": "• Hacker News: Zinc (YC W14) Is Hiring a Senior Back End Engineer (NYC)\n • Hacker News: Cache of Devices Capable of Crashing Cell Network Is Found Near U.N\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NATO warnt Russland vor weiteren Verletzungen des Luftraums",
+  "hash": "bd9fe5c151b7a8209d8f93a15e34557d413243d0f5833d5db4443ebdf551562e",
+  "id": "BLK_1758630759_0gbs7j",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "qAtepoC0IXNT8ioNvNoE0MNSlBGLItu/4mNmpo4Dd1mkGw2yNue0PvSAbi1vSASFQ7d8iM1vHK92XqzX36AkCQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 14:32",
   "ts": 1758630759,
-  "meta": {},
-  "hash": "bd9fe5c151b7a8209d8f93a15e34557d413243d0f5833d5db4443ebdf551562e"
+  "url": ""
 }

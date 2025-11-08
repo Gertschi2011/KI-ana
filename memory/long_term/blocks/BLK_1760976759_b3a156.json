@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Anthropic and Cursor Spend This Much on Amazon Web Services\n • Hacker News: Commodore 64 Ultimate\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundeskanzler Merz: Zwischen Brandmauer und AfD-Rhetorik",
+  "created_at": 1760976759.2866647,
+  "hash": "2f4ca3ffb94705dad4f38621083b11100f0c24a2e887ae2a9e00f3ef9b83aab8",
+  "id": "BLK_1760976759_b3a156",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "gssRN4moQN6amtgkjRn0oGKTd3SnoDbjv+RnIBItUMGrDCSZuaoDNBBaCEmC5ITd0n0VpXYAAqlls1/m8PVYAQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 18:12",
+  "url": null
+}

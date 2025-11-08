@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Edge AI for Beginners\n • Hacker News: Emacs agent-shell (powered by ACP)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Lecornu stellt Kabinett vor: Neue Regierung in Frankreich steht",
+  "created_at": 1760306845.499696,
+  "hash": "99a95fa96d814681eb563b87d5ef26afb63667d197494e06eed86cffeaaebd03",
+  "id": "BLK_1760306845_0000f3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "F3KEBKDRIFggmwYTmlble7xpjFn3EWhuyRi60KnZ54k0l+g6Z1VFo8L8xMeyQJPb/xOUIlVRvN6uhBR5ZP1AAA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 00:07",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: StageConnect: Behringer protocol is open source\n • Hacker News: The Majority AI View\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine Klarheit über Tomahawk-Lieferung an die Ukraine",
+  "created_at": 1760771469.3474927,
+  "hash": "2fdbb898351a82c058a60752eb3f997ca490b3eb3cd2b99603aea0ca7c2bcd39",
+  "id": "BLK_1760771469_b07edd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "W21V8i4zj91SvGg/o/jx2iayFNIvF79Z9hwvLsRZ4ewQAH3xE1iznxrpm5I9A10+VqZMtTMGsIrejjh64f/DAg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 09:11",
+  "url": null
+}

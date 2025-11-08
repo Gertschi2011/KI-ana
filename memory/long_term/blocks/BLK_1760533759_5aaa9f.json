@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Scriber Pro – Transcribe 4.5hr video in 3.5min, 100% offline on Mac\n • Hacker News: Irish privacy regulator picks ex-Meta lobbyist as third commissioner\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Signa-Gründer Benko teilweise schuldig gesprochen - zwei Jahre Haft",
+  "created_at": 1760533759.3961272,
+  "hash": "7c7a44449e111fe585ce29a82ef37fa10e371910b859d153aadcbf4413e128dd",
+  "id": "BLK_1760533759_5aaa9f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "E50jRcXtbaJH7kc8YoMJh+zzmLrxz7g8AzbR9Hi+sCaU2oQ8p2UCAHJUUCxweiTO+oUPsvnxKt4Zfrvi2PTtCA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 15:09",
+  "url": null
+}

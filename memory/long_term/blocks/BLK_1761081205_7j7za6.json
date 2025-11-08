@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Replacing a $3000/mo Heroku bill with a $55/mo server\n • Hacker News: Doomsday Scoreboard\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demo vor CDU-Parteizentrale: Demonstrantinnen kritisieren Merz",
+  "hash": "ec93f2f1cc4f93c981682263a7355541111cd6b01ab80762841ed8f310be7026",
+  "id": "BLK_1761081205_7j7za6",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "u0xisnWXga2iRBiTyfQuN3qGVXLsMoQ/fPwtC//GchTUOvtYSFBjCTpgE42POO1OsvLt5dI/NIXXks5SvA3ICw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 23:13",
+  "ts": 1761081205,
+  "url": ""
+}

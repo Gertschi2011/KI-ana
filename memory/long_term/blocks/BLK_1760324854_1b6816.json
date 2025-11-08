@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Despite what's happening in the USA, renewables are winning globally\n • Hacker News: For Centuries Meals Amazed Visitors to Korea\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rotes Kreuz wartet auf israelische Geiseln",
+  "created_at": 1760324854.494399,
+  "hash": "af9bedb9b1d74c8943ef99852e12a3306b621884d2abebefd7de863253902f46",
+  "id": "BLK_1760324854_1b6816",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "9LtXeqEs4aoNfbHqFZe2nL7hphlddD3eXJzVtJMNZCClv64iOXRr4+7tAt6jtvbdpVL2lxQIFVExhDkjcilCDg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 05:07",
+  "url": null
+}

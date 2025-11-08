@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Can \"second life\" EV batteries work as grid-scale energy storage?\n • Hacker News: Armed police swarm student after AI mistakes bag of Doritos for a weapon\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "created_at": 1761245555.9540653,
+  "hash": "eef515b4e33c44575a04583d6729681ddfe2946a47ba1295cbd53ec6b50f4e64",
+  "id": "BLK_1761245555_4d06ca",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "UOPkvu69QmHzNU37wMDOMJTN8tmOiwFe24U6xpPe4s+dlHvguCsIS8jhcgG8Io7trjZAkv70CGQ3x9GC9/SbAg==",
+  "signed_at": "2025-10-23T18:52:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 20:52",
+  "url": null
+}

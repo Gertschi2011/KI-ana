@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758798612_g07brm",
-  "title": "Web Digest 2025-09-25 13:10",
   "content": "• Hacker News: Apple pushes EU to repeal tech rules over feature delays, app vulnerabilities\n • Hacker News: Some interesting stuff I found on IX LANs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kiewer beklagen fehlende Unterstützung nach Raketeneinschlägen",
+  "hash": "61cd40a7397393cfe10de8f07dabbe57d8b43b3469164def1294e7be3d625d56",
+  "id": "BLK_1758798612_g07brm",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "qEcwC1hdSQyQo63bhhbadD7uGZQamhe2+Cka5bBEgwwH1u0/iNVNQI4YeQ0/DPyaLPsoasaqGHvSRUttus09BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 13:10",
   "ts": 1758798612,
-  "meta": {},
-  "hash": "61cd40a7397393cfe10de8f07dabbe57d8b43b3469164def1294e7be3d625d56"
+  "url": ""
 }

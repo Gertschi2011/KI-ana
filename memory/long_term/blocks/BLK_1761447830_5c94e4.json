@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Pico-Banana-400k\n • Hacker News: A worker fell into a nuclear reactor pool\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761447830.4983037,
+  "hash": "38aef93b8cf4688e2bbe7157b9536fd487620630450b0efc972ccbc1c034befa",
+  "id": "BLK_1761447830_5c94e4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "6fePcA9t0LQSlVqCtcGtlWGAeh81ObUFB/KHDUuLMVZBE8bTkDBjhUSDiAz4keyn2IR10hU2LLo5Q6yZydRBCQ==",
+  "signed_at": "2025-10-26T03:03:50Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 04:03",
+  "url": null
+}

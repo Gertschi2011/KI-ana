@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759091983_n5r0q5",
-  "title": "Web Digest 2025-09-28 22:39",
   "content": "• Hacker News: China Is Run by Engineers. America Is Run by Lawyers\n • Hacker News: The QMA Singularity\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie teuer wird der Emissionshandel im Verkehrs- und Gebäudesektor?",
+  "hash": "c5d9624b02a253d9e40d4bf567895820fe6b3f3a374f4c0dcaf2f30fba244f56",
+  "id": "BLK_1759091983_n5r0q5",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "6YlwgsZqg6K+fnzEAHmpncaJiO4iOlaMcVSYsD0nMXFvYVBdGg5uNArpY+Q+KtqYEMFirExV/mu8aajIMw1PAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 22:39",
   "ts": 1759091983,
-  "meta": {},
-  "hash": "c5d9624b02a253d9e40d4bf567895820fe6b3f3a374f4c0dcaf2f30fba244f56"
+  "url": ""
 }

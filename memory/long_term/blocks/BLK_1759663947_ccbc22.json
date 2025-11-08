@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Beginner Guide to VPS Hetzner and Coolify\n • Hacker News: Personal data storage is an idea whose time has come\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach der Parlamentswahl: Biegt Tschechien von der Europa-Straße ab?",
+  "created_at": 1759663947.4994314,
+  "hash": "53da5829847014ac5a6e15ada2430f52cb997d1843f6aa8853715c065fabfea2",
+  "id": "BLK_1759663947_ccbc22",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HNITk4xaAU9hdgQ5hsRLAT8y6ZNfsAR9wwZUjKs8s6t6X2+K5ypVjyF/HYviHR+ZHqN8roHTqT3oboKdGIwtAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 13:32",
+  "url": null
+}

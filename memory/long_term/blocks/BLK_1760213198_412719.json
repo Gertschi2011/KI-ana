@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Discord hack shows risks of online age checks\n • Hacker News: Microsoft only lets you opt out of AI photo scanning 3x a year\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jubel für Trump, Pfiffe für Netanjahu in Tel Aviv",
+  "created_at": 1760213198.010371,
+  "hash": "62143a771daea4e6399e02b47b15acb55d861780c5c934ad1c32e4c4475301db",
+  "id": "BLK_1760213198_412719",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ibBtePBhm/iVXIEygmS9eeq3DO/SV2vU5JHbmsmsCzDrLxCVf5VLoA3bYnY3P8g6rm6C4gj5kNfP9BjdkcyvDg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 22:06",
+  "url": null
+}

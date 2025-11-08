@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The God Mode Vulnerability That Should Kill \"Trust Microsoft\" Forever\n • Hacker News: Intelligent Kubernetes Load Balancing at Databricks\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltskrise in den USA: Der \"Shutdown\" hat begonnen",
+  "created_at": 1759301362.0288122,
+  "hash": "f350d1326165ccc7cc0212e20ebf042f5ba10305119e4b33e905ee982b958ccb",
+  "id": "BLK_1759301362_5b5b52",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "eb5ObAJh0dFR1qLYuu2KrLBs7d01wX3aUghiZHh2OLgMX2yyQDgvGSjXPU3rB7tmwy/0hUUeNKD+ZR3mGuMUAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 08:49",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Expanding Our Use of Google Cloud TPUs and Services\n • Hacker News: The Muscular Compassion of \"Paper Girl\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "created_at": 1761254560.2157185,
+  "hash": "8f4b85a8e1679db68ac2854901564518340a5ffa16c9328377a61cecf5d205b5",
+  "id": "BLK_1761254560_817260",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8qLJDNXnoIjyuvi8tLTyDLcURUJp5fNSBwV8fcGJM/VRAkhS4yzxxfTNSZvNyxqT+uUVKzyL6yIBTVz9Iw1PCA==",
+  "signed_at": "2025-10-23T21:22:40Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 23:22",
+  "url": null
+}

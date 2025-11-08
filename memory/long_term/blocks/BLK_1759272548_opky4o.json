@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Pre-Emptive Multi-Tasking on Arm Cortex-M\n • Hacker News: Our stewardship: Where we are, what's changing and how we'll engage\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "hash": "ba09be85f449a54524288f6dc0a25311bcedd3db0aa0ba36ed67341f8fb8728d",
+  "id": "BLK_1759272548_opky4o",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "AE9iJFlukT6QqoyTtLq9DYL7jem/Ln+HbvycD1WwWoDryrZP1PXiKlJEFweJy93OQL00fI0vGTQge4nrdmq6Ag==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 00:49",
+  "ts": 1759272548,
+  "url": ""
+}

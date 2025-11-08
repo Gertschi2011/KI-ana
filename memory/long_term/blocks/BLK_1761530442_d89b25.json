@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ICE Will Use AI to Surveil Social Media\n • Hacker News: How I turned Zig into my favorite language to write network programs in\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht aus Berlin: Spahn stärkt Merz in \"Stadtbild\"-Debatte",
+  "created_at": 1761530442.6910343,
+  "hash": "d7147650dd040733f975e3511cda98f459e18c28a621a1456c5715d18f17e170",
+  "id": "BLK_1761530442_d89b25",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "nwwa9hG+pEFjBGsIEgmC3bXCLLGQRnZM7b2APsfH6ZMleghGdyEVVJd/9MLM19Hc90QpllqaSkqZqrVApFOPCg==",
+  "signed_at": "2025-10-27T02:00:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 03:00",
+  "url": null
+}

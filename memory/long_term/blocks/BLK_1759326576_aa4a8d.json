@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Minimal files and config for a PWA (including a single file PWA)\n • Hacker News: Detect Electron apps on Mac that hasn't been updated to fix the system wide lag\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): München: Polizei ermittelt nach Großbrand wegen Familienstreit",
+  "created_at": 1759326576.046876,
+  "hash": "6d695921e5dc82e12f4c122bb69556d0f9da73b0e87bc680274d2f4a8c45a0c5",
+  "id": "BLK_1759326576_aa4a8d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "S3UBOx+EhaoFZp0lE3RkF+7Hc6MVGFUeswBgKOHhZH2Hg+XBA139Eigg3PB4Q8oa61YPx5XjMXOytHOm1TfVAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 15:49",
+  "url": null
+}

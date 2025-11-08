@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI_ana Block Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        [v-cloak] { display: none; }
+        .block-node {
+            transition: all 0.3s ease;
+            cursor: move;
+        }
+        .block-node:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .block-connection {
+            stroke: #667eea;
+            stroke-width: 2;
+            fill: none;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div id="app" v-cloak>
+        <!-- Header -->
+        <header class="bg-gray-800 border-b border-gray-700 px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold">🧩 Block Editor</h1>
+                    <p class="text-gray-400 text-sm">Visual Knowledge Management</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button @click="createBlock" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors">
+                        ➕ New Block
+                    </button>
+                    <button @click="saveWorkspace" class="px-4 py-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors">
+                        💾 Save
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Toolbar -->
+        <div class="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center space-x-4">
+            <input 
+                v-model="searchQuery"
+                type="text" 
+                placeholder="Search blocks..."
+                class="flex-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            
+            <select v-model="filterCategory" class="px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg">
+                <option value="">All Categories</option>
+                <option value="knowledge">Knowledge</option>
+                <option value="task">Task</option>
+                <option value="note">Note</option>
+                <option value="code">Code</option>
+            </select>
+
+            <button @click="viewMode = viewMode === 'grid' ? 'graph' : 'grid'" 
+                    class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+                {{ viewMode === 'grid' ? '🔗 Graph View' : '📋 Grid View' }}
+            </button>
+        </div>
+
+        <!-- Grid View -->
+        <div v-if="viewMode === 'grid'" class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div v-for="block in filteredBlocks" :key="block.id" 
+                     class="block-node bg-gray-800 rounded-lg p-4 border border-gray-700"
+                     draggable="true"
+                     @dragstart="dragStart(block)"
+                     @dragover.prevent
+                     @drop="dragDrop(block)">
+                    
+                    <!-- Block Header -->
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2 py-1 bg-purple-600 text-xs font-semibold rounded">
+                            {{ block.category }}
+                        </span>
+                        <div class="flex items-center space-x-2">
+                            <button @click="editBlock(block)" class="text-gray-400 hover:text-white">
+                                ✏️
+                            </button>
+                            <button @click="deleteBlock(block.id)" class="text-gray-400 hover:text-red-500">
+                                🗑️
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Block Content -->
+                    <h3 class="font-semibold text-lg mb-2">{{ block.title }}</h3>
+                    <p class="text-gray-400 text-sm mb-3 line-clamp-3">{{ block.content }}</p>
+
+                    <!-- Block Footer -->
+                    <div class="flex items-center justify-between text-xs text-gray-500">
+                        <span>{{ formatDate(block.timestamp) }}</span>
+                        <span>{{ block.connections.length }} connections</span>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span v-for="tag in block.tags" :key="tag" 
+                              class="px-2 py-1 bg-gray-700 text-xs rounded">
+                            #{{ tag }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graph View -->
+        <div v-if="viewMode === 'graph'" class="relative h-screen">
+            <svg id="graph-canvas" class="w-full h-full">
+                <!-- Connections -->
+                <path v-for="conn in connections" :key="conn.id"
+                      :d="getConnectionPath(conn)"
+                      class="block-connection" />
+            </svg>
+
+            <!-- Nodes -->
+            <div v-for="block in blocks" :key="block.id"
+                 :style="{ left: block.x + 'px', top: block.y + 'px' }"
+                 class="absolute block-node bg-gray-800 rounded-lg p-3 border border-gray-700 w-48"
+                 draggable="true"
+                 @dragstart="dragStart(block)"
+                 @drag="dragMove($event, block)"
+                 @dragend="dragEnd(block)">
+                
+                <div class="text-sm font-semibold mb-1">{{ block.title }}</div>
+                <div class="text-xs text-gray-400">{{ block.category }}</div>
+            </div>
+        </div>
+
+        <!-- Edit Modal -->
+        <div v-if="editingBlock" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-gray-800 rounded-lg p-6 w-full max-w-2xl">
+                <h2 class="text-2xl font-bold mb-4">Edit Block</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Title</label>
+                        <input v-model="editingBlock.title" 
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Content</label>
+                        <textarea v-model="editingBlock.content" 
+                                  rows="6"
+                                  class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Category</label>
+                        <select v-model="editingBlock.category" 
+                                class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg">
+                            <option value="knowledge">Knowledge</option>
+                            <option value="task">Task</option>
+                            <option value="note">Note</option>
+                            <option value="code">Code</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Tags (comma separated)</label>
+                        <input v-model="editingBlock.tagsStr" 
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg"
+                               placeholder="ai, p2p, blockchain">
+                    </div>
+                </div>
+
+                <div class="flex justify-end space-x-4 mt-6">
+                    <button @click="cancelEdit" 
+                            class="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg">
+                        Cancel
+                    </button>
+                    <button @click="saveEdit" 
+                            class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    blocks: [],
+                    connections: [],
+                    searchQuery: '',
+                    filterCategory: '',
+                    viewMode: 'grid',
+                    editingBlock: null,
+                    draggedBlock: null
+                }
+            },
+            computed: {
+                filteredBlocks() {
+                    let filtered = this.blocks;
+
+                    if (this.searchQuery) {
+                        const query = this.searchQuery.toLowerCase();
+                        filtered = filtered.filter(b => 
+                            b.title.toLowerCase().includes(query) ||
+                            b.content.toLowerCase().includes(query) ||
+                            b.tags.some(t => t.toLowerCase().includes(query))
+                        );
+                    }
+
+                    if (this.filterCategory) {
+                        filtered = filtered.filter(b => b.category === this.filterCategory);
+                    }
+
+                    return filtered;
+                }
+            },
+            methods: {
+                async loadBlocks() {
+                    try {
+                        const response = await fetch('/api/blocks');
+                        if (response.ok) {
+                            const data = await response.json();
+                            this.blocks = data.blocks.map(b => ({
+                                ...b,
+                                x: Math.random() * 800 + 100,
+                                y: Math.random() * 400 + 100,
+                                connections: []
+                            }));
+                        }
+                    } catch (e) {
+                        // Demo data
+                        this.blocks = [
+                            {
+                                id: '1',
+                                title: 'Welcome to KI_ana',
+                                content: 'This is your first knowledge block!',
+                                category: 'knowledge',
+                                tags: ['welcome', 'tutorial'],
+                                timestamp: Date.now() / 1000,
+                                x: 200,
+                                y: 200,
+                                connections: []
+                            }
+                        ];
+                    }
+                },
+                createBlock() {
+                    const newBlock = {
+                        id: Date.now().toString(),
+                        title: 'New Block',
+                        content: 'Enter your content here...',
+                        category: 'note',
+                        tags: [],
+                        timestamp: Date.now() / 1000,
+                        x: Math.random() * 800 + 100,
+                        y: Math.random() * 400 + 100,
+                        connections: []
+                    };
+                    this.blocks.push(newBlock);
+                    this.editBlock(newBlock);
+                },
+                editBlock(block) {
+                    this.editingBlock = {
+                        ...block,
+                        tagsStr: block.tags.join(', ')
+                    };
+                },
+                saveEdit() {
+                    const index = this.blocks.findIndex(b => b.id === this.editingBlock.id);
+                    if (index !== -1) {
+                        this.blocks[index] = {
+                            ...this.editingBlock,
+                            tags: this.editingBlock.tagsStr.split(',').map(t => t.trim()).filter(t => t)
+                        };
+                    }
+                    this.editingBlock = null;
+                },
+                cancelEdit() {
+                    this.editingBlock = null;
+                },
+                deleteBlock(id) {
+                    if (confirm('Delete this block?')) {
+                        this.blocks = this.blocks.filter(b => b.id !== id);
+                    }
+                },
+                dragStart(block) {
+                    this.draggedBlock = block;
+                },
+                dragMove(event, block) {
+                    if (event.clientX > 0 && event.clientY > 0) {
+                        block.x = event.clientX - 100;
+                        block.y = event.clientY - 50;
+                    }
+                },
+                dragEnd(block) {
+                    this.draggedBlock = null;
+                },
+                dragDrop(targetBlock) {
+                    if (this.draggedBlock && this.draggedBlock.id !== targetBlock.id) {
+                        // Create connection
+                        const connId = `${this.draggedBlock.id}-${targetBlock.id}`;
+                        if (!this.connections.find(c => c.id === connId)) {
+                            this.connections.push({
+                                id: connId,
+                                from: this.draggedBlock.id,
+                                to: targetBlock.id
+                            });
+                        }
+                    }
+                },
+                getConnectionPath(conn) {
+                    const from = this.blocks.find(b => b.id === conn.from);
+                    const to = this.blocks.find(b => b.id === conn.to);
+                    if (!from || !to) return '';
+                    
+                    const x1 = from.x + 96;
+                    const y1 = from.y + 50;
+                    const x2 = to.x + 96;
+                    const y2 = to.y + 50;
+                    
+                    return `M ${x1} ${y1} Q ${(x1+x2)/2} ${y1} ${x2} ${y2}`;
+                },
+                saveWorkspace() {
+                    localStorage.setItem('kiana_blocks', JSON.stringify(this.blocks));
+                    localStorage.setItem('kiana_connections', JSON.stringify(this.connections));
+                    alert('Workspace saved!');
+                },
+                formatDate(timestamp) {
+                    return new Date(timestamp * 1000).toLocaleDateString('de-DE');
+                }
+            },
+            mounted() {
+                this.loadBlocks();
+                
+                // Load from localStorage
+                const saved = localStorage.getItem('kiana_blocks');
+                if (saved) {
+                    this.blocks = JSON.parse(saved);
+                }
+                const savedConn = localStorage.getItem('kiana_connections');
+                if (savedConn) {
+                    this.connections = JSON.parse(savedConn);
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

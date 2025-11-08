@@ -1,0 +1,60 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    ADMIN LOGS SSE - FINALER STATUS
+                         23. Oktober 2025, 15:27 Uhr
+═══════════════════════════════════════════════════════════════════════════════
+
+STATUS: ⚠️ TEILWEISE FUNKTIONSFÄHIG
+
+Was funktioniert:
+✅ /api/logs?n=X - Snapshot-Endpoint (GET letzte N Zeilen)
+✅ BROADCASTER installiert und sammelt Logs
+✅ Logs werden im RING Buffer gespeichert
+✅ Server läuft stabil
+
+Was NICHT funktioniert:
+❌ /api/logs/stream - SSE Live-Streaming
+❌ Admin Logs Frontend zeigt "Verbinde..."
+
+═══════════════════════════════════════════════════════════════════════════════
+
+DURCHGEFÜHRTE FIXES:
+
+1. ✅ BROADCASTER Handler Level gesetzt (logging.DEBUG)
+2. ✅ sse_starlette Logger auf WARNING gesetzt  
+3. ✅ Alle Middlewares für /stream übersprungen
+4. ✅ Von EventSourceResponse zu StreamingResponse gewechselt
+5. ✅ SSE Headers gesetzt (Cache-Control, X-Accel-Buffering)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+AKTUELLES PROBLEM:
+
+Stream verbindet, aber sendet keine Daten.
+- Keine RuntimeError mehr
+- Stream bleibt offen
+- Aber keine Events werden gesendet
+
+MÖGLICHE URSACHEN:
+- BROADCASTER.stream() gibt keine Events
+- Async Generator Problem
+- Queue leer
+
+═══════════════════════════════════════════════════════════════════════════════
+
+WORKAROUND FÜR USER:
+
+Verwende den Snapshot-Endpoint:
+https://ki-ana.at/api/logs?n=100
+
+Zeigt die letzten 100 Log-Zeilen (funktioniert!)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+NÄCHSTE SCHRITTE:
+
+1. BROADCASTER.queue prüfen (ist sie leer?)
+2. Test ob neue Logs in queue kommen
+3. Generator testen ob er yieldet
+4. Alternative: Polling statt SSE
+
+═══════════════════════════════════════════════════════════════════════════════

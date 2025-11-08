@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Matrices can be your Friends\n • Hacker News: American Solar Farms\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Trump spricht vor der Knesset ++",
+  "created_at": 1760355469.4874592,
+  "hash": "408f3479d46552386cbd050f3a290a2dc0c671328946ef28a820f7568b3c92cc",
+  "id": "BLK_1760355469_93cd49",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "REXeNArkonkA4jDZzDY81aVqNxCoyPbdv5IxTgb2Y+0wqjaCR5ky+ZvkYUfkjK6VaGs66QgSxS1Xj7fWTUaQAA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 13:37",
+  "url": null
+}

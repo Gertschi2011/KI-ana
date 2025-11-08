@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: I wish SSDs gave you CPU performance style metrics about their activity\n • Hacker News: Infisical (YC W23) Is Hiring Full Stack Engineers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): So gelang der Einbruch in das Kunstmuseum Louvre in Paris",
+  "hash": "fd0b04efcd7920714415472e921c9ddbcd1973e67d88b5d5baef41c8725f7d5a",
+  "id": "BLK_1760899324_58wcv0",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "dN3W1DncDUAhJwe5rdCH96DnbrriQU0M/Hc0oRhVrpEJZgyp7tK0Wc9NEtChbf8vYNLZHNDbDLNFTshJTYzDCg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 20:42",
+  "ts": 1760899324,
+  "url": ""
+}

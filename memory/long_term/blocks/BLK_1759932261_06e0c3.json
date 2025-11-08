@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Weaponization of Travel Blacklists\n • Hacker News: The Email They Shouldn't Have Read\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundesregierung geht von mehr Wirtschaftswachstum ab 2026 aus",
+  "created_at": 1759932261.9508448,
+  "hash": "4c9b2d4aedebad202e4e4c68659c6d5bb143fad8d8542fde16ea78fe91298f73",
+  "id": "BLK_1759932261_06e0c3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "N25PergstzpPW4TAI7JDmSWOi3VRQhegQ4ErNVqqrlePL1uHqeMoc0Q23sHOSiQy8Bgucqma6MBRE4zlPTdTAw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 16:04",
+  "url": null
+}

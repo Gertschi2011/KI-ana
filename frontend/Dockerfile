@@ -1,7 +1,10 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY package.json package-lock.json* .
-RUN npm ci || npm install
+COPY package.json .
+# Install deps (no lockfile present in repo)
+RUN npm install --no-audit --no-fund
+# Ensure Tailwind toolchain is present in the container
+RUN npm install --no-audit --no-fund tailwindcss postcss autoprefixer
 COPY . .
 ENV PORT=3000 HOST=0.0.0.0
 RUN npm run build

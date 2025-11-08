@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: DeepMind: CodeMender: an AI agent for code security\n • Hacker News: WebGPU and the Price of Compiling WGSL\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krise nach Lecornus Rücktritt: Der einsame Präsident",
+  "hash": "a1e4cf66129e59403fdeb5bfd6671b7a751348f89d0b677a31a0310c9b8c53f6",
+  "id": "BLK_1759793602_ukgwwh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "RvUYvxOGzv5Q+VTV7f6s6NNA/XahZlpElNuGXGRx/qVJeYXVGFHj58WRacrOJK4/i3C8WQd2ZnPVw1cdVWAqDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 01:33",
+  "ts": 1759793602,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas erklärt sich zur Freilassung aller Geiseln bereit",
+  "created_at": 1759534280.3817544,
+  "hash": "43e7be10d72609795538094a83d4202f4128051cb881156f06bcac582b396f4f",
+  "id": "BLK_1759534280_4eed1d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TqH7vh9HQsSsQC9Me9oskKIxwMENs+DXy1Q5XSsUYAnSjSKOZHopR8e84ejfgUXdHs+iOitwknCPY4RxJXduDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 01:31",
+  "url": null
+}

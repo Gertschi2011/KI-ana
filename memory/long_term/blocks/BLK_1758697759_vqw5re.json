@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758697759_vqw5re",
-  "title": "Web Digest 2025-09-24 09:09",
   "content": "• Hacker News: Greatest irony of the AI age: Humans hired to clean AI slop\n • Hacker News: New study shows plants and animals emit a visible light that expires at death\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kimmel: Rückkehr voller Emotionen - und mit einem Plädoyer",
+  "hash": "6532dc90b8236bff50cb1c3805229288d3aab95d26077d993739562cd5bdb401",
+  "id": "BLK_1758697759_vqw5re",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "sNO+0RCv6jjusLqjl1c0ZKyCVCrGLfTrJehil9akWs4YzjYqZ4YEppiNFcEZhVLwm8j1vY1OXkzgUTrmWmS8BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 09:09",
   "ts": 1758697759,
-  "meta": {},
-  "hash": "6532dc90b8236bff50cb1c3805229288d3aab95d26077d993739562cd5bdb401"
+  "url": ""
 }

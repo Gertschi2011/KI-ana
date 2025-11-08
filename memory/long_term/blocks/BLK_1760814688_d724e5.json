@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Liva AI (YC S25) Is Hiring\n • Hacker News: Atuin desktop: Runbooks that run\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre Horror - was die ehemaligen israelischen Geiseln berichten",
+  "created_at": 1760814688.2276235,
+  "hash": "4397526bf970970cb77a22038a44aeca51a389baf519cf136e61c8bca4dcc531",
+  "id": "BLK_1760814688_d724e5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "3CP6OknsrnN4JLXrhjmpf3DLmnXVO5BJ94QiBe6nVxfAVH0VPrPkVJz58kE50LW4auOf1yuFDEJv1clFDISMCg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 21:11",
+  "url": null
+}

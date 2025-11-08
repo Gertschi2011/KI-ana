@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: 60k kids have avoided peanut allergies due to 2015 advice, study finds\n • Hacker News: Old Computer Challenge – Modern Web for the ZX Spectrum\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach \"Stadtbild\"-Äußerungen: Der Stil des Kanzlers steht in der Kritik",
+  "created_at": 1761023579.9483294,
+  "hash": "09e6f8b2f21f9682314c84fe5ee77a2d049670e22fc0f4885d58121a7efe5726",
+  "id": "BLK_1761023579_66a7d4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ihUaGWeUX7CHi0WqKnycBPw03+As/pPpXqVy3PJ6+Zjy4FodZPTRVOcIBVc5g+xaUa5yfuLpQjOukhfU18EwCA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 07:12",
+  "url": null
+}

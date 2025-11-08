@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758936962_kr8mvo",
-  "title": "Web Digest 2025-09-27 03:36",
   "content": "• Hacker News: The Obsessively Complete Infocom Catalog\n • Hacker News: Show HN: Family Chess: Play across firewalls and Internet cultures\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor Vereinten Nationen: Ich gegen euch",
+  "hash": "b9258e08748ea10881413b31a2462e041d5bb503244d530578eaf93f121e0b2f",
+  "id": "BLK_1758936962_kr8mvo",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "kr7BXvCjJANk4lE6xGyemUcwx/rSYalSuByQ0Qp6VPNF7TDwKVSwbfMaFhOEoECtCzd3sfqiCvc2DEbWAi0UDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 03:36",
   "ts": 1758936962,
-  "meta": {},
-  "hash": "b9258e08748ea10881413b31a2462e041d5bb503244d530578eaf93f121e0b2f"
+  "url": ""
 }

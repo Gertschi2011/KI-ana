@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758954970_u3n7qw",
-  "title": "Web Digest 2025-09-27 08:36",
   "content": "• Hacker News: Why Today's Humanoids Won't Learn Dexterity\n • Hacker News: GPT-OSS Reinforcement Learning\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medienbericht: Dobrindt will Drohnenabwehr besser regeln",
+  "hash": "057627cc2f0712dd6f1106323f432679cba475f15bf572197c748660af031f33",
+  "id": "BLK_1758954970_u3n7qw",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "JIK1oykZ+h0lYDLHXLU57lfS6kn0S4fPGg97v/MJjqTJcSUgTQJ6C4R8xKiBBmnQVlDiZ6DonghNBjPs++grBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 08:36",
   "ts": 1758954970,
-  "meta": {},
-  "hash": "057627cc2f0712dd6f1106323f432679cba475f15bf572197c748660af031f33"
+  "url": ""
 }

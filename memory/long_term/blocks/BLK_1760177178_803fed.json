@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: HTML's Best Kept Secret: The Output Tag\n • Hacker News: AV2 video codec delivers 30% lower bitrate than AV1, final spec due in late 2025\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs Premier Lecornu steht vor fast unlösbaren Problemen",
+  "created_at": 1760177178.4833808,
+  "hash": "ae432a70e58aa04fdfc074ba036ec9aa3682aaf84fb0384879bc122a1227444e",
+  "id": "BLK_1760177178_803fed",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "DFNc1oPxGEPFnPfLYB+po6/eLCJnSN1UPQiXQzhBAxsQLrSOxoph710CLtfpmpQZ0CpFs9KslPhBln3jyeYcDg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 12:06",
+  "url": null
+}

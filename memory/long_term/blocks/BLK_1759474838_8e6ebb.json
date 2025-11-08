@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: In Praise of RSS and Controlled Feeds of Information\n • Hacker News: Japan's ruling party is in crisis as voters swing to right-wing rivals\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie steht es um die deutsche Einheit?",
+  "created_at": 1759474838.4138174,
+  "hash": "4848bd4a51b37fc158777dbe8aea3e793fa032ec6f1c560e81a1d6a9f63f54ce",
+  "id": "BLK_1759474838_8e6ebb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "dbQaP/8o8YRfaiNQBMwf7Vl6vRuou0tLstH0Z6RO6xtdBqQUffhCvJdZhvhSewOY4zv0vz28jWMCOzLJjwJCAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 09:00",
+  "url": null
+}

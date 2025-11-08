@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Remembering Steve Jobs\n • Hacker News: Retiring Test-Ipv6.com\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Abschiebungen: Dobrindt-Abgesandter trifft Taliban-Vertreter",
+  "created_at": 1759678353.5197382,
+  "hash": "47b7426d009b0cac18ed08d59056cdeb39b20adfa77b16fefd901f049d3b788d",
+  "id": "BLK_1759678353_0b3cc9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+NQDeIUF3RXoQRW46rmtNPVxIYHQYm6LielR4sEwxRvv7l5ZZe1zXWePlHcJS2bohQ+rplAL4Ue4fcZTYMhICA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 17:32",
+  "url": null
+}

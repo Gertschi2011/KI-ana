@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Alibaba Cloud: AI Models, Reducing Footprint of Nvidia GPUs, and Cloud Streaming\n • Hacker News: Free Programing Books\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre Horror - was die ehemaligen israelischen Geiseln berichten",
+  "created_at": 1760805684.2589223,
+  "hash": "9eab700501cdf9a3baf7a3f1c9e9e94fa06c2aa1cccd653a2079e4f37d3cf39f",
+  "id": "BLK_1760805684_ccaee0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "hPUayP3QAoXw6We7K3UGovyFzpScvYlr45jWrP4Rtm8nQ4OIQABi4PzFL9rQxxsmiO9qy4yeIADmZHoFEubjAA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 18:41",
+  "url": null
+}

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758607349_3x1rld",
-  "title": "Web Digest 2025-09-23 08:02",
   "content": "• Hacker News: Delete FROM users WHERE location = 'Iran';\n • Hacker News: Zoxide: A Better CD Command\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Anerkennung von Palästina: \"Die Zeit für Frieden ist gekommen\"",
+  "hash": "359c20b69f4dfa2f2511a095a7f550245ce1fa349ff9fd217ea0178ea2b78887",
+  "id": "BLK_1758607349_3x1rld",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "fMavXogapLICuGMAmHGCrM2RFgQN0Z86M3CC2ZVJtwCz5PMkT3tGBoaiWbTytAxJximLqmcyIovqsvXGwnmnDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 08:02",
   "ts": 1758607349,
-  "meta": {},
-  "hash": "359c20b69f4dfa2f2511a095a7f550245ce1fa349ff9fd217ea0178ea2b78887"
+  "url": ""
 }

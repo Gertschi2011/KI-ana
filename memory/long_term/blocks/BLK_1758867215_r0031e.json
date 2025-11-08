@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758867215_r0031e",
-  "title": "Web Digest 2025-09-26 08:13",
   "content": "• Hacker News: No reachable chess position with more than 218 moves\n • Hacker News: The effect of H-1B quota on employment and selection of foreign-born labor (2018)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Auf Trumps Betreiben wird Ex-FBI-Chef Comey angeklagt",
+  "hash": "856d3d32f11e32997bc6c7b248254bfcc1d02c77e498d4dbcdb6a5253029a41d",
+  "id": "BLK_1758867215_r0031e",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "DdmLzJ10UQKnGPQ+HNex+eYPLRI/G5jU/W8lDf1fvt6FsRAlm4/fZx3p/yuY0zYnNqm3N6QyT1fHZkLxdDj+CQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 08:13",
   "ts": 1758867215,
-  "meta": {},
-  "hash": "856d3d32f11e32997bc6c7b248254bfcc1d02c77e498d4dbcdb6a5253029a41d"
+  "url": ""
 }

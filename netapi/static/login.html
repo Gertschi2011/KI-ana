@@ -60,7 +60,14 @@
       const j=await r.json().catch(()=>({}));
       if(!r.ok || !j || !j.token){ document.getElementById('msg').textContent = (j.detail||'Login fehlgeschlagen'); return; }
       try{ localStorage.setItem('ki_token', j.token); }catch{}
-      location.href='/static/chat.html';
+      // Redirect Papa/Admin users to Dashboard, others to Chat
+      try{
+        const roles = (j.user && j.user.roles) || [];
+        const isPapa = roles.some(r => ['papa','admin','creator'].includes(String(r).toLowerCase()));
+        location.href = isPapa ? '/static/dashboard.html' : '/static/chat.html';
+      }catch{
+        location.href='/static/chat.html';
+      }
     }catch{ document.getElementById('msg').textContent='Netzwerkfehler'; }
   });
 })();

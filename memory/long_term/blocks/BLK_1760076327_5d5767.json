@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Reasoning LLMs are wandering solution explorers\n • Hacker News: I'm turning 41, but I don't feel like celebrating\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "created_at": 1760076327.400365,
+  "hash": "4f2cfed43ab3a6ed15ed1ddee24d7c790ee5b8f7a520a6e0b368d32b561b0ee8",
+  "id": "BLK_1760076327_5d5767",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "9d6w8khoZIYJGv9vF9cBQl3W/og/HfJ4LwOKd2AiSQwH8nUCrsbLZSvdLWMQh+dCa6h7eQSUubj+g1UVousyBA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 08:05",
+  "url": null
+}

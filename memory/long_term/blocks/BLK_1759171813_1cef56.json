@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: FCC Accidentally Leaked iPhone Schematics\n • Hacker News: Claude Code 2.0\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ++ Israel stimmt laut Trump Friedensplan zu ++",
+  "created_at": 1759171813.4158359,
+  "hash": "b7656c4fe331a966dfd04f1ec48fc04f677eba751910e060d5dcc4037a775394",
+  "id": "BLK_1759171813_1cef56",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "S2S3n/VCg8HZaoZOmsptyP9k0I4nY4s98mYHoef+bDY1tb1oHA6HMH9fVDJ8z+ek/anb8FijTo/crCSJ4wq8AQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 20:50",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: Write Go code in JavaScript files\n • Hacker News: Diphtheria, a once vanquished killer of children, is resurgent\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Präsident Milei kann nach Zwischenwahl in Argentinien jubeln",
+  "hash": "79e23ad771bfc2a6b96091f27f1a7c4aeab22ebd4c584bc6ee95f186bf0ee742",
+  "id": "BLK_1761552052_2pq3kd",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "DJJYBmaSkcro18Mv47Pl/6NKRfdTJ2fkgaFZ7jCR2nTx3KvDEbnbGuou6gnGuqqJ1pV97y2fHRsP7+YMaGSXDg==",
+  "signed_at": "2025-10-27T08:00:52Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 09:00",
+  "ts": 1761552052,
+  "url": ""
+}

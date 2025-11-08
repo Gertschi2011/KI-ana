@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Libera Chat receives legal advice that the Online Safety Act does not apply to\n • Hacker News: Rock Tumbler Instructions: Turning Rough Rocks into Beautiful Tumbled Stones\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwedens Angst: Wie bezahlen, wenn das Netz ausfällt?",
+  "created_at": 1761418446.7895029,
+  "hash": "88de2ea2b9074eef29ada5f4340c025ec9482ce9e1253ca0c1c691cef4a8edfc",
+  "id": "BLK_1761418446_131dcc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "29phDjZ4I+hUB7NjJlX5ZBDHXKnmid0ndnaIYeq4Nq2siUQbJoNxCtrH6sY3J26FViOolHtrboBRgjZTSzVCDA==",
+  "signed_at": "2025-10-25T18:54:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 20:54",
+  "url": null
+}

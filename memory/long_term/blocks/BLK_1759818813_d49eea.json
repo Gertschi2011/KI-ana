@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Learning a foreign language–before you're born\n • Hacker News: California law forces Netflix, Hulu to turn down ad volumes\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kibbuz zwei Jahre nach Hamas-Angriff: \"Sehr traumatisch hier\"",
+  "created_at": 1759818813.4493895,
+  "hash": "e37c220bb9cb008a8de4e39e85bbf63f4107e564ef38e9f4e1a3b8b6eb23a907",
+  "id": "BLK_1759818813_d49eea",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+QItvzbpKy8xBGw3kqXSA4RHB5vixLFm9LPlFygwtd/sdDJalxYyz/GhoIdWA47iupoG+jw/la3zJBxnum7QCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 08:33",
+  "url": null
+}

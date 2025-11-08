@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758922555_tt8840",
-  "title": "Web Digest 2025-09-26 23:35",
   "content": "• Hacker News: RNA structure prediction is hard. How much does that matter?\n • Hacker News: Why Use Mailing Lists?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor Vereinten Nationen: Ich gegen euch",
+  "hash": "76f34d9ae2b4b028f359beca2f309310cda305455762042522e012e294d72c5d",
+  "id": "BLK_1758922555_tt8840",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "zPUDpj7drxRLFg2Dasl+u4YGVWiHHKMucwUl1XKbftzqFt/rCT+8LM16/8yV0zPDmxPAWRzojZlF8wJM2JEdBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 23:35",
   "ts": 1758922555,
-  "meta": {},
-  "hash": "76f34d9ae2b4b028f359beca2f309310cda305455762042522e012e294d72c5d"
+  "url": ""
 }

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Queueing to publish in AI and CS\n • Hacker News: What is \"good taste\" in software engineering?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NRW-Stichwahlen: CDU und SPD erleichtert, AfD als \"Verliererin\"",
+  "created_at": 1759137838.969371,
+  "hash": "c517527cafa64c9f19b84e079f22ce31924559b5ac9fbd6562b5c4305c1ce9a9",
+  "id": "BLK_1759137838_ef4a29",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "w3GpvWjSYAH6qNB6uNYiUhon54XvWk+NnZRWH87k1znkJhPIMc1dkoGpIHXRRuYXAxb8GWgb3m5fCHVVMmwgBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 11:23",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Alaska Airlines' statement on IT outage\n • Hacker News: RFC 863 – Discard Protocol\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Gipfel: Lange Agenda, langer Tag, lange nicht in allem einig",
+  "created_at": 1761290577.494171,
+  "hash": "554851674e3afc5d3f03e3231975f4ecf1a8b069ac8996492a7e00826945c92e",
+  "id": "BLK_1761290577_f7b499",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "n9kDk261uEnd6XRh3HLuM85o+SScPOQKzt/zB5NkHe+he8Zmfdo5pZCm3iai2qALuTO8LpcxRZ4JEr1qfaP9CA==",
+  "signed_at": "2025-10-24T07:22:57Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 09:22",
+  "url": null
+}

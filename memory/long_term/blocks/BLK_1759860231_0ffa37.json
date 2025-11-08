@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: German government comes out against Chat Control\n • Hacker News: Building a Browser for Reverse Engineers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Kommission will Zölle auf Stahl auf 50 Prozent verdoppeln",
+  "created_at": 1759860231.3124182,
+  "hash": "9c65a8d6b39daa12fa634143fa94876eb61d54150e23cc01a4b685e7bcc14585",
+  "id": "BLK_1759860231_0ffa37",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "eUoKQnX9K7ZSKVXuMSSHvb+N0pOnMM5qlcVQbwvr7v/yRFL4PA0OI7MjtzPrr2eyMUdyVes86AkKchl9l/mRBQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 20:03",
+  "url": null
+}

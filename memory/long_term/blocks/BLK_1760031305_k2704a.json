@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: ESP32 and Termux\n • Hacker News: Fireman Sam (Commodore 64)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz im Interview: \"Machen Weg für Rückkehr in den Arbeitsmarkt frei\"",
+  "hash": "cab9e1b9b8c94e60c30927031924b00b5d5a6e596fd1dca9702f730c24bfd773",
+  "id": "BLK_1760031305_k2704a",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "bJPneM0EBkrrICNB9T8235efgPC+bfw6BMPsSesDB6UIdw/i5up4sGXbb6ODmaD+hHbrZg2brDWUTbX/5dryAQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 19:35",
+  "ts": 1760031305,
+  "url": ""
+}

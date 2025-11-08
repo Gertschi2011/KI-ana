@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Greenland Ditches Starlink for French Satellite Service\n • Hacker News: French ex-president Sarkozy begins jail sentence\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ein Polizeigewerkschafter und seine steilen Thesen",
+  "created_at": 1761119419.497097,
+  "hash": "fda15ca2a832d476e923f3b7d649f00e77ead0a07b38339425aedb14dba3cf3a",
+  "id": "BLK_1761119419_a7feb0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "1ZGysVkJT6hptiTEDwgTeRZajbr++4qRv4Ypd8BxO+p5IQSK8TDY4z8fJZKvESnOsdIgdPnElHGgOW+5C2teDA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 09:50",
+  "url": null
+}

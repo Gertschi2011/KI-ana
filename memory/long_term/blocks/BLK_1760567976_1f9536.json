@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I Hate Acrobat\n • Hacker News: Next Steps for the Caddy Project Maintainership\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensvereinbarung zwischen Israel und der Hamas auf dünnem Eis",
+  "created_at": 1760567976.8324125,
+  "hash": "59d69d014b260410dc9080ab52a4134042ac87d0d79d2b88c9b9940ab0882218",
+  "id": "BLK_1760567976_1f9536",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "jCbe2WyHszzClIMS3sb0drq73g4ptbeopUeEdK+3W1eSU58M7yyfsrzWiLKlwKM021TVhjx6N3dP6uhMk1S3AA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 00:39",
+  "url": null
+}

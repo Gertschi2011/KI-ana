@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Human Error Cripples the Internet (1997)\n • Hacker News: Pasta/80 is a simple Pascal cross compiler targeting the Z80 microprocessor\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Datenanalyse: So sehr ist der Gazastreifen zerstört",
+  "hash": "e1d682966bfbedd37b8de9ae85219e1844338aa406b54e4d986a01fb589e3fd9",
+  "id": "BLK_1761043388_ja1eva",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "Mv2kkJYmPiXDS0NpbZX615X4v85JL2LV0BTCUo++g3cgBmt8OZm3CQUhjt8SJRy57cC72U3hydx8N4JFHC45DA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 12:43",
+  "ts": 1761043388,
+  "url": ""
+}

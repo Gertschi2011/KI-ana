@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Does anyone remember websites?\n • Hacker News: Tech megacaps lose $770B in value as Nasdaq suffers steepest drop since April\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die 20 noch lebenden Geiseln im Gazastreifen",
+  "created_at": 1760196988.974091,
+  "hash": "71513c677928a1554d1a5184042d45fe4489a986f5b75649ca9a2d1e793e1020",
+  "id": "BLK_1760196988_220c54",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "950KnenCw/yAXzP3elbiLmeBv8bU0Z1CGNeDcS8eHNDIJ+O+1RaToYHOW1rtZu/SqTHMkU2k+TgOBiD2NyRRCw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 17:36",
+  "url": null
+}

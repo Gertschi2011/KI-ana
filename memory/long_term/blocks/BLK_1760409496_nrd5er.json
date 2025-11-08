@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Eavesdropping on Internal Networks via Unencrypted Satellites [pdf]\n • Hacker News: StreamingVLM: Real-Time Understanding for Infinite Video Streams\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "hash": "9d235625e2ef8a5f88bcd8726819065909f94f829fb9042ed30160c3d4e56fc3",
+  "id": "BLK_1760409496_nrd5er",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "vaeAdb/fyiRr8l0QXRpCfMP1VMxtnWr7YycuSSEFbjIAqiOFe8wEHXxxIHuy5jWfg63AUS16h087xxd0Z60eDg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 04:38",
+  "ts": 1760409496,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Rubygems.org AWS Root Access Event – September 2025\n • Hacker News: Subway Builder: A Realistic Subway Simulation Game\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz im Interview: \"Machen Weg für Rückkehr in den Arbeitsmarkt frei\"",
+  "created_at": 1760033106.3527887,
+  "hash": "88277ae3bd224e7aec015662d25120b3f38606d11e7d543fffb1cd6302fecd21",
+  "id": "BLK_1760033106_16ce49",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Z9hjsGjg5qYZnW3kVxc1/rh4OFU2jVz3HZ3PskFTi0NPKTInkkqiwWSBUn5CRYisfDlXxhailsmQvsImoclZBQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 20:05",
+  "url": null
+}

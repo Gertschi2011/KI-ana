@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple loses UK App Store monopoly case, penalty might near $2B\n • Hacker News: Memory Maps (MMAP) Deliver 25x Faster File Access in Go\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "created_at": 1761260530.46692,
+  "hash": "d8427fea32483f7a807be7478bbc9b782af65a1fe7739b38c182f78eda60ac3a",
+  "id": "BLK_1761260530_d29f23",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "WJa4XLIhGZ4IGABNWeQRf2TOarhStt2v4tVNCfEwVoYcGtix3FQrf7JejfCJbQ+oOvm9V1a1ZLwGCvJn9gRWDg==",
+  "signed_at": "2025-10-23T23:02:10Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 01:02",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Immich v2.0.0 – First stable release\n • Hacker News: Keyhive – Local-first access control\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bayerns Innenminister sieht nach Drohung gegen Oktoberfest kein Risiko mehr",
+  "created_at": 1759395593.997592,
+  "hash": "e69931884ab2434c3009a17e539bf83e121a3bd471950ca648d9edebe393edfa",
+  "id": "BLK_1759395593_9da26f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "CtMy/pCHeE0OQa4/WEmrMBGZDRoZnc1XUAblGnCvBDXOO6GAeBCCSMNjeMC+dYXCP7iB8MdzRX0Ne2UsqbwtDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 10:59",
+  "url": null
+}

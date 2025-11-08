@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Write the Damn Code\n • Hacker News: Loadmo.re: design inspiration for unconventional web\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Düstere Aussichten für Europas Umwelt",
+  "created_at": 1759162809.020164,
+  "hash": "3a9db1c24d60b8346f55a3bb1aa322c47a4a99696099550ca2042b49cc7ac079",
+  "id": "BLK_1759162809_fdd5e4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MeHrBRK1FZ+luFO8bHlf6N1WvG7n1yOWfWWWE4F/pgTBgGG6zeLyQc2N9xoxaFCV2aIkf8gewck9nMdUosr9CQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 18:20",
+  "url": null
+}

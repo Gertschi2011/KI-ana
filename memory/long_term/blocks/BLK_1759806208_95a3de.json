@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Origami Patterns Solve a Major Physics Riddle\n • Hacker News: Analytical review of depression and suicidality from finasteride\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Gespräche enden in \"positiver Atmosphäre\"",
+  "created_at": 1759806208.1162877,
+  "hash": "9a64276506554f3938f3c6953e71416f3cbe355d16825e366804f05314562925",
+  "id": "BLK_1759806208_95a3de",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "mm7wfa40M/kS6PC6GQEPcVUFc02pcOMNgPX0TS7EdCRpTGFRb4suXvj+qZLiqaiQ88Wk4z2y3V7bkcFG9yGXAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 05:03",
+  "url": null
+}

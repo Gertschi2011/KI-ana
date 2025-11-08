@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Time Warp IDE – Complete environment for old-school coding\n • Hacker News: How to Write in Cuneiform, the Oldest Writing System in the World\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "hash": "0b1eec22b31728851549d5b522875d9415178be49f9ae35e0d1068327227f06d",
+  "id": "BLK_1760058318_qk80bk",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "2UbgCPek/7f20hoBUVWKRL71IU+jNkGEGZC7S4SaO/0vTUMAFbNt2Vl3G89fWVIQKRuL+hVQbxvpU3uID2HhDA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 03:05",
+  "ts": 1760058318,
+  "url": ""
+}

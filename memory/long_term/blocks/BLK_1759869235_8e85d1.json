@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Gemini 2.5 Computer Use model\n • Hacker News: Eliminating contrails from flying could be incredibly cheap\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre nach Hamas-Überfall: Israel gedenkt der Opfer",
+  "created_at": 1759869235.2726696,
+  "hash": "5566b426190c904012567676c0912a4c3742018c59044c854ba1508d9ebe1f16",
+  "id": "BLK_1759869235_8e85d1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "E0hVd0nz3TrZ1d3Lo+MExBG/13vZ+uMRVRtMsMXYYddIHxrbew2vS499cwVWIXswSHSoIt6/tVFQUmDYB+GuBA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 22:33",
+  "url": null
+}

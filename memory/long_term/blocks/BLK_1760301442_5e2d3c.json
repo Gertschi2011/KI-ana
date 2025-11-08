@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: After the AI boom: what might we be left with?\n • Hacker News: HP1345A (and wargames) (2017)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Selenskyj spricht mit Trump: \"Tomahawks\" für die Ukraine?",
+  "created_at": 1760301442.9086432,
+  "hash": "45dbfb6922020797bdceb092e81fa54e61a337ff9239de91582842a6087509b7",
+  "id": "BLK_1760301442_5e2d3c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "+wYGZ/k5Y1U2mqBL44MTMf2t6gR/kXv0m7MEzAHEYTncPv+LFoXvMxquXUnrBwa56qlG4+Yjpzrf28bNXK9UDw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 22:37",
+  "url": null
+}

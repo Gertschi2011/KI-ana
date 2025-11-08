@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Conductor (YC S24) Is Hiring a Founding Engineer in San Francisco\n • Hacker News: Microsoft Teams will start snitching to your boss when you're not in the office\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Großbritannien drängt auf Nutzung russischen Vermögens für die Ukraine",
+  "created_at": 1761341569.0886486,
+  "hash": "bfe997b3cd031de4105f89bd2794e32ea0e15f9ce30c18aca5ec423a25607b27",
+  "id": "BLK_1761341569_e79ce1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "9IOwgyESVhvQayUKc2Z1/I/aZ4Trh8kUIYgJ+CjcCVoFa6bqEasSypu1wX9V1z/UyiDpfpdmrV8Kbwk0pX/1Bw==",
+  "signed_at": "2025-10-24T21:32:49Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 23:32",
+  "url": null
+}

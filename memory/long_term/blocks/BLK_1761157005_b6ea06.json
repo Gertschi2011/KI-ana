@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: JMAP for Calendars, Contacts and Files Now in Stalwart\n • Hacker News: HP SitePrint\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): \"Stadtbild\"-Debatte: Kriminologe empfiehlt Fokus auf Datenlage",
+  "created_at": 1761157005.7944088,
+  "hash": "f115f38f50282f5317d8491e84be5bafeb5e0a8b15439adb600d892b3fc15a71",
+  "id": "BLK_1761157005_b6ea06",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "TysdfiE4ZG+uAuDBnh42kq6QCN4cylUeFRaWfOJkQVMBrK3IpzWc4EDomt6fH75n7RphuOMCxR0zbRS+AZL5Cw==",
+  "signed_at": "2025-10-22T18:16:45Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 20:16",
+  "url": null
+}

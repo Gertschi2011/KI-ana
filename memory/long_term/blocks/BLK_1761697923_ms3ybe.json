@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Fil-C: A memory-safe C implementation\n • Hacker News: Static Android Debug Bridge (adb)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "hash": "a1094ad29a42a3efec7547f74679b509e09260e9e436dde7c53360ec8bc18535",
+  "id": "BLK_1761697923_ms3ybe",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "7GGPWY8xXO0dyRKa/AKz0QK6814rahsYdyyU5y1V4PbEhWe8/sImITmhZE94JX42U3GB1goOQsTJTwgxfEZUDw==",
+  "signed_at": "2025-10-29T00:32:03Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-29 01:32",
+  "ts": 1761697923,
+  "url": ""
+}

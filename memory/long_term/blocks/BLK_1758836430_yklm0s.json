@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758836430_yklm0s",
-  "title": "Web Digest 2025-09-25 23:40",
   "content": "• Hacker News: New Quasi-Moon Discovered Orbiting Earth, but It's Been Around for Decades\n • Hacker News: Can a model trained on satellite data really find brambles on the ground?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Erfolgreiche Richterwahl: Vom Regelfall zum Stresstest",
+  "hash": "3a963160de405f621f9b46307b522482c351d4952238a8f803a328fc1116067b",
+  "id": "BLK_1758836430_yklm0s",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "i+smqImke3ZS8d013h3xDH2lS++eI3rOY+RvnsJeaAlWuKOsDJOCC/7yojdujUHzsqRQB29nL1PP/fs4eziWBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 23:40",
   "ts": 1758836430,
-  "meta": {},
-  "hash": "3a963160de405f621f9b46307b522482c351d4952238a8f803a328fc1116067b"
+  "url": ""
 }

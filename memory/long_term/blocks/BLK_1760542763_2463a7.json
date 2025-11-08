@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: David Byrne Radio\n • Hacker News: Recreating the Canon Cat document interface\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): WMO: CO2-Konzentration in der Atmosphäre 2024 so stark gestiegen wie nie",
+  "created_at": 1760542763.9410403,
+  "hash": "508a9ee8e7004007c876416beb9f9f6663ed7899294c0a817727175d8d1558dc",
+  "id": "BLK_1760542763_2463a7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ymVujk1hNHuJkfZuJyj5z/7pLAIFSuqi2hOx2Pmi45LX4bVM/v5qg6xJOa/90keX39QbpkjTVsSGozmOE3TxDA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 17:39",
+  "url": null
+}

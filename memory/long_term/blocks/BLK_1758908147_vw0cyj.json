@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758908147_vw0cyj",
-  "title": "Web Digest 2025-09-26 19:35",
   "content": "• Hacker News: Informed Poll\n • Hacker News: Thinking Machines – Modular Manifolds\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor UN-Vollversammlung: Eine Rede im Kampfmodus",
+  "hash": "29c4d4ece9ef8d7d1f4451e6b14baa230fe5abf4a529524f1f9a0681e5e96e8b",
+  "id": "BLK_1758908147_vw0cyj",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "8xv3kZ6gdMISvjR5UkJ3jPfw7OI+uh+gm+gYbzyRfM8u2vs7d/zomk+CDaQSvIjZFvYdCFDGDWxtfdPdxM46CQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 19:35",
   "ts": 1758908147,
-  "meta": {},
-  "hash": "29c4d4ece9ef8d7d1f4451e6b14baa230fe5abf4a529524f1f9a0681e5e96e8b"
+  "url": ""
 }

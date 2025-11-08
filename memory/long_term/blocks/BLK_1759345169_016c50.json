@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tinker by Thinking Machines\n • Hacker News: Announcing Tinker\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Aus dem schwarz-roten Ruckeln soll ein Ruck werden",
+  "created_at": 1759345169.3776777,
+  "hash": "a3695e242d8ca6ed05ff06e9348cda4c88b96ff24cb2ecdebc486c200337644a",
+  "id": "BLK_1759345169_016c50",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "mlgnFIYffpa3n6jf2N2rMIoodAkZmGEQLvxPwW3qs1PTOqOUQ5E+anBdo3ce7dgfh64h74UXjFdpCqgj6C9nDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 20:59",
+  "url": null
+}

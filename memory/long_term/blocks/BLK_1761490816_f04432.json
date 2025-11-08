@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The FSF considers large language models\n • Hacker News: Let's Help NetBSD Cross the Finish Line Before 2025 Ends\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Verdächtige nach Diebstahl im Pariser Louvre festgenommen",
+  "created_at": 1761490816.8764005,
+  "hash": "ac9bd633cd923ce1a327422371287d29524440fb69d53f3793c1491a3cb87977",
+  "id": "BLK_1761490816_f04432",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4c60fUTy7Z+weJS9tk25UtYaVl2B2scHF6RtXRh8QuoZcJvMELn5ZC+VMHH3ung9PayJhcauH/NNzaVjTKCPAA==",
+  "signed_at": "2025-10-26T15:00:16Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 16:00",
+  "url": null
+}

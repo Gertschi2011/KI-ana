@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Rock Tumbler Instructions: Turning Rough Rocks into Beautiful Tumbled Stones\n • Hacker News: The mad king's digital killswitch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwedens Angst: Wie bezahlen, wenn das Netz ausfällt?",
+  "created_at": 1761413609.5999248,
+  "hash": "65f8983a2a70d267a1ed3bd869b2e99f7bac95c848c2d80bc6fa5b2420548f6f",
+  "id": "BLK_1761413609_2d9173",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "uio6Emk5/ibVB1P6HVAeHZCULk6KszxUdcT79OMufPv8crItj2rY7vjwGa7Bhadqx6iUtpFZEk0rdW81WMzQCg==",
+  "signed_at": "2025-10-25T17:33:29Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 19:33",
+  "url": null
+}

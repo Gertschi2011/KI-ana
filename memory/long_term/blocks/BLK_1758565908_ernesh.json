@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758565908_ernesh",
-  "title": "Web Digest 2025-09-22 20:31",
   "content": "• Hacker News: Mentra (YC W25) Is Hiring to build smart glasses\n • Hacker News: California issues historic fine over lawyer's ChatGPT fabrications\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stimmen zur Bahnstrategie: Alte Versprechungen, aber kleiner",
+  "hash": "b225769d643633c171ba6c282cae646259519a180db2839ee70e524af8480b8e",
+  "id": "BLK_1758565908_ernesh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "xyTW2x7rktfOkyw0DVvvdGaUIHGOwBXkEu263BkzlCOo6qxeWjZ7oX52KIXUCVbDxuC3bt0bixlGjtJFeYmsCA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 20:31",
   "ts": 1758565908,
-  "meta": {},
-  "hash": "b225769d643633c171ba6c282cae646259519a180db2839ee70e524af8480b8e"
+  "url": ""
 }

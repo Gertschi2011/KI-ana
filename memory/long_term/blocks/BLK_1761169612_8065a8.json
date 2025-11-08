@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: InpharmD (YC W21) Is Hiring – NLP Engineer\n • Hacker News: Rethinking CQRS: An Interview on OpenCQRS\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stadtbild-Debatte: Merz sieht Migranten als \"unverzichtbaren Bestandteil\"",
+  "created_at": 1761169612.4104202,
+  "hash": "48e892fb2ae38f0012fe02db27d4f48f9ad6266b812ee9a110ba0a8d6bc5c083",
+  "id": "BLK_1761169612_8065a8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "8OJNsihEoTHaS/ecxMiI9ol/6CRwS8OHPkxDEDS6JTJCnAf9ZXWQUBF9zy8+Ong4020tN9s+uwg9MSdsfb8mAQ==",
+  "signed_at": "2025-10-22T21:46:52Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 23:46",
+  "url": null
+}

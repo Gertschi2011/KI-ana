@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: PEP 810 – Explicit lazy imports\n • Hacker News: ICE Wants to Build Out a 24/7 Social Media Surveillance Team\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundeswehr soll bei Abwehr von Drohnen helfen",
+  "hash": "ca8d5110d0df0068c2e4e15ef4876915a7b96b46e8a95b265ccec2fdea4e7a52",
+  "id": "BLK_1759521669_2cfz1u",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "AHknfoKjNF9tWXngfrHXgdcQQgEn7S9xxOHHaT5eebjIAYsHTL1DVpqDZ9WdjUfS4JppO+KxgRcwyNb8NBk3BA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 22:01",
+  "ts": 1759521669,
+  "url": ""
+}

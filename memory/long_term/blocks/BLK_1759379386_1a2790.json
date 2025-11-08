@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI is not killing jobs, US study finds\n • Hacker News: The biggest semantic mess in Futhark\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israels Marine fängt Schiffe der Gaza-Hilfsflotte ab",
+  "created_at": 1759379386.3354645,
+  "hash": "6cbdcb8c6b13ea791601801a861a87bb644cf46856f075b1c5f75361e39d7603",
+  "id": "BLK_1759379386_1a2790",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "tHcD8NYgN7x+xvntxvx2RJbpHOVfX49Kl7ACtavS6DgEX7+k+B6RGrw0Fb1cUEREfNl8Gx43hKHCo9Y0bR9yAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 06:29",
+  "url": null
+}

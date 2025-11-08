@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: I'm rewriting a web server written in Rust for speed and ease of use\n • Hacker News: Pasta/80 is a simple Pascal cross compiler targeting the Z80 microprocessor\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs Ex-Präsident Sarkozy tritt Haftstrafe an",
+  "created_at": 1761037986.1207695,
+  "hash": "447171931082a00857a7e0af6432051da6f8095f9d2ec5f8085695881394b484",
+  "id": "BLK_1761037986_56b9fa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "8qq887D2QaBmwn5sWdQpm+YaxXqUdbGnBQgSsu7+Y930exbiA9mFghSCdvEX0aCYYoN90LIkCjkK3GEXhhIGAg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 11:13",
+  "url": null
+}

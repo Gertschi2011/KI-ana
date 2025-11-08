@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Space junk falls on Western Australian minesite\n • Hacker News: Show HN: Newcomer Ranking – Alternative to GitHub Trending for New Repos\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Brandmauer-Debatte: CDU-Spitze berät bei Klausur über Umgang mit AfD",
+  "created_at": 1760866910.3851886,
+  "hash": "febd31bb860689c3d9602beaf31e5cfcde5ba16ec5d964c0f77c9e80ab67dad0",
+  "id": "BLK_1760866910_3a7b62",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "wPbbp7uEW+zQlmByYC1z+r42m2sMhaGgZLU6i2IKe7eAUtt4OtvBDbog5veFBeUhUBIP2ARCriERygMhs0SzCg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 11:41",
+  "url": null
+}

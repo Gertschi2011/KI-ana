@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: DDoS Botnet Aisuru Blankets US ISPs in Record DDoS\n • Hacker News: Sony Playstation 2 fixing frenzy\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "created_at": 1760400491.969571,
+  "hash": "fbb65743dc1793082a8d4db58674d2fb43638b5cb20bcbbab3a1392e6e51a2e7",
+  "id": "BLK_1760400491_03e0a5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "x1tOVjl5X5wD2Rgim2k625LxGr8fnZtT38MhO+STN3wKTa9V7pcj50R6KZmECRgNsq5epr8xlRkL7UIzFHMbBQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 02:08",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: First-in-the-nation law to ban ultra-processed foods from school lunches\n • Hacker News: The React Foundation: The New Home for React and React Native\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Einigung bei Gaza-Gesprächen: Jubelszenen aus Israel und Gazastreifen",
+  "created_at": 1760006093.8861313,
+  "hash": "79f45b799de57997be9870a6db94dd721dcd048e3c16e3fb94567500049a9556",
+  "id": "BLK_1760006093_7d03fa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "of9N/4vYhmP/IF1KoLHCGidTdM47zMANx9OdIvP/ph+OZhhmcubMrussfHhni8sIKPmBfqAvdFNNbwnHY93GBQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 12:34",
+  "url": null
+}

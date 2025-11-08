@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Major federal immigration operation headed to San Francisco Bay Area\n • Hacker News: The Body Keeps the Score Is Bullshit\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stadtbild-Debatte: Merz sieht Migranten als \"unverzichtbaren Bestandteil\"",
+  "created_at": 1761162408.7334466,
+  "hash": "78de1ab4fa9c035cd66150778648abab5057b5cf2303f6a4a87f803239bb3756",
+  "id": "BLK_1761162408_4ff70f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "H21CSdOFw9GX0xSmS9nL6I+vKEOyjY5cDknbhYImw9RGZRlWVs87gFkhTDQFmIdVygV2IYAcvMfrz3oO04YzBg==",
+  "signed_at": "2025-10-22T19:46:48Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 21:46",
+  "url": null
+}

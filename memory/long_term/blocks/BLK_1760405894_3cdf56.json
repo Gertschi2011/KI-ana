@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: SpaceX launches Starship megarocket on 11th test flight\n • Hacker News: StreamingVLM: Real-Time Understanding for Infinite Video Streams\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "created_at": 1760405894.7676814,
+  "hash": "c1d6515d1c4f8b727ab69239766217ba27f3ffd20a02bd7b3c36ca7ad3cb225d",
+  "id": "BLK_1760405894_3cdf56",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "r1bsZtIIWcEXgL2WcS9Dqmnqe3qWcibv01lEBKrjUEbOsR8XewpxglcW2o7uaBA8dCW5spDVFzM05Bf6Fp+nDw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 03:38",
+  "url": null
+}

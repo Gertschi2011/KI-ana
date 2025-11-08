@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: GenAI Image Editing Showdown\n • Hacker News: PCB Edge USB C Connector Library\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wenn der Stadt die Wohnung bezahlt und die Aktionäre kassieren",
+  "created_at": 1761456835.6089556,
+  "hash": "4d5b7794fdc21e44da905b980fb1aa2f79c8b3a712ff3a102e79d7f67b61c40f",
+  "id": "BLK_1761456835_417054",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "hKvH4lKbftS8oWiJRmBeUYClI3JN4kd0c5n3HE3q0ClBncnTMrxxK4weOOlwPVOrOoiw+KHC+yaCVCmo/QKMAw==",
+  "signed_at": "2025-10-26T05:33:55Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 06:33",
+  "url": null
+}

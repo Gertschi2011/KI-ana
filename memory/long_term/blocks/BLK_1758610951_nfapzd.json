@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758610951_nfapzd",
-  "title": "Web Digest 2025-09-23 09:02",
   "content": "• Hacker News: Altoids by the Fistful\n • Hacker News: Delete FROM users WHERE location = 'Iran';\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Anerkennung von Palästina: \"Die Zeit für Frieden ist gekommen\"",
+  "hash": "48b027564e02f1d072c50f03f08a286b96a199a2c08ace24e9ac2c5d686f0dee",
+  "id": "BLK_1758610951_nfapzd",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "y5Dk0vpwfcYoJVbwfGijSQYgUO0sDoLTZTEMb6ycWmw/0fmYRa4mBcMmneU4rLD5dBvct7pZy8yA7+F6iPhaAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 09:02",
   "ts": 1758610951,
-  "meta": {},
-  "hash": "48b027564e02f1d072c50f03f08a286b96a199a2c08ace24e9ac2c5d686f0dee"
+  "url": ""
 }

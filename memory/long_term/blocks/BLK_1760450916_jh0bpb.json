@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Let's Not Encrypt\n • Hacker News: Show HN: I tracked the adoption of AI coding extensions in VS Code since 2022\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Rückkehr der Geisel: Durchatmen nach dem Tag der Emotionen",
+  "hash": "c93793d7c157e3bcf8b997a4a0f4606a078f06129e36e6553e00b327e59dd9a8",
+  "id": "BLK_1760450916_jh0bpb",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "kcsF+bKi+p31PPMoEU2MR1+poJRwnP+4HW1INOl1iAKoPlxQWOhkYjBpsvwxMXbNb457TuzJgMIbsSzPu/3nBQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 16:08",
+  "ts": 1760450916,
+  "url": ""
+}

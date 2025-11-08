@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759017493_vz4o2f",
-  "title": "Web Digest 2025-09-28 01:58",
   "content": "• Hacker News: Why Warm Countries Are Poorer\n • Hacker News: How I accidently created the fastest CSV parser ever made\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzungen: NATO prüft Verteidigungseinsatz",
+  "hash": "08a196eef2ad9a04c3a820ea63aa614479daed060de889a7cdb1d3784ac12296",
+  "id": "BLK_1759017493_vz4o2f",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "D7494F0A2JGrJwXAYuDMtUY9TkCHQSimEvS/kN/mlJW1wVYvZd+kKrz0gN2nDANVslaeewk74Uj7ZXxPmCWCBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 01:58",
   "ts": 1759017493,
-  "meta": {},
-  "hash": "08a196eef2ad9a04c3a820ea63aa614479daed060de889a7cdb1d3784ac12296"
+  "url": ""
 }

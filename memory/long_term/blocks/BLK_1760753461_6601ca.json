@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Unix Executable as a Smalltalk Method (and Unix-Smalltalk Unification) [pdf]\n • Hacker News: NeXT Computer Offices\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine Klarheit über Tomahawk-Lieferung an die Ukraine",
+  "created_at": 1760753461.5742452,
+  "hash": "2e252261684d52b5a231311f217436fc6e044e8a63c578b69811c92a280a272c",
+  "id": "BLK_1760753461_6601ca",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "DbIlDQnSBAoTtSE8y5qK0Gu+Vh41n+t0vK53hbWvK7cAt1bV78N0MfRTHZWYoEMDLbh6NSOYDbWsgC3zi1Y7DQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 04:11",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Build a VPN Tunnel with Wintun on Windows – Part 1\n • Hacker News: Nobel Prize in Physiology or Medicine 2025 awarded to immune system researchers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Medizin-Nobelpreis geht an drei Immunforscher",
+  "hash": "cb48575aff6ea892f08a04864f2156cad1e911c83a126f438958cfca90ba3ecd",
+  "id": "BLK_1759748583_a8povj",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "NgiUgCbXwKobo9GsxXTuPKHHgyiNXBt25UsE+ScJqiyZS3E1WbuY7Kt28cEVeAk2qL5dM2LjfdhBGsapoS7jCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 13:03",
+  "ts": 1759748583,
+  "url": ""
+}

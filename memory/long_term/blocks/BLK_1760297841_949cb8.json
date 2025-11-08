@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Completing a new BASIC interpreter in 2025 (strings, math funcs, cassette)\n • Hacker News: Nielsen Norman Group on iOS 26 usability\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Selenskyj spricht mit Trump: \"Tomahawks\" für die Ukraine?",
+  "created_at": 1760297841.0898247,
+  "hash": "bd11cafefb6d091e668c708037e16539f312cd296640a4a6d6c663628b1a6220",
+  "id": "BLK_1760297841_949cb8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "yG29KSo6An3ypvp8H5ehAI8+TlIqCe77UvDd8bRigLIeTjYff+0f8wa/uRA0KQXxu+0TzjTn6me0D5EuwQ0gDg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 21:37",
+  "url": null
+}

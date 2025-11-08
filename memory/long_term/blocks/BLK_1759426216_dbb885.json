@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Liva AI (YC S25) Is Hiring\n • Hacker News: The Atlantic Quantum team is joining Google\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ARD-DeutschlandTrend: AfD zieht in Umfrage mit Union gleich",
+  "created_at": 1759426216.6758058,
+  "hash": "9078c0bab20798db7c299b5ed353c5464b2e7fba99efa163f5200768b2bdc051",
+  "id": "BLK_1759426216_dbb885",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "rueJ1PmkTlwq0d59qqJ2UK61pt5ustD3T6JLub8jQyQR38oIcTcTneu2+Fwm9rT5ZtiIGez9OsMry4ZmdZ4WBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 19:30",
+  "url": null
+}

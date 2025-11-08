@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: MIT technology can see microbes from 90 meters away\n • Hacker News: Building a 30 PB storage cluster in the heart of SF\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Festnahmen in Berlin: Offenbar Hamas-Anschlag in Deutschland vereitelt",
+  "hash": "b9508c96e14f63854c88b1459f00dd25a48870de892737a66c40db3629d399d4",
+  "id": "BLK_1759334363_ayqwry",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "YktdEw8Es/6j6viBk95dJAgR0bWdstf2zC1xPis/BxbYkjDi/XE8oZFCJVqLxH2y1RevovVoEFOjxVYC2qRTDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 17:59",
+  "ts": 1759334363,
+  "url": ""
+}

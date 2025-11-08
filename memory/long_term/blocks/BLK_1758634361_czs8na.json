@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758634361_czs8na",
-  "title": "Web Digest 2025-09-23 15:32",
   "content": "• Hacker News: Getting More Strategic\n • Hacker News: Silicon Valley hiring in turmoil after new H-1B fees, move spurs offshoring talk\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NATO warnt Russland vor weiteren Verletzungen des Luftraums",
+  "hash": "a3fa2cf65950fb73ca713bba13d40f01492aaf1796f6493b813290431a2cd49f",
+  "id": "BLK_1758634361_czs8na",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "CVzRfbhqp7ApboCiAMDz0iF1b1pw6yuKBXO0Ur5vgFywgdIUa6GKUq9MQxj/5rs5o0wbigyUbZtu3NqMyq4wDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 15:32",
   "ts": 1758634361,
-  "meta": {},
-  "hash": "a3fa2cf65950fb73ca713bba13d40f01492aaf1796f6493b813290431a2cd49f"
+  "url": ""
 }

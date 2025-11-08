@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758494275_1mwhuo",
-  "title": "Web Digest 2025-09-22 00:37",
   "content": "• Hacker News: Lightweight, highly accurate line and paragraph detection\n • Hacker News: Procedural Island Generation (VI)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zehntausende bei Trauerfeier für Charlie Kirk",
+  "hash": "3f2a6762375278480259f194ab64da84f02e788ecc358725f253c5b86e2b0f6f",
+  "id": "BLK_1758494275_1mwhuo",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "nwZNOQu5GS/52NGP4JJ9TOaKSyQt62lapkIV/oFGxiuH82q0LqNwx3Jq6fGxuFop3PBJIewjRySzfwas9kHkAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 00:37",
   "ts": 1758494275,
-  "meta": {},
-  "hash": "3f2a6762375278480259f194ab64da84f02e788ecc358725f253c5b86e2b0f6f"
+  "url": ""
 }

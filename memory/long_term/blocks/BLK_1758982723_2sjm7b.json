@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758982723_2sjm7b",
-  "title": "Web Digest 2025-09-27 16:18",
   "content": "• Hacker News: The Other Linux Logo\n • Hacker News: Show HN: I spent 4 months building Duolingo but for your life\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Zwischenfällen in Europa: Dobrindt plant Drohnenabwehrzentrum",
+  "hash": "a9ec1a05892b212b5b962bc4b210876d7b3cac40f7dffcb373b9aba4c4a25b2c",
+  "id": "BLK_1758982723_2sjm7b",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "pIIOaM/Gw4dEGLxlVejvcz8qN57YEJf16kEdgHEat+yaAtyz+CJEp0XKWmecfFuF8lC6CcnHa2BIn471LoZcBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-27 16:18",
   "ts": 1758982723,
-  "meta": {},
-  "hash": "a9ec1a05892b212b5b962bc4b210876d7b3cac40f7dffcb373b9aba4c4a25b2c"
+  "url": ""
 }

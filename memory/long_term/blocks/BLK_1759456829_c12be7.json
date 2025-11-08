@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Researchers develop molecular qubits that communicate at telecom frequencies\n • Hacker News: Apple takes down ICE tracking apps after pressure from DOJ\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Flugausfälle wegen Drohnensichtung am Münchener Flughafen",
+  "created_at": 1759456829.9917037,
+  "hash": "e3c4fe99b44d150467af8f07cdcc171a5e2392960dcd091c3142d2e56a424da9",
+  "id": "BLK_1759456829_c12be7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "DSQYwSUDZeLsUlC64H40jd/iOKSIXlkz6P8j+8GW6sWf97XuWs+GLsqMMp11pJHkGAsa7tVXl18N+qgawvL6CA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 04:00",
+  "url": null
+}

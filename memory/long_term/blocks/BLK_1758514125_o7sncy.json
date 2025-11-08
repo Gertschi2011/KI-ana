@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758514125_o7sncy",
-  "title": "Web Digest 2025-09-22 06:08",
   "content": "• Hacker News: The US Is Tracking 14 Potential Rabies Outbreaks in 20 States\n • Hacker News: South Korea's President says US investment demands would spark financial crisis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump bezeichnet erschossenen Kirk bei Trauerfeier als \"Märtyrer\"",
+  "hash": "80e745df6ca2e52ddb025673fd85a8f31df826e1caea639807568d3d3a1d83f4",
+  "id": "BLK_1758514125_o7sncy",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "VvYWgxINSefwHge6+I9IMIWj5Qfz3I5dLeCU+5x6ieZy2wgkJzpux9KBd3ugpVJGb6zDVPxPd8dcFs8jYYFfBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 06:08",
   "ts": 1758514125,
-  "meta": {},
-  "hash": "80e745df6ca2e52ddb025673fd85a8f31df826e1caea639807568d3d3a1d83f4"
+  "url": ""
 }

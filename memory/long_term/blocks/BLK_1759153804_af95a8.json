@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: EA Announces Agreement to be Acquired by PIF, Silver Lake, and Affinity Partners\n • Hacker News: Leading computer science professor says 'everybody' is struggling to get jobs\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Labour-Parteitag in Liverpool: Suche nach Wegen aus der Sinnkrise",
+  "created_at": 1759153804.7296498,
+  "hash": "32dadda357a518c008b5099325c6c22e189c6eae73d6d9e431a0352b0d89cf7d",
+  "id": "BLK_1759153804_af95a8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "1uoBfCeqWDL5Vc0lAemBa2z+4bP3z3R+I2oXo/vyftCGbLEr/jXoR7zGtfyHE9V954EEvS64hfmviyqs+sNiAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-29 15:50",
+  "url": null
+}

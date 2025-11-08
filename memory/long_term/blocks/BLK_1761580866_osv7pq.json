@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: PSF has withdrawn $1.5M proposal to US Government grant program\n • Hacker News: Pyrex catalog from from 1938 with hand-drawn lab glassware [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Studie: KI-Chatbots lügen bei 40 Prozent der Antworten",
+  "hash": "235c1225f4163f693d793ffd7faa9bb9f2f6ac66613b65e809727f3ffb9f66b2",
+  "id": "BLK_1761580866_osv7pq",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "izfqwCu96DAMTG926Vb6MK/iZkNKS59d7FdiMOusIuoI2rDoKL5nzAvFWQvyF9FbumtpQ4lGMyAQ8IR8eVU2Cw==",
+  "signed_at": "2025-10-27T16:01:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 17:01",
+  "ts": 1761580866,
+  "url": ""
+}

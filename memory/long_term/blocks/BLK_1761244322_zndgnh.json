@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Armed police swarm student after AI mistakes bag of Doritos for a weapon\n • Hacker News: OpenMaxIO is a community-maintained fork of MinIO\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "hash": "8ef71a0669a05b7506edfb92ace3c8ee3fdf5a7c6d63ca45070fe8a9e4d0666e",
+  "id": "BLK_1761244322_zndgnh",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "fPF/aPDQoKGl4i84v2WLJn+aLW+9xF+aK4V3nWWzg6K+fZOwillROW7MhyeyNjilCyuWjo8w0sEaUolimViYCA==",
+  "signed_at": "2025-10-23T18:32:02Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 20:32",
+  "ts": 1761244322,
+  "url": ""
+}

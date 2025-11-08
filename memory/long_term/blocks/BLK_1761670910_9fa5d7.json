@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: HOPL: The Human Only Public License\n • Hacker News: Texas Attorney General sues Tylenol makers over autism claims\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "created_at": 1761670910.0748405,
+  "hash": "39f79e7e746c04d16857596c810ef5742bbf4d28ef15a4302c987ad5dbcc6cfe",
+  "id": "BLK_1761670910_9fa5d7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "ojAdHj3KGqRQQl4TTNKv4UaVSgSbppE4ULR/DGdME4c/rv7W+6AXMe+eWC6j59ZXSi1hOzBatzOLX3aXm1iTBQ==",
+  "signed_at": "2025-10-28T17:01:50Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 18:01",
+  "url": null
+}

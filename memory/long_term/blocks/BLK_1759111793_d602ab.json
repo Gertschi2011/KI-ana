@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759111793_d602ab",
-  "title": "Web Digest 2025-09-29 04:09",
   "content": "• Hacker News: Primer on FedEx's Distribution Network\n • Hacker News: Just nuked 120 unused NPM deps from a Nx monorepo\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Proeuropäische Regierungspartei liegt in Moldau deutlich vorn",
+  "created_at": 1759111793.1752136,
+  "hash": "aa4c212328eeded8e70050c6af7d9826db69db0eff716bc9146f51e2436cf303",
+  "id": "BLK_1759111793_d602ab",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "R9ozLAZjpVtDyHFJlGAzuhnUuL29mc+/8gaRxV8Z0Ha8I9eCW6+Nz14xFzjQc8OLPyfnXT1gPb2oI71HhFoPBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759111793.1752136,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-29 04:09",
+  "url": null
 }

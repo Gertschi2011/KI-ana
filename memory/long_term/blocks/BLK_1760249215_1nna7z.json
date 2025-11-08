@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Spyware maker NSO Group confirms acquisition by US investors\n • Hacker News: Major security breach at Austrian AI startup localmind.ai\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Hamas bestätigt Freilassung der Geiseln ab Montag ++",
+  "hash": "d64b8cbbb34ff45af322d5c85e7db9ce8c794d1a6d1502078494261e357eb36b",
+  "id": "BLK_1760249215_1nna7z",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "EMoRsarDH1aZdxFPP9JDXmdoXZTYeayF5vKonyDYJ59ol71X3IkzhG4ge+XLH8PDizFWl0sj7fNyX+Z1b901Cg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 08:06",
+  "ts": 1760249215,
+  "url": ""
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Apple Reportedly Moving Ahead with Ads in Maps App\n • Hacker News: Let's Help NetBSD Cross the Finish Line Before 2025 Ends\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Verdächtige nach Diebstahl im Pariser Louvre festgenommen",
+  "hash": "b4fb691db3841560721343e252977ec079e703bf47a3ee21d6abd82abab3aab9",
+  "id": "BLK_1761489015_hoycnx",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "SDHQIZegV9+ssueueGx81NzK4FjpPaU6AXQhAMDdICLGh7egd1vpXRIczPjxqJkmhaIYqI3C0WYliy6IYvwVBA==",
+  "signed_at": "2025-10-26T14:30:15Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 15:30",
+  "ts": 1761489015,
+  "url": ""
+}

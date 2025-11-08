@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759072172_6pu4w0",
-  "title": "Web Digest 2025-09-28 17:09",
   "content": "• Hacker News: Show HN: Toolbrew – Free little tools without signups or ads\n • Hacker News: Plan 9 from User Space\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Deutsche kaufen Elektronikgeräte lieber neu als gebraucht",
+  "hash": "323a9c6dfbaadd3bbc27a661b7756f251a0ccd354cb14ee476581d2f875d60be",
+  "id": "BLK_1759072172_6pu4w0",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "kl+UJ4/GWgTYv3ReQZ+8DFu1sRvJkYa44gI/kNPyn6oKpbkqhHyOzI5U0hXP5F0Fr5MMztbdnzfCLftBWrLzBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 17:09",
   "ts": 1759072172,
-  "meta": {},
-  "hash": "323a9c6dfbaadd3bbc27a661b7756f251a0ccd354cb14ee476581d2f875d60be"
+  "url": ""
 }

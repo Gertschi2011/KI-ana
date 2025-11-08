@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: New Alzheimer's Treatment Clears Plaques from Brains of Mice Within Hours\n • Hacker News: I'm recomming my customers switch to Linux rather that Upgrade to Windows 11\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensvereinbarung zwischen Israel und der Hamas auf dünnem Eis",
+  "created_at": 1760580583.48832,
+  "hash": "587f630aff6bda275655a779e4b46ba833e42ca9853b0520d07c1524852e8bf8",
+  "id": "BLK_1760580583_9d8add",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "jdsUR2sZTkVdKnWT28U3YnJCVrOmrTn+tdtgEeuQMPQ3eorN6jI3TwbqdHPhiRZMt86CUO+o/B9WVlvGGr9XCA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 04:09",
+  "url": null
+}

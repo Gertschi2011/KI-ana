@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Should I choose Ada, SPARK, or Rust over C/C++?\n • Hacker News: Covert Eavesdropping Through Computer Mice\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz vermutet Russland hinter vielen Drohnen-Flügen",
+  "hash": "ea92cb54cb14b2cadb774b3e17afc0b736c4e531825754d11e3cf83210bcacf2",
+  "id": "BLK_1759717970_5uzxfg",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "RQzIwnPHh6CpDMKTg1cq9pOq9fYQRHE0O/Ha6aQBJW3M5Zy50iuFWaVH71mSLQlYJU8+ojB1zDQ1gEFbx7gQBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 04:32",
+  "ts": 1759717970,
+  "url": ""
+}

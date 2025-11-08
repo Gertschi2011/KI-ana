@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Accelerating authoritarian dynamics: Assessment of democratic decline\n • Hacker News: Nvidia DGX Spark and Apple Mac Studio = 4x Faster LLM Inference with EXO 1.0\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Treffen mit Trump: Selenskyjs Drahtseilakt in Washington",
+  "created_at": 1760668825.0717688,
+  "hash": "821a026feea47dfd379385544bc0ae0cb4e84f3d60877af1a149a4933376e00b",
+  "id": "BLK_1760668825_d40f1a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "syqzhoJ+L8WbbqABj7uCCuop72yXlahwktHIfBrZHtj10VL+4kTqzTFK29NXmAVNRkHDnYea1b3MNVAl7aypAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 04:40",
+  "url": null
+}

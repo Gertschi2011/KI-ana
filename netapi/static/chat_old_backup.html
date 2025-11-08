@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <base href="/" />
+  <meta charset="utf-8">
+  <title data-i18n="chat.title">Chat mit KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/styles.css" rel="stylesheet">
+  <link href="/static/chat.css?v=7" rel="stylesheet">
+  <script src="/static/global_theme.js"></script>
+  <style>
+    /* Tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      padding: 0 16px;
+      background: #f5f5f5;
+    }
+    
+    .tab {
+      padding: 8px 16px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .tab:hover {
+      color: #333;
+    }
+    
+    .tab.active {
+      border-bottom-color: #4a90e2;
+      color: #4a90e2;
+      font-weight: 500;
+    }
+    
+    /* Quick Replies */
+    .quick-replies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    
+    .quick-reply-btn {
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      border-radius: 16px;
+      padding: 6px 12px;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .quick-reply-btn:hover {
+      background: #e0e0e0;
+    }
+    
+    /* Address Book */
+    .address-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    
+    .address-table th, .address-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .address-table th {
+      background: #f5f5f5;
+      font-weight: 500;
+    }
+    
+    .address-table a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+    
+    .address-table a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <link rel="icon" href="/static/favicon.ico">
+  <script defer src="/static/i18n.js"></script>
+  <script defer src="/static/chat.js?v=7"></script>
+  
+</head>
+<body class="page">
+  <div id="debug-overlay" style="position:fixed;top:0;right:0;background:rgba(0,0,0,0.7);color:#fff;padding:6px 12px;font-size:12px;z-index:9999;display:none;border-radius:0 0 0 8px;">
+    <span id="debug-status">⏳ Verbinde…</span>
+  </div>
+  <div id="navbar"></div>
+
+  <!-- Chat-Bereich: Sidebar + Chat -->
+  <div class="chat-layout">
+
+    <!-- Sidebar: Unterhaltungen -->
+    <aside class="sidebar" aria-label="Unterhaltungen" data-i18n-aria-label="chat.sidebar_title">
+      <div class="sidebar-header">
+        <div class="title" data-i18n="chat.sidebar_title">Unterhaltungen</div>
+        <button id="closeSidebar" class="icon-btn" aria-label="Unterhaltungen schließen" title="Schließen" style="margin-left:auto;display:none">×</button>
+      </div>
+      <div style="padding:10px; display:flex; gap:6px; flex-wrap:wrap; align-items:center">
+        <button id="newConv" class="btn-create" data-i18n="chat.new_conversation">+ Neue Unterhaltung</button>
+        <button id="selectAllConvs" class="btn-secondary" title="Alle auswählen">Alle auswählen</button>
+        <button id="deleteSelectedConvs" class="btn-danger" title="Ausgewählte löschen">Löschen</button>
+      </div>
+      <ul id="convList" class="conv-list" role="list"></ul>
+    </aside>
+
+    <!-- Backdrop for mobile sidebar overlay -->
+    <div id="sidebarBackdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+
+    <!-- Chat-Main -->
+    <div class="chat-wrap">
+
+      <!-- Chat-Header im Content -->
+      <header class="chat-header sticky" style="display:flex;flex-direction:column;background:#f9f9f9;">
+        <!-- Top Bar -->
+        <div style="display:flex;align-items:center;gap:12px;padding:8px 16px;">
+          <button id="toggleSidebar" class="icon-btn" aria-label="Unterhaltungen" title="Unterhaltungen">☰</button>
+          <img src="/static/img/Avatar_KI_ana.jpg" alt="KI_ana" style="height:32px;width:32px;border-radius:50%;object-fit:cover;">
+          <div style="flex:1;min-width:0;">
+            <div style="font-weight:600">KI_ana</div>
+            <div style="font-size:12px;opacity:.7" data-i18n="chat.family">Dein Familienmitglied</div>
+          </div>
+          <a href="/static/viewer.html" id="header-knowledge" class="nav-link" title="Wissen anzeigen" style="text-decoration:none;color:#4a90e2;font-weight:500;display:none">📚 Wissen</a>
+          <span id="kidsBadge" class="pill" aria-label="Kinderschutz aktiv" title="Kinderschutz aktiv" style="display:none;background:#ffe8a1;color:#7a5a00;border:1px solid #ffd56a;padding:2px 8px;border-radius:999px;font-size:12px;">Kids</span>
+          <span id="llmStatus" class="muted" title="Status lokales KI‑Modell" style="font-size:12px;white-space:nowrap;">⏳ Modell lädt…</span>
+          <button id="openSettings" class="icon-btn" aria-label="Einstellungen" title="Einstellungen">⚙️</button>
+        </div>
+        
+        <!-- Tabs -->
+        <div id="tabs" class="tabs">
+          <button id="chatTab" class="tab active" data-tab="chat">Chat</button>
+          <button id="addressBookTab" class="tab" data-tab="addressbook">Adressbuch</button>
+        </div>
+      </header>
+
+    <!-- Chat Content -->
+    <div id="chat" class="chat-area" style="display:block;"></div>
+    
+    <!-- Address Book Content (initially hidden) -->
+    <div id="addressBookContent" class="tab-content" style="display:none;padding:16px;">
+      <input type="text" id="addressBookSearch" placeholder="Suche nach Thema, Pfad oder Quelle…" style="width:100%;margin-bottom:16px;padding:8px;">
+      <div id="addressBookList">
+        <!-- Address book entries will be loaded here -->
+        <p>Lade Adressbuch...</p>
+      </div>
+    </div>
+
+    <!-- Tipp-Indikator (autonomous thinking) -->
+    <div id="typing" class="typing" style="display:none;padding:8px 16px;opacity:.7">
+      <span>Ich denke nach</span><span class="dots">…</span>
+    </div>
+
+    <!-- Eingabefeld (immer sichtbar unten) -->
+    <div id="input-area">
+      <textarea id="msg" data-i18n-placeholder="chat.placeholder" placeholder="Schreib mir etwas …" rows="2" autocomplete="off"></textarea>
+      <div class="composer-actions">
+        <div class="left-tools">
+          <button id="micBtn" class="icon-btn" aria-label="Mikrofon starten/stoppen" title="Spracherkennung">🎤</button>
+          <button id="attachBtn" class="icon-btn" aria-label="Datei anhängen" title="Datei anhängen">📎</button>
+          <input id="attachInput" type="file" multiple accept="image/*,audio/*,video/*,application/pdf" style="display:none">
+          <span id="attachmentsInfo" class="muted" style="font-size:.9rem"></span>
+        </div>
+        <!-- Optionen bewusst ausgeblendet: autonome Modi statt manueller Schalter -->
+        <details class="chips-collapsible" style="display:none">
+          <summary>⚙️ Optionen</summary>
+          <div class="toggle-chips" aria-label="Optionen" hidden></div>
+        </details>
+        <div class="send-right">
+          <button id="mic-btn" class="icon-btn" title="Spracheingabe starten" style="display:none">🎤</button>
+          <button id="send" class="primary" aria-label="Senden" data-i18n="chat.send">Senden</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Jump to bottom button (appears when user scrolled up) -->
+    <button id="jumpBottom" class="jump-bottom" aria-label="Zum Ende springen" title="Zum Ende springen" style="display:none">⬇</button>
+  </div>
+
+  <!-- Einstellungen (Modal) -->
+  <div id="settingsModal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal">
+      <button id="closeSettings" class="close" aria-label="Schließen">×</button>
+      <h2 data-i18n="chat.settings.title">Einstellungen</h2>
+      <form id="settingsForm">
+        <label class="field">
+          <span data-i18n="chat.settings.persona">Persönlichkeit</span>
+          <select id="persona">
+            <option value="friendly" selected data-i18n="chat.settings.persona_friendly">Freundlich</option>
+            <option value="balanced" data-i18n="chat.settings.persona_balanced">Sachlich &amp; hilfreich</option>
+            <option value="creative" data-i18n="chat.settings.persona_creative">Kreativ &amp; verspielt</option>
+            <option value="kids">Kids (einfach &amp; freundlich)</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span data-i18n="chat.settings.language">Sprache</span>
+          <select id="language">
+            <option value="de-DE" selected>Deutsch (de-DE)</option>
+            <option value="en-US">English (en-US)</option>
+            <option value="fr-FR">Français (fr-FR)</option>
+            <option value="es-ES">Español (es-ES)</option>
+            <option value="it-IT">Italiano (it-IT)</option>
+            <option value="pt-PT">Português (pt-PT)</option>
+            <option value="nl-NL">Nederlands (nl-NL)</option>
+            <option value="pl-PL">Polski (pl-PL)</option>
+            <option value="ru-RU">Русский (ru-RU)</option>
+            <option value="tr-TR">Türkçe (tr-TR)</option>
+            <option value="ar-SA">العربية (ar-SA)</option>
+            <option value="hi-IN">हिंदी (hi-IN)</option>
+            <option value="zh-CN">中文 (zh-CN)</option>
+            <option value="ja-JP">日本語 (ja-JP)</option>
+            <option value="ko-KR">한국어 (ko-KR)</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Ethik‑Filter</span>
+          <select id="ethicsFilter">
+            <option value="default">Standard</option>
+            <option value="strict">Strikt</option>
+            <option value="off">Aus</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span data-i18n="chat.settings.voice">Stimme</span>
+          <select id="voice">
+            <option value="auto" selected data-i18n="chat.settings.voice_auto">Automatisch</option>
+            <option value="elevenlabs" data-i18n="chat.settings.voice_eleven">ElevenLabs</option>
+          </select>
+        </label>
+
+        <label class="field inline">
+          <input type="checkbox" id="ttsToggle">
+          <span>Sprachausgabe (TTS) aktivieren</span>
+        </label>
+
+        <label class="field inline">
+          <input type="checkbox" id="rememberStyle">
+          <span>Sprachstil merken (für künftige Chats)</span>
+        </label>
+
+        <label class="field">
+          <span data-i18n="chat.settings.answer_style">Antwort‑Stil</span>
+          <select id="answerStyle">
+            <option value="concise" data-i18n="chat.settings.style_concise">Knapper Stil</option>
+            <option value="balanced" selected data-i18n="chat.settings.style_balanced">Ausgewogen</option>
+            <option value="detailed" data-i18n="chat.settings.style_detailed">Ausführlicher Stil</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span data-i18n="chat.settings.bullet_count">Anzahl Stichpunkte (3–8)</span>
+          <input id="bulletCount" type="number" min="1" max="8" value="5" />
+        </label>
+
+        <label class="field">
+          <span data-i18n="chat.settings.logic">Logik</span>
+          <select id="answerLogic">
+            <option value="balanced" selected data-i18n="chat.settings.logic_balanced">Ausgewogen</option>
+            <option value="strict" data-i18n="chat.settings.logic_strict">Streng (nur belegtes)</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span data-i18n="chat.settings.format">Format</span>
+          <select id="answerFormat">
+            <option value="structured" selected data-i18n="chat.settings.format_structured">Strukturiert (TL;DR, Punkte, Evidenz)</option>
+            <option value="plain" data-i18n="chat.settings.format_plain">Einfacher Text</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Autonomie</span>
+          <select id="autonomy">
+            <option value="0">0 – Lokal (kein Web/Lernen)</option>
+            <option value="1">1 – Lokal + Web (mit Zustimmung)</option>
+            <option value="2">2 – Lernen erlaubt (ohne Chain)</option>
+            <option value="3">3 – Voll (Chain via Schalter)</option>
+          </select>
+        </label>
+
+        <label class="field inline">
+          <input type="checkbox" id="allowNet">
+          <span>Netzwerk global erlauben</span>
+        </label>
+
+        <label class="field">
+          <span>Aktive Sub‑KIs</span>
+          <select id="activeSubkis" multiple size="4" style="min-height:92px"></select>
+        </label>
+
+        <label class="field inline">
+          <input type="checkbox" id="streaming" checked>
+          <span data-i18n="chat.settings.streaming">Live-Streaming (SSE)</span>
+        </label>
+
+        <div class="row">
+          <div class="field" style="flex:1">
+            <label data-i18n="chat.settings.user_color">Farbe – Eigene Nachrichten</label>
+            <input id="userColor" type="color" value="#e6f7ff" style="width:100%">
+          </div>
+          <div class="field" style="flex:1">
+            <label data-i18n="chat.settings.ai_color">Farbe – KI_ana</label>
+            <input id="aiColor" type="color" value="#efeaff" style="width:100%">
+          </div>
+        </div>
+
+        <div class="actions" style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
+          <button type="submit" class="primary">Speichern</button>
+          <button type="button" id="cancelSettings">Abbrechen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Demo-Call für Memory: an neue API angepasst -->
+  <script>
+    async function testMemoryAdd() {
+      const res = await fetch('/api/memory/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: 'Testeintrag aus dem Browser',
+          content: 'Hallo Memory – erstellt von chat.html',
+          tags: ['test','browser']
+        })
+      });
+      const json = await res.json();
+      console.log('Antwort von /api/memory/add:', json);
+    }
+    // window.onload = testMemoryAdd;
+  </script>
+</body>
+
+<script>
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n = document.getElementById('navbar');
+          if (!n) return;
+          n.innerHTML = html;
+          // Execute scripts contained in the fragment
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s = document.createElement('script');
+              if (old.src) {
+                s.src = old.src + (old.src.includes('?') ? '&' : '?') + 'v=' + Date.now();
+              } else {
+                s.textContent = old.textContent || '';
+              }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
+  </script>
+<script>
+  // Show chat header "Wissen" link only if authenticated
+  (async function(){
+    try{
+      const token = localStorage.getItem('ki_token') || '';
+      const r = await fetch('/api/me', token ? { headers:{ Authorization: 'Bearer ' + token } } : {});
+      if (r && r.ok){
+        const jd = await r.json().catch(()=>({}));
+        if (jd && jd.auth && jd.user){
+          const a = document.getElementById('header-knowledge');
+          if (a) a.style.display = '';
+        }
+      }
+    }catch{}
+  })();
+</script>
+</html>

@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758784206_t2mxws",
-  "title": "Web Digest 2025-09-25 09:10",
   "content": "• Hacker News: Knotty: A domain-specific language for knitting patterns\n • Hacker News: The \"Wage Level\" Mirage: H-1B proposal could help outsourcers and hurt US talent\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vom Krebs geheilt - Kein Recht auf Vergessen?",
+  "hash": "d91d69558f625f49056394e60e24ffcd775a0e66df9b547f40097eaa2c46e396",
+  "id": "BLK_1758784206_t2mxws",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "emJcAytANjb5tU6jbADvhPmBSBF76FWNb28mkIe+oiNDzVVVLgisfmHHs6Gzq/lqMioNYp22kCG7tO/n6DNdBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-25 09:10",
   "ts": 1758784206,
-  "meta": {},
-  "hash": "d91d69558f625f49056394e60e24ffcd775a0e66df9b547f40097eaa2c46e396"
+  "url": ""
 }

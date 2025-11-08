@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The App Store Was Always Authoritarian\n • Hacker News: Spyware maker NSO Group confirms acquisition by US investors\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Terrorgruppe Hamas bestätigt Geisel-Freilassung am Montag",
+  "created_at": 1760254618.980787,
+  "hash": "1ba4e994236ebc2ad6eaf2aa0dbeda9050d2a5a12c29cf0799551d771f65e3fe",
+  "id": "BLK_1760254618_143f79",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "LK5KdmadcE9X8YX9RrUvaAx35XSfohEPsqDjIxdh9Xz9BDheBPj1O2q+ARAmDdATbD3vVllSv6Ho4IpvmzbhAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 09:36",
+  "url": null
+}

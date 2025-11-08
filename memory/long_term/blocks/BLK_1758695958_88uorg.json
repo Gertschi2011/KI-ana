@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758695958_88uorg",
-  "title": "Web Digest 2025-09-24 08:39",
   "content": "• Hacker News: Greatest irony of the AI age: Humans hired to clean AI slop\n • Hacker News: America's top companies keep talking about AI – but can't explain the upsides\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Kimmel: Rückkehr voller Emotionen - und mit einem Plädoyer",
+  "hash": "160cdb37ae67c4c34c70d319bdbbfb7d197c23de2c68a89e7045e85a4b9db4f4",
+  "id": "BLK_1758695958_88uorg",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "i0Ic10Spzv7b6Si8vVPZVOYo5CYpxrguh9RQG3nSywncYIf+CwfIIOxVAUGlNQ+VkMBYuKJXi3aq86Sau6mdAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 08:39",
   "ts": 1758695958,
-  "meta": {},
-  "hash": "160cdb37ae67c4c34c70d319bdbbfb7d197c23de2c68a89e7045e85a4b9db4f4"
+  "url": ""
 }

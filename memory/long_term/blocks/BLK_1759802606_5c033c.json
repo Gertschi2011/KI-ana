@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Analytical review of depression and suicidality from finasteride\n • Hacker News: The least amount of CSS for a decent looking site (2023)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Gespräche enden in \"positiver Atmosphäre\"",
+  "created_at": 1759802606.6263573,
+  "hash": "c466a0f6c928c36ff16386a61732973b2df1ea193590f32223b5e5271e8f33bb",
+  "id": "BLK_1759802606_5c033c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "MgzUQLNAOPaTtcvkae3aRvlmeSqJoj3tR5Dal7ZpmjAHxVKRGkSPU/xBjayBqBswB1fKWq4db490dxcmcXhoAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 04:03",
+  "url": null
+}

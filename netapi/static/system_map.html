@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🧠 KI_ana System Map</title>
+  <link href="/static/styles.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .navbar {
+      position: fixed!important;
+      top: 0!important;
+      left: 0!important;
+      right: 0!important;
+      z-index: 1000!important;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 80px auto 20px;
+      padding: 20px;
+    }
+
+    .header {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .header-title {
+      font-size: 2.5em;
+      font-weight: 600;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .header-subtitle {
+      color: #6b7280;
+      font-size: 1.1em;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 2em;
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      color: #6b7280;
+      font-size: 0.9em;
+    }
+
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+      font-size: 1.5em;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .accordion {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-header {
+      padding: 16px;
+      background: #f9fafb;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .accordion-header:hover {
+      background: #f3f4f6;
+    }
+
+    .accordion-header.active {
+      background: #ede9fe;
+      color: #667eea;
+    }
+
+    .accordion-content {
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .accordion-content.active {
+      padding: 16px;
+      max-height: 1000px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85em;
+      font-weight: 500;
+      margin: 4px;
+    }
+
+    .badge-success {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .badge-info {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+
+    .badge-warning {
+      background: #fed7aa;
+      color: #92400e;
+    }
+
+    .capability-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .capability-item {
+      padding: 12px;
+      background: #f9fafb;
+      border-radius: 8px;
+      border-left: 3px solid #667eea;
+    }
+
+    .capability-name {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .capability-status {
+      font-size: 0.85em;
+      color: #16a34a;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px;
+      color: white;
+      font-size: 1.2em;
+    }
+
+    .error {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
+    pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.85em;
+    }
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+
+  <div class="container">
+    <div class="header">
+      <div class="header-title">🧠 KI_ana System Map</div>
+      <div class="header-subtitle">Selbstbewusstsein & Architektur-Transparenz</div>
+    </div>
+
+    <div id="stats" class="stats-grid"></div>
+
+    <div class="section">
+      <div class="section-title">
+        <span>🏗️</span>
+        <span>System-Architektur</span>
+      </div>
+      <div id="architecture" class="accordion"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <span>⚡</span>
+        <span>Fähigkeiten</span>
+      </div>
+      <div id="capabilities" class="capability-grid"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <span>📊</span>
+        <span>Features & Status</span>
+      </div>
+      <div id="features"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">
+        <span>💻</span>
+        <span>Vollständige Map (JSON)</span>
+      </div>
+      <pre id="fullMap"></pre>
+    </div>
+  </div>
+
+  <script src="/static/nav.js?v=20251029"></script>
+  <script>
+    let systemMap = null;
+
+    async function loadSystemMap() {
+      try {
+        const r = await fetch('/self/system/map');
+        const data = await r.json();
+        
+        if (!data.ok) throw new Error('Failed to load system map');
+        
+        systemMap = data.data;
+        render();
+      } catch (e) {
+        document.getElementById('stats').innerHTML = 
+          '<div class="error">Fehler beim Laden der System Map: ' + e.message + '</div>';
+      }
+    }
+
+    function render() {
+      renderStats();
+      renderArchitecture();
+      renderCapabilities();
+      renderFeatures();
+      renderFullMap();
+    }
+
+    function renderStats() {
+      const stats = [
+        { label: 'Version', value: systemMap.version },
+        { label: 'Core Module', value: systemMap.core.length },
+        { label: 'API Endpoints', value: Object.values(systemMap.api_endpoints).flat().length },
+        { label: 'Features', value: systemMap.features.implemented.length },
+        { label: 'Capabilities', value: Object.values(systemMap.capabilities).filter(v => v).length }
+      ];
+
+      document.getElementById('stats').innerHTML = stats.map(s => `
+        <div class="stat-card">
+          <div class="stat-value">${s.value}</div>
+          <div class="stat-label">${s.label}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderArchitecture() {
+      const sections = [
+        { title: '🏗️ Core Module', data: systemMap.core },
+        { title: '📥 Input', data: systemMap.io.input },
+        { title: '📤 Output', data: systemMap.io.output },
+        { title: '🧠 Learning', data: Object.keys(systemMap.learning) },
+        { title: '🔒 Safety', data: Object.keys(systemMap.safety) }
+      ];
+
+      document.getElementById('architecture').innerHTML = sections.map((section, i) => `
+        <div class="accordion-item">
+          <div class="accordion-header" onclick="toggleAccordion(${i})">
+            <span>${section.title}</span>
+            <span id="icon-${i}">▶</span>
+          </div>
+          <div class="accordion-content" id="content-${i}">
+            ${Array.isArray(section.data) 
+              ? section.data.map(item => `<span class="badge badge-info">${item}</span>`).join('')
+              : Object.entries(section.data).map(([k,v]) => `<div><strong>${k}:</strong> ${JSON.stringify(v)}</div>`).join('')
+            }
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleAccordion(index) {
+      const content = document.getElementById(`content-${index}`);
+      const icon = document.getElementById(`icon-${index}`);
+      const header = content.previousElementSibling;
+      
+      content.classList.toggle('active');
+      header.classList.toggle('active');
+      icon.textContent = content.classList.contains('active') ? '▼' : '▶';
+    }
+
+    function renderCapabilities() {
+      const caps = Object.entries(systemMap.capabilities)
+        .filter(([k, v]) => v);
+
+      document.getElementById('capabilities').innerHTML = caps.map(([name, enabled]) => `
+        <div class="capability-item">
+          <div class="capability-name">${name.replace(/_/g, ' ')}</div>
+          <div class="capability-status">✓ Aktiv</div>
+        </div>
+      `).join('');
+    }
+
+    function renderFeatures() {
+      const implemented = systemMap.features.implemented || [];
+      const inDev = systemMap.features.in_development || [];
+      const planned = systemMap.features.planned || [];
+
+      document.getElementById('features').innerHTML = `
+        <div style="margin-bottom:16px">
+          <strong>✅ Implementiert (${implemented.length}):</strong><br>
+          ${implemented.map(f => `<span class="badge badge-success">${f}</span>`).join('')}
+        </div>
+        <div style="margin-bottom:16px">
+          <strong>🚧 In Entwicklung (${inDev.length}):</strong><br>
+          ${inDev.map(f => `<span class="badge badge-warning">${f}</span>`).join('')}
+        </div>
+        <div>
+          <strong>📋 Geplant (${planned.length}):</strong><br>
+          ${planned.map(f => `<span class="badge badge-info">${f}</span>`).join('')}
+        </div>
+      `;
+    }
+
+    function renderFullMap() {
+      document.getElementById('fullMap').textContent = JSON.stringify(systemMap, null, 2);
+    }
+
+    // Load on start
+    loadSystemMap();
+  </script>
+</body>
+</html>

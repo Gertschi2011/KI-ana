@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Without data centers, GDP growth was 0.1% in the first half of 2025\n • Hacker News: TiVo exiting legacy DVR business\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie geht es mit den Einbürgerungen und der EU-Asylreform weiter?",
+  "created_at": 1759903449.7531981,
+  "hash": "d8d54155f45ec8e4844a4007c0e4e1e74d6ded45bccb14285e8eddca6b127886",
+  "id": "BLK_1759903449_27bc20",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "QuHGW1wcNtyHU4MpzDq40913N9yXIpR2dCNQMEbcAVWyqDnCtEj8v+LJ72EZ0W/FtXzejH+srBpiDI6zXd/sDQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 08:04",
+  "url": null
+}

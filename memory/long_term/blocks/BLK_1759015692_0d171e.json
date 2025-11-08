@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759015692_0d171e",
-  "title": "Web Digest 2025-09-28 01:28",
   "content": "• Hacker News: The (economic) AI apocalypse is nigh\n • Hacker News: Microwave weapon downs 49 drones with a single blast\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Luftraumverletzungen: NATO prüft Verteidigungseinsatz",
+  "created_at": 1759015692.278184,
+  "hash": "968637d8ff060f430542197a5d49a2a4482531651c8450f7c67e100f31ac2012",
+  "id": "BLK_1759015692_0d171e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "NVgiEDme318JcSxuVnPDN+bL37WW4NwgeiaUg8pKJJjXwaR2aHz3gAjY2G35UMtJXVGkoV3DWtYR2fGkQPdwDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759015692.278184,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 01:28",
+  "url": null
 }

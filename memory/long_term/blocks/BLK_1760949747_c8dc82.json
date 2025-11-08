@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Docker Systems Status: Full Service Disruption\n • Hacker News: AWS Multiple Services Down in us-east-1\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump will Donbass für Frieden \"zerteilen\"",
+  "created_at": 1760949747.0787215,
+  "hash": "aa29b980462fbd4051805ab23507e5f4675b782b8ec63d552162ea7361f54eda",
+  "id": "BLK_1760949747_c8dc82",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "GjOoLLsVfbpfJE2hPTSwqTnsaO/1bzHPbkcCkDa1y9NarJYjMuCJgAtdwAVh7Geyy1btcGn9HHn1+4cdUHFYBg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 10:42",
+  "url": null
+}

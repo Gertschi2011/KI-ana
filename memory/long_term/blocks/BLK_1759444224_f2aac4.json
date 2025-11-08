@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The strangest letter of the alphabet: The rise and fall of yogh\n • Hacker News: Launching Solveit – an antidote to AI fatigue\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Putin wirft Frankreich wegen Festsetzung von Tanker Piraterie vor",
+  "created_at": 1759444224.4437065,
+  "hash": "19cdb161a66ae1e49b2ba1d95db6d16f63253f154a1e6e48f8380e2460b7fb43",
+  "id": "BLK_1759444224_f2aac4",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vIAlciBAB4lS0/TZBmLrKW3I5IuyeI95edtYxB15BJgG65tjA9N55aT7qogzwNDncML75KdkqINydLfb+HxTDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 00:30",
+  "url": null
+}

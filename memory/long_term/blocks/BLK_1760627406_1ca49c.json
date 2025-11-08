@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tor browser removing various Firefox AI features\n • Hacker News: DoorDash and Waymo launch autonomous delivery service in Phoenix\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pläne des Verkehrsministerium: Mit Simulator und App zum günstigeren Führerschein",
+  "created_at": 1760627406.7273045,
+  "hash": "282bca0a4990bd0e0bda284b12b9eae9dd5222e51118733cc7d6e0764253cc0f",
+  "id": "BLK_1760627406_1ca49c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "augMCA+mjVLawNucGVMAns8qGRgJp7KVRf6M9eFC6V2EyfYkGGVXObP2gfqgMoj4wAovKftxevYvceSNLcbqDw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 17:10",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: California enacts law enabling people to universally opt out of data sharing\n • Hacker News: Tonight's restaurant dinner fell off the Sysco truck\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump gibt Einigung bei Gaza-Gesprächen bekannt",
+  "created_at": 1759982683.8453183,
+  "hash": "7eb3024029a8abf579b0655a42e13021222279b696436bb43f739ad94d7beeab",
+  "id": "BLK_1759982683_dd6ca9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "XumnVYZLP+J9z1X9M6Rd0XAgwrDbUCI7OKei2+r1I1QBUXFJwC0RGU3gl3iqzhgXAGiwvSUn8cletwLDOev3BA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 06:04",
+  "url": null
+}

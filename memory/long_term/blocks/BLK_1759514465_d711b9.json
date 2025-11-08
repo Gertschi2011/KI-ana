@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Record Everything\n • Hacker News: Be Worried\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): US-Präsident Trump setzt Hamas Ultimatum für Friedensabkommen",
+  "created_at": 1759514465.6284997,
+  "hash": "58ea17a84794d1e00a5a9e96a23c95e803433810f69e4ce9fbaed7f4de105657",
+  "id": "BLK_1759514465_d711b9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "OCYa63IkZDgBZVhY5tNzIttkxd/MWfmrJjnNAMAsu73ykGS9G0FkFWwCC+lAytooWAg9xNZX/FiNzZt/4gAtAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 20:01",
+  "url": null
+}

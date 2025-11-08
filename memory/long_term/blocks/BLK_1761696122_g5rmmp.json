@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Static Android Debug Bridge (adb)\n • Hacker News: Keeping the Internet fast and secure: introducing Merkle Tree Certificates\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "hash": "e35abdc6464209ee0e11a5a86306ffa9b270c1d712ddc2853d105eeb35dab391",
+  "id": "BLK_1761696122_g5rmmp",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "mRz7PxT4G+iQoC098aSqOvXikYXXjMJvaGt4u7pgeIc3b9fjck78UPl+G4q5rQjSpDXWd6dp04PAMfyxADyeDw==",
+  "signed_at": "2025-10-29T00:02:02Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-29 01:02",
+  "ts": 1761696122,
+  "url": ""
+}

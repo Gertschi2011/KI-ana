@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: McKinsey wonders how to sell AI apps with no measurable benefits\n • Hacker News: Why Are So Many Pedestrians Killed by Cars in the US?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Einigung zwischen Hamas und Israel: Wie geht es für Gaza weiter?",
+  "created_at": 1760015097.8037207,
+  "hash": "becd94e0402219bdd00bb2b8986537539c9b317f5850c2a5e9c90e4bb62d96b7",
+  "id": "BLK_1760015097_330383",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "RvPPsi7k9HOY5ZGF5uCsOMK6TEmqoX0ItNCZ14eRxvfehNxJR9ml3NVgfZj0XynOwPrQqo2ZtqnTckAVpaJdDQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 15:04",
+  "url": null
+}

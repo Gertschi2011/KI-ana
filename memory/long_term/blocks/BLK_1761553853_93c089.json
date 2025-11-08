@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Show HN: Write Go code in JavaScript files\n • Hacker News: Structure and Interpretation of Classical Mechanics\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Debatte nach Merz-Äußerung: SPD-Abgeordnete fordern \"Stadtbild\"-Gipfel",
+  "created_at": 1761553853.6630428,
+  "hash": "2529496cf43b88ed8c1a67c27aa970c465adc10da8182899911ebac8ea4834d8",
+  "id": "BLK_1761553853_93c089",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "P9TCEJu3q7OzKkxf95IfcClKM9Fb08lraEpydUMWBaUYQ8rWvMwGUaPt+3sc7I3pqJynsPrTXbDxqAC0ubkTAw==",
+  "signed_at": "2025-10-27T08:30:53Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 09:30",
+  "url": null
+}

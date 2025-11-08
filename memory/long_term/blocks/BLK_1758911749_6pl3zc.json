@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758911749_6pl3zc",
-  "title": "Web Digest 2025-09-26 20:35",
   "content": "• Hacker News: SimpleFold: Folding Proteins Is Simpler Than You Think\n • Hacker News: Suno Studio, a Generative AI DAW\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor Vereinten Nationen: Ich gegen euch",
+  "hash": "bb5a24b15ab0b98fc44d2ed3a6adeed6728f0f2f7aa7959822ec9fe84497a9ec",
+  "id": "BLK_1758911749_6pl3zc",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "oQpw2DILeseu51blHf2FrC/MhZ2J1XhI/JWEJpGKJ7+23XGHptg1Ol7jpNIwvHi4VYZY5NywxW5STw9qliwrDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 20:35",
   "ts": 1758911749,
-  "meta": {},
-  "hash": "bb5a24b15ab0b98fc44d2ed3a6adeed6728f0f2f7aa7959822ec9fe84497a9ec"
+  "url": ""
 }

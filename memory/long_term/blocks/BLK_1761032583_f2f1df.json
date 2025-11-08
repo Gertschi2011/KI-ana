@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Language Support for Marginalia Search\n • Hacker News: Practical Scheme\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs Ex-Präsident Sarkozy tritt Haftstrafe an",
+  "created_at": 1761032583.8293355,
+  "hash": "cc2a58890fb6d33368b86029648fa234eb8bff8305fda745b6a5537b6982302e",
+  "id": "BLK_1761032583_f2f1df",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Xa9U/BiwfgVvVg4TQMb1jcGg5XHjNl4gmREicY2j4iRlfyZvDbtihdeSzTwXszJnjPzvjodFmA7APSpmibH0Dg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 09:43",
+  "url": null
+}

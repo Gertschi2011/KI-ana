@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: I tracked the adoption of AI coding extensions in VS Code since 2022\n • Hacker News: PyreFly: Python type checker and language server in Rust\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Rückkehr der Geisel: Durchatmen nach dem Tag der Emotionen",
+  "hash": "4f05708ac55d57ec3c1af6c1dabf83a4d077383fe27d422296eaa65c2ee708af",
+  "id": "BLK_1760449116_lrym99",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "vu2WqMbvbWHbK5MNQrMZQ3KNYneBLeLsMuy65ItE2ufPD1cO1PVq5gtMJ5k1U7wYBcCkYXMWnNC2kOOIRi4tDw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 15:38",
+  "ts": 1760449116,
+  "url": ""
+}

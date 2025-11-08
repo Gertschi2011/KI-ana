@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: React Flow, open source libraries for node-based UIs with React or Svelte\n • Hacker News: Introduction to the concept of likelihood and its applications (2018)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Minimalkompromiss bei Verwendung von russischem Geld",
+  "hash": "bcb08f633a090d9b6829d8d8845e625a0b2ebc8f578d7c719f152d2d26587e28",
+  "id": "BLK_1761267733_jtx41c",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Zz7nEXl7pRq3E2IBLUCXgmLR3pk9IYmsFJ/BiyLG3Wllio2vTh4UZPBnz+lFrYddhqSXxCSnOkx1I17iikjMAQ==",
+  "signed_at": "2025-10-24T01:02:13Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 03:02",
+  "ts": 1761267733,
+  "url": ""
+}

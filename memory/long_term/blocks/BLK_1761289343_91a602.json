@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: JupyterGIS breaks through to the next level\n • Hacker News: Roc Camera\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Gipfel: Lange Agenda, langer Tag, lange nicht in allem einig",
+  "created_at": 1761289343.9100766,
+  "hash": "3baa7493f6be7801aa24929289e78a5208b95cb49b93365442b11ada5e7eada3",
+  "id": "BLK_1761289343_91a602",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "//OYZxHd3a4UfscNCKLofCGFpVBCjnAuZ7/oabQe/qhllLkMEWps6JMiq50D8cTVo2HOVigLHCIWQD1X0w9cBA==",
+  "signed_at": "2025-10-24T07:02:23Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 09:02",
+  "url": null
+}

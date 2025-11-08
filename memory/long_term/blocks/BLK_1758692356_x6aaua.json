@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758692356_x6aaua",
-  "title": "Web Digest 2025-09-24 07:39",
   "content": "• Hacker News: Greatest irony of the AI age: Humans hired to clean AI slop\n • Hacker News: America's top companies keep talking about AI – but can't explain the upsides\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russlands Angriffskrieg: Trump-Wende in der Ukraine-Politik?",
+  "hash": "82bdbb72b243083ae76261347fd0fac5ba0001f86fbcaa75c59ed7ef2985a853",
+  "id": "BLK_1758692356_x6aaua",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Nl+z45i8OsYIb5CgMlmyP0NYlD6cWS/jlaIqUJpq6aIX88okCe4djNmTOjEld3g/vRUpB98MwjCm2Pi8LpLjCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 07:39",
   "ts": 1758692356,
-  "meta": {},
-  "hash": "82bdbb72b243083ae76261347fd0fac5ba0001f86fbcaa75c59ed7ef2985a853"
+  "url": ""
 }

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: NanoChat – The best ChatGPT that $100 can buy\n • Hacker News: Supermassive black holes locked in a stable orbit around each other\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die 20 freigelassenen Geiseln",
+  "created_at": 1760369876.7091873,
+  "hash": "38a2074005c3b55e3609afb02e6330b6b1032a9b22071922cca5226afd30674d",
+  "id": "BLK_1760369876_5b3afa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "kTyS9y1mTeVMIyc6shi2Ko9wHbiuebabneDM3N4QpdKML08V+6EzyMuA1VVnpeYytEdNOFgO8+Geh5Bm11A8Dw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 17:37",
+  "url": null
+}

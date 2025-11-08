@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Y'all are over-complicating these AI-risk arguments\n • Hacker News: Launch HN: Simplex (YC S24) – Browser automation platform for developers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ARD-DeutschlandTrend: AfD zieht in Umfrage mit Union gleich",
+  "created_at": 1759424415.6540344,
+  "hash": "76ca270fc75f8eb2f2704d1d5bb9fa9e29248d0da03f3cd6df2b43cf905c1455",
+  "id": "BLK_1759424415_d0f7ec",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "QoxVCpP6MvRjhTiJuSGLWUMA7EgDroc9iojnUR57BzuS7K+ZMERZ7EIWM2CMiPMdlMhNoBetKmUkfq0A0Gn6BQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 19:00",
+  "url": null
+}

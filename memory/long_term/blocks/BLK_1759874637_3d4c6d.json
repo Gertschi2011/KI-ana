@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Become unbannable from your email\n • Hacker News: California passes law to reduce volume of commercials on streaming services\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre nach Hamas-Überfall: Israel gedenkt der Opfer",
+  "created_at": 1759874637.5985124,
+  "hash": "2087732e904b1efe205d4a5993a0a1e6e6ce027895d8fddea1fed52cee3faa89",
+  "id": "BLK_1759874637_3d4c6d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "5ZAIac5+Ma8DYxjjfqv+YwdgX0AOQv9Eqxy0uVImR4REonyb1x8T9PVIYQT+tlI5E7wTPdYS00MQ3QKEs8xNAw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 00:03",
+  "url": null
+}

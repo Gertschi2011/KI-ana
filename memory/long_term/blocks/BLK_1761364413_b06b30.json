@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Underdetermined Weaving with Machines (2021) [video]\n • Hacker News: Deepagent: A powerful desktop AI assistant\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Verlorene Posten: Machtkämpfe in Chinas Führung?",
+  "created_at": 1761364413.8619385,
+  "hash": "29f25463db4cedf5eef0911deb750ecdc797622d91807b6ba9d5f1a65b2a7d3c",
+  "id": "BLK_1761364413_b06b30",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "p3L/bCCcyaAgI4H//v4yAO5Lf76RPR0Qeoee0iAoqEFXFOiS2RTHUHP9UemsXZ6YjnQFZ0s7WcOrE44PeVnbDQ==",
+  "signed_at": "2025-10-25T03:53:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 05:53",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Radios, how do they work? (2024)\n • Hacker News: VST3 audio plugin format is now MIT\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum die Ukraine Rüstungsgüter exportieren will",
+  "created_at": 1761204988.1433525,
+  "hash": "4cafaec8b6a6028c97f4e9feb02f00c1934134af144c7a40bd78547585b6d038",
+  "id": "BLK_1761204988_5a78d3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "PzUuRSFPbq/ORxISgo6ArMfoWNRLP9N7SqeIyVG8zACg/BDUvt5k4fkXJWAEts2ho7ZAakMM2UZ8/umwIJutDg==",
+  "signed_at": "2025-10-23T07:36:28Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 09:36",
+  "url": null
+}

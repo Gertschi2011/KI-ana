@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Climate goals go up in smoke as US datacenters turn to coal\n • Hacker News: TikTok removing posts for violating the \"joy of TikTok\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Extra-Zölle von 100 Prozent für China an",
+  "created_at": 1760146563.309233,
+  "hash": "cac41b413ed9653a1aeb27e7aba8f1de21399fa67b41f179a00b0d576a13c9be",
+  "id": "BLK_1760146563_fb7457",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "A/cMX1N8TH0YO/9N86853rgI6UcQIgVFjxankr6gmd2tENxI4NYcREhbEkxwFEvLnz/p2XB9nOi08zGlYssrDQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 03:36",
+  "url": null
+}

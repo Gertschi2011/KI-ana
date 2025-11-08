@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: After 2 decades, are promises of a graphene revolution coming true?\n • Hacker News: Spotlight on pdfly, the Swiss Army knife for PDF files\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Alle lebenden Geiseln aus dem Gazastreifen frei",
+  "created_at": 1760348265.9655814,
+  "hash": "4c1cb78712c99d72f8abd6c4b74919e9b5d8493f06bae7838267b6787454971d",
+  "id": "BLK_1760348265_44a862",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "P1g7jKQ+sJS1Bgbysle3HQDK4PR9rIzws6krmnagBAbi/BzafWvvyxUwGW5AyR47uVl2yjgBngx6Quh7y+OKDg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 11:37",
+  "url": null
+}

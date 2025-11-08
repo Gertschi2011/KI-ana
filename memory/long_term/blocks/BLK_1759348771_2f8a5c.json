@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: U.S. Lost 32,000 Private-Sector Jobs in September, Says Payroll Processor\n • Hacker News: Decoding Netflix's AV1 Streams: Here are 10 things I found\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Aus dem schwarz-roten Ruckeln soll ein Ruck werden",
+  "created_at": 1759348771.3094783,
+  "hash": "6d6e640cce1491e6971527c73d40d9ccd43ac4d75179ac3705b52fcd00717360",
+  "id": "BLK_1759348771_2f8a5c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+7w/BnSC8QETvh/V+4l4bzZ8AJKWOK17n6bB1z7fQPBqjagUX76wvNZNX2j0786q8wXedWwgwT3iC8peMqOzAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 21:59",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Richest Third-World Country\n • Hacker News: Show HN: ServiceRadar – open-source Network Observability Platform\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Keine Klarheit über Tomahawk-Lieferung an die Ukraine",
+  "created_at": 1760764266.264353,
+  "hash": "2916515a42f8c820294de6e1d1ce266f993509b531e0401e4b11b3492bc08a94",
+  "id": "BLK_1760764266_afc3e9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "69MtYZQR4vV7XCyYijImapuptJhjzqSCGSuiHvOQfbIFsDoyM6Ff9mUXkBV9s6ISwGh1I2LglHf/thnz9cecCQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 07:11",
+  "url": null
+}

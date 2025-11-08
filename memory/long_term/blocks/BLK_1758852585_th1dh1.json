@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758852585_th1dh1",
-  "title": "Web Digest 2025-09-26 04:09",
   "content": "• Hacker News: The Digital Markets Act: time for a reset\n • Hacker News: Investigating a Forged PDF\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Früherer FBI-Chef und Trump-Widersacher Comey angeklagt",
+  "hash": "7f156fbbe24859c116feffd4411bcff094fe4268f2d7df0e9e1c180ae4922ed4",
+  "id": "BLK_1758852585_th1dh1",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "h9vkSycwru6K+WE8IS58crAmfZ4WYDAKdoddqyepBQXIN/IRrYDE8BxyjID4IKuD1cKHiuE1Q7TsJHTyE3PABQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 04:09",
   "ts": 1758852585,
-  "meta": {},
-  "hash": "7f156fbbe24859c116feffd4411bcff094fe4268f2d7df0e9e1c180ae4922ed4"
+  "url": ""
 }

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: OpenAI Needs $400B In The Next 12 Months\n • Hacker News: Claude Skills are awesome, maybe a bigger deal than MCP\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Liveblog: ++ Trump und Selenskyj geben Statements ab ++",
+  "created_at": 1760724649.0370326,
+  "hash": "528c358402742956f58df4cc78d60e0853e69993b61ee102d8ab287867075965",
+  "id": "BLK_1760724649_24b647",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "cdDKdz9GtpGil6G/UEfw0V1kggauQxkd+yVGk42mv37rdtAwAY7jFqvXpzb2l85M1W+OrJnIug13RxhDTwliDA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 20:10",
+  "url": null
+}

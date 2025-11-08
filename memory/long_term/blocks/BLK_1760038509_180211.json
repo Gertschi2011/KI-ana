@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Government Ate My Name\n • Hacker News: Hacker News Live Feed\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Hamas erklärt Gaza-Krieg für beendet ++",
+  "created_at": 1760038509.0997672,
+  "hash": "343111cf6b59df7fdda3be26bcff4140eadb63d840a21890e25cf8e22a379e5b",
+  "id": "BLK_1760038509_180211",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "/AvhDi+JGstqMUrcw+PF9TEIQlp21/keFe58hT7x/Raa2r59/1Qenb1gczjVCe5bMmN4v2NQKQfCv9VHKKJjDA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 21:35",
+  "url": null
+}

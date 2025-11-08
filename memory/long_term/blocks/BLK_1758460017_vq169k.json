@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758460017_vq169k",
-  "title": "Web Digest 2025-09-21 15:06",
   "content": "• Hacker News: Why your outdoorsy friend suddenly has a gummy bear power bank\n • Hacker News: That DEA agent's 'credit card' could be eavesdropping on you\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gewalt gegen Pflegepersonal: Wenn Patienten ausrasten",
+  "hash": "fafc580dfb58f626496f3d5315c2b1aedc774ccd94d3923c45fff49be677ca28",
+  "id": "BLK_1758460017_vq169k",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "jwQ5DQq5tgZz4SEJ8rMtXztuSJxDwncUnxvlX6Zdo0hsWbi8eLufYvAIaCeqM+Z8sTqPvBk/JAHY5GXn+XeuCQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-21 15:06",
   "ts": 1758460017,
-  "meta": {},
-  "hash": "fafc580dfb58f626496f3d5315c2b1aedc774ccd94d3923c45fff49be677ca28"
+  "url": ""
 }

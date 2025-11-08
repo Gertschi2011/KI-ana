@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Kohler launches smart toilet camera\n • Hacker News: What I Self Host\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundeskanzler Merz: Zwischen Brandmauer und AfD-Rhetorik",
+  "created_at": 1760978560.0911496,
+  "hash": "e1cc70c605da65430512cf11d64c8a52d280fd6f0a7f70478bdcf4c3c56acfd7",
+  "id": "BLK_1760978560_d2a752",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "oGZLS81MN+INUrFfdxqunZ8cK5KNPkrKtoLHLEcpuVXLzojm6dRtvu8mz9Jfh8nAfwJ0DeyjJGUJbRxdeUSkDg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 18:42",
+  "url": null
+}

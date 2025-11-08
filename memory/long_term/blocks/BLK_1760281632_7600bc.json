@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Jeep pushed software update that bricked all 2024 Wrangler 4xe models\n • Hacker News: Extreme weather caused more than $100B in damage by June\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Geiseln sollen in wenigen Stunden freikommen",
+  "created_at": 1760281632.7801702,
+  "hash": "bb93e907c5203d345f2d027cc1306ebbe5e6854d3d91a5e476f7cae56881b191",
+  "id": "BLK_1760281632_7600bc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "eO+UTNIK4kAu6KyAZwIhDwuLv/YfdBqWhsy9ISGBtylnxyXAGuJtDqHv1AzAUACK2F0UPuvkxIaEPwV5n0hADw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 17:07",
+  "url": null
+}

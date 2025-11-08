@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Apple takes down ICE tracking apps after pressure from Bondi DOJ\n • Hacker News: PortalVR: XR Without a Headset\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Flugausfälle wegen Drohnensichtung am Münchener Flughafen",
+  "created_at": 1759455029.194851,
+  "hash": "2557cd776b98954e9edb9ac0f5fe1103d792345493d965ca9f03f45858e13419",
+  "id": "BLK_1759455029_ada1a7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "2ir5YhXzCeZewtbCznH+0qImBKC4nPjG0H7DLgyY1BcAr+XUaclzDgPStmFZ1ccOUcL58apO2bf1g2iu5pQMDg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 03:30",
+  "url": null
+}

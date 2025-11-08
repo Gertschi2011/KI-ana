@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: I spent a year of my life making an ASN.1 compiler in D\n • Hacker News: US probes Alphabet unit Waymo robotaxis over school bus safety\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Airbus, Thales und Leonardo formen europäischen Satelliten-Konzern",
+  "hash": "1531da004a7e28e61e7d8ba8e99118c616a81e6c3878d90e4eb761a8b6821d9b",
+  "id": "BLK_1761224465_5dggzb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "NT286K9mB5Tym+6s9hFBLyI0x64JZdHpuV4KXyeqOzx7Bs2N9W/oCJsgDfhTzucCXQSW8zYN9e8/1KZyreCsBw==",
+  "signed_at": "2025-10-23T13:01:05Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 15:01",
+  "ts": 1761224465,
+  "url": ""
+}

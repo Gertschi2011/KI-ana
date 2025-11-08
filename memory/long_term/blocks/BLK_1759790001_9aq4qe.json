@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: WebGPU and the Price of Compiling WGSL\n • Hacker News: Valorant's 128-Tick Servers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Krise nach Lecornus Rücktritt: Der einsame Präsident",
+  "hash": "b89049c32b75ca154096557331c555af08d4ed62e030fd02eca0638606fb6565",
+  "id": "BLK_1759790001_9aq4qe",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "BjnP5ZYGY4inOjfHuukTAbEUlW10bNTbeCc/VDf7QUZggsloa5LUJP56JntSW+SEmPdHsvhHhhBD74o6DdN2Aw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 00:33",
+  "ts": 1759790001,
+  "url": ""
+}

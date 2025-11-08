@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: There are sensitive internal links in the clear on GEO satellites [pdf]\n • Hacker News: StreamingVLM: Real-Time Understanding for Infinite Video Streams\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "hash": "2f1feab6b271d0541c4a9247e1c6a24d1317577dcf7cceb92966ff9d7e0040aa",
+  "id": "BLK_1760411297_dfan5u",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "twCtuaY4VKBz7rZXm0nMZ7DVooo9+1/pJlvG3eYrW3ePT1qSUx5b5IEhODQJNgmETPeFD3GTLmWhbTnusau1DQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 05:08",
+  "ts": 1760411297,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Amazon confirms 14,000 job losses in corporate division\n • Hacker News: Show HN: Bash Screensavers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Welche Liegenschaften die Bundeswehr nun doch behalten will",
+  "created_at": 1761654702.1353796,
+  "hash": "5be9aa288fae0d47a716e29aa0a7b815e74811ec9ac010fb0ed6cf77e506e959",
+  "id": "BLK_1761654702_6fd9cc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "cNQnnoTeIDmRXogmIMSuCrBi/gui9Me5N82ULsYHpi8HIxoqrpQ6QW9e0sPOiDppnCFB1B7Gqpe0GuY6qUYdAw==",
+  "signed_at": "2025-10-28T12:31:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 13:31",
+  "url": null
+}

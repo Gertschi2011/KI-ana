@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Peach meme: On CRTs, pixels and signal quality (again)\n • Hacker News: Show HN: SQLite Online – 11 years of solo development, 11K daily users\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die 20 freigelassenen Geiseln",
+  "created_at": 1760366274.8838825,
+  "hash": "61216b2224a1654a4a6988d416b0d4d88c76e33636663e950a7fe9ac9b2a7534",
+  "id": "BLK_1760366274_7665bf",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "gK1P9NSEFWiTjB2gyU2Wn+VF0QTUYwE/YwwR6gEsxXRYihu7VL6pEAHODPrtmVefXcU27dNi0568ERHvCAgdDA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 16:37",
+  "url": null
+}

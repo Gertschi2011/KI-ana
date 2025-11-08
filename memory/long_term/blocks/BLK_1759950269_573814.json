@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Julia 1.12 Highlights\n • Hacker News: Show HN: Open-source UI for running multiple coding agents\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Innere Sicherheit: So will Deutschland Drohnen bekämpfen",
+  "created_at": 1759950269.7750175,
+  "hash": "2ece985c7b20e066ae7444dd9b2e64f21f084d10beb448b6f7094cdb34c9a9ef",
+  "id": "BLK_1759950269_573814",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "x9QKDSiAL8w2UuV7YJA6B1XHFulMRbzFUD8jZEiQsIPcDqo1hKWRrgH34XyRPAWuaRbgVQixR7BEdhvHxEIRBw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 21:04",
+  "url": null
+}

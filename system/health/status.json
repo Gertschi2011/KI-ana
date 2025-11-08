@@ -1,13 +1,13 @@
 {
-  "last_heartbeat": "2025-09-29T04:50:01Z",
+  "last_heartbeat": "2025-10-07T14:35:01Z",
   "queue": {
     "open_questions": 1,
     "to_learn": 0
   },
   "resources": {
-    "cpu_pct": 3.3,
-    "mem_mb": 3746.265625,
-    "disk_free_gb": 202.36
+    "cpu_pct": 19.8,
+    "mem_mb": 6122.18359375,
+    "disk_free_gb": 198.48
   },
   "anomalies": []
 }

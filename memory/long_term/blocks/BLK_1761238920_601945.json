@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: VectorWare – from creators of `rust-GPU` and `rust-CUDA`\n • Hacker News: US axes website for reporting human rights abuses by US-armed foreign forces\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was die Steuerschätzung für Klingbeil bedeutet",
+  "created_at": 1761238920.001588,
+  "hash": "d35c8eba3f6bf2b1d57fce2c66de4fd2a29d13d944f066763a1301084c44c4db",
+  "id": "BLK_1761238920_601945",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "sy0i9tjpJRGGb4rfNux7jFS3G1wqYzbYOofCAtswF8X1UN+VKReBRD3PKjs6hoPLllKuAhLQ6WWPgthPvA3jBQ==",
+  "signed_at": "2025-10-23T17:01:59Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 19:01",
+  "url": null
+}

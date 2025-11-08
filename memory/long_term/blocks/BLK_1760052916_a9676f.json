@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to Write in Cuneiform, the Oldest Writing System in the World\n • Hacker News: Show HN: GYST – Digital organizer that replicates the feeling of a physical desk\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "created_at": 1760052916.0433211,
+  "hash": "7dcc89a2301913e99f9c755ed86ecd50d7354f445cf840cd5bc35ecff2f6a80c",
+  "id": "BLK_1760052916_a9676f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Vq//0evBxiEr8qBgnRMu2Y94KQQlkLmgN0GzsnFbIOtdHcyQD0uFCh7QKS9THQeW8AhLBPdHpVOFAwduOQ6wBw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 01:35",
+  "url": null
+}

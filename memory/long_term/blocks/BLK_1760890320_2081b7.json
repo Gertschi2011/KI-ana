@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Spherical Cows of Programming\n • Hacker News: The Zipper Is Getting Its First Major Upgrade in 100 Years\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel bestätigt Angriffe auf Gaza nach Vorwürfen gegen Hamas",
+  "created_at": 1760890320.632389,
+  "hash": "bf1f99c2498ba7bbd9a97f1c5d674a3186773b7f1c5514134319e074e9091985",
+  "id": "BLK_1760890320_2081b7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Un1awwY4qjb62F+GPfKZxEsjy9DZeCP9QcVI0TBCNdDabQA2zKp5Jig7PLbk3bJtyCRFhCjEGmqmI5kTuWcyAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 18:12",
+  "url": null
+}

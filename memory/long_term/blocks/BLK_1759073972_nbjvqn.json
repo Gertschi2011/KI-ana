@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759073972_nbjvqn",
-  "title": "Web Digest 2025-09-28 17:39",
   "content": "• Hacker News: The golden ratio as a number base\n • Hacker News: How did we all miss the bacteria taking over her body?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Milliardenloch: Pflegegrad 1 streichen - oder nicht?",
+  "hash": "c211635e8ecbbc60eee29dfd8d0e8f3e98414e92fcaf252037bff1b4b738d4db",
+  "id": "BLK_1759073972_nbjvqn",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ldD1DqL9gw8vCPYttS/NO513d1PHXtkTnkcgSqYib66JmXQo3zvLW5pMHu4sgUokuKtQu+QR4m+9uG1JJScKBQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 17:39",
   "ts": 1759073972,
-  "meta": {},
-  "hash": "c211635e8ecbbc60eee29dfd8d0e8f3e98414e92fcaf252037bff1b4b738d4db"
+  "url": ""
 }

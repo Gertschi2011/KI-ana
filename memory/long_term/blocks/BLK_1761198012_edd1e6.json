@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The mild mannered Englishman who was the most prolific ghost hunter\n • Hacker News: The myth of outrunning your diet\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Russland schützt Atomarsenal mit westlicher Technik",
+  "created_at": 1761198012.7534008,
+  "hash": "0ff3fc7429eabf4c9ffb5633bc99e04e3b5eb1988d28ab07011946f796d349c7",
+  "id": "BLK_1761198012_edd1e6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vmmonn9pbf2+vhIs1sGYEorSGaxPz+POD8TKs0WsplVs3xqjikw5fCOaa09ZxuOLZLFylU2ZjhYYtMv+cDGPDQ==",
+  "signed_at": "2025-10-23T05:40:12Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-23 07:40",
+  "url": null
+}

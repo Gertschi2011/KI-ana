@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Vibe Coding in the 90s\n • Hacker News: New OSM file format: 30% smaller than PBF, 5x faster to import\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Verlorene Posten: Machtkämpfe in Chinas Führung?",
+  "hash": "3d67013580c2aa45ca3dc9f57218c7126b6a6f9af016456a092d1c7c51c5c54d",
+  "id": "BLK_1761354175_wuehfy",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "euOdCp49+t6TT6NTi5x0phIeS3r1B0QhubD6KJHqHu+CyhtSAaTZu5KOAbAKriwZ+cXoKkin9JVmKO4a2JJNDg==",
+  "signed_at": "2025-10-25T01:02:55Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 03:02",
+  "ts": 1761354175,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Launching Solveit – an antidote to AI fatigue\n • Hacker News: Anti-aging breakthrough: Stem cells reverse signs of aging in monkeys\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Putin wirft Frankreich wegen Festsetzung von Tanker Piraterie vor",
+  "created_at": 1759442423.6897852,
+  "hash": "8c1138306519c76ef6e55987e78ffc9d8905929f03e5ed80bca380e0d2295def",
+  "id": "BLK_1759442423_19f26b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "xmXhCW2AN3kZq4eNpGAr8A1wBxqfsedAKDiGG56hUpxaNrt2xi6EE5pyimZG25cK0OeTwBqA55PVgy6LfO2jDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 00:00",
+  "url": null
+}

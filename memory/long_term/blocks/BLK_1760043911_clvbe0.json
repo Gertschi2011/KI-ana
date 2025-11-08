@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A built-in 'off switch' to stop persistent pain\n • Hacker News: Finding a VS Code Memory Leak\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Liveblog: ++ Hamas erklärt Gaza-Krieg für beendet ++",
+  "hash": "64c85e9cbc954b3686a73ed683fef5671942702ddc43ba086e0af3b49dc67b49",
+  "id": "BLK_1760043911_clvbe0",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "okWBDP6qYU404clJmLA9iaCggOwh5cwjuESHZBbWp3ai05qzBuMUU9GGun2lCdbTDtJdG7bmMZW/LauGgXokCw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 23:05",
+  "ts": 1760043911,
+  "url": ""
+}

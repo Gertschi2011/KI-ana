@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Argentina's midterm election hands landslide win to Milei's libertarian overhaul\n • Hacker News: How I turned Zig into my favorite language to write network programs in\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht aus Berlin: Spahn stärkt Merz in \"Stadtbild\"-Debatte",
+  "created_at": 1761535845.327734,
+  "hash": "fb3ac09b781990b68796937b70c38c067ac8e1e88feb7c14467b8385f205a199",
+  "id": "BLK_1761535845_6ff2ab",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "/sb3i3pP/j7ZzU5GiEO4AeNQf24dtcxJ/fBA5p+/eZCqXEljL+wr5vyoE7J9i1jRkStPJ9AAZDSg4sfGwKiRBw==",
+  "signed_at": "2025-10-27T03:30:45Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 04:30",
+  "url": null
+}

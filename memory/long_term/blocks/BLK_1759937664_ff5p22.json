@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: Recall: Give Claude perfect memory with Redis-backed persistent context\n • Hacker News: How To Start Bug Bounties (2021)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundesregierung geht von mehr Wirtschaftswachstum ab 2026 aus",
+  "hash": "13203c29b238ce5795733b0da4449a707d5ea40993675dba427dd33cd8d32fe5",
+  "id": "BLK_1759937664_ff5p22",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "bYnCHPc94iGs+51At2tuSIlvk4W3nLIO0CzN+XBQNHdZmn+yMI0AW09YBQYfGfWHjLFibqQmvW0z8y96Guq6BQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-08 17:34",
+  "ts": 1759937664,
+  "url": ""
+}

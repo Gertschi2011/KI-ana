@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: J.P. Morgan's OpenAI loan is strange\n • Hacker News: Claude Code on the Web\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU fordert Trump auf, Druck auf Putin hochzuhalten",
+  "created_at": 1760991165.7762783,
+  "hash": "15ddd40c6bb73cb4ead0a891dace0c2692ec7a135a22b9b4593f6c59015edf16",
+  "id": "BLK_1760991165_6fbcdd",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "yyKOdUu7o1ltRcwsPpGjh85mvcvTkatgziRc1NJuYQnLxEQXxWN+jRUGQo8KNqXzF86vTwbLiNgapr6xyxZjCQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 22:12",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Airgoods (YC S23) Is Hiring\n • Hacker News: Intel's original 64bit extensions for x86\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensplan für Gaza: Arabische Welt applaudiert - Hamas kritisiert",
+  "created_at": 1759236259.29482,
+  "hash": "65968e06bf14bc2db93b4c232e46ef3414369ab24f8cd85b6f5bab9a23dd5728",
+  "id": "BLK_1759236259_5ebd0b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "btGeUQcnVw/3TwJ8qzO3lNs6JgjXqykRWFtmOrIIv45auUgBSJrMUCBy+fdD2gqAB6vepePIclMa4Pjtry7wAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 14:44",
+  "url": null
+}

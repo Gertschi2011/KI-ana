@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Callbacks in C++ Using Template Functors – Rich Hickey (1994)\n • Hacker News: Show HN: ut – Rust based CLI utilities for devs and IT\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Söder äußert sich im Bericht aus Berlin zu Drohnenabschüssen",
+  "created_at": 1759690959.3575072,
+  "hash": "ae313a96b557002bc5d3f6d7986aceadf54aee800660cd5a0c23d722b0755973",
+  "id": "BLK_1759690959_6cf3d1",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "aWv9GrGVTT01m2Yz7irM9fWS9x/TqmnZ+6jf6JJdbhmn1VlkUCh3gTDgQA6yLUZkjk4SE5fdjLz6RJfeFNrAAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 21:02",
+  "url": null
+}

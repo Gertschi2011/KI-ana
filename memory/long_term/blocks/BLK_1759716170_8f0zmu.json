@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Covert Eavesdropping Through Computer Mice\n • Hacker News: Rule-Based Expert Systems: The Mycin Experiments (1984)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz vermutet Russland hinter vielen Drohnen-Flügen",
+  "hash": "edc16f1f0d74e1a2002d45655cef15da7fd34ab0032fa7a864e13bcd2f117e72",
+  "id": "BLK_1759716170_8f0zmu",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Axx9uhQjdFgvE7f8SYTlGaqFk9Zzq7CZRpxo7LC2MzRxkvr93Ev89ECesEuMTSel9kKO8PZyLXz6SN2emdiZBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 04:02",
+  "ts": 1759716170,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: InpharmD (YC W21) Is Hiring – NLP Engineer\n • Hacker News: Why SSA Compilers?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stadtbild-Debatte: Merz sieht Migranten als \"unverzichtbaren Bestandteil\"",
+  "created_at": 1761167811.4160266,
+  "hash": "281b33b71ebbba45441fd004052654d2b23ce5c0ee72b471860cc9b10fbc0f7a",
+  "id": "BLK_1761167811_e4d57f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "sUHgr4KP0B0lWqhyiJurJ1hjXiDdFOMEfgDtEVGbi6aXm7tjVPgkc7vP6U41hvUXwo89zaBPavptgWScmrbOAg==",
+  "signed_at": "2025-10-22T21:16:51Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 23:16",
+  "url": null
+}

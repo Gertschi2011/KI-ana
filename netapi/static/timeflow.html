@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>TimeFlow Manager – KI_ana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <link href="/static/styles.css" rel="stylesheet">
+  <link href="/static/chat.css" rel="stylesheet">
+  <link href="/static/modern-ui.css" rel="stylesheet">
+  <style>
+    .navbar{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
+    body{padding-top:56px}
+    .container { max-width: 1200px; margin: 20px auto; padding: 24px; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .stat-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .stat-card h3 { margin: 0 0 8px 0; font-size: 14px; color: #666; font-weight: 500; }
+    .stat-card .value { font-size: 32px; font-weight: 700; color: #333; }
+    .stat-card .label { font-size: 12px; color: #999; margin-top: 4px; }
+    .timeline { background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .timeline-item { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-time { min-width: 120px; color: #666; font-size: 14px; }
+    .timeline-content { flex: 1; }
+    .timeline-title { font-weight: 600; color: #333; margin-bottom: 4px; }
+    .timeline-desc { color: #666; font-size: 14px; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+    .badge.active { background: #e8f5e9; color: #2e7d32; }
+    .badge.inactive { background: #fce4ec; color: #c62828; }
+    .badge.pending { background: #fff3e0; color: #ef6c00; }
+    .controls { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .btn { padding: 8px 16px; border: 1px solid #ddd; border-radius: 8px; background: #fff; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+    .btn:hover { background: #f5f5f5; }
+    .btn-primary { background: #4a90e2; color: #fff; border-color: #4a90e2; }
+    .btn-primary:hover { background: #3a7bc8; }
+    .loading { text-align: center; padding: 40px; color: #999; }
+    .alert { padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; }
+    .alert.info { background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
+    .alert.warning { background: #fff3e0; color: #e65100; border: 1px solid #ffb74d; }
+    .alert.error { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+  </style>
+</head>
+<body>
+  <div id="nav"></div>
+  <main class="container">
+    <div class="header">
+      <h1>⏱️ TimeFlow Manager</h1>
+      <div class="controls">
+        <button class="btn" onclick="refreshData()">🔄 Aktualisieren</button>
+        <button class="btn btn-primary" onclick="showSettings()">⚙️ Einstellungen</button>
+      </div>
+    </div>
+
+    <div id="alerts"></div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Aktive Prozesse</h3>
+        <div class="value" id="active-count">-</div>
+        <div class="label">Laufende Tasks</div>
+      </div>
+      <div class="stat-card">
+        <h3>Uptime</h3>
+        <div class="value" id="uptime">-</div>
+        <div class="label">System-Laufzeit</div>
+      </div>
+      <div class="stat-card">
+        <h3>Aktivierungen</h3>
+        <div class="value" id="activations">-</div>
+        <div class="label">Heute</div>
+      </div>
+      <div class="stat-card">
+        <h3>Status</h3>
+        <div class="value" id="system-status">
+          <span class="badge active">Aktiv</span>
+        </div>
+        <div class="label">Systemstatus</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <h2 style="margin-top: 0;">📊 Aktivitäts-Timeline</h2>
+      <div id="timeline-content" class="loading">
+        Lade Timeline-Daten...
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/static/nav.js"></script>
+  <script>
+    let timeflowData = null;
+
+    async function refreshData() {
+      try {
+        // Versuche TimeFlow API endpoint
+        const token = localStorage.getItem('ki_token') || '';
+        const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+        const response = await fetch('/api/system/timeflow', { headers });
+        
+        if (response.ok) {
+          timeflowData = await response.json();
+          updateUI();
+        } else {
+          // Fallback: Nutze System-Status
+          const fallback = await fetch('/api/system/status');
+          if (fallback.ok) {
+            const data = await fallback.json();
+            timeflowData = {
+              active_count: 0,
+              uptime: 0,
+              activations_today: 0,
+              status: 'active',
+              timeline: []
+            };
+            updateUI();
+          }
+        }
+      } catch (error) {
+        console.error('TimeFlow Fehler:', error);
+        showAlert('Verbindung zum TimeFlow-Service fehlgeschlagen', 'error');
+        // Zeige Dummy-Daten für Demo
+        showDemoData();
+      }
+    }
+
+    function updateUI() {
+      if (!timeflowData) return;
+
+      document.getElementById('active-count').textContent = timeflowData.active_count || 0;
+      document.getElementById('uptime').textContent = formatUptime(timeflowData.uptime || 0);
+      document.getElementById('activations').textContent = timeflowData.activations_today || 0;
+      
+      const statusBadge = document.querySelector('#system-status .badge');
+      if (timeflowData.status === 'active') {
+        statusBadge.className = 'badge active';
+        statusBadge.textContent = 'Aktiv';
+      } else {
+        statusBadge.className = 'badge inactive';
+        statusBadge.textContent = 'Inaktiv';
+      }
+
+      renderTimeline(timeflowData.timeline || []);
+    }
+
+    function renderTimeline(events) {
+      const container = document.getElementById('timeline-content');
+      
+      if (events.length === 0) {
+        container.innerHTML = '<div class="loading">Keine Ereignisse verfügbar</div>';
+        return;
+      }
+
+      container.innerHTML = events.map(event => `
+        <div class="timeline-item">
+          <div class="timeline-time">${formatTime(event.timestamp)}</div>
+          <div class="timeline-content">
+            <div class="timeline-title">${event.title}</div>
+            <div class="timeline-desc">${event.description || ''}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function showDemoData() {
+      timeflowData = {
+        active_count: 3,
+        uptime: 86400,
+        activations_today: 47,
+        status: 'active',
+        timeline: [
+          { timestamp: Date.now() - 3600000, title: 'System gestartet', description: 'Alle Dienste erfolgreich initialisiert' },
+          { timestamp: Date.now() - 7200000, title: 'Chat-Sitzung', description: 'Benutzer gerald: 5 Nachrichten' },
+          { timestamp: Date.now() - 10800000, title: 'Knowledge Update', description: '12 neue Blöcke hinzugefügt' }
+        ]
+      };
+      updateUI();
+      showAlert('Demo-Modus aktiv - Echte Daten nicht verfügbar', 'info');
+    }
+
+    function formatUptime(seconds) {
+      const days = Math.floor(seconds / 86400);
+      const hours = Math.floor((seconds % 86400) / 3600);
+      if (days > 0) return `${days}d ${hours}h`;
+      if (hours > 0) return `${hours}h`;
+      return `${Math.floor(seconds / 60)}m`;
+    }
+
+    function formatTime(timestamp) {
+      const date = new Date(timestamp);
+      return date.toLocaleString('de-DE', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        day: '2-digit',
+        month: '2-digit'
+      });
+    }
+
+    function showAlert(message, type = 'info') {
+      const alerts = document.getElementById('alerts');
+      const alert = document.createElement('div');
+      alert.className = `alert ${type}`;
+      alert.textContent = message;
+      alerts.appendChild(alert);
+      setTimeout(() => alert.remove(), 5000);
+    }
+
+    function showSettings() {
+      alert('TimeFlow-Einstellungen werden in einem zukünftigen Update verfügbar sein.');
+    }
+
+    // Auto-refresh alle 30 Sekunden
+    setInterval(refreshData, 30000);
+
+    // Initial load
+    refreshData();
+  </script>
+  <script src="/static/nav.js"></script>
+</body>
+</html>

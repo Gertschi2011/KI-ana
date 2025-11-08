@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Practical Scheme\n • Hacker News: 60k kids have avoided peanut allergies due to 2015 advice, study finds\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach \"Stadtbild\"-Äußerungen: Der Stil des Kanzlers steht in der Kritik",
+  "created_at": 1761030783.0816238,
+  "hash": "4f95ffe55688d0a640658110d2e103dd6493543a0f3a833a1529f9ac5e5905d8",
+  "id": "BLK_1761030783_62882f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "6YFhmpiI2wZCEvwC5HIP3rJ3klOVXS3gZD6FZsXASYIXUo0EYDLSdgIMiBOQp0ZJD+Lc941ZWDNl/vnazFraBg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 09:13",
+  "url": null
+}

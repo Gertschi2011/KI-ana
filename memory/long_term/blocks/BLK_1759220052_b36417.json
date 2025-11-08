@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Geolocation and Starlink\n • Hacker News: European Union Public Licence (EUPL)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump sieht Nahen Osten \"mehr als nah dran\" an einer Friedenslösung",
+  "created_at": 1759220052.323826,
+  "hash": "710475c988d3b59fd58d1c9a0285f9116a1abb9a8ce214b094859df22f697315",
+  "id": "BLK_1759220052_b36417",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "UpdPWlop8wVOCEpatGqxljjx9P/w0BZodm7DfvmTRYPdi3nl9Bx3nyzRzAfgHEfl875iEbvcM+kXsIIOpk+oCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 10:14",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Time Warp IDE – Complete environment for old-school coding\n • Hacker News: N8n vs. Windmill vs. Temporal\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "hash": "b563ed6bdcf07496a6ebc452d746ad93f6378705b4b2ba3be69be870e1ff6c75",
+  "id": "BLK_1760061920_anxoeu",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "P22htKtG2lcwQEuS22jFATfLbEKf9rcBgiAn9Uee35UUUDLQBDeJWTk+x8jTmWAPEQTZbPy9qvHBGg+ZithWBg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 04:05",
+  "ts": 1760061920,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Poison, Poison Everywhere\n • Hacker News: The Apple Network Server macOS ROMs Have Resurfaced\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bericht aus Berlin: Spahn stärkt Merz in \"Stadtbild\"-Debatte",
+  "created_at": 1761519637.648103,
+  "hash": "67792199cf4d2da9ddfc03008e63e9e4ad9818a78ea807af83226a15ff1299b7",
+  "id": "BLK_1761519637_bec1fb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "5CV/ocAKnr+SbSyo4suxdgJKRGBJpZTrQv7/sdQmfd04tQt6J0GYxyj2pmvJgEpkXDmpb/lTWs68STFNxdqOBg==",
+  "signed_at": "2025-10-26T23:00:37Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 00:00",
+  "url": null
+}

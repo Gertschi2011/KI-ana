@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758733780_8ls83h",
-  "title": "Web Digest 2025-09-24 19:09",
   "content": "• Hacker News: Launch HN: Flywheel (YC S25) – Waymo for Excavators\n • Hacker News: Terence Tao: The role of small organizations in society has shrunk significantly\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Generaldebatte im Bundestag: Ein Kanzler im Verteidigungsmodus",
+  "hash": "61ac1197bb0d680fc1a1c6e77dcc8780336df1d0152f6b63dbfc4907666c44a7",
+  "id": "BLK_1758733780_8ls83h",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "uPrya6/8SQR9EInEwSXFqFmmaCXId69jio7OqL2LMXEzn2Tt4WUh7manEXz+UDKXsK2E81QIW+oYLOxidd3zBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-24 19:09",
   "ts": 1758733780,
-  "meta": {},
-  "hash": "61ac1197bb0d680fc1a1c6e77dcc8780336df1d0152f6b63dbfc4907666c44a7"
+  "url": ""
 }

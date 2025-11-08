@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Original C64 Lode Runner Source Code\n • Hacker News: Duke Nukem: Zero Hour N64 ROM Reverse-Engineering Project Hits 100%\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Reaktionen auf Kunstdiebstahl: \"Das ist der französische Familienschmuck\"",
+  "created_at": 1760917333.0680182,
+  "hash": "46eac34b05d0304c13dce7c8262a5287bee4d4eb5df7fcd9c03c6cc43e841301",
+  "id": "BLK_1760917333_19ce3f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Du4jPtodqv0MUWggXLDt4zM6w0N8ehMwh/zH+wwwPm8+1A6P6POq1p986C/vfpy6Le7tI3LcIIg6i3+xSXjbBQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 01:42",
+  "url": null
+}

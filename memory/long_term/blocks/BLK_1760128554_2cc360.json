@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: MIT Rejects White House Offer for Special Funding Treatment\n • Hacker News: Does our \"need for speed\" make our Wi-Fi suck? Yes.\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron ernennt Lecornu erneut zu Frankreichs Premierminister",
+  "created_at": 1760128554.019725,
+  "hash": "649ccb9d0a2be792d735fb2cc28bc0986655bfac5c6845cea1c8a497bf6ecbe8",
+  "id": "BLK_1760128554_2cc360",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "E72BZ36Yx0iUq/Fd5SjB3EBdYJyv1iNbfquIQNuSPT/W77eUmdcObbf3q0R2MPhFTJgtqxOzmwQ/69O3EZICAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 22:35",
+  "url": null
+}

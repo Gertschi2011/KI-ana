@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Roc Camera\n • Hacker News: Computer science courses that don't exist, but should (2015)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Unterwasser-Sensorik - Das Spionage-Geheimnis der \"Estonia\"",
+  "created_at": 1761281573.3903456,
+  "hash": "53e91f2ceb50324cc8e68ac284b73deba0b2283fd93b0a33e72ad2803d313314",
+  "id": "BLK_1761281573_dd9e39",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "e27e9F6pKwa7k7o36oVZRi4Oeg5yweNRBLkVbcYyjKmk7xKJjLzMUiL3+gZy0njtv5E2aGfEYABSYnydvzc1AQ==",
+  "signed_at": "2025-10-24T04:52:53Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 06:52",
+  "url": null
+}

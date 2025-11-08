@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The FSF considers large language models\n • Hacker News: Let's Help NetBSD Cross the Finish Line Before 2025 Ends\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza: Israel will selbst über internationale Truppen bestimmen",
+  "hash": "cbd11b548cccd249e2bf1fad891cdaec055057f7f6a87a78d976b3219d7bc20c",
+  "id": "BLK_1761492618_vkmhdn",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "u0sqHyjBMsU/HFclXYH6Tt5rxbJ9EzJJQY1kxDnDPMBKCKBCnnP49k/y7dAvLM5+Ikk+BDMdnySbhyBANTHuAg==",
+  "signed_at": "2025-10-26T15:30:18Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 16:30",
+  "ts": 1761492618,
+  "url": ""
+}

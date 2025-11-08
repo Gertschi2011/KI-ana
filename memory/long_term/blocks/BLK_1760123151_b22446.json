@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Google, Meta and Microsoft opts to stop showing political ads in EU\n • Hacker News: Show HN: Modeling the Human Body in Rust So I Can Cmd+Click Through It\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Wiederaufbau: Was Deutschland leisten kann - und will",
+  "created_at": 1760123151.0394826,
+  "hash": "83877db86470d909517551d892683f40029067cd47a6cfc33359fde0e9f8710c",
+  "id": "BLK_1760123151_b22446",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "c7yYyJvzkHDwu3aOTTox+3v9hvG6andBaY98ELmYoC8u1huSE2xweY4a16Y3o2aSu07dMgJQzNS5IAG9LaikDg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 21:05",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to Create an OS from Scratch\n • Hacker News: Technology without humanity means nothing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Weißes Haus veröffentlicht Trumps Nahost-Friedensplan",
+  "created_at": 1759193422.631985,
+  "hash": "918af7827555dd6e7d669925d717f1148ed990fda6ac3aa2a9c96ab87489d5b8",
+  "id": "BLK_1759193422_bed0d6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "VKRMRrTQC5Lsh5elRgUljfOnobfvnXqamIzygpCGkojKqKlnn8n57MicYt7EaSFyTzLFLSRlt4MKXYaNfTaVDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 02:50",
+  "url": null
+}

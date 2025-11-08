@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758521951_87ca5v",
-  "title": "Web Digest 2025-09-22 08:19",
   "content": "• Hacker News: Download Responsibly\n • Hacker News: Privacy and Security Risks in the eSIM Ecosystem [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump bezeichnet erschossenen Kirk bei Trauerfeier als \"Märtyrer\"",
+  "hash": "e437fa6a45dbb0e77b8c252f480fce5d8a45b35198b9ab3847fee0db75a72bc9",
+  "id": "BLK_1758521951_87ca5v",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "aJZUB3BhZakT8HOWDmqNb5zsQiso67mZ4SX4oCR9htbsAz4iZoAq4B0pzseVDwKR0X4MF7urDYlXrvVe1hToDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 08:19",
   "ts": 1758521951,
-  "meta": {},
-  "hash": "e437fa6a45dbb0e77b8c252f480fce5d8a45b35198b9ab3847fee0db75a72bc9"
+  "url": ""
 }

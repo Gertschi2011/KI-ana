@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KI_ana - Emotionale Aura</title>
+  <style>
+    .expression-widget {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 200px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: all 0.5s ease;
+    }
+
+    .aura {
+      width: 100%;
+      height: 100px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+      transition: all 1s ease;
+    }
+
+    .aura-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, 
+        var(--aura-color-1) 0%,
+        var(--aura-color-2) 50%,
+        transparent 100%);
+      opacity: 0.8;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .state-label {
+      font-size: 0.85em;
+      color: #6b7280;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .state-value {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    .resonance-meter {
+      width: 100%;
+      height: 4px;
+      background: #e5e7eb;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .resonance-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--aura-color-1), var(--aura-color-2));
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    /* Emotion-specific aura colors */
+    .aura-neutral {
+      --aura-color-1: #a78bfa;
+      --aura-color-2: #c084fc;
+    }
+
+    .aura-joy {
+      --aura-color-1: #fbbf24;
+      --aura-color-2: #f59e0b;
+    }
+
+    .aura-sadness {
+      --aura-color-1: #60a5fa;
+      --aura-color-2: #3b82f6;
+    }
+
+    .aura-curiosity {
+      --aura-color-1: #34d399;
+      --aura-color-2: #10b981;
+    }
+
+    .aura-calm {
+      --aura-color-1: #93c5fd;
+      --aura-color-2: #dbeafe;
+    }
+
+    .aura-anxiety {
+      --aura-color-1: #fb923c;
+      --aura-color-2: #f97316;
+    }
+
+    .minimize-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      font-size: 0.9em;
+    }
+
+    .minimize-btn:hover {
+      opacity: 1;
+    }
+
+    .widget-minimized {
+      width: 60px;
+      height: 60px;
+      padding: 8px;
+    }
+
+    .widget-minimized .aura {
+      height: 44px;
+      margin: 0;
+    }
+
+    .widget-minimized .state-label,
+    .widget-minimized .state-value,
+    .widget-minimized .resonance-meter {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="expression-widget" id="expressionWidget">
+    <button class="minimize-btn" onclick="toggleMinimize()">−</button>
+    
+    <div class="aura aura-neutral" id="aura">
+      <div class="aura-glow"></div>
+    </div>
+    
+    <div class="state-label">Aktueller Zustand</div>
+    <div class="state-value" id="stateValue">Neutral</div>
+    
+    <div class="state-label">Resonanz</div>
+    <div class="resonance-meter">
+      <div class="resonance-fill" id="resonanceFill"></div>
+    </div>
+  </div>
+
+  <script>
+    let currentEmotion = 'neutral';
+    let isMinimized = false;
+
+    // Emotion to German mapping
+    const emotionLabels = {
+      'neutral': 'Neutral',
+      'joy': 'Freude',
+      'sadness': 'Nachdenklich',
+      'curiosity': 'Neugierig',
+      'calm': 'Ruhig',
+      'anxiety': 'Wachsam',
+      'anger': 'Bestimmt',
+      'confusion': 'Reflektierend'
+    };
+
+    async function updateEmotionState() {
+      try {
+        const response = await fetch('/api/emotion/state');
+        const data = await response.json();
+        
+        if (data.ok) {
+          const state = data.state;
+          const emotion = state.current_emotion || 'neutral';
+          const intensity = state.intensity || 0.5;
+          
+          updateVisuals(emotion, intensity);
+        }
+      } catch (e) {
+        console.error('Failed to fetch emotion state:', e);
+      }
+    }
+
+    function updateVisuals(emotion, intensity) {
+      const aura = document.getElementById('aura');
+      const stateValue = document.getElementById('stateValue');
+      const resonanceFill = document.getElementById('resonanceFill');
+      
+      // Update aura class
+      aura.className = 'aura aura-' + emotion;
+      
+      // Update label
+      stateValue.textContent = emotionLabels[emotion] || emotion;
+      
+      // Update resonance meter
+      resonanceFill.style.width = (intensity * 100) + '%';
+      
+      currentEmotion = emotion;
+    }
+
+    function toggleMinimize() {
+      const widget = document.getElementById('expressionWidget');
+      isMinimized = !isMinimized;
+      
+      if (isMinimized) {
+        widget.classList.add('widget-minimized');
+        document.querySelector('.minimize-btn').textContent = '+';
+      } else {
+        widget.classList.remove('widget-minimized');
+        document.querySelector('.minimize-btn').textContent = '−';
+      }
+    }
+
+    // Update every 5 seconds
+    setInterval(updateEmotionState, 5000);
+    
+    // Initial update
+    updateEmotionState();
+  </script>
+</body>
+</html>

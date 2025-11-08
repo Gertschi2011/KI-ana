@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Time Warp IDE – Complete environment for old-school coding\n • Hacker News: How to write in Cuneiform\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "created_at": 1760063721.4529667,
+  "hash": "48accce011edc68ef901c6dc1e3ad6092fdd1127994bbbb368bbcd423dcb6ebb",
+  "id": "BLK_1760063721_789a17",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Zx7oX8scrr40yczMJJljPej7Cg+uqASQ2Hrm/KPSUinhb7XVr+RQ3XziLNFdReAWEf6Y9H+YQFS38GPBM/NRAw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 04:35",
+  "url": null
+}

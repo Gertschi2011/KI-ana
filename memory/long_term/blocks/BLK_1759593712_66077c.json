@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: A Comparison of Ada and Rust, Using Solutions to the Advent of Code\n • Hacker News: How I influence tech company politics as a staff software engineer\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Babis-Partei liegt bei Parlamentswahl in Tschechien klar vorn",
+  "hash": "91f9140e883ac36d0988181c7bfdfc6e0995afd2c74bd2691617e1ecc2e496bb",
+  "id": "BLK_1759593712_66077c",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "93CvHO0ot2plMv5YUSQ3B0rQttj5GztNW6AR3ctOkocgpOMbmC7+PpJ/VfJ1OOxXq+RwZZIuCr3lmEo2evvtAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 18:01",
+  "ts": 1759593712,
+  "url": ""
+}

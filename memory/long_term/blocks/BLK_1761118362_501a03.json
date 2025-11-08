@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Greenland Ditches Starlink for French Satellite Service\n • Hacker News: Evaluating the Infinity Cache in AMD Strix Halo\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ein Polizeigewerkschafter und seine steilen Thesen",
+  "created_at": 1761118362.2604938,
+  "hash": "4600748ecf365428a486830daed24eee9e41b3e608d6a502e405cfa9321d4c41",
+  "id": "BLK_1761118362_501a03",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "TyAeqidPHAFo2KjcAALbYUzfJHKA+iwe16wnPyp7Mc++UyxLG0jVz/5WvWZu/aNinCnT5icOZpKA6cdqvguXDA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 09:32",
+  "url": null
+}

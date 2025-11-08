@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Tsdown – The Elegant Bundler for Libraries\n • Hacker News: GenAI Image Editing Showdown\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wenn der Stadt die Wohnung bezahlt und die Aktionäre kassieren",
+  "created_at": 1761461673.032356,
+  "hash": "a6df8fdaa5fff128d26877e9466a8f16fc16ce9708b58192f8984c8db99bcb77",
+  "id": "BLK_1761461673_d4b9ac",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "wiSf0dkN4o0wCn+Z9e/YfrjHNuu3OZ5sxPXHJmWqqySa8RRzFsikZwOo1+/En8onR/rfBSqbr0gzgBh+6UmgCg==",
+  "signed_at": "2025-10-26T06:54:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 07:54",
+  "url": null
+}

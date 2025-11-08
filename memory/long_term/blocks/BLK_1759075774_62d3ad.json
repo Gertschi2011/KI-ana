@@ -1,17 +1,21 @@
 {
-  "id": "BLK_1759075774_62d3ad",
-  "title": "Web Digest 2025-09-28 18:09",
   "content": "• Hacker News: Why I'm not rushing to take sides in the RubyGems fiasco\n • Hacker News: The AI coding trap\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Milliardenloch: Pflegegrad 1 streichen - oder nicht?",
+  "created_at": 1759075774.0200737,
+  "hash": "e6f15dc719b0efbb7ab93b7073609dd06fa87f60cb632ee8ff98caa8291548ab",
+  "id": "BLK_1759075774_62d3ad",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "D104zcJtSIhVuDedp9mwpK6MjOsAq0e6M2oIgz0HDDHDA1GsIb1/P1+YvsT3uR8gOuSOvL+41I+BfcSk+Hb9Dg==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": null,
-  "created_at": 1759075774.0200737,
-  "meta": {
-    "source": "skill:web_digest"
-  },
-  "path": null,
-  "score": null
+  "title": "Web Digest 2025-09-28 18:09",
+  "url": null
 }

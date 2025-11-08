@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Sequoia COO quit over Shaun Maguire's comments about Mamdani\n • Hacker News: The Logarithmic Time Perception Hypothesis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demokratie-Monitor: 17 Prozent vertreten populistisches Weltbild",
+  "created_at": 1761151603.129505,
+  "hash": "d5da48a659d6c5bf0ce28b623528169425ef71618dfd50e1b818393d120758f6",
+  "id": "BLK_1761151603_ed3a63",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "oG+2ptkRcD+CBCC4PF+Z/+zUzFXGnK77Iiv4zRR32VlmIN1Bg5c8L1kUBiQYjfNTqceNYF9DKZRlKrBwNda8BQ==",
+  "signed_at": "2025-10-22T16:46:43Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 18:46",
+  "url": null
+}

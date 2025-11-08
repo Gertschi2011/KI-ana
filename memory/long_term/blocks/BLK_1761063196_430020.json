@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: AI Is Making Us Work More\n • Hacker News: RF Shielding History: When the FCC Cracked Down on Computers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine: Einfrieren der Front als Ausgangspunkt für Verhandlungen?",
+  "created_at": 1761063196.9659407,
+  "hash": "2749f047a2f56fcb608551a060eaadaaf71d0146de8a868f216d4908add19171",
+  "id": "BLK_1761063196_430020",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "0WblQNoMHkOY5rQKrhowdhfQTnR2lQV6Un9BRtX9TU04Lgw4Uep0l58qOsa5XVxfSXwThMaG6q9J2naPCC5LCA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 18:13",
+  "url": null
+}

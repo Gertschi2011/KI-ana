@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: OpenBSD 7.8 Released\n • Hacker News: Cdb: Add support for cdb64\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie Project 2025 die USA verändert",
+  "created_at": 1761106416.2807684,
+  "hash": "0ddb5a4267312cffcaf2ffe96680642764a3a256e7ae3f9be2761302afb883dd",
+  "id": "BLK_1761106416_6f7bd9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Op9hl20I/LsvI4I7uLDp1oy7Fns7gFr2UtGgWjUSXCGGWppZJTGGTkyV7XwxT/FDO0CUqix7em6Zo0s/icUgCg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 06:13",
+  "url": null
+}

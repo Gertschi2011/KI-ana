@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Samsung makes ads on $3,499 smart fridges official with upcoming software update\n • Hacker News: Grokipedia and the Coup Against Reality Itself\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "created_at": 1761679914.9634562,
+  "hash": "8a56169bbd7d34cdfc905be5df84fdd97bfd41d667c5137088957d35d5436821",
+  "id": "BLK_1761679914_94f746",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "E5PlR8ZSUvuRc8iAJHqI7Ne92XVaZbSHDpL75a6/B8L1dAjrx51Xh1HLJXS4sCrHsPoZStn3C1Wp/K58ysVkCw==",
+  "signed_at": "2025-10-28T19:31:54Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 20:31",
+  "url": null
+}

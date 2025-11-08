@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Subverting Telegram's End-to-End Encryption\n • Hacker News: RFK Jr. Must Go\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Regierungskrise in Frankreich: Premier Lecornu setzt Rentenreform aus",
+  "created_at": 1760456319.7919958,
+  "hash": "7d633057e9098b333543ec214d00d99fd272cfe2a7aef9dff50b2bac3c33f3f1",
+  "id": "BLK_1760456319_d401fb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "TuKhkIDc+uWK7IGcL5xxhI5IBo3y6PKAbD5YIjc7TwKqfnKELqFg+yTLIwCAx+Rl4SCr39ZYjEosbeM25zYNCg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 17:38",
+  "url": null
+}

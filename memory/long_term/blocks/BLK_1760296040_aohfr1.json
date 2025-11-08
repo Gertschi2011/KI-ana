@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Agent Shell 0.5 Improvements\n • Hacker News: Kuzu DB devs no longer supporting the project\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Selenskyj spricht mit Trump: \"Tomahawks\" für die Ukraine?",
+  "hash": "3dcf59a143fdb194d1a677ddddee4ea0520173907302403c963e64504924596e",
+  "id": "BLK_1760296040_aohfr1",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "YOwBpVP+O9NzivkfhGzfLZtBZwPTv8yvmVmUSWppqy8echooOh7q3bBfzweEzrFIzOcd/XzR/U/lPOLs20IiBg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 21:07",
+  "ts": 1760296040,
+  "url": ""
+}

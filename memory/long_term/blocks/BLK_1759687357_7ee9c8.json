@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Focus Is Saying No\n • Hacker News: Implicit Actor Critic Coupling via a Supervised Learning Framework for RLVR\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Söder äußert sich im Bericht aus Berlin zu Drohnenabschüssen",
+  "created_at": 1759687357.6541905,
+  "hash": "0565c6a32fa124c1e91acaec2ce090dce57cd70866388c83013aa4657ea7c334",
+  "id": "BLK_1759687357_7ee9c8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "7J6ryW/G09yb9kFG13fA7Fut1b7Y8wNDLWnvCiWOISAlReoDWnJ5EnWl0RNKsmpFnNOqpNiRKDndk/KP/BZ+Bw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 20:02",
+  "url": null
+}

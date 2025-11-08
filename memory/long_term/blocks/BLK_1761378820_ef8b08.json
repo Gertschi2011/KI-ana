@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Euro cops take down cybercrime network with 49M fake accounts\n • Hacker News: Meet the real screen addicts: the elderly\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): ASEAN-Gipfel: Wie umgehen mit der \"Sandwich-Position\"?",
+  "created_at": 1761378820.7557034,
+  "hash": "0e678a905dfbde07a7bad56ce7801a4f9f0f2cf179dcb2835eb0914128d53b64",
+  "id": "BLK_1761378820_ef8b08",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "rdsLGSQ4y5NmUNOBUEgnpSip+bHyhGwEO3Cii7JC03eBCs9AfplmJRQRIR2Co51RX4uq7//XcNQstVQB/swlCw==",
+  "signed_at": "2025-10-25T07:53:40Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 09:53",
+  "url": null
+}

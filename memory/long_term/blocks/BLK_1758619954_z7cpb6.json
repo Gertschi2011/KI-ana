@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758619954_z7cpb6",
-  "title": "Web Digest 2025-09-23 11:32",
   "content": "• Hacker News: Japan's most sacred Shinto shrine rebuilt every 20yrs for more than a millennium\n • Hacker News: Telli (YC F24) is hiring ambitious engineers [Berlin, on-site]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Dänemarks Regierung spricht wegen Drohnen über Flughäfen von \"Anschlag\"",
+  "hash": "a1f8cf5694ac3ede7994e2bd08632cec047fe6ac8bbed533cead54b9ea3ad482",
+  "id": "BLK_1758619954_z7cpb6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "FlAt3gFD8poB4pZ9BPo2aYejt67kEN+64m+p/1fk4BkoeWl4wASOL4HHA4oL05rKhgGzye8ombLN+fiQS2JXDw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-23 11:32",
   "ts": 1758619954,
-  "meta": {},
-  "hash": "a1f8cf5694ac3ede7994e2bd08632cec047fe6ac8bbed533cead54b9ea3ad482"
+  "url": ""
 }

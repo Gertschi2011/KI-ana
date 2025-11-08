@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Daniel J. Bernstein updated cdb (Constant database) to go beyond 4GB\n • Hacker News: \"Butt breathing\" might soon be a real medical treatment\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump zu Gesprächen mit Putin: \"Möchte kein vergeudetes Treffen\"",
+  "hash": "54e060ce4962a3b87b8cf367bfb2cfc9cd5e22aa4a534412023ffdb507514179",
+  "id": "BLK_1761099213_gftuw9",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "m5sa6LbzxqHdDWc9l50NfV6m9EvrAblo56odp1OEPTMN1weqpk3OVvpuJWYy0cDNM/4gkcj28jU2qmyqSS5MDw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 04:13",
+  "ts": 1761099213,
+  "url": ""
+}

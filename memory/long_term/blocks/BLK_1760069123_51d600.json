@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Open-Source Agentic AI\n • Hacker News: Intent Weaving for AI Coding Agents\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "created_at": 1760069123.9378324,
+  "hash": "af15a101795378d74895baf1036467b1ca673d0fad8ec13833009736b8bc985c",
+  "id": "BLK_1760069123_51d600",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "p9vJmx3kNIclxIsVQeEpzn+wG07/EbBdIYE2v4sTz+76Z79RZ8lxefTF4F74ThNHbrwLcSvvE+Y28Rqmz44VCA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 06:05",
+  "url": null
+}

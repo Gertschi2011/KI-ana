@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Connect to a 1980s Atari BBS through the web\n • Hacker News: Asbestosis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Verdächtige nach Diebstahl im Pariser Louvre festgenommen",
+  "hash": "6d8f6d2f7be05f5cc01cc7ff5c0a59ec4f52124a6ae54eb05a313e2a041aa554",
+  "id": "BLK_1761478205_3b2e7m",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "RoDiH+oBO9Tyqw8jNxptEPSlcL1SHMhCxNLAGJHekKvKM28DRgAYNR/lyC1UjxYwUqQ+1Wj1YbS9hW+4BwnLAg==",
+  "signed_at": "2025-10-26T11:30:05Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 12:30",
+  "ts": 1761478205,
+  "url": ""
+}

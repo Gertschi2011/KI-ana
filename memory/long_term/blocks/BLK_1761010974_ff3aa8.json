@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Argentina Could Be a Superpower\n • Hacker News: Old Computer Challenge – Modern Web for the ZX Spectrum\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach \"Stadtbild\"-Äußerungen: Der Stil des Kanzlers steht in der Kritik",
+  "created_at": 1761010974.543153,
+  "hash": "53e996ed0a360147b0bb411b30b830ef8dda11ee3b6c4d3f21daaa4cb66f158f",
+  "id": "BLK_1761010974_ff3aa8",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "UDUVE3lvwF8V292YXuEyj/yiYIHQ4s3BjUd7UCmVKKrLEMFOI4SGGFQufppl+kVsyl2+5dj6NpGNV/XLQgfhDg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-21 03:42",
+  "url": null
+}

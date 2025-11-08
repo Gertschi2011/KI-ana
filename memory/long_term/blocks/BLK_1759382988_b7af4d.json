@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Typepad Is Closed for Business\n • Hacker News: The biggest semantic mess in Futhark\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israels Marine fängt Schiffe der Gaza-Hilfsflotte ab",
+  "created_at": 1759382988.0765917,
+  "hash": "887c2f5073f329efae4405d089e376763b195a72507b6fc6c5940bfb1ae06ecf",
+  "id": "BLK_1759382988_b7af4d",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Vld7pJCtLIf7lg1WCJW0zUtKdtZO5hb4xKZS7Gt9tEFrQLU7r5nfBzq26MjyQ7+rW73h3lzOBsINpXxamucwBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 07:29",
+  "url": null
+}

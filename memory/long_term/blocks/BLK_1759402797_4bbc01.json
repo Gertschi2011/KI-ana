@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How Israeli actions caused famine, visualized\n • Hacker News: Asked to do something illegal at work? Here's what these software engineers did\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Vier Verletzte bei Angriff vor Synagoge in Manchester",
+  "created_at": 1759402797.5819507,
+  "hash": "1ebe0b8097e9dc6ae05340a590c53c1320a4dc1a340c5f4b449266a1a570e181",
+  "id": "BLK_1759402797_4bbc01",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "+qYHYuX+Mv4McR2oosW8d7dgzGs0Fdhp7HzcgtNoUPHSiT8YG39xyCnxSmVfw3imLUnbgLeqNIx6At5YnhEWDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 12:59",
+  "url": null
+}

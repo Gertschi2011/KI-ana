@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Boring Is What We Wanted\n • Hacker News: Samsung makes ads on $3,499 smart fridges official with upcoming software update\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu ordnet neue Angriffe im Gazastreifen an",
+  "created_at": 1761681715.891421,
+  "hash": "2fcc0cb51e0b2159d79eb3777ebbe881621ec1e7c98177c620c6f82a9d396b39",
+  "id": "BLK_1761681715_779d4a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "dAtj3kNDBDMa2vLPKHK5wNnpu2G8iuB7YvGbP+h6ZgM37KIJGFjmVem8u89YrqVAO/Dk0JW77c2ta/fyVPUzDA==",
+  "signed_at": "2025-10-28T20:01:55Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 21:01",
+  "url": null
+}

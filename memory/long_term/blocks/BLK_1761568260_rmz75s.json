@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Artifact (YC W25) is hiring engineers in NYC to build modern ECAD\n • Hacker News: You Are How You Act\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gericht in Italien billigt Auslieferung von Verdächtigen des Nord-Stream-Anschlags",
+  "hash": "806397b521d7cbe4e079af08d55bd9dbdc072b9ea431a9ca579a5b530de688f0",
+  "id": "BLK_1761568260_rmz75s",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "rZdEIetA2u8ysnK4XAL/VFelSIGDetrH1seL3KapLBzSfahjuqo9hWx3VI1ZOYLcdt50hj8cvTF7KYIbgNcRBQ==",
+  "signed_at": "2025-10-27T12:31:00Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 13:31",
+  "ts": 1761568260,
+  "url": ""
+}

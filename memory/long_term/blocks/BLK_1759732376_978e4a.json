@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: CHERI with a Linux on Top\n • Hacker News: 1 Trillion Web Pages Archived\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz vermutet Russland hinter vielen Drohnen-Flügen",
+  "created_at": 1759732376.6869662,
+  "hash": "1cc4ea83d8077b523bf44d8f41bf28ac677c5a263f106c731eafd4aa4a39d326",
+  "id": "BLK_1759732376_978e4a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "jUUCTAJ1B2ezH6NPpPoRXVhlIUNvQ28wWVN8+hFCqqtNpVgwl0v5ClNtZCbCwD3mUNk/25QIo5z8pBjbp3CaDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 08:32",
+  "url": null
+}

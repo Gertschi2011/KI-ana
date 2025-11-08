@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Prime Minister Anthony Albanese's mobile phone number made available online\n • Hacker News: KDE celebrates the 29th birthday and kicks off the yearly fundraiser\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): FAQ zum Gazastreifen: Wie weiter nach dem Gipfel von Ägypten?",
+  "created_at": 1760438310.6051264,
+  "hash": "bacca6b1106d753f954f40a0400246f4c4eb60fd2baded50cdf83be922ff3163",
+  "id": "BLK_1760438310_7230f0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "1O94zvtc7ezioID+wQDSS2VHYJMa7pl2+kHTVXKbyp71Rot819F4dAxTvKMHrLd6ukixc/84b2q2jeeV6g3FBg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 12:38",
+  "url": null
+}

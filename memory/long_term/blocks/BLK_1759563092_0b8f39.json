@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Alibaba cloud FPGA: the $200 Kintex UltraScale+\n • Hacker News: Optimizing a 6502 image decoder – part II: assembly\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Drohnensichtungen: Flugbetrieb in München wieder aufgenommen",
+  "created_at": 1759563092.0644975,
+  "hash": "9eff68e78ebd992bfcd8cdc049ac2ec8411135b4198cf34fd87e9d4b94cd1c6b",
+  "id": "BLK_1759563092_0b8f39",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "qsnBlU5eypV7D3nVtHbVkvnWK0rg05kIEDykJ/AaTXZC3VhOnfFhDsU1UuufOWIKDwHpWUS9+SmS1Z1WWC8GBg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 09:31",
+  "url": null
+}

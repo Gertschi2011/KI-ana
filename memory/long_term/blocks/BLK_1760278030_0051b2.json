@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Extreme weather caused more than $100B in damage by June\n • Hacker News: Blood test detecting Long Covid in kids with 94% accuracy microclots\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stephan Brandner rückt die Grenzen des Sagbaren nach rechts außen",
+  "created_at": 1760278030.9067075,
+  "hash": "12e9c5e2da4751a7cd29edc190c6087e8cd22104c5bab2551803578332eaa5f7",
+  "id": "BLK_1760278030_0051b2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "E0eDQbfZ30foo6d10J6C89TVpNvmH6i9zUkJGn1zPy0FrY6882IWNjHtfyfDUig4l2b4Pexx/TV5ZHOseoD4Bg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 16:07",
+  "url": null
+}

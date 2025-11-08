@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Internet Archive – Celebrating 1T Web Pages Archived\n • Hacker News: Why do LLMs freak out over the seahorse emoji?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz vermutet Russland hinter vielen Drohnen-Flügen",
+  "created_at": 1759725173.7592494,
+  "hash": "b38b3f0c1850294106b6e2b774b041d2a105b7dc9846e7de5c35cf9f315a477d",
+  "id": "BLK_1759725173_13ed05",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "3tpeyfpzlyeEa5uF5xyMfqeBESbRnSwPNG5p3RSNsnG6ZH2wlP6SyhZooXzKlKcLwmuaHs8Ze58h5sH6nnbUAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 06:32",
+  "url": null
+}

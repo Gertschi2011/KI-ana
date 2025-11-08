@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I'm recomming my customers switch to Linux rather that Upgrade to Windows 11\n • Hacker News: Writing an LLM from scratch, part 22 – training our LLM\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Friedensvereinbarung zwischen Israel und der Hamas auf dünnem Eis",
+  "created_at": 1760582384.4736757,
+  "hash": "8dd3786ade7986daedb4280a88188fb55a2ee2df46c709e724bf326078ec8d1b",
+  "id": "BLK_1760582384_5b4eca",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "9Z4kcfgT4KNg7AZOi+uCHLvt6sES8ei6GsSOeu8K8X4sK5+lzFn0ybTQLK8AJ0eq6urT6g/60fTbTO8MK6RmDw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 04:39",
+  "url": null
+}

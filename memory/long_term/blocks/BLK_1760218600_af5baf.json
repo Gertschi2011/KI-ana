@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Diane Keaton, a Star of 'Annie Hall' and 'First Wives Club,' Dies at 79\n • Hacker News: Indonesia says 22 plants in industrial zone contaminated by caesium 137\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jubel für Trump, Pfiffe für Netanjahu in Tel Aviv",
+  "created_at": 1760218600.6558669,
+  "hash": "35b6673a0678cde84fc0439cc36ccf8f572dda2e0465f54adf555fbd7e056b0d",
+  "id": "BLK_1760218600_af5baf",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "NnETCOUOc+urjnw4cVEDvInxiV5f+JPpYRFFb13WJ+4NjS/iMULYqTV4qifrNfP3boEo4u8R39FAzkGikfkgCw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 23:36",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: BERT Is Just a Single Text Diffusion Step\n • Hacker News: Modeling Others' Minds as Code\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Merz sagt AfD den Kampf an - und bleibt bei \"Stadtbild\"-Satz",
+  "created_at": 1760971356.8533301,
+  "hash": "67ec5598b56a49c7ab33b03a6c65dad52f6b7247f633cdeb5c5b022babbef97c",
+  "id": "BLK_1760971356_4e3f39",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "spqRXXpqk0gthxPEvUvXJV6w2h0EJqFd1IfaWcFypZJbrYptyBkug+4Ke1eR/cKYGa3qEye/KIcTzxwqfo+cDA==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-20 16:42",
+  "url": null
+}

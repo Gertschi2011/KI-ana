@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Don't Be a Sucker (1943) [video]\n • Hacker News: AWS Service Availability Updates\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nahost-Experte: \"Es ist elementar, dass Trump am Ball bleibt\"",
+  "created_at": 1760393288.3110867,
+  "hash": "2a41959a84744eb4505bb465c5e438738e91a0974b7919ab6ffbd6c3a2aef886",
+  "id": "BLK_1760393288_eea975",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "v2TyaaxA0Gx9I6qYNHLmghIgH7Q07i753+Q4fUY/lac5J0xEhbgGKwMO6EW7CbjyW+vmlorcJ4wvlH3qJWelDQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 00:08",
+  "url": null
+}

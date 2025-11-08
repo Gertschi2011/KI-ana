@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Demodesk (YC W19) Is Hiring a Ruby on Rails Engineer\n • Hacker News: Zürich voters ban noisy leaf blowers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Frankreichs Premier Lecornu tritt Wochen nach Ernennung zurück",
+  "created_at": 1759741380.4400148,
+  "hash": "32f846ef1a02854b639f40ce4fd6bf71519fb97aa28315967c31402b7a7e26d0",
+  "id": "BLK_1759741380_67eafb",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "tPzGsOSpAU1DLw/pDONGQqEIHd7Ffw8Qyo3U2x5MtL4R3mhfEi9m1rhS03GOyIJWOLSJq8AySQHciZfYPCyxBw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-06 11:03",
+  "url": null
+}

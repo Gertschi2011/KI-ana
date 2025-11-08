@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: EuroLLM: LLM made in Europe built to support all 24 official EU languages\n • Hacker News: Text2SQL is dead – long live text2SQL\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jusos sammeln Unterschriften gegen die Bürgergeldreform",
+  "hash": "f59d527469c0893c8b39627d87817543c768f9f5c6d0be44c65ae183ccbf4a26",
+  "id": "BLK_1761665507_hn1r6q",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "1UttiXxdMNJ5ry1zvGMyXxPwivqzYy+F3Ey8hvYhJxy/knbrxZKTXQRUZNU44PQdt8biX0JmGki7FeE8KmT+DQ==",
+  "signed_at": "2025-10-28T15:31:47Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-28 16:31",
+  "ts": 1761665507,
+  "url": ""
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Show HN: GYST – Digital organizer that replicates the feeling of a physical desk\n • Hacker News: Show HN: Open-Source Voice AI Badge Powered by ESP32+WebRTC\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israelische Regierung genehmigt Gaza-Abkommen",
+  "hash": "bbf4f6c2038bb71e1b38479a39fa0e0a738b7c227a7d4ed1dca3e75a4bfee5c1",
+  "id": "BLK_1760051115_f5dpoa",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "iUbWoQ4nXCa7AcSIG2hyVY8CEARb8LmMDPOC3V9M7rn/B94u+Zh7q0ogdc2HkguYMydKz4QpnmlHNbUnqnS8CQ==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 01:05",
+  "ts": 1760051115,
+  "url": ""
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Blood test detecting Long Covid in kids with 94% accuracy microclots\n • Hacker News: A New Algorithm Makes It Faster to Find the Shortest Paths\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stephan Brandner rückt die Grenzen des Sagbaren nach rechts außen",
+  "created_at": 1760272628.3696387,
+  "hash": "34c9b15c2c18f3f46126df84175f91084125709f66dbb5615b1f7fa24e530d1e",
+  "id": "BLK_1760272628_c8de7f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "RtPC0ObBrRPGwT6zQqxj9D7SofjJQowCx9jrzSahalPRZE/9Pasp9FhKbSci5Z+XzwErFrx9F55Ciizem+7lCg==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 14:37",
+  "url": null
+}

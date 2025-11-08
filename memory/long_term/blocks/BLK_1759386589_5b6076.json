@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Typepad is closed for business\n • Hacker News: The biggest semantic mess in Futhark\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rede vor Generälen: \"Trump hat sich nächste Institution vorgenommen\"",
+  "created_at": 1759386589.7953072,
+  "hash": "dd1375e7642b7f229b3ba9b8cee0e935d59e1c4abf3af7d372ba3073a9ed8986",
+  "id": "BLK_1759386589_5b6076",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "5N1B8Jj0DPMVD/QHKyN9pnKPyotG8iqlufXKOmq0/2ENZ69iOdt1tvwBk8OtUtdbVyrCHhLM6MPuZSX4x13PBA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 08:29",
+  "url": null
+}

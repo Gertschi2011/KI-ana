@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: PSA: Always use a separate domain for user content\n • Hacker News: Igalia, Servo, and the Sovereign Tech Fund\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Waffenruhe im Gazastreifen: \"Man muss Trump Respekt zollen\"",
+  "hash": "def707a05becd7aa04e73e950772948b7edf94573924fc9b1e162219d41178c8",
+  "id": "BLK_1760103340_q7qi3n",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "0mRevKLVWbKinz1UhhDaXZ88GdBdZy2VndWbkKftMo1S7crbR7Y6hl+93X5f9QW7nrWaFL70J8vMVRggbUURCw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 15:35",
+  "ts": 1760103340,
+  "url": ""
+}

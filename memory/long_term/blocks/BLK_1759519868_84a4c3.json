@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: PEP 810 – Explicit lazy imports\n • Hacker News: The AI bubble is 17 times the size of the dot-com frenzy, analyst says\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bundeswehr soll bei Abwehr von Drohnen helfen",
+  "created_at": 1759519868.3539455,
+  "hash": "f056087620e58b46bc9dc6d1669b19e8402736e5b404fc2976d63b4232dc9e74",
+  "id": "BLK_1759519868_84a4c3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Ra8PWRy9knhvM2n3/71Hw9rK6I8kbZg/4CwCGM4NRSA79ViSVLKAweR4cmk6Cz0lvHBFG/wVfBEmxBvYCmHjDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 21:31",
+  "url": null
+}

@@ -1,0 +1,247 @@
+#!/usr/bin/env python3
+"""
+KI-ana OS CLI Tool
+
+Command-line interface for managing KI-ana OS.
+"""
+
+import sys
+import subprocess
+import argparse
+from pathlib import Path
+import requests
+import json
+
+# Colors
+GREEN = '\033[92m'
+YELLOW = '\033[93m'
+RED = '\033[91m'
+BLUE = '\033[94m'
+RESET = '\033[0m'
+
+
+def print_status(service_name, is_running, port=None):
+    """Print service status"""
+    status = f"{GREEN}✅ RUNNING{RESET}" if is_running else f"{RED}❌ STOPPED{RESET}"
+    port_info = f" (port {port})" if port else ""
+    print(f"  {service_name}: {status}{port_info}")
+
+
+def check_api_running():
+    """Check if API server is running"""
+    try:
+        response = requests.get("http://localhost:8090/health", timeout=2)
+        return response.status_code == 200
+    except:
+        return False
+
+
+def check_ollama_running():
+    """Check if Ollama is running"""
+    try:
+        response = requests.get("http://localhost:11434/api/tags", timeout=2)
+        return response.status_code == 200
+    except:
+        return False
+
+
+def cmd_status(args):
+    """Show system status"""
+    print(f"\n{BLUE}🤖 KI-ana OS Status{RESET}\n")
+    
+    api_running = check_api_running()
+    ollama_running = check_ollama_running()
+    
+    print_status("REST API", api_running, 8090)
+    print_status("Ollama LLM", ollama_running, 11434)
+    
+    if api_running:
+        try:
+            response = requests.get("http://localhost:8090/status", timeout=2)
+            if response.status_code == 200:
+                data = response.json()
+                print(f"\n{BLUE}System Resources:{RESET}")
+                print(f"  CPU: {data.get('cpu_percent', 0):.1f}%")
+                print(f"  Memory: {data.get('memory_percent', 0):.1f}%")
+                print(f"  Disk: {data.get('disk_percent', 0):.1f}%")
+        except:
+            pass
+    
+    print()
+
+
+def cmd_start(args):
+    """Start services"""
+    service = args.service
+    
+    if service == "api" or service == "all":
+        print(f"{BLUE}🚀 Starting REST API...{RESET}")
+        subprocess.Popen(
+            ["python3", "start_api.py"],
+            cwd=Path(__file__).parent,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        print(f"{GREEN}✅ REST API starting on port 8090{RESET}")
+    
+    if service == "ollama" or service == "all":
+        print(f"{BLUE}🚀 Starting Ollama...{RESET}")
+        subprocess.Popen(
+            ["ollama", "serve"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        print(f"{GREEN}✅ Ollama starting on port 11434{RESET}")
+
+
+def cmd_stop(args):
+    """Stop services"""
+    service = args.service
+    
+    if service == "api" or service == "all":
+        print(f"{BLUE}🛑 Stopping REST API...{RESET}")
+        subprocess.run(["pkill", "-f", "start_api.py"], check=False)
+        print(f"{GREEN}✅ REST API stopped{RESET}")
+    
+    if service == "ollama" or service == "all":
+        print(f"{BLUE}🛑 Stopping Ollama...{RESET}")
+        subprocess.run(["pkill", "-f", "ollama serve"], check=False)
+        print(f"{GREEN}✅ Ollama stopped{RESET}")
+
+
+def cmd_restart(args):
+    """Restart services"""
+    print(f"{BLUE}🔄 Restarting services...{RESET}\n")
+    cmd_stop(args)
+    import time
+    time.sleep(2)
+    cmd_start(args)
+
+
+def cmd_logs(args):
+    """Show logs"""
+    service = args.service
+    lines = args.lines
+    
+    if service == "api":
+        log_file = Path(__file__).parent / "logs" / "api.log"
+        if log_file.exists():
+            subprocess.run(["tail", f"-n{lines}", str(log_file)])
+        else:
+            print(f"{YELLOW}⚠️  No API logs found{RESET}")
+
+
+def cmd_command(args):
+    """Execute a command"""
+    command = " ".join(args.command)
+    
+    if not check_api_running():
+        print(f"{RED}❌ API server is not running. Start it with: kiana start api{RESET}")
+        return
+    
+    print(f"{BLUE}⚙️  Executing: {command}{RESET}\n")
+    
+    try:
+        response = requests.post(
+            "http://localhost:8090/command",
+            json={"command": command},
+            timeout=30
+        )
+        
+        if response.status_code == 200:
+            data = response.json()
+            print(f"{GREEN}✅ Success!{RESET}")
+            print(f"\nResponse: {data.get('response', 'No response')}\n")
+        else:
+            print(f"{RED}❌ Failed: {response.status_code}{RESET}")
+            
+    except Exception as e:
+        print(f"{RED}❌ Error: {e}{RESET}")
+
+
+def cmd_test(args):
+    """Run tests"""
+    test_type = args.type
+    
+    test_files = {
+        "all": "examples/test_*.py",
+        "voice": "examples/test_voice.py",
+        "workflow": "examples/test_workflow_engine.py",
+        "sync": "examples/test_cloud_sync.py",
+        "features": "examples/test_new_features.py"
+    }
+    
+    test_file = test_files.get(test_type, test_files["all"])
+    
+    print(f"{BLUE}🧪 Running tests: {test_type}{RESET}\n")
+    
+    if test_type == "all":
+        for name, path in test_files.items():
+            if name != "all":
+                print(f"\n{BLUE}▶ {name.upper()}{RESET}")
+                subprocess.run(["python3", path], cwd=Path(__file__).parent)
+    else:
+        subprocess.run(["python3", test_file], cwd=Path(__file__).parent)
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="KI-ana OS - Command Line Interface",
+        formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+    
+    # Status
+    subparsers.add_parser("status", help="Show system status")
+    
+    # Start
+    start_parser = subparsers.add_parser("start", help="Start services")
+    start_parser.add_argument("service", choices=["api", "ollama", "all"], default="all", nargs="?")
+    
+    # Stop
+    stop_parser = subparsers.add_parser("stop", help="Stop services")
+    stop_parser.add_argument("service", choices=["api", "ollama", "all"], default="all", nargs="?")
+    
+    # Restart
+    restart_parser = subparsers.add_parser("restart", help="Restart services")
+    restart_parser.add_argument("service", choices=["api", "ollama", "all"], default="all", nargs="?")
+    
+    # Logs
+    logs_parser = subparsers.add_parser("logs", help="Show logs")
+    logs_parser.add_argument("service", choices=["api"], default="api", nargs="?")
+    logs_parser.add_argument("-n", "--lines", type=int, default=50, help="Number of lines")
+    
+    # Command
+    cmd_parser = subparsers.add_parser("cmd", help="Execute a command")
+    cmd_parser.add_argument("command", nargs="+", help="Command to execute")
+    
+    # Test
+    test_parser = subparsers.add_parser("test", help="Run tests")
+    test_parser.add_argument("type", choices=["all", "voice", "workflow", "sync", "features"], default="all", nargs="?")
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return
+    
+    # Execute command
+    if args.command == "status":
+        cmd_status(args)
+    elif args.command == "start":
+        cmd_start(args)
+    elif args.command == "stop":
+        cmd_stop(args)
+    elif args.command == "restart":
+        cmd_restart(args)
+    elif args.command == "logs":
+        cmd_logs(args)
+    elif args.command == "cmd":
+        cmd_command(args)
+    elif args.command == "test":
+        cmd_test(args)
+
+
+if __name__ == "__main__":
+    main()

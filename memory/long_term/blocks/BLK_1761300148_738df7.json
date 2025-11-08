@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Britain's most tattooed man says UK's age check told him to \"remove his face\"\n • Hacker News: Alaska Airlines' statement on IT outage\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ministerin Reiche verspricht in der Ukraine Hilfe für Energieversorgung",
+  "created_at": 1761300148.9828525,
+  "hash": "be0c105b04be45dd694f66147254afe56540f202f8b71cb262c499eaf1bf33f9",
+  "id": "BLK_1761300148_738df7",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "EyKCxglxZO/GqOOIO/aLGOP9uOdpEPMuA4yYFnmDnjMrjgxNBRrkay35rMvShPbT6A2RnZG5hr6lHXUHGaxHCg==",
+  "signed_at": "2025-10-24T10:02:28Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 12:02",
+  "url": null
+}

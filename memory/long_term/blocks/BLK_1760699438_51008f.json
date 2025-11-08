@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How does one build large front end apps without using a framework like React?\n • Hacker News: 3x performance for 1/4 of the price by migrating from AWS to Hetzner\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trumps Beziehung zu Selenskyj: Verlässlich unbeständig",
+  "created_at": 1760699438.0244648,
+  "hash": "99248b82106e4360e5fafce8a2a030ec4f5cfdd11431e1c929f7c7d6f6084af8",
+  "id": "BLK_1760699438_51008f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Ij49XmZyPEXLjfCvAJAjSp9nt9RJg3qzzoblYvL47wkmuTg2UIz9OOgrs1K3wYuIsBLurRNCNdyvcg5PHeXFCQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 13:10",
+  "url": null
+}

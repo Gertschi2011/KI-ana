@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Intelligent Kubernetes Load Balancing at Databricks\n • Hacker News: An informational website about why I went to prison\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltskrise in den USA: Der \"Shutdown\" hat begonnen",
+  "hash": "60823e4df8b2f2040bba9f6d97c5079707f001fe926beba20b04a5da4624f910",
+  "id": "BLK_1759297760_gr2uax",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "HMjhIOTy4AanEn5C/ylvHKo6iF2fSsHnSf6C/PFVpcSqkqsQJ3hlQi/Q6wVODQuAjJT5yaMPc+evZlGNWhsiAA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 07:49",
+  "ts": 1759297760,
+  "url": ""
+}

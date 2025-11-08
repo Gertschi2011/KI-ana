@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hacker News – The Good Parts\n • Hacker News: Cloudflare Sandbox SDK\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Treffen mit Putin in Ungarn an",
+  "created_at": 1760652618.0906634,
+  "hash": "0757aa3b300985e469e9cc2299651f7cb087d3da765316fd073f89c30bca143d",
+  "id": "BLK_1760652618_59e669",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "JriW8D1nnBXTmYi5T9ETws6EBXyZtSf+B2AND5RW5TXfntFZJAe0+OmU3lRDk5STrk76b1gAVwpkvcsLqc3qDQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 00:10",
+  "url": null
+}

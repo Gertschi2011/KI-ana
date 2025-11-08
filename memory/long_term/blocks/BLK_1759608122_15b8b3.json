@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why NetNewsWire Is Not a Web App\n • Hacker News: Use theorem provers to ensure the correctness of your LLM's reasoning\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was zum Frieden im Gazastreifen fehlt",
+  "created_at": 1759608122.5705805,
+  "hash": "08f903e77653851f5727d865bd5eab8c2e9621c3d7c773635d9431e8296c3982",
+  "id": "BLK_1759608122_15b8b3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vvlNw8rBBjChgzrLwRAwMkDevog+x1IGWSobNo5L7hWMiVuNPYuuLrg1QiyO6rMJOZnnXpHUrRpgLb6RCUMJDA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 22:02",
+  "url": null
+}

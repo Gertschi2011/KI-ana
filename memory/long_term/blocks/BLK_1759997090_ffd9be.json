@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: The Forecasting Company (YC S24) Is Hiring a Machine Learning Engineer\n • Hacker News: The Unknotting Number Is Not Additive\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Koalition einig bei Bürgergeld, Aktivrente und Infrastruktur",
+  "created_at": 1759997090.0062456,
+  "hash": "1d5cfb3b35acf12d568025a37a45e08171a61fe90b0b336ace646359b5cdd08a",
+  "id": "BLK_1759997090_ffd9be",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "LEz6boPDicN4agwd+tK4Pk1r+DmDdzsNORbwKMjmLMKVfUJRY74ynX7HxUEudIR57eJptpvH75pmcS8kU2ZsDw==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 10:04",
+  "url": null
+}

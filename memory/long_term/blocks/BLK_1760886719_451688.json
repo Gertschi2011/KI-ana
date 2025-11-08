@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Websites Are for Humans\n • Hacker News: Xubuntu.org Might Be Compromised\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel bestätigt Angriffe auf Gaza nach Vorwürfen gegen Hamas",
+  "created_at": 1760886719.047095,
+  "hash": "f48d0b100ebcc6aec5a6f2bfb3cbcb374a496f7017455172447cf9a1e89df567",
+  "id": "BLK_1760886719_451688",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "84Z2QaOx9VS820Yr/K9+USvnXEBXjl+yGKtEG78dNPlQ1BDNbc+laPFeUc+L/w9m1gqfBMX0cAL0hsiuy426CQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 17:11",
+  "url": null
+}

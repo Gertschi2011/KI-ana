@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Promoted on Sunday, Fired on Monday: Inside a NASA Office's Sudden Closure\n • Hacker News: WebMCP\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine-Liveblog: ++ Selenskyj: \"Haben über 'Tomahawks' gesprochen\"  ++",
+  "created_at": 1760744457.43554,
+  "hash": "9bacf04444352ba9a135372ed693efbd8ee575fc097505c610f78514e458c00b",
+  "id": "BLK_1760744457_91a405",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "RpqJREUW8kHzHDqXP2slWzilpQQjZetOPWdF/T48iDiqqMXHMuH7IB82q6SPNGpxEvRXs9VRYSQoVMNzbb8wCA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 01:40",
+  "url": null
+}

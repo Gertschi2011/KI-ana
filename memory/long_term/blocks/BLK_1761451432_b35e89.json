@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: PCB Edge USB C Connector Library\n • Hacker News: Pico-Banana-400k\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761451432.920113,
+  "hash": "7aa78f3c1919451f9da1d2a0317e377525ac24503350e0b921a410a81122a384",
+  "id": "BLK_1761451432_b35e89",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "awfv9OxogP6/0nZSYj90WsbmuqZ8jrVov18yW3zsoSxgMKe2pqqRvH4Tkn89SXGLwNAJEGdfSUUT/K8zTSe0Aw==",
+  "signed_at": "2025-10-26T04:03:52Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-26 05:03",
+  "url": null
+}

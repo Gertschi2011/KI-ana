@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Way past its prime: how did Amazon get so rubbish?\n • Hacker News: Anthropic Release Memory API\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Massive russische Angriffe auf die Ukraine - Polen in Alarmbereitschaft",
+  "created_at": 1759649541.3215742,
+  "hash": "0f318fa328322e15e24e87021ce1a836be1439f6fbc850b96e08350948b45d0e",
+  "id": "BLK_1759649541_a58bf6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "AZ1q1HQu5qGzYu0Fie4SZAreJYTI2n4NwZLqBLBprDDUDxsDuc4TBkqRA02yWGq3ZaR0tA6Q/dOAj7O8lWFjDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 09:32",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Egg-Shaped Curves\n • Hacker News: US gov shutdown leaves IT projects hanging, security defenders a skeleton crew\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Aus dem schwarz-roten Ruckeln soll ein Ruck werden",
+  "hash": "d2be6d640aacfcf855f51ff421b864898064cff79cc5cff868ef1b2bc285da5c",
+  "id": "BLK_1759357775_dle2t2",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "UNH5lvWSMFHL9zULU9bMPHHJcsZl5xSn3ju05DJR0iQu5VuaFKFxb0ETgpxb9aSUvZ5xcc0VpbKqVpBUwny/Dg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-02 00:29",
+  "ts": 1759357775,
+  "url": ""
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Knocker, a knock based access control system for your homelab\n • Hacker News: Greenland Ditches Starlink for French Satellite Service\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Berichte: Chefin von kriselnder Bahn-Gütertochter DB Cargo muss gehen",
+  "hash": "a136654dc43b897f52bf55ed3c7dba43882c96cfb69b5a3be993d274a8a5bb3b",
+  "id": "BLK_1761126868_iuawhx",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "RZUWPRbr2mpHeAdA2TID90MohaJ6VvIoSesKy+ZlE351rj+9ciUqwtBQeTLD30z5Vyx+Oq+AW87dfKJtcFQVBA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 11:54",
+  "ts": 1761126868,
+  "url": ""
+}

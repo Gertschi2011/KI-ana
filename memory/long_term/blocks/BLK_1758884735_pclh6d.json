@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758884735_pclh6d",
-  "title": "Web Digest 2025-09-26 13:05",
   "content": "• Hacker News: Show HN: The Little Notebook for Learning Linear Algebra with Python\n • Hacker News: Pop OS is getting beta\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU sieht Pharmaexporte vor neuen US-Zöllen geschützt",
+  "hash": "0b150cf010e6067f0c16e23790a2b86e2021ea48ffdec4263ea7151ad327aa22",
+  "id": "BLK_1758884735_pclh6d",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "EN32tIhWDnt7YPEiMkCvnoKNIiF1U3d+S1FQqgvubEtBUIZIGZI0I13ZfcsMeU8E0TRdjglLuAQ/2sczt6O9Aw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 13:05",
   "ts": 1758884735,
-  "meta": {},
-  "hash": "0b150cf010e6067f0c16e23790a2b86e2021ea48ffdec4263ea7151ad327aa22"
+  "url": ""
 }

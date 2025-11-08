@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Meditating with mongooses: Backyard wildlife phtotography lessons\n • Hacker News: FSF announces Librephone project\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Pistorius verteidigt seine Kritik am Wehrdienst-Kompromiss",
+  "created_at": 1760492338.0286334,
+  "hash": "606a304b7a01edd20100c90290152237ae745fa08c7fe0644013341a4588fa3e",
+  "id": "BLK_1760492338_d62825",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "/GdE8eBNkF3f5e0PyE2Vga7CJ7Ts1t7zPsQP8YY+RSsg7Y6iHOcD8Yxq+sJvmklinaD5T+SeV0M9mRi+qzV0CQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 03:38",
+  "url": null
+}

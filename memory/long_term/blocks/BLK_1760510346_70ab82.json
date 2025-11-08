@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Pixnapping Attack\n • Hacker News: I am a programmer, not a rubber-stamp that approves Copilot generated code\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): NATO-Staaten erwarten neuen Druck der USA bei Treffen in Brüssel",
+  "created_at": 1760510346.9344358,
+  "hash": "1cf34cfa6225b179dd5b1b9b3a765337e81c826d8eaa4b4a7189a8e044023109",
+  "id": "BLK_1760510346_70ab82",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "4I2jZ39d67s5gU0w0jRly8ZoAkeNHveVo0GmS26nlyghYneUCSRGqYAI8Ph6gmZrw6++uksT6n5gyZEemto/Aw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-15 08:39",
+  "url": null
+}

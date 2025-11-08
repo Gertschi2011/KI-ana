@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ICC Judge Guillou loses all US IT accounts after MAGA sanctions [FR]\n • Hacker News: Libera Chat receives legal advice that the Online Safety Act does not apply to\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Inhaftierte Straßenmusikerin wird in Russland zum Symbol des Widerstands",
+  "created_at": 1761419012.615326,
+  "hash": "a23fe4801f75fc9c5605870bc8a1528d78381106dba0066872bbadf822c3750c",
+  "id": "BLK_1761419012_c9676a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "vIDBeyQkYU1Pn8/i4w4HcwK+DW8c3kiHVaAo0RiVmu3uigmvV9gWlCe8ADLqaaLT5MKB/W0MXu7ZaknHDQavCg==",
+  "signed_at": "2025-10-25T19:03:32Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 21:03",
+  "url": null
+}

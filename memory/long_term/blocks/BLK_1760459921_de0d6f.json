@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Hold Off on Litestream 0.5.0\n • Hacker News: Swarm reveals growing weak spot in Earth's magnetic field\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Regierungskrise in Frankreich: Premier Lecornu setzt Rentenreform aus",
+  "created_at": 1760459921.5714893,
+  "hash": "fd5586e68973531095ec68224221ff40a3a58bb2cbf282f01f884cb3e48e6b5a",
+  "id": "BLK_1760459921_de0d6f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "iOLINrP+y0B4H2h8oBuLjhHuff2WwtfekOvJj/+V0+SUmN1tpPp48+9P6qG2IF9ceYwks4PFi7mG73ZbUrVnDA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 18:38",
+  "url": null
+}

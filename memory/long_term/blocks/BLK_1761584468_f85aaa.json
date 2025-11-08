@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Claude for Excel\n • Hacker News: It's insulting to read your AI-generated blog post\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Studie: KI-Chatbots lügen bei 40 Prozent der Antworten",
+  "created_at": 1761584468.6200788,
+  "hash": "270ad4bf41cdbc6e428e73f938175a09f791ae2b094acbe1770b005df175a7e8",
+  "id": "BLK_1761584468_f85aaa",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fiJQhU/B6HcZkAh5+EUJHRHJeCLztxtXlmSh00bjK/eWiVDAWlzjq6MHu9D0NM38a1FUrvWAZYo4vy/SFw/WDQ==",
+  "signed_at": "2025-10-27T17:01:08Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-27 18:01",
+  "url": null
+}

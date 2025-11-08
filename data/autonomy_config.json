@@ -1,0 +1,174 @@
+{
+  "version": "1.0",
+  "updated": "2025-10-29T17:40:00+01:00",
+  "description": "Autonomie und Selbstschutz-Konfiguration",
+  
+  "resource_management": {
+    "enabled": true,
+    "monitoring_interval_seconds": 60,
+    "thresholds": {
+      "cpu_percent": {
+        "warn": 70,
+        "critical": 85,
+        "sleep": 95
+      },
+      "memory_percent": {
+        "warn": 75,
+        "critical": 85,
+        "sleep": 90
+      },
+      "disk_percent": {
+        "warn": 80,
+        "critical": 90
+      }
+    },
+    "energy_modes": {
+      "sleep": {
+        "description": "Minimale Aktivität, nur essenzielle Services",
+        "cpu_limit": 10,
+        "disabled_features": ["mirror", "creative", "dream"],
+        "trigger": "resources_critical"
+      },
+      "ruhe": {
+        "description": "Reduzierte Aktivität, Wartungsmodus",
+        "cpu_limit": 30,
+        "disabled_features": ["creative", "dream"],
+        "trigger": "low_activity_period"
+      },
+      "fokus": {
+        "description": "Normale Aktivität, alle Features",
+        "cpu_limit": 70,
+        "disabled_features": [],
+        "trigger": "normal_operation"
+      },
+      "intensiv": {
+        "description": "Hohe Aktivität, priorisiert User-Interaktion",
+        "cpu_limit": 90,
+        "disabled_features": [],
+        "trigger": "high_demand"
+      }
+    },
+    "auto_mode_switching": {
+      "enabled": true,
+      "hysteresis_seconds": 300,
+      "cooldown_seconds": 600
+    }
+  },
+  
+  "emergency_override": {
+    "enabled": true,
+    "version": 2,
+    "key_type": "sha256_hash",
+    "key_location": "env:EMERGENCY_OVERRIDE_SHA256",
+    "actions": {
+      "shutdown": {
+        "description": "Graceful shutdown aller Services",
+        "requires_key": true
+      },
+      "freeze": {
+        "description": "Pausiert alle Aktivitäten außer Core",
+        "requires_key": true
+      },
+      "reset": {
+        "description": "Reset zu letztem stabilen Zustand",
+        "requires_key": true
+      },
+      "diagnostic": {
+        "description": "Vollständiger System-Diagnostic",
+        "requires_key": false
+      }
+    },
+    "block_level_protection": {
+      "enabled": true,
+      "encrypt_sensitive": true,
+      "backup_before_override": true
+    }
+  },
+  
+  "adaptive_sandboxing": {
+    "enabled": true,
+    "isolation_levels": {
+      "low": {
+        "description": "Trusted code, minimale Isolation",
+        "applies_to": ["internal_modules"]
+      },
+      "medium": {
+        "description": "Externe APIs, moderate Isolation",
+        "applies_to": ["web_fetch", "mirror"]
+      },
+      "high": {
+        "description": "User-Code, volle Isolation",
+        "applies_to": ["user_scripts", "web_code"]
+      }
+    },
+    "risk_assessment": {
+      "enabled": true,
+      "factors": [
+        "source_trust",
+        "code_complexity",
+        "resource_requirements",
+        "network_access"
+      ]
+    },
+    "execution_limits": {
+      "timeout_seconds": {
+        "low": 60,
+        "medium": 30,
+        "high": 10
+      },
+      "memory_mb": {
+        "low": 512,
+        "medium": 256,
+        "high": 128
+      }
+    }
+  },
+  
+  "self_preservation": {
+    "enabled": true,
+    "critical_states": {
+      "data_corruption": {
+        "action": "freeze_and_alert",
+        "auto_recovery": false
+      },
+      "resource_exhaustion": {
+        "action": "enter_sleep_mode",
+        "auto_recovery": true
+      },
+      "security_breach": {
+        "action": "lockdown",
+        "auto_recovery": false
+      }
+    },
+    "health_monitoring": {
+      "enabled": true,
+      "check_interval_seconds": 120,
+      "metrics": [
+        "api_response_time",
+        "error_rate",
+        "memory_leaks",
+        "disk_io",
+        "network_latency"
+      ]
+    }
+  },
+  
+  "recovery_protocols": {
+    "auto_backup": {
+      "enabled": true,
+      "frequency": "daily",
+      "retention_days": 30
+    },
+    "rollback": {
+      "enabled": true,
+      "checkpoints": 5,
+      "auto_rollback_on_critical": true
+    },
+    "failsafe": {
+      "min_viable_mode": {
+        "description": "Nur Core-Features, keine AI",
+        "trigger": "multiple_critical_failures"
+      }
+    }
+  }
+}

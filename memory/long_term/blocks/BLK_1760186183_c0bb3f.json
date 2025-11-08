@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Learn Turbo Pascal – a video series originally released on VHS\n • Hacker News: Vietnam Airlines Data Breach\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Das sind die 20 noch lebenden Geiseln im Gazastreifen",
+  "created_at": 1760186183.5882957,
+  "hash": "b38368b6c29d4bb2644a1fa18f42bb1fe41eff75cd3d672613c8bb00fd93e4db",
+  "id": "BLK_1760186183_c0bb3f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ALyV8wtr6wtlldontxhR/F295e0xaIJwPSY8zENiQvwjS+ZJgEyvd4OSqNVavI67/t9Bm0mojOUkcOr1lmA5Aw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 14:36",
+  "url": null
+}

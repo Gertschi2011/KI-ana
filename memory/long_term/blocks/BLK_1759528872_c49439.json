@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: TrueVault (YC W14) Is Hiring a BDR (Ex-ECommerce Manager)\n • Hacker News: Interstellar Object 3I/Atlas Passed Mars Last Night\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Hamas erklärt sich zur Freilassung aller Geiseln bereit",
+  "created_at": 1759528872.4295106,
+  "hash": "e2cca9b5f1993877cb2113a801f15d55079f9ccd862664aaeef1a81e2ec29d82",
+  "id": "BLK_1759528872_c49439",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "hRnwYSAMCm1mJpSMoict3x/PLTeMPQFAzbuz47zCgM3bRkVJsgQDQVmZtR/xr4RhhrOcy3G9Zdg3UKwTQAndAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 00:01",
+  "url": null
+}

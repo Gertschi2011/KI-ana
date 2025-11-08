@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: test-ipv6.com will stay online!\n • Hacker News: Talent\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Treffen mit Putin in Ungarn an",
+  "created_at": 1760640012.5706782,
+  "hash": "058260a6a3ddce0983aecaa302bec6cdf85345981c5e2fc8cc2e28ab8a81ff69",
+  "id": "BLK_1760640012_22b69f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "k63FwgSq0ijoq59ASzo4RUbEy5H9smp4EyBBQKZvy1NTMU95EKtUbIA0rbk5pz58mkCBjRER7i+zKcyfPxPKBA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 20:40",
+  "url": null
+}

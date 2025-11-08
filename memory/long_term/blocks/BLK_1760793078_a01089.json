@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Are we living in a golden age of stupidity?\n • Hacker News: ./watch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Mehr Angebote in Apotheken geplant - Kritik von Verbänden",
+  "created_at": 1760793078.8031917,
+  "hash": "cac8cd9c590e76a8bdcbaab7c34e663bade619568b42018c38ba05125bf58199",
+  "id": "BLK_1760793078_a01089",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "E79HzH3bIcv5wiT0kX1f5AwOO2UXcTwCJuRa1OW0pwAiJ95sNpW4vwjHrrnyLDbG1SZo4teFJRHALqEAZB+0AQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 15:11",
+  "url": null
+}

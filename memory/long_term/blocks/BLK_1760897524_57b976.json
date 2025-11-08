@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ask HN: What are people doing to get off of VMware?\n • Hacker News: I wish SSDs gave you CPU performance style metrics about their activity\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): So gelang der Einbruch in das Kunstmuseum Louvre in Paris",
+  "created_at": 1760897524.1257882,
+  "hash": "1b5f7dce6dff37cad04948693e34f3d6208d68d04951c54d5226f46042b412f5",
+  "id": "BLK_1760897524_57b976",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "fFgTzWOnMit9KEztH8UiHKMNC4v7DP6O41yxrjHd3huIu+r9L+IZrWAIn2QIbWumVANf91RteYnnhnmkxDubDQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 20:12",
+  "url": null
+}

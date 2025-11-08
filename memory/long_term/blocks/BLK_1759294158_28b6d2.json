@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: An informational website about why I went to prison\n • Hacker News: Blockdiff: We built our own file format for VM disk snapshots\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltskrise in den USA: Der \"Shutdown\" hat begonnen",
+  "created_at": 1759294158.5504735,
+  "hash": "5b593cfe6377b93fb094282cd948611a5619e78dd18dc6b94cc0f32317e4c7c2",
+  "id": "BLK_1759294158_28b6d2",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "4vz1Q0F0HR7srkWUo7Lgsg9wWK8pwaQPgrhsY0UVjgs0x3ZQbskgfsskn08dThFAIOCjGYv4S7K742z5wTUqCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 06:49",
+  "url": null
+}

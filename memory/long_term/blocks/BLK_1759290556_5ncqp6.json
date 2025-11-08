@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: CDC File Transfer\n • Hacker News: Rio Terminal: A hardware-accelerated GPU terminal emulator\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "hash": "23f4760be73dc29cf692c23e1b792aad45d6cc5efd8f4a382eaac96fecfb3a7c",
+  "id": "BLK_1759290556_5ncqp6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "JTv9ZkoM9eX77Tw47f7ms7ZqC+rUM1fUL4lnU2WOxLw71Ls3VnnEPc6kA2mdmge7VstKv7pTSdc+0xgDFg4mAw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 05:49",
+  "ts": 1759290556,
+  "url": ""
+}

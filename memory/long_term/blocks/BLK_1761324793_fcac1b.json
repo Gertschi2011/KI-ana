@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Ivy League psychologist: 'Bring your whole self to work' is bad advice\n • Hacker News: The Mainframe Six\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ministerpräsidenten fordern Lockerung beim Verbrenner-Aus",
+  "created_at": 1761324793.8657405,
+  "hash": "50687a4eadb9a5bbd8a153fbc68b6c3966d016d72f30a117817aafe80b67ca9f",
+  "id": "BLK_1761324793_fcac1b",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "gGCncrMoqqKwU3/8VybNcpUqFI4Cwt78nYGv3wawHPbVYHuxYLlw6INbmL4I01pZ+MgVc+Obyt9s8DNRV+NyAg==",
+  "signed_at": "2025-10-24T16:53:13Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 18:53",
+  "url": null
+}

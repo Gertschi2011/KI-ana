@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1759079375_xtpul2",
-  "title": "Web Digest 2025-09-28 19:09",
   "content": "• Hacker News: Testing \"Exotic\" P2P VPN\n • Hacker News: Swiss voters back e-ID and abolish rental tax\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Milliardenloch: Pflegegrad 1 streichen - oder nicht?",
+  "hash": "5bc211cf865d938c6c0bb82e0782a1b94b0a84ddbabfd320ed850d5151bf164f",
+  "id": "BLK_1759079375_xtpul2",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "b4xC7Qn4trFJ9UOM0/Q6C5rc2qwXrD6qnfpl+pQiDKrz42o16W4Dbtue9GEM/wa47/haxPrmSNwQNpAl9oQ0Dw==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-28 19:09",
   "ts": 1759079375,
-  "meta": {},
-  "hash": "5bc211cf865d938c6c0bb82e0782a1b94b0a84ddbabfd320ed850d5151bf164f"
+  "url": ""
 }

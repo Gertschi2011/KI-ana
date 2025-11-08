@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Liva AI (YC S25) Is Hiring\n • Hacker News: Tinnitus Neuromodulator\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Zwei Jahre Horror - was die ehemaligen israelischen Geiseln berichten",
+  "created_at": 1760809285.844546,
+  "hash": "7f2fbac053c65c253845f8d69bda919cc0e9b59c909c4452fba4cfb5db3bf535",
+  "id": "BLK_1760809285_b344a5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "jgrKt6qPKy+C729P223GkOwhSVdQSd/a6jkX6G/9vaF1XwiYSdVE3qYClQxJyVsDYh1iB3doHpIrjhUz2frBAg==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 19:41",
+  "url": null
+}

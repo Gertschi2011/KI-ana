@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Diff Algorithms\n • Hacker News: Organize your Slack channels by \"How Often\", not \"What\"\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Haushaltsstreit: Warum die USA vor einem \"Shutdown\" stehen",
+  "created_at": 1759267145.3207242,
+  "hash": "bb2c7ab0190b17fa7845382f6ce3848a0ea095101c41d39943f9e697219b728a",
+  "id": "BLK_1759267145_0faad0",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Yl7gCQsBZM5Ka+6E7qzonl3ekf18+b7wrJAmb1FPNnI+ASfiWM+FQ6ir+0K/GUgNbmLaKjXG8si2JvQIEmH9Ag==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-09-30 23:19",
+  "url": null
+}

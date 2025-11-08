@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Evaluating the Infinity Cache in AMD Strix Halo\n • Hacker News: Show HN: AutoLearn Skills for self-improving agents\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ein Polizeigewerkschafter und seine steilen Thesen",
+  "created_at": 1761113619.6378303,
+  "hash": "668c2937082af2940697e938a002d3274b1a31b9ec325302be265077223b87b8",
+  "id": "BLK_1761113619_eafa1a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "6NH8J1W5LgGnH332n9I7DafXCO7YfH6aEYVVqkRtLHEPMnG08lIzghrWA/VCg3oCAWNdYUxG+1urrMjzGqsLCg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 08:13",
+  "url": null
+}

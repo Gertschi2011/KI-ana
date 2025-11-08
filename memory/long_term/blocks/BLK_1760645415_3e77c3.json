@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Benjie's Humanoid Olympic Games\n • Hacker News: Ask HN: What in the world is going on at Supabase?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump kündigt Treffen mit Putin in Ungarn an",
+  "created_at": 1760645415.0223453,
+  "hash": "93ed51f18be66936f4b8dfb72045a20a7651aff20a0118ff9553043b68ed1904",
+  "id": "BLK_1760645415_3e77c3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "lzMwGWJ+QII/2vyArmysR1u4ZZ8b5DL8O9MegQEg/poFt+IZbftZpT7CVp6u2kV8OPm4DQ/qViCI8Jbt7AmvAA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 22:10",
+  "url": null
+}

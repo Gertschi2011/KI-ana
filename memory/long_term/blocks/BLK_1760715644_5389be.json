@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Endorsing easily disproven claims linked to prioritizing symbolic strength\n • Hacker News: You did no fact checking, and I must scream\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Beispiel Düsseldorf: Wie der \"Bau-Turbo\" in der Praxis wirkt",
+  "created_at": 1760715644.9679818,
+  "hash": "59ce52a6f1690e4d2a2bad4a429cdd493a319c1ee80bd37737c1bc350ecedfe7",
+  "id": "BLK_1760715644_5389be",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "d/skNvEgQrhnNiw5CmPYKL10Vp9iO91MCEIDbJcPisYOx0gVFPfoDhuzcobAlZTComp5JrNqA5d9FFsG3gdgDw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-17 17:40",
+  "url": null
+}

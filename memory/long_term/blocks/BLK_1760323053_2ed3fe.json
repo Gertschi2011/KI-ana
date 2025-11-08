@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: John Searle Has Died\n • Hacker News: Novelty Automation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rotes Kreuz wartet auf israelische Geiseln",
+  "created_at": 1760323053.7763507,
+  "hash": "71bcccfd3ab6181448baf0ea63d1beaf7aa01d6a1c9c1f85f1624a7c8b820662",
+  "id": "BLK_1760323053_2ed3fe",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "5bxC69RyeFwhtSt2qSlzb6fhF5mQSaIOl+8vFHQojViQTeCsoHZ4cQElFRCeMQ7+ta5L5EceGjaZcTjLGuxaAQ==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-13 04:37",
+  "url": null
+}

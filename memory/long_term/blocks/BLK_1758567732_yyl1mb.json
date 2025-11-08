@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758567732_yyl1mb",
-  "title": "Web Digest 2025-09-22 21:02",
   "content": "• Hacker News: A collection of technical things every software developer should know about\n • Hacker News: Choose Your Own Adventure\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Stimmen zur Bahnstrategie: Alte Versprechungen, aber kleiner",
+  "hash": "dbcc9ccda5e9be5c36c5de788841dfd571b7c16ea02fe8730945b0c7285af0eb",
+  "id": "BLK_1758567732_yyl1mb",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "dgPo/reNz0jhYFfvDYiX007i2Aq9fcQxtbxRBDkMY5ZVDloQU1XLNHjq08mf1jW4k3tFyju7S5q0dpl/DsK/AQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-22 21:02",
   "ts": 1758567732,
-  "meta": {},
-  "hash": "dbcc9ccda5e9be5c36c5de788841dfd571b7c16ea02fe8730945b0c7285af0eb"
+  "url": ""
 }

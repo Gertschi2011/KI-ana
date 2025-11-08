@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Regarding the Compact\n • Hacker News: Boring Company cited for almost 800 environmental violations in Las Vegas\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Wiederaufbau: Was Deutschland leisten kann - und will",
+  "created_at": 1760117748.2723408,
+  "hash": "b60d7d5880bb63b5a7e6d57a0d958963c36fc2b046fce0034dd2474c2250362a",
+  "id": "BLK_1760117748_6a0ce5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "0E56hbYbAYWRTBwzZ69nHOIq38B6/xlTiXopn9T40i5VCGJyU5sozMtCuL7E6i1J1xomKjMRQmrhz+bvT670Ag==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 19:35",
+  "url": null
+}

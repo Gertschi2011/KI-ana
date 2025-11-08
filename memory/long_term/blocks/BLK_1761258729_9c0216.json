@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Why /Dev/Null Is an Acid Compliant Database\n • Hacker News: When is it better to think without words?\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Litauen meldet Eindringen von russischen Flugzeugen",
+  "created_at": 1761258729.6231177,
+  "hash": "b859eae84c35699e4d49e06867611c73b2d0690fe7888075a7ca8c267fb88ab8",
+  "id": "BLK_1761258729_9c0216",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Hvsqc6+p7jCacd00OQ00feHtWvHgz1Rdf5LY4hpHFJCOkvkhlo1+MQ+6/QJ97X+A53PPKZtv8JidnD6uRYVqBw==",
+  "signed_at": "2025-10-23T22:32:09Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-24 00:32",
+  "url": null
+}

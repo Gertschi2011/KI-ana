@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: N8n raises $180M\n • Hacker News: The React Foundation\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Literaturnobelpreis geht an Ungar Laszlo Krasznahorkai",
+  "created_at": 1760009695.4800324,
+  "hash": "8059da04f0d577af23114ff1c18288dfa2655cc415b52bf75e4650b087c0be09",
+  "id": "BLK_1760009695_2dd665",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "nUUpIDlOSb3hAV1xttWb7WheT2pPia50AzPNkOYFoiBQ6qzYf8KiOfE0SL0bLszo8iO/qPyBVmDeOmyzlkHUCQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 13:34",
+  "url": null
+}

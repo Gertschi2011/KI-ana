@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: PortalVR: XR Without a Headset\n • Hacker News: The strangest letter of the alphabet: The rise and fall of yogh\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Putin wirft Frankreich wegen Festsetzung von Tanker Piraterie vor",
+  "created_at": 1759451427.5898163,
+  "hash": "52d3ceb8641764ff0c5e83aca68e86a1742d9f7fc3dc9249910cc65ae6e07a63",
+  "id": "BLK_1759451427_b92fa5",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "NSVonEETwP4OtW2E2sxfvIDYpq/GU44Xwe3wke3F1kV3yYG4/+jJG6+luR3+wz7ZrochoM7WGw6cDaCPTgy0Ag==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-03 02:30",
+  "url": null
+}

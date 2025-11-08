@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Wacl – A Tcl Distribution for WebAssembly\n • Hacker News: Keep Android Open\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Hurrikan \"Melissa\": Jamaika zum Katastrophengebiet erklärt",
+  "created_at": 1761719483.755567,
+  "hash": "d1cba337d217ccc07e4514476f49fd45e1ef6c94c37a2e0c136155a488e1940e",
+  "id": "BLK_1761719483_bc2fe9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "HZyn506Lg1Tm3ETKvCZUHz3gO1sENf5kwt9aPyI+qKQG5OOfuJselSYTZ1ZudfyzfA6PApTu1ejZddCWMo6NDw==",
+  "signed_at": "2025-10-29T06:31:23Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-29 07:31",
+  "url": null
+}

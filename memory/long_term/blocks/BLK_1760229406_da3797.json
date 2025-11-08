@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: LineageOS 23\n • Hacker News: Vancouver Stock Exchange: Scam capital of the world (1989) [pdf]\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jubel für Trump, Pfiffe für Netanjahu in Tel Aviv",
+  "created_at": 1760229406.0777767,
+  "hash": "d20b00fb4b6be093c4e43657e75a7080cdc861531454a7cde03c912a2b6edc8c",
+  "id": "BLK_1760229406_da3797",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Kx2SO5M8eA69ts5VuiC24xWO5yv9rf/rfghdHFVIfsmUQ8qd0JmxUHOCvdnwIW6Hk+vfLJn6bv/igfyZkRddCA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 02:36",
+  "url": null
+}

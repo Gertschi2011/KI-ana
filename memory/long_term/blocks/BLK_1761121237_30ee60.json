@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Greenland Ditches Starlink for French Satellite Service\n • Hacker News: French ex-president Sarkozy begins jail sentence\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Warum Sabotage in der Ostsee kaum beweisbar ist",
+  "created_at": 1761121237.3172464,
+  "hash": "3e257b0513df3bbe48889a848e7ce3aa8f2d8d98300b50bcb9609aad6c015c48",
+  "id": "BLK_1761121237_30ee60",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "Y+Fh8VtNA5REK3Jy0ZsvBNgjgBqhjBVIVRbKwoEuA0ro+7Sf1BPChydNzqF3X4nlXAdPZYFoT7P5c/ygvtrnAA==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 10:20",
+  "url": null
+}

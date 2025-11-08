@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Without Deeds, Without Names\n • Hacker News: What GPT-OSS leaks about OpenAI's training data\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Söder äußert sich im Bericht aus Berlin zu Drohnenabschüssen",
+  "created_at": 1759696361.7211158,
+  "hash": "0b41fb4cd14b73d3b439826391de75fbc795d03f7ffa70435c3db4786f368310",
+  "id": "BLK_1759696361_ea0ecf",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "dSAd4+Ol7EaX7T0w6k3mPk9J72N7Mqk8PUDk9r5xGypFrbLcukb2Kwy7jaDap/4PF3XhTamC85yaXU5uAFN1CA==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 22:32",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: OpenBSD 7.8 Released\n • Hacker News: Cdb: Add support for cdb64\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Trump zu Gesprächen mit Putin: \"Möchte kein vergeudetes Treffen\"",
+  "hash": "4479de770bbd6be583a59cb9971b52c85490fc6105870cea61c8afb3a92ea39e",
+  "id": "BLK_1761101013_ds0ovf",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "qZwmVcKBvCaTVG5snF1nJSm8o2sE3pCC+YAF2FIeRWNhr8DdlmMRIIZIn9JvN1JoqHKSVw0O7pDOu4YjSOALBA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-22 04:43",
+  "ts": 1761101013,
+  "url": ""
+}

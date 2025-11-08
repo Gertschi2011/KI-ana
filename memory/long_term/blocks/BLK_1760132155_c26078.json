@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: How to save the world with ZFS and 12 USB sticks: 4th anniversary video (2011)\n • Hacker News: I built physical album cards with NFC tags to teach my son music discovery\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Macron ernennt Lecornu erneut zu Frankreichs Premierminister",
+  "created_at": 1760132155.806536,
+  "hash": "590b9922d96efd1fba5dcf15936affd139d4dc47b0b000bf3df7753e8d00821f",
+  "id": "BLK_1760132155_c26078",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "SfxyDHv9Z8Z8E3CsF1jWBhdR47V/fpVCMvx6jhkkmBwGiL+1bYf19MEdUQSCHePIi+YsTXZVc8cSQOHk1Q1lAw==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 23:35",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Circular Financing: Does Nvidia's $110B Bet Echo the Telecom Bubble?\n • Hacker News: Google removes ICE-spotting app following Apple's ICEBlock crackdown\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ukraine wirft Russland Sabotage am AKW Saporischschja vor",
+  "created_at": 1759586508.0403996,
+  "hash": "527cffa1bebd85dcff624b63c75cb7a0c52986d5345c2073072cffd79f9111bd",
+  "id": "BLK_1759586508_649391",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "fQKq5CB/zV1G4fvNNSAth3RicSsThO/qEHHavQ8SmSaGA9Mx8iSZ7up0qvIDgbhSdbLu8YlcnVb60S/qqI+lAQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 16:01",
+  "url": null
+}

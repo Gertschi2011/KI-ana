@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: I tracked Amazon's Prime Day prices. We've been played\n • Hacker News: Multi-Core by Default\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gazastreifen: US-Soldaten sollen Waffenruhe überwachen",
+  "created_at": 1760087132.9533532,
+  "hash": "0e0f3bc676047f7263798382921c4870fb9a69ab4193e89b2dc9e282508de05c",
+  "id": "BLK_1760087132_6abbc3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "+A+XO8gXxczc3rMTaR1W9GZKyMSrBFtejJXksGV3y1L8eH5fRwuIc6eUntvZm5CV+4Z3R7HqlgAyg/7irsarCQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-10 11:05",
+  "url": null
+}

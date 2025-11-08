@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Kyber (YC W23) Is Hiring an Enterprise AE\n • Hacker News: Zoo of Array Languages\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Rückkehr der Geisel: Durchatmen nach dem Tag der Emotionen",
+  "created_at": 1760445514.248354,
+  "hash": "0c130e4e88681d86632e5f623cb14590a9f86f46790e090f0cf4477a058b2608",
+  "id": "BLK_1760445514_c9d865",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "MaTMOQgl9OK56imGfW9hsuSBO2HRoDvWBgb8koazimKpcaY1u5JMeyes0S8yxEPnRVDWi0VWsF8nFCjoAHpEBQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 14:38",
+  "url": null
+}

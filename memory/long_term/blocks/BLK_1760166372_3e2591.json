@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: You won't believe what degrading practice the pope just condemned\n • Hacker News: AMD and Sony's PS6 chipset aims to rethink the current graphics pipeline\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Wie der Gaza-Friedensplan verhandelt wurde",
+  "created_at": 1760166372.9117565,
+  "hash": "07d4b701b28c7621ce5edc1743e70d3b2dd1781d4c025744862f90daa20b4ac0",
+  "id": "BLK_1760166372_3e2591",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "2MO15fOwJ5f4HWh9qsErn7BFV85m+YgF8QWtNGQMp+vtOcnmJCB1HhghrzhZXax/ZEfFYX9LT+nqQtriO/ZUBA==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 09:06",
+  "url": null
+}

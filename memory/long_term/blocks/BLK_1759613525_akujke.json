@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The UK is still trying to backdoor encryption for Apple users\n • Hacker News: Blog Feeds\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Was zum Frieden im Gazastreifen fehlt",
+  "hash": "105a4808011f877566fb200568477cb433e715fe1b724c668b3e60107c0a3f33",
+  "id": "BLK_1759613525_akujke",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "xI9Ei5gV2ER70l8WHTiuvmPHHyn19bsIxTLMbAXQTDClafUL/G8pRBTMYD6F7Ksw47wktyEO49LLFgo60un7Bw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-04 23:32",
+  "ts": 1759613525,
+  "url": ""
+}

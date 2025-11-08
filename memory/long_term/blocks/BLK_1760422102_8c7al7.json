@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Copy-and-Patch: A Copy-and-Patch Tutorial\n • Hacker News: Show HN: Wordle but you have to predict your score before playing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Britischer Ex-Premier Blair - geeignet als Friedensbringer für Nahost?",
+  "hash": "9549245d714b98363476221ccaba9e7e5d51b5b74a8f6bdf86736921d463583e",
+  "id": "BLK_1760422102_8c7al7",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "JchHJbdT7nxa0owu3Z2EbwbOIAlbhu4I4iSd51Y5etxX2Vj9UqCcaOYvTcGk/co1W8lT0b5jOJ6pO8hgPFD7Bg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 08:08",
+  "ts": 1760422102,
+  "url": ""
+}

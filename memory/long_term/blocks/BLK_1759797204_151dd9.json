@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Microsoft is plugging more holes that let you use Windows 11 without MS account\n • Hacker News: RediShell: Critical remote code execution vulnerability in Redis\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Gaza-Gespräche enden in \"positiver Atmosphäre\"",
+  "created_at": 1759797204.1476715,
+  "hash": "75b27fdf6d39cc50f5124404cdc308c2f2c1945b7a6a35a13126b937c1c72655",
+  "id": "BLK_1759797204_151dd9",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "Vh47GZwY1ERQeXf0F2/mVXqDA6iiv2i1vsJfq5jY4r44LD29rE/m4fmLG2MYXBSK7btPqfEJOIq8SD6HSDKVAg==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-07 02:33",
+  "url": null
+}

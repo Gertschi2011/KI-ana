@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Waymo is bringing autonomous, driverless ride-hailing to London in 2026\n • Hacker News: Liquibase continues to advertise itself as \"open source\" despite license switch\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): KI bei Suchmaschinen - was ändert sich im Verhalten?",
+  "created_at": 1760614800.7872381,
+  "hash": "acc5bd38c92a3826ada0a57b3b83a8e9ddad3c7e4606fd9df59bf02937ac4237",
+  "id": "BLK_1760614800_a3cb0e",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "9QpwRwSqMK9qL4FLFCqvwRR4L/lQM0s+zycjroTCk3ETW5vEErom4IrS4fUq7inTbN3e0smPoFxvmSHJ6pnDBw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-16 13:40",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Why the push for Agentic when models can barely follow a simple instruction?\n • Hacker News: Why Study Programming Languages\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): FAQ zum Gazastreifen: Wie weiter nach dem Gipfel von Ägypten?",
+  "hash": "723f6ef457c6d2e314cbfe35137ea2c193caf78cce5f4b1f6cbe548b02a470bf",
+  "id": "BLK_1760434708_mms8br",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "FxUpc7KitSqKfwQYkQg/txZ0f309t/aiLHkqC7EdbX94hC4qJ6liJZHXH+kehr8NJxrwa/3stOLoMoFIBp6qAQ==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 11:38",
+  "ts": 1760434708,
+  "url": ""
+}

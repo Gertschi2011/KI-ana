@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Papa Tools Dashboard</title>
   <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="stylesheet" href="/static/chat.css" />
+  <link rel="stylesheet" href="/static/modern-ui.css" />
   <style>
+    .navbar{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
+    body{padding-top:56px}
+    .container{max-width:1200px;margin:20px auto;padding:24px}
     .grid{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
     .card{ padding:16px; border:1px solid #eee; border-radius:8px; background:#fff; }
     .row{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
@@ -23,9 +28,14 @@
   </style>
 </head>
 <body class="page">
-  <div id="navbar"></div>
+  <div id="nav"></div>
   <main class="container">
-    <h1>Papa Tools Dashboard</h1>
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">🛠️ Papa Tools Dashboard</h1>
+        <p class="page-subtitle">System-Verwaltung & Tools</p>
+      </div>
+    </div>
     <div class="row" style="margin:8px 0 16px 0">
       <button id="btnDesktopHelp" class="btn">🖥️ Desktop Shell starten</button>
       <span class="muted">Öffnet Anleitung zum Start der Electron‑Shell.</span>
@@ -413,6 +423,6 @@
       }
     })();
   </script>
-<script>(function(){try{fetch("/static/nav.html").then(r=>r.text()).then(html=>{var n=document.getElementById("navbar"); if(n) n.innerHTML=html;}).catch(()=>{});}catch{}})();</script>
+  <script src="/static/nav.js"></script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: We Need Arabic Language Models\n • Hacker News: What Unix pipelines got right and how we can do better\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Israel will Gaza-Waffenruhe wieder einhalten",
+  "created_at": 1760904727.2768712,
+  "hash": "c998b16a859f181dc0349bd78a176ec42f5ae23a7ba2a11a289075fb953c2a53",
+  "id": "BLK_1760904727_61aee6",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "4eaHO0r2c4qL7h0Zb0XwuScRPz9W8DCMOj78kIiQDtZN5psskLtSyEYQDkG20v9Tu98dsgtMC7DEo84wmGT1DQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-19 22:12",
+  "url": null
+}

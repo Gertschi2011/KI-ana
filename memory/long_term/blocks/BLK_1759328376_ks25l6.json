@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Cursor 1.7\n • Hacker News: Show HN: ChartDB Agent – Cursor for DB schema design\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Bombendrohung in München: Oktoberfest öffnet ab 17.30 Uhr wieder",
+  "hash": "3dea2bf8a773f6e0881df799ca5c2106e482416fe16fcd58b84d1023c08ddd41",
+  "id": "BLK_1759328376_ks25l6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "IbQCzL2LJWH5FxL2YOTVZrKwsTOssBht2LiL5Lz62ZB8gEOT7egKFHksVQ/1mU7efAuR/POzy3Xfk5Aq8OaFCw==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-01 16:19",
+  "ts": 1759328376,
+  "url": ""
+}

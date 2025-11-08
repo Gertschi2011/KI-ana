@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758838177_pldu39",
-  "title": "Web Digest 2025-09-26 00:09",
   "content": "• Hacker News: RedoxFS is the default filesystem of Redox OS, inspired by ZFS\n • Hacker News: Factory Raises $50M Series B\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Erfolgreiche Richterwahl: Vom Regelfall zum Stresstest",
+  "hash": "69efc6b085a6fd3c573e4bf4e7a7bd6f4a858e1617a19f7ddcfe72814ace7ac4",
+  "id": "BLK_1758838177_pldu39",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "/2fthjn6gzNBv7+KN783/gSzdxwDgNS/Fktz8FVWTgx7GD0ocBSZt/CLLaSZ1QoG6jGwH6MLtEglTNObYjzADQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 00:09",
   "ts": 1758838177,
-  "meta": {},
-  "hash": "69efc6b085a6fd3c573e4bf4e7a7bd6f4a858e1617a19f7ddcfe72814ace7ac4"
+  "url": ""
 }

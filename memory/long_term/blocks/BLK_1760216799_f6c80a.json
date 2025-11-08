@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Indonesia says 22 plants in industrial zone contaminated by caesium 137\n • Hacker News: Discord hack shows risks of online age checks\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Jubel für Trump, Pfiffe für Netanjahu in Tel Aviv",
+  "created_at": 1760216799.7531064,
+  "hash": "0eb1c9764f55f6ef216a5d6a460823002980cbf7034090fb94456cb57817a896",
+  "id": "BLK_1760216799_f6c80a",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "9k4Y18okocBI7vC5NNLwLpO/HySB3EO0Byu6dEpvS2Vo8NJnCx21DVxUgllh1y2qRmeh7M4Vprjkue3KyTL9Cg==",
+  "signed_at": "2025-10-22T11:39:34Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-11 23:06",
+  "url": null
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Copy-and-Patch: A Copy-and-Patch Tutorial\n • Hacker News: Show HN: Wordle but you have to predict your score before playing\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Innenminister ringen um härteren Asylkurs - und die Solidarität",
+  "hash": "2b44e7ef5689d60c4e4dfd70e9381804ad10e54f1789428952e3fea35e2630cd",
+  "id": "BLK_1760420301_05q23b",
+  "meta": {},
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "signature": "FG5PnzEp+gKpK9Uw5X92/RCh45rDpujgqBVRmq/QAIINpCrjyEmY8NgPfHLypNaVs05577JXZYwd+iASFW4nDw==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-14 07:38",
+  "ts": 1760420301,
+  "url": ""
+}

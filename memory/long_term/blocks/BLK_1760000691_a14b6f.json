@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: First-in-the-nation law to ban ultra-processed foods from school lunches\n • Hacker News: The React Foundation: The New Home for React and React Native\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Worauf sich Schwarz-Rot beim Bürgergeld geeinigt hat",
+  "created_at": 1760000691.5482385,
+  "hash": "74b1103c61ed8291ad1028ee2083bd3446ca1831037094521ba851be0529dd68",
+  "id": "BLK_1760000691_a14b6f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "nsb/EweQEKhM7cRZjOhdJLrUzE95a80WyckiJxPWrvtfpJJQSfx3/4MJ2YuAZ6q3z28wES+PxJOeDtAD/3IQAg==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 11:04",
+  "url": null
+}

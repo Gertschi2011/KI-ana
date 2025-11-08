@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: ./watch\n • Hacker News: Fast calculation of the distance to cubic Bezier curves on the GPU\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Mehr Angebote in Apotheken geplant - Kritik von Verbänden",
+  "created_at": 1760789477.0788965,
+  "hash": "bfb2680fffd44b0df7e6b12ad5511004c929ab4446ff85cb73e0ffb2cb1a57a3",
+  "id": "BLK_1760789477_91371f",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "cHHK+7mWaRXkvYwZDapWSjhb3JSgQg9atP6RvKcWFAr6N5rmjemXS1avMx9nlL4WedLYg1KNb4M91Ju9NTYUDA==",
+  "signed_at": "2025-10-22T11:39:36Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-18 14:11",
+  "url": null
+}

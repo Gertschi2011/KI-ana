@@ -10,7 +10,7 @@ from system.self_diagnosis import current_goals, propose_learning_goal  # type: 
 
 router = APIRouter(prefix="/api/goals", tags=["goals"])
 
-BASE_DIR = Path.home() / "ki_ana"
+BASE_DIR = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
 BLOCKS_DIR = BASE_DIR / "memory" / "long_term" / "blocks"
 INDEX_DIR = BASE_DIR / "memory" / "index"
 GOALS_PATH = INDEX_DIR / "goals.json"

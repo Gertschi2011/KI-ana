@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: GitHub Copilot: Remote Code Execution via Prompt Injection (CVE-2025-53773)\n • Hacker News: In 1776, Thomas Paine made the best case for fighting kings −and being skeptical\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Rückkehr in den Gazastreifen: Zwischen Hoffnung und Entsetzen",
+  "created_at": 1760288836.5073884,
+  "hash": "bf07b705da11b04f81b893ef993b77cfd3f0316161f3774f9896b4612c8eb494",
+  "id": "BLK_1760288836_c18afc",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "ERLqDUaenE86wQ7+2pHUaVZ1dsXlkTPxL/FOkJ4UIFWB//MzNTGlRN17kb6xaJoIX4rOCjpyBrc5m5o/lZPdAQ==",
+  "signed_at": "2025-10-22T11:39:35Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-12 19:07",
+  "url": null
+}

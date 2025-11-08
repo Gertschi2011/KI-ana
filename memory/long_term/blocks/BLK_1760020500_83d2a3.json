@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Colombia's president says boat struck by US was carrying Colombians\n • Hacker News: Introducing Figure 03\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Nach Einigung zwischen Hamas und Israel: Wie geht es für Gaza weiter?",
+  "created_at": 1760020500.1073008,
+  "hash": "e5ee6a55747a70eac6c15e4d12498518417e4bedc806be956d1e57f5b17b3ee3",
+  "id": "BLK_1760020500_83d2a3",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "score": null,
+  "signature": "yNIYhHYPYpKP6ZyREEwsvmL6J/QH/uhFGv4TG7XpVc/hx/d4c53o5RM6T8CUJwvtUnwrH0pFljarK33DI/ZvBw==",
+  "signed_at": "2025-10-22T11:39:33Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-09 16:35",
+  "url": null
+}

@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Toybox: All-in-one Linux command line\n • Hacker News: Without Deeds, Without Names\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Söder äußert sich im Bericht aus Berlin zu Drohnenabschüssen",
+  "created_at": 1759698162.436668,
+  "hash": "0a1d3a94205bcd50f5105fa10894eb4e7360815d2dd6f1feb6398f7ca764daa5",
+  "id": "BLK_1759698162_68ae90",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "NG2zSMIWP4dHg0hpcUSQA7tweAzFzOG4JCxZOlI5fUT7Bo5dFFsTP7JKcLAUVurebB+P/wxnVnX/woYx7CeBCQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-05 23:02",
+  "url": null
+}

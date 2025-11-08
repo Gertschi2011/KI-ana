@@ -1,0 +1,21 @@
+{
+  "content": "• Hacker News: Libera Chat receives legal advice that the Online Safety Act does not apply to\n • Hacker News: Armed police handcuff teen after AI mistakes chip bag for gun in Baltimore\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Schwedens Angst: Wie bezahlen, wenn das Netz ausfällt?",
+  "created_at": 1761415410.4401448,
+  "hash": "f45d97d889e82872ff19b4b8885c06a5a11d9b7c43550c902f7e5de93d919f28",
+  "id": "BLK_1761415410_812b2c",
+  "meta": {
+    "source": "skill:web_digest"
+  },
+  "path": null,
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "score": null,
+  "signature": "VGb6z4Cb5+KdekBr5elpLYtenknqv/WQhXoDPJKVpU7dRhF5kRZ1WbfS5yJ+CwHw8y3QKUv86D2XpKolbT89CQ==",
+  "signed_at": "2025-10-25T18:03:30Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-10-25 20:03",
+  "url": null
+}

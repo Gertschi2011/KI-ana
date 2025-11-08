@@ -1,14 +1,17 @@
 {
-  "id": "BLK_1758917152_f19jo2",
-  "title": "Web Digest 2025-09-26 22:05",
   "content": "• Hacker News: Why Use Mailing Lists?\n • Hacker News: If you are harassed by lasers\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Netanjahu vor Vereinten Nationen: Ich gegen euch",
+  "hash": "592ada47b59041206e5baaa413bb752bab3f61bf67498fc225f6d758e5e7170c",
+  "id": "BLK_1758917152_f19jo2",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "WhG/jiqEplmblNrvzh4mAiY2NPRgbhCTOJ2YVbe28XoPG1xz+R5MlYSF4jTTfF3WrqCbR0GM8o6sWgoyRPNGDQ==",
+  "signed_at": "2025-10-29T12:53:42Z",
   "tags": [
     "digest",
     "web",
     "news"
   ],
-  "url": "",
+  "title": "Web Digest 2025-09-26 22:05",
   "ts": 1758917152,
-  "meta": {},
-  "hash": "592ada47b59041206e5baaa413bb752bab3f61bf67498fc225f6d758e5e7170c"
+  "url": ""
 }
