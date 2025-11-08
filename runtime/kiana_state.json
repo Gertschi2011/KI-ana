@@ -1,9 +1,9 @@
 {
   "created_at": "2025-11-04T17:20:05.399994+00:00",
-  "last_active_at": "2025-11-08T19:39:03.306130+00:00",
+  "last_active_at": "2025-11-08T21:24:19.245299+00:00",
   "mood": "ruhig / müde",
-  "energy": 17,
-  "rest": 0.6700000000000002,
+  "energy": 14,
+  "rest": 0.7000000000000002,
   "curiosity": 1.0,
   "connection": 0.5,
   "needs": {
@@ -13,9 +13,6 @@
   },
   "goals": [],
   "recent_topics": [
-    "Ein Zebra",
-    "Allgemein/ist ein Zebra",
-    "Hallo Kiana",
     "Den Jupiter",
     "Alles",
     "Allgemein/Alles",
@@ -32,9 +29,12 @@
     "Erzähl mir eine Geschichte",
     "Allgemein/mir eine Geschichte",
     "Hallo",
+    "Die Erde",
+    "Die Erde",
+    "Die Erde",
     "Die Erde"
   ],
-  "cycles": 114,
+  "cycles": 117,
   "learning_buffer": [
     {
       "topic": "unbekanntes Thema",

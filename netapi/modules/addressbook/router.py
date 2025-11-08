@@ -133,17 +133,30 @@ async def list_blocks(
     # Load actual blocks from files
     import os
     KI_ROOT = Path(os.getenv("KI_ROOT", "/home/kiana/ki_ana"))
-    blocks_dir = KI_ROOT / "data" / "blocks"
+    candidate_dirs = [
+        KI_ROOT / "memory" / "long_term" / "blocks",
+        KI_ROOT / "data" / "blocks",
+    ]
     
-    blocks = []
-    if blocks_dir.exists():
+    blocks: List[Dict[str, Any]] = []
+    for blocks_dir in candidate_dirs:
+        if not blocks_dir.exists():
+            continue
         for block_file in blocks_dir.rglob("*.json"):
             try:
                 with open(block_file, 'r', encoding='utf-8') as f:
                     block_data = json.load(f)
                 
                 # Check if block matches path
-                block_topics_path = block_data.get("topics_path", [])
+                block_topics_path = (
+                    block_data.get("topics_path")
+                    or block_data.get("topic_path")
+                    or block_data.get("topics")
+                    or block_data.get("tags")
+                    or []
+                )
+                if isinstance(block_topics_path, str):
+                    block_topics_path = [p.strip() for p in block_topics_path.split('/') if p.strip()]
                 if not isinstance(block_topics_path, list):
                     continue
                 
@@ -156,9 +169,9 @@ async def list_blocks(
                     
                     if matches:
                         blocks.append({
-                            "id": block_file.stem,
+                            "id": block_data.get("id") or block_file.stem,
                             "title": block_data.get("title", "Untitled"),
-                            "timestamp": block_data.get("timestamp", block_data.get("created", 0)),
+                            "timestamp": block_data.get("timestamp", block_data.get("created_at", block_data.get("created", 0))),
                             "trust": block_data.get("trust", block_data.get("trust_score", 5)),
                             "source": block_data.get("source", ""),
                             "topics_path": block_topics_path

@@ -27,6 +27,7 @@ import os
 import time
 import json
 from fastapi.staticfiles import StaticFiles
+from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 # Optional Starlette middlewares (be tolerant to older Starlette versions)
@@ -320,6 +321,77 @@ if ROOT_PATH == "/":
 
 app = FastAPI(title="KI_ana API", version="1.0", debug=settings.DEBUG, root_path=ROOT_PATH)
 
+# --- Autonomous crawler loop configuration ----------------------------------
+CRAWLER_AUTORUN = os.getenv("KIANA_CRAWLER_AUTORUN", "1") not in {"0", "false", "False"}
+try:
+    CRAWLER_INTERVAL = max(300, int(os.getenv("KIANA_CRAWLER_INTERVAL", "1800")))
+except Exception:
+    CRAWLER_INTERVAL = 1800
+
+CRAWLER_PRIMARY = False
+_CRAWLER_LOCK_PATH = Path("/tmp/kiana_crawler.lock")
+if CRAWLER_AUTORUN:
+    try:
+        fd = os.open(str(_CRAWLER_LOCK_PATH), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        with os.fdopen(fd, "w", encoding="utf-8") as lock_file:
+            lock_file.write(str(os.getpid()))
+        CRAWLER_PRIMARY = True
+    except FileExistsError:
+        print("⚠️  Skipping crawler auto-run: another worker holds the lock")
+        CRAWLER_PRIMARY = False
+    except Exception as exc:
+        print(f"⚠️  Failed to acquire crawler lock: {exc}")
+        CRAWLER_PRIMARY = False
+
+_RUN_CRAWLER = None
+_PROMOTE_CRAWLER = None
+if CRAWLER_AUTORUN and CRAWLER_PRIMARY:
+    try:
+        from importlib.machinery import SourceFileLoader as _Loader  # type: ignore
+
+        _ki_root = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
+        _candidate_paths = [
+            _ki_root / "system" / "crawler_loop.py",
+            Path(__file__).resolve().parents[1] / "system" / "crawler_loop.py",
+        ]
+        for _crawler_path in _candidate_paths:
+            if _crawler_path.exists():
+                print(f"🕸️  Crawler script found at {_crawler_path}")
+                _crawler_mod = _Loader("kiana_crawler_loop_bg", str(_crawler_path)).load_module()  # type: ignore
+                _RUN_CRAWLER = getattr(_crawler_mod, "run_crawler_once", None)
+                _PROMOTE_CRAWLER = getattr(_crawler_mod, "promote_crawled_to_blocks", None)
+                break
+        if _RUN_CRAWLER is None:
+            print("⚠️  Crawler auto-run disabled: crawler_loop.py not found")
+    except Exception as exc:
+        _RUN_CRAWLER = None
+        _PROMOTE_CRAWLER = None
+        print(f"⚠️  Failed to initialize crawler auto-run: {exc}")
+
+
+async def _crawler_background_loop():
+    """Periodically run the crawler + promotion to keep knowledge fresh."""
+    if not _RUN_CRAWLER:
+        return
+    interval = max(300, CRAWLER_INTERVAL)
+    delay = 5  # run shortly after boot, then use steady interval
+    while True:
+        try:
+            await asyncio.sleep(delay)
+            delay = interval
+            print(f"🕸️  Crawler auto-run triggered (interval={interval}s)")
+            loop = asyncio.get_running_loop()
+            await loop.run_in_executor(None, _RUN_CRAWLER)
+            if _PROMOTE_CRAWLER:
+                await loop.run_in_executor(None, _PROMOTE_CRAWLER)
+            print("🕸️  Crawler auto-run complete")
+        except asyncio.CancelledError:
+            print("🛑 Crawler auto-run loop cancelled")
+            break
+        except Exception as exc:
+            logging.getLogger("crawler.autorun").exception("Crawler auto-run failed: %s", exc)
+            await asyncio.sleep(interval)
+
 # ---- Unified logging configuration -----------------------------------------
 try:
     import logging
@@ -404,6 +476,18 @@ async def _kernel_boot() -> None:
             # Don't crash the app if advanced features fail
     asyncio.create_task(_init_advanced_features())
 
+    if CRAWLER_AUTORUN and CRAWLER_PRIMARY and _RUN_CRAWLER:
+        async def _start_crawler_loop():
+            try:
+                task = asyncio.create_task(_crawler_background_loop())
+                setattr(app.state, "crawler_task", task)
+                logging.getLogger("crawler.autorun").info(
+                    "Crawler auto-run loop scheduled every %s seconds", CRAWLER_INTERVAL
+                )
+            except Exception as exc:
+                logging.getLogger("crawler.autorun").exception("Failed to start crawler loop: %s", exc)
+        asyncio.create_task(_start_crawler_loop())
+
 
 @app.on_event("shutdown")
 async def _kernel_down() -> None:
@@ -411,6 +495,19 @@ async def _kernel_down() -> None:
         await asyncio.wait_for(KERNEL.stop(), timeout=3.0)
     except BaseException:
         pass
+    
+    crawler_task = getattr(app.state, "crawler_task", None)
+    if crawler_task:
+        crawler_task.cancel()
+        try:
+            await crawler_task
+        except Exception:
+            pass
+    if CRAWLER_PRIMARY:
+        try:
+            _CRAWLER_LOCK_PATH.unlink(missing_ok=True)
+        except Exception:
+            pass
     
     # Stop advanced features services
     try:

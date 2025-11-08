@@ -273,6 +273,7 @@ from netapi.core.expression import express_state_human
 from netapi.core.reasoner import reason_about, is_low_confidence_answer  # type: ignore
 from netapi.core.learner import decide_ask_or_search, build_childlike_question, record_user_teaching  # type: ignore
 from netapi.deps import get_current_user_opt
+from netapi.modules.timeflow.events import record_timeflow_event
 
 # Logger
 logger = logging.getLogger(__name__)
@@ -1725,11 +1726,31 @@ def _ensure_conversation(db, user_id: int, conv_id: Optional[int]) -> Conversati
 def _save_msg(db, conv_id: int, role: str, text: str) -> Message:
     m = Message(conv_id=int(conv_id), role=str(role), text=str(text or ""), created_at=_now())
     db.add(m)
+    owner_id = None
+    try:
+        owner_id = db.query(Conversation.user_id).filter(Conversation.id == int(conv_id)).scalar()
+    except Exception:
+        owner_id = None
     try:
         # touch conversation
         db.query(Conversation).filter(Conversation.id == int(conv_id)).update({Conversation.updated_at: _now()})
     except Exception:
         pass
+    if owner_id:
+        try:
+            record_timeflow_event(
+                db,
+                user_id=owner_id,
+                event_type=("chat_ai" if role == "ai" else "chat_user"),
+                meta={
+                    "conv_id": int(conv_id),
+                    "role": role,
+                    "preview": (text or "")[:160],
+                },
+                auto_commit=False,
+            )
+        except Exception:
+            pass
     db.commit()
     return m
 

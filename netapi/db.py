@@ -78,7 +78,12 @@ def init_db() -> None:
     This only creates; it won't drop anything.
     """
     # Import models inside function to avoid circular import at module load time.
-    from . import models  # noqa: F401  (registers models to Base metadata)
+    from . import models  # noqa: F401  (registers core models to Base metadata)
+    # Ensure folders model is also registered (Conversation.folder_id -> folders.id)
+    try:
+        import netapi.modules.chat.folders  # noqa: F401
+    except Exception:
+        pass
     Base.metadata.create_all(bind=engine)
 
 

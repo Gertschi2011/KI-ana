@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional
 from netapi.deps import get_current_user_opt, is_kid
 from netapi.deps import get_current_user_required as _cur_user, require_role as _require_role
 from ...jwt_utils import encode_jwt
+from ..timeflow.events import record_timeflow_event
 try:
     from ..admin.router import write_audit  # type: ignore
 except Exception:
@@ -140,6 +141,16 @@ def login(payload: LoginIn, request: Request, db=Depends(get_db)):
     })
     # If payload.remember True, then 30 days; else session-cookie until browser close
     set_cookie(resp, {"uid": user.id, "ts": int(time.time())}, remember=payload.remember, request=request)
+    try:
+        record_timeflow_event(
+            db,
+            user_id=user.id,
+            event_type="login",
+            meta={"username": user.username, "remember": bool(payload.remember)},
+            auto_commit=True,
+        )
+    except Exception:
+        pass
     return resp
 
 async def _get_user_subminds(user: Any) -> List[Any]:

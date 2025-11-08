@@ -91,6 +91,14 @@ class Message(Base):
     text = Column(Text, nullable=False)
     created_at = Column(Integer, default=0)
 
+class TimeflowEvent(Base):
+    __tablename__ = "timeflow_events"
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, index=True, nullable=False)
+    event_type = Column(String(64), default="generic", index=True)
+    meta = Column(Text, default="{}")
+    created_at = Column(Integer, default=0, index=True)
+
 # Jobs (lightweight queue)
 class Job(Base):
     __tablename__ = "jobs"

@@ -1,11 +1,13 @@
 """TimeFlow API Router - Endpoints for internal time perception system."""
 
 from __future__ import annotations
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Optional, Dict, Any
-from netapi.deps import get_current_user_required, require_role
+from netapi.deps import get_current_user_required, require_role, get_db
+from ...models import TimeflowEvent
+from .events import serialize_timeflow_event
 import json, asyncio
 
 # SSE optional import
@@ -93,6 +95,30 @@ def timeflow_history(
         return {"ok": True, "history": history, "count": len(history)}
     except Exception as e:
         return JSONResponse(status_code=500, content={"ok": False, "error": str(e)})
+
+
+@router.get("/events/me")
+def timeflow_events_me(
+    limit: int = Query(50, ge=1, le=200),
+    user = Depends(get_current_user_required),
+    db = Depends(get_db),
+):
+    """Return recent TimeFlow timeline events for the current user."""
+    try:
+        user_id = int(user.get("id") or 0)
+    except Exception:
+        user_id = 0
+    if not user_id:
+        raise HTTPException(status_code=401, detail="login required")
+    rows = (
+        db.query(TimeflowEvent)
+        .filter(TimeflowEvent.user_id == user_id)
+        .order_by(TimeflowEvent.created_at.desc())
+        .limit(limit)
+        .all()
+    )
+    events = [serialize_timeflow_event(r) for r in rows]
+    return {"ok": True, "events": events, "count": len(events)}
 
 
 @router.get("/config")
