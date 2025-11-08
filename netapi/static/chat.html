@@ -6,9 +6,14 @@
   <title>Chat mit KI_ana</title>
   <script src="/static/nav.js?v=20251029"></script>
   <script src="/static/global_theme.js?v=20251029"></script>
-  <script src="/static/chat.js?v=20251029-v2"></script>
+  <script src="/static/auto_logout.js"></script>
+  <script src="/static/inactivity_logout.js"></script>
+  <script src="/static/chat.js?v=20251104-0210-live"></script>
+  <script src="/static/folders.js?v=RETRY-INIT-2025"></script>
+  <script src="/static/chat-init.js?v=FIX-DOM-READY-2025"></script>
   <link href="/static/styles.css?v=20251029" rel="stylesheet">
-  <link href="/static/chat.css?v=20251029" rel="stylesheet">
+  <link href="/static/chat.css?v=20251030-0651" rel="stylesheet">
+  <link href="/static/folders.css?v=20251104" rel="stylesheet">
   <style>
     /* Reset for chat-specific elements, but don't break navbar */
     .main-wrapper *, .chat-container *, .sidebar *, .modal-backdrop * {
@@ -878,7 +883,17 @@
       <div class="sidebar-header">
         💬 Chats
       </div>
-      <div class="chat-list" id="chatList">
+      
+      <!-- Folders Section (injected by folders.js) -->
+      <div id="foldersSection"></div>
+
+      <!-- Conversations toolbar (target for folders.js multi-select button) -->
+      <div class="conv-toolbar" id="convToolbar" style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid #eee;">
+        <!-- folders.js will inject the ☑️ Multi-Select button here -->
+      </div>
+
+      <!-- Conversations List -->
+      <div id="convList" class="conversations-list">
         <!-- Chat history will be loaded here -->
       </div>
     </div>
@@ -894,8 +909,9 @@
           <div class="header-status" id="status">🟢 Online & Bereit</div>
         </div>
         <div class="header-actions">
-          <button class="icon-btn" id="settingsBtn" title="Einstellungen">⚙️</button>
+          <button class="icon-btn" id="openSettings" title="Einstellungen">⚙️</button>
           <button class="icon-btn" id="newChatBtn" title="Neuer Chat">✨</button>
+          <button class="icon-btn" id="micBtn" title="Spracheingabe" style="display:none;">🎤</button>
         </div>
       </div>
     
@@ -1031,12 +1047,16 @@
     }
     
     function renderChatList() {
-      const chatList = document.getElementById('chatList');
+      const chatList = document.getElementById('convList');
+      if (!chatList) return; // convList wird von chat.js gerendert
       
       if (chatHistory.length === 0) {
-        chatList.innerHTML = '<div style="padding:20px;text-align:center;color:#999;">Keine gespeicherten Chats</div>';
+        // Nicht überschreiben wenn chat.js aktiv ist
         return;
       }
+      
+      // Diese Funktion wird nicht mehr verwendet, chat.js übernimmt
+      return;
       
       chatList.innerHTML = chatHistory.map(chat => `
         <div class="chat-item ${chat.id === currentChatId ? 'active' : ''}" onclick="loadChat('${chat.id}')">
@@ -1171,8 +1191,13 @@
       
       const avatar = document.createElement('img');
       avatar.className = 'message-avatar';
-      avatar.src = type === 'ai' ? '/static/img/Avatar_KI_ana.jpg' : '/static/img/user-avatar.png';
-      avatar.onerror = () => avatar.style.display = 'none';
+      if (type === 'ai') {
+        avatar.src = '/static/img/Avatar_KI_ana.jpg';
+        avatar.onerror = () => avatar.style.display = 'none';
+      } else {
+        // Use SVG placeholder for user avatar to avoid 404
+        avatar.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23667eea"%3E%3Cpath d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/%3E%3C/svg%3E';
+      }
       
       const contentDiv = document.createElement('div');
       contentDiv.className = 'message-content';
@@ -1193,72 +1218,29 @@
     }
     
     function showTyping() {
-      document.getElementById('typingIndicator').classList.add('active');
+      const indicator = document.getElementById('typingIndicator');
+      if (!indicator) return; // Safety check
+      indicator.classList.add('active');
       const messagesArea = document.getElementById('messagesArea');
-      messagesArea.scrollTop = messagesArea.scrollHeight;
-    }
-    
-    function hideTyping() {
-      document.getElementById('typingIndicator').classList.remove('active');
-    }
-    
-    async function sendMessage() {
-      const input = document.getElementById('messageInput');
-      const message = input.value.trim();
-      
-      if (!message) return;
-      
-      // Add user message
-      addMessage('user', message);
-      input.value = '';
-      input.style.height = 'auto';
-      
-      // Show typing
-      showTyping();
-      
-      try {
-        // Get settings
-        const personality = localStorage.getItem('personality') || 'friendly';
-        const language = localStorage.getItem('language') || 'de';
-        
-        // Build message array
-        const messages = conversationHistory.map(msg => ({
-          role: msg.role,
-          content: msg.content
-        }));
-        
-        // Call API
-        const response = await fetch('/api/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
-          },
-          body: JSON.stringify({
-            model: 'llama3.2:3b',
-            messages: messages,
-            stream: false,
-            max_tokens: 500
-          })
-        });
-        
-        const data = await response.json();
-        
-        hideTyping();
-        
-        if (data.choices && data.choices[0]) {
-          addMessage('ai', data.choices[0].message.content);
-        } else {
-          addMessage('ai', 'Entschuldigung, da ist etwas schiefgelaufen. 😔');
-        }
-      } catch (error) {
-        hideTyping();
-        addMessage('ai', 'Verbindung fehlgeschlagen. Bitte versuche es erneut. 🔌');
-        console.error('Chat error:', error);
+      if (messagesArea) {
+        messagesArea.scrollTop = messagesArea.scrollHeight;
       }
     }
     
-    function sendQuickMessage(message) {
+    function hideTyping() {
+      const indicator = document.getElementById('typingIndicator');
+      if (!indicator) return; // Safety check
+      indicator.classList.remove('active');
+    }
+    
+    // sendMessage function removed - using the one from chat.js instead
+    
+    async function sendQuickMessage(message) {
+      // Create conversation first if needed
+      if (!window.activeConv || !window.convs?.find(c => c.id === window.activeConv)) {
+        await window.createAndActivateConversation();
+      }
+      
       document.getElementById('messageInput').value = message;
       sendMessage();
     }
@@ -1314,14 +1296,20 @@
       this.style.height = Math.min(this.scrollHeight, 120) + 'px';
     });
     
-    // Event Listeners
-    document.getElementById('settingsBtn').addEventListener('click', openSettings);
-    document.getElementById('newChatBtn').addEventListener('click', newChat);
+    // Event Listeners (with null checks)
+    const settingsBtn = document.getElementById('openSettings'); // Correct ID
+    const newChatBtn = document.getElementById('newChatBtn');
+    const settingsModal = document.getElementById('settingsModal');
+    
+    if (settingsBtn) settingsBtn.addEventListener('click', openSettings);
+    if (newChatBtn) newChatBtn.addEventListener('click', newChat);
     
     // Modal close on backdrop click
-    document.getElementById('settingsModal').addEventListener('click', (e) => {
-      if (e.target.id === 'settingsModal') closeSettings();
-    });
+    if (settingsModal) {
+      settingsModal.addEventListener('click', (e) => {
+        if (e.target.id === 'settingsModal') closeSettings();
+      });
+    }
     
     // Initialize
     loadSettings();

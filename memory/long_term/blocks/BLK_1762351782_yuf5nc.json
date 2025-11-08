@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762351782_yuf5nc",
+  "title": "Experience 2025-11-05T14:09:42.072719+00:00",
+  "content": "{\"type\": \"knowledge_from_memory\", \"user_message\": \"was weißt du über die Erde?\", \"assistant_reply\": \"{\\\"created_at\\\": \\\"2025-11-04T17:20:05.399994+00:00\\\", \\\"last_active_at\\\": \\\"2025-11-05T13:43:22.023523+00:00\\\", \\\"mood\\\": \\\"verspielt\\\", \\\"energy\\\": 64, \\\"needs\\\": {\\\"curiosity\\\": 1.0, \\\"connection\\\": 0.5, \\\"rest\\\": 0.5}, \\\"goals\\\": [], \\\"recent_topics\\\": [\\\"Allgemein/Wie heißt du\\\", \\\"Weißt du wie spät es ist?\\\", \\\"Allgemein/spät es ist\\\", \\\"Was weißt du über die Serie The Studio?\\\", \\\"wie heißt du?\\\", \\\"Allgemein/wie heißt du\\\", \\\"wie spät ist es?\\\", \\\"Allgemein/spät ist es\\\", \\\"Was weißt du über die Serie The Studio? …\\nQuellen:\\n- ⚪ KI_ana Self-State ()\", \"topic_path\": \"Allgemein/über die Erde\", \"timestamp\": \"2025-11-05T14:09:42.072719+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762351782,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 47
+  },
+  "hash": "329d7f0383c56bd52f34e7260470abd59f8868139b8665c67603fce2218f692d"
+}

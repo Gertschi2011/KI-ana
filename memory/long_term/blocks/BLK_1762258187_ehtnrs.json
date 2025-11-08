@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: What Is a Manifold?\n • Hacker News: Bloom filters are good for search that does not scale\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Ex-US-Vizepräsident Dick Cheney gestorben",
+  "hash": "7b5f5cc6f74b5418e4456d2e47261600eb418d6d0d30fa99347050930ea01c25",
+  "id": "BLK_1762258187_ehtnrs",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "nj9zajhXy5L2+JhZ9vznCsDuLOIzNxeKAbLoHTw9RrZbpjBEdUln+1f7V9rBBW8yRhtgCq0f8tqv7U4eoBztCw==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-04 13:09",
+  "ts": 1762258187,
+  "url": ""
+}

@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762358137_n883ik",
+  "title": "Experience 2025-11-05T15:55:37.013033+00:00",
+  "content": "{\"type\": \"knowledge_ask_user\", \"user_message\": \"Was weißt du über The Studio?\", \"assistant_reply\": \"Das weiß ich noch nicht so gut. Magst du mir kurz erklären, worum es da geht oder wo ich nachschauen soll?\", \"topic_path\": \"Allgemein/über The Studio\", \"timestamp\": \"2025-11-05T15:55:37.013033+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762358137,
+  "meta": {
+    "user_id": null,
+    "conversation_id": null
+  },
+  "hash": "2557d158053cb97b5cd4e8152f4b04eb2f1401ff796d06b979561a27a689fef0"
+}

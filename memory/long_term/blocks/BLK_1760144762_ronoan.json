@@ -3,9 +3,9 @@
   "hash": "10bbd90e6c96a9c93b09d7016ba4a3fcf333f2657e475026f6048b3878ab6a50",
   "id": "BLK_1760144762_ronoan",
   "meta": {},
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
-  "signature": "BWj7+8OXr5jrpxjT9PyXNUo5tlMVViE3tRj25/CvwSK0RDLcfrCVW29ARFFfQwEynxHxctdtuelKCw0oY3zbAA==",
-  "signed_at": "2025-10-22T11:39:35Z",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "3VBs+673QwD7hWqHQd8FbxT8FO194iK1r7pBZe1A+4wwytWSdLL+3UIxbAWDfq9JcSBG/kJzigvoSdaFnqbpDg==",
+  "signed_at": "2025-11-05T10:06:06Z",
   "tags": [
     "digest",
     "web",

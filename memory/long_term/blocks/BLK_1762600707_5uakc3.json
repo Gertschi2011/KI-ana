@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762600707_5uakc3",
+  "title": "Experience 2025-11-08T11:18:27.241833+00:00",
+  "content": "{\"type\": \"knowledge_ask_user\", \"user_message\": \"Was ist ein Zebra?\", \"assistant_reply\": \"Das weiß ich noch nicht so gut. Magst du mir kurz erklären, worum es da geht oder wo ich nachschauen soll?\", \"topic_path\": \"Allgemein/ist ein Zebra\", \"timestamp\": \"2025-11-08T11:18:27.241833+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762600707,
+  "meta": {
+    "user_id": null,
+    "conversation_id": null
+  },
+  "hash": "7823958015ae057ed2007f5f9ab8f2e2de3dffbeaed0b07648bc727789f0e81e"
+}

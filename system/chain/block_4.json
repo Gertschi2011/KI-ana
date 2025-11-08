@@ -1,7 +1,7 @@
 {
   "block_id": 4,
   "content_hash": "2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b",
-  "hash": "9a0b239074e92378fb2289340b15c59291c949ef46e4f909d3f9928f260ca593",
+  "hash": "4c6afb2d2f03b1ece4f604484f95cbee5584acf4d5bbc555ef97f89cfe183479",
   "memory_path": "/home/kiana/ki_ana/memory/long_term/2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b.json",
   "meta": {
     "url": "https://de.wikipedia.org/wiki/Einen_baum%3F"
@@ -9,7 +9,7 @@
   "previous_hash": "a13889910951cd8e8687bf74ff0375ad1d3a8177c2eb04400bdb7d76e4eddf8a",
   "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
   "signature": "odBfah+ogkKb/kxKH+gqFH+1KtPmkhe+GSuG2Yul+P0MDTTa/nUxe4BmfEg9ttRCBi6fkTVWoLuqABld+crbCQ==",
-  "signed_at": "2025-09-21T08:13:35Z",
+  "signed_at": "2025-11-05T10:06:06Z",
   "signer_pubkey": "BPc5h+jR3VdGXle6pghTBSfDAiok+iYcwgbCuFX9+7g=",
   "source": "https://de.wikipedia.org/wiki/Baum",
   "timestamp": "2025-08-08T11:53:39.807262Z",

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The Hackers Manifesto (The Conscience of a Hacker) (1986)\n • Hacker News: Hypothesis: Property-Based Testing for Python\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): EU-Staaten einigen sich auf abgeschwächtes Klimaziel für 2040",
+  "hash": "3cedd82b45d9d2e07e843d80ceb849b4f130d042ce92f03b3e334e36177ee959",
+  "id": "BLK_1762336158_faxtgo",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "3bODhP9jGg0Z1flhfiBDPb4OvKu/3mL8MBoadzRoHJegjteGqEz7yJkQVUVm+HuT7U/xG+ts98wht2r+m6uJCA==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-05 10:49",
+  "ts": 1762336158,
+  "url": ""
+}

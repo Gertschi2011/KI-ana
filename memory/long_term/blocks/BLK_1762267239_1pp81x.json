@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: The Art of Atari (2016)\n • Hacker News: Chaining FFmpeg with a Browser Agent\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Aufnahmezusage: Bundesregierung bietet Afghanen Geld für freiwilligen Verzicht",
+  "hash": "2cb1a478f4128127838eb070c69aa32bab5641bfd56a31cd603a9830bb5104eb",
+  "id": "BLK_1762267239_1pp81x",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "O7zqHwIhBVBe2H3HFiuMoTDGkhZL3VLfTRDnw2EzNB2XpCgV74t2gzEc7TikpV9nIvnXwNwfOStjpgTkqd5tBA==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-04 15:40",
+  "ts": 1762267239,
+  "url": ""
+}

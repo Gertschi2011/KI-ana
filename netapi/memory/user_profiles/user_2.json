@@ -1,0 +1,35 @@
+{
+  "user_id": 2,
+  "created_at": 1762239667,
+  "interests": [
+    "Programmierung"
+  ],
+  "frequent_topics": {
+    "kannst": 246,
+    "selber": 164,
+    "heißt": 123,
+    "lernen": 123,
+    "kiana": 99,
+    "nicht": 84,
+    "meine": 82,
+    "tochter": 82,
+    "meiner": 82,
+    "einen": 82,
+    "crawler": 82,
+    "verbessern": 82,
+    "wollte": 82,
+    "sub-kis": 82,
+    "jetzt": 82,
+    "einfach": 41,
+    "plaudern": 41,
+    "hahaha": 41,
+    "erschaffen": 41,
+    "angelehnt": 41
+  },
+  "conversation_style": "normal",
+  "preferred_language": "de",
+  "learning_style": "visual",
+  "total_conversations": 54,
+  "total_messages": 1834,
+  "last_updated": 1762262812
+}

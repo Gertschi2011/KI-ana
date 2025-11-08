@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762358225_5x8jcb",
+  "title": "Experience 2025-11-05T15:57:05.598268+00:00",
+  "content": "{\"type\": \"user_teaching\", \"user_message\": \"Hallo kiana\", \"assistant_reply\": \"Danke, das hilft mir sehr. Ich merke mir 'Allgemein/über The Studio' jetzt so:\\nHallo kiana Ich versuche mir das als kleinen Wissensblock zu merken.\", \"timestamp\": \"2025-11-05T15:57:05.598268+00:00\", \"mood\": \"verspielt\", \"topic\": \"Allgemein/über The Studio\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762358225,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 50
+  },
+  "hash": "5287e94e2b186b88d796da8d0e7dd635edf1f27fd823ef24e260102491c673b7"
+}

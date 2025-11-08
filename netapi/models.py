@@ -14,7 +14,7 @@ class User(Base):
     password_hash = Column(Text)
     birthdate = Column(String)
     address = Column(Text)
-    role = Column(String, default="user")
+    role = Column("role", String, default="user", quote=True)  # Escape reserved word
     tier = Column(String, default="user")
     # New: per-user Papa flag (nullable for backward compatibility)
     is_papa = Column(Boolean, default=False)
@@ -22,8 +22,8 @@ class User(Base):
     quota_reset_at = Column(Integer, default=0)
     plan = Column(String, default="free")
     plan_until = Column(Integer, default=0)
-    created_at = Column(Integer)         # epoch sec
-    updated_at = Column(Integer, default=0)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(Integer, default=0)  # DB has INTEGER type
 
 # Key/Value Settings (global)
 class SettingsKV(Base):
@@ -78,6 +78,8 @@ class Conversation(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
     title = Column(String(200), default="Neue Unterhaltung")
+    folder_id = Column(Integer, ForeignKey("folders.id", ondelete="SET NULL"), nullable=True, index=True)
+    # last_save_at removed - not in DB schema
     created_at = Column(Integer, default=0)
     updated_at = Column(Integer, default=0)
 

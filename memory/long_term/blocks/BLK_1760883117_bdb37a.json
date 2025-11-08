@@ -7,10 +7,10 @@
     "source": "skill:web_digest"
   },
   "path": null,
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
   "score": null,
-  "signature": "uRK5cvcAkVHkSDVy2Ti+WdgNvfFv5WDE1hrywPGxGShTfTlIkZArc61aoz/GBE+yfXx7zOqgNy/H1PR3GqqGCg==",
-  "signed_at": "2025-10-22T11:39:33Z",
+  "signature": "JQEoi7KzjBwwP1X7d8mOHdCk+deQ/VYxITev/HrSwnaChCqxYnjJ+WkU/EQjXbKciP47C/wp26PFDvAF9abaCA==",
+  "signed_at": "2025-11-05T10:06:06Z",
   "tags": [
     "digest",
     "web",

@@ -1,0 +1,28 @@
+{
+  "content": "Gespräch mit 4 Nachrichten:\n1. wie spät ist esssssss?\n2. wie spät ist esssssss?\n\nThemen: kiana",
+  "hash": "7f4750e29c84fa5b3ae53639ffb815a634cbb406144c0d9c25d739d9e2101c11",
+  "id": "BLK_1762262541_vul4a8",
+  "meta": {
+    "ai_message_count": 4,
+    "conversation_id": 21,
+    "ended_at": 1762261942,
+    "message_count": 8,
+    "participant": "user_2",
+    "source": "conversation_auto_save",
+    "started_at": 1762261924,
+    "user_id": 2,
+    "user_message_count": 4
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "eWOhAK1vfqZqsEYKduOFZx/waAscfq8btPpW82UOAidxe/GuT18fptWHtQU6zmyAJkf7Os6O5JEsSk8O8yXTBQ==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "conversation",
+    "dialog",
+    "memory",
+    "kiana"
+  ],
+  "title": "Hier ist eine kurze Antwort. Wenn du willst, gehe ich",
+  "ts": 1762262541,
+  "url": ""
+}

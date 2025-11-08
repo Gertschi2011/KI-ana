@@ -1,0 +1,17 @@
+{
+  "content": "{\"created_at\": \"2025-11-04T17:20:05.399994+00:00\", \"last_active_at\": \"2025-11-05T07:25:55.980377+00:00\", \"mood\": \"neutral\", \"goals\": [], \"recent_topics\": [\"Weißt du wie spät es ist?\", \"Guten Morgen Kiana\", \"Weißt du wie spät es ist?\", \"Guten Morgen Kiana\", \"Weißt du wie spät es ist\", \"Super danke für die Antwort\", \"Was weißt du über die Serie The Studio?\", \"Weißt du wer du bist?\", \"Wie heißt du?\", \"Wie heißt du?\", \"Cool 😎Was kannst du?\", \"Wie spät ist es?\", \"Was weißt du über die Serie The Studio?\"], \"cycles\": 13, \"learning_buffer\": [], \"pending_followup\": null}",
+  "hash": "44e15922f66cf45686bc5a6d22598f27991e6d9451879d720e7dff1afa708eaf",
+  "id": "BLK_1762333231_5w7hce",
+  "meta": {
+    "ts": 1762333231
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "ah6o71BcBzLukVo0MmUAwiFWeIYsngcRCjWegrhI1gu2EcOegI0LQYOPsP+cg9LEwRF3g6zGeZefoFSnseeKBg==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "kiana_state"
+  ],
+  "title": "KI_ana Self-State",
+  "ts": 1762333231,
+  "url": ""
+}

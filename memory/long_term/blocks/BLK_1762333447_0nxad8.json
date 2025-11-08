@@ -1,0 +1,18 @@
+{
+  "content": "{\"type\": \"smalltalk_how_are_you\", \"user_message\": \"wie geht es dir?\", \"assistant_reply\": \"Mir geht’s gut, danke! 😊 Wie geht’s dir – und womit kann ich helfen?\", \"timestamp\": \"2025-11-05T09:04:07.416145+00:00\"}",
+  "hash": "de2c99b7243ffc022e10a166afe029bb4fdcbb0e2f89483927769c62bb01563b",
+  "id": "BLK_1762333447_0nxad8",
+  "meta": {
+    "conversation_id": 36,
+    "user_id": 2
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "7HIX7ORPd66EF1aiZPc5Nt/62EDKSHF/gIz17W7s5FajwCcC09G72FIlrHrpu2IHDhn/DCID3+G0XulGQCm3Bw==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "experience"
+  ],
+  "title": "Experience 2025-11-05T09:04:07.416145+00:00",
+  "ts": 1762333447,
+  "url": ""
+}

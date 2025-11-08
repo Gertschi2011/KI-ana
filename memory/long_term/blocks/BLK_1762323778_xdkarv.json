@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Epic vs. Google settlement: Opening up Android\n • Hacker News: Hypothesis: Property-Based Testing for Python\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demokrat Mamdani gewinnt Bürgermeisterwahl in New York",
+  "hash": "bc31a2a3916c416bcf308887415418140bea31c714681df19e1a692332dd498b",
+  "id": "BLK_1762323778_xdkarv",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "pW/xsJGU0wI3SIuDDxOIVh7Wjf1sIo/NXUC17CDI1ddR28U/k3zeBkLQIjHK9fR8xWvjuCZ2wc2Ah8s0t1+VAA==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-05 07:22",
+  "ts": 1762323778,
+  "url": ""
+}

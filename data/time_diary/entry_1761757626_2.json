@@ -1,0 +1,12 @@
+{
+  "id": "timeflow_1761757626_2",
+  "type": "timeflow_entry",
+  "cycle_type": "dialog",
+  "cycle_number": 2,
+  "weighted_contribution": 0.5,
+  "timestamp": 1761757626,
+  "duration_ms": 150,
+  "phase": "infant",
+  "phase_transition": false,
+  "metadata": {}
+}

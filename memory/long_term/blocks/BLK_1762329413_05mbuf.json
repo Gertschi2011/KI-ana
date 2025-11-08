@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Hypothesis: Property-Based Testing for Python\n • Hacker News: Preventing Kubernetes from Pulling the Pause Image from the Internet\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demokraten bejubeln Gewinne bei Wahlen in den USA",
+  "hash": "dae187d4e9706a039b58cee097b3a91b29c4fd5c33a70cd982b1313dab9aaf00",
+  "id": "BLK_1762329413_05mbuf",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "yf8JK3g6NOxVoJ7DI8BldzSgd+Lz4LQj8X40XnqJtFBtiFBieryxCMab4GWYIlTLwYc+kM83IydHWu9n84HNDA==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-05 08:56",
+  "ts": 1762329413,
+  "url": ""
+}

@@ -111,13 +111,40 @@ body{
 
 /* Bubbles */
 /* Bubbles: WhatsApp-like offset + tails, with customizable colors */
-.msg{ position:relative; max-width:85%; word-wrap:break-word; white-space:pre-wrap; }
-.msg .bubble{ padding:.6rem 1rem; border-radius:14px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+.msg{ position:relative; max-width:85%; word-wrap:break-word; white-space:pre-wrap; line-height:1.6; }
+.msg .bubble{ padding:.8rem 1.1rem; border-radius:14px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
 /* Support legacy 'content' wrapper (pre-bubble) */
-.msg .content{ padding:.6rem 1rem; border-radius:14px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+.msg .content{ padding:.8rem 1.1rem; border-radius:14px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
 .msg.me{ align-self:flex-end; margin-left:22%; }
 .msg.ai{ align-self:flex-start; margin-right:22%; }
 .msg.system{ align-self:center; }
+
+/* Text formatting inside messages */
+.chat-paragraph{ margin: 0.75em 0; line-height:1.65; }
+.chat-paragraph:first-child{ margin-top:0; }
+.chat-paragraph:last-child{ margin-bottom:0; }
+.chat-list{ margin: 0.75em 0; padding-left: 1.5em; line-height:1.8; }
+.chat-list li{ margin: 0.4em 0; }
+.code-block{ 
+  background:#f5f5f7; 
+  padding:0.75em; 
+  border-radius:8px; 
+  margin:0.75em 0; 
+  overflow-x:auto;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size:0.9em;
+  line-height:1.5;
+}
+.inline-code{
+  background:#f5f5f7;
+  padding:0.15em 0.4em;
+  border-radius:4px;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size:0.9em;
+}
+strong{ font-weight:600; }
+.chat-link{ color:#007aff; text-decoration:none; }
+.chat-link:hover{ text-decoration:underline; }
 
 /* Make user bubble a bit narrower and slightly larger font for elegant centering */
 .msg.me{ max-width: 78%; }
@@ -128,9 +155,8 @@ body{
   --bubble-user-bg:#e6f7ff; --bubble-user-fg:#111827;
   --bubble-ai-bg:#efeaff;   --bubble-ai-fg:#111827;
 }
-.msg.me .bubble, .msg.me .content{ background: var(--bubble-user-bg); color: var(--bubble-user-fg); border-bottom-right-radius:6px }
-.msg.me .bubble, .msg.me .content{ text-align:center }
-.msg.ai .bubble, .msg.ai .content{ background: var(--bubble-ai-bg);   color: var(--bubble-ai-fg);   border-bottom-left-radius:6px }
+.msg.me .bubble, .msg.me .content{ background: var(--bubble-user-bg); color: var(--bubble-user-fg); border-bottom-right-radius:6px; text-align:left; }
+.msg.ai .bubble, .msg.ai .content{ background: var(--bubble-ai-bg);   color: var(--bubble-ai-fg);   border-bottom-left-radius:6px; text-align:left; }
 .msg.system .bubble, .msg.system .content{ background:#f3f4f6; color:#374151 }
 
 /* Tails */
@@ -534,7 +560,7 @@ body:has(#navbar) .container {
 .dropdown-content {
   display: none;
   position: absolute;
-  top: calc(100% + 4px);
+  top: 100%; /* KEINE Lücke! */
   right: 0;
   min-width: 220px;
   background: #ffffff;
@@ -554,7 +580,11 @@ body:has(#navbar) .container {
 .dropdown-content a:hover {
   background: #fff7ea;
 }
-.dropdown:hover .dropdown-content { display: block; animation: ddFade .18s ease-out; }
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content { 
+  display: block; 
+  animation: ddFade .18s ease-out; 
+}
 #status-dot { margin: 0 8px; font-size: 1.2em; }
 #status-dot { margin: 0 8px; font-size: 1.2em; }
 #user-badge { margin: 0 8px; font-weight: bold; font-size: 1em; }

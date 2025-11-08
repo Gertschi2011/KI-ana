@@ -8,8 +8,10 @@ from typing import Dict, List, Tuple, Optional, Any
 
 ROOT = Path(__file__).resolve().parent.parent
 MEM_DIR = ROOT / "memory" / "long_term" / "blocks"
+SHORT_DIR = ROOT / "memory" / "short_term" / "blocks"
 IDX_DIR = ROOT / "indexes"
-INV_PATH = ROOT / "memory" / "topic_index.json"       # inverted (token -> [ids])
+INV_PATH = ROOT / "memory" / "index" / "inverted.json"       # inverted (token -> [ids])
+TOPIC_IDX_PATH = ROOT / "memory" / "index" / "topics.json"     # topic_path -> [ids]
 VEC_PATH = IDX_DIR / "vector" / "index.json"          # vectors (id -> token:weight)
 META_PATH = IDX_DIR / "vector" / "meta.json"          # meta (id -> title,tags,ts,url)
 RATINGS_PATH = IDX_DIR / "ratings.json"               # ratings (id -> {avg,count,log:[...]})
@@ -26,6 +28,7 @@ TOKEN_RE = re.compile(r"[a-zA-ZäöüÄÖÜß0-9]{2,}")
 def ensure_dirs():
     (IDX_DIR / "vector").mkdir(parents=True, exist_ok=True)
     MEM_DIR.mkdir(parents=True, exist_ok=True)
+    SHORT_DIR.mkdir(parents=True, exist_ok=True)
     INV_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 def _tok(text: str) -> List[str]:
@@ -64,6 +67,93 @@ def _gen_id() -> str:
     base = int(time.time())
     rand = "".join(random.choices(string.ascii_lowercase + string.digits, k=6))
     return f"BLK_{base}_{rand}"
+
+# -----------------------
+# Short-term memory (child learning)
+# -----------------------
+
+def create_short_term_block(topic_path: str, info: str, source: str = "user", confidence: float = 0.6) -> str:
+    """Create a short-term knowledge block and return its id."""
+    ensure_dirs()
+    bid = _gen_id()
+    data = {
+        "id": bid,
+        "topic_path": (topic_path or "Unsortiert/UserWissen").strip(),
+        "info": (info or "").strip(),
+        "source": source or "user",
+        "confidence": float(confidence or 0.6),
+        "uses": 0,
+        "ts": int(time.time()),
+        "hash": _calc_hash({"topic_path": topic_path, "info": info, "source": source}),
+    }
+    out = SHORT_DIR / f"{bid}.json"
+    _write_json(out, data)
+    try:
+        index_topic(data["topic_path"], bid)
+    except Exception:
+        pass
+    return bid
+
+def load_short_term_block(block_id: str) -> Optional[dict]:
+    try:
+        p = SHORT_DIR / f"{block_id}.json"
+        if not p.exists():
+            return None
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+def topic_index_list(topic_path: str) -> List[str]:
+    """Return list of short-term block ids associated with a topic_path."""
+    try:
+        idx = _read_json(TOPIC_IDX_PATH)
+        lst = idx.get(topic_path, [])
+        return list(lst or [])
+    except Exception:
+        return []
+
+def increment_use(block_id: str) -> None:
+    try:
+        p = SHORT_DIR / f"{block_id}.json"
+        if not p.exists():
+            return
+        obj = json.loads(p.read_text(encoding="utf-8"))
+        obj["uses"] = int(obj.get("uses", 0)) + 1
+        _write_json(p, obj)
+    except Exception:
+        return
+
+def index_topic(topic_path: str, block_id: str) -> None:
+    try:
+        ensure_dirs()
+        idx = _read_json(TOPIC_IDX_PATH)
+        lst = list(idx.get(topic_path, []))
+        if block_id not in lst:
+            lst.append(block_id)
+        idx[topic_path] = lst[-50:]
+        _write_json(TOPIC_IDX_PATH, idx)
+    except Exception:
+        return
+
+def maybe_promote(block_id: str) -> Optional[str]:
+    """Promote a short-term block to long-term if usage/confidence criteria are met.
+    Returns new long-term block id or None.
+    """
+    try:
+        obj = load_short_term_block(block_id)
+        if not obj:
+            return None
+        uses = int(obj.get("uses", 0))
+        conf = float(obj.get("confidence", 0.0))
+        if uses >= 2 or conf >= 0.7:
+            title = obj.get("topic_path", "Wissen/Unsortiert")
+            content = obj.get("info", "")
+            tags = ["learned", "promoted"]
+            new_id = add_block(title=title, content=content, tags=tags, url=None)
+            return new_id
+        return None
+    except Exception:
+        return None
 
 def add_block(title: str, content: str, tags: Optional[List[str]] = None, url: Optional[str] = None, meta: Optional[Dict[str, Any]] = None) -> str:
     """Speichert einen Wissensblock als JSON-Datei und aktualisiert die Indizes."""
@@ -597,7 +687,7 @@ def save_memory_entry(title: str, content: str, tags: Optional[List[str]] = None
         if not rowid:
             # Fallback: still return a generated id for consistency
             bid = _gen_id()
-            return {"id": bid, "file": f"{bid}.json", "url": url or "", "tags": (tags or [])}
+            return {"ok": True, "scanned": total, "assigned": assigned, "categories": len(tree.keys())}
 
         bid = f"BLK_{rowid}"
         return {"id": bid, "file": f"{bid}.json", "url": url or "", "tags": (tags or [])}
@@ -630,3 +720,13 @@ def update_model(mode: str = "prompt", topic: Optional[str] = None) -> dict:
         return res if isinstance(res, dict) else {"ok": True, "result": res}
     except Exception as e:
         return {"ok": False, "error": str(e)}
+
+async def rebuild_adressbuch_async(limit: Optional[int] = None) -> dict:
+    """Async wrapper to rebuild the address book without blocking the event loop."""
+    try:
+        import asyncio
+        loop = asyncio.get_running_loop()
+        return await loop.run_in_executor(None, lambda: rebuild_adressbuch(limit=limit))
+    except Exception:
+        # Fallback to sync if no loop
+        return rebuild_adressbuch(limit=limit)

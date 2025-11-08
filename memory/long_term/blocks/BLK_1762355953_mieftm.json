@@ -1,0 +1,14 @@
+{
+  "id": "BLK_1762355953_mieftm",
+  "title": "KI_ana Self-State",
+  "content": "{\"created_at\": \"2025-11-04T17:20:05.399994+00:00\", \"last_active_at\": \"2025-11-05T15:19:13.172247+00:00\", \"mood\": \"verspielt\", \"energy\": 51, \"needs\": {\"curiosity\": 1.0, \"connection\": 0.5, \"rest\": 0.5}, \"goals\": [], \"recent_topics\": [\"Was weißt du über die Serie The Studio?\", \"Hallo\", \"Was weißt du über die Erde?\", \"Was weißt du über die Serie The Studio?\", \"Multimedia/Serien/Serie The Studio\", \"Was weißt du über die Serie The Studio?\", \"Was weißt du über die Serie The Studio?\", \"Hallo\", \"was weißt du über die Erde?\", \"Hallo\", \"was weißt du über die Erde?\", \"Was weißt du über die Serie The Studio?\", \"Was weißt du über die Erde?\", \"Was weißt du über die Erde?\", \"Was weißt du über die Erde?\", \"Allgemein/über die Erde\", \"Was weißt du über die Erde?\", \"Was weißt du über die Erde?\", \"Was weißt du über die Serie The Studio?\", \"Was weißt du über die Erde?\"], \"cycles\": 49, \"learning_buffer\": [], \"pending_followup\": null, \"pending_learning\": null}",
+  "tags": [
+    "kiana_state"
+  ],
+  "url": "",
+  "ts": 1762355953,
+  "meta": {
+    "ts": 1762355953
+  },
+  "hash": "601d7bc1a7ff558502c87e089e6983003a845687e2a5d715dd31fa7ccb6e9242"
+}

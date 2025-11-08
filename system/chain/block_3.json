@@ -1,7 +1,7 @@
 {
   "block_id": 3,
   "content_hash": "2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b",
-  "hash": "e9d2526b7a959586dbbbd4d14eb3ff946ba7cfa1d2116f3f634063dbbc867553",
+  "hash": "d99a7d0e31ed107d516b3f6c62896f1e206c7c5e77e8f950127c5b1ff8d07340",
   "memory_path": "/home/kiana/ki_ana/memory/long_term/2e9023a1ea759f5a2c9e5584ae0551511e81a6a408a1bac04cffb855f33f441b.json",
   "meta": {
     "url": "https://de.wikipedia.org/wiki/%C3%BCber_quantencomputer"
@@ -9,7 +9,7 @@
   "previous_hash": "298e0dbd1e8452dcc0ff00dcbfbe1072d62e861266726878c257ab7ac35bcf06",
   "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
   "signature": "Rnz/2h8hRA8lP2mMKkFrEFNAIO8RIDNTtd7ewfjIukGDlvlh6nrU4TBYLl9FNPdZlbyU6efM96Z/PWSTyJbpBA==",
-  "signed_at": "2025-09-21T08:13:35Z",
+  "signed_at": "2025-11-05T10:06:06Z",
   "signer_pubkey": "BPc5h+jR3VdGXle6pghTBSfDAiok+iYcwgbCuFX9+7g=",
   "source": "https://de.wikipedia.org/wiki/Baum",
   "timestamp": "2025-08-08T09:12:14.384080Z",

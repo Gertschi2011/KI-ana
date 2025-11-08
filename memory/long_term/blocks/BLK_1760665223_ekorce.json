@@ -3,9 +3,9 @@
   "hash": "cb434fc7dd154adddafca22472f29cfb4a23f371a135a6a602703f75940a758c",
   "id": "BLK_1760665223_ekorce",
   "meta": {},
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
-  "signature": "ljtHnOYBfAzBhg0NAg1ttLJz7ZLMgjiHNZKgqORk57W3N4mQPHMyTwHao9MDJLwUhHYkLfJUg6NAZgE4WaIyBA==",
-  "signed_at": "2025-10-22T11:39:36Z",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "b6kuCSy0yYULDebn85iiAyNFtJ81bnmfPvZ9GlkBYgigXPuDk2eS74cY7s2SUcWmcxRalis5t0BRFbltPwhjCg==",
+  "signed_at": "2025-11-05T10:06:07Z",
   "tags": [
     "digest",
     "web",

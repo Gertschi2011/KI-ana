@@ -1,0 +1,14 @@
+{
+  "id": "BLK_1762347344_m7fyjj",
+  "title": "KI_ana Self-State",
+  "content": "{\"created_at\": \"2025-11-04T17:20:05.399994+00:00\", \"last_active_at\": \"2025-11-05T12:55:44.841862+00:00\", \"mood\": \"verspielt\", \"energy\": 68, \"needs\": {\"curiosity\": 1.0, \"connection\": 0.5, \"rest\": 0.5}, \"goals\": [], \"recent_topics\": [\"Hallo kiana 😎 was weißt du über die Serie The Studio?\", \"Wie heißt du?\", \"Was weißt du über die Serie The Studio?\", \"Multimedia/Serien/Serie The Studio\", \"Wie heißt du?\", \"Allgemein/Wie heißt du\", \"Weißt du wie spät es ist?\", \"Allgemein/spät es ist\", \"Was weißt du über die Serie The Studio?\", \"wie heißt du?\", \"Allgemein/wie heißt du\", \"wie spät ist es?\", \"Allgemein/spät ist es\", \"Was weißt du über die Serie The Studio?\", \"Was weißt du über die Serie The Studio?\", \"Was weißt du über die Erde?\", \"Allgemein/über die Erde\", \"mir geht's auch gut danke 😊 Wie heißt du?\", \"Was weißt du über die Erde?\", \"Wie spät ist es?\"], \"cycles\": 29, \"learning_buffer\": [], \"pending_followup\": null, \"pending_learning\": null}",
+  "tags": [
+    "kiana_state"
+  ],
+  "url": "",
+  "ts": 1762347344,
+  "meta": {
+    "ts": 1762347344
+  },
+  "hash": "2d20911651601ecb7aa1f5a8004654f49569913ba326749e2d3500a8a9774abd"
+}

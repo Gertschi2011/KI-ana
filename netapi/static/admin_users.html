@@ -3,8 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>👥 Benutzerverwaltung - KI_ana</title>
-  <link href="/static/styles.css" rel="stylesheet">
+  <link href="/static/styles.css?v=20251028-1200" rel="stylesheet">
+  <link href="/static/chat.css?v=20251027-1520" rel="stylesheet">
+  <script src="/static/nav.js?v=20251029"></script>
+  <script src="/static/auto_logout.js"></script>
+  <script src="/static/inactivity_logout.js"></script>
   <style>
     body {
       margin: 0;
@@ -14,26 +21,22 @@
       min-height: 100vh;
     }
 
-    .navbar {
-      position: fixed!important;
-      top: 0!important;
-      left: 0!important;
-      right: 0!important;
-      z-index: 1000!important;
+    .main-wrapper {
+      padding-top: 80px;
     }
 
     .container {
       max-width: 1400px;
-      margin: 80px auto 20px;
-      padding: 20px;
+      margin: 20px auto;
+      padding: 0 20px;
     }
 
-    .header {
+    .page-header {
       background: white;
-      border-radius: 16px;
+      border-radius: 12px;
       padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -41,58 +44,18 @@
       gap: 16px;
     }
 
-    .header-title {
+    .page-title {
       display: flex;
       align-items: center;
       gap: 12px;
       font-size: 1.8em;
       font-weight: 600;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .search-box {
-      position: relative;
-      flex: 1;
-      min-width: 300px;
-      max-width: 500px;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 12px 16px 12px 44px;
-      border: 2px solid #e5e7eb;
-      border-radius: 12px;
-      font-size: 0.95em;
-      transition: all 0.2s;
-    }
-
-    .search-input:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 4px rgba(102,126,234,0.1);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.2em;
-      opacity: 0.5;
     }
 
     .btn {
       padding: 10px 20px;
       border: none;
-      border-radius: 12px;
+      border-radius: 8px;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
@@ -104,12 +67,12 @@
     .btn-primary {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+      box-shadow: 0 2px 8px rgba(102,126,234,0.3);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+      box-shadow: 0 4px 12px rgba(102,126,234,0.4);
     }
 
     .btn-ghost {
@@ -121,18 +84,28 @@
       background: #e5e7eb;
     }
 
-    .stats {
+    .btn-danger {
+      background: #ef4444;
+      color: white;
+    }
+
+    .btn-sm {
+      padding: 6px 12px;
+      font-size: 0.85em;
+    }
+
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .stat-card {
       background: white;
-      border-radius: 16px;
+      border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     .stat-label {
@@ -147,75 +120,34 @@
       color: #667eea;
     }
 
-    .users-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 16px;
-    }
-
-    .user-card {
+    .users-table {
       background: white;
-      border-radius: 16px;
+      border-radius: 12px;
       padding: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: all 0.2s;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow-x: auto;
     }
 
-    .user-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    table {
+      width: 100%;
+      border-collapse: collapse;
     }
 
-    .user-card-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .user-avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.5em;
+    th {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 2px solid #e5e7eb;
       font-weight: 600;
-      flex-shrink: 0;
+      color: #374151;
     }
 
-    .user-info {
-      flex: 1;
-      min-width: 0;
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #f3f4f6;
     }
 
-    .user-name {
-      font-weight: 600;
-      font-size: 1.1em;
-      margin-bottom: 4px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .user-email {
-      font-size: 0.85em;
-      color: #6b7280;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .user-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 12px;
+    tr:hover {
+      background: #f9fafb;
     }
 
     .badge {
@@ -223,50 +155,22 @@
       border-radius: 12px;
       font-size: 0.75em;
       font-weight: 500;
+      margin-right: 4px;
     }
 
-    .badge-admin {
+    .badge-creator {
       background: #fee2e2;
       color: #991b1b;
     }
 
-    .badge-papa {
-      background: #dbeafe;
-      color: #1e40af;
+    .badge-admin {
+      background: #fef3c7;
+      color: #92400e;
     }
 
     .badge-user {
       background: #f3f4f6;
       color: #374151;
-    }
-
-    .badge-free {
-      background: #d1fae5;
-      color: #065f46;
-    }
-
-    .badge-pro {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    .user-meta {
-      display: flex;
-      gap: 16px;
-      font-size: 0.85em;
-      color: #6b7280;
-      margin-bottom: 12px;
-    }
-
-    .user-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .btn-sm {
-      padding: 6px 12px;
-      font-size: 0.85em;
-      border-radius: 8px;
     }
 
     .modal-backdrop {
@@ -285,7 +189,7 @@
 
     .modal {
       background: white;
-      border-radius: 16px;
+      border-radius: 12px;
       padding: 24px;
       width: min(500px, 90vw);
       max-height: 90vh;
@@ -305,19 +209,6 @@
       font-weight: 600;
     }
 
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 1.5em;
-      cursor: pointer;
-      opacity: 0.6;
-      transition: opacity 0.2s;
-    }
-
-    .close-btn:hover {
-      opacity: 1;
-    }
-
     .form-group {
       margin-bottom: 16px;
     }
@@ -333,9 +224,8 @@
       width: 100%;
       padding: 10px 14px;
       border: 2px solid #e5e7eb;
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 0.95em;
-      transition: all 0.2s;
     }
 
     .form-input:focus, .form-select:focus {
@@ -351,113 +241,60 @@
       margin-top: 24px;
     }
 
-    .loading {
-      text-align: center;
-      padding: 60px 20px;
-      color: white;
-      font-size: 1.2em;
-    }
-
     .empty-state {
       text-align: center;
-      padding: 80px 20px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .empty-icon {
-      font-size: 4em;
-      margin-bottom: 16px;
-    }
-
-    .filter-bar {
-      background: white;
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 20px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      align-items: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .filter-label {
-      font-weight: 500;
+      padding: 60px 20px;
       color: #6b7280;
     }
 
-    .filter-btn {
-      padding: 8px 16px;
-      border: 2px solid #e5e7eb;
-      background: white;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #6b7280;
+      font-size: 1.2em;
     }
-
-    .filter-btn.active {
-      border-color: #667eea;
-      background: #ede9fe;
-      color: #667eea;
-    }
+    
   </style>
 </head>
 <body>
-  <div id="nav"></div>
-
-  <div class="container">
-    <div class="header">
-      <div class="header-title">
+  <div id="navbar"></div>
+  <div class="container" style="padding-top: 100px;">
+    <div class="page-header">
+      <div class="page-title">
         <span>👥</span>
         <span>Benutzerverwaltung</span>
       </div>
-      <div class="header-actions">
-        <div class="search-box">
-          <span class="search-icon">🔍</span>
-          <input 
-            type="text" 
-            class="search-input" 
-            placeholder="Benutzer suchen..."
-            id="searchInput"
-          >
-        </div>
-        <button class="btn btn-primary" onclick="openCreateModal()">
-          <span>➕</span>
-          <span>Neuer Benutzer</span>
-        </button>
-      </div>
+      <button class="btn btn-primary" onclick="openCreateModal()" id="createBtn">
+        <span>➕</span>
+        <span>Neuer Benutzer</span>
+      </button>
     </div>
 
-    <div class="stats">
+    <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-label">Gesamt Benutzer</div>
         <div class="stat-value" id="statTotal">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Creators</div>
+        <div class="stat-value" id="statCreators">0</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Admins</div>
         <div class="stat-value" id="statAdmins">0</div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">Papa Users</div>
-        <div class="stat-value" id="statPapas">0</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Aktive heute</div>
-        <div class="stat-value" id="statActive">0</div>
+        <div class="stat-label">Normal Users</div>
+        <div class="stat-value" id="statUsers">0</div>
       </div>
     </div>
 
-    <div class="filter-bar">
-      <span class="filter-label">Filter:</span>
-      <button class="filter-btn active" data-filter="all">Alle</button>
-      <button class="filter-btn" data-filter="admin">Admins</button>
-      <button class="filter-btn" data-filter="papa">Papas</button>
-      <button class="filter-btn" data-filter="user">Normale User</button>
+    <div class="users-table">
+      <div id="usersContainer">
+        <div class="loading">Laden...</div>
+      </div>
     </div>
-
-    <div id="usersContainer"></div>
+  </div>
   </div>
 
   <!-- Create/Edit Modal -->
@@ -465,7 +302,7 @@
     <div class="modal">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle">Neuer Benutzer</h2>
-        <button class="close-btn" onclick="closeModal()">×</button>
+        <button class="btn btn-ghost" onclick="closeModal()">×</button>
       </div>
       <form id="userForm">
         <div class="form-group">
@@ -477,7 +314,7 @@
           <input type="email" class="form-input" id="inputEmail" required>
         </div>
         <div class="form-group" id="passwordGroup">
-          <label class="form-label">Passwort *</label>
+          <label class="form-label">Passwort * (min. 8 Zeichen)</label>
           <input type="password" class="form-input" id="inputPassword" minlength="8">
         </div>
         <div class="form-group">
@@ -485,19 +322,7 @@
           <select class="form-select" id="inputRole">
             <option value="user">User</option>
             <option value="admin">Admin</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">
-            <input type="checkbox" id="inputPapa"> Papa-Zugang
-          </label>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Plan</label>
-          <select class="form-select" id="inputPlan">
-            <option value="free">Free</option>
-            <option value="pro">Pro</option>
-            <option value="unlimited">Unlimited</option>
+            <option value="creator">Creator (voller Zugriff)</option>
           </select>
         </div>
         <div class="form-actions">
@@ -508,129 +333,169 @@
     </div>
   </div>
 
-  <script src="/static/nav.js?v=20251029"></script>
   <script>
     let users = [];
-    let currentFilter = 'all';
-    let currentSearch = '';
     let editingUserId = null;
+    let currentUser = null;
 
-    // Load users
-    async function loadUsers() {
+    // Check auth and load users
+    async function checkAuth() {
       try {
-        const r = await fetch('/api/admin/users', {
-          credentials: 'include'
+        // Try with session cookie first, then token
+        const token = sessionStorage.getItem('ki_token') || localStorage.getItem('ki_token') || '';
+        const headers = {};
+        if (token) headers['Authorization'] = 'Bearer ' + token;
+        
+        const r = await fetch('/api/me', {
+          credentials: 'include',
+          headers
         });
         
-        if (!r.ok) throw new Error('Fehler beim Laden');
+        if (!r.ok) {
+          console.error('Auth failed:', r.status);
+          window.location.href = '/static/login.html';
+          return false;
+        }
+
+        const data = await r.json();
+        console.log('Auth successful:', data);
+        currentUser = data.user;
+        
+        // Only creators can access this page
+        const roles = currentUser.roles || [currentUser.role];
+        console.log('User roles:', roles);
+        
+        if (!roles.includes('creator')) {
+          alert('Zugriff verweigert. Nur Creators haben Zugriff auf diese Seite.');
+          window.location.href = '/static/dashboard.html';
+          return false;
+        }
+
+        return true;
+      } catch (e) {
+        console.error('Auth check failed:', e);
+        window.location.href = '/static/login.html';
+        return false;
+      }
+    }
+
+    async function loadUsers() {
+      try {
+        const token = sessionStorage.getItem('ki_token') || localStorage.getItem('ki_token') || '';
+        const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
+        
+        const r = await fetch('/api/admin/users', {
+          credentials: 'include',
+          headers
+        });
+        
+        if (!r.ok) {
+          if (r.status === 401) {
+            window.location.href = '/static/login.html';
+            return;
+          }
+          throw new Error('Fehler beim Laden');
+        }
         
         const data = await r.json();
-        users = data.users || [];
+        users = data.items || [];
         
         updateStats();
         renderUsers();
       } catch (e) {
         console.error('Load error:', e);
         document.getElementById('usersContainer').innerHTML = 
-          '<div class="empty-state"><div class="empty-icon">⚠️</div><div>Fehler beim Laden der Benutzer</div></div>';
+          '<div class="empty-state"><div style="font-size:3em">⚠️</div><div>Fehler beim Laden der Benutzer</div><div style="font-size:0.9em;margin-top:8px">' + e.message + '</div></div>';
       }
     }
 
     function updateStats() {
-      const admins = users.filter(u => (u.roles || [u.role]).includes('admin')).length;
-      const papas = users.filter(u => u.is_papa).length;
-      const today = Math.floor(Date.now() / 1000) - 86400;
-      const active = users.filter(u => (u.last_login || 0) > today).length;
+      const creators = users.filter(u => {
+        const roles = u.roles || [u.role];
+        return roles.includes('creator');
+      }).length;
+      
+      const admins = users.filter(u => {
+        const roles = u.roles || [u.role];
+        return roles.includes('admin') && !roles.includes('creator');
+      }).length;
+      
+      const normalUsers = users.filter(u => {
+        const roles = u.roles || [u.role];
+        return !roles.includes('admin') && !roles.includes('creator');
+      }).length;
 
       document.getElementById('statTotal').textContent = users.length;
+      document.getElementById('statCreators').textContent = creators;
       document.getElementById('statAdmins').textContent = admins;
-      document.getElementById('statPapas').textContent = papas;
-      document.getElementById('statActive').textContent = active;
+      document.getElementById('statUsers').textContent = normalUsers;
     }
 
     function renderUsers() {
       const container = document.getElementById('usersContainer');
       
-      // Filter
-      let filtered = users.filter(u => {
-        // Role filter
-        const roles = u.roles || [u.role];
-        if (currentFilter === 'admin' && !roles.includes('admin')) return false;
-        if (currentFilter === 'papa' && !u.is_papa) return false;
-        if (currentFilter === 'user' && (roles.includes('admin') || u.is_papa)) return false;
-        
-        // Search filter
-        if (currentSearch) {
-          const search = currentSearch.toLowerCase();
-          const username = (u.username || '').toLowerCase();
-          const email = (u.email || '').toLowerCase();
-          if (!username.includes(search) && !email.includes(search)) return false;
-        }
-        
-        return true;
-      });
-
-      if (filtered.length === 0) {
-        container.innerHTML = '<div class="empty-state"><div class="empty-icon">😔</div><div>Keine Benutzer gefunden</div></div>';
+      if (users.length === 0) {
+        container.innerHTML = '<div class="empty-state"><div style="font-size:3em">😔</div><div>Keine Benutzer gefunden</div></div>';
         return;
       }
 
-      container.innerHTML = '<div class="users-grid">' + filtered.map(u => renderUserCard(u)).join('') + '</div>';
+      const table = `
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Benutzername</th>
+              <th>E-Mail</th>
+              <th>Rolle</th>
+              <th>Erstellt</th>
+              <th>Aktionen</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${users.map(u => renderUserRow(u)).join('')}
+          </tbody>
+        </table>
+      `;
+      
+      container.innerHTML = table;
     }
 
-    function renderUserCard(user) {
+    function renderUserRow(user) {
       const roles = user.roles || [user.role];
+      const isCreator = roles.includes('creator');
       const isAdmin = roles.includes('admin');
-      const isPapa = user.is_papa;
-      const initial = (user.username || 'U')[0].toUpperCase();
       
-      const rolesBadges = [];
-      if (isAdmin) rolesBadges.push('<span class="badge badge-admin">Admin</span>');
-      if (isPapa) rolesBadges.push('<span class="badge badge-papa">Papa</span>');
-      if (!isAdmin && !isPapa) rolesBadges.push('<span class="badge badge-user">User</span>');
+      let roleBadge = '';
+      if (isCreator) roleBadge = '<span class="badge badge-creator">Creator</span>';
+      else if (isAdmin) roleBadge = '<span class="badge badge-admin">Admin</span>';
+      else roleBadge = '<span class="badge badge-user">User</span>';
       
-      const plan = user.plan || 'free';
-      const planBadge = plan === 'free' 
-        ? '<span class="badge badge-free">Free</span>'
-        : '<span class="badge badge-pro">Pro</span>';
-
+      const created = user.created_at ? new Date(user.created_at * 1000).toLocaleDateString('de-DE') : '-';
+      
+      // Can't delete yourself
+      const canDelete = user.id !== currentUser?.id;
+      
       return `
-        <div class="user-card">
-          <div class="user-card-header">
-            <div class="user-avatar">${initial}</div>
-            <div class="user-info">
-              <div class="user-name">${user.username || 'Unbekannt'}</div>
-              <div class="user-email">${user.email || '-'}</div>
-            </div>
-          </div>
-          <div class="user-badges">
-            ${rolesBadges.join('')}
-            ${planBadge}
-          </div>
-          <div class="user-meta">
-            <div>🆔 ${user.id}</div>
-            <div>📅 ${formatDate(user.created_at)}</div>
-          </div>
-          <div class="user-actions">
+        <tr>
+          <td>${user.id}</td>
+          <td><strong>${user.username || '-'}</strong></td>
+          <td>${user.email || '-'}</td>
+          <td>${roleBadge}</td>
+          <td>${created}</td>
+          <td>
             <button class="btn btn-ghost btn-sm" onclick="editUser(${user.id})">✏️ Bearbeiten</button>
-            <button class="btn btn-ghost btn-sm" onclick="deleteUser(${user.id}, '${user.username}')">🗑️ Löschen</button>
-          </div>
-        </div>
+            ${canDelete ? `<button class="btn btn-danger btn-sm" onclick="deleteUser(${user.id}, '${user.username}')">🗑️ Löschen</button>` : ''}
+          </td>
+        </tr>
       `;
     }
 
-    function formatDate(timestamp) {
-      if (!timestamp) return 'Unbekannt';
-      const date = new Date(timestamp * 1000);
-      return date.toLocaleDateString('de-DE');
-    }
-
-    // Modal functions
     function openCreateModal() {
       editingUserId = null;
       document.getElementById('modalTitle').textContent = 'Neuer Benutzer';
       document.getElementById('userForm').reset();
       document.getElementById('passwordGroup').style.display = 'block';
+      document.getElementById('inputPassword').required = true;
       document.getElementById('userModal').classList.add('active');
     }
 
@@ -639,13 +504,19 @@
       if (!user) return;
 
       editingUserId = userId;
-      document.getElementById('modalTitle').textContent = 'Benutzer bearbeiten';
+      document.getElementById('modalTitle').textContent = 'Benutzer bearbeiten (Passwort NICHT änderbar)';
       document.getElementById('inputUsername').value = user.username || '';
       document.getElementById('inputEmail').value = user.email || '';
-      document.getElementById('inputRole').value = (user.roles || [user.role])[0] || 'user';
-      document.getElementById('inputPapa').checked = user.is_papa || false;
-      document.getElementById('inputPlan').value = user.plan || 'free';
+      
+      const roles = user.roles || [user.role];
+      if (roles.includes('creator')) document.getElementById('inputRole').value = 'creator';
+      else if (roles.includes('admin')) document.getElementById('inputRole').value = 'admin';
+      else document.getElementById('inputRole').value = 'user';
+      
+      // Hide password field when editing
       document.getElementById('passwordGroup').style.display = 'none';
+      document.getElementById('inputPassword').required = false;
+      
       document.getElementById('userModal').classList.add('active');
     }
 
@@ -654,20 +525,24 @@
     }
 
     async function deleteUser(userId, username) {
-      if (!confirm(`Benutzer "${username}" wirklich löschen?`)) return;
+      if (!confirm(`Benutzer "${username}" wirklich löschen?\n\nDies kann nicht rückgängig gemacht werden!`)) return;
 
       try {
+        const token = sessionStorage.getItem('ki_token') || localStorage.getItem('ki_token') || '';
+        const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
+        
         const r = await fetch(`/api/admin/users/${userId}`, {
           method: 'DELETE',
-          credentials: 'include'
+          credentials: 'include',
+          headers
         });
 
         if (!r.ok) throw new Error('Löschen fehlgeschlagen');
 
-        alert('Benutzer gelöscht!');
+        alert('Benutzer erfolgreich gelöscht!');
         loadUsers();
       } catch (e) {
-        alert('Fehler: ' + e.message);
+        alert('Fehler beim Löschen: ' + e.message);
       }
     }
 
@@ -678,32 +553,41 @@
       const data = {
         username: document.getElementById('inputUsername').value,
         email: document.getElementById('inputEmail').value,
-        role: document.getElementById('inputRole').value,
-        is_papa: document.getElementById('inputPapa').checked,
-        plan: document.getElementById('inputPlan').value
+        role: document.getElementById('inputRole').value
       };
 
+      // Only include password for new users
       if (!editingUserId) {
         data.password = document.getElementById('inputPassword').value;
+        if (data.password.length < 8) {
+          alert('Passwort muss mindestens 8 Zeichen lang sein!');
+          return;
+        }
       }
 
       try {
+        const token = sessionStorage.getItem('ki_token') || localStorage.getItem('ki_token') || '';
+        const headers = {
+          'Content-Type': 'application/json'
+        };
+        if (token) headers['Authorization'] = 'Bearer ' + token;
+        
         const url = editingUserId ? `/api/admin/users/${editingUserId}` : '/api/admin/users';
         const method = editingUserId ? 'PATCH' : 'POST';
 
         const r = await fetch(url, {
           method,
-          headers: {'Content-Type': 'application/json'},
+          headers,
           credentials: 'include',
           body: JSON.stringify(data)
         });
 
         if (!r.ok) {
-          const err = await r.json();
+          const err = await r.json().catch(() => ({}));
           throw new Error(err.detail || 'Fehler beim Speichern');
         }
 
-        alert(editingUserId ? 'Benutzer aktualisiert!' : 'Benutzer erstellt!');
+        alert(editingUserId ? 'Benutzer erfolgreich aktualisiert!' : 'Benutzer erfolgreich erstellt!');
         closeModal();
         loadUsers();
       } catch (e) {
@@ -711,24 +595,41 @@
       }
     });
 
-    // Search
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-      currentSearch = e.target.value;
-      renderUsers();
-    });
+    // Initialize
+    async function init() {
+      const authed = await checkAuth();
+      if (authed) {
+        loadUsers();
+      }
+    }
 
-    // Filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        currentFilter = btn.dataset.filter;
-        renderUsers();
-      });
-    });
+    init();
+  </script>
 
-    // Load on start
-    loadUsers();
+  <!-- Load Navbar -->
+  <script>
+  (async function(){
+    try{
+      const r = await fetch('/static/nav.html?v=' + Date.now());
+      const html = await r.text();
+      const nav = document.getElementById('navbar');
+      if(nav) {
+        nav.innerHTML = html;
+        nav.querySelectorAll('script').forEach(old => {
+          const s = document.createElement('script');
+          if(old.src) { 
+            s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); 
+          } else { 
+            s.textContent = old.textContent || ''; 
+          }
+          document.body.appendChild(s);
+          old.remove();
+        });
+      }
+    }catch(e){
+      console.error('Navbar load failed:', e);
+    }
+  })();
   </script>
 </body>
 </html>

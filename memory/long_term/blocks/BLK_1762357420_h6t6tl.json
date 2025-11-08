@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762357420_h6t6tl",
+  "title": "Experience 2025-11-05T15:43:40.861425+00:00",
+  "content": "{\"type\": \"knowledge_from_memory\", \"user_message\": \"Was weißt du über die Erde?\", \"assistant_reply\": \"{\\\"created_at\\\": \\\"2025-11-04T17:20:05.399994+00:00\\\", \\\"last_active_at\\\": \\\"2025-11-05T15:42:29.361549+00:00\\\", \\\"mood\\\": \\\"verspielt\\\", \\\"energy\\\": 41, \\\"needs\\\": {\\\"curiosity\\\": 1.0, \\\"connection\\\": 0.5, \\\"rest\\\": 0.5}, \\\"goals\\\": [], \\\"recent_topics\\\": [\\\"Was weißt du über die Erde?\\\", \\\"Was weißt du über die Erde?\\\", \\\"Was weißt du über die Erde?\\\", \\\"Allgemein/über die Erde\\\", \\\"Was weißt du über die Erde?\\\", \\\"Was weißt du über die Erde?\\\", \\\"Was weißt du über die Serie The Studio?\\\", \\\"Was weißt du über die Erde? …\\nQuellen:\\n- ⚪ KI_ana Self-State ()\", \"topic_path\": \"Allgemein/über die Erde\", \"timestamp\": \"2025-11-05T15:43:40.861425+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762357420,
+  "meta": {
+    "user_id": null,
+    "conversation_id": null
+  },
+  "hash": "6c635c5555291a6c393da6dfa47a35eac29fc5654be80a03289d55e0ca3ecd80"
+}

@@ -3,8 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>🗂️ KI_ana Adressbuch</title>
-  <link href="/static/styles.css" rel="stylesheet">
+  <link href="/static/styles.css?v=20251028-1200" rel="stylesheet">
+  <link href="/static/chat.css?v=20251027-1520" rel="stylesheet">
+  <script src="/static/auto_logout.js"></script>
+  <script src="/static/inactivity_logout.js"></script>
   <style>
     body {
       margin: 0;
@@ -298,7 +304,6 @@
     </div>
   </div>
 
-  <script src="/static/nav.js?v=20251029"></script>
   <script>
     let treeData = null;
     let currentPath = [];
@@ -564,6 +569,34 @@
 
     // Load tree on page load
     loadTree();
+  </script>
+
+  <!-- Load navigation -->
+  <script>
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n=document.querySelector('body > div:first-child');
+          if(!n) return;
+          // Insert nav at the beginning
+          const navDiv = document.createElement('div');
+          navDiv.innerHTML = html;
+          document.body.insertBefore(navDiv, document.body.firstChild);
+          try{
+            navDiv.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
   </script>
 </body>
 </html>

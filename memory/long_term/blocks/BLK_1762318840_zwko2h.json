@@ -1,0 +1,18 @@
+{
+  "content": "{\"type\": \"experience\", \"user_message\": \"Guten Morgen Kiana\", \"assistant_reply\": \"Alles klar 🙂 – worum genau geht’s dir dabei?\", \"timestamp\": \"2025-11-05T05:00:40.370806+00:00\", \"mood\": \"neutral\", \"topics\": [\"\"]}",
+  "hash": "10d686d0ea73c2a023985eea0a03b64a3229c6a114bef1eccd8ce449ae056051",
+  "id": "BLK_1762318840_zwko2h",
+  "meta": {
+    "conversation_id": 29,
+    "user_id": 2
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "rKEY2jkwEWXTXf6kiSBlLbwxhN1kvMYgwrZdbcz/RzFkm2Qlq11EL/1NI4/Z9xIqmh99dEaH5cIJX+rNIl6eDA==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "experience"
+  ],
+  "title": "Experience 2025-11-05T05:00:40.370806+00:00",
+  "ts": 1762318840,
+  "url": ""
+}

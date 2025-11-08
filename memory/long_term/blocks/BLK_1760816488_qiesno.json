@@ -3,9 +3,9 @@
   "hash": "da962178e06b95a03d8817fe7fdf2490286e654b46fea555a43502cef17f67cc",
   "id": "BLK_1760816488_qiesno",
   "meta": {},
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
-  "signature": "P0Kh8hwjF/XTCC9gAOYMRltizXz2b7/VnUVsLiZ679IdgG0YX2Axt67wA0HW0+S7gl8+HyNLjN0S95lvs5+jCw==",
-  "signed_at": "2025-10-22T11:39:34Z",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "cT90gR9Lilk4FpbPUh/NbVP0smu7ldvN5isHfoai7XY97KD6LnwjAmB2zz0B9COXsowIjEJMPSg86E1DX2GQBQ==",
+  "signed_at": "2025-11-05T10:06:06Z",
   "tags": [
     "digest",
     "web",

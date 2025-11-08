@@ -3,9 +3,9 @@
   "hash": "78b94ad7968098137fbe7b9e111da40a72946e37cb2154679989c4d7be1a3bff",
   "id": "BLK_1760580583_alyn53",
   "meta": {},
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
-  "signature": "dfiAKqZW9GWsuntRCsxDOSa9u+gbl3ajdSeZhx8Achn8TL4CmPSZCrUtHRiA1ng4WTWlisaqUmZ7H4bDCLV2Cw==",
-  "signed_at": "2025-10-22T11:39:33Z",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "MB9rTYd01tKWtP8YIEX0NLMHkZSWGMt4YYDGuab4zt8jyrOMBIMBXD6X8lNgz3NK4VyKPYeTaWXYrRfK1tA7Dg==",
+  "signed_at": "2025-11-05T10:06:07Z",
   "tags": [
     "digest",
     "web",

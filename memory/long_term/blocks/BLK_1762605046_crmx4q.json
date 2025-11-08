@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762605046_crmx4q",
+  "title": "Experience 2025-11-08T12:30:46.779629+00:00",
+  "content": "{\"type\": \"user_teaching\", \"user_message\": \"Hallo\", \"assistant_reply\": \"Danke, dass du mir das erklärst! Ich versuche es mir so zu merken:\\nHallo\", \"timestamp\": \"2025-11-08T12:30:46.779629+00:00\", \"mood\": \"ruhig / müde\", \"topic\": \"Den Jupiter\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762605046,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 65
+  },
+  "hash": "69b75ee824d8b0c38e4395495cd9f53a0bd231d2186d0c14f1599196d87c87dc"
+}

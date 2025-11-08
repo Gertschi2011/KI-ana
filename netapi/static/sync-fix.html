@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Sync Fix - KI_ana</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #7f7fd5;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #6b6bc0;
+    }
+    #log {
+      background: #1e1e1e;
+      color: #00ff00;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      margin-top: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .success { color: #00ff00; }
+    .error { color: #ff4444; }
+    .info { color: #4488ff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>🔄 Chat Sync Fix</h1>
+    <p>Dieses Tool lädt deine Conversations vom Server und fügt sie zum Chat hinzu.</p>
+    
+    <button onclick="checkAuth()">1. Login prüfen</button>
+    <button onclick="loadConversations()">2. Conversations laden</button>
+    <button onclick="goToChat()">3. Zum Chat</button>
+    
+    <div id="log"></div>
+  </div>
+
+  <script>
+    const log = document.getElementById('log');
+    
+    function addLog(msg, type = 'info') {
+      const time = new Date().toLocaleTimeString();
+      const span = document.createElement('div');
+      span.className = type;
+      span.textContent = `[${time}] ${msg}`;
+      log.appendChild(span);
+      log.scrollTop = log.scrollHeight;
+    }
+    
+    async function checkAuth() {
+      addLog('Prüfe Login-Status...', 'info');
+      try {
+        const resp = await fetch('/api/me', {credentials: 'include'});
+        const data = await resp.json();
+        
+        if (data.auth && data.user) {
+          addLog(`✅ Eingeloggt als: ${data.user.username}`, 'success');
+          addLog(`   User ID: ${data.user.id}`, 'info');
+          addLog(`   Role: ${data.user.role}`, 'info');
+        } else {
+          addLog('❌ Nicht eingeloggt!', 'error');
+          addLog('→ Bitte erst auf ki-ana.at/login einloggen', 'error');
+        }
+      } catch(e) {
+        addLog('❌ Fehler: ' + e.message, 'error');
+      }
+    }
+    
+    async function loadConversations() {
+      addLog('Lade Conversations vom Server...', 'info');
+      
+      try {
+        const resp = await fetch('/api/chat/conversations', {credentials: 'include'});
+        
+        if (!resp.ok) {
+          addLog(`❌ API Error: ${resp.status}`, 'error');
+          return;
+        }
+        
+        const data = await resp.json();
+        
+        if (!data.ok || !data.items) {
+          addLog('❌ Keine Daten erhalten', 'error');
+          return;
+        }
+        
+        addLog(`✅ ${data.items.length} Conversations gefunden`, 'success');
+        
+        // Save to localStorage
+        const CONVS_KEY = 'kiana.convs.v1';
+        let convs = [];
+        
+        try {
+          const existing = localStorage.getItem(CONVS_KEY);
+          if (existing) {
+            convs = JSON.parse(existing);
+          }
+        } catch {}
+        
+        data.items.forEach(c => {
+          const lid = 'srv-' + c.id;
+          
+          // Check if exists
+          const exists = convs.find(x => x.id === lid);
+          
+          if (!exists) {
+            addLog(`  + ${c.title}`, 'success');
+            convs.push({
+              id: lid,
+              title: c.title,
+              createdAt: c.created_at * 1000,
+              updatedAt: c.updated_at * 1000
+            });
+            
+            // Save server ID mapping
+            localStorage.setItem('kiana.conv.server.' + lid, String(c.id));
+          } else {
+            addLog(`  ✓ ${c.title} (bereits da)`, 'info');
+          }
+        });
+        
+        // Save
+        localStorage.setItem(CONVS_KEY, JSON.stringify(convs));
+        addLog('✅ Conversations in localStorage gespeichert!', 'success');
+        addLog('→ Jetzt "Zum Chat" klicken', 'info');
+        
+      } catch(e) {
+        addLog('❌ Fehler: ' + e.message, 'error');
+      }
+    }
+    
+    function goToChat() {
+      addLog('Öffne Chat...', 'info');
+      window.location.href = '/static/chat.html';
+    }
+  </script>
+</body>
+</html>

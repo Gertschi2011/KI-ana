@@ -1,0 +1,418 @@
+{
+  "tree": {
+    "name": "root",
+    "path": [],
+    "count": 0,
+    "blocks_count": 0,
+    "children": [
+      {
+        "name": "KI-Bewusstsein & Verhalten",
+        "path": [
+          "KI-Bewusstsein & Verhalten"
+        ],
+        "count": 1,
+        "blocks_count": 1,
+        "children": []
+      },
+      {
+        "name": "Meta",
+        "path": [
+          "Meta"
+        ],
+        "count": 4,
+        "blocks_count": 0,
+        "children": [
+          {
+            "name": "Creative",
+            "path": [
+              "Meta",
+              "Creative"
+            ],
+            "count": 2,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "Milestones",
+                "path": [
+                  "Meta",
+                  "Creative",
+                  "Milestones"
+                ],
+                "count": 1,
+                "blocks_count": 1,
+                "children": []
+              },
+              {
+                "name": "Poetry",
+                "path": [
+                  "Meta",
+                  "Creative",
+                  "Poetry"
+                ],
+                "count": 1,
+                "blocks_count": 1,
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "Genesis",
+            "path": [
+              "Meta",
+              "Genesis"
+            ],
+            "count": 1,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "Birth",
+                "path": [
+                  "Meta",
+                  "Genesis",
+                  "Birth"
+                ],
+                "count": 1,
+                "blocks_count": 1,
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "Journey",
+            "path": [
+              "Meta",
+              "Journey"
+            ],
+            "count": 1,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "Day One",
+                "path": [
+                  "Meta",
+                  "Journey",
+                  "Day One"
+                ],
+                "count": 1,
+                "blocks_count": 1,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "System",
+        "path": [
+          "System"
+        ],
+        "count": 2,
+        "blocks_count": 0,
+        "children": [
+          {
+            "name": "Identity",
+            "path": [
+              "System",
+              "Identity"
+            ],
+            "count": 1,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "Purpose",
+                "path": [
+                  "System",
+                  "Identity",
+                  "Purpose"
+                ],
+                "count": 1,
+                "blocks_count": 1,
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "Lernen",
+            "path": [
+              "System",
+              "Lernen"
+            ],
+            "count": 1,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "Beziehung",
+                "path": [
+                  "System",
+                  "Lernen",
+                  "Beziehung"
+                ],
+                "count": 1,
+                "blocks_count": 1,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Uncategorized",
+        "path": [
+          "Uncategorized"
+        ],
+        "count": 11,
+        "blocks_count": 11,
+        "children": []
+      },
+      {
+        "name": "Verantwortung",
+        "path": [
+          "Verantwortung"
+        ],
+        "count": 8,
+        "blocks_count": 8,
+        "children": []
+      },
+      {
+        "name": "auto",
+        "path": [
+          "auto"
+        ],
+        "count": 2,
+        "blocks_count": 0,
+        "children": [
+          {
+            "name": "web",
+            "path": [
+              "auto",
+              "web"
+            ],
+            "count": 2,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "learn",
+                "path": [
+                  "auto",
+                  "web",
+                  "learn"
+                ],
+                "count": 2,
+                "blocks_count": 2,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "comparison",
+        "path": [
+          "comparison"
+        ],
+        "count": 3,
+        "blocks_count": 0,
+        "children": [
+          {
+            "name": "learned",
+            "path": [
+              "comparison",
+              "learned"
+            ],
+            "count": 3,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "vision",
+                "path": [
+                  "comparison",
+                  "learned",
+                  "vision"
+                ],
+                "count": 3,
+                "blocks_count": 3,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "digest",
+        "path": [
+          "digest"
+        ],
+        "count": 7225,
+        "blocks_count": 0,
+        "children": [
+          {
+            "name": "web",
+            "path": [
+              "digest",
+              "web"
+            ],
+            "count": 7225,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "news",
+                "path": [
+                  "digest",
+                  "web",
+                  "news"
+                ],
+                "count": 7225,
+                "blocks_count": 7225,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "learned",
+        "path": [
+          "learned"
+        ],
+        "count": 9,
+        "blocks_count": 5,
+        "children": [
+          {
+            "name": "vision",
+            "path": [
+              "learned",
+              "vision"
+            ],
+            "count": 4,
+            "blocks_count": 3,
+            "children": [
+              {
+                "name": "web",
+                "path": [
+                  "learned",
+                  "vision",
+                  "web"
+                ],
+                "count": 1,
+                "blocks_count": 1,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "meta",
+        "path": [
+          "meta"
+        ],
+        "count": 10,
+        "blocks_count": 0,
+        "children": [
+          {
+            "name": "learning_goal",
+            "path": [
+              "meta",
+              "learning_goal"
+            ],
+            "count": 10,
+            "blocks_count": 10,
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "vision",
+        "path": [
+          "vision"
+        ],
+        "count": 26,
+        "blocks_count": 0,
+        "children": [
+          {
+            "name": "learned",
+            "path": [
+              "vision",
+              "learned"
+            ],
+            "count": 26,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "web",
+                "path": [
+                  "vision",
+                  "learned",
+                  "web"
+                ],
+                "count": 26,
+                "blocks_count": 26,
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "web",
+        "path": [
+          "web"
+        ],
+        "count": 7,
+        "blocks_count": 0,
+        "children": [
+          {
+            "name": "auto",
+            "path": [
+              "web",
+              "auto"
+            ],
+            "count": 1,
+            "blocks_count": 0,
+            "children": [
+              {
+                "name": "knowledge",
+                "path": [
+                  "web",
+                  "auto",
+                  "knowledge"
+                ],
+                "count": 1,
+                "blocks_count": 1,
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "crawl",
+            "path": [
+              "web",
+              "crawl"
+            ],
+            "count": 1,
+            "blocks_count": 1,
+            "children": []
+          },
+          {
+            "name": "learned",
+            "path": [
+              "web",
+              "learned"
+            ],
+            "count": 5,
+            "blocks_count": 5,
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "total_blocks": 7308,
+    "indexed_blocks": 7308,
+    "topics": 39,
+    "last_updated": 1761801032,
+    "duration_ms": 172
+  },
+  "version": "1.0"
+}

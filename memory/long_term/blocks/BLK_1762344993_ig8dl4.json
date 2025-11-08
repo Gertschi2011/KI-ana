@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762344993_ig8dl4",
+  "title": "Experience 2025-11-05T12:16:33.810079+00:00",
+  "content": "{\"type\": \"experience\", \"user_message\": \"wie spät ist es?\", \"assistant_reply\": \"Es ist gerade 13:16 Uhr am 5. November 2025 in Wien (Europe/Vienna).\", \"timestamp\": \"2025-11-05T12:16:33.810079+00:00\", \"mood\": \"verspielt\", \"topics\": [\"Zeit/Datum\"]}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762344993,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 43
+  },
+  "hash": "0dcb3ef7eea81fbed2a6f53883159cc5fceeddb68e7e989bf9c3b958249d939a"
+}

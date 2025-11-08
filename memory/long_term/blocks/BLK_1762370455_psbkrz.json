@@ -1,0 +1,14 @@
+{
+  "id": "BLK_1762370455_psbkrz",
+  "title": "KI_ana Self-State",
+  "content": "{\"created_at\": \"2025-11-04T17:20:05.399994+00:00\", \"last_active_at\": \"2025-11-05T19:20:55.338480+00:00\", \"mood\": \"verspielt\", \"energy\": 38, \"needs\": {\"curiosity\": 1.0, \"connection\": 0.5, \"rest\": 0.5}, \"goals\": [], \"recent_topics\": [\"Was weißt du über die Erde?\", \"Was weißt du über die Erde?\", \"Was weißt du über die Erde?\", \"Was weißt du über die Serie The Studio?\", \"Multimedia/Serien/Serie The Studio\", \"Was weißt du über die Erde?\", \"Was weißt du über die Serie The Studio?\", \"hallo Kiana\", \"Was weißt du über die Erde?\", \"Was weißt du über die Erde?\", \"Was weißt du über die Erde?\", \"Was weißt du über die Erde?\", \"Was weißt du über die Serie The Studio?\", \"Was weißt du über The Studio?\", \"Allgemein/über The Studio\", \"Hallo kiana\", \"Hallo Kiana was weißt du über die Erde?\", \"Hallo\", \"Hallo Kiana\", \"Hallo Kiana\"], \"cycles\": 68, \"learning_buffer\": [{\"topic\": \"unbekanntes Thema\", \"fact\": \"Hallo Kiana was weißt du über die Erde?\", \"source\": \"user\", \"created_at\": \"2025-11-05T16:16:06.027834+00:00\", \"confidence\": 0.5, \"uses\": 0}], \"pending_followup\": null, \"pending_learning\": null}",
+  "tags": [
+    "kiana_state"
+  ],
+  "url": "",
+  "ts": 1762370455,
+  "meta": {
+    "ts": 1762370455
+  },
+  "hash": "e860f1f6f8627f9d9017b216c5896fc170d8159bb9af3458f78616b845f49b6e"
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: This Day in 1988, the Morris worm infected 10% of the Internet within 24 hours\n • Hacker News: Google Cloud suspended customer's account 3 times, for 3 different reasons\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): UN-Report: Welt steuert auf bis zu 2,8 Grad Erderwärmung zu",
+  "hash": "c6dbc32958ba6ef38068b4225c48a520e458395cceb25ec9c9c38ab6e9873dfc",
+  "id": "BLK_1762271269_rubc4c",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "oQzR1kYlLF4obuAdptZvjG6bg0FIIDtx/BN5GGBAL9reuSoo9MzFCbA6MPTjko//3ORlX7Vb6sBM5WN2EZ8VAg==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-04 16:47",
+  "ts": 1762271269,
+  "url": ""
+}

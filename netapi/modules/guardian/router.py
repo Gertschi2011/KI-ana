@@ -43,7 +43,14 @@ def guardian_status(user = Depends(get_current_user_required)):
     # Visible for creator/admin/papa
     # We accept role 'papa' in the comma-separated role string as well
     roles = set((str(user.get('role') or '')).lower().replace(',', ' ').split())
-    if not (require_role(user, {"creator","admin"}, silent=True) or ("papa" in roles) or bool(user.get("is_papa"))):
+    allowed = False
+    try:
+        # require_role returns or raises; treat return as allowed
+        require_role(user, {"creator","admin"})
+        allowed = True
+    except Exception:
+        allowed = False
+    if not (allowed or ("papa" in roles) or bool(user.get("is_papa"))):
         raise HTTPException(403, "forbidden")
     items = [
         _check_secure_pair("emergency_override"),

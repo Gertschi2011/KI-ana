@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762606397_2wa1qc",
+  "title": "Experience 2025-11-08T12:53:17.704097+00:00",
+  "content": "{\"type\": \"knowledge_from_memory\", \"user_message\": \"Was weißt du über den Jupiter?\", \"assistant_reply\": \"\", \"topic_path\": \"Allgemein/über den Jupiter\", \"timestamp\": \"2025-11-08T12:53:17.704097+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762606397,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 65
+  },
+  "hash": "9f17142504759780a9191f4dbd8cfed30e69556dbcb2836b206fea3ffab41ea7"
+}

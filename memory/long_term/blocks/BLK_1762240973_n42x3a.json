@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Tell HN: X is opening any tweet link in a webview whether you press it or not\n • Hacker News: Why AC is cheap, but AC repair is a luxury\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Bürgermeisterwahl in New York: Mamdani ist klarer Favorit",
+  "hash": "9b6504dc1c8ea91b66c5899fc3b47a48b888c4459de1a3ef69095f641d75bb96",
+  "id": "BLK_1762240973_n42x3a",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "KGT791PWaUXbI2fdQTYEbGzw1FoCasK1B6GiAejkFbEPXIZbBcz1QdYvgIHpre2ChfWnvFV5WZ3kCgIgnPeXDA==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-04 08:22",
+  "ts": 1762240973,
+  "url": ""
+}

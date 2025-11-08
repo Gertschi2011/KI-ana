@@ -1,0 +1,42 @@
+{
+  "chain": [
+    {
+      "index": 0,
+      "timestamp": 1762152967.6724658,
+      "data": {
+        "title": "Genesis Block",
+        "content": "KI_ana Knowledge Chain initialized",
+        "type": "genesis"
+      },
+      "previous_hash": "0",
+      "nonce": 280,
+      "hash": "00feec22c1068712c96900fcf53d0b191b754565158628b82cfe06443cc8b874"
+    },
+    {
+      "index": 1,
+      "timestamp": 1762152996.6510823,
+      "data": {
+        "title": "Python Programming",
+        "content": "Python is a high-level programming language",
+        "source": "test"
+      },
+      "previous_hash": "00feec22c1068712c96900fcf53d0b191b754565158628b82cfe06443cc8b874",
+      "nonce": 3,
+      "hash": "0058d1f4fb187ca4788ec8c5186a9eda45bb99870f8fe7163c9df9904fd8353f"
+    },
+    {
+      "index": 2,
+      "timestamp": 1762152996.6512785,
+      "data": {
+        "title": "Machine Learning",
+        "content": "ML is a subset of artificial intelligence",
+        "source": "test"
+      },
+      "previous_hash": "0058d1f4fb187ca4788ec8c5186a9eda45bb99870f8fe7163c9df9904fd8353f",
+      "nonce": 61,
+      "hash": "0004f9bb96109eb02b3c3279a0a42e20febbf6e780e5c6259501ae8c32982e27"
+    }
+  ],
+  "difficulty": 2,
+  "updated_at": 1762152996.6514893
+}

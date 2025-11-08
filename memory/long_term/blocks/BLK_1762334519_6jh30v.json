@@ -1,0 +1,18 @@
+{
+  "content": "{\"type\": \"experience\", \"user_message\": \"Hallo kiana 😎 was weißt du über die Serie The Studio?\", \"assistant_reply\": \"Hallo! 👋 Wie kann ich dir helfen?\", \"timestamp\": \"2025-11-05T09:21:59.509220+00:00\", \"mood\": \"neutral\", \"topics\": [\"\"]}",
+  "hash": "fd1b8a507694f7a73753f51344ff0cf1c28b35081e09915784c3c6cbfd29f0be",
+  "id": "BLK_1762334519_6jh30v",
+  "meta": {
+    "conversation_id": null,
+    "user_id": null
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "0LrsVDmbY5VMaFKDrRbBp0NBlUV1VQCOYC/zR7pEImwp+EXN3/u9jKHgr7pm3FhhEeEwK6fA+8S7hVEm8CvnCg==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "experience"
+  ],
+  "title": "Experience 2025-11-05T09:21:59.509220+00:00",
+  "ts": 1762334519,
+  "url": ""
+}

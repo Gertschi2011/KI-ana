@@ -1,0 +1,18 @@
+{
+  "content": "{\"type\": \"experience\", \"user_message\": \"Weißt du wie spät es ist\", \"assistant_reply\": \"Es ist gerade 07:00 Uhr am 5. November 2025 in Wien (Europe/Vienna).\", \"timestamp\": \"2025-11-05T06:00:58.677862+00:00\", \"mood\": \"neutral\", \"topics\": [\"Zeit/Datum\"]}",
+  "hash": "91cae0a2be96bc6d7953580797c2a1892fae5f2047bb0a43f3fd75c5aba5ae56",
+  "id": "BLK_1762322458_ev7lvh",
+  "meta": {
+    "conversation_id": 32,
+    "user_id": 2
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "TClmdQ+pBm0aSMK+Z2QLpzEoZ6llxrk0SV/WDiWQmzYIKrMg0G1gM7d8i7FWjRHZTgWqVQGlu36Rdm+YhvMkAA==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "experience"
+  ],
+  "title": "Experience 2025-11-05T06:00:58.677862+00:00",
+  "ts": 1762322458,
+  "url": ""
+}

@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Uncle Sam wants to scan your iris and collect your DNA, citizen or not\n • Hacker News: Analyzing the Performance of WebAssembly vs. Native Code\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Syrer in Deutschland - worum es geht",
+  "hash": "cfeb73feb9c031bacea98543ffe2236b20dbc3900aec6eebfa38188daefebd72",
+  "id": "BLK_1762300081_psrfn6",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "z34kAdT+5Nh43kr2XQ/Cl8NKWjjbkj5OCxnebh/bDbFuVIB/2+wkYO85uSs+re5pVe6g4NFNDRuYsWGzH4RVDg==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-05 00:48",
+  "ts": 1762300081,
+  "url": ""
+}

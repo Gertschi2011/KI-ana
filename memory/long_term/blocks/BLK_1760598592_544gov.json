@@ -3,9 +3,9 @@
   "hash": "f36f7cef492178dc0de1384f1c21c062580115432171ea39d75bbf89693030ba",
   "id": "BLK_1760598592_544gov",
   "meta": {},
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
-  "signature": "lQDo4L62jkS/y1OUqV9BqARXaM5LvXm0nrSjSzeSXyw6hgrRNbHIyUtniXc/GNTotcSi2xNIH1YUkMmhvsMxBw==",
-  "signed_at": "2025-10-22T11:39:36Z",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "2QKPq5Y1aX1UZ9KF+h/6vHKjcVTXbZ1a6ATKaHYlHv2htJ5afr/jb0V5cgROj4wSZ0tWqjH6HHhS5CEb9vaMAg==",
+  "signed_at": "2025-11-05T10:06:07Z",
   "tags": [
     "digest",
     "web",

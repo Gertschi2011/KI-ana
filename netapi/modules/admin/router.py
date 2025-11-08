@@ -150,6 +150,7 @@ def create_user(data: UserCreate, user = Depends(get_current_user_required)):
                 raise HTTPException(status_code=400, detail="Username or email already exists")
             
             # Create user
+            from datetime import datetime
             now = int(time.time())
             new_user = User(
                 username=data.username,
@@ -158,7 +159,7 @@ def create_user(data: UserCreate, user = Depends(get_current_user_required)):
                 role=data.role,
                 is_papa=data.is_papa,
                 plan=data.plan,
-                created_at=now,
+                created_at=datetime.utcnow(),
                 updated_at=now
             )
             
@@ -189,6 +190,7 @@ def update_user(user_id: int, data: UserUpdate, user = Depends(get_current_user_
                 raise HTTPException(status_code=404, detail="User not found")
             
             # Update fields
+            from datetime import datetime
             if data.username is not None:
                 target_user.username = data.username
             if data.email is not None:

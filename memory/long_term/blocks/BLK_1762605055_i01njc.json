@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762605055_i01njc",
+  "title": "Experience 2025-11-08T12:30:55.272007+00:00",
+  "content": "{\"type\": \"smalltalk_how_are_you\", \"user_message\": \"Wie geht es dir?\", \"assistant_reply\": \"Mir geht’s gut, danke! 😊 Wie geht’s dir – und womit kann ich helfen?\", \"timestamp\": \"2025-11-08T12:30:55.272007+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762605055,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 65
+  },
+  "hash": "201b5d1601c1174be351c2b40234b1b66e93b44a2c96e75048af9311651a0648"
+}

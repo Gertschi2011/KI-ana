@@ -1,0 +1,18 @@
+{
+  "content": "{\"type\": \"experience\", \"user_message\": \"Was weißt du über die Serie The Studio?\", \"assistant_reply\": \"\", \"timestamp\": \"2025-11-05T07:25:55.987872+00:00\", \"mood\": \"neutral\", \"topics\": [\"\"]}",
+  "hash": "a69d482915e3b1689a4a9026bd0a09fec123fa0da0562c438a1760a259375b09",
+  "id": "BLK_1762327555_v6cmwn",
+  "meta": {
+    "conversation_id": 35,
+    "user_id": 2
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "5cKpDjWyVmEb2VuulHtwTgTPQev6o6fy7KBegBANadjf09LiGmd3GefonmJWEd1fA6ijsKAOkzKT2Y22x5gXCg==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "experience"
+  ],
+  "title": "Experience 2025-11-05T07:25:55.987872+00:00",
+  "ts": 1762327555,
+  "url": ""
+}

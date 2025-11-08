@@ -1,0 +1,30 @@
+{
+  "content": "Gespräch mit 21 Nachrichten:\n1. Lass uns einfach plaudern\n2. hahaha nein meine Tochter heißt Kiana und da ich dich erschaffen habe hab ich dich angelehnt an d...\n3. sie ist eine kleine Prinzessin und ist am 10 März 2023 auf die Welt gekommen\n\nThemen: dich, tochter, kiana",
+  "hash": "c505ec458168723b4b3f3ffaca18c37a5a65a7a80fc4d93ea74d6fe6ccb881de",
+  "id": "BLK_1762259770_yhhx6m",
+  "meta": {
+    "ai_message_count": 21,
+    "conversation_id": 3,
+    "ended_at": 1762171168,
+    "message_count": 42,
+    "participant": "user_2",
+    "source": "conversation_auto_save",
+    "started_at": 1762171166,
+    "user_id": 2,
+    "user_message_count": 21
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "3X+2XoPYgnbbFS9XbSjG7EgmQN0Had9ZUsNTor+hv5zsq898cOeIUeljSmysg5IXlkpNYUIz8TMHlFncHUcFBA==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "conversation",
+    "dialog",
+    "memory",
+    "dich",
+    "tochter",
+    "kiana"
+  ],
+  "title": "Gespräch über Kiana",
+  "ts": 1762259770,
+  "url": ""
+}

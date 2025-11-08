@@ -1,0 +1,28 @@
+{
+  "content": "Gespräch mit 4 Nachrichten:\n1. wie spät ist esssssss?\n2. wie spät ist esssssss?\n\nThemen: kiana",
+  "hash": "266fccb381c5f4280258df98464ed4ec8e0194ac53295bdc250c4076f4c9ae6a",
+  "id": "BLK_1762262812_olkoze",
+  "meta": {
+    "ai_message_count": 4,
+    "conversation_id": 21,
+    "ended_at": 1762261942,
+    "message_count": 8,
+    "participant": "user_2",
+    "source": "conversation_auto_save",
+    "started_at": 1762261924,
+    "user_id": 2,
+    "user_message_count": 4
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "pmTDr3RR4dgi5Exq6z9UX8kzasdeWeJUwzunMh5+HV/QGCFLLrhdqlxpFvj9ZEMLcTjEZYW3f4zeFOAw3DOlBw==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "conversation",
+    "dialog",
+    "memory",
+    "kiana"
+  ],
+  "title": "Hier ist eine kurze Antwort. Wenn du willst, gehe ich",
+  "ts": 1762262812,
+  "url": ""
+}

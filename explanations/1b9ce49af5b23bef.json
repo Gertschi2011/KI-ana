@@ -1,0 +1,35 @@
+{
+  "response_id": "1b9ce49af5b23bef",
+  "query": "What is Python?",
+  "response": "Python is a high-level programming language.",
+  "sources": [
+    {
+      "source_id": "block_42",
+      "source_type": "knowledge_block",
+      "content_snippet": "Python is a programming language",
+      "trust_score": 0.95,
+      "timestamp": 1762157051.1674745,
+      "url": null,
+      "metadata": {}
+    }
+  ],
+  "reasoning_steps": [
+    {
+      "step_number": 1,
+      "action": "search",
+      "description": "Searched knowledge base",
+      "result": null,
+      "duration_ms": 0,
+      "metadata": {}
+    }
+  ],
+  "tools_used": [],
+  "submind_contributions": {},
+  "knowledge_blocks": [],
+  "confidence_score": 0.6799999999999999,
+  "avg_trust_score": 0.95,
+  "model_used": "llama3.2",
+  "temperature": null,
+  "created_at": 1762157051.1674693,
+  "total_duration_ms": 0
+}

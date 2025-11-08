@@ -1,0 +1,17 @@
+{
+  "content": "{\"created_at\": \"2025-11-04T17:20:05.399994+00:00\", \"last_active_at\": \"2025-11-05T05:00:56.240228+00:00\", \"mood\": \"neutral\", \"goals\": [], \"recent_topics\": [\"Weißt du wie spät es ist?\", \"Guten Morgen Kiana\", \"Weißt du wie spät es ist?\"], \"cycles\": 3}",
+  "hash": "35e89d7b9f6f5ec41e5bd7c911e2dbba80076fde020c8d951f4de4d502cb9e9c",
+  "id": "BLK_1762318856_fnin13",
+  "meta": {
+    "ts": 1762318856
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "X09XXS1cFfbhjxo01tRA1IH02gmHkUx9TWbXnFftgrzK4kRJ5ck2qWBMDefkM9PmcsXIcsw0hnxpY1ZYUe+rCw==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "kiana_state"
+  ],
+  "title": "KI_ana Self-State",
+  "ts": 1762318856,
+  "url": ""
+}

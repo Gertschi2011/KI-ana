@@ -1,0 +1,30 @@
+{
+  "content": "Gespräch mit 8 Nachrichten:\n\nThemen: test, hallo, ki_ana",
+  "hash": "2a062d13b64c79c0274d764bc15af9215cf85e8b234912c680062fcb868b6b85",
+  "id": "BLK_1762258995_fdxx1p",
+  "meta": {
+    "ai_message_count": 3,
+    "conversation_id": 14,
+    "ended_at": 1762258389,
+    "message_count": 11,
+    "participant": "user_2",
+    "source": "conversation_auto_save",
+    "started_at": 1762257595,
+    "user_id": 2,
+    "user_message_count": 8
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "nojI/S/RN5j82QQxArz/FeCLHv8K7MLsrNi2Rm/cv75plKYgQrs+0q53POSL2oXGGe/geZS6kRpHP2YicenYDw==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "conversation",
+    "dialog",
+    "memory",
+    "test",
+    "hallo",
+    "ki_ana"
+  ],
+  "title": "Hier ist eine kurze Antwort. Wenn du willst, gehe ich",
+  "ts": 1762258995,
+  "url": ""
+}

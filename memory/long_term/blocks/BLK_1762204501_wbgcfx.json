@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: </> Htmx – The Fetch()ening\n • Hacker News: FreakWAN: A floor-routing WAN implementing a chat over bare-LoRa (no LoRaWAN)\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Koalition versucht Debatte über \"Scheinkonflikt\" einzufangen",
+  "hash": "898e7b4d1a04f84c2d45c6e942b089f60406e5eb4a4081f122f4f641584044e0",
+  "id": "BLK_1762204501_wbgcfx",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "3GUUcpWoD67LuZIoZ9Dbg5S8EcJiO+6Bv+yQg9pbWEt2uCJYuY+m54GPwcpZphte+yvFp0HwDuEGVio0lJZ3Cg==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-03 22:15",
+  "ts": 1762204501,
+  "url": ""
+}

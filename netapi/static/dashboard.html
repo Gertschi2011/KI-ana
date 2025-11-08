@@ -3,10 +3,15 @@
 <head>
   <base href="/" />
   <meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>KI_ana Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/static/styles.css" rel="stylesheet">
-  <link href="/static/chat.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css?v=20251028-1200">
+  <link rel="stylesheet" href="/static/chat.css?v=20251027-1520">
+  <script src="/static/auto_logout.js"></script>
+  <script src="/static/inactivity_logout.js"></script>
   <style>
     .dashboard {
       padding: 20px;
@@ -183,6 +188,15 @@
           ⏰ TimeFlow Monitor
         </a>
       </div>
+
+    <!-- Pipeline Monitor -->
+    <div id="pipelineMonitor" class="section-card">
+      <div class="section-title">🧭 Kianas letzter Denkpfad</div>
+      <p><strong>Pfad:</strong> <span id="pipePath">–</span></p>
+      <p><strong>Thema:</strong> <span id="pipeTopic">–</span></p>
+      <p><strong>Stimmung:</strong> <span id="pipeMood">–</span></p>
+      <p><strong>Energie:</strong> <span id="pipeEnergy">–</span></p>
+    </div>
     </div>
 
     <!-- Stats Grid -->
@@ -264,25 +278,14 @@
     // Check authentication first
     async function checkAuth() {
       try {
-        const token = localStorage.getItem('ki_token') || '';
-        const r = await fetch('/api/me', token ? { headers: { Authorization: 'Bearer ' + token } } : {});
+        const token = sessionStorage.getItem('ki_token') || localStorage.getItem('ki_token') || '';
+        const r = await fetch('/api/me', token ? { headers: { Authorization: 'Bearer ' + token } } : {credentials: 'include'});
         if (!r.ok) {
           // Not authenticated - redirect to login
           window.location.href = '/static/login.html?redirect=/static/dashboard.html';
           return false;
         }
-        const data = await r.json();
-        if (!data.auth || !data.user) {
-          window.location.href = '/static/login.html?redirect=/static/dashboard.html';
-          return false;
-        }
-        // Check if user has papa or admin role
-        const roles = new Set([].concat(data.user.roles || [], data.user.role || []).map(x=>String(x).toLowerCase()));
-        if (!roles.has('papa') && !roles.has('creator') && !roles.has('admin')) {
-          alert('⚠️ Dieser Bereich ist nur für Administratoren zugänglich.');
-          window.location.href = '/static/chat.html';
-          return false;
-        }
+        // Dashboard ist jetzt für ALLE User zugänglich
         return true;
       } catch (e) {
         console.error('Auth check failed:', e);
@@ -299,6 +302,34 @@
         loadConflictsStats(),
         loadReflectionStats()
       ]);
+    }
+
+    function updatePipelineMonitorFromMeta(meta) {
+      if (!meta) return;
+      const elPath = document.getElementById("pipePath");
+      const elTopic = document.getElementById("pipeTopic");
+      const elMood = document.getElementById("pipeMood");
+      const elEnergy = document.getElementById("pipeEnergy");
+      if (!elPath) return;
+      elPath.textContent = meta.pipeline || "–";
+      elTopic.textContent = meta.topic || "–";
+      elMood.textContent = meta.mood || "–";
+      elEnergy.textContent = (meta.energy != null ? meta.energy : "–");
+    }
+
+    async function loadPipelineMonitorInitial() {
+      try {
+        const res = await fetch('/api/chat/system/kiana-status');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data || !data.ok) return;
+        updatePipelineMonitorFromMeta({
+          pipeline: data.last_pipeline,
+          topic: (data.last_topics && data.last_topics.length) ? data.last_topics[data.last_topics.length - 1] : null,
+          mood: data.mood,
+          energy: data.energy,
+        });
+      } catch (_) {}
     }
 
     async function loadPersonalityStats() {
@@ -535,6 +566,7 @@
       
       // Load dashboard data
       await loadDashboard();
+      await loadPipelineMonitorInitial();
       
       // Auto-refresh every 30 seconds
       setInterval(loadDashboard, 30000);

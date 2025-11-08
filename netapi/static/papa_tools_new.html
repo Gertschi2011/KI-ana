@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KI_ana System Dashboard</title>
   <link rel="icon" href="/static/favicon.ico">
-  <link href="/static/styles.css" rel="stylesheet">
-  <link href="/static/chat.css" rel="stylesheet">
+  <link href="/static/styles.css?v=20251028-1200" rel="stylesheet">
+  <link href="/static/chat.css?v=20251027-1520" rel="stylesheet">
   <link href="/static/modern-ui.css" rel="stylesheet">
+  <script src="/static/auto_logout.js"></script>
+  <script src="/static/inactivity_logout.js"></script>
   <style>
     .navbar{position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:1000!important;box-shadow:0 2px 10px rgba(0,0,0,0.1)!important}
     body{padding-top:56px}
@@ -219,7 +221,7 @@
   </style>
 </head>
 <body>
-  <div id="nav"></div>
+  <div id="navbar"></div>
   
   <main class="container">
     <div class="page-header">
@@ -388,7 +390,33 @@
     </div>
   </main>
 
-  <script src="/static/nav.js"></script>
+  <script src="/static/nav.js?v=20251029"></script>
+  
+  <!-- Load navbar HTML -->
+  <script>
+  (async function(){
+    try{
+      const r = await fetch('/static/nav.html?v=' + Date.now());
+      const html = await r.text();
+      const nav = document.getElementById('navbar');
+      if(nav) {
+        nav.innerHTML = html;
+        nav.querySelectorAll('script').forEach(old => {
+          const s = document.createElement('script');
+          if(old.src) { 
+            s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); 
+          } else { 
+            s.textContent = old.textContent || ''; 
+          }
+          document.body.appendChild(s);
+          old.remove();
+        });
+      }
+    }catch(e){
+      console.error('Navbar load failed:', e);
+    }
+  })();
+  </script>
   <script>
     let refreshInterval = null;
 

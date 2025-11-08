@@ -3,9 +3,9 @@
   "hash": "66a03d80d6598ba7fcd977442d26f9c3341eb4bdf45632487f1012481c4deb24",
   "id": "BLK_1760263623_kizhko",
   "meta": {},
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
-  "signature": "Y6nnVPd/8EM6Vny5tEgOcaZsgz33oySvSDiamljzyckd0j99vKQd2uELIazpzmjXIZiW9KGORlc17pdRA8t6AA==",
-  "signed_at": "2025-10-22T11:39:34Z",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "YEYfBAMKq9LTfnpDsrydZBjgdyrRynze/zs/ePqBBNS0UE+dLrlPM8eJLuitrBk6PYpiQ4kDj38q73/UCxSUAQ==",
+  "signed_at": "2025-11-05T10:06:06Z",
   "tags": [
     "digest",
     "web",

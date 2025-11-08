@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762594602_sfwf55",
+  "title": "Experience 2025-11-08T09:36:42.813688+00:00",
+  "content": "{\"type\": \"knowledge_from_memory\", \"user_message\": \"Was weißt du über die Erde?\", \"assistant_reply\": \"Schau mal auf wikipedia im internet nach\", \"topic_path\": \"Allgemein/über die Erde\", \"timestamp\": \"2025-11-08T09:36:42.813688+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762594602,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 60
+  },
+  "hash": "42b61e9605b68a8c47622c9dd1437efc55f15556b790dd9ccdce59ec1fff0497"
+}

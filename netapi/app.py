@@ -22,7 +22,7 @@ except Exception as _e_db_init:
     except Exception:
         pass
 # netapi/app.py
-from fastapi import FastAPI, Request, Depends, HTTPException
+from fastapi import FastAPI, Request, Depends, HTTPException, Response
 import os
 import time
 import json
@@ -48,7 +48,7 @@ from .deps import get_current_user_required, has_any_role
 try:
     from netapi.modules.auth.router import router as auth_router
 except Exception:
-    auth_router = None  # type: ignore
+    auth_router = None
 try:
     from netapi.modules.chat.router import router as chat_router
 except Exception as _e_chat_router:
@@ -58,7 +58,15 @@ except Exception as _e_chat_router:
     except Exception:
         pass
 try:
-    from netapi.modules.chat.folders_router import router as folders_router
+    from netapi.modules.chat.folders import router as folders_router
+except Exception as _e_folders:
+    folders_router = None
+    try:
+        print("❌ Folders router failed to load:", _e_folders)
+    except Exception:
+        pass
+try:
+    from netapi.modules.chat.folders_router import router as folders_router_old
 except Exception as _e_folders_router:
     folders_router = None  # type: ignore
     try:
@@ -238,6 +246,10 @@ try:
 except Exception:
     export_router = None  # type: ignore
 try:
+    from netapi.modules.explain.router import router as explain_router
+except Exception:
+    explain_router = None  # type: ignore
+try:
     from netapi.modules.settings.router import router as settings_router
 except Exception as _e_settings_router:
     settings_router = None  # type: ignore
@@ -249,6 +261,10 @@ try:
     from netapi.modules.logs.router import router as logs_router
 except Exception:
     logs_router = None  # type: ignore
+try:
+    from netapi.modules.dashboard_adapter.router import router as dashboard_adapter_router
+except Exception:
+    dashboard_adapter_router = None  # type: ignore
 try:
     from netapi.modules.admin.router import router as admin_router
 except Exception:
@@ -304,6 +320,33 @@ if ROOT_PATH == "/":
 
 app = FastAPI(title="KI_ana API", version="1.0", debug=settings.DEBUG, root_path=ROOT_PATH)
 
+# ---- Unified logging configuration -----------------------------------------
+try:
+    import logging
+    LOG_PATH = "/tmp/backend.log"
+    os.makedirs(os.path.dirname(LOG_PATH), exist_ok=True)
+    file_handler = logging.FileHandler(LOG_PATH, mode="a", encoding="utf-8")
+    file_formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s")
+    file_handler.setFormatter(file_formatter)
+
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.INFO)
+    # Ensure only a single file handler on root (avoid duplicates across reloads)
+    if not any(isinstance(h, logging.FileHandler) for h in root_logger.handlers):
+        root_logger.addHandler(file_handler)
+
+    # Child logger for chat router: remove ALL handlers to avoid double writes,
+    # and rely exclusively on propagation to root's file handler
+    chat_logger = logging.getLogger("netapi.modules.chat.router")
+    chat_logger.setLevel(logging.INFO)
+    for h in list(chat_logger.handlers):
+        chat_logger.removeHandler(h)
+    chat_logger.propagate = True
+
+    logging.info("✅ Unified logger initialized, writing to %s", LOG_PATH)
+except Exception:
+    pass
+
 # ---- Kernel lifecycle only here (avoid double start/stop elsewhere) --------
 @app.on_event("startup")
 async def _kernel_boot() -> None:
@@ -320,6 +363,18 @@ async def _kernel_boot() -> None:
     try:
         from .logging_bridge import BROADCASTER
         BROADCASTER.install()
+        # Also attach to uvicorn/gunicorn loggers so access/error logs stream too
+        try:
+            import logging as _logging
+            for _name in ("uvicorn", "uvicorn.error", "uvicorn.access", "gunicorn", "gunicorn.error", "gunicorn.access"):
+                _lg = _logging.getLogger(_name)
+                if BROADCASTER.handler not in _lg.handlers:
+                    _lg.addHandler(BROADCASTER.handler)
+                if _lg.level > _logging.INFO:
+                    _lg.setLevel(_logging.INFO)
+                _lg.propagate = True
+        except Exception:
+            pass
     except Exception:
         pass
 
@@ -335,12 +390,35 @@ async def _kernel_boot() -> None:
             setattr(app.state, "genesis_context", {"emergency_present": None, "cognitive_present": None})
     asyncio.create_task(_load_genesis_ctx())
 
+    # Initialize and start all advanced features (TimeAwareness, Proactive, MultiModal, etc.)
+    async def _init_advanced_features():
+        try:
+            from .core.system_integration import initialize_all_features, start_all_services
+            print("🚀 Initializing KI_ana Advanced Features...")
+            results = await initialize_all_features()
+            print(f"✅ Features initialized: {sum(results.values())}/{len(results)}")
+            await start_all_services()
+            print("🎯 All advanced services started!")
+        except Exception as e:
+            print(f"⚠️  Advanced features initialization failed: {e}")
+            # Don't crash the app if advanced features fail
+    asyncio.create_task(_init_advanced_features())
+
 
 @app.on_event("shutdown")
 async def _kernel_down() -> None:
     try:
         await asyncio.wait_for(KERNEL.stop(), timeout=3.0)
     except BaseException:
+        pass
+    
+    # Stop advanced features services
+    try:
+        from .core.system_integration import get_system_integration
+        integration = get_system_integration()
+        integration.stop()
+        print("✅ Advanced services stopped")
+    except Exception:
         pass
 
 # ---- Middlewares -----------------------------------------------------------
@@ -418,7 +496,17 @@ def health():
 # Very fast liveness ping used by reverse proxies (no JSON parsing needed)
 @app.get("/_/ping", include_in_schema=False)
 def ping():
-    return JSONResponse({"ok": True})
+    return JSONResponse({"ok": True, "module": "system"})
+
+# Debug ping to verify logging wiring
+@app.get("/api/debug/ping", include_in_schema=False)
+async def debug_ping():
+    try:
+        import logging as _lg
+        _lg.getLogger(__name__).info("debug_ping called")
+    except Exception:
+        pass
+    return {"ok": True}
 
 @app.get("/api/metrics", include_in_schema=False)
 def api_metrics():
@@ -674,6 +762,16 @@ def api_system_status():
         pass
     return {"ts": int(time.time()), "metrics": metrics, "resources": resources}
 
+# Direct LLM test endpoint to validate Ollama connectivity
+@app.get("/api/llm/test", include_in_schema=False)
+async def api_llm_test():
+    try:
+        from .core import reasoner as _reasoner
+        txt = await _reasoner.call_llm("Sag mir in einem Satz, was ein Zebra ist.")
+    except Exception as e:
+        txt = f"ERROR: {e}"
+    return {"response": txt}
+
 # Lightweight config endpoint for frontend feature flags/URLs
 @app.get("/api/system/config", include_in_schema=False)
 def api_system_config():
@@ -906,6 +1004,37 @@ try:
     print("✅ Chat router ready")
 except Exception as e:
     print("❌ Chat router failed:", e)
+    # Fallback minimal endpoints so the frontend doesn't 404 in production
+    @app.get("/api/chat", include_in_schema=False)
+    def _fallback_chat_ping():
+        return {"ok": True, "module": "chat", "kiana_node": os.environ.get("KIANA_NODE", "fallback")}
+
+    @app.post("/api/chat", include_in_schema=False)
+    async def _fallback_chat_once():
+        try:
+            import logging as _lg
+            _lg.getLogger(__name__).warning("fallback /api/chat hit without router; returning empty reply")
+        except Exception:
+            pass
+        return {"ok": True, "reply": ""}
+
+    @app.get("/api/chat/conversations", include_in_schema=False)
+    def _fallback_chat_convs():
+        return {"ok": True, "items": []}
+
+    @app.post("/api/chat/conversations", include_in_schema=False)
+    def _fallback_chat_convs_create():
+        return {"ok": True, "id": 0}
+
+# Memory cleanup router
+try:
+    from netapi.modules.chat.memory_cleanup import router as memory_cleanup_router
+    if memory_cleanup_router is None:
+        raise RuntimeError("memory_cleanup_router is None")
+    app.include_router(memory_cleanup_router)
+    print("✅ Memory cleanup router ready")
+except Exception as e:
+    print("❌ Memory cleanup router failed:", e)
 
 # Settings router
 try:
@@ -922,6 +1051,10 @@ try:
         raise RuntimeError("auth_router is None")
     # Router already defines prefix="/api"; do not add another prefix here
     app.include_router(auth_router)
+    if chat_router:
+        app.include_router(chat_router)
+    if folders_router:
+        app.include_router(folders_router)
     print("✅ Auth router ready")
 except Exception as e:
     print("❌ Auth router failed:", e)
@@ -935,10 +1068,11 @@ router_list = [
     kernel_router, subminds_router, guardian_router, billing_router,
     media_router, voice_router, stt_router, ingest_router, agent_router,
     devices_router, stats_router, colearn_router, genesis_router,
-    feedback_router, subki_router, self_router, dashboard_mock_router, blocks_router,
-    events_router, reflection_router, persona_router, knowledge_router,
-    ethics_router, crawler_router, crawler_ui_router, export_router,
-    logs_router, telemetry_router, admin_router, insight_router, goals_router, jobs_router, plan_router, autonomy_router
+    feedback_router, subki_router, self_router, dashboard_mock_router,
+    blocks_router, events_router, reflection_router, plan_router, persona_router,
+    knowledge_router, ethics_router, crawler_router, crawler_ui_router, export_router,
+    explain_router, settings_router, logs_router, admin_router, telemetry_router, jobs_router,
+    autonomy_router, insight_router, goals_router,
 ]
 
 for r in router_list:
@@ -948,6 +1082,23 @@ for r in router_list:
     except Exception as e:
         print(f"❌ Fehler beim Einbinden eines Routers: {e}")
 
+# Mount adapter last to override mock endpoints
+try:
+    if dashboard_adapter_router is not None:
+        app.include_router(dashboard_adapter_router)
+        print("✅ Dashboard adapter mounted (real data)")
+except Exception as e:
+    print("❌ Dashboard adapter mount failed:", e)
+
+# Global stubs to silence 404s in production for health/event pings
+@app.get("/events", include_in_schema=False)
+def _events_stub():
+    return Response(status_code=204)
+
+@app.get("/_/ping", include_in_schema=False)
+def _ping_stub():
+    return {"ok": True}
+
 # Explicitly mount memory viewer router with desired prefix, after others
 try:
     if memory_router is not None:
@@ -955,6 +1106,14 @@ try:
         print("✅ Memory router mounted at /api/memory/knowledge")
 except Exception as e:
     print("❌ Memory router mount failed:", e)
+
+# Mount addressbook router with /api/memory prefix for frontend compatibility
+try:
+    if addressbook_router is not None:
+        app.include_router(addressbook_router)
+        print("✅ Addressbook router mounted at /api/addressbook")
+except Exception as e:
+    print("❌ Addressbook router mount failed:", e)
 
 # Fallback stub: keep console quiet if jobs module is unavailable
 if jobs_router is None:

@@ -1,7 +1,7 @@
 {
   "block_id": 9,
   "content_hash": "8fa33631655c034000d26562942436ff63efc7df0fba830bb41b30112b1fe872",
-  "hash": "d764308a75dbe877867a1fbc706a6617a9d8d5fc0bfc8f01ecffc22ef48b8653",
+  "hash": "8d9ad136002b54359c49058a8ec41213ee019fed58fbcc3b9562fb0e72a65601",
   "memory_path": "/home/kiana/ki_ana/memory/long_term/8fa33631655c034000d26562942436ff63efc7df0fba830bb41b30112b1fe872.json",
   "meta": {
     "derived_from": "/home/kiana/ki_ana/memory/long_term/906f628dc99289f78059dd9c02ccd11ae77c7a2b22a35924c3eea0a9fa1eb153.json"
@@ -9,7 +9,7 @@
   "previous_hash": "ad66e468d4494a0193ebfe42f670ef37c28a51cccebaf9cadc67c3238eae3a8b",
   "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
   "signature": "vw3XMesMAWMgaDWgWt+xpX7TCB5iimhtdJI6kiId/7HEoeKQDQY2S2PbCbUJVTtm6zvON4Sq4ldQZhFWZj0kDg==",
-  "signed_at": "2025-09-21T08:13:35Z",
+  "signed_at": "2025-11-05T10:06:06Z",
   "signer_pubkey": "",
   "source": "https://de.wikipedia.org/wiki/quantencomputer",
   "timestamp": "2025-08-14T07:52:21.486606Z",

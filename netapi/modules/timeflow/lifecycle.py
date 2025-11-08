@@ -142,7 +142,7 @@ class LifecycleEngine:
         
         for phase_name, phase_config in sorted(
             phases.items(),
-            key=lambda x: x[1].get('max_cycles', float('inf'))
+            key=lambda x: x[1].get('max_cycles') if x[1].get('max_cycles') is not None else float('inf')
         ):
             max_cycles = phase_config.get('max_cycles')
             

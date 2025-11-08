@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762355232_r93nl7",
+  "title": "Experience 2025-11-05T15:07:12.039364+00:00",
+  "content": "{\"type\": \"knowledge_from_memory\", \"user_message\": \"Was weißt du über die Erde?\", \"assistant_reply\": \"{\\\"type\\\": \\\"knowledge_from_memory\\\", \\\"user_message\\\": \\\"was weißt du über die Erde?\\\", \\\"assistant_reply\\\": \\\"{\\\\\\\"created_at\\\\\\\": \\\\\\\"2025-11-04T17:20:05.399994+00:00\\\\\\\", \\\\\\\"last_active_at\\\\\\\": \\\\\\\"2025-11-05T13:43:22.023523+00:00\\\\\\\", \\\\\\\"mood\\\\\\\": \\\\\\\"verspielt\\\\\\\", \\\\\\\"energy\\\\\\\": 64, \\\\\\\"needs\\\\\\\": {\\\\\\\"curiosity\\\\\\\": 1.0, \\\\\\\"connection\\\\\\\": 0.5, \\\\\\\"rest\\\\\\\": 0.5}, \\\\\\\"goals\\\\\\\": [], \\\\\\\"recent_topics\\\\\\\": [\\\\\\\"Allgemein/Wie heißt du\\\\\\\", \\\\\\\"Weißt du wie spät es ist?\\\\\\\", \\\\\\\"Allgemein/spät es ist\\\\\\\", \\\\\\\"Was weißt du über die Serie The Studio? …\\nQuellen:\\n- ⚪ Experience 2025-11-05T14:09:42.072719+00:00 ()\", \"topic_path\": \"Allgemein/über die Erde\", \"timestamp\": \"2025-11-05T15:07:12.039364+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762355232,
+  "meta": {
+    "user_id": null,
+    "conversation_id": null
+  },
+  "hash": "e12fb573109400bf09d7cbcbc251bf499657016ce0f11c973ce704423b7b53db"
+}

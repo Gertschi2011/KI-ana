@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Epic vs. Google settlement: Opening up Android\n • Hacker News: Hypothesis: Property-Based Testing for Python\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Demokraten bejubeln Gewinne bei Wahlen in den USA",
+  "hash": "6d80bddb960c2755982649930b2a8b3079878e778ebe1bfc32210b273204e5cd",
+  "id": "BLK_1762325641_b6hkq4",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "vCPt0anT1VCLjD24SLfgd4Hzrhhwq+5uE9a4ezIah8F5RoGyFRSxZNmA2Jd+VAwYHDMsVF/V1jKOpXq/fkYZAQ==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-05 07:54",
+  "ts": 1762325641,
+  "url": ""
+}

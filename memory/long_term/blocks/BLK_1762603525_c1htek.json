@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762603525_c1htek",
+  "title": "Experience 2025-11-08T12:05:25.393622+00:00",
+  "content": "{\"type\": \"user_teaching\", \"user_message\": \"Hallo\", \"assistant_reply\": \"Danke, dass du mir das erklärst! Ich versuche es mir so zu merken:\\nHallo\", \"timestamp\": \"2025-11-08T12:05:25.393622+00:00\", \"mood\": \"ruhig / müde\", \"topic\": \"unbekanntes Thema\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762603525,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 63
+  },
+  "hash": "a4434579708a11bca81ebe010bffc45ff4631d3bd658fe9a740c73d2c2f5d5ce"
+}

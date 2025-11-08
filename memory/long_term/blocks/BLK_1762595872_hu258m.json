@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762595872_hu258m",
+  "title": "Experience 2025-11-08T09:57:52.706384+00:00",
+  "content": "{\"type\": \"knowledge_ask_user\", \"user_message\": \"Was weißt du über die erde?\", \"assistant_reply\": \"Das weiß ich noch nicht so gut. Magst du mir kurz erklären, worum es da geht oder wo ich nachschauen soll?\", \"topic_path\": \"Allgemein/über die erde\", \"timestamp\": \"2025-11-08T09:57:52.706384+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762595872,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 61
+  },
+  "hash": "ca266b4227ac728d0d5b5e8f306cd93af33e083b70d8d888091a02c291159115"
+}

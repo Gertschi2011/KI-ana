@@ -1,0 +1,29 @@
+{
+  "content": "Gespräch mit 3 Nachrichten:\n1. Hallo Kiana wie geht es dir?\n2. Weißt du wie spät es ist?\n3. Weißt du wie spät es ist?\n\nThemen: kiana, weißt",
+  "hash": "cb1cae1625dbc3340da8eb5d9166c47d4d8ad8e724dbcd7b32af30b1caa453bf",
+  "id": "BLK_1762260245_654cjs",
+  "meta": {
+    "ai_message_count": 3,
+    "conversation_id": 18,
+    "ended_at": 1762259854,
+    "message_count": 6,
+    "participant": "user_2",
+    "source": "conversation_auto_save",
+    "started_at": 1762259749,
+    "user_id": 2,
+    "user_message_count": 3
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "pdb7FLSJ8DKBQJ9S48O/5EkyHgU5v5OsUVRO67J5iKVIcbuTvADc3AGfd/SN26fENEjJVi3dVV7HRsH1fdaPCA==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "conversation",
+    "dialog",
+    "memory",
+    "kiana",
+    "weißt"
+  ],
+  "title": "Hier ist eine kurze Antwort. Wenn du willst, gehe ich",
+  "ts": 1762260245,
+  "url": ""
+}

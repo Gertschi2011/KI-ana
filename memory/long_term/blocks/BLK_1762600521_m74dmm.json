@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762600521_m74dmm",
+  "title": "Experience 2025-11-08T11:15:21.972208+00:00",
+  "content": "{\"type\": \"user_teaching\", \"user_message\": \"Hilf mir bei einer Aufgabe\", \"assistant_reply\": \"Danke, dass du mir das erklärst! Ich versuche es mir so zu merken:\\nHilf mir bei einer Aufgabe\", \"timestamp\": \"2025-11-08T11:15:21.972208+00:00\", \"mood\": \"verspielt\", \"topic\": \"unbekanntes Thema\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762600521,
+  "meta": {
+    "user_id": null,
+    "conversation_id": null
+  },
+  "hash": "c8afab5671847292adbe948e5e27f759a1ea95b5f39e96091054edff9747ffa9"
+}

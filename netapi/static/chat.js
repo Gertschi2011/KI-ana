@@ -49,6 +49,32 @@
         } else {
           base = [`Beispiele zu ${topic}`, 'Schritt‑für‑Schritt erklärt', 'Wichtigste Details vertiefen'];
         }
+      }
+      
+      // ensure uniqueness and trim
+      return Array.from(new Set(base.map(s => String(s).trim()))).slice(0,3);
+    }catch{ return ['Beispiele zeigen','Schritt‑für‑Schritt','Details vertiefen']; }
+  }
+
+  // ---------- Server conversation ID helpers (available globally in this file) ----------
+  function isNumericId(v){ try{ return /^[0-9]+$/.test(String(v||'')); }catch{ return false; } }
+  function isServerLikeId(id){ try{ const s=String(id||''); return isNumericId(s) || s.startsWith('srv-'); }catch{ return false; } }
+  function getServerConvId(localId){
+    try{
+      const s = String(localId||'');
+      if (isNumericId(s)) return s;           // already a server ID
+      if (s.startsWith('srv-')) return s.slice(4); // legacy format
+      const map = localStorage.getItem('kiana.conv.server.'+s);
+      return map || null;
+    }catch{ return null; }
+  }
+  function setServerConvId(localId, serverId){
+    try{
+      if (!localId || !serverId) return;
+      localStorage.setItem('kiana.conv.server.'+String(localId), String(serverId));
+      console.log(`🔗 Mapped local conv ${localId} → server conv ${serverId}`);
+    }catch(e){ console.error('Failed to set server conv ID:', e); }
+  }
 
   // ---- Username helpers (for greeting/fallback) ----
   async function initUserIdentity(){
@@ -84,15 +110,21 @@
 
   function showWelcomeMessage(){
     try{
+      // Only show once per page load AND only when there are truly no messages rendered
+      if (window.__welcomeShown) return;
       const chat = document.getElementById('chat');
       if (!chat) return;
-      const name = (localStorage.getItem('kiana_username')||'').trim() || null;
-      const plan = (localStorage.getItem('kiana_plan')||'').trim();
-      let text = getGreetingByTime(name);
+      const hasAnyMsg = !!chat.querySelector('.msg');
+      if (hasAnyMsg) return;
+      // simple greeting text
+      let text = 'Hallo! 👋 Wie kann ich dir helfen?';
+      try{ const name = (window.currentUserName || localStorage.getItem('user_name') || '').trim(); if (name) text = `Hallo ${name}! 👋 Wie kann ich dir helfen?`; }catch{}
+      const plan = (window.currentUserPlan || localStorage.getItem('user_plan')) || '';
       if (plan) text += ` (Du nutzt aktuell den ${plan}-Plan 💜)`;
       text += ' Was interessiert dich heute?';
       const el = appendMsg('ai', text);
       try{ el?.classList?.add('welcome-msg'); el?.querySelector('.bubble')?.classList?.add('welcome-msg'); }catch{}
+      window.__welcomeShown = true;
     }catch{}
   }
 
@@ -228,6 +260,11 @@
 
       // Clean technical noise (repeat aggressively)
       let cleaned = String(fullText||'');
+      // Remove deliberation scaffold prefixes/sections
+      cleaned = cleaned.replace(/^\s*M\s*1\s*:\s*/i, '');
+      cleaned = cleaned.replace(/(^|\n)\s*Evidenz\s*:\s*$/gim, '$1');
+      // Remove tailing generic follow-up prompt
+      cleaned = cleaned.replace(/M[öo]chtest du mehr\?[^]*$/i, '').trim();
       // Normalize bullets (remove common bullet prefixes entirely)
       cleaned = cleaned.replace(/(^|\n)\s*[•\-\u2022\*]\s*/g, '$1');
       // Remove "Kernpunkte:" headings and their immediate lines
@@ -238,7 +275,12 @@
       cleaned = cleaned.replace(/Hier\s+ist,\s*was\s+ich\s+zu\s+[^\n]*?\s+weiß:?/gi, '');
       cleaned = cleaned.replace(/(^|\n)\s*Hier\s+ist,\s*was\s+ich\s+zu\s+[^\n]*\n?/gi, '$1');
       // Remove echoed question lines like "Was weißt du über ...?"
-      cleaned = cleaned.replace(/(^|\n)\s*Was\s+weißt\s+du\s+über[^\n]*\?\s*/gi, '$1');
+      cleaned = cleaned.replace(/(^|\n)\s*Was\s+weißt\s+du\s+über[^\n]*?\?\s*/gi, '$1');
+      // Remove generic follow-up scaffold that shouldn't be the first line
+      cleaned = cleaned.replace(/(^|\n)\s*M[öo]chtest du zu etwas Spezifischem mehr wissen\?\s*/gi, '$1');
+      cleaned = cleaned.replace(/(^|\n)\s*Beispiele\s+zeigen\s*$/gim, '$1');
+      cleaned = cleaned.replace(/(^|\n)\s*Schritt[‑-]f[üu]r[‑-]Schritt\s*$/gim, '$1');
+      cleaned = cleaned.replace(/(^|\n)\s*Details\s+vertiefen\s*$/gim, '$1');
       // Collapse multiple blank lines and whitespace
       cleaned = cleaned.replace(/[\t ]+/g, ' ');
       cleaned = cleaned.replace(/\n{2,}/g, '\n');
@@ -345,6 +387,18 @@
   })();
 
   // Load dynamic config (e.g., upgrade URL)
+  async function loadFolders() {
+    try {
+      const r = await fetch('/api/folders', {credentials:'include'});
+      if (!r.ok) {
+        console.warn('Folders endpoint not available (optional feature)');
+        return; // Graceful degradation
+      }
+      const j = await r.json().catch(()=>({}));
+      if (r.ok && j && j.upgrade_url){ upgradeUrl = String(j.upgrade_url); }
+    }catch{}
+  }
+
   async function loadSystemConfig(){
     try{
       const r = await fetch('/api/system/config', { credentials:'include' });
@@ -352,7 +406,6 @@
       if (r.ok && j && j.upgrade_url){ upgradeUrl = String(j.upgrade_url); }
     }catch{}
   }
-      }
 
   function renderTtsPrompt(text){
     try{
@@ -579,11 +632,6 @@
     }catch{}
   }
 
-      // ensure uniqueness and trim
-      return Array.from(new Set(base.map(s => String(s).trim()))).slice(0,3);
-    }catch{ return ['Beispiele zeigen','Schritt‑für‑Schritt','Details vertiefen']; }
-  }
-
   // Quick reply click handler (used by generated follow-ups)
   function onQuickReplyClick(text){
     try{
@@ -697,6 +745,7 @@
   let bootedGreeting = false;
   let sendWatch = null;          // watchdog timer for stalled requests
   let convs = loadConvs();
+  window.convs = convs; // Make globally accessible
   let activeConv = loadActiveConv();
   let isAuth = false;
   let sending = false;           // Doppel-Send verhindern
@@ -888,7 +937,7 @@
   // ---------- i18n helper ----------
   const I18N = {
     de: {
-      error_generic: 'Ein Fehler ist aufgetreten.',
+      error_generic: 'Ups, da ging bei mir etwas schief – bitte kurz erneut versuchen.',
       unauthorized: '⚠️ Nicht eingeloggt.',
       forbidden: '⚠️ Keine Berechtigung für diese Aktion.',
       logs_view: 'Logs ansehen',
@@ -983,21 +1032,31 @@
     return fallback;
   }
 
-  // ---------- Init ----------
-  applySettingsToUI();
-  // Pull server defaults if available
-  try { syncSettingsFromServer(); } catch {}
-  hydrateVoicesList();
-  autoresizeSetup();
-  // Conversations init: immer mit neuer Unterhaltung starten
-  const freshId = createConversation();
-  setActiveConversation(freshId);
-  // Auth + sync server conversations
-  bootstrapAuthAndSync();
-  // Live LLM Status
-  startLLMStatusPolling();
-  // Background events (Sub‑KI callbacks etc.)
-  startEventBus();
+  // ---------- Init (deferred to chat-init.js for DOM-ready orchestration) ----------
+  // IMPORTANT: Do NOT run UI init code here - it will run before DOM is ready
+  // All initialization is now handled by chat-init.js after DOMContentLoaded
+  
+  // Export init function for chat-init.js to call
+  window.initChatUI = function() {
+    applySettingsToUI();
+    // Pull server defaults if available
+    try { syncSettingsFromServer(); } catch {}
+    hydrateVoicesList();
+    autoresizeSetup();
+    // Conversations init: NICHT automatisch erstellen oder aktivieren
+    // Ziel: Begrüßungsfenster bis der Nutzer schreibt oder explizit eine Unterhaltung anlegt.
+    console.log(`📂 Found ${convs.length} local conversations`);
+    
+    // Render initial list (zeigt Quick-Item „Neue Unterhaltung“)
+    renderConversationList();
+    
+    // Auth + sync server conversations (runs async)
+    bootstrapAuthAndSync().catch(e => console.error('Bootstrap failed:', e));
+    // Live LLM Status
+    startLLMStatusPolling();
+    // Background events (Sub‑KI callbacks etc.)
+    startEventBus();
+  };
   
   // Initialize tabs if they exist
   if (tabsContainer) {
@@ -1009,34 +1068,20 @@
     try{
       if (!chatEl) return;
       if (chatEl.dataset.booted === '1') return;
-      const hasAIMsg = !!chatEl.querySelector('.msg.ai');
-      if (hasAIMsg) { chatEl.dataset.booted = '1'; return; }
-      initUserIdentity().then(()=>{
-        showWelcomeMessage();
+      const hasAnyMsg = !!chatEl.querySelector('.msg');
+      if (!hasAnyMsg) {
+        initUserIdentity().finally(()=>{
+          showWelcomeMessage();
+          chatEl.dataset.booted = '1';
+          bootedGreeting = true;
+        });
+      } else {
         chatEl.dataset.booted = '1';
-        bootedGreeting = true;
-      }).catch(()=>{
-        showWelcomeMessage();
-        chatEl.dataset.booted = '1';
-        bootedGreeting = true;
-      });
+      }
     }catch{}
   });
 
-  // Fallback: Wenn nach kurzer Zeit noch keine AI-Nachricht existiert, Begrüßung nachreichen
-  window.addEventListener('DOMContentLoaded', ()=>{
-    try{
-      setTimeout(()=>{
-        try{
-          const chat = document.getElementById('chat');
-          const hasAIMsg = !!(chat && chat.querySelector('.msg.ai'));
-          if (chat && !hasAIMsg){
-            showWelcomeMessage();
-          }
-        }catch{}
-      }, 600);
-    }catch{}
-  });
+  // Remove aggressive fallback that could re-insert greeting later and cause duplicates
 
   // ---------- Error Banner (non-blocking) ----------
   let errorBannerEl = null;
@@ -1174,12 +1219,15 @@
       renderConversationList();
     }catch{}
   });
-  deleteSelectedConvsBtn?.addEventListener('click', () => {
+  deleteSelectedConvsBtn?.addEventListener('click', async () => {
     try{
       const ids = Array.from(selectedConvs);
       if (!ids.length) return;
       if (!confirm(t('conv_delete_confirm'))) return;
-      ids.forEach(id => { try { deleteConversation(id); } catch {} });
+      // Delete all selected conversations (await each one)
+      for (const id of ids) {
+        try { await deleteConversation(id); } catch {}
+      }
       selectedConvs.clear();
       renderConversationList();
     }catch{}
@@ -1319,19 +1367,44 @@
   }
 
   function isWebAllowedNow(){
-    try { const u = parseInt(localStorage.getItem('kiana.web.allow.until')||'0',10)||0; return Date.now()<u; } catch { return false; }
+    // IMMER AKTIV - Web-Suche ist standardmäßig erlaubt!
+    // User kann in Settings deaktivieren wenn gewünscht
+    if (settings.allowNet === false) return false;  // Explizit deaktiviert
+    return true;  // Sonst immer aktiv!
   }
 
   // ---------- Chat-Funktionen ----------
+  function getChatEl() {
+    let chatEl = document.getElementById('chat');
+    if (!chatEl) {
+      // Create chat element if it doesn't exist
+      const messagesArea = document.getElementById('messagesArea');
+      if (messagesArea) {
+        chatEl = document.createElement('div');
+        chatEl.id = 'chat';
+        chatEl.className = 'chat';
+        messagesArea.appendChild(chatEl);
+        console.log('✅ Chat element auto-created');
+      }
+    }
+    return chatEl;
+  }
+
   function appendMsg(role, text, quickReplies = []) {
-    if (!chatEl) return null;
+    const el = getChatEl();
+    if (!el) return null;
+    // Ensure welcome screen is removed once a real message appears
+    try {
+      const welcome = document.getElementById('welcomeScreen');
+      if (welcome) welcome.remove();
+    } catch {}
     const div = document.createElement('div');
     div.className = `msg ${role==='user' ? 'me' : role}`;
     
     // Format AI messages with markdown-like formatting
     const formattedText = (role === 'ai' || role === 'assistant') ? formatMessage(text) : escapeHTML(text);
     div.innerHTML = `<div class="content">${formattedText}</div>`;
-    chatEl.appendChild(div);
+    el.appendChild(div);
 
     // Add quick replies if any
     if (role === 'ai' && quickReplies && quickReplies.length > 0) {
@@ -1468,6 +1541,9 @@
       touchConversation(activeConv);
       autoTitle(activeConv, role, txt);
       renderConversationList();
+      
+      // Also save to server if logged in
+      saveMessageToServer(role, txt);
     }catch{}
   }
 
@@ -1495,67 +1571,41 @@
     previewEl = null;
   }
 
-  function updatePreview(txt) {
-    if (!chatEl) return;
+  function updatePreview(txt){
+    const el = getChatEl();
+    if (!el) return;
     if (!previewEl) {
-      previewEl = document.createElement('div');
-      previewEl.className = 'msg ai';
-      const c = document.createElement('div');
-      c.className = 'content';
-      previewEl.appendChild(c);
-      // meta line holder (for cid and small info)
-      const meta = document.createElement('div');
-      meta.className = 'meta';
-      previewEl.appendChild(meta);
-      chatEl.appendChild(previewEl);
+      // Create a dedicated preview bubble for this streaming turn
+      previewEl = appendMsg('ai', '');
     }
-    // annotate bubble with CID if available
-    try{
-      if (lastCid && previewEl){
-        previewEl.setAttribute('data-cid', String(lastCid));
-        const cnt = previewEl.querySelector('.content');
-        if (cnt) cnt.setAttribute('title', `cid: ${lastCid}`);
-        const meta = previewEl.querySelector('.meta');
-        if (meta) {
-          meta.innerHTML = `cid: ${escapeHTML(String(lastCid))} <button class="copy-btn" type="button" aria-label="CID kopieren">📋 Kopieren</button>`;
-          try {
-            const btn = meta.querySelector('.copy-btn');
-            btn?.addEventListener('click', async (e) => {
-              e.preventDefault();
-              try {
-                await navigator.clipboard.writeText(String(lastCid));
-                btn.textContent = 'Kopiert';
-                setTimeout(()=>{ btn.textContent = '📋 Kopieren'; }, 1200);
-              } catch {}
-            }, { once: true });
-          } catch {}
-        }
-      }
-    }catch{}
-    const cnt = previewEl.querySelector('.content');
-    if (cnt) cnt.innerHTML = formatMessage(txt);
-    if (autoScroll){ scrollToBottom(false); }
+    try {
+      const cnt = previewEl.querySelector('.content') || previewEl;
+      cnt.innerHTML = formatMessage(String(txt || ''));
+    } catch {}
+    if (autoScroll) { scrollToBottom(false); }
     applyScrollUI();
   }
 
-  function finalizePreview(txt) {
-    if (!chatEl) return;
-    if (!previewEl) {
-      const el = appendMsg('ai', txt);
-      try{ if (el) addFeedbackControls(el); }catch{}
-    } else {
-      // turn preview into a normal ai message structure (.content only) and drop meta line
-      try{
-        const meta = previewEl.querySelector('.meta');
-        if (meta) meta.remove();
-      }catch{}
-      let cnt = previewEl.querySelector('.content');
-      if (!cnt){
-        cnt = document.createElement('div');
-        cnt.className = 'content';
-        previewEl.appendChild(cnt);
+  function finalizePreview(txt, meta = {}) {
+    const el = getChatEl();
+    if (!el) { console.warn('finalizePreview: chat container missing'); return; }
+    try {
+      if (!previewEl) {
+        // Non-streaming: create a fresh AI bubble
+        previewEl = appendMsg('ai', String(txt||''));
+      } else {
+        // Streaming: finalize the existing preview bubble
+        const cnt = previewEl.querySelector('.content') || previewEl;
+        cnt.innerHTML = formatMessage(String(txt||''));
       }
-      cnt.innerHTML = formatMessage(txt);
+      try { applyNaturalFormat(meta || {}, String(txt||'')); } catch {}
+      try { addMetaBadgesToLastAI(meta || {}); } catch {}
+      if (autoScroll){ scrollToBottom(false); }
+      applyScrollUI();
+      // IMPORTANT: release previewEl so the next AI turn gets a new bubble
+      previewEl = null;
+    } catch (e) {
+      console.error('finalizePreview failed', e);
     }
   }
   
@@ -1623,13 +1673,30 @@
       // continue without returning; sending proceeds
     }
 
-    // Ensure server conversation exists if logged in
+    // Ensure we have an active conversation
+    if (!activeConv || !convs.find(c => c.id === activeConv)) {
+      console.log('📝 No active conversation, creating new one...');
+      await createAndActivateConversation();
+    }
+
+    // Ensure server conversation exists if logged in BEFORE adding messages
     let serverConvId = null;
     if (await isLoggedIn()) {
-      try { serverConvId = await ensureServerConversation(); } catch {}
+      try { 
+        serverConvId = await ensureServerConversation(); 
+        console.log('🔗 Server conversation ready:', serverConvId);
+      } catch (e) {
+        console.error('Failed to ensure server conversation:', e);
+      }
     }
 
     appendMsg('user', text);
+    
+    // Save user message to server immediately with known serverConvId
+    if (serverConvId) {
+      saveMessageToServer('user', text, serverConvId);
+    }
+    
     autoScroll = true; // after sending, pin to bottom again
     scrollToBottom(true);
     if (msgEl) {
@@ -1760,6 +1827,13 @@
       }
       const reply = data.reply ?? data.text ?? String(data);
       finalizePreview(prefill ? (prefill + reply) : reply);
+      
+      // Save AI response to server
+      if (serverConvId) {
+        const aiText = prefill ? (prefill + reply) : reply;
+        saveMessageToServer('ai', aiText, serverConvId);
+      }
+      
       try{ addMetaBadgesToLastAI(data || {}); }catch{}
       try{
         // Attach memory ids to last AI bubble for rating
@@ -1780,16 +1854,10 @@
       }catch{}
       // Update client topic from server
       try{ if (data.topic && String(data.topic).trim()) lastTopic = String(data.topic).trim(); }catch{}
-      // Follow-ups (prefer backend quick_replies)
-      try{
-        const qrs = Array.isArray(data.quick_replies) && data.quick_replies.length ? data.quick_replies : (buildFollowUps(text, reply) || []);
-        if (qrs && qrs.length){
-          const t = (data.topic && String(data.topic).trim()) || lastTopic || '';
-          const persona = (typeof window !== 'undefined' && window.kianaPersona) ? String(window.kianaPersona) : '';
-          const prompt = t ? (persona==='kids' ? `Thema: ${t}\nWillst du mehr darüber wissen?` : `Thema: ${t}\nMöchtest du zu etwas Spezifischem mehr wissen?`) : (persona==='kids' ? 'Willst du mehr darüber wissen?' : 'Möchtest du zu etwas Spezifischem mehr wissen?');
-          appendMsg('ai', prompt, qrs);
-        }
-      }catch{}
+      // Follow-ups: do not inject extra AI prompt on the client.
+      // Server may return quick_replies in data.quick_replies; we suppress auto-insertion here
+      // to keep the first AI line clean and avoid duplicate prompts when navigating.
+      try{/* no-op: client follow-up prompt disabled */}catch{}
       // Risk indicator and reflective prompt
       try{
         if (data.risk_flag){
@@ -1928,6 +1996,12 @@
           } catch {}
           try { stopTyping(); } catch {}
           try { finalizePreview(acc, payload || {}); } catch {}
+          
+          // Save AI streaming response to server
+          if (serverConvId && acc) {
+            saveMessageToServer('ai', acc, serverConvId);
+          }
+          
           // Apply natural formatting (plain text + optional details button)
           try { applyNaturalFormat(payload || {}, String(acc||'')); } catch {}
           // Fallback if content is empty/meaningless
@@ -2060,7 +2134,7 @@
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) return JSON.parse(raw);
     } catch {}
-    return { persona: 'friendly', lang: 'de-DE', voice: 'auto', streaming: true, tts: false, rememberStyle: false, userColor:'#e6f7ff', aiColor:'#efeaff', style:'balanced', bullets:5, logic:'balanced', format:'structured', autonomy: 0, ethics:'default', allowNet:true, activeSubkis:[] };
+    return { persona: 'friendly', lang: 'de-DE', voice: 'auto', streaming: true, tts: false, rememberStyle: false, userColor:'#e6f7ff', aiColor:'#efeaff', style:'balanced', bullets:5, logic:'balanced', format:'structured', autonomy: 0, ethics:'default', allowNet:true, activeSubkis:[], webAlwaysOn: true };  // webAlwaysOn: true = Web-Suche immer aktiv
   }
   function saveSettings() {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(settings)); } catch {}
@@ -2286,11 +2360,89 @@
     try{ const raw = localStorage.getItem(CONVS_KEY); if(raw) return JSON.parse(raw); }catch{}
     return [];
   }
-  function saveConvs(){ try{ localStorage.setItem(CONVS_KEY, JSON.stringify(convs)); }catch{} }
+  function saveConvs(){ 
+    try{ 
+      localStorage.setItem(CONVS_KEY, JSON.stringify(convs)); 
+      window.convs = convs; // Keep window.convs in sync
+    }catch{} 
+  }
+  
+  // Auto-Cleanup: Lösche lokale Conversations älter als 7 Tage
+  function cleanupOldLocalConversations() {
+    const MAX_AGE = 7 * 24 * 60 * 60 * 1000; // 7 Tage in ms
+    const now = Date.now();
+    let cleaned = 0;
+    
+    convs = convs.filter(c => {
+      // Server-Conversations immer behalten
+      if (c.id.startsWith('srv-')) return true;
+      
+      // Neue lokale Conversations behalten
+      const age = now - (c.updatedAt || c.createdAt || 0);
+      if (age < MAX_AGE) return true;
+      
+      // Alte lokale Conversations löschen
+      console.log(`🗑️ Cleanup: Lösche alte Conversation: ${c.title} (${Math.round(age/1000/60/60/24)} Tage alt)`);
+      try{ localStorage.removeItem(CONV_PREFIX + c.id); }catch{}
+      try{ localStorage.removeItem('kiana.conv.server.' + c.id); }catch{}
+      cleaned++;
+      return false;
+    });
+    
+    if (cleaned > 0) {
+      console.log(`✅ ${cleaned} alte lokale Conversations gelöscht`);
+      saveConvs();
+    }
+  }
   function loadActiveConv(){ try{ return localStorage.getItem(ACTIVE_KEY) || ''; }catch{ return ''; } }
   function saveActiveConv(){ try{ localStorage.setItem(ACTIVE_KEY, activeConv); }catch{} }
-  function loadMessages(id){ try{ const raw = localStorage.getItem(CONV_PREFIX+id); return raw? JSON.parse(raw): []; }catch{ return []; } }
-  function saveMessages(id, msgs){ try{ localStorage.setItem(CONV_PREFIX+id, JSON.stringify(msgs)); }catch{} }
+  function loadMessages(id){ 
+    try{ 
+      const raw = localStorage.getItem(CONV_PREFIX+id); 
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    }catch{ 
+      return []; 
+    } 
+  }
+  function saveMessages(id, msgs){ 
+    try{ 
+      localStorage.setItem(CONV_PREFIX+id, JSON.stringify(msgs)); 
+      // Sync to server if logged in
+      if (isAuth && msgs.length > 0) {
+        syncMessagesToServer(id, msgs).catch(() => {}); 
+      }
+    }catch{} 
+  }
+  async function syncMessagesToServer(localId, msgs){
+    const sid = getServerConvId(localId);
+    if (!sid) return;
+    
+    // Get last synced message timestamp
+    const lastSyncKey = 'kiana.conv.lastsync.' + localId;
+    const lastSync = parseInt(localStorage.getItem(lastSyncKey) || '0', 10);
+    
+    // Only sync new messages (after lastSync timestamp)
+    const newMsgs = msgs.filter(m => m.ts > lastSync);
+    if (newMsgs.length === 0) return;
+    
+    // Send each new message to server
+    for (const msg of newMsgs) {
+      try {
+        await fetch(`/api/chat/conversations/${sid}/messages`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ role: msg.role, text: msg.text })
+        });
+      } catch {}
+    }
+    
+    // Update last sync timestamp
+    const latestTs = Math.max(...newMsgs.map(m => m.ts));
+    localStorage.setItem(lastSyncKey, String(latestTs));
+  }
   function loadConvPrefs(id){ try{ const raw = localStorage.getItem(PREF_PREFIX+id); return raw? JSON.parse(raw): null; }catch{ return null; } }
   function saveConvPrefs(id, prefs){ try{ localStorage.setItem(PREF_PREFIX+id, JSON.stringify(prefs||{})); }catch{} }
   function createConversation(title){
@@ -2299,6 +2451,133 @@
     convs.unshift({ id, title: t, createdAt: Date.now(), updatedAt: Date.now() });
     saveConvs(); saveMessages(id, []);
     return id;
+  }
+
+  async function createAndActivateConversation(title) {
+    // Create locally
+    const freshId = createConversation(title);
+    setActiveConversation(freshId);
+    
+    // Create on server if logged in
+    if (await isLoggedIn()) {
+      try {
+        const serverConvId = await ensureServerConversation();
+        console.log('✅ New conversation created on server:', serverConvId);
+        // Refresh list to show server-persisted conversation
+        renderConversationList();
+      } catch (e) {
+        console.error('Failed to create server conversation:', e);
+      }
+    }
+    
+    return freshId;
+  }
+
+  // sendMessage function for HTML access
+  async function sendMessage() {
+    const input = document.getElementById('messageInput');
+    if (!input) return;
+    
+    const text = input.value.trim();
+    if (!text) return;
+    
+    console.log('📤 sendMessage called with:', text);
+    
+    // Clear input
+    input.value = '';
+    try { input.style.height = 'auto'; } catch {}
+    
+    // Ensure we have an active conversation
+    // Also create a fresh conversation if the welcome screen is visible
+    const hasWelcome = !!document.getElementById('welcomeScreen');
+    if (hasWelcome || !activeConv || !convs.find(c => c.id === activeConv)) {
+      console.log('📝 No active conversation, creating new one...');
+      await createAndActivateConversation();
+    }
+
+    // Ensure server conversation exists if logged in BEFORE adding messages
+    let serverConvId = null;
+    if (await isLoggedIn()) {
+      try { 
+        serverConvId = await ensureServerConversation(); 
+        console.log('🔗 Server conversation ready:', serverConvId);
+      } catch (e) {
+        console.error('Failed to ensure server conversation:', e);
+      }
+    }
+
+    appendMsg('user', text);
+    
+    // Save user message to server immediately with known serverConvId
+    if (serverConvId) {
+      saveMessageToServer('user', text, serverConvId);
+    }
+    
+    autoScroll = true;
+    scrollToBottom(true);
+    stopSpeaking();
+
+    // Send to AI - force non-streaming for now
+    console.log('🤖 Sending to AI...');
+    try {
+      await sendOnce(text, '', serverConvId);
+      console.log('✅ AI request completed');
+    } catch (e) {
+      console.error('❌ AI request failed:', e);
+    }
+  }
+
+  // Export for HTML access
+  window.createAndActivateConversation = createAndActivateConversation;
+  window.isLoggedIn = isLoggedIn;
+  window.sendMessage = sendMessage;
+  window.sendOnce = sendOnce;
+  window.sendStream = sendStream;
+  window.settings = settings;
+  
+  // Export dynamic getters for current state
+  Object.defineProperty(window, 'activeConv', {
+    get: () => activeConv,
+    set: (val) => { activeConv = val; }
+  });
+  Object.defineProperty(window, 'convs', {
+    get: () => convs
+  });
+
+  async function saveMessageToServer(role, text, explicitServerConvId = null) {
+    try {
+      if (!await isLoggedIn()) {
+        console.log('🔒 Not logged in, skipping server save');
+        return;
+      }
+      
+      const serverConvId = explicitServerConvId || getServerConvId(activeConv);
+      if (!serverConvId) {
+        console.log('❌ No server conversation ID found for:', activeConv, 'explicit:', explicitServerConvId);
+        return;
+      }
+      
+      console.log(`🚀 Saving message to server: conv=${serverConvId}, role=${role}`);
+      
+      const response = await fetch(`/api/chat/conversations/${serverConvId}/messages`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ role, text })
+      });
+      
+      if (!response.ok) {
+        console.error(`❌ Server save failed: ${response.status} ${response.statusText}`);
+        const errorText = await response.text();
+        console.error('Error details:', errorText);
+        return;
+      }
+      
+      const result = await response.json();
+      console.log(`💾 Message saved to server: ${role} -> ${text.slice(0, 50)}...`, result);
+    } catch (e) {
+      console.error('❌ Failed to save message to server:', e);
+    }
   }
   async function deleteConversation(id){
     // If this conversation is linked to a server-side conversation, delete there too
@@ -2319,7 +2598,7 @@
     const c = convs.find(c => c.id === id); if (!c) return;
     c.title = title || c.title; c.updatedAt = Date.now(); saveConvs(); renderConversationList();
   }
-  function setActiveConversation(id){ activeConv = id; saveActiveConv(); renderConversationList(); renderActiveConversation(); document.body.classList.remove('show-sidebar');
+  function setActiveConversation(id){ activeConv = id; saveActiveConv(); renderConversationList(); renderActiveConversation(); try{ document.body?.classList?.remove('show-sidebar'); }catch{};
     // Wende per‑Unterhaltung Voreinstellungen an (Style/Bullets)
     try{
       const p = loadConvPrefs(activeConv);
@@ -2339,10 +2618,54 @@
       c.title = base || 'Unterhaltung'; c.updatedAt = Date.now(); saveConvs();
     }
   }
-  function renderConversationList(){
-    if (!convListEl) return;
+  function renderConversationList(folderFilter){
+    const convListEl = document.getElementById('convList'); // Get fresh reference
+    if (!convListEl) {
+      console.warn('convList element not found');
+      return;
+    }
+    // Determine active folder filter if not provided
+    const activeFolder = (typeof folderFilter !== 'undefined')
+      ? folderFilter
+      : (window.FoldersManager && window.FoldersManager.state ? window.FoldersManager.state.activeFolderId : null);
+    // Build filtered list (server items may carry folder_id)
+    const filtered = convs.filter(c => {
+      if (activeFolder === null || activeFolder === undefined || activeFolder === 'all') return true;
+      if (activeFolder === 'no-folder') return (c.folder_id === null || c.folder_id === undefined);
+      const af = Number(activeFolder);
+      const cf = (c.folder_id === null || c.folder_id === undefined) ? null : Number(c.folder_id);
+      return cf !== null && af === cf;
+    });
+
     convListEl.innerHTML = '';
-    convs.forEach(c => {
+    // Quick action: Neue Unterhaltung
+    const newBtn = document.createElement('div');
+    newBtn.className = 'conv-item conv-item--new';
+    newBtn.id = 'newConversationBtn';
+    newBtn.innerHTML = '<span class="name">＋ Neue Unterhaltung</span>';
+    newBtn.addEventListener('click', async () => {
+      try {
+        await createAndActivateConversation();
+      } catch (e) {
+        console.error('Failed to create conversation:', e);
+      }
+    });
+    convListEl.appendChild(newBtn);
+
+    // Add simple folder create button if not exists
+    if (!document.getElementById('simpleFolderBtn')) {
+      const folderBtn = document.createElement('div');
+      folderBtn.id = 'simpleFolderBtn';
+      folderBtn.className = 'conv-item conv-item--new';
+      folderBtn.innerHTML = '<span class="name">📁 Neuer Ordner</span>';
+      folderBtn.addEventListener('click', () => {
+        const name = prompt('Ordner-Name:');
+        if (name) window.FoldersManager?.createFolder(name);
+      });
+      convListEl.appendChild(folderBtn);
+    }
+
+    filtered.forEach(c => {
       const li = document.createElement('li'); li.className = 'conv-item' + (c.id===activeConv?' active':''); li.dataset.id = c.id;
       const sel = document.createElement('input'); sel.type='checkbox'; sel.className='conv-select'; sel.title='Auswählen'; sel.checked = selectedConvs.has(c.id);
       const icon = document.createElement('div'); icon.className='icon'; icon.textContent='💬';
@@ -2359,59 +2682,288 @@
         if (sel.checked) selectedConvs.add(c.id); else selectedConvs.delete(c.id);
       });
       btnEdit.addEventListener('click', (e)=>{ e.stopPropagation(); const t = prompt('Neuer Titel:', c.title) || c.title; renameConversation(c.id, t); });
-      btnDel.addEventListener('click', (e)=>{ e.stopPropagation(); if (confirm('Unterhaltung löschen?')) deleteConversation(c.id); });
+      btnDel.addEventListener('click', async (e)=>{ e.stopPropagation(); if (confirm('Unterhaltung löschen?')) await deleteConversation(c.id); });
     });
   }
-  function renderActiveConversation(){
-    if (!chatEl) return;
+  async function renderActiveConversation(){
+    const chatEl = document.getElementById('messagesArea'); // Get fresh reference
+    if (!chatEl) {
+      console.warn('messagesArea element not found');
+      return;
+    }
     chatEl.innerHTML = '';
-    const msgs = loadMessages(activeConv);
-    msgs.forEach(m => { 
+    
+    // SERVER-FIRST APPROACH: Immer erst Server probieren (wenn eingeloggt)
+    if (await isLoggedIn()) {
+      const serverId = getServerConvId(activeConv);
+      console.log('🔍 Debug: activeConv =', activeConv, ', serverId =', serverId);
+      
+      if (serverId) {
+        console.log('📥 Loading messages from server (Server-First)');
+        
+        try {
+          const r = await fetch(`/api/chat/conversations/${serverId}/messages`, {credentials:'include'});
+          if (r.ok) {
+            const data = await r.json();
+            if (data.ok && Array.isArray(data.items)) {
+              console.log(`✅ Loaded ${data.items.length} messages from server`);
+              
+              // Render messages
+              data.items.forEach(m => {
+                const wrap = document.createElement('div'); 
+                wrap.className = `msg ${m.role==='user'?'me':(m.role==='system'?'system':'ai')}`; 
+                const b = document.createElement('div'); 
+                b.className='bubble'; 
+                
+                if (m.role === 'ai' || m.role === 'assistant') {
+                  b.innerHTML = formatMessage(m.text);
+                } else {
+                  b.textContent = m.text;
+                }
+                wrap.appendChild(b); 
+                chatEl.appendChild(wrap);
+              });
+              
+              // Cache locally für Offline-Fallback
+              const msgs = data.items.map(m => ({
+                role: m.role === 'ai' ? 'ai' : (m.role === 'system' ? 'system' : 'user'),
+                text: m.text,
+                ts: m.created_at || Date.now(),
+                _synced: true
+              }));
+              localStorage.setItem('kiana.conv.' + activeConv, JSON.stringify(msgs));
+              
+              scrollToBottom(false);
+              return;
+            }
+          }
+        } catch(e) {
+          console.warn('Server unavailable, using local cache:', e);
+        }
+      }
+    }
+    
+    // Fallback: Load from localStorage (offline oder kein Server-Mapping)
+    console.log('📂 Fallback: Loading from localStorage');
+    let msgs = [];
+    try {
+      const raw = localStorage.getItem('kiana.conv.' + activeConv);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        msgs = Array.isArray(parsed) ? parsed : [];
+      }
+    } catch(e) {
+      console.error('Failed to load local messages:', e);
+    }
+    
+    msgs.forEach(m => {
       const wrap = document.createElement('div'); 
       wrap.className = `msg ${m.role==='user'?'me':(m.role==='system'?'system':'ai')}`; 
       const b = document.createElement('div'); 
       b.className='bubble'; 
-      // Format AI messages, escape user messages
+      
       if (m.role === 'ai' || m.role === 'assistant') {
         b.innerHTML = formatMessage(m.text);
       } else {
         b.textContent = m.text;
       }
       wrap.appendChild(b); 
-      chatEl.appendChild(wrap); 
+      chatEl.appendChild(wrap);
     });
-    chatEl.scrollTop = chatEl.scrollHeight;
-    // Lazy-load from server if logged in and no local msgs
-    try{
-      if (msgs.length === 0 && getServerConvId(activeConv)) {
-        fetchServerMessagesInto(activeConv);
-      }
-    }catch{}
-  }
-
-  // ---------- Server sync helpers ----------
-  function getServerConvId(localId){ try{ return localStorage.getItem('kiana.conv.server.'+localId) || null; }catch{ return null; } }
-  function setServerConvId(localId, serverId){ try{ localStorage.setItem('kiana.conv.server.'+localId, String(serverId)); }catch{} }
-  async function isLoggedIn(){
-    if (isAuth) return true;
-    try{ const r = await fetch('/api/me', {credentials:'include'}); const j = await r.json(); isAuth = !!(j && j.auth); return isAuth; }catch{ return false; }
   }
   async function bootstrapAuthAndSync(){
-    if (!(await isLoggedIn())) return;
+    console.log('🔄 Checking login status...');
+    if (!(await isLoggedIn())) {
+      console.log('❌ Not logged in, skipping sync');
+      return;
+    }
+    
+    console.log('✅ Logged in, starting bootstrap & sync...');
+    
+    // Normalizer: unify server response to array
+    function normalizeConversations(api){
+      const arr = Array.isArray(api) ? api : (Array.isArray(api?.items) ? api.items : (Array.isArray(api?.conversations) ? api.conversations : []));
+      return arr.map(c => ({
+        id: String(c.id),
+        title: c.title || 'Unterhaltung',
+        updated_at: c.updated_at || 0,
+        created_at: c.created_at || 0,
+        folder_id: (typeof c.folder_id !== 'undefined' ? c.folder_id : null),
+      }));
+    }
+
+    // STEP 1: Load server conversations FIRST (wichtig für Multi-Device!)
     try{
+      console.log('📥 Loading conversations from server...');
       const r = await fetch('/api/chat/conversations', {credentials:'include'});
-      if (!r.ok) return; const j = await r.json();
-      if (!j || !j.items) return;
-      j.items.forEach(c => {
-        const lid = 'srv-'+c.id;
-        if (!convs.find(x => x.id === lid)){
-          convs.push({ id: lid, title: c.title || 'Unterhaltung', createdAt: c.created_at || Date.now(), updatedAt: c.updated_at || Date.now() });
-          saveConvs();
+      if (r.ok) {
+        const j = await r.json();
+        const arr = normalizeConversations(j);
+        console.log(`✅ Found ${arr.length} conversations on server`);
+        arr.forEach(c => {
+          const lid = String(c.id); // use real server ID
+          const existing = convs.find(x => String(x.id) === lid);
+          if (!existing){
+            convs.push({ 
+              id: lid,
+              title: c.title,
+              createdAt: (c.created_at * 1000) || Date.now(),
+              updatedAt: (c.updated_at * 1000) || Date.now(),
+              folder_id: c.folder_id,
+            });
+          } else {
+            existing.title = c.title || existing.title;
+            if (c.updated_at) existing.updatedAt = (c.updated_at * 1000);
+            if (typeof c.folder_id !== 'undefined') existing.folder_id = c.folder_id;
+          }
+          // Store mapping for local ids if needed (no-op for numeric ids)
+          try { localStorage.setItem('kiana.conv.server.'+lid, lid); } catch {}
+        });
+        saveConvs();
+        const activeFolder = (window.FoldersManager && window.FoldersManager.state) ? window.FoldersManager.state.activeFolderId : null;
+        renderConversationList(activeFolder);
+        console.log('✅ Server conversations loaded and rendered!');
+      } else {
+        console.warn('Server returned non-OK for conversations:', r.status);
+      }
+    }catch(e){
+      console.error('❌ Failed to load server conversations:', e);
+    }
+    
+    // STEP 2: Migrate existing localStorage conversations to server
+    try {
+      const toUpload = convs.filter(c => !isServerLikeId(c.id) && !getServerConvId(c.id));
+      
+      if (toUpload.length > 0) {
+        console.log(`📤 Found ${toUpload.length} local conversations to upload...`);
+        
+        for (const conv of toUpload) {
+          const msgs = loadMessages(conv.id);
+          // Skip empty or invalid conversations
+          if (!Array.isArray(msgs) || msgs.length === 0) continue;
+          
+          console.log(`  📤 Uploading: ${conv.title}`);
+          
+          // Create conversation on server
+          try {
+            const createResp = await fetch('/api/chat/conversations', {
+              method: 'POST',
+              credentials: 'include',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({title: conv.title || 'Unterhaltung'})
+            });
+            const createData = await createResp.json();
+            if (createResp.ok && createData && createData.id) {
+              const serverId = createData.id;
+              setServerConvId(conv.id, serverId);
+              
+              // Upload all messages
+              for (const msg of msgs) {
+                try {
+                  await fetch(`/api/chat/conversations/${serverId}/messages`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({role: msg.role, text: msg.text})
+                  });
+                }catch{}
+              }
+              console.log(`  ✅ Uploaded: ${conv.title}`);
+            }
+          }catch(e){
+            console.error(`  ❌ Failed to upload ${conv.title}:`, e);
+          }
         }
-        setServerConvId(lid, c.id);
+      }
+    }catch(e){
+      console.error('❌ Migration failed:', e);
+    }
+    
+    // STEP 3: Cleanup old local conversations (>7 days)
+    console.log('🗑️ Cleaning up old local conversations...');
+    cleanupOldLocalConversations();
+    
+    // STEP 4: Ensure we have at least one conversation active
+    if (convs.length === 0) {
+      console.log('📝 No conversations found, creating first one...');
+      const freshId = createConversation();
+      setActiveConversation(freshId);
+    } else if (!activeConv || !convs.find(c => c.id === activeConv)) {
+      console.log('📝 No active conversation, setting first as active...');
+      setActiveConversation(convs[0].id);
+    }
+    
+    console.log('✅ Bootstrap & sync complete!');
+    
+    // STEP 5: Start periodic memory auto-save
+    startMemoryAutoSave();
+  }
+  
+  // Memory Auto-Save System
+  let memoryAutoSaveInterval = null;
+  async function startMemoryAutoSave(){
+    if (memoryAutoSaveInterval) return; // Already running
+    
+    // Run every 5 minutes
+    memoryAutoSaveInterval = setInterval(async () => {
+      try {
+        if (!(await isLoggedIn())) return;
+        
+        // Call auto-save endpoint
+        const resp = await fetch('/api/chat/conversations/auto-save-check', {
+          method: 'POST',
+          credentials: 'include'
+        });
+        
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.saved_count > 0) {
+            console.log(`🧠 KI_ana Memory: ${data.saved_count} conversations saved to memory blocks`);
+          }
+        }
+      } catch (e) {
+        console.error('Memory auto-save failed:', e);
+      }
+    }, 5 * 60 * 1000); // 5 minutes
+    
+    // Also run once immediately after 30 seconds
+    setTimeout(async () => {
+      try {
+        const resp = await fetch('/api/chat/conversations/auto-save-check', {
+          method: 'POST',
+          credentials: 'include'
+        });
+        if (resp.ok) {
+          const data = await resp.json();
+          console.log('🧠 Initial memory check:', data);
+        }
+      } catch {}
+    }, 30000);
+  }
+  
+  async function saveCurrentConversationToMemory(){
+    // Manual save current conversation to memory
+    const serverId = getServerConvId(activeConv);
+    if (!serverId) {
+      alert('Bitte erst Nachrichten senden, damit die Unterhaltung gespeichert werden kann.');
+      return;
+    }
+    
+    try {
+      const resp = await fetch(`/api/chat/conversations/${serverId}/save-to-memory`, {
+        method: 'POST',
+        credentials: 'include'
       });
-      renderConversationList();
-    }catch{}
+      
+      if (resp.ok) {
+        const data = await resp.json();
+        alert(`✅ Als Erinnerung gespeichert!\n\nBlock ID: ${data.block_id}`);
+      } else {
+        alert('Fehler beim Speichern');
+      }
+    } catch (e) {
+      alert('Fehler: ' + e.message);
+    }
   }
   async function ensureServerConversation(){
     let sid = getServerConvId(activeConv);
@@ -2620,14 +3172,18 @@
   let syncInProgress = false;
   let syncQueue = [];
 
+  // Helper: Get token from sessionStorage or localStorage
+  function getToken() {
+    try {
+      return sessionStorage.getItem('ki_token') || localStorage.getItem('ki_token') || '';
+    } catch {
+      return '';
+    }
+  }
+  
   // Check if user is logged in
   function isLoggedIn() {
-    try {
-      const token = localStorage.getItem('ki_token');
-      return !!token;
-    } catch {
-      return false;
-    }
+    return !!getToken();
   }
 
   // Save messages: Server-first, localStorage as backup
@@ -2642,11 +3198,11 @@
       for (const msg of messages) {
         if (msg._synced) continue; // Already synced
         
-        await fetch(`/api/conversations/${serverConvId}/messages`, {
+        await fetch(`/api/chat/conversations/${serverConvId}/messages`, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
+            'Authorization': 'Bearer ' + getToken()
           },
           credentials: 'include',
           body: JSON.stringify({
@@ -2674,7 +3230,7 @@
       const serverConvId = getServerConvId(convId);
       if (!serverConvId) return null;
 
-      const r = await fetch(`/api/conversations/${serverConvId}/messages`, {
+      const r = await fetch(`/api/chat/conversations/${serverConvId}/messages`, {
         headers: {
           'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
         },
@@ -2797,78 +3353,30 @@
     try {
       const serverConvId = getServerConvId(convId);
       if (!serverConvId) return false;
-
-      const r = await fetch(`/api/folders/${folderId}/conversations`, {
+      
+      const r = await fetch('/api/folders/move', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + (localStorage.getItem('ki_token') || '')
-        },
+        headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ conversation_ids: [serverConvId] })
+        body: JSON.stringify({ conv_ids: [serverConvId], folder_id: folderId })
       });
       
-      return r.ok;
+      if (r.ok) {
+        // Update local conversation folder_id
+        const conv = convs.find(c => c.id === convId);
+        if (conv) {
+          conv.folder_id = folderId;
+          saveConvs();
+          renderConversationList();
+        }
+        return true;
+      }
     } catch (e) {
-      console.warn('Failed to move conversation:', e);
-      return false;
-    }
-  }
-
-  function renderFolders() {
-    const sidebar = document.querySelector('.sidebar');
-    if (!sidebar || folders.length === 0) return;
-    
-    // Check if folders section already exists
-    let foldersSection = sidebar.querySelector('.folders-section');
-    if (!foldersSection) {
-      foldersSection = document.createElement('div');
-      foldersSection.className = 'folders-section';
-      sidebar.insertBefore(foldersSection, sidebar.querySelector('.conversations-section'));
+      console.error('Failed to move conversation:', e);
     }
     
-    const foldersHTML = folders.map(f => `
-      <div class="folder-item" data-folder-id="${f.id}">
-        <span class="folder-icon">${f.icon}</span>
-        <span class="folder-name">${escapeHtml(f.name)}</span>
-        <span class="folder-count">${f.conversation_count || 0}</span>
-      </div>
-    `).join('');
-    
-    foldersSection.innerHTML = `
-      <div class="folders-header">
-        <h3>Ordner</h3>
-        <button class="btn-icon" onclick="createFolderDialog()" title="Neuer Ordner">+</button>
-      </div>
-      <div class="folders-list">${foldersHTML}</div>
-    `;
-    
-    // Add click handlers
-    foldersSection.querySelectorAll('.folder-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const folderId = parseInt(item.dataset.folderId);
-        filterByFolder(folderId);
-      });
-    });
+    return false;
   }
 
-  function filterByFolder(folderId) {
-    currentFolder = folderId;
-    renderConversationList();
-  }
-
-  function createFolderDialog() {
-    const name = prompt('Ordner-Name:');
-    if (!name) return;
-    
-    const icon = prompt('Icon (Emoji):', '📁') || '📁';
-    const color = prompt('Farbe (Hex):', '#667eea') || '#667eea';
-    
-    createFolder(name, icon, color);
-  }
-
-  // Initialize folders on login
-  if (isLoggedIn()) {
-    loadFolders();
-  }
+  // Folder system is now handled by folders.js
 })();

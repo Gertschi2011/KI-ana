@@ -1,0 +1,17 @@
+{
+  "content": "{\"created_at\": \"2025-11-04T17:20:05.399994+00:00\", \"last_active_at\": \"2025-11-05T09:21:59.506339+00:00\", \"mood\": \"neutral\", \"goals\": [], \"recent_topics\": [\"Weißt du wie spät es ist?\", \"Guten Morgen Kiana\", \"Weißt du wie spät es ist?\", \"Guten Morgen Kiana\", \"Weißt du wie spät es ist\", \"Super danke für die Antwort\", \"Was weißt du über die Serie The Studio?\", \"Weißt du wer du bist?\", \"Wie heißt du?\", \"Wie heißt du?\", \"Cool 😎Was kannst du?\", \"Wie spät ist es?\", \"Was weißt du über die Serie The Studio?\", \"Wie heißt du?\", \"Hallo kiana 😎 was weißt du über die Serie The Studio?\"], \"cycles\": 15, \"learning_buffer\": [], \"pending_followup\": null}",
+  "hash": "cca59ab3d60d7a069c94e66229271d50abe8e7a79f7bd183b21d3588d001375c",
+  "id": "BLK_1762334519_bvwwx6",
+  "meta": {
+    "ts": 1762334519
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "eAAhFOTntgt1rw6MEwDBE8rPs90H5ll/PG0YoV/aOwMO/Jx7T8ROIPhYTzVClXGOIMd6m7Otk7SmyBVoJZ2rBQ==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "kiana_state"
+  ],
+  "title": "KI_ana Self-State",
+  "ts": 1762334519,
+  "url": ""
+}

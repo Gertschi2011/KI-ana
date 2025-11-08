@@ -61,18 +61,23 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       OLLAMA_MODEL_DEFAULT: ${OLLAMA_MODEL_DEFAULT}
       OLLAMA_HOST: ${OLLAMA_HOST}
+      # Provide variables used by netapi.core.reasoner
+      OLLAMA_BASE_URL: ${OLLAMA_HOST}
+      OLLAMA_MODEL: ${OLLAMA_MODEL_DEFAULT}
       EMERGENCY_OVERRIDE_SHA256: ${EMERGENCY_OVERRIDE_SHA256}
       KI_ROOT: /home/kiana/ki_ana
     volumes:
-      - /home/kiana/ki_ana/memory:/home/kiana/ki_ana/memory:ro
+      - /home/kiana/ki_ana/memory:/home/kiana/ki_ana/memory
       - /home/kiana/ki_ana/system:/home/kiana/ki_ana/system:ro
-      - /home/kiana/ki_ana/data:/home/kiana/ki_ana/data:ro
+      - /home/kiana/ki_ana/data:/home/kiana/ki_ana/data
     depends_on:
       - postgres
       - redis
       - qdrant
       - minio
     networks: [kiana]
+    ports:
+      - "8000:8000"
 
   worker:
     build: ./backend

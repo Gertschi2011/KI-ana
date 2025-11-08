@@ -101,34 +101,42 @@ def ensure_columns() -> None:
         "daily_quota": "INTEGER DEFAULT 20",
         "quota_reset_at": "INTEGER DEFAULT 0",
     }
+    # Use SQLAlchemy inspector for database-agnostic table/column checks
+    from sqlalchemy import inspect
+    inspector = inspect(engine)
+    
+    # Check if users table exists
+    if 'users' not in inspector.get_table_names():
+        return
+    
     with engine.begin() as conn:
-        # If users table doesn't exist yet, init_db will create it later.
-        res = conn.execute(
-            text("SELECT name FROM sqlite_master WHERE type='table' AND name='users'")
-        ).fetchone()
-        if not res:
-            return
-
-        cols = conn.execute(text("PRAGMA table_info(users)")).fetchall()
-        have = {c[1] for c in cols}  # column name is at index 1
+        # Get existing columns
+        columns = inspector.get_columns('users')
+        have = {c['name'] for c in columns}
+        
         for col, ddl in wanted.items():
             if col not in have:
                 conn.execute(text(f"ALTER TABLE users ADD COLUMN {col} {ddl}"))
 
-        # Ensure api_usage table exists (for per-day counters)
-        res2 = conn.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='api_usage'"))
-        if not res2.fetchone():
-            conn.execute(text(
-                """
-                CREATE TABLE api_usage (
-                  id INTEGER PRIMARY KEY AUTOINCREMENT,
-                  user_id INTEGER NOT NULL,
-                  date TEXT NOT NULL,
-                  count INTEGER NOT NULL DEFAULT 0
-                );
-                """
-            ))
-            conn.execute(text("CREATE UNIQUE INDEX idx_api_usage_user_date ON api_usage(user_id, date)"))
+    # Ensure api_usage table exists (for per-day counters)
+    if 'api_usage' not in inspector.get_table_names():
+        try:
+            with engine.begin() as conn:
+                # Use SERIAL for PostgreSQL compatibility (AUTO_INCREMENT equivalent)
+                conn.execute(text(
+                    """
+                    CREATE TABLE IF NOT EXISTS api_usage (
+                      id SERIAL PRIMARY KEY,
+                      user_id INTEGER NOT NULL,
+                      date TEXT NOT NULL,
+                      count INTEGER NOT NULL DEFAULT 0
+                    );
+                    """
+                ))
+                conn.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS idx_api_usage_user_date ON api_usage(user_id, date)"))
+        except Exception as e:
+            # Table might already exist from a parallel worker, that's OK
+            pass
 
 
 def ensure_knowledge_indexes() -> None:
@@ -141,11 +149,15 @@ def ensure_knowledge_indexes() -> None:
     try:
         if not DB_URL.startswith("sqlite:"):
             return
+        
+        from sqlalchemy import inspect
+        inspector = inspect(engine)
+        
+        # Check table exists
+        if 'knowledge_blocks' not in inspector.get_table_names():
+            return
+        
         with engine.begin() as conn:
-            # Check table exists
-            res = conn.execute(text("SELECT name FROM sqlite_master WHERE type='table' AND name='knowledge_blocks'"))
-            if not res.fetchone():
-                return
             # Discover existing indexes
             idx_rows = conn.execute(text("PRAGMA index_list('knowledge_blocks')")).fetchall()
             have_idx = {str(r[1]) for r in idx_rows} if idx_rows else set()

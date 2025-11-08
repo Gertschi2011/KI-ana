@@ -86,15 +86,18 @@ async def get_tree(
     Returns hierarchical structure of all topics with counts.
     """
     index = _load_index()
-    tree = index.get("tree", {})
+    tree_obj = index.get("tree", {})
     stats = index.get("stats", {})
+    
+    # Frontend expects tree object with children, not a list!
+    # Keep the original tree structure
     
     # TODO: Implement depth limiting if max_depth is set
     # TODO: Strip blocks if include_blocks is False
     
     return {
         "ok": True,
-        "tree": tree,
+        "tree": tree_obj,  # Return the full tree object, not just children
         "stats": stats
     }
 
@@ -127,20 +130,56 @@ async def list_blocks(
             detail=f"Path not found: {path}"
         )
     
-    # Collect all blocks from this node and children
+    # Load actual blocks from files
+    import os
+    KI_ROOT = Path(os.getenv("KI_ROOT", "/home/kiana/ki_ana"))
+    blocks_dir = KI_ROOT / "data" / "blocks"
+    
     blocks = []
+    if blocks_dir.exists():
+        for block_file in blocks_dir.rglob("*.json"):
+            try:
+                with open(block_file, 'r', encoding='utf-8') as f:
+                    block_data = json.load(f)
+                
+                # Check if block matches path
+                block_topics_path = block_data.get("topics_path", [])
+                if not isinstance(block_topics_path, list):
+                    continue
+                
+                # Match path: check if block's path starts with requested path
+                if len(block_topics_path) >= len(path_parts):
+                    matches = all(
+                        block_topics_path[i].lower() == path_parts[i].lower()
+                        for i in range(len(path_parts))
+                    )
+                    
+                    if matches:
+                        blocks.append({
+                            "id": block_file.stem,
+                            "title": block_data.get("title", "Untitled"),
+                            "timestamp": block_data.get("timestamp", block_data.get("created", 0)),
+                            "trust": block_data.get("trust", block_data.get("trust_score", 5)),
+                            "source": block_data.get("source", ""),
+                            "topics_path": block_topics_path
+                        })
+            except Exception:
+                continue
     
-    def collect_blocks(n: Dict[str, Any]):
-        """Recursively collect blocks"""
-        # Blocks are stored at leaf nodes in the index file
-        # We need to load them from the original tree structure
-        nonlocal blocks
-        # For now, we'll return node info
-        # Real implementation would load actual block data
-        pass
+    # Sort blocks
+    if sort_by == "timestamp":
+        blocks.sort(key=lambda x: x.get("timestamp", 0), reverse=(order == "desc"))
+    elif sort_by == "trust":
+        blocks.sort(key=lambda x: x.get("trust", 0), reverse=(order == "desc"))
+    elif sort_by == "title":
+        blocks.sort(key=lambda x: x.get("title", "").lower(), reverse=(order == "desc"))
     
-    # Placeholder: Return node info
-    # In real implementation, blocks would be loaded from files
+    # Pagination
+    total = len(blocks)
+    start = (page - 1) * per_page
+    end = start + per_page
+    paginated_blocks = blocks[start:end]
+    
     return {
         "ok": True,
         "path": path_parts,
@@ -148,14 +187,14 @@ async def list_blocks(
             "name": node["name"],
             "path": node["path"],
             "count": node["count"],
-            "blocks_count": node.get("blocks_count", 0)
+            "blocks_count": len(blocks)
         },
-        "blocks": [],  # Would contain actual block data
+        "blocks": paginated_blocks,
         "pagination": {
             "page": page,
             "per_page": per_page,
-            "total": node.get("blocks_count", 0),
-            "total_pages": (node.get("blocks_count", 0) + per_page - 1) // per_page
+            "total": total,
+            "total_pages": (total + per_page - 1) // per_page
         }
     }
 

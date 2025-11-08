@@ -1,0 +1,28 @@
+{
+  "content": "Gespräch mit 3 Nachrichten:\n\nThemen: kiana",
+  "hash": "e3388a76a888243084f9795da644a4e17d74da803f171277c2b177ced11d0b9a",
+  "id": "BLK_1762260611_tgh2s9",
+  "meta": {
+    "ai_message_count": 3,
+    "conversation_id": 19,
+    "ended_at": 1762260244,
+    "message_count": 6,
+    "participant": "user_2",
+    "source": "conversation_auto_save",
+    "started_at": 1762260221,
+    "user_id": 2,
+    "user_message_count": 3
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "Wd9JJnFMh4Ht5rvNYD1DVdHsD/R2MwKtuTDJaxhzHf56Hby65W/LKaXX9xhwPJNONhUkRyHiT8qSGY23qizoBw==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "conversation",
+    "dialog",
+    "memory",
+    "kiana"
+  ],
+  "title": "Hier ist eine kurze Antwort. Wenn du willst, gehe ich",
+  "ts": 1762260611,
+  "url": ""
+}

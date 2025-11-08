@@ -1,0 +1,151 @@
+{
+  "created_at": "2025-11-04T17:20:05.399994+00:00",
+  "last_active_at": "2025-11-08T19:39:03.306130+00:00",
+  "mood": "ruhig / müde",
+  "energy": 17,
+  "rest": 0.6700000000000002,
+  "curiosity": 1.0,
+  "connection": 0.5,
+  "needs": {
+    "curiosity": 1.0,
+    "connection": 0.5,
+    "rest": 0.5
+  },
+  "goals": [],
+  "recent_topics": [
+    "Ein Zebra",
+    "Allgemein/ist ein Zebra",
+    "Hallo Kiana",
+    "Den Jupiter",
+    "Alles",
+    "Allgemein/Alles",
+    "Hallo Kiana",
+    "Die Erde Sagen",
+    "Allgemein/die Erde sagen",
+    "Die Erde",
+    "Hallo Kiana",
+    "Die Erde",
+    "Allgemein/über die Erde",
+    "Die Eckdaten.",
+    "Allgemein/Die Eckdaten.",
+    "Hallo Kiana",
+    "Erzähl mir eine Geschichte",
+    "Allgemein/mir eine Geschichte",
+    "Hallo",
+    "Die Erde"
+  ],
+  "cycles": 114,
+  "learning_buffer": [
+    {
+      "topic": "unbekanntes Thema",
+      "fact": "Hallo Kiana was weißt du über die Erde?",
+      "source": "user",
+      "created_at": "2025-11-05T16:16:06.027834+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "unbekanntes Thema",
+      "fact": "Hallo",
+      "source": "user",
+      "created_at": "2025-11-08T08:44:54.302394+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "unbekanntes Thema",
+      "fact": "Hilf mir bei einer Aufgabe",
+      "source": "user",
+      "created_at": "2025-11-08T11:15:21.971838+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "Ein Zebra",
+      "fact": "Lass uns einfach plaudern",
+      "source": "user",
+      "created_at": "2025-11-08T11:19:13.502027+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "unbekanntes Thema",
+      "fact": "Hallo",
+      "source": "user",
+      "created_at": "2025-11-08T12:05:25.384365+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "Den Jupiter",
+      "fact": "Was weißt du über den Jupiter?",
+      "source": "user",
+      "created_at": "2025-11-08T12:13:38.653731+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "Den Jupiter",
+      "fact": "Hallo",
+      "source": "user",
+      "created_at": "2025-11-08T12:30:46.773451+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "Den Jupiter",
+      "fact": "was weißt du?",
+      "source": "user",
+      "created_at": "2025-11-08T12:31:20.852954+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "unbekanntes Thema",
+      "fact": "Hallo",
+      "source": "user",
+      "created_at": "2025-11-08T12:40:24.614399+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "unbekanntes Thema",
+      "fact": "Hallo Kiana",
+      "source": "user",
+      "created_at": "2025-11-08T18:21:46.932171+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "Die Erde",
+      "fact": "Ok was weißt du über die Erde?",
+      "source": "user",
+      "created_at": "2025-11-08T18:22:23.184836+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "Die Erde",
+      "fact": "Hallo Kiana",
+      "source": "user",
+      "created_at": "2025-11-08T18:49:58.415254+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    },
+    {
+      "topic": "unbekanntes Thema",
+      "fact": "Hallo",
+      "source": "user",
+      "created_at": "2025-11-08T19:10:25.252624+00:00",
+      "confidence": 0.5,
+      "uses": 0
+    }
+  ],
+  "pending_followup": null,
+  "pending_learning": null,
+  "mode_explore": false,
+  "last_sleep_at": null,
+  "is_sleeping": false,
+  "last_user_tone": "neutral",
+  "user_style_preference": null
+}

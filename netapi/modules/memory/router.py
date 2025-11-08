@@ -165,6 +165,32 @@ def search_memory(q: str, limit: int = 10):
     except Exception as e:
         raise HTTPException(500, f"memory search failed: {e}")
 
+# Minimal JSON blocks viewer (filesystem) for quick UI/debug
+@router.get("/blocks")
+def list_blocks_fs():
+    try:
+        root = Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana")))
+        blk_dir = root / "memory" / "long_term" / "blocks"
+        files = sorted(blk_dir.glob("*.json"))
+        items = []
+        for f in files:
+            try:
+                data = json.loads(f.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            items.append({
+                "file": f.name,
+                "id": data.get("id") or f.stem,
+                "topic": data.get("topic") or data.get("title"),
+                "source": data.get("source", ""),
+                "timestamp": data.get("timestamp") or int(f.stat().st_mtime),
+                "summary": (data.get("content") or data.get("text") or "")[:200],
+                "tags": data.get("tags") or [],
+            })
+        return {"ok": True, "count": len(items), "items": items[:500]}
+    except Exception as e:
+        raise HTTPException(500, f"list blocks failed: {e}")
+
 # -----------------------
 # knowledge_blocks viewer API (SQLite-backed)
 # -----------------------

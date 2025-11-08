@@ -1,0 +1,74 @@
+{
+  "response_id": "7a708a9a17fe",
+  "query": "What is Python?",
+  "response": "Python is a high-level programming language.",
+  "sources": [
+    {
+      "source_id": "block_42",
+      "source_type": "knowledge_block",
+      "content_snippet": "Python is a programming language...",
+      "trust_score": 0.95,
+      "timestamp": 1762157043.298945,
+      "url": "internal://block/42",
+      "metadata": {}
+    },
+    {
+      "source_id": "web_1",
+      "source_type": "web",
+      "content_snippet": "Python.org official documentation",
+      "trust_score": 1.0,
+      "timestamp": 1762157043.298948,
+      "url": "https://python.org",
+      "metadata": {}
+    }
+  ],
+  "reasoning_steps": [
+    {
+      "step_number": 1,
+      "action": "search_knowledge",
+      "description": "Searched knowledge base for 'Python'",
+      "result": "Found 2 relevant blocks",
+      "duration_ms": 50,
+      "metadata": {}
+    },
+    {
+      "step_number": 2,
+      "action": "synthesize",
+      "description": "Synthesized answer from sources",
+      "result": "Generated response",
+      "duration_ms": 120,
+      "metadata": {}
+    }
+  ],
+  "tools_used": [
+    {
+      "tool_name": "vector_search",
+      "input": "Python programming",
+      "output": "[block_42, block_78]",
+      "duration_ms": 35,
+      "timestamp": 1762157043.298954
+    }
+  ],
+  "submind_contributions": {
+    "researcher_1": [
+      {
+        "type": "fact_check",
+        "data": {
+          "verified": true,
+          "sources": 2
+        },
+        "timestamp": 1762157043.298955
+      }
+    ]
+  },
+  "knowledge_blocks": [
+    42,
+    78
+  ],
+  "confidence_score": 0.89,
+  "avg_trust_score": 0.975,
+  "model_used": "llama3.2",
+  "temperature": 0.7,
+  "created_at": 1762157043.2989433,
+  "total_duration_ms": 250
+}

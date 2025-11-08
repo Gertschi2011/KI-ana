@@ -2,8 +2,11 @@
 <html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>TimeFlow Manager – KI_ana</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>⏱️ TimeFlow Manager</title>
   <link rel="icon" href="/static/favicon.ico">
   <link href="/static/styles.css" rel="stylesheet">
   <link href="/static/chat.css" rel="stylesheet">
@@ -216,6 +219,30 @@
     // Initial load
     refreshData();
   </script>
-  <script src="/static/nav.js"></script>
+
+  <!-- Load navigation -->
+  <script>
+  (function(){
+    try{
+      fetch('/static/nav.html?v=' + Date.now())
+        .then(r=>r.text())
+        .then(html=>{
+          const n=document.getElementById('nav');
+          if(!n) return;
+          n.innerHTML=html;
+          try{
+            n.querySelectorAll('script').forEach(old=>{
+              const s=document.createElement('script');
+              if(old.src){ s.src = old.src + (old.src.includes('?')?'&':'?') + 'v=' + Date.now(); }
+              else { s.textContent = old.textContent || ''; }
+              document.body.appendChild(s);
+              old.remove();
+            });
+          }catch{}
+        })
+        .catch(()=>{});
+    }catch{}
+  })();
+  </script>
 </body>
 </html>

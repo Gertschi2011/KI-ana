@@ -1,7 +1,7 @@
 {
   "block_id": 11,
   "content_hash": "c3d0aba0c19a78dbc016800de3965238853f585769b1cd24e32043c7dee1ab6c",
-  "hash": "3f01685f58b369bcfaf4407502560d516fcac08cdfca7bcdc54e56688fd4b294",
+  "hash": "7113052776e7212872accba8fae6e2f0613bfd6914009fff0ccaea528936c5ed",
   "memory_path": "/home/kiana/ki_ana/memory/long_term/c3d0aba0c19a78dbc016800de3965238853f585769b1cd24e32043c7dee1ab6c.json",
   "meta": {
     "derived_from": "/home/kiana/ki_ana/memory/long_term/2b0fba3a8449a6e7089d2e658cc54094b5175b7c52b131d4f322009d0c30a3db.json"
@@ -9,7 +9,7 @@
   "previous_hash": "7bf7837da06a45615568e2844a35a5b38ebc34857fb324a6a1c024a7e4242d76",
   "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
   "signature": "aXRwOIpf5ZKydXRrWXv7xHHF2Iqwx/oPH4SJmL+rYq6UTVW/aIgKZXJhVM8hi02YKDrIb+NgzKHzicvQ0VIRBg==",
-  "signed_at": "2025-09-21T08:13:35Z",
+  "signed_at": "2025-11-05T10:06:06Z",
   "signer_pubkey": "BPc5h+jR3VdGXle6pghTBSfDAiok+iYcwgbCuFX9+7g=",
   "source": "https://de.wikipedia.org/wiki/photosynthese",
   "timestamp": "2025-08-14T14:10:33.948423Z",

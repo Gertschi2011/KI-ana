@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Login – KI_ana</title>
-  <link rel="stylesheet" href="/static/chat.css"/>
+  <link rel="stylesheet" href="/static/chat.css?v=20251104-0720"/>
   <script defer src="/static/global_theme.js"></script>
   <style>
     main.auth{max-width:520px;margin:30px auto;padding:20px;background:#fff;border:1px solid #e5e7eb;border-radius:12px}
@@ -54,22 +57,27 @@
   f.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const fd=new FormData(f);
-    const body={ username:String(fd.get('email')||'').trim(), password:fd.get('password') };
+    const body={ username:String(fd.get('email')||'').trim(), password:fd.get('password'), remember: false };
     try{
       const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
       const j=await r.json().catch(()=>({}));
       if(!r.ok || !j || !j.token){ document.getElementById('msg').textContent = (j.detail||'Login fehlgeschlagen'); return; }
-      try{ localStorage.setItem('ki_token', j.token); }catch{}
-      // Redirect Papa/Admin users to Dashboard, others to Chat
-      try{
-        const roles = (j.user && j.user.roles) || [];
-        const isPapa = roles.some(r => ['papa','admin','creator'].includes(String(r).toLowerCase()));
-        location.href = isPapa ? '/static/dashboard.html' : '/static/chat.html';
-      }catch{
-        location.href='/static/chat.html';
-      }
+      // sessionStorage statt localStorage = Auto-Logout beim Tab-Schließen!
+      try{ sessionStorage.setItem('ki_token', j.token); }catch{}
+      // Redirect ALL users to Dashboard after login
+      console.log('🎯 Redirecting to Dashboard...');
+      window.location.replace('/static/dashboard.html?t=' + Date.now());
     }catch{ document.getElementById('msg').textContent='Netzwerkfehler'; }
   });
+  
+  // Show message if logged out due to inactivity
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('reason') === 'inactivity') {
+      document.getElementById('msg').textContent = 'Du wurdest wegen Inaktivität ausgeloggt.';
+      document.getElementById('msg').style.color = '#f59e0b'; // Orange
+    }
+  } catch {}
 })();
 </script>
 </body>

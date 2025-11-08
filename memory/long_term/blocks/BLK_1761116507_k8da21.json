@@ -3,9 +3,9 @@
   "hash": "f49021f8c84ab0c0fe8df3d25b6d5ea0dff3ac8e0bb0dd33e8b76a58675035e9",
   "id": "BLK_1761116507_k8da21",
   "meta": {},
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
-  "signature": "fCFoYwUf/TshJ4vDlyuYHRtBOKCl0cSP3GB7XOYVc3o2kjcUwOkd4wi4mHfuQY6f+ODcy4svTW23dxAnn5YKAQ==",
-  "signed_at": "2025-10-22T11:39:36Z",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "v4RKWCjX4ipYFy/eRdGMwvjtvVUCsU87zf+0bcLH7xV4g8SDKd/TRyerTl8xQMSwroNLOTEj/24PZ8AqYo4GDQ==",
+  "signed_at": "2025-11-05T10:06:07Z",
   "tags": [
     "digest",
     "web",

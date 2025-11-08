@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: We're open-sourcing the successor of Jupyter notebook\n • Hacker News: Codemaps: Understand Code, Before You Vibe It\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Syrer in Deutschland - worum es geht",
+  "hash": "9c6c69b28cdcfec73401adb53480af34b6ab51dbb2afd46a347c06738acf09cb",
+  "id": "BLK_1762285675_v7qj6u",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "dxo77nVMIBmbOUc4TjB8xTdQ5AicDtUB5WV20+FCHRclaUOPoVmxcb4dBZkrccdXVmKWVcZrAz39I+yDixfqAg==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-04 20:47",
+  "ts": 1762285675,
+  "url": ""
+}

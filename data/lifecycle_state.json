@@ -1,0 +1,16 @@
+{
+  "birth_timestamp": 1761757626,
+  "total_cycles": 3,
+  "weighted_cycles": 3.5,
+  "cycle_counts": {
+    "audit": 1,
+    "mirror": 0,
+    "dialog": 1,
+    "reflection": 1,
+    "creation": 0
+  },
+  "current_phase": "infant",
+  "last_reflection": 1761757626,
+  "diary_entries": 3,
+  "compressed_memories": 0
+}

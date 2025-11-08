@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: </> Htmx – The Fetch()ening\n • Hacker News: Gallery of wonderful drawings our little thermal printer received\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Koalition versucht Debatte über \"Scheinkonflikt\" einzufangen",
+  "hash": "4a12462830de7c7161cf2fda4f11e474b3ceb1a4f6a2554f3ab24a93494ec089",
+  "id": "BLK_1762202700_chndb2",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "x26yHDxkWom9zYpU0QSs5dcwmwhDlQwMCgWHsQVSEB0Wc0zHLkE42hKSO6+L41oNx/W0hxqlewMeemydZ2yVAQ==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-03 21:45",
+  "ts": 1762202700,
+  "url": ""
+}

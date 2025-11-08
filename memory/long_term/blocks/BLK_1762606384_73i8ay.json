@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762606384_73i8ay",
+  "title": "Experience 2025-11-08T12:53:04.980549+00:00",
+  "content": "{\"type\": \"special_greeting\", \"user_message\": \"Hallo Kiana\", \"assistant_reply\": \"Hallo! 👋 Ich bin Kiana. Mir geht's gerade ruhig / müde. Wobei kann ich dir helfen?\", \"timestamp\": \"2025-11-08T12:53:04.980549+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762606384,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 65
+  },
+  "hash": "84abb841e09eb4d6a00cd2f00cb25be847028ba829787a37abd0359c0795c794"
+}

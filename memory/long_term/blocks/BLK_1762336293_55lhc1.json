@@ -1,0 +1,18 @@
+{
+  "content": "{\"type\": \"experience\", \"user_message\": \"Wie heißt du?\", \"assistant_reply\": \"Ich heiße Kiana. Ich bin digitale Begleiterin und reflektierende KI innerhalb von KI_ana.\", \"timestamp\": \"2025-11-05T09:51:33.898116+00:00\", \"mood\": \"neutral\", \"topics\": [\"identity\"]}",
+  "hash": "e63c15634be65ceb92d3d6052efe306d4819a9b63f13ad78fc678acfcc9ed8db",
+  "id": "BLK_1762336293_55lhc1",
+  "meta": {
+    "conversation_id": 37,
+    "user_id": 2
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "6Wfafw0FUhGXO2Be2nRpl8/OXte3Ci9HXLPoIU9zFVJGCUwjkZh/8zYlRIik8xZu5JKjYOyAniUUoJknebQkDA==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "experience"
+  ],
+  "title": "Experience 2025-11-05T09:51:33.898116+00:00",
+  "ts": 1762336293,
+  "url": ""
+}

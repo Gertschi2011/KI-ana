@@ -1,0 +1,49 @@
+{
+  "skills": [
+    {
+      "id": "083a54f9ceff",
+      "spec": {
+        "name": "reverse_string",
+        "description": "Reverse a string",
+        "input_type": "str",
+        "output_type": "str",
+        "requirements": [],
+        "examples": [
+          {
+            "input": "'hello'",
+            "output": "'olleh'"
+          },
+          {
+            "input": "'world'",
+            "output": "'dlrow'"
+          }
+        ]
+      },
+      "code": "def reverse_string(input_data: str) -> str:\n    \"\"\"\n    Reverse a string\n    \n    Args:\n        input_data: Input of type str\n        \n    Returns:\n        Output of type str\n    \"\"\"\n    try:\n        # TODO: Implement reverse_string logic\n        # This is a template - needs manual implementation\n        result = input_data\n        return result\n    except Exception as e:\n        raise Exception(f\"{spec.name} failed: {e}\")\n",
+      "created_at": 1762153001.8934617,
+      "tested": true,
+      "test_passed": false,
+      "test_results": {
+        "total": 2,
+        "passed": 0,
+        "details": [
+          {
+            "input": "'hello'",
+            "expected": "'olleh'",
+            "actual": "hello",
+            "passed": false
+          },
+          {
+            "input": "'world'",
+            "expected": "'dlrow'",
+            "actual": "world",
+            "passed": false
+          }
+        ]
+      },
+      "integrated": false,
+      "error": null
+    }
+  ],
+  "updated_at": 1762153001.8938005
+}

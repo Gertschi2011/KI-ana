@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762595935_qf3x84",
+  "title": "Experience 2025-11-08T09:58:55.770444+00:00",
+  "content": "{\"type\": \"user_teaching\", \"user_message\": \"Du kannst im Internet unter https://de.wikipedia.org/wiki/Erde nachsehen.\", \"assistant_reply\": \"Danke, das hilft mir sehr. Ich merke mir 'Allgemein/über die erde' jetzt so:\\nDu kannst im Internet unter https://de.wikipedia.org/wiki/Erde nachsehen. Ich versuche mir das als kleinen Wissensblock zu merken.\", \"timestamp\": \"2025-11-08T09:58:55.770444+00:00\", \"mood\": \"verspielt\", \"topic\": \"Allgemein/über die erde\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762595935,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 61
+  },
+  "hash": "812e1bff4d8734c62be2bf3a816877b7e42c7771ecc682204aa9e213afff79ea"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762347306_bbl31h",
+  "title": "Experience 2025-11-05T12:55:06.234234+00:00",
+  "content": "{\"type\": \"experience\", \"user_message\": \"mir geht's auch gut danke 😊 Wie heißt du?\", \"assistant_reply\": \"Ich heiße Kiana. Ich bin digitale Begleiterin und reflektierende KI innerhalb von KI_ana.\", \"timestamp\": \"2025-11-05T12:55:06.234234+00:00\", \"mood\": \"verspielt\", \"topics\": [\"identity\"]}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762347306,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 45
+  },
+  "hash": "bf7b7a415fdd482896911415240781470951f2bc64bb70966facc6c4f2792eb0"
+}

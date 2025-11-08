@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Python Steering Council unanimously accepts \"PEP 810, Explicit lazy imports\"\n • Hacker News: Why We Migrated from Python to Node.js\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Der Weg zur COP30 in Belém: Was wird aus den Klimazielen?",
+  "hash": "c094d37c8dfd5f7735e063503ed053064c85298ac1595a4bce78f216eda6f096",
+  "id": "BLK_1762190096_e47qyx",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "sn7gj2OrrPV8v1WmzbpPlwc8VVpWGI4xcsV43p4ds3Q4z+nRx9frdz1Px01yutTKuab9M18mZX7pMK+vvr8kCQ==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-03 18:14",
+  "ts": 1762190096,
+  "url": ""
+}

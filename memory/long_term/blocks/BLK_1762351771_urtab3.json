@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762351771_urtab3",
+  "title": "Experience 2025-11-05T14:09:31.731446+00:00",
+  "content": "{\"type\": \"special_greeting\", \"user_message\": \"Hallo\", \"assistant_reply\": \"Hallo! 👋 Ich bin Kiana. Mir geht's gerade verspielt. Wobei kann ich dir helfen?\", \"timestamp\": \"2025-11-05T14:09:31.731446+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762351771,
+  "meta": {
+    "user_id": 2,
+    "conversation_id": 47
+  },
+  "hash": "13a29bf39b1ee89a0c3ac8992f3fbe7dac4bde7b26772a7cc3e2c035b9d2d314"
+}

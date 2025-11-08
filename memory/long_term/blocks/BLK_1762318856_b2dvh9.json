@@ -1,0 +1,18 @@
+{
+  "content": "{\"type\": \"experience\", \"user_message\": \"Weißt du wie spät es ist?\", \"assistant_reply\": \"Hier ist eine kurze Antwort. Wenn du willst, gehe ich danach gern tiefer oder auf Bereiche ein, die dich besonders interessieren.\", \"timestamp\": \"2025-11-05T05:00:56.248913+00:00\", \"mood\": \"neutral\", \"topics\": [\"\"]}",
+  "hash": "66df2341d89fc2665154a57fc52baba4823d5e9cd32589d2291eae3d5efff6d6",
+  "id": "BLK_1762318856_b2dvh9",
+  "meta": {
+    "conversation_id": 29,
+    "user_id": 2
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "BFiDxTAb1pwAhCTMG/Fy3BEv8kG3wjLhykYjPNs+764G4h/vDgcikjVDpf+ew+PXexj6qpWUlPhlukv4YLdCBQ==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "experience"
+  ],
+  "title": "Experience 2025-11-05T05:00:56.248913+00:00",
+  "ts": 1762318856,
+  "url": ""
+}

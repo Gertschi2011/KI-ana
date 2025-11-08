@@ -1,0 +1,17 @@
+{
+  "content": "• Hacker News: Pg_lake: Postgres with Iceberg and data lake access\n • Hacker News: The 512KB Club\n • tagesschau.de (RSS): tagesschau.de - die erste Adresse für Nachrichten und Information\n • tagesschau.de (RSS): Profitieren Russland und China von Trumps Atomtest-Drohung?",
+  "hash": "157c74958220c0e1b0f72338dcfe9258382967f97fac5c73059773720991dcda",
+  "id": "BLK_1762274871_27i3nm",
+  "meta": {},
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "GJjKTg9OGWy+TjCj7rKrtMDBt5VcrKXq898VIk05tC5gx+2uVjVdZW2Bzmgiv0bxOY0+3mcstSMjqJaBU6ZsDA==",
+  "signed_at": "2025-11-05T10:06:07Z",
+  "tags": [
+    "digest",
+    "web",
+    "news"
+  ],
+  "title": "Web Digest 2025-11-04 17:47",
+  "ts": 1762274871,
+  "url": ""
+}

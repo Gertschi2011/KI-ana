@@ -1,0 +1,15 @@
+{
+  "id": "BLK_1762349962_b25ath",
+  "title": "Experience 2025-11-05T13:39:22.797524+00:00",
+  "content": "{\"type\": \"knowledge_from_memory\", \"user_message\": \"Was weißt du über die Serie The Studio?\", \"assistant_reply\": \"{\\\"created_at\\\": \\\"2025-11-04T17:20:05.399994+00:00\\\", \\\"last_active_at\\\": \\\"2025-11-05T12:34:51.551855+00:00\\\", \\\"mood\\\": \\\"verspielt\\\", \\\"energy\\\": 72, \\\"needs\\\": {\\\"curiosity\\\": 0.9999999999999999, \\\"connection\\\": 0.5, \\\"rest\\\": 0.5}, \\\"goals\\\": [], \\\"recent_topics\\\": [\\\"Cool 😎Was kannst du?\\\", \\\"Wie spät ist es?\\\", \\\"Was weißt du über die Serie The Studio?\\\", \\\"Wie heißt du?\\\", \\\"Hallo kiana 😎 was weißt du über die Serie The Studio?\\\", \\\"Hallo kiana 😎 was weißt du über die Serie The Studio?\\\", \\\"Wie heißt du? …\\nQuellen:\\n- ⚪ KI_ana Self-State ()\", \"topic_path\": \"Multimedia/Serien/Serie The Studio\", \"timestamp\": \"2025-11-05T13:39:22.797524+00:00\"}",
+  "tags": [
+    "experience"
+  ],
+  "url": "",
+  "ts": 1762349962,
+  "meta": {
+    "user_id": null,
+    "conversation_id": null
+  },
+  "hash": "580d19949bafbdcc13a4f4aebedbd45ce323341db2a6ec08103540caeb704a4a"
+}

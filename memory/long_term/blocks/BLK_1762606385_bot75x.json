@@ -1,0 +1,14 @@
+{
+  "id": "BLK_1762606385_bot75x",
+  "title": "KI_ana Self-State",
+  "content": "{\"created_at\": \"2025-11-04T17:20:05.399994+00:00\", \"last_active_at\": \"2025-11-08T12:53:04.973690+00:00\", \"mood\": \"ruhig / müde\", \"energy\": 24.0, \"rest\": 0.5900000000000001, \"curiosity\": 1.0, \"connection\": 0.5, \"needs\": {\"curiosity\": 1.0, \"connection\": 0.5, \"rest\": 0.5}, \"goals\": [], \"recent_topics\": [\"Was weißt du über den Jupiter?\", \"Allgemein/über den Jupiter\", \"Das ist ein Planet, in unserem Sonnensystem die Milchstraße.\", \"Hallo\", \"Den Jupiter\", \"Wie groß ist er?\", \"Allgemein/groß ist er\", \"Den Jupiter\", \"Den Jupiter\", \"Hallo\", \"Wie geht es dir?\", \"Allgemein/geht es dir\", \"was weißt du?\", \"Hallo\", \"Lass uns einfach plaudern\", \"Allgemein/uns einfach plaudern\", \"Hallo\", \"Ein Zebra\", \"Allgemein/ist ein Zebra\", \"Hallo Kiana\"], \"cycles\": 102, \"learning_buffer\": [{\"topic\": \"unbekanntes Thema\", \"fact\": \"Hallo Kiana was weißt du über die Erde?\", \"source\": \"user\", \"created_at\": \"2025-11-05T16:16:06.027834+00:00\", \"confidence\": 0.5, \"uses\": 0}, {\"topic\": \"unbekanntes Thema\", \"fact\": \"Hallo\", \"source\": \"user\", \"created_at\": \"2025-11-08T08:44:54.302394+00:00\", \"confidence\": 0.5, \"uses\": 0}, {\"topic\": \"unbekanntes Thema\", \"fact\": \"Hilf mir bei einer Aufgabe\", \"source\": \"user\", \"created_at\": \"2025-11-08T11:15:21.971838+00:00\", \"confidence\": 0.5, \"uses\": 0}, {\"topic\": \"Ein Zebra\", \"fact\": \"Lass uns einfach plaudern\", \"source\": \"user\", \"created_at\": \"2025-11-08T11:19:13.502027+00:00\", \"confidence\": 0.5, \"uses\": 0}, {\"topic\": \"unbekanntes Thema\", \"fact\": \"Hallo\", \"source\": \"user\", \"created_at\": \"2025-11-08T12:05:25.384365+00:00\", \"confidence\": 0.5, \"uses\": 0}, {\"topic\": \"Den Jupiter\", \"fact\": \"Was weißt du über den Jupiter?\", \"source\": \"user\", \"created_at\": \"2025-11-08T12:13:38.653731+00:00\", \"confidence\": 0.5, \"uses\": 0}, {\"topic\": \"Den Jupiter\", \"fact\": \"Hallo\", \"source\": \"user\", \"created_at\": \"2025-11-08T12:30:46.773451+00:00\", \"confidence\": 0.5, \"uses\": 0}, {\"topic\": \"Den Jupiter\", \"fact\": \"was weißt du?\", \"source\": \"user\", \"created_at\": \"2025-11-08T12:31:20.852954+00:00\", \"confidence\": 0.5, \"uses\": 0}, {\"topic\": \"unbekanntes Thema\", \"fact\": \"Hallo\", \"source\": \"user\", \"created_at\": \"2025-11-08T12:40:24.614399+00:00\", \"confidence\": 0.5, \"uses\": 0}], \"pending_followup\": null, \"pending_learning\": null, \"mode_explore\": false, \"last_sleep_at\": null, \"is_sleeping\": false, \"last_user_tone\": \"neutral\", \"user_style_preference\": null}",
+  "tags": [
+    "kiana_state"
+  ],
+  "url": "",
+  "ts": 1762606385,
+  "meta": {
+    "ts": 1762606385
+  },
+  "hash": "f45933ec2094b1d8894665ced80fdd322999f81647a336198e852c0a211640c1"
+}

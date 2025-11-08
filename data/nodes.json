@@ -1,0 +1,17 @@
+{
+  "mother_node_main": {
+    "node_id": "mother_node_main",
+    "type": "mother",
+    "specialization": null,
+    "address": "localhost:8000",
+    "capabilities": [
+      "full_ai",
+      "consensus",
+      "signing"
+    ],
+    "registered_at": 1761757654,
+    "last_seen": 1761757654,
+    "trust_score": 5.0,
+    "status": "active"
+  }
+}

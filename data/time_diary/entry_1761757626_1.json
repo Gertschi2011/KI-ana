@@ -1,0 +1,12 @@
+{
+  "id": "timeflow_1761757626_1",
+  "type": "timeflow_entry",
+  "cycle_type": "audit",
+  "cycle_number": 1,
+  "weighted_contribution": 1.0,
+  "timestamp": 1761757626,
+  "duration_ms": 2340,
+  "phase": "infant",
+  "phase_transition": false,
+  "metadata": {}
+}

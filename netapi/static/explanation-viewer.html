@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KI_ana Explanation Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        #app {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .explanation-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .exp-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+        }
+        
+        .exp-body {
+            padding: 25px;
+        }
+        
+        .confidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .conf-high { background: #d4edda; color: #155724; }
+        .conf-medium { background: #fff3cd; color: #856404; }
+        .conf-low { background: #f8d7da; color: #721c24; }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .source-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .source-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .source-type {
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .trust-score {
+            font-weight: 600;
+            color: #28a745;
+        }
+        
+        .step-item {
+            display: flex;
+            gap: 15px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-action {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+        
+        .tool-badge {
+            display: inline-block;
+            background: #e7f1ff;
+            color: #004085;
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .submind-item {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+        }
+        
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            background: white;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <h1 style="color: #667eea; font-size: 2rem; margin-bottom: 10px;">
+                🔍 Explanation Viewer
+            </h1>
+            <p style="color: #666;">Warum antwortet KI_ana so?</p>
+        </div>
+        
+        <div v-if="loading" class="loading">
+            <div style="font-size: 3rem; margin-bottom: 20px;">⏳</div>
+            <div>Loading explanations...</div>
+        </div>
+        
+        <div v-else-if="!explanation" class="empty">
+            <h2>Keine Erklärung ausgewählt</h2>
+            <p>Wähle eine Antwort aus dem Chat, um die Erklärung zu sehen.</p>
+            <button @click="loadTestExplanation" class="btn btn-primary" style="margin-top: 20px;">
+                Test-Erklärung laden
+            </button>
+        </div>
+        
+        <div v-else class="explanation-card">
+            <div class="exp-header">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div style="flex: 1;">
+                        <h2 style="margin-bottom: 10px;">{{ explanation.query }}</h2>
+                        <div style="opacity: 0.9; font-size: 0.9rem;">
+                            Response ID: {{ explanation.response_id }}
+                        </div>
+                    </div>
+                    <span :class="['confidence-badge', getConfidenceClass(explanation.confidence_score)]">
+                        {{ (explanation.confidence_score * 100).toFixed(0) }}% Confidence
+                    </span>
+                </div>
+            </div>
+            
+            <div class="exp-body">
+                <!-- Response -->
+                <div class="section">
+                    <div class="section-title">💬 Antwort</div>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; line-height: 1.6;">
+                        {{ explanation.response }}
+                    </div>
+                </div>
+                
+                <!-- Sources -->
+                <div class="section" v-if="explanation.sources && explanation.sources.length">
+                    <div class="section-title">
+                        📚 Quellen ({{ explanation.sources.length }})
+                        <span style="font-size: 0.9rem; color: #666;">
+                            Ø Trust: {{ (explanation.avg_trust_score * 100).toFixed(0) }}%
+                        </span>
+                    </div>
+                    <div v-for="(source, idx) in explanation.sources" :key="idx" class="source-item">
+                        <div class="source-header">
+                            <span class="source-type">{{ source.source_type }}</span>
+                            <span class="trust-score">{{ (source.trust_score * 100).toFixed(0) }}% Trust</span>
+                        </div>
+                        <div style="color: #666; margin-bottom: 6px;">
+                            <strong>{{ source.source_id }}</strong>
+                        </div>
+                        <div style="font-size: 0.9rem; line-height: 1.5;">
+                            {{ source.content_snippet }}
+                        </div>
+                        <div v-if="source.url" style="margin-top: 8px; font-size: 0.85rem;">
+                            <a :href="source.url" target="_blank" style="color: #667eea;">
+                                🔗 {{ source.url }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reasoning Steps -->
+                <div class="section" v-if="explanation.reasoning_steps && explanation.reasoning_steps.length">
+                    <div class="section-title">
+                        🧠 Denkprozess ({{ explanation.reasoning_steps.length }} Schritte)
+                    </div>
+                    <div v-for="step in explanation.reasoning_steps" :key="step.step_number" class="step-item">
+                        <div class="step-number">{{ step.step_number }}</div>
+                        <div class="step-content">
+                            <div class="step-action">{{ step.action }}</div>
+                            <div style="color: #666; font-size: 0.9rem;">{{ step.description }}</div>
+                            <div v-if="step.result" style="margin-top: 6px; font-size: 0.85rem; color: #28a745;">
+                                ✓ {{ step.result }}
+                            </div>
+                            <div v-if="step.duration_ms" style="margin-top: 4px; font-size: 0.8rem; color: #999;">
+                                ⏱️ {{ step.duration_ms }}ms
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools Used -->
+                <div class="section" v-if="explanation.tools_used && explanation.tools_used.length">
+                    <div class="section-title">🛠️ Verwendete Tools ({{ explanation.tools_used.length }})</div>
+                    <div>
+                        <span v-for="(tool, idx) in explanation.tools_used" :key="idx" class="tool-badge">
+                            {{ tool.tool_name }}
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- SubMind Contributions -->
+                <div class="section" v-if="hasSubMindContributions">
+                    <div class="section-title">🤖 SubMind Beiträge</div>
+                    <div v-for="(contributions, submindId) in explanation.submind_contributions" :key="submindId" class="submind-item">
+                        <div style="font-weight: 600; margin-bottom: 8px;">{{ submindId }}</div>
+                        <div v-for="(contrib, idx) in contributions" :key="idx" style="margin-left: 15px; margin-bottom: 4px;">
+                            <span style="color: #856404;">{{ contrib.type }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Knowledge Blocks -->
+                <div class="section" v-if="explanation.knowledge_blocks && explanation.knowledge_blocks.length">
+                    <div class="section-title">
+                        🔗 Verwendete Knowledge Blocks ({{ explanation.knowledge_blocks.length }})
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <a v-for="blockId in explanation.knowledge_blocks" :key="blockId" 
+                           :href="`/viewer/blocks?id=${blockId}`"
+                           target="_blank"
+                           style="background: #e7f1ff; color: #004085; padding: 8px 14px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+                            Block #{{ blockId }}
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Metadata -->
+                <div class="section" style="border-top: 1px solid #e0e0e0; padding-top: 20px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; font-size: 0.9rem;">
+                        <div>
+                            <strong>Model:</strong> {{ explanation.model_used || 'N/A' }}
+                        </div>
+                        <div v-if="explanation.temperature !== null">
+                            <strong>Temperature:</strong> {{ explanation.temperature }}
+                        </div>
+                        <div>
+                            <strong>Duration:</strong> {{ explanation.total_duration_ms }}ms
+                        </div>
+                        <div>
+                            <strong>Created:</strong> {{ formatDate(explanation.created_at) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    loading: false,
+                    explanation: null
+                }
+            },
+            computed: {
+                hasSubMindContributions() {
+                    return this.explanation && 
+                           this.explanation.submind_contributions && 
+                           Object.keys(this.explanation.submind_contributions).length > 0;
+                }
+            },
+            mounted() {
+                // Check if response_id in URL
+                const params = new URLSearchParams(window.location.search);
+                const responseId = params.get('id');
+                if (responseId) {
+                    this.loadExplanation(responseId);
+                }
+            },
+            methods: {
+                async loadExplanation(responseId) {
+                    this.loading = true;
+                    try {
+                        const response = await axios.get(`/api/explain/explanations/${responseId}`);
+                        if (response.data.ok) {
+                            this.explanation = response.data.explanation;
+                        }
+                    } catch (error) {
+                        console.error('Failed to load explanation:', error);
+                        alert('Explanation not found');
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+                async loadTestExplanation() {
+                    this.loading = true;
+                    try {
+                        const response = await axios.post('/api/explain/test');
+                        if (response.data.ok) {
+                            this.explanation = response.data.explanation;
+                        }
+                    } catch (error) {
+                        console.error('Failed to create test explanation:', error);
+                        alert('Failed to create test explanation');
+                    } finally {
+                        this.loading = false;
+                    }
+                },
+                getConfidenceClass(score) {
+                    if (score >= 0.7) return 'conf-high';
+                    if (score >= 0.4) return 'conf-medium';
+                    return 'conf-low';
+                },
+                formatDate(timestamp) {
+                    if (!timestamp) return 'N/A';
+                    return new Date(timestamp * 1000).toLocaleString('de-DE');
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

@@ -3,9 +3,9 @@
   "hash": "55a8cb9456498be9d463bb52b23c5ca50d7bbfec4798e016aef67314b6b77732",
   "id": "BLK_1759919656_1toijn",
   "meta": {},
-  "pubkey": "+KeRyg05RDtAos8dbZHUHgxehr7E38sPW6tEWbpAnFw=",
-  "signature": "TugyAUtPYRZtM5WN3CrXAKnogLAflDwD5hDHBgAMelqcMPku0ircYuwC95y1AnuEIE9bSDsGctxbKS0vGJEACw==",
-  "signed_at": "2025-10-22T11:39:33Z",
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "rrB0GQoeCBx+vgm894NH8bbSttR5gmVstRr+39WKSQjGTOT8O+T2GE5dTpY4Ix6bPSeNIvk00l/32f6q4bTmDA==",
+  "signed_at": "2025-11-05T10:06:07Z",
   "tags": [
     "digest",
     "web",

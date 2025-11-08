@@ -1,0 +1,30 @@
+{
+  "content": "Gespräch mit 8 Nachrichten:\n1. Super ;-) leider funktioniert etwas nicht ganz mit deinen Antworten\n2. Super ;-) leider funktioniert etwas nicht ganz mit deinen Antworten\n\nThemen: kiana, super, antworten",
+  "hash": "1e7bfb637bae07ad53e58e6f213b00796ff7166dedb686ac75138a2e7cdc67b4",
+  "id": "BLK_1762258995_8nnoc7",
+  "meta": {
+    "ai_message_count": 8,
+    "conversation_id": 15,
+    "ended_at": 1762258968,
+    "message_count": 16,
+    "participant": "user_2",
+    "source": "conversation_auto_save",
+    "started_at": 1762258701,
+    "user_id": 2,
+    "user_message_count": 8
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "e+mrqytm+6UPc0H+JeXGv2XzuJZhMuu3EnZz/xrWH/xpeayr/stGumAJqHwdfNrMucyE1hU7Tj8/kb7H7t0HBQ==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "conversation",
+    "dialog",
+    "memory",
+    "kiana",
+    "super",
+    "antworten"
+  ],
+  "title": "Mir geht’s gut, danke! 😊 Wie geht’s dir – und wobei kann",
+  "ts": 1762258995,
+  "url": ""
+}

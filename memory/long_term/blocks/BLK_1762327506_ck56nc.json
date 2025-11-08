@@ -1,0 +1,17 @@
+{
+  "content": "{\"created_at\": \"2025-11-04T17:20:05.399994+00:00\", \"last_active_at\": \"2025-11-05T07:25:06.577845+00:00\", \"mood\": \"neutral\", \"goals\": [], \"recent_topics\": [\"Weißt du wie spät es ist?\", \"Guten Morgen Kiana\", \"Weißt du wie spät es ist?\", \"Guten Morgen Kiana\", \"Weißt du wie spät es ist\", \"Super danke für die Antwort\", \"Was weißt du über die Serie The Studio?\", \"Weißt du wer du bist?\", \"Wie heißt du?\", \"Wie heißt du?\", \"Cool 😎Was kannst du?\"], \"cycles\": 11}",
+  "hash": "ed362031290e860ee5a9291e9fd31afaba9af0af38bdf4279382571d6b008b0f",
+  "id": "BLK_1762327506_ck56nc",
+  "meta": {
+    "ts": 1762327506
+  },
+  "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
+  "signature": "995nhaFfJalT1VoXpLNux2ZGZ2Y2Y+0zC1olLD10lVD6uZ19ZwULCIK0hJRiSegmXoSzxLMPv03sxMWNhMNFDw==",
+  "signed_at": "2025-11-05T10:06:06Z",
+  "tags": [
+    "kiana_state"
+  ],
+  "title": "KI_ana Self-State",
+  "ts": 1762327506,
+  "url": ""
+}

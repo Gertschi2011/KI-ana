@@ -1,7 +1,7 @@
 {
   "block_id": 8,
   "content_hash": "906f628dc99289f78059dd9c02ccd11ae77c7a2b22a35924c3eea0a9fa1eb153",
-  "hash": "1114638e04552b6aaf6e7118b3f6e467b6dca4b63d42fe45a66382bc4e3fc317",
+  "hash": "09db60bf459a146cf364f40966dcfa2fb65a8ecf2993e8fb5adf07c198e25b3f",
   "memory_path": "/home/kiana/ki_ana/memory/long_term/906f628dc99289f78059dd9c02ccd11ae77c7a2b22a35924c3eea0a9fa1eb153.json",
   "meta": {
     "url": "https://de.wikipedia.org/wiki/quantencomputer"
@@ -9,7 +9,7 @@
   "previous_hash": "cf261ab539bcf58213aa13fa1a62210b1c62ee20bc4f995166584f19c72674b2",
   "pubkey": "PBMCp2XBiUntTrU3C6OXrXuJv7X68LTVh1MR9gLqAtk=",
   "signature": "8q/JV6we9g9pH83F38ZIn/kex+1wMHHZgQEn5nnNMd9tsZTsuDUwmrgalBHptjSjThjvqUs+CzeFdfSkAMZQAg==",
-  "signed_at": "2025-09-21T08:13:35Z",
+  "signed_at": "2025-11-05T10:06:06Z",
   "signer_pubkey": "",
   "source": "https://de.wikipedia.org/wiki/quantencomputer",
   "timestamp": "2025-08-14T07:52:21.398640Z",
