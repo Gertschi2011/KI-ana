@@ -8,7 +8,7 @@ from .core import KERNEL
 from .scheduler import SCHED
 from netapi.deps import get_current_user_required
 
-router = APIRouter(prefix="/kernel", tags=["kernel"])  # final mount adds /api
+router = APIRouter(prefix="/api/kernel", tags=["kernel"])
 
 
 # -----------------------------

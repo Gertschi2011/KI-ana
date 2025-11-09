@@ -25,13 +25,6 @@
       .pill{font-size:11px}
     }
   </style>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/static/sw.js').catch(()=>{});
-      });
-    }
-  </script>
 </head>
 <body>
   <div id="navbar"></div>
