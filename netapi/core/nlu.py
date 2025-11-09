@@ -11,6 +11,12 @@ def detect_intent(text: str) -> str:
         "was ist ",
         "erklär mir",
         "erkläre mir",
+        "wie ist",
+        "wie sind",
+        "wie steht es um",
+        "aktueller stand",
+        "aktuellen stand",
+        "stand ",
     ]):
         return "knowledge_query"
     # 2) Time/Date

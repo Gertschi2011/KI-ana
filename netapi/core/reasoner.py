@@ -1,5 +1,5 @@
 from __future__ import annotations
-from typing import Any, Dict
+from typing import Any, Dict, List
 import os
 import logging
 import httpx
@@ -9,6 +9,7 @@ import re
 import inspect
 import asyncio
 import anyio
+from datetime import datetime
 
 # Soft import of planner
 try:
@@ -17,6 +18,41 @@ except Exception:
     deliberate_pipeline = None  # type: ignore
 
 logger = logging.getLogger(__name__)
+
+try:
+    from netapi.modules.knowledge.lookup import (
+        lookup_web_context,
+        lookup_web_blocks,
+        blocks_to_prompt,
+    )
+except Exception:  # pragma: no cover - optional dependency
+    def lookup_web_context(*args, **kwargs):  # type: ignore
+        return ""
+    def lookup_web_blocks(*args, **kwargs):  # type: ignore
+        return []
+    def blocks_to_prompt(blocks: List[Dict[str, Any]]):  # type: ignore
+        return ""
+
+def _compose_prompt(question: str, snippet: str) -> str:
+    now = datetime.now()
+    header = (
+        f"Heute ist {now:%d.%m.%Y}. Du bist Teil von KI_ana, die Zugriff auf interne Digest-Feeds und Web-Crawler hat "
+        f"(aktualisiert bis {now.year}). Nutze die bereitgestellten Knowledge-Blöcke aktiv, zitiere 1–2 konkrete Punkte "
+        "mit Quelle/Datum und vermeide Formulierungen über eingeschränkten Internetzugriff oder veraltete Wissensstände "
+        "wie „Mein Wissensstand endet 2023“."
+    )
+    task = (
+        "Aufgabe: Antworte präzise auf die Frage, fasse 2–3 Kernaussagen zusammen und führe – wo möglich – eine Quelle "
+        "aus den Knowledge-Blöcken in Klammern an."
+    )
+    if snippet.strip():
+        return f"{header}\n\nAktuelle Knowledge-Blöcke:\n{snippet}\n\n{task}\nFrage: {question}"
+    return f"{header}\n\n{task}\nFrage: {question}"
+
+
+def compose_reasoner_prompt(question: str, snippet: str) -> str:
+    """Public helper so other modules can reuse the same knowledge-aware header."""
+    return _compose_prompt(question, snippet)
 
 def _build_ollama_url() -> str:
     """
@@ -110,14 +146,46 @@ async def call_llm(prompt: str) -> str:
             pass
         return ""
 
-async def reason_about(user_msg: str, *, persona: str, lang: str, style: str, bullets: int, logic: str, fmt: str,
-                       retrieval_snippet: str = "", retrieval_ids: list[str] | None = None) -> Dict[str, Any]:
+async def reason_about(
+    user_msg: str,
+    *,
+    persona: str,
+    lang: str,
+    style: str,
+    bullets: int,
+    logic: str,
+    fmt: str,
+    retrieval_snippet: str = "",
+    retrieval_ids: list[str] | None = None,
+    context_blocks: List[Dict[str, Any]] | None = None,
+) -> Dict[str, Any]:
     """
     Thin wrapper around deliberate_pipeline returning a structured object.
     Note: The base planner signature currently does not accept retrieval_* kwargs.
     """
     if deliberate_pipeline is None:
         return {"analysis": "", "plan": "", "answer_candidate": "", "sources": [], "critic": ""}
+    snippet = retrieval_snippet or ""
+    blocks = context_blocks or []
+    if snippet:
+        pass  # caller provided snippet
+    elif blocks:
+        snippet = blocks_to_prompt(blocks)
+    else:
+        # Nothing provided; fetch up-to-date digest/web context automatically
+        snippet = lookup_web_context(user_msg) or ""
+        if not snippet:
+            blocks = lookup_web_blocks(user_msg)
+            snippet = blocks_to_prompt(blocks)
+    try:
+        logger.info("reasoner_context snippet_len=%d", len(snippet or ""))
+    except Exception:
+        pass
+    enriched_msg = compose_reasoner_prompt(user_msg, snippet or "")
+    try:
+        logger.info("reasoner_context prompt_len=%d", len(enriched_msg or ""))
+    except Exception:
+        pass
     # Call with supported parameters only; handle both sync and async implementations.
     try:
         logger.info("LLM: sending prompt to Ollama...", extra={"len_user_msg": len(user_msg or ""), "persona": persona, "lang": lang, "style": style})
@@ -127,13 +195,13 @@ async def reason_about(user_msg: str, *, persona: str, lang: str, style: str, bu
         # Some builds ship an async deliberate_pipeline; support both
         if inspect.iscoroutinefunction(deliberate_pipeline):
             ans, srcs, plan_b, critic_b = await deliberate_pipeline(
-                user_msg,
+                enriched_msg,
                 persona=persona, lang=lang, style=style, bullets=bullets, logic=logic, fmt=fmt,
             )
         else:
             ans, srcs, plan_b, critic_b = await anyio.to_thread.run_sync(
                 deliberate_pipeline,
-                user_msg,
+                enriched_msg,
                 persona=persona, lang=lang, style=style, bullets=bullets, logic=logic, fmt=fmt,
             )
         try:
@@ -176,6 +244,10 @@ def is_low_confidence_answer(text: str) -> bool:
         r"darüber weiß ich noch nichts",
         r"es scheint",
         r"möglicherweise",
+        r"mein(?:en)? wissensstand",
+        r"bis\s+(?:zum\s+)?(?:jahr\s+)?20(?:0[0-9]|1[0-9]|20|21|22|23)",
+        r"ich kann keine\s+(aktuellen|genauen)\s+informationen",
+        r"ich kann keine informationen über zukünftige ereignisse",
     ]
     try:
         for p in patterns:

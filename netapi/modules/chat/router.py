@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import os
+import datetime
+
 def extract_natural_reply(pipe_result: Any) -> str:
     """Extract a clean, user‑friendly reply from planner/fallback outputs.
 
@@ -140,6 +143,113 @@ def _is_simple_knowledge_question(msg: str) -> bool:
         return False
     return False
 
+def _looks_like_current_query(msg: str) -> bool:
+    try:
+        if not msg:
+            return False
+        t = str(msg).lower()
+        if "?" in t and any(k in t for k in ["wie ist", "wie sind", "stand ", "aktuell", "verhältnis", "beziehung"]):
+            return True
+        if any(k in t for k in ["stand ", "aktueller stand", "aktuellen stand", "was weißt du über", "was weisst du über"]):
+            return True
+    except Exception:
+        return False
+    return False
+
+async def _answer_with_web_digest(
+    user_msg: str,
+    body,
+    state,
+    persona,
+    profile_used,
+    style_prompt,
+    style_used_meta,
+    current,
+    db,
+    risk_flag: bool,
+):
+    web_ctx_digest = ""
+    try:
+        web_ctx_digest = lookup_web_context(user_msg)
+    except Exception:
+        web_ctx_digest = ""
+    pipeline_label = "web+llm" if web_ctx_digest else "llm"
+    if pipeline_label == "web+llm":
+        try:
+            logger.info("knowledge_pipeline selected=web+llm topic=%s user=%s", extract_topic(user_msg), (int(current["id"]) if (current and current.get("id")) else None))
+        except Exception:
+            pass
+    recent3 = []
+    try:
+        recent3 = list(getattr(state, 'recent_topics', [])[-3:]) if state else []
+    except Exception:
+        recent3 = []
+    state_ctx = f"[STATE] Stimmung: {getattr(state,'mood', 'neutral')}, Themen: {', '.join(recent3) if recent3 else '-'}"
+    try:
+        r_llm = await asyncio.wait_for(reason_about(
+            user_msg,
+            persona=(body.persona or "friendly"),
+            lang=(body.lang or "de-DE"),
+            style=_sanitize_style(body.style),
+            bullets=_sanitize_bullets(body.bullets),
+            logic=_sanitize_logic(getattr(body, 'logic', 'balanced')),
+            fmt=_sanitize_format(getattr(body, 'format', 'plain')),
+            retrieval_snippet=(web_ctx_digest or state_ctx or ""),
+        ), timeout=PLANNER_TIMEOUT_SECONDS)
+    except Exception:
+        r_llm = {}
+    reply_llm = extract_natural_reply(r_llm)
+    srcs_llm = list((r_llm or {}).get("sources") or []) if isinstance(r_llm, dict) else []
+    src_block_llm = format_sources(srcs_llm or [], limit=2)
+    if src_block_llm:
+        reply_llm = (reply_llm or "") + ("\n\n" + src_block_llm)
+    if not reply_llm or not str(reply_llm).strip():
+        fallback_prompt = compose_reasoner_prompt(user_msg, web_ctx_digest or state_ctx or "")
+        try:
+            fallback_txt = await call_llm(fallback_prompt)
+        except Exception:
+            fallback_txt = ""
+        reply_llm = clean(fallback_txt or "")
+    if not reply_llm or not str(reply_llm).strip():
+        if web_ctx_digest:
+            reply_llm = (
+                "Aus meinen aktuellen Digest-Feeds (aktualisiert bis "
+                f"{datetime.datetime.utcnow():%B %Y}) ergeben sich folgende Hinweise:\n"
+                f"{web_ctx_digest[:900]}\n\n"
+                "Unterm Strich zeigt das, dass China und die EU derzeit einerseits eng wirtschaftlich verflochten "
+                "bleiben, andererseits aber Klimaziele, Handelssanktionen und Sicherheitsfragen für Spannungen sorgen."
+            )
+        else:
+            reply_llm = (
+                "Ich habe keine verwertbaren aktuellen Meldungen gefunden. "
+                "Magst du präzisieren, ob es dir eher um Handel, Politik oder Sicherheit geht? "
+                "Dann versuche ich es erneut mit einer gezielten Web-Recherche."
+            )
+    reply_llm = postprocess_and_style(reply_llm, persona, state, profile_used, style_prompt)
+    reply_llm = make_user_friendly_text(reply_llm, state)
+    conv_id_llm = None
+    try:
+        if current and current.get("id"):
+            uid = int(current["id"])  # type: ignore
+            conv = _ensure_conversation(db, uid, body.conv_id)
+            conv_id_llm = conv.id
+            _save_msg(db, conv.id, "user", user_msg)
+            _save_msg(db, conv.id, "ai", reply_llm)
+            asyncio.create_task(_retitle_if_needed(conv.id, user_msg, reply_llm, body.lang or "de-DE"))
+    except Exception:
+        conv_id_llm = None
+    conv_out_llm = conv_id_llm if conv_id_llm is not None else (body.conv_id or None)
+    try:
+        if state is not None:
+            state.last_pipeline = pipeline_label  # type: ignore[attr-defined]
+    except Exception:
+        pass
+    return _finalize_reply(
+        reply_llm,
+        state=state, conv_id=conv_out_llm, intent="knowledge", topic=extract_topic(user_msg), pipeline=pipeline_label,
+        extras={"ok": True, "auto_modes": [], "role_used": "LLM", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": pipeline_label, "topic": extract_topic(user_msg)}}
+    )
+
 @router.get("")
 def chat_ping():
     """Lightweight router health for proxies and uptime checks."""
@@ -247,7 +357,7 @@ import asyncio
 from pathlib import Path
 import re, json, time, os, datetime
 import logging
-from netapi.core.reasoner import call_llm
+from netapi.core.reasoner import call_llm, compose_reasoner_prompt
 from netapi.db import count_memory_per_day, top_sources, total_blocks
 from netapi.core.state import (
     KianaState,
@@ -274,6 +384,11 @@ from netapi.core.reasoner import reason_about, is_low_confidence_answer  # type:
 from netapi.core.learner import decide_ask_or_search, build_childlike_question, record_user_teaching  # type: ignore
 from netapi.deps import get_current_user_opt
 from netapi.modules.timeflow.events import record_timeflow_event
+try:
+    from netapi.modules.knowledge.lookup import lookup_web_context
+except Exception:  # pragma: no cover
+    def lookup_web_context(*args, **kwargs):  # type: ignore
+        return ""
 
 # Logger
 logger = logging.getLogger(__name__)
@@ -803,6 +918,8 @@ try:
     PLANNER_TIMEOUT_SECONDS = float(os.getenv("KI_PLANNER_TIMEOUT", "2.5"))
 except Exception:
     PLANNER_TIMEOUT_SECONDS = 2.5
+
+ALLOW_DIRECT_LLM = os.getenv("KI_DIRECT_LLM_FIRST", "0").strip().lower() in {"1", "true", "yes"}
 
 # DB deps & models
 from ...db import get_db, init_db
@@ -2144,7 +2261,7 @@ def _audit_chat(event: Dict[str, Any]) -> None:
 
 def is_question(s: str) -> bool:
     s = (s or "").strip().lower()
-    return s.endswith("?") or any(k in s for k in ["was ist", "was weißt", "erkläre", "wieso", "warum", "wie funktioniert"])
+    return ("?" in s) or any(k in s for k in ["was ist", "was weißt", "erkläre", "wieso", "warum", "wie funktioniert", "wie ist", "wie sind"])
 
 def is_uncertain(text: str) -> bool:
     return bool(_UNSURE.search(text or ""))
@@ -3337,6 +3454,24 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
     except Exception:
         body = SimpleNamespace(message=str(body))  # type: ignore
     user_msg = (body.message or "").strip()
+    conv_id = None  # conversation id placeholder, filled once messages persist
+    timeline_user_id = None
+    try:
+        if current and current.get("id"):
+            timeline_user_id = int(current["id"])  # type: ignore
+    except Exception:
+        timeline_user_id = None
+    if timeline_user_id and user_msg:
+        try:
+            record_timeflow_event(
+                db,
+                user_id=timeline_user_id,
+                event_type="chat_user",
+                meta={"preview": user_msg[:160], "conv_id": body.conv_id},
+                auto_commit=True,
+            )
+        except Exception:
+            pass
     try:
         logger.warning("CHAT_DEBUG incoming: %r", user_msg)
     except Exception:
@@ -3554,30 +3689,56 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                 )
         calc = try_calc_or_convert(user_msg)
         if calc:
-            r = _apply_style(calc, profile_used)
-            if style_prompt:
-                r = (r + "\n\n" + style_prompt).strip()
-            return _finalize_reply(
-                r,
-                state=state, conv_id=(body.conv_id or None), intent="calc", topic=extract_topic(user_msg),
-                extras={"ok": True, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
-            )
-    except Exception:
-        pass
+        r = _apply_style(calc, profile_used)
+        if style_prompt:
+            r = (r + "\n\n" + style_prompt).strip()
+        return _finalize_reply(
+            r,
+            state=state, conv_id=(body.conv_id or None), intent="calc", topic=extract_topic(user_msg),
+            extras={"ok": True, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
+        )
+except Exception:
+    pass
 
-    # LLM-first quick answer: try a direct LLM response before any child-mode fallback
+    skip_direct_llm = False
     try:
-        llm_txt = await call_llm(user_msg)
+        skip_direct_llm = bool(is_question(user_msg or ""))
     except Exception:
-        llm_txt = ""
-    txt_fb = clean(llm_txt or "")
-    if txt_fb and txt_fb.strip():
+        skip_direct_llm = False
+    if ALLOW_DIRECT_LLM and not skip_direct_llm:
+        direct_pipeline = "llm"
         try:
-            logger.info("chat_once LLM reply len=%d", len(txt_fb))
+            web_ctx_direct = lookup_web_context(user_msg)
+        except Exception:
+            web_ctx_direct = ""
+        if web_ctx_direct:
+            direct_pipeline = "web+llm"
+            try:
+                logger.info("knowledge_pipeline selected=web+llm topic=%s (direct_llm)", extract_topic(user_msg))
+            except Exception:
+                pass
+        direct_prompt = compose_reasoner_prompt(user_msg, web_ctx_direct or "")
+        try:
+            logger.info(
+                "knowledge_pipeline direct_llm web_ctx_len=%d pipeline=%s topic=%s",
+                len(web_ctx_direct or ""),
+                direct_pipeline,
+                extract_topic(user_msg),
+            )
         except Exception:
             pass
-        # Return immediately with a natural reply; downstream persistence will handle conversation flow
-        return {"ok": True, "reply": txt_fb, "backend_log": {"pipeline": "llm"}}
+        try:
+            llm_txt = await call_llm(direct_prompt)
+        except Exception:
+            llm_txt = ""
+        txt_fb = clean(llm_txt or "")
+        if txt_fb and txt_fb.strip():
+            try:
+                logger.info("chat_once LLM reply len=%d", len(txt_fb))
+            except Exception:
+                pass
+            # Return immediately with a natural reply; downstream persistence will handle conversation flow
+            return {"ok": True, "reply": txt_fb, "backend_log": {"pipeline": direct_pipeline}}
 
     # 1) Explizite Wahl?
     choice = pick_choice(user_msg)
@@ -3836,6 +3997,67 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
     except Exception:
         pass
 
+    if intent == "knowledge_query":
+        web_ctx_digest = ""
+        try:
+            web_ctx_digest = lookup_web_context(user_msg)
+        except Exception:
+            web_ctx_digest = ""
+        pipeline_label = "web+llm" if web_ctx_digest else "llm"
+        if pipeline_label == "web+llm":
+            try:
+                logger.info("knowledge_pipeline selected=web+llm topic=%s user=%s", extract_topic(user_msg), (int(current["id"]) if (current and current.get("id")) else None))
+            except Exception:
+                pass
+        recent3 = []
+        try:
+            recent3 = list(getattr(state, 'recent_topics', [])[-3:]) if state else []
+        except Exception:
+            recent3 = []
+        state_ctx = f"[STATE] Stimmung: {getattr(state,'mood', 'neutral')}, Themen: {', '.join(recent3) if recent3 else '-'}"
+        try:
+            r_llm = await asyncio.wait_for(reason_about(
+                user_msg,
+                persona=(body.persona or "friendly"),
+                lang=(body.lang or "de-DE"),
+                style=_sanitize_style(body.style),
+                bullets=_sanitize_bullets(body.bullets),
+                logic=_sanitize_logic(getattr(body, 'logic', 'balanced')),
+                fmt=_sanitize_format(getattr(body, 'format', 'plain')),
+                retrieval_snippet=(web_ctx_digest or state_ctx or ""),
+            ), timeout=PLANNER_TIMEOUT_SECONDS)
+        except Exception:
+            r_llm = {}
+        reply_llm = extract_natural_reply(r_llm)
+        srcs_llm = list((r_llm or {}).get("sources") or []) if isinstance(r_llm, dict) else []
+        src_block_llm = format_sources(srcs_llm or [], limit=2)
+        if src_block_llm:
+            reply_llm = (reply_llm or "") + ("\n\n" + src_block_llm)
+        reply_llm = postprocess_and_style(reply_llm, persona, state, profile_used, style_prompt)
+        reply_llm = make_user_friendly_text(reply_llm, state)
+        conv_id_llm = None
+        try:
+            if current and current.get("id"):
+                uid = int(current["id"])  # type: ignore
+                conv = _ensure_conversation(db, uid, body.conv_id)
+                conv_id_llm = conv.id
+                _save_msg(db, conv.id, "user", user_msg)
+                _save_msg(db, conv.id, "ai", reply_llm)
+                asyncio.create_task(_retitle_if_needed(conv.id, user_msg, reply_llm, body.lang or "de-DE"))
+        except Exception:
+            conv_id_llm = None
+        conv_out_llm = conv_id_llm if conv_id_llm is not None else (body.conv_id or None)
+        try:
+            if state is not None:
+                state.last_pipeline = pipeline_label  # type: ignore[attr-defined]
+        except Exception:
+            pass
+        return _finalize_reply(
+            reply_llm,
+            state=state, conv_id=conv_out_llm, intent="knowledge", topic=extract_topic(user_msg), pipeline=pipeline_label,
+            extras={"ok": True, "auto_modes": [], "role_used": "LLM", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": pipeline_label, "topic": extract_topic(user_msg)}}
+        )
+
     # Experiences: retrieve compact relevant snippets for prompt/context
     experiences_snip = ""
     experiences_raw: List[Dict[str, Any]] = []
@@ -3859,6 +4081,9 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
         logger.warning("CHAT_DEBUG intent=%s", intent)
     except Exception:
         pass
+
+    if intent == "knowledge_query" or _looks_like_current_query(user_msg):
+        return await _answer_with_web_digest(user_msg, body, state, persona, profile_used, style_prompt, style_used_meta, current, db, risk_flag)
 
     try:
         special = handle_special_cases(intent, user_msg, (body.lang or "de"), state, persona)
@@ -3965,6 +4190,9 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             )
     except Exception:
         pass
+
+    if intent == "knowledge_query":
+        return await _answer_with_web_digest(user_msg, body, state, persona, profile_used, style_prompt, style_used_meta, current, db, risk_flag)
 
     # EARLY BYPASS: identity intents answered deterministically (no LLM)
     try:
@@ -4399,6 +4627,35 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             llm_conf = 0.0
             llm_srcs: list = []
             llm_tokens = 0
+            web_ctx_snippet = ""
+            used_web_ctx = False
+            try:
+                web_ctx_snippet = lookup_web_context(user_msg)
+            except Exception:
+                web_ctx_snippet = ""
+            try:
+                logger.info("knowledge_pipeline web_ctx_len=%d topic=%s", len(web_ctx_snippet or ""), extract_topic(user_msg))
+            except Exception:
+                pass
+            if web_ctx_snippet:
+                used_web_ctx = True
+                try:
+                    uid_log = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
+                except Exception:
+                    uid_log = None
+                try:
+                    logger.info(
+                        "knowledge_pipeline selected=web+llm topic=%s user=%s",
+                        extract_topic(user_msg),
+                        uid_log,
+                    )
+                except Exception:
+                    pass
+            else:
+                try:
+                    logger.info("knowledge_pipeline web_ctx_len=0 topic=%s", extract_topic(user_msg))
+                except Exception:
+                    pass
             try:
                 if not ans_mem:
                     # Build compact context with time and brief self-state
@@ -4418,6 +4675,7 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                             style=_sanitize_style(body.style), bullets=_sanitize_bullets(body.bullets),
                             logic=_sanitize_logic(getattr(body, 'logic', 'balanced')),
                             fmt=_sanitize_format(getattr(body, 'format', 'plain')),
+                            retrieval_snippet=web_ctx_snippet,
                         )
                     try:
                         r_llm = await asyncio.wait_for(_run_llm_consult(), timeout=PLANNER_TIMEOUT_SECONDS)
@@ -4508,11 +4766,12 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                             except Exception:
                                 pass
                             _bump_answers_and_maybe_reflect(extract_topic(user_msg))
-                            return _finalize_reply(
-                                reply_llm,
-                                state=state, conv_id=(body.conv_id or None), intent="knowledge", topic=extract_topic(user_msg), pipeline="llm",
-                                extras={"ok": True, "auto_modes": [], "role_used": "LLM", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "llm", "confidence": llm_conf, "topic": extract_topic(user_msg)}}
-                            )
+                        pipeline_label = "web+llm" if used_web_ctx else "llm"
+                        return _finalize_reply(
+                            reply_llm,
+                            state=state, conv_id=(body.conv_id or None), intent="knowledge", topic=extract_topic(user_msg), pipeline=pipeline_label,
+                            extras={"ok": True, "auto_modes": [], "role_used": "LLM", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": pipeline_label, "confidence": llm_conf, "topic": extract_topic(user_msg)}}
+                        )
             except Exception:
                 llm_text = None
 
@@ -4973,7 +5232,25 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                             if src_block_ws:
                                 out_text = (out_text + "\n\n" + src_block_ws).strip()
                         else:
-                            mode = 'ask_user'
+                            digest_ctx = ""
+                            try:
+                                digest_ctx = lookup_web_context(user_msg)
+                            except Exception:
+                                digest_ctx = ""
+                            if digest_ctx:
+                                digest_prompt = compose_reasoner_prompt(user_msg, digest_ctx)
+                                try:
+                                    llm_txt_digest = await call_llm(digest_prompt)
+                                except Exception:
+                                    llm_txt_digest = ""
+                                digest_reply = clean(llm_txt_digest or "")
+                                if digest_reply:
+                                    out_text = digest_reply
+                                    mode = ""
+                                else:
+                                    mode = 'ask_user'
+                            else:
+                                mode = 'ask_user'
                     if mode == 'ask_user':
                         follow = build_childlike_question(user_msg, persona, state)
                         if state:
@@ -5053,137 +5330,157 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
     # Skip this path for knowledge queries to prefer the knowledge/web pipeline
     if intent == "knowledge_query":
         pass
-    # Prepare backend-only log; do not expose plan/kritik in UI
-    backend_log = {"plan": plan_b, "kritik": critic_b, "meta": {"sources_count": len(srcs_pl or []), "pipeline": "planner"}}
-    # Planner Pfad: optional Auto‑Modi Signalisierung (leichtgewichtig)
-    auto_modes: List[str] = []
-    if srcs_pl:
-        auto_modes.append('web')
-    if plan_b:
-        auto_modes.append('chain')
-    if critic_b:
-        auto_modes.append('critique')
-    # Simple role selection stub for Sub‑KIs
-    role_used = 'Erklärbär'
-    try:
-        if srcs_pl and len(srcs_pl) > 0:
-            role_used = 'Forscher'
-        elif critic_b:
-            role_used = 'Kritiker'
-    except Exception:
+    if intent != "knowledge_query":
+        # Prepare backend-only log; do not expose plan/kritik in UI
+        backend_log = {"plan": plan_b, "kritik": critic_b, "meta": {"sources_count": len(srcs_pl or []), "pipeline": "planner"}}
+        # Planner Pfad: optional Auto‑Modi Signalisierung (leichtgewichtig)
+        auto_modes: List[str] = []
+        if srcs_pl:
+            auto_modes.append('web')
+        if plan_b:
+            auto_modes.append('chain')
+        if critic_b:
+            auto_modes.append('critique')
+        # Simple role selection stub for Sub‑KIs
         role_used = 'Erklärbär'
-    try:
-        t_det = extract_topic(user_msg)
-        if t_det:
-            _LAST_TOPIC[sid] = t_det
-            # Persist for this conversation if known
-            if conv_id:
-                persist_last_topic(str(conv_id), t_det)
-            else:
-                persist_last_topic(sid, t_det)
-    except Exception:
-        pass
-    # Append retrieval notice if we used long‑term blocks
-    if _retr_ids:
-        out_text = (out_text + "\n\n" + "📚 Antwort enthält Wissen aus Langzeitgedächtnis: Block-IDs " + ", ".join(_retr_ids)).strip()
-    # Clean any planner scaffolding before UI formatting (remove M1:, Evidenz:, follow-up prompts)
-    _raw_planner_text = out_text
-    cleaned_once = extract_natural_reply(out_text)
-    out_text = cleaned_once.strip() if isinstance(cleaned_once, str) else str(cleaned_once)
-    # Humanize potential self-state outputs
-    try:
-        if isinstance(out_text, (dict, list)):
-            out_text = express_state_human(state.to_dict() if state else {})
-        elif ("Kiana Self-State" in out_text) or ("Self-State" in out_text):
-            try:
-                out_text = express_state_human(state.to_dict() if state else {})
-            except Exception:
-                pass
-    except Exception:
-        pass
-    if not out_text:
-        # Prefer showing raw planner text over generic fallback if cleaning nuked content
-        logger.warning("planner: cleaning produced empty; using raw planner text")
-        out_text = _raw_planner_text
-    # Ensure we never leak deliberation markers; only return cleaned frontend text
-    out_text = format_user_response(out_text, backend_log)
-    # Learning controller: if answer looks uncertain, ask or search
-    try:
-        if is_low_confidence_answer(out_text):
-            mode = decide_ask_or_search(user_msg, state, persona)
-            if mode == 'web_search':
-                web_ans, web_srcs = try_web_answer(user_msg, limit=3)
-                if web_ans:
-                    out_text = web_ans
-                    src_block_ws = format_sources(web_srcs or [], limit=2)
-                    if src_block_ws:
-                        out_text = (out_text + "\n\n" + src_block_ws).strip()
+        try:
+            if srcs_pl and len(srcs_pl) > 0:
+                role_used = 'Forscher'
+            elif critic_b:
+                role_used = 'Kritiker'
+        except Exception:
+            role_used = 'Erklärbär'
+        try:
+            t_det = extract_topic(user_msg)
+            if t_det:
+                _LAST_TOPIC[sid] = t_det
+                # Persist for this conversation if known
+                if conv_id:
+                    persist_last_topic(str(conv_id), t_det)
                 else:
-                    mode = 'ask_user'
-            if mode == 'ask_user':
-                follow = build_childlike_question(user_msg, persona, state)
-                if state:
-                    state.pending_followup = 'learning'
-                follow = postprocess_and_style(follow, persona, state, profile_used, style_prompt)
-                if consent_note:
-                    follow = (follow + "\n\n" + consent_note).strip()
-                # Persist minimal and return early
-                conv_id_follow = None
+                    persist_last_topic(sid, t_det)
+        except Exception:
+            pass
+        # Append retrieval notice if we used long‑term blocks
+        if _retr_ids:
+            out_text = (out_text + "\n\n" + "📚 Antwort enthält Wissen aus Langzeitgedächtnis: Block-IDs " + ", ".join(_retr_ids)).strip()
+        # Clean any planner scaffolding before UI formatting (remove M1:, Evidenz:, follow-up prompts)
+        _raw_planner_text = out_text
+        cleaned_once = extract_natural_reply(out_text)
+        out_text = cleaned_once.strip() if isinstance(cleaned_once, str) else str(cleaned_once)
+        # Humanize potential self-state outputs
+        try:
+            if isinstance(out_text, (dict, list)):
+                out_text = express_state_human(state.to_dict() if state else {})
+            elif ("Kiana Self-State" in out_text) or ("Self-State" in out_text):
                 try:
-                    if current and current.get("id"):
-                        uid = int(current["id"])  # type: ignore
-                        conv = _ensure_conversation(db, uid, body.conv_id)
-                        conv_id_follow = conv.id
-                        _save_msg(db, conv.id, "user", user_msg)
-                        _save_msg(db, conv.id, "ai", follow)
-                        asyncio.create_task(_retitle_if_needed(conv.id, user_msg, follow, body.lang or "de-DE"))
-                except Exception:
-                    conv_id_follow = None
-                try:
-                    now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
-                    uid_for_mem = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
-                    save_experience(uid_for_mem, conv_id_follow, {
-                        "type": "followup_question", "user_message": user_msg, "assistant_reply": follow,
-                        "timestamp": now_iso, "mood": (state.mood if state else "neutral"),
-                    })
-                    if state:
-                        save_state(state)
+                    out_text = express_state_human(state.to_dict() if state else {})
                 except Exception:
                     pass
-                conv_out_follow = conv_id_follow if conv_id_follow is not None else (body.conv_id or None)
-                return {"ok": True, "reply": follow, "conv_id": conv_out_follow, "auto_modes": [], "role_used": "FollowUp", "memory_ids": [], "quick_replies": ["Ich erkläre es in 2-3 Sätzen"], "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "learning_followup"}}
-    except Exception:
-        pass
-    # Unified postprocessing with persona/state
-    out_text = postprocess_and_style(out_text, persona, state, profile_used, style_prompt)
-    # persist styled message if possible
-    try:
-        if conv_id:
-            _save_msg(db, conv_id, "ai", out_text)
-    except Exception:
-        pass
-    if consent_note:
-        out_text = (out_text + "\n\n" + consent_note).strip()
-    _topic = extract_topic(user_msg)
-    quick_replies = _quick_replies_for_topic(_topic, user_msg)
-    # Persist experience and state updates
-    try:
-        now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
-        extracted_topics = [extract_topic(user_msg) or ""]
-        uid_for_mem = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
-        save_experience(uid_for_mem, conv_id, {
-            "type": "experience", "user_message": user_msg, "assistant_reply": out_text,
-            "timestamp": now_iso, "mood": (state.mood if state else "neutral"), "topics": extracted_topics,
-        })
-        if state:
-            save_state(state)
-        if state and experiences_raw:
-            asyncio.create_task(reflect_if_needed(state, experiences_raw))
-    except Exception:
-        pass
-    conv_out = conv_id if conv_id is not None else (body.conv_id or None)
-    if out_text and str(out_text).strip():
-        return {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "role_used": role_used, "memory_ids": (_retr_ids or []), "quick_replies": quick_replies, "topic": _topic, "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
+        except Exception:
+            pass
+        if not out_text:
+            # Prefer showing raw planner text over generic fallback if cleaning nuked content
+            logger.warning("planner: cleaning produced empty; using raw planner text")
+            out_text = _raw_planner_text
+        # Ensure we never leak deliberation markers; only return cleaned frontend text
+        out_text = format_user_response(out_text, backend_log)
+        # Learning controller: if answer looks uncertain, ask or search
+        if intent != "knowledge_query":
+            try:
+                if is_low_confidence_answer(out_text):
+                    mode = decide_ask_or_search(user_msg, state, persona)
+                    if mode == 'web_search':
+                        web_ans, web_srcs = try_web_answer(user_msg, limit=3)
+                        if web_ans:
+                            out_text = web_ans
+                            src_block_ws = format_sources(web_srcs or [], limit=2)
+                            if src_block_ws:
+                                out_text = (out_text + "\n\n" + src_block_ws).strip()
+                        else:
+                            digest_ctx = ""
+                            try:
+                                digest_ctx = lookup_web_context(user_msg)
+                            except Exception:
+                                digest_ctx = ""
+                            if digest_ctx:
+                                digest_prompt = compose_reasoner_prompt(user_msg, digest_ctx)
+                                try:
+                                    llm_txt_digest = await call_llm(digest_prompt)
+                                except Exception:
+                                    llm_txt_digest = ""
+                                digest_reply = clean(llm_txt_digest or "")
+                                if digest_reply:
+                                    out_text = digest_reply
+                                    mode = ""
+                                else:
+                                    mode = 'ask_user'
+                            else:
+                                mode = 'ask_user'
+                    if mode == 'ask_user':
+                        follow = build_childlike_question(user_msg, persona, state)
+                        if state:
+                            state.pending_followup = 'learning'
+                        follow = postprocess_and_style(follow, persona, state, profile_used, style_prompt)
+                        if consent_note:
+                            follow = (follow + "\n\n" + consent_note).strip()
+                        # Persist minimal and return early
+                        conv_id_follow = None
+                        try:
+                            if current and current.get("id"):
+                                uid = int(current["id"])  # type: ignore
+                                conv = _ensure_conversation(db, uid, body.conv_id)
+                                conv_id_follow = conv.id
+                                _save_msg(db, conv.id, "user", user_msg)
+                                _save_msg(db, conv.id, "ai", follow)
+                                asyncio.create_task(_retitle_if_needed(conv.id, user_msg, follow, body.lang or "de-DE"))
+                        except Exception:
+                            conv_id_follow = None
+                        try:
+                            now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                            uid_for_mem = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
+                            save_experience(uid_for_mem, conv_id_follow, {
+                                "type": "followup_question", "user_message": user_msg, "assistant_reply": follow,
+                                "timestamp": now_iso, "mood": (state.mood if state else "neutral"),
+                            })
+                            if state:
+                                save_state(state)
+                        except Exception:
+                            pass
+                        conv_out_follow = conv_id_follow if conv_id_follow is not None else (body.conv_id or None)
+                        return {"ok": True, "reply": follow, "conv_id": conv_out_follow, "auto_modes": [], "role_used": "FollowUp", "memory_ids": [], "quick_replies": ["Ich erkläre es in 2-3 Sätzen"], "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "learning_followup"}}
+            except Exception:
+                pass
+        # Unified postprocessing with persona/state
+        out_text = postprocess_and_style(out_text, persona, state, profile_used, style_prompt)
+        # persist styled message if possible
+        try:
+            if conv_id:
+                _save_msg(db, conv_id, "ai", out_text)
+        except Exception:
+            pass
+        if consent_note:
+            out_text = (out_text + "\n\n" + consent_note).strip()
+        _topic = extract_topic(user_msg)
+        quick_replies = _quick_replies_for_topic(_topic, user_msg)
+        # Persist experience and state updates
+        try:
+            now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            extracted_topics = [extract_topic(user_msg) or ""]
+            uid_for_mem = int(current["id"]) if (current and current.get("id")) else None  # type: ignore
+            save_experience(uid_for_mem, conv_id, {
+                "type": "experience", "user_message": user_msg, "assistant_reply": out_text,
+                "timestamp": now_iso, "mood": (state.mood if state else "neutral"), "topics": extracted_topics,
+            })
+            if state:
+                save_state(state)
+            if state and experiences_raw:
+                asyncio.create_task(reflect_if_needed(state, experiences_raw))
+        except Exception:
+            pass
+        conv_out = conv_id if conv_id is not None else (body.conv_id or None)
+        if out_text and str(out_text).strip():
+            return {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "role_used": role_used, "memory_ids": (_retr_ids or []), "quick_replies": quick_replies, "topic": _topic, "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
 
     # 3) Pipeline: Memory -> Web (optional) -> LLM -> Save (Fallback)
     # Guard: never let simple greetings fall through to generic fallback

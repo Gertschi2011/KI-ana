@@ -18,14 +18,28 @@ def decide_ask_or_search(user_msg: str, state, persona) -> str:
     Returns 'ask_user', 'web_search' or ''.
     Simple heuristic:
       - If explicitly asking for explanation/definition -> web_search
+      - Guard rails for classic W-Fragen ("wie", "warum", "wo", …)
       - Otherwise ask user first (childlike)
     """
     try:
         t = (user_msg or "").lower()
         # Lern-/Erklär-Trigger
-        if any(p in t for p in ["erklär mir", "erkläre mir", "kannst du mir erklären"]):
+        if not t:
+            return "ask_user"
+        if "?" in t:
             return "web_search"
-        if any(p in t for p in ["was ist", "was weißt du über", "was weisst du über"]):
+        triggers = [
+            "erklär mir", "erkläre mir", "kannst du mir erklären",
+            "was ist", "was weißt du über", "was weisst du über",
+            "wie ist", "wie sind", "wie steht es um", "wie läuft",
+            "warum", "wieso", "wo liegt", "wo befindet sich",
+            "erzähl mir", "erzähle mir", "bericht", "gib mir einen überblick",
+            "stand ", "aktueller stand", "aktuelle lage",
+        ]
+        if any(p in t for p in triggers):
+            return "web_search"
+        # Longer descriptive prompts (>= 6 words) likely expect knowledge -> search
+        if len(t.split()) >= 6:
             return "web_search"
     except Exception:
         pass
