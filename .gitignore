@@ -1,0 +1,45 @@
+# Python venv
+.venv/
+venv/
+ENV/
+env/
+
+# Lokale DBs / Caches
+test.db
+*.sqlite
+*.sqlite3
+
+# Chroma / Vektorstore / Indizes
+data/
+indexes/
+data/chroma/
+
+# Laufzeit-Dateien von KI_ana
+runtime/
+system/crawler_state.json
+system/crawler_targets.json
+system/personality_state.json
+
+# Logs / Backups
+*.log
+logs/
+backup/
+reports/
+
+# __pycache__
+__pycache__/
+**/__pycache__/
+
+# Node / Frontend-Builds (falls vorhanden)
+node_modules/
+dist/
+.build/
+.next/
+
+# OS / Editor
+.DS_Store
+*.swp
+*.swo
+*.tmp
+.vscode/
+.idea/

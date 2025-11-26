@@ -1,3 +1,66 @@
+    async function submitTargetForm(event){
+      if (event) event.preventDefault();
+      if (!crawlerTargetFormEl) return;
+      const payload = {
+        label: targetLabelEl.value.trim(),
+        url: targetUrlEl.value.trim(),
+        interval_sec: Math.max(60, (Number(targetIntervalEl.value) || 0) * 60),
+        enabled: targetEnabledEl.value === 'true',
+        tags: targetTagsEl.value.split(',').map(t=>t.trim()).filter(Boolean),
+      };
+      if (targetTrustEl.value){
+        payload.trust = Number(targetTrustEl.value);
+      }
+      const method = editingTargetId ? 'PUT' : 'POST';
+      const url = editingTargetId ? `/api/crawler/targets/${encodeURIComponent(editingTargetId)}` : '/api/crawler/targets';
+      try{
+        targetFormStatusEl.textContent = 'Speichere…';
+        const res = await fetch(rootPrefix() + url, {
+          method,
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        let data = null;
+        try{ data = await res.json(); }
+        catch{ data = null; }
+        if (!res.ok){
+          const errInfo = normalizeCrawlerError(data, res.status);
+          throw new Error(errInfo.message || `HTTP ${res.status}`);
+        }
+        targetFormStatusEl.textContent = 'Gespeichert';
+        closeTargetForm();
+        await loadCrawlerTargets();
+      }catch(err){
+        targetFormStatusEl.textContent = 'Fehler: ' + String(err && err.message ? err.message : err || 'Unbekannt');
+      }
+    }
+
+    async function deleteCrawlerTarget(id){
+      if (!id) return;
+      if (!confirm('Ziel wirklich löschen?')) return;
+      try{
+        const res = await fetch(rootPrefix() + `/api/crawler/targets/${encodeURIComponent(id)}`, {
+          method: 'DELETE',
+          credentials: 'include',
+        });
+        if (res.status === 204){
+          await loadCrawlerTargets();
+          return;
+        }
+        let data = null;
+        try{ data = await res.json(); }
+        catch{ data = null; }
+        const errInfo = normalizeCrawlerError(data, res.status);
+        throw new Error(errInfo.message || `HTTP ${res.status}`);
+      }catch(err){
+        if (crawlerTargetsError){
+          crawlerTargetsError.style.display = '';
+          crawlerTargetsError.textContent = 'Fehler: ' + String(err && err.message ? err.message : err || 'Unbekannt');
+        }
+      }
+    }
+
 <!doctype html>
 <html lang="de">
 <head>
@@ -13,6 +76,18 @@
     .container{max-width:1200px;margin:20px auto;padding:24px}
     h1{margin:12px 0 8px}
     .card{background:#fff;border-radius:12px;padding:12px;border:1px solid #eef0f5;box-shadow:0 6px 20px rgba(0,0,0,.06);margin:16px 0}
+    .card table{width:100%;border-collapse:collapse}
+    .card table th,.card table td{padding:8px;border-bottom:1px solid #eef0f5;text-align:left;font-size:13px}
+    .card table th{font-weight:600;color:#243056}
+    .tag-pill{display:inline-block;padding:2px 6px;border-radius:999px;background:#f0f3ff;border:1px solid #d6def9;margin-right:4px;margin-bottom:2px;font-size:11px;white-space:nowrap}
+    .status-ok{color:#166534}
+    .status-error{color:#b91c1c}
+    .badge{display:inline-flex;gap:4px;align-items:center;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+    .badge-internal{background:#ddf3ff;color:#035388;border:1px solid #9fd5ff}
+    .badge-cybercrime{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+    .badge-news{background:#ede9fe;color:#4c1d95;border:1px solid #c4b5fd}
+    .badge-docs{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+    .trust-pill{display:inline-block;margin-top:4px;padding:2px 6px;border-radius:6px;background:#f4f4f5;color:#1f2937;font-size:11px;border:1px solid #e5e7eb}
     .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;position:sticky;top:0;z-index:5;background:#fff;padding:8px;border:1px solid #eef0f5;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
     .pill{display:inline-block;padding:2px 8px;border-radius:999px;background:#eef3fb;color:#23408f;border:1px solid #d7e2f3;font-size:12px}
     input,select,.btn{padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px;background:#fff}
@@ -33,6 +108,89 @@
       <div>
         <h1 class="page-title">📋 Admin – Live Logs</h1>
         <p class="page-subtitle">Echtzeit System-Logs</p>
+      </div>
+    </div>
+    <div class="card" id="crawlerCard">
+      <div style="display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:1 1 240px;min-width:200px;">
+          <h2 style="margin:0 0 6px;font-size:18px;">🕷️ Crawler</h2>
+          <div id="crawlerStatusSummary" class="muted">Status lädt…</div>
+          <div id="crawlerLastRun" class="muted">Letzter Lauf: —</div>
+          <div id="crawlerLastError" class="muted" style="display:none;color:#b91c1c;"></div>
+          <div id="crawlerLastResult" class="muted" style="display:none;"></div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:flex-end;flex-direction:column;">
+          <button class="btn" id="crawlerRefresh" type="button">↻ Aktualisieren</button>
+          <button class="btn" id="crawlerRun" type="button">▶ Lauf starten</button>
+        </div>
+      </div>
+      <div id="crawlerTargetsBlock" style="margin-top:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+          <h3 style="margin:0;font-size:16px;">Crawler-Ziele</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn" id="crawlerTargetAdd">+ Ziel hinzufügen</button>
+            <button class="btn" id="crawlerTargetsReload">↻ Ziele aktualisieren</button>
+          </div>
+        </div>
+        <div id="crawlerTargetsError" class="muted" style="display:none;margin-top:8px;color:#b91c1c;"></div>
+        <div id="crawlerTargetsTableWrap" style="margin-top:12px;overflow:auto;">
+          <table id="crawlerTargetsTable">
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>URL</th>
+                <th>Aktiv</th>
+                <th>Intervall</th>
+                <th>Vertrauen</th>
+                <th>Nächster Lauf</th>
+                <th>Letzter Lauf</th>
+                <th>Status</th>
+                <th>Tags</th>
+                <th style="width:120px;">Aktionen</th>
+              </tr>
+            </thead>
+            <tbody id="crawlerTargetsBody">
+              <tr><td colspan="10" class="muted">Lade Ziele…</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="crawlerTargetForm" class="card" style="margin-top:12px;display:none;background:#f6f8fe;">
+          <h4 style="margin:0 0 8px;font-size:15px;">Ziel bearbeiten</h4>
+          <form id="crawlerTargetFormEl" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+            <label style="display:flex;flex-direction:column;gap:4px;">
+              <span>Label</span>
+              <input id="targetLabel" required>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;">
+              <span>URL</span>
+              <input id="targetUrl" required>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;">
+              <span>Intervall (Minuten)</span>
+              <input id="targetInterval" type="number" min="1" value="30">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;">
+              <span>Aktiv</span>
+              <select id="targetEnabled">
+                <option value="true" selected>Aktiv</option>
+                <option value="false">Deaktiviert</option>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;grid-column:1 / -1;">
+              <span>Tags (Kommagetrennt)</span>
+              <input id="targetTags" placeholder="docs, news">
+            </label>
+            <label style="display:flex;flex-direction:column;gap:4px;">
+              <span>Vertrauen (optional 0-1)</span>
+              <input id="targetTrust" type="number" step="0.01" min="0" max="1">
+            </label>
+            <div style="display:flex;gap:8px;align-items:center;grid-column:1 / -1;">
+              <button class="btn" id="targetSave" type="submit">💾 Speichern</button>
+              <button class="btn" id="targetCancel" type="button">Abbrechen</button>
+              <span id="targetFormStatus" class="muted"></span>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
     <div class="filter-section">
@@ -70,6 +228,31 @@
     const lvlErrEl = document.getElementById('lvlErr');
     const lvlWarnEl = document.getElementById('lvlWarn');
     const lvlInfoEl = document.getElementById('lvlInfo');
+    const crawlerCard = document.getElementById('crawlerCard');
+    const crawlerStatusEl = document.getElementById('crawlerStatusSummary');
+    const crawlerLastRunEl = document.getElementById('crawlerLastRun');
+    const crawlerErrorEl = document.getElementById('crawlerLastError');
+    const crawlerResultEl = document.getElementById('crawlerLastResult');
+    const crawlerRunBtn = document.getElementById('crawlerRun');
+    const crawlerRefreshBtn = document.getElementById('crawlerRefresh');
+    const crawlerTargetsReloadBtn = document.getElementById('crawlerTargetsReload');
+    const crawlerTargetAddBtn = document.getElementById('crawlerTargetAdd');
+    const crawlerTargetsBody = document.getElementById('crawlerTargetsBody');
+    const crawlerTargetsError = document.getElementById('crawlerTargetsError');
+    const crawlerTargetForm = document.getElementById('crawlerTargetForm');
+    const crawlerTargetFormEl = document.getElementById('crawlerTargetFormEl');
+    const targetLabelEl = document.getElementById('targetLabel');
+    const targetUrlEl = document.getElementById('targetUrl');
+    const targetIntervalEl = document.getElementById('targetInterval');
+    const targetEnabledEl = document.getElementById('targetEnabled');
+    const targetTagsEl = document.getElementById('targetTags');
+    const targetTrustEl = document.getElementById('targetTrust');
+    const targetFormStatusEl = document.getElementById('targetFormStatus');
+    const targetCancelBtn = document.getElementById('targetCancel');
+    let editingTargetId = null;
+    let knownTargets = [];
+    let crawlerStatusTimer = null;
+    let crawlerStatusLoaded = false;
 
     let es = null;
     let textBuf = '';
@@ -81,6 +264,139 @@
 
     function rootPrefix(){ const p = location.pathname||'/'; const i = p.indexOf('/static/'); return (i>=0)? p.slice(0,i): '' }
     function esc(s){ return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])) }
+
+    function formatCrawlerTs(ts){
+      const val = Number(ts || 0);
+      if (!Number.isFinite(val) || val <= 0) return '—';
+      try{ return new Date(val * 1000).toLocaleString(); }
+      catch{ return String(val); }
+    }
+
+    function setCrawlerBusy(isBusy){
+      if (!crawlerRunBtn) return;
+      if (isBusy){
+        crawlerRunBtn.disabled = true;
+        crawlerRunBtn.textContent = '⏳ Läuft…';
+      }else{
+        crawlerRunBtn.disabled = false;
+        crawlerRunBtn.textContent = '▶ Lauf starten';
+      }
+    }
+
+    function renderCrawlerStatus(data){
+      if (!crawlerCard) return;
+      const running = !!(data && data.running);
+      if (crawlerStatusEl){
+        let extra = '';
+        if (typeof data?.target_count === 'number'){
+          const enabled = typeof data.enabled_targets === 'number' ? data.enabled_targets : null;
+          extra = ` · Ziele: ${data.target_count}`;
+          if (enabled !== null) extra += ` (${enabled} aktiv)`;
+        }
+        crawlerStatusEl.textContent = (running ? 'Crawler läuft gerade…' : 'Crawler bereit') + extra;
+      }
+      if (crawlerLastRunEl){
+        crawlerLastRunEl.textContent = 'Letzter Lauf: ' + formatCrawlerTs(data ? data.last_run_ts : 0);
+      }
+      if (crawlerErrorEl){
+        const err = data && data.last_error ? String(data.last_error) : '';
+        if (err){
+          crawlerErrorEl.style.display = '';
+          crawlerErrorEl.textContent = 'Fehler: ' + err;
+        } else {
+          crawlerErrorEl.style.display = 'none';
+          crawlerErrorEl.textContent = '';
+        }
+      }
+      if (crawlerResultEl){
+        if (data && Object.prototype.hasOwnProperty.call(data, 'result')){
+          const details = data.result;
+          let summary = '';
+          if (details && typeof details === 'object'){
+            summary = String(details.summary || details.message || details.status || '');
+            if (!summary){
+              try{ summary = JSON.stringify(details); }
+              catch{ summary = ''; }
+            }
+          } else if (typeof details !== 'undefined' && details !== null){
+            summary = String(details);
+          }
+          if (summary){
+            if (summary.length > 200) summary = summary.slice(0, 197) + '…';
+            crawlerResultEl.style.display = '';
+            crawlerResultEl.textContent = 'Ergebnis: ' + summary;
+          } else {
+            crawlerResultEl.style.display = 'none';
+            crawlerResultEl.textContent = '';
+          }
+        } else {
+          crawlerResultEl.style.display = 'none';
+          crawlerResultEl.textContent = '';
+        }
+      }
+      setCrawlerBusy(running);
+    }
+
+    async function loadCrawlerStatus(){
+      if (!crawlerCard) return;
+      try{
+        if (!crawlerStatusLoaded && crawlerStatusEl){
+          crawlerStatusEl.textContent = 'Lade Status…';
+        }
+        const res = await fetch(rootPrefix() + '/api/crawler/status', { credentials:'include' });
+        let data = null;
+        try{ data = await res.json(); }
+        catch{ data = null; }
+        if (!res.ok){
+          const msg = data && (data.message || data.detail || data.error) ? (data.message || data.detail || data.error) : `HTTP ${res.status}`;
+          throw new Error(String(msg));
+        }
+        renderCrawlerStatus(data || {});
+        crawlerStatusLoaded = true;
+      }catch(err){
+        if (crawlerStatusEl){
+          crawlerStatusEl.textContent = 'Status konnte nicht geladen werden';
+        }
+        if (crawlerErrorEl){
+          crawlerErrorEl.style.display = '';
+          crawlerErrorEl.textContent = 'Fehler: ' + String(err && err.message ? err.message : err || 'Unbekannter Fehler');
+        }
+        setCrawlerBusy(false);
+      }
+    }
+
+    function normalizeCrawlerError(data, status){
+      const out = { code: '', message: '' };
+      const base = (data && typeof data === 'object') ? data : null;
+      const detail = base && Object.prototype.hasOwnProperty.call(base, 'detail') ? base.detail : null;
+      let source = base;
+      if (detail && typeof detail === 'object'){
+        source = detail;
+      } else if (typeof detail === 'string' && detail){
+        out.message = detail;
+      }
+      if (source && typeof source === 'object'){
+        if (Object.prototype.hasOwnProperty.call(source, 'error') && source.error){
+          try{ out.code = String(source.error); }
+          catch{ out.code = ''; }
+        }
+        const raw = source.message || source.detail || source.error;
+        if (!out.message){
+          if (typeof raw === 'string' && raw){ out.message = raw; }
+          else if (typeof raw === 'number'){ out.message = String(raw); }
+          else if (raw && typeof raw === 'object'){
+            try{ out.message = JSON.stringify(raw); }
+            catch{ out.message = ''; }
+          }
+        }
+      } else if (!out.message && typeof base === 'string' && base){
+        out.message = base;
+      }
+      if (!out.message){
+        out.message = `HTTP ${status}`;
+      }
+      return out;
+    }
 
     function detectLevel(line){
       try{
@@ -128,11 +444,24 @@
       logsEl.classList.remove('muted');
     }
 
+    async function loadInitialLogs(){
+      try{
+        const res = await fetch(rootPrefix() + '/api/admin/logs?limit=800', { credentials: 'include' });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (Array.isArray(data?.lines)){
+          textBuf = data.lines.join('\n');
+          render();
+        }
+      }catch{}
+    }
+
     function connect(){
       try{ if (es) es.close(); }catch{}
-      es = new EventSource(rootPrefix() + '/api/logs/stream');
+      es = new EventSource(rootPrefix() + '/api/admin/logs/live');
       es.onmessage = (e)=>{ textBuf += (e.data||'') + '\n'; if (!paused && !renderPending){ renderPending = true; requestAnimationFrame(render); } };
       es.onerror = ()=>{ try{ es.close(); }catch{}; setTimeout(connect, 1500); };
+      loadInitialLogs();
     }
 
     filterEl.addEventListener('input', ()=>{
@@ -152,6 +481,239 @@
     lvlErrEl.addEventListener('change', ()=>{ try{ localStorage.setItem('admin.logs.lvlErr', lvlErrEl.checked? '1':'0'); }catch{} render(); });
     lvlWarnEl.addEventListener('change', ()=>{ try{ localStorage.setItem('admin.logs.lvlWarn', lvlWarnEl.checked? '1':'0'); }catch{} render(); });
     lvlInfoEl.addEventListener('change', ()=>{ try{ localStorage.setItem('admin.logs.lvlInfo', lvlInfoEl.checked? '1':'0'); }catch{} render(); });
+
+    if (crawlerRefreshBtn){
+      crawlerRefreshBtn.addEventListener('click', ()=>{ loadCrawlerStatus().catch(()=>{}); });
+    }
+
+    async function loadCrawlerTargets(){
+      if (!crawlerTargetsBody) return;
+      try{
+        crawlerTargetsBody.innerHTML = '<tr><td colspan="10" class="muted">Lade Ziele…</td></tr>';
+        crawlerTargetsError.style.display = 'none';
+        const res = await fetch(rootPrefix() + '/api/crawler/targets', { credentials:'include' });
+        let data = null;
+        try{ data = await res.json(); }
+        catch{ data = null; }
+        if (!res.ok){
+          const errInfo = normalizeCrawlerError(data, res.status);
+          throw new Error(errInfo.message || `HTTP ${res.status}`);
+        }
+        const items = Array.isArray(data?.items) ? data.items : [];
+        knownTargets = items;
+        renderCrawlerTargets(items);
+      }catch(err){
+        knownTargets = [];
+        if (crawlerTargetsBody){
+          crawlerTargetsBody.innerHTML = '<tr><td colspan="10" class="muted">Fehler beim Laden</td></tr>';
+        }
+        if (crawlerTargetsError){
+          crawlerTargetsError.style.display = '';
+          crawlerTargetsError.textContent = 'Fehler: ' + String(err && err.message ? err.message : err || 'Unbekannter Fehler');
+        }
+      }
+    }
+
+    function renderCrawlerTargets(items){
+      if (!crawlerTargetsBody){
+        return;
+      }
+      if (!items.length){
+        crawlerTargetsBody.innerHTML = '<tr><td colspan="10" class="muted">Keine Ziele konfiguriert</td></tr>';
+        return;
+      }
+      const rows = items.map(item => {
+        const lastTs = formatCrawlerTs(item.last_run_ts);
+        const lastStatus = item.last_status || {};
+        const ok = !!lastStatus.ok;
+        const message = lastStatus.message || (ok ? 'OK' : 'Fehler');
+        const statusClass = ok ? 'status-ok' : (typeof lastStatus.ok === 'boolean' ? 'status-error' : '');
+        const enabledBadge = item.enabled ? '<span class="status-ok">Ja</span>' : '<span class="muted">Nein</span>';
+        const intervalMinutes = Math.round((item.interval_sec || 0) / 60);
+        const tags = Array.isArray(item.tags) ? item.tags.map(t=>`<span class="tag-pill">${esc(t)}</span>`).join('') : '';
+        const rel = lastStatus.ok != null && item.last_run_ts ? timeSince(item.last_run_ts) : '—';
+        const trustVal = typeof item.trust === 'number' ? Math.round(item.trust * 100) / 100 : null;
+        const trustBadge = trustVal !== null
+          ? `<span class="trust-pill">${(trustVal * 100).toFixed(0)} % · ${trustVal.toFixed(2)}</span>`
+          : '<span class="muted">—</span>';
+        const categories = [];
+        const lowerTags = Array.isArray(item.tags) ? item.tags.map(t=>String(t).toLowerCase()) : [];
+        if (lowerTags.includes('internal')) categories.push('<span class="badge badge-internal">Intern</span>');
+        if (lowerTags.includes('cybercrime')) categories.push('<span class="badge badge-cybercrime">Cybercrime</span>');
+        if (lowerTags.includes('news')) categories.push('<span class="badge badge-news">News</span>');
+        if (lowerTags.includes('docs')) categories.push('<span class="badge badge-docs">Docs</span>');
+        const badgeLine = categories.length ? `<div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;">${categories.join('')}</div>` : '';
+        const nextTs = item.next_run_ts || (item.last_run_ts && item.interval_sec ? item.last_run_ts + item.interval_sec : 0);
+        const nextLabel = formatCrawlerTs(nextTs);
+        const nextRel = nextTs ? timeUntil(nextTs) : '—';
+        return `<tr data-target-id="${esc(item.id)}">
+          <td>${esc(item.label || item.id)}${badgeLine}</td>
+          <td><a href="${esc(item.url||'')}" target="_blank" rel="noopener">${esc(item.url||'')}</a></td>
+          <td>${enabledBadge}</td>
+          <td>${intervalMinutes || 0} min</td>
+          <td>${trustBadge}</td>
+          <td>${nextLabel} <div class="muted" style="font-size:11px;">${nextRel}</div></td>
+          <td>${lastTs} <div class="muted" style="font-size:11px;">${rel}</div></td>
+          <td class="${statusClass}">${esc(message || '—')}</td>
+          <td>${tags || '<span class="muted">—</span>'}</td>
+          <td>
+            <button class="btn" data-target-action="edit" data-target-id="${esc(item.id)}">Bearbeiten</button>
+            <button class="btn" data-target-action="delete" data-target-id="${esc(item.id)}">Löschen</button>
+          </td>
+        </tr>`;
+      }).join('');
+      crawlerTargetsBody.innerHTML = rows;
+      crawlerTargetsBody.querySelectorAll('button[data-target-action]').forEach(btn => {
+        btn.addEventListener('click', event => {
+          const id = btn.getAttribute('data-target-id');
+          const action = btn.getAttribute('data-target-action');
+          if (!id || !action) return;
+          if (action === 'edit'){
+            openTargetForm(id);
+          } else if (action === 'delete'){
+            deleteCrawlerTarget(id);
+          }
+        });
+      });
+    }
+
+    function timeSince(ts){
+      const now = Math.floor(Date.now() / 1000);
+      const value = Number(ts || 0);
+      if (!Number.isFinite(value) || value <= 0) return '—';
+      const diff = Math.max(0, now - value);
+      if (diff < 60) return `${diff}s`; 
+      const minutes = Math.floor(diff / 60);
+      if (minutes < 60) return `${minutes} min`;
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) return `${hours} h`;
+      const days = Math.floor(hours / 24);
+      return `${days} d`;
+    }
+
+    function timeUntil(ts){
+      const now = Math.floor(Date.now() / 1000);
+      const value = Number(ts || 0);
+      if (!Number.isFinite(value) || value <= 0) return '—';
+      const diff = Math.max(-1, value - now);
+      if (diff < 0) return 'überfällig';
+      if (diff < 60) return `in ${diff}s`;
+      const minutes = Math.floor(diff / 60);
+      if (minutes < 60) return `in ${minutes} min`;
+      const hours = Math.floor(minutes / 60);
+      if (hours < 24) return `in ${hours} h`;
+      const days = Math.floor(hours / 24);
+      return `in ${days} d`;
+    }
+
+    function openTargetForm(id){
+      if (!crawlerTargetForm || !crawlerTargetFormEl) return;
+      const target = knownTargets.find(t => String(t.id) === String(id));
+      editingTargetId = target ? String(target.id) : null;
+      crawlerTargetForm.style.display = '';
+      targetFormStatusEl.textContent = '';
+      if (target){
+        targetLabelEl.value = target.label || '';
+        targetUrlEl.value = target.url || '';
+        targetIntervalEl.value = Math.max(1, Math.round((target.interval_sec || 60) / 60));
+        targetEnabledEl.value = target.enabled ? 'true' : 'false';
+        targetTagsEl.value = Array.isArray(target.tags) ? target.tags.join(', ') : '';
+        targetTrustEl.value = typeof target.trust === 'number' ? String(target.trust) : '';
+      } else {
+        targetLabelEl.value = '';
+        targetUrlEl.value = '';
+        targetIntervalEl.value = 30;
+        targetEnabledEl.value = 'true';
+        targetTagsEl.value = '';
+        targetTrustEl.value = '';
+      }
+      targetLabelEl.focus();
+    }
+
+    function closeTargetForm(){
+      if (crawlerTargetForm){
+        crawlerTargetForm.style.display = 'none';
+        targetFormStatusEl.textContent = '';
+        editingTargetId = null;
+        crawlerTargetFormEl.reset();
+      }
+    }
+
+    if (crawlerRunBtn){
+      crawlerRunBtn.addEventListener('click', async ()=>{
+        if (crawlerRunBtn.disabled) return;
+        if (crawlerErrorEl){
+          crawlerErrorEl.style.display = 'none';
+          crawlerErrorEl.textContent = '';
+        }
+        setCrawlerBusy(true);
+        try{
+          const res = await fetch(rootPrefix() + '/api/crawler/run', { method:'POST', credentials:'include' });
+          let data = null;
+          try{ data = await res.json(); }
+          catch{ data = null; }
+          if (!res.ok){
+            const errInfo = normalizeCrawlerError(data, res.status);
+            const friendly = errInfo.code === 'crawler_already_running' ? 'Crawler läuft bereits.' : errInfo.message;
+            if (crawlerErrorEl){
+              crawlerErrorEl.style.display = '';
+              crawlerErrorEl.textContent = 'Fehler: ' + String(friendly);
+            }
+            if (data && typeof data === 'object' && Object.prototype.hasOwnProperty.call(data, 'last_run_ts')){
+              renderCrawlerStatus(data);
+            } else {
+              setCrawlerBusy(false);
+            }
+            return;
+          }
+          if (data && data.ok === false){
+            const errInfo = normalizeCrawlerError(data, res.status);
+            const friendly = errInfo.code === 'crawler_already_running' ? 'Crawler läuft bereits.' : errInfo.message;
+            if (crawlerErrorEl){
+              crawlerErrorEl.style.display = '';
+              crawlerErrorEl.textContent = 'Fehler: ' + String(friendly);
+            }
+          } else if (crawlerErrorEl){
+            crawlerErrorEl.style.display = 'none';
+            crawlerErrorEl.textContent = '';
+          }
+          renderCrawlerStatus(data || {});
+          setTimeout(()=>{ loadCrawlerTargets().catch(()=>{}); }, 800);
+        }catch(err){
+          if (crawlerErrorEl){
+            crawlerErrorEl.style.display = '';
+            crawlerErrorEl.textContent = 'Fehler: ' + String(err && err.message ? err.message : err || 'Unbekannter Fehler');
+          }
+          setCrawlerBusy(false);
+        }finally{
+          setTimeout(()=>{ loadCrawlerStatus().catch(()=>{}); }, 600);
+        }
+      });
+    }
+
+    if (crawlerCard){
+      loadCrawlerStatus().catch(()=>{});
+      loadCrawlerTargets().catch(()=>{});
+      try{
+        crawlerStatusTimer = setInterval(()=>{ loadCrawlerStatus().catch(()=>{}); }, 30000);
+      }catch{}
+    }
+
+    if (crawlerTargetsReloadBtn){
+      crawlerTargetsReloadBtn.addEventListener('click', ()=>{ loadCrawlerTargets().catch(()=>{}); });
+    }
+
+    if (crawlerTargetAddBtn){
+      crawlerTargetAddBtn.addEventListener('click', ()=>{ editingTargetId = null; openTargetForm(null); });
+    }
+
+    if (crawlerTargetFormEl){
+      crawlerTargetFormEl.addEventListener('submit', submitTargetForm);
+    }
+
+    if (targetCancelBtn){
+      targetCancelBtn.addEventListener('click', ()=>{ closeTargetForm(); });
+    }
 
     // Fallback nav if nav.js failed to populate
     window.addEventListener('load', async ()=>{
