@@ -20,6 +20,7 @@ Migration Plan:
 """
 
 from __future__ import annotations
+import json
 import logging
 import os
 import re
@@ -132,6 +133,7 @@ class WebSearchDebugRequest(BaseModel):
     max_results: int = Field(default=5, ge=1, le=20)
     mode: Optional[str] = None
     country: Optional[str] = None
+    user_id: Optional[int] = None
 
 
 # ---------------------------------------------------------------------------
@@ -1223,6 +1225,98 @@ async def run_chat_pipeline_from_message(
         needs_current = True
         current_reason = current_reason or "News-Intent erkannt"
 
+    # --- PR2: Ask for missing source preferences (human-style) ---------
+    # Only for authenticated users (we need a stable user_id to store prefs).
+    try:
+        if user_id is not None and (news_intent or needs_current):
+            country = str(user_context.get("country_code") or "AT").strip().upper()[:2] or "AT"
+            lang_norm = str(user_context.get("lang") or "de").strip().lower() or "de"
+            conv_for_check = user_context.get("conv_id")
+
+            from netapi.core import addressbook
+
+            existing_bid = addressbook.get_source_prefs(
+                user_id=int(user_id),
+                country=country,
+                lang=lang_norm,
+                intent="news",
+            )
+            missing_prefs = not bool(existing_bid)
+
+            asked_once = _asked_sources_once(int(user_id), int(conv_for_check)) if conv_for_check is not None else False
+
+            if missing_prefs and not asked_once:
+                question = (
+                    f"Welche 1-3 Seiten bevorzugst du fuer Nachrichten in {country} ({lang_norm.upper()})? "
+                    "ORF, Standard, Presse, APA oder andere?"
+                )
+                return ChatResponse(
+                    ok=True,
+                    reply=question,
+                    meta={
+                        "needs_source_prefs": True,
+                        "source_prefs_country": country,
+                        "source_prefs_lang": lang_norm,
+                        "source_prefs_intent": "news",
+                    },
+                )
+
+            if missing_prefs and asked_once and _looks_like_source_prefs_answer(message):
+                from netapi.modules.chat.source_prefs_parser import parse_source_prefs_user_text
+                from netapi import memory_store
+
+                parsed = parse_source_prefs_user_text(message)
+                if (parsed.preferred_add or parsed.blocked_add) or parsed.notes:
+                    preferred = list(parsed.preferred_add or [])
+                    blocked = list(parsed.blocked_add or [])
+
+                    now = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+                    meta = {
+                        "type": "user_source_prefs",
+                        "user_id": int(user_id),
+                        "country": country,
+                        "lang": lang_norm,
+                        "intent": "news",
+                        "preferred_sources": preferred,
+                        "blocked_sources": blocked,
+                        "trust_overrides": {},
+                        "notes": parsed.notes,
+                        "created_at": now,
+                        "updated_at": now,
+                    }
+                    title = f"Source Prefs: user={int(user_id)} {country} {lang_norm} news"
+                    content = json.dumps(meta, ensure_ascii=False, indent=2)
+                    tags = [
+                        "user_source_prefs",
+                        "prefs:sources",
+                        f"user:{int(user_id)}",
+                        f"country:{country}",
+                        f"lang:{lang_norm}",
+                        "intent:news",
+                    ]
+                    tags.extend([f"pref:{d}" for d in preferred])
+                    tags.extend([f"block:{d}" for d in blocked])
+
+                    bid = memory_store.add_block(title=title, content=content, tags=tags, meta=meta)
+                    addressbook.index_source_prefs(
+                        block_id=bid,
+                        user_id=int(user_id),
+                        country=country,
+                        lang=lang_norm,
+                        intent="news",
+                        preferred=preferred,
+                        blocked=blocked,
+                        trust_overrides={},
+                        updated_at=now,
+                    )
+
+                    pref_str = ", ".join(preferred) if preferred else "(keine)"
+                    block_str = ", ".join(blocked) if blocked else "(keine)"
+                    ack = f"Alles klar. Bevorzugt: {pref_str}. Blockiert: {block_str}."
+                    return ChatResponse(ok=True, reply=ack, meta={"stored_source_prefs": True, "block_id": bid})
+    except Exception as exc:
+        logger.warning("PR2 source prefs flow failed: %s", exc)
+
     if needs_current:
         if "current_info" not in user_context["intent_tags"]:
             user_context["intent_tags"].append("current_info")
@@ -1600,12 +1694,31 @@ async def debug_web_search(
 
     try:
         prefer_news_provider = str(body.mode or "").strip().lower() == "news"
+        source_prefs = None
+        if prefer_news_provider and body.user_id and body.country and body.lang:
+            try:
+                from netapi.core import addressbook
+                from netapi import memory_store
+
+                bid = addressbook.get_source_prefs(
+                    user_id=int(body.user_id),
+                    country=str(body.country),
+                    lang=str(body.lang),
+                    intent="news",
+                )
+                blk = memory_store.get_block(bid) if bid else None
+                if isinstance(blk, dict):
+                    source_prefs = blk.get("meta") or blk
+            except Exception:
+                source_prefs = None
         results = enricher.web_search(
             body.query,
             lang=body.lang,
             max_results=int(body.max_results),
             country_code=body.country,
             prefer_news_provider=prefer_news_provider,
+            source_prefs=source_prefs,
+            mode=body.mode,
         )
     except Exception as exc:
         raise HTTPException(HTTP_500_INTERNAL_SERVER_ERROR, f"web_search failed: {exc}") from exc
@@ -1617,6 +1730,38 @@ async def debug_web_search(
         "count": len(results or []),
         "results": results,
     }
+
+
+def _asked_sources_once(user_id: Optional[int], conv_id: Optional[int]) -> bool:
+    if user_id is None or conv_id is None:
+        return False
+    try:
+        from netapi.modules.chat import history as chat_history  # type: ignore
+
+        turns = chat_history.load_recent_turns(user_id=int(user_id), conversation_id=int(conv_id), limit=20)
+        for t in turns or []:
+            if str(t.get("role") or "").lower() not in {"ai", "assistant"}:
+                continue
+            text = str(t.get("text") or "")
+            if "Welche 1-3 Seiten bevorzugst du" in text and "Nachrichten" in text:
+                return True
+        return False
+    except Exception:
+        return False
+
+
+def _looks_like_source_prefs_answer(message: str) -> bool:
+    low = (message or "").strip().lower()
+    if not low:
+        return False
+    # quick heuristic: domains, commas, or known preference keywords
+    if ".at" in low or ".com" in low or ".de" in low:
+        return True
+    if "," in low:
+        return True
+    if any(token in low for token in ("orf", "standard", "apa", "krone", "presse", "serios", "serioes", "keine", "nicht", "ohne")):
+        return True
+    return False
 
 
 @router.get("/ping")
