@@ -983,6 +983,8 @@ class WebEnricher:
         max_results: int = 3,
         country_code: Optional[str] = None,
         prefer_news_provider: bool = False,
+        source_prefs: Optional[Dict[str, Any]] = None,
+        mode: Optional[str] = None,
     ) -> List[Dict[str, Any]]:
         lang_norm = _normalize_lang(lang)
         country_norm = (str(country_code or "AT") or "AT").strip().upper()[:2] or "AT"
@@ -1060,8 +1062,15 @@ class WebEnricher:
                 )
                 continue
             annotated = self._annotate_results(batch, provider_name)
-            if provider_name == "serper-news" and annotated:
+            if provider_name == "serper-news" and annotated and not source_prefs and not prefer_news_provider:
                 annotated = self._downrank_homepages(annotated)
+
+            ranked = self._apply_source_prefs_ranking(
+                annotated,
+                source_prefs=source_prefs,
+                mode=(mode or ("news" if prefer_news_provider else "")),
+            )
+            annotated = ranked
             annotated_count = len(annotated) if annotated else 0
             logger.info(
                 "web_enricher.provider_annotated_count: provider=%s annotated_count=%d query=%r",
@@ -1143,6 +1152,99 @@ class WebEnricher:
             query,
         )
         return []
+
+    def _apply_source_prefs_ranking(
+        self,
+        results: List[Dict[str, Any]],
+        *,
+        source_prefs: Optional[Dict[str, Any]],
+        mode: Optional[str],
+    ) -> List[Dict[str, Any]]:
+        if not results:
+            return []
+
+        mode_norm = str(mode or "").strip().lower()
+        if mode_norm not in {"news", "current", "current_events"} and not source_prefs:
+            return results
+
+        preferred: List[str] = []
+        blocked: List[str] = []
+        if isinstance(source_prefs, dict):
+            preferred = list(source_prefs.get("preferred_sources") or source_prefs.get("preferred") or [])
+            blocked = list(source_prefs.get("blocked_sources") or source_prefs.get("blocked") or [])
+            # Some call sites pass full block; support nested meta
+            meta = source_prefs.get("meta") if isinstance(source_prefs.get("meta"), dict) else None
+            if meta:
+                preferred = list(meta.get("preferred_sources") or preferred)
+                blocked = list(meta.get("blocked_sources") or blocked)
+        preferred_set = {str(x).strip().lower() for x in preferred if str(x).strip()}
+        blocked_set = {str(x).strip().lower() for x in blocked if str(x).strip()}
+
+        preferred_hits = 0
+        blocked_hits = 0
+        homepages = 0
+
+        def is_homepage(url: str) -> bool:
+            try:
+                parsed = urlparse(url)
+                path = parsed.path or ""
+            except Exception:
+                path = ""
+            if not path or path == "/":
+                return True
+            segments = [seg for seg in path.split("/") if seg]
+            return len(segments) <= 1
+
+        scored: List[Tuple[Tuple[int, int], Dict[str, Any]]] = []
+        for idx, item in enumerate(results):
+            if not isinstance(item, dict):
+                continue
+            url = str(item.get("url") or "")
+            score = 0
+            domain = ""
+            try:
+                domain = (urlparse(url).netloc or "").lower()
+                if domain.startswith("www."):
+                    domain = domain[4:]
+            except Exception:
+                domain = ""
+
+            if domain and domain in preferred_set:
+                score += 30
+                preferred_hits += 1
+            if domain and domain in blocked_set:
+                score -= 100
+                blocked_hits += 1
+            if url and is_homepage(url):
+                score -= 20
+                homepages += 1
+
+            entry = dict(item)
+            entry["_prefs_score"] = score
+            scored.append(((-score, idx), entry))
+
+        scored.sort(key=lambda pair: pair[0])
+        ordered = [item for _, item in scored]
+
+        top_domains: List[str] = []
+        for item in ordered[:6]:
+            try:
+                dom = (urlparse(str(item.get("url") or "")).netloc or "").lower()
+                if dom.startswith("www."):
+                    dom = dom[4:]
+                if dom and dom not in top_domains:
+                    top_domains.append(dom)
+            except Exception:
+                continue
+
+        logger.info(
+            "web_enricher.ranking: preferred_hits=%d blocked_hits=%d homepages=%d top_domains=%s",
+            preferred_hits,
+            blocked_hits,
+            homepages,
+            top_domains,
+        )
+        return ordered
 
     def fetch_and_summarize_pages(
         self,
@@ -1305,6 +1407,32 @@ class WebEnricher:
         search_results: List[Dict[str, Any]] = []
         effective_query = news_queries[0]
 
+        source_prefs = None
+        try:
+            if isinstance(context_payload, dict):
+                uid = context_payload.get("user_id")
+            else:
+                uid = None
+            needs_prefs = bool(news_intent or force_fresh or (context_payload.get("pipeline_flags") or {}).get("needs_current")) if isinstance(context_payload, dict) else bool(news_intent or force_fresh)
+            if uid is not None and needs_prefs:
+                try:
+                    from netapi.core import addressbook
+                    from netapi import memory_store
+
+                    bid = addressbook.get_source_prefs(
+                        user_id=int(uid),
+                        country=country_code,
+                        lang=lang_norm,
+                        intent="news",
+                    )
+                    blk = memory_store.get_block(bid) if bid else None
+                    if isinstance(blk, dict):
+                        source_prefs = blk.get("meta") or blk
+                except Exception:
+                    source_prefs = None
+        except Exception:
+            source_prefs = None
+
         for candidate in news_queries:
             candidate_clean = (candidate or "").strip()
             if not candidate_clean:
@@ -1324,6 +1452,8 @@ class WebEnricher:
                 max_results=max_results,
                 country_code=country_code,
                 prefer_news_provider=prefer_news_provider,
+                source_prefs=source_prefs,
+                mode=("news" if prefer_news_provider else None),
             )
             provider_label = self._last_provider or "unknown"
             logger.info(
@@ -1360,6 +1490,8 @@ class WebEnricher:
                     max_results=max_results,
                     country_code=country_code,
                     prefer_news_provider=True,
+                    source_prefs=source_prefs,
+                    mode="news",
                 )
                 provider_label = self._last_provider or "unknown"
                 logger.info(
