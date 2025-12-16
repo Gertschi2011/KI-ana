@@ -3,10 +3,123 @@ from typing import List, Dict, Any, Optional
 from pathlib import Path
 import json
 import re
+import time
 
 # Reuse the same file used elsewhere
 ADDRBOOK_PATH = Path(__file__).resolve().parents[2] / "memory" / "index" / "addressbook.json"
 BLOCKS_ROOT = Path(__file__).resolve().parents[2] / "memory" / "long_term" / "blocks"
+
+
+def _now_ts() -> int:
+    return int(time.time())
+
+
+def _prefs_key(user_id: int, country: str, lang: str, intent: str) -> str:
+    return f"prefs:sources:{int(user_id)}:{(country or '').strip().upper()[:2]}:{(lang or '').strip().lower()}:{(intent or 'news').strip().lower()}"
+
+
+def _normalize_domain(value: str) -> Optional[str]:
+    raw = (value or "").strip().lower()
+    if not raw:
+        return None
+    for prefix in ("https://", "http://"):
+        if raw.startswith(prefix):
+            raw = raw[len(prefix):]
+            break
+    raw = raw.split("/", 1)[0]
+    raw = raw.split("?", 1)[0]
+    raw = raw.split("#", 1)[0]
+    if raw.startswith("www."):
+        raw = raw[4:]
+    raw = raw.strip(". ")
+    if not raw or "." not in raw:
+        return None
+    return raw
+
+
+def _normalize_domain_list(values: Optional[List[str]]) -> List[str]:
+    out: List[str] = []
+    for item in values or []:
+        dom = _normalize_domain(str(item))
+        if dom and dom not in out:
+            out.append(dom)
+    return out
+
+
+def _normalize_source_prefs_index(data: Dict[str, Any]) -> Dict[str, Any]:
+    if isinstance(data, dict) and isinstance(data.get("source_prefs"), dict):
+        return data.get("source_prefs") or {}
+    return {}
+
+
+def index_source_prefs(
+    *,
+    block_id: str,
+    user_id: int,
+    country: str,
+    lang: str,
+    intent: str,
+    preferred: Optional[List[str]] = None,
+    blocked: Optional[List[str]] = None,
+    trust_overrides: Optional[Dict[str, Any]] = None,
+    updated_at: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Index a user_source_prefs block for fast retrieval.
+
+    Stores under a dedicated key: prefs:sources:{user_id}:{country}:{lang}:{intent}
+    """
+    data = _load()
+    prefs = _normalize_source_prefs_index(data)
+
+    key = _prefs_key(user_id, country, lang, intent)
+    entry = {
+        "user_id": int(user_id),
+        "country": (country or "").strip().upper()[:2],
+        "lang": (lang or "").strip().lower(),
+        "intent_tags": [str(intent or "news").strip().lower()],
+        "preferred": _normalize_domain_list(preferred),
+        "blocked": _normalize_domain_list(blocked),
+        "trust_overrides": trust_overrides or {},
+        "updated_at": updated_at or str(_now_ts()),
+        "block_id": str(block_id),
+    }
+    prefs[key] = entry
+    data["source_prefs"] = prefs
+
+    ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return entry
+
+
+def get_source_prefs(
+    *,
+    user_id: int,
+    country: str,
+    lang: str,
+    intent: str,
+) -> Optional[str]:
+    data = _load()
+    prefs = _normalize_source_prefs_index(data)
+    key = _prefs_key(user_id, country, lang, intent)
+    entry = prefs.get(key)
+    if not isinstance(entry, dict):
+        return None
+    block_id = entry.get("block_id")
+    return str(block_id) if block_id else None
+
+
+def get_source_prefs_entry(
+    *,
+    user_id: int,
+    country: str,
+    lang: str,
+    intent: str,
+) -> Optional[Dict[str, Any]]:
+    data = _load()
+    prefs = _normalize_source_prefs_index(data)
+    key = _prefs_key(user_id, country, lang, intent)
+    entry = prefs.get(key)
+    return entry if isinstance(entry, dict) else None
 
 
 def _load() -> Dict[str, Any]:
