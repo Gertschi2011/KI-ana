@@ -28,6 +28,7 @@ import time
 from datetime import datetime
 from dataclasses import dataclass, field
 from typing import Dict, Any, Optional, List, Callable, Tuple
+from urllib.parse import urlparse
 from fastapi import APIRouter, Request, Depends, HTTPException
 from starlette.status import HTTP_400_BAD_REQUEST, HTTP_500_INTERNAL_SERVER_ERROR
 from pydantic import BaseModel, Field
@@ -125,6 +126,188 @@ class ChatResponse(BaseModel):
     conv_id: Optional[int] = None
     memory_ids: List[str] = Field(default_factory=list)
     meta: Dict[str, Any] = Field(default_factory=dict)
+
+
+def _domain_from_url(url: Optional[str]) -> str:
+    if not url:
+        return ""
+    try:
+        host = urlparse(str(url)).netloc.lower().strip()
+    except Exception:
+        return ""
+    if host.startswith("www."):
+        host = host[4:]
+    return host
+
+
+def _build_meta_web(
+    raw_web: Any,
+    user_context: Dict[str, Any],
+    *,
+    force_mode: Optional[str] = None,
+) -> Dict[str, Any]:
+    raw = raw_web if isinstance(raw_web, dict) else {}
+
+    used = bool(raw.get("used"))
+    reason = raw.get("reason")
+    provider = raw.get("provider") or raw.get("active_provider") or "unknown"
+
+    lang = raw.get("lang") or user_context.get("lang") or "de"
+    country = raw.get("country") or user_context.get("country_code") or user_context.get("news_country_hint") or "AT"
+    try:
+        country = str(country).strip().upper()[:2] or "AT"
+    except Exception:
+        country = "AT"
+
+    mode = raw.get("mode") or force_mode
+    if not mode:
+        summary = raw.get("summary") if isinstance(raw.get("summary"), dict) else {}
+        mode = "news" if summary.get("news_intent") else "search"
+
+    generated_at = raw.get("generated_at")
+    if not generated_at:
+        generated_at = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+
+    snippet_list = raw.get("snippets") if isinstance(raw.get("snippets"), list) else []
+    cards_list = raw.get("news_cards") if isinstance(raw.get("news_cards"), list) else []
+
+    candidate_items = cards_list if cards_list else snippet_list
+    result_count = len(candidate_items)
+    use_limit = 7 if str(mode or "").lower() == "news" else 5
+    used_items = candidate_items[:use_limit]
+    used_count = len(used_items)
+
+    prefs_used = bool(raw.get("prefs_used"))
+    diversity_applied = bool(raw.get("diversity_applied"))
+    exploration_used = bool(raw.get("exploration_used"))
+    relevance_applied = bool(raw.get("relevance_applied"))
+    dedup_applied = bool(raw.get("dedup_applied"))
+    penalty_applied = bool(raw.get("penalty_applied"))
+    service_penalty_applied = bool(raw.get("service_penalty_applied")) or bool(penalty_applied)
+    penalized_examples_in = raw.get("penalized_examples") if isinstance(raw.get("penalized_examples"), list) else []
+    interest_used = bool(raw.get("interest_used"))
+    filtered_out_count = raw.get("filtered_out_count")
+    top_categories_in = raw.get("top_categories") if isinstance(raw.get("top_categories"), list) else None
+    top_domains_in = raw.get("top_domains") if isinstance(raw.get("top_domains"), list) else None
+
+    sources: List[Dict[str, Any]] = []
+    seen: set[str] = set()
+    for snip in used_items:
+        if not isinstance(snip, dict):
+            continue
+        url = snip.get("url")
+        domain = snip.get("domain") or _domain_from_url(url)
+        label = snip.get("label") or snip.get("source") or snip.get("publisher") or domain
+        title = snip.get("title")
+        published = snip.get("published") or snip.get("date")
+        key = (domain or str(label or "")).lower().strip()
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        sources.append(
+            {
+                "label": str(label) if label is not None else "",
+                "title": str(title) if title is not None else "",
+                "domain": str(domain) if domain is not None else "",
+                "url": str(url) if url is not None else "",
+                "date": str(published) if published is not None else "",
+            }
+        )
+
+    if used and not sources:
+        used = False
+        reason = reason or "no_sources_extracted"
+        used_count = 0
+
+    if not used and not reason:
+        reason = "unknown"
+
+    meta_web: Dict[str, Any] = {
+        "used": used,
+        "reason": reason,
+        "provider": provider,
+        "mode": str(mode or "search"),
+        "country": str(country),
+        "lang": str(lang),
+        "generated_at": str(generated_at),
+        "prefs_used": bool(prefs_used),
+        "diversity_applied": bool(diversity_applied),
+        "exploration_used": bool(exploration_used),
+        "relevance_applied": bool(relevance_applied),
+        "dedup_applied": bool(dedup_applied),
+        "penalty_applied": bool(penalty_applied),
+        "service_penalty_applied": bool(service_penalty_applied),
+        "penalized_examples": [e for e in penalized_examples_in if isinstance(e, dict)][:3],
+        "interest_used": bool(interest_used),
+        "filtered_out_count": int(filtered_out_count) if isinstance(filtered_out_count, int) else 0,
+        "top_categories": [str(c) for c in (top_categories_in or []) if str(c).strip()],
+        "top_domains": [
+            str(d) for d in (top_domains_in or []) if str(d).strip()
+        ]
+        or [
+            s.get("domain") for s in sources if isinstance(s, dict) and s.get("domain")
+        ][:3],
+        "sources": sources,
+        "news_cards": [],
+        "result_count": int(result_count),
+        "used_count": int(used_count),
+    }
+
+    if isinstance(cards_list, list) and cards_list:
+        cards_out: List[Dict[str, Any]] = []
+        for c in cards_list[:7]:
+            if not isinstance(c, dict):
+                continue
+            url = c.get("url")
+            title = c.get("title")
+            domain = c.get("domain") or _domain_from_url(url)
+            source = c.get("source") or c.get("label") or c.get("publisher") or domain
+            date = c.get("date") or c.get("published")
+            cards_out.append(
+                {
+                    "title": str(title) if title is not None else "",
+                    "source": str(source) if source is not None else "",
+                    "date": str(date) if date is not None else "",
+                    "url": str(url) if url is not None else "",
+                    "domain": str(domain) if domain is not None else "",
+                    "category": c.get("category"),
+                    "relevance": c.get("relevance"),
+                    "cluster_id": c.get("cluster_id"),
+                    "dedup_group": c.get("cluster_id"),
+                }
+            )
+        meta_web["news_cards"] = cards_out
+    if raw.get("error"):
+        meta_web["error"] = raw.get("error")
+    return meta_web
+
+
+def _build_meta_autonomy(
+    *,
+    user_context: Dict[str, Any],
+    web_used: bool,
+    memory_used: bool,
+    ask_sources_triggered: bool,
+) -> Dict[str, Any]:
+    proactive_enabled = False
+    learned_from: List[str] = []
+    try:
+        if isinstance(user_context, dict):
+            proactive_enabled = bool(user_context.get("proactive_enabled") or False)
+            raw_learned = user_context.get("learned_from")
+            if isinstance(raw_learned, list):
+                learned_from = [str(x) for x in raw_learned if str(x).strip()]
+    except Exception:
+        proactive_enabled = False
+        learned_from = []
+
+    return {
+        "web_used": bool(web_used),
+        "memory_used": bool(memory_used),
+        "proactive_enabled": bool(proactive_enabled),
+        "learned_from": learned_from,
+        "ask_sources_triggered": bool(ask_sources_triggered),
+    }
 
 
 class PromptPreviewRequest(BaseModel):
@@ -1372,6 +1555,36 @@ async def run_chat_pipeline_from_message(
     meta_payload: Dict[str, Any] = {}
     if pipeline_response.context and pipeline_response.context.metadata:
         meta_payload.update(pipeline_response.context.metadata)
+
+    # Phase 4: enforce meta.web contract (and attach meta.autonomy when web/memory used).
+    try:
+        pipeline_flags_for_mode = user_context.get("pipeline_flags") if isinstance(user_context, dict) else None
+        force_mode = None
+        if isinstance(pipeline_flags_for_mode, dict):
+            if (
+                pipeline_flags_for_mode.get("needs_current")
+                or pipeline_flags_for_mode.get("is_news")
+                or pipeline_flags_for_mode.get("force_fresh")
+            ):
+                force_mode = "news"
+
+        raw_web = meta_payload.get("web")
+        meta_payload["web"] = _build_meta_web(raw_web, user_context, force_mode=force_mode)
+
+        web_meta = meta_payload.get("web") if isinstance(meta_payload.get("web"), dict) else {}
+        web_used = bool(web_meta.get("used"))
+        memory_used = bool((pipeline_response.context.memory_ids if pipeline_response.context else []) or [])
+        ask_sources_triggered = bool(meta_payload.get("needs_source_prefs"))
+
+        if web_used or memory_used:
+            meta_payload["autonomy"] = _build_meta_autonomy(
+                user_context=user_context,
+                web_used=web_used,
+                memory_used=memory_used,
+                ask_sources_triggered=ask_sources_triggered,
+            )
+    except Exception:
+        pass
 
     style_meta: Dict[str, Any] = {}
     try:
