@@ -1995,33 +1995,44 @@ async def debug_web_search(
         raise HTTPException(HTTP_500_INTERNAL_SERVER_ERROR, "WebEnricher not configured")
 
     try:
-        prefer_news_provider = str(body.mode or "").strip().lower() == "news"
-        source_prefs = None
-        if prefer_news_provider and body.user_id and body.country and body.lang:
-            try:
-                from netapi.core import addressbook
-                from netapi import memory_store
+        uid = int(body.user_id) if body.user_id else None
+        country_code = (str(body.country or "AT").strip().upper()[:2] or "AT")
+        lang_norm = (str(body.lang or "de").strip().lower() or "de")
 
-                bid = addressbook.get_source_prefs(
-                    user_id=int(body.user_id),
-                    country=str(body.country),
-                    lang=str(body.lang),
-                    intent="news",
-                )
-                blk = memory_store.get_block(bid) if bid else None
-                if isinstance(blk, dict):
-                    source_prefs = blk.get("meta") or blk
-            except Exception:
-                source_prefs = None
-        results = enricher.web_search(
-            body.query,
-            lang=body.lang,
+        user_context: Dict[str, Any] = {
+            "user_id": uid,
+            "country_code": country_code,
+            "news_country_hint": country_code,
+            "lang": lang_norm,
+            "pipeline_flags": {"needs_current": True, "is_news": True, "force_fresh": True},
+            "force_fresh_content": True,
+        }
+
+        web_context = enricher.build_web_context(
+            user_message=str(body.query or "").strip(),
+            lang=lang_norm,
             max_results=int(body.max_results),
-            country_code=body.country,
-            prefer_news_provider=prefer_news_provider,
-            source_prefs=source_prefs,
-            mode=body.mode,
+            user_context=user_context,
+            force_fresh=True,
         )
+
+        try:
+            debug_meta_web = _build_meta_web(web_context, user_context, force_mode="news")
+        except Exception:
+            debug_meta_web = {
+                "provider": getattr(enricher, "_last_provider", None) or getattr(enricher, "active_provider", None),
+                "country": country_code,
+                "lang": lang_norm,
+                "used": False,
+                "reason": "meta_build_failed",
+                "mode": "news",
+                "sources": [],
+                "news_cards": [],
+            }
+
+        results = web_context.get("ranked_results") if isinstance(web_context, dict) else None
+        if not isinstance(results, list):
+            results = []
     except Exception as exc:
         raise HTTPException(HTTP_500_INTERNAL_SERVER_ERROR, f"web_search failed: {exc}") from exc
 
@@ -2029,6 +2040,15 @@ async def debug_web_search(
         "ok": True,
         "query": body.query,
         "provider": getattr(enricher, "_last_provider", None) or getattr(enricher, "active_provider", None),
+        "meta": {
+            "web": debug_meta_web,
+            "autonomy": _build_meta_autonomy(
+                user_context=user_context,
+                web_used=bool(debug_meta_web.get("used")) if isinstance(debug_meta_web, dict) else False,
+                memory_used=False,
+                ask_sources_triggered=False,
+            ),
+        },
         "count": len(results or []),
         "results": results,
     }
