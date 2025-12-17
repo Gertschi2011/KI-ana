@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import logging
 import os
+import json
 import re
 import asyncio
+import random
 import threading
 import time
 import httpx
@@ -1407,7 +1409,18 @@ class WebEnricher:
         search_results: List[Dict[str, Any]] = []
         effective_query = news_queries[0]
 
+        # Phase 2 (Codex): for news we need a broader candidate set for relevance + dedup.
+        search_max_results = int(max_results)
+        try:
+            if news_intent or force_fresh:
+                search_max_results = max(search_max_results, 12)
+        except Exception:
+            search_max_results = int(max_results)
+
         source_prefs = None
+        trust_profile = None
+        interest_profile = None
+        trust_mode = "news" if (news_intent or force_fresh) else "search"
         try:
             if isinstance(context_payload, dict):
                 uid = context_payload.get("user_id")
@@ -1430,8 +1443,47 @@ class WebEnricher:
                         source_prefs = blk.get("meta") or blk
                 except Exception:
                     source_prefs = None
+
+            if uid is not None:
+                try:
+                    from netapi.core import addressbook
+                    from netapi import memory_store
+
+                    bid2 = addressbook.get_source_trust_profile(
+                        user_id=int(uid),
+                        country=country_code,
+                        mode=trust_mode,
+                    )
+                    blk2 = memory_store.get_block(bid2) if bid2 else None
+                    if isinstance(blk2, dict):
+                        trust_profile = blk2.get("meta") or blk2
+                    else:
+                        trust_profile = None
+                except Exception:
+                    trust_profile = None
+
+            if uid is not None:
+                try:
+                    from netapi.core import addressbook
+                    from netapi import memory_store
+
+                    bid3 = addressbook.get_interest_profile(
+                        user_id=int(uid),
+                        country=country_code,
+                        lang=lang_norm,
+                        mode=trust_mode,
+                    )
+                    blk3 = memory_store.get_block(bid3) if bid3 else None
+                    if isinstance(blk3, dict):
+                        interest_profile = blk3.get("meta") or blk3
+                    else:
+                        interest_profile = None
+                except Exception:
+                    interest_profile = None
         except Exception:
             source_prefs = None
+            trust_profile = None
+            interest_profile = None
 
         for candidate in news_queries:
             candidate_clean = (candidate or "").strip()
@@ -1449,7 +1501,7 @@ class WebEnricher:
             batch = self.web_search(
                 candidate_clean,
                 lang=lang_norm,
-                max_results=max_results,
+                max_results=search_max_results,
                 country_code=country_code,
                 prefer_news_provider=prefer_news_provider,
                 source_prefs=source_prefs,
@@ -1487,7 +1539,7 @@ class WebEnricher:
                 batch = self.web_search(
                     candidate_clean,
                     lang=lang_norm,
-                    max_results=max_results,
+                    max_results=search_max_results,
                     country_code=country_code,
                     prefer_news_provider=True,
                     source_prefs=source_prefs,
@@ -1526,6 +1578,173 @@ class WebEnricher:
             }
 
         search_query = effective_query
+
+        ranked_results: List[Dict[str, Any]] = list(search_results or [])
+
+        # --- PR3: Trust weighting + diversity + exploration (reorder-only)
+        prefs_used = False
+        try:
+            if isinstance(source_prefs, dict):
+                preferred = list(source_prefs.get("preferred_sources") or source_prefs.get("preferred") or [])
+                blocked = list(source_prefs.get("blocked_sources") or source_prefs.get("blocked") or [])
+                prefs_used = bool(preferred or blocked or (source_prefs.get("notes") or "").strip())
+        except Exception:
+            prefs_used = False
+
+        diversity_applied = False
+        exploration_used = False
+        explored_domain = None
+
+        try:
+            from netapi.core import source_trust as _st  # local import to avoid hard dependency cycles
+
+            # Ensure trust profile exists (block-based, no DB)
+            try:
+                if trust_profile is None and uid is not None:
+                    from netapi.core import addressbook
+                    from netapi import memory_store
+
+                    profile = _st.empty_profile(user_id=int(uid), country=country_code, mode=trust_mode)
+                    title = f"Source Trust: user={int(uid)} {country_code} {trust_mode}"
+                    content = json.dumps(profile, ensure_ascii=False, indent=2)
+                    tags = [
+                        "source_trust_profile",
+                        "trust:sources",
+                        f"user:{int(uid)}",
+                        f"country:{country_code}",
+                        f"mode:{trust_mode}",
+                    ]
+                    bid = memory_store.add_block(title=title, content=content, tags=tags, meta=profile)
+                    addressbook.index_source_trust_profile(
+                        block_id=bid,
+                        user_id=int(uid),
+                        country=country_code,
+                        mode=trust_mode,
+                        domain_count=0,
+                        updated_at=profile.get("updated_at"),
+                    )
+                    trust_profile = profile
+            except Exception:
+                pass
+
+            # Apply per-user trust weighting
+            trust_weighted = _st.apply_trust_weight_reorder(search_results, trust_profile=trust_profile)
+            diverse, diversity_applied = _st.apply_diversity_reorder(
+                trust_weighted,
+                top_n=_st.TOP_N,
+                max_per_domain=_st.MAX_PER_DOMAIN_TOP_N,
+            )
+            rng = random.Random()
+            explored, exploration_used, explored_domain = _st.apply_explore_reintroduce(
+                diverse,
+                trust_profile=trust_profile,
+                rng=rng,
+                top_n=_st.TOP_N,
+                last_slots=_st.EXPLORE_LAST_SLOTS,
+                chance=_st.EXPLORE_CHANCE,
+                weight_threshold=_st.EXPLORE_WEIGHT_THRESHOLD,
+                max_per_domain=_st.MAX_PER_DOMAIN_TOP_N,
+            )
+            search_results = explored
+
+            ranked_results = list(search_results or [])
+
+            # Track exposure (seen) for top domains (block-based)
+            try:
+                if uid is not None and trust_profile is not None:
+                    shown = _st.unique_domains_from_results(search_results, limit=_st.TOP_N)
+                    if shown:
+                        _st.bump_seen(trust_profile, shown)
+                        from netapi.core import addressbook
+                        from netapi import memory_store
+
+                        title = f"Source Trust: user={int(uid)} {country_code} {trust_mode}"
+                        content = json.dumps(trust_profile, ensure_ascii=False, indent=2)
+                        tags = [
+                            "source_trust_profile",
+                            "trust:sources",
+                            f"user:{int(uid)}",
+                            f"country:{country_code}",
+                            f"mode:{trust_mode}",
+                        ]
+                        bid3 = memory_store.add_block(title=title, content=content, tags=tags, meta=trust_profile)
+                        addressbook.index_source_trust_profile(
+                            block_id=bid3,
+                            user_id=int(uid),
+                            country=country_code,
+                            mode=trust_mode,
+                            domain_count=len((trust_profile.get("domain_stats") or {}) if isinstance(trust_profile.get("domain_stats"), dict) else {}),
+                            updated_at=trust_profile.get("updated_at"),
+                        )
+            except Exception:
+                pass
+        except Exception:
+            # PR3 post-ranking is best-effort; never fail web enrichment.
+            diversity_applied = False
+            exploration_used = False
+            explored_domain = None
+
+        # --- Phase 2 (Codex): Relevance + dedup/cluster (reorder-only)
+        relevance_applied = False
+        dedup_applied = False
+        penalty_applied = False
+        service_penalty_applied = False
+        penalized_examples: List[Dict[str, str]] = []
+        interest_used = False
+        filtered_out_count = 0
+        top_categories: List[str] = []
+        try:
+            if news_intent or force_fresh or trust_mode == "news":
+                from netapi.core import news_relevance as _rel
+
+                rel_ranked, rel_meta = _rel.apply_relevance_reorder(
+                    list(search_results or []),
+                    query=search_query,
+                    top_n_considered=10,
+                )
+                search_results = rel_ranked
+                relevance_applied = True
+                filtered_out_count = int(rel_meta.filtered_out_count)
+                top_categories = list(rel_meta.top_categories or [])
+
+                deduped, dedup_applied = _rel.apply_title_dedup_reorder(
+                    list(search_results or []),
+                    top_n=10,
+                )
+                search_results = deduped
+
+                penalized, svc_meta = _rel.apply_service_penalty_reorder(
+                    list(search_results or []),
+                    query=search_query,
+                    top_n_considered=10,
+                )
+                search_results = penalized
+                service_penalty_applied = bool(svc_meta.applied)
+                penalized_examples = list(svc_meta.penalized_examples or [])
+                # Keep legacy flag for backward compatibility.
+                penalty_applied = bool(service_penalty_applied)
+
+                # Phase 4: interest-driven reorder (reorder-only) if we have a profile.
+                interest_ranked, interest_used, top_cats2 = _rel.apply_interest_reorder(
+                    list(search_results or []),
+                    profile=interest_profile if isinstance(interest_profile, dict) else None,
+                    top_n_considered=10,
+                )
+                if bool(interest_used):
+                    search_results = interest_ranked
+                    if top_cats2:
+                        top_categories = list(top_cats2)
+
+                ranked_results = list(search_results or [])
+        except Exception:
+            relevance_applied = False
+            dedup_applied = False
+            penalty_applied = False
+            service_penalty_applied = False
+            penalized_examples = []
+            interest_used = False
+            filtered_out_count = 0
+            top_categories = []
 
         country_hint = infer_country(locale_value, query)
         inferred_country_code = country_hint.upper() if country_hint else None
@@ -1620,11 +1839,34 @@ class WebEnricher:
             if isinstance(meta, dict):
                 if meta.get("provider"):
                     payload["provider"] = meta.get("provider")
+                if meta.get("source"):
+                    payload["source"] = meta.get("source")
                 if meta.get("news_source"):
                     payload["news_source"] = meta.get("news_source")
                 if meta.get("published"):
                     payload["published"] = meta.get("published")
             serialized_snippets.append(payload)
+
+        # Phase 2: Build lightweight source cards for news output/UI from ranked results.
+        news_cards: List[Dict[str, Any]] = []
+        try:
+            if news_intent or force_fresh or trust_mode == "news":
+                from netapi.core import news_relevance as _rel
+
+                news_cards = _rel.build_news_cards_from_results(enriched_results, limit=7)
+        except Exception:
+            news_cards = []
+
+        top_domains: List[str] = []
+        try:
+            for item in (search_results or [])[:12]:
+                dom = _domain_from_url(item.get("url"))
+                if dom and dom not in top_domains:
+                    top_domains.append(dom)
+                if len(top_domains) >= 3:
+                    break
+        except Exception:
+            top_domains = []
 
         generated_at = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
         context: Dict[str, Any] = {
@@ -1634,7 +1876,24 @@ class WebEnricher:
             "lang": lang_norm,
             "generated_at": generated_at,
             "snippets": serialized_snippets,
+            "news_cards": news_cards,
+            "ranked_results": ranked_results,
             "provider": self._last_provider or self.active_provider or "unknown",
+            "mode": trust_mode,
+            "country": country_code,
+            "prefs_used": bool(prefs_used),
+            "diversity_applied": bool(diversity_applied),
+            "exploration_used": bool(exploration_used),
+            "relevance_applied": bool(relevance_applied),
+            "dedup_applied": bool(dedup_applied),
+            "penalty_applied": bool(penalty_applied),
+            "service_penalty_applied": bool(service_penalty_applied),
+            "penalized_examples": list(penalized_examples or []),
+            "interest_used": bool(interest_used),
+            "filtered_out_count": int(filtered_out_count),
+            "top_categories": list(top_categories or []),
+            "top_domains": top_domains,
+            "explored_domain": explored_domain,
             **provider_meta,
         }
         if news_intent:
@@ -1687,7 +1946,33 @@ class WebEnricher:
                     source_entry["trust_score"] = news_meta.get("trust_score")
             summary_sources.append(source_entry)
 
-        highlights = _build_highlights(snippets, limit=5)
+        # Phase 2: For news, use ranked search results for 5–7 bullets even if only a few pages were fetched.
+        if news_intent or force_fresh or trust_mode == "news":
+            highlights: List[Dict[str, Any]] = []
+            for card in (news_cards or [])[:7]:
+                summary_text = ""
+                try:
+                    # Try to pick the snippet text from the enriched result (if present)
+                    summary_text = str(card.get("summary") or "")
+                except Exception:
+                    summary_text = ""
+                if not summary_text:
+                    # Card builder stores no summary; fall back to empty.
+                    summary_text = ""
+                highlights.append(
+                    {
+                        "title": card.get("title"),
+                        "url": card.get("url"),
+                        "domain": card.get("domain"),
+                        "summary": summary_text,
+                        "source": card.get("label"),
+                        "published": card.get("date") or card.get("published"),
+                        "category": card.get("category"),
+                        "relevance": card.get("relevance"),
+                    }
+                )
+        else:
+            highlights = _build_highlights(snippets, limit=5)
         time_info = _build_time_metadata(focus_country_code)
 
         summary_payload: Dict[str, Any] = {
@@ -1698,6 +1983,10 @@ class WebEnricher:
             "trust_breakdown": trust_breakdown,
             "source_domains": aggregated_domains,
             "highlights": highlights,
+            "news_cards": news_cards,
+            "relevance_applied": bool(relevance_applied),
+            "filtered_out_count": int(filtered_out_count),
+            "top_categories": list(top_categories or []),
             "timestamp_utc_iso": time_info["timestamp_utc_iso"],
             "timestamp_local_iso": time_info["timestamp_local_iso"],
             "timestamp_local_display": time_info["timestamp_local_display"],
