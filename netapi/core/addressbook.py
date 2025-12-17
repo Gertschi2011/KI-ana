@@ -18,6 +18,16 @@ def _prefs_key(user_id: int, country: str, lang: str, intent: str) -> str:
     return f"prefs:sources:{int(user_id)}:{(country or '').strip().upper()[:2]}:{(lang or '').strip().lower()}:{(intent or 'news').strip().lower()}"
 
 
+def _trust_key(user_id: int, country: str, mode: str) -> str:
+    mode_norm = (mode or "news").strip().lower() or "news"
+    return f"trust:sources:{int(user_id)}:{(country or '').strip().upper()[:2]}:{mode_norm}"
+
+
+def _interest_key(user_id: int, country: str, lang: str, mode: str) -> str:
+    mode_norm = (mode or "news").strip().lower() or "news"
+    return f"interest_profile:{int(user_id)}:{(country or '').strip().upper()[:2]}:{(lang or '').strip().lower()}:{mode_norm}"
+
+
 def _normalize_domain(value: str) -> Optional[str]:
     raw = (value or "").strip().lower()
     if not raw:
@@ -50,6 +60,125 @@ def _normalize_source_prefs_index(data: Dict[str, Any]) -> Dict[str, Any]:
     if isinstance(data, dict) and isinstance(data.get("source_prefs"), dict):
         return data.get("source_prefs") or {}
     return {}
+
+
+def _normalize_source_trust_index(data: Dict[str, Any]) -> Dict[str, Any]:
+    if isinstance(data, dict) and isinstance(data.get("source_trust_profiles"), dict):
+        return data.get("source_trust_profiles") or {}
+    return {}
+
+
+def _normalize_interest_profiles_index(data: Dict[str, Any]) -> Dict[str, Any]:
+    if isinstance(data, dict) and isinstance(data.get("interest_profiles"), dict):
+        return data.get("interest_profiles") or {}
+    return {}
+
+
+def index_interest_profile(
+    *,
+    block_id: str,
+    user_id: int,
+    country: str,
+    lang: str,
+    mode: str,
+    updated_at: Optional[str] = None,
+) -> Dict[str, Any]:
+    data = _load()
+    idx = _normalize_interest_profiles_index(data)
+    key = _interest_key(user_id, country, lang, mode)
+    entry = {
+        "user_id": int(user_id),
+        "country": (country or "").strip().upper()[:2],
+        "lang": (lang or "").strip().lower(),
+        "mode": (mode or "news").strip().lower() or "news",
+        "updated_at": updated_at or str(_now_ts()),
+        "block_id": str(block_id),
+    }
+    idx[key] = entry
+    data["interest_profiles"] = idx
+
+    ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return entry
+
+
+def get_interest_profile(
+    *,
+    user_id: int,
+    country: str,
+    lang: str,
+    mode: str,
+) -> Optional[str]:
+    data = _load()
+    idx = _normalize_interest_profiles_index(data)
+    key = _interest_key(user_id, country, lang, mode)
+    entry = idx.get(key)
+    if not isinstance(entry, dict):
+        return None
+    block_id = entry.get("block_id")
+    return str(block_id) if block_id else None
+
+
+def index_source_trust_profile(
+    *,
+    block_id: str,
+    user_id: int,
+    country: str,
+    mode: str,
+    domain_count: int = 0,
+    updated_at: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Index a source_trust_profile block for fast retrieval.
+
+    Stores under a dedicated key: trust:sources:{user_id}:{country}:{mode}
+    """
+    data = _load()
+    trust = _normalize_source_trust_index(data)
+
+    key = _trust_key(user_id, country, mode)
+    entry = {
+        "user_id": int(user_id),
+        "country": (country or "").strip().upper()[:2],
+        "mode": (mode or "news").strip().lower() or "news",
+        "domain_count": int(domain_count or 0),
+        "updated_at": updated_at or str(_now_ts()),
+        "block_id": str(block_id),
+    }
+    trust[key] = entry
+    data["source_trust_profiles"] = trust
+
+    ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return entry
+
+
+def get_source_trust_profile(
+    *,
+    user_id: int,
+    country: str,
+    mode: str,
+) -> Optional[str]:
+    data = _load()
+    trust = _normalize_source_trust_index(data)
+    key = _trust_key(user_id, country, mode)
+    entry = trust.get(key)
+    if not isinstance(entry, dict):
+        return None
+    block_id = entry.get("block_id")
+    return str(block_id) if block_id else None
+
+
+def get_source_trust_profile_entry(
+    *,
+    user_id: int,
+    country: str,
+    mode: str,
+) -> Optional[Dict[str, Any]]:
+    data = _load()
+    trust = _normalize_source_trust_index(data)
+    key = _trust_key(user_id, country, mode)
+    entry = trust.get(key)
+    return entry if isinstance(entry, dict) else None
 
 
 def index_source_prefs(
@@ -128,7 +257,7 @@ def _load() -> Dict[str, Any]:
             return json.loads(ADDRBOOK_PATH.read_text(encoding="utf-8") or "{}")
     except Exception:
         pass
-    return {"blocks": []}
+    return {"blocks": [], "source_prefs": {}, "source_trust_profiles": {}, "interest_profiles": {}}
 
 
 def _normalize_blocks(data: Dict[str, Any]) -> List[Dict[str, Any]]:

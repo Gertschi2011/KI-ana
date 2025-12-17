@@ -86,6 +86,14 @@ router = APIRouter(prefix="/api/v2/chat", tags=["chat-v2"])
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
+# Phase 4: Mount signal endpoint router under /api/v2/chat
+try:
+    from netapi.modules.chat.signals_router import router as _signals_router  # type: ignore
+
+    router.include_router(_signals_router)
+except Exception:
+    _signals_router = None  # type: ignore
+
 
 
 class ChatRequest(BaseModel):

@@ -12,6 +12,9 @@ from netapi.deps import get_current_user_opt
 from netapi import memory_store
 from netapi.core import addressbook
 from netapi.modules.memory.schemas import UserSourcePrefsBlock
+from netapi.modules.memory.schemas import SourceTrustProfileBlock
+from netapi.modules.memory.schemas import InterestProfileBlock
+from netapi.modules.memory.schemas import now_iso_z
 
 logger = logging.getLogger(__name__)
 
@@ -26,6 +29,7 @@ class MemorySearchRequest(BaseModel):
     country: Optional[str] = None
     lang: Optional[str] = None
     intent: Optional[str] = None
+    mode: Optional[str] = None
 
 
 class MemoryStoreRequest(BaseModel):
@@ -41,10 +45,29 @@ class MemoryStoreRequest(BaseModel):
     country: Optional[str] = None
     lang: Optional[str] = None
     intent: Optional[str] = None
+    mode: Optional[str] = None
     preferred_sources: Optional[List[str]] = None
     blocked_sources: Optional[List[str]] = None
     trust_overrides: Optional[Dict[str, Any]] = None
     notes: Optional[str] = None
+
+    # PR3 trust profile
+    domain_stats: Optional[Dict[str, Dict[str, Any]]] = None
+    last_asked_at: Optional[str] = None
+    last_feedback_at: Optional[str] = None
+
+    # Phase 4 user settings
+    proactive_news_enabled: Optional[bool] = None
+    proactive_news_schedule: Optional[str] = None
+    countries: Optional[List[str]] = None
+    langs: Optional[List[str]] = None
+    modes: Optional[List[str]] = None
+
+    # Phase 4 interest profile
+    category_weights: Optional[Dict[str, float]] = None
+    domain_affinity: Optional[Dict[str, float]] = None
+    signals_count: Optional[Dict[str, int]] = None
+    last_signal_at: Optional[str] = None
 
 
 def _require_creator_admin(current: Optional[Dict[str, Any]]) -> None:
@@ -77,6 +100,48 @@ def memory_search(body: MemorySearchRequest, current=Depends(get_current_user_op
                 "country": str(body.country).upper()[:2],
                 "lang": str(body.lang).lower(),
                 "intent": intent,
+                "block_id": block_id,
+                "block": block,
+            }
+
+        if str(body.type or "").strip().lower() == "source_trust_profile":
+            if body.user_id is None or not body.country:
+                raise HTTPException(400, "source_trust_profile search requires user_id, country")
+            mode = str(body.mode or "news").strip().lower() or "news"
+            block_id = addressbook.get_source_trust_profile(
+                user_id=int(body.user_id),
+                country=str(body.country),
+                mode=mode,
+            )
+            block = memory_store.get_block(block_id) if block_id else None
+            return {
+                "ok": True,
+                "type": "source_trust_profile",
+                "user_id": int(body.user_id),
+                "country": str(body.country).upper()[:2],
+                "mode": mode,
+                "block_id": block_id,
+                "block": block,
+            }
+
+        if str(body.type or "").strip().lower() == "interest_profile":
+            if body.user_id is None or not body.country or not body.lang:
+                raise HTTPException(400, "interest_profile search requires user_id, country, lang")
+            mode = str(body.mode or "news").strip().lower() or "news"
+            block_id = addressbook.get_interest_profile(
+                user_id=int(body.user_id),
+                country=str(body.country),
+                lang=str(body.lang),
+                mode=mode,
+            )
+            block = memory_store.get_block(block_id) if block_id else None
+            return {
+                "ok": True,
+                "type": "interest_profile",
+                "user_id": int(body.user_id),
+                "country": str(body.country).upper()[:2],
+                "lang": str(body.lang).lower(),
+                "mode": mode,
                 "block_id": block_id,
                 "block": block,
             }
@@ -152,6 +217,110 @@ def memory_store_block(body: MemoryStoreRequest, current=Depends(get_current_use
             )
 
             return {"ok": True, "id": block_id, "type": "user_source_prefs"}
+
+        if str(body.type or "").strip().lower() == "source_trust_profile":
+            if body.user_id is None or not body.country:
+                raise HTTPException(400, "source_trust_profile store requires user_id, country")
+
+            profile = SourceTrustProfileBlock(
+                user_id=int(body.user_id),
+                country=str(body.country),
+                mode=str(body.mode or "news"),
+                domain_stats=dict(body.domain_stats or {}),
+                updated_at=None,
+                last_asked_at=body.last_asked_at,
+                last_feedback_at=body.last_feedback_at,
+            ).normalized()
+
+            now = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+            profile = profile.copy(update={"updated_at": now})
+
+            tags = [
+                "source_trust_profile",
+                "trust:sources",
+                f"user:{profile.user_id}",
+                f"country:{profile.country}",
+                f"mode:{profile.mode}",
+            ]
+            for dom in list((profile.domain_stats or {}).keys())[:25]:
+                tags.append(f"dom:{dom}")
+
+            title = f"Source Trust: user={profile.user_id} {profile.country} {profile.mode}"
+            content = json.dumps(profile.dict(), ensure_ascii=False, indent=2)
+            meta = profile.dict()
+            meta["type"] = "source_trust_profile"
+
+            block_id = memory_store.add_block(
+                title=title,
+                content=content,
+                tags=tags,
+                url=body.url,
+                meta=meta,
+            )
+
+            addressbook.index_source_trust_profile(
+                block_id=block_id,
+                user_id=profile.user_id,
+                country=profile.country,
+                mode=profile.mode,
+                domain_count=len(profile.domain_stats or {}),
+                updated_at=profile.updated_at,
+            )
+
+            return {"ok": True, "id": block_id, "type": "source_trust_profile"}
+
+        if str(body.type or "").strip().lower() == "interest_profile":
+            if body.user_id is None or not body.country or not body.lang:
+                raise HTTPException(400, "interest_profile store requires user_id, country, lang")
+            mode = str(body.mode or "news").strip().lower() or "news"
+
+            profile = InterestProfileBlock(
+                user_id=int(body.user_id),
+                country=str(body.country),
+                lang=str(body.lang),
+                mode=mode,
+                category_weights=dict(body.category_weights or {}),
+                domain_affinity=dict(body.domain_affinity or {}),
+                signals_count=dict(body.signals_count or {}),
+                last_signal_at=body.last_signal_at,
+            ).normalized()
+
+            now = now_iso_z()
+            profile = profile.copy(update={"updated_at": now})
+            meta = profile.dict()
+
+            tags = [
+                "interest_profile",
+                "interest:news",
+                f"user:{profile.user_id}",
+                f"country:{profile.country}",
+                f"lang:{profile.lang}",
+                f"mode:{profile.mode}",
+            ]
+            for dom in list((profile.domain_affinity or {}).keys())[:20]:
+                tags.append(f"dom:{dom}")
+            for cat in list((profile.category_weights or {}).keys())[:20]:
+                tags.append(f"cat:{cat}")
+
+            title = f"Interest Profile: user={profile.user_id} {profile.country} {profile.lang} {profile.mode}"
+            content = json.dumps(meta, ensure_ascii=False, indent=2)
+
+            block_id = memory_store.add_block(
+                title=title,
+                content=content,
+                tags=tags,
+                url=body.url,
+                meta=meta,
+            )
+            addressbook.index_interest_profile(
+                block_id=block_id,
+                user_id=profile.user_id,
+                country=profile.country,
+                lang=profile.lang,
+                mode=profile.mode,
+                updated_at=profile.updated_at,
+            )
+            return {"ok": True, "id": block_id, "type": "interest_profile"}
 
         if not body.title or not str(body.title).strip() or not body.content or not str(body.content).strip():
             raise HTTPException(400, "title and content are required")
