@@ -59,6 +59,7 @@ from netapi.core.prompt_builder import (
 from netapi.modules.chat.current_detection import needs_current_info
 from netapi.modules.timeflow.events import record_ethics_hint_event
 from netapi.modules.user.context import build_user_locale_from_user
+from netapi.modules.memory.schemas import UserSettingsBlock, now_iso_z
 
 try:
     from netapi import memory_store as _memory_store  # type: ignore
@@ -1407,6 +1408,77 @@ async def run_chat_pipeline_from_message(
         if user_context.get("country_code"):
             user_context.setdefault("news_country_hint", user_context["country_code"])
 
+    # --- Phase 4: Opt-in proactivity (ask once) ------------------------
+    # Only when user explicitly opts in, and only for authenticated users.
+    try:
+        if user_id is not None and _looks_like_proactive_opt_in(message):
+            from netapi.core import addressbook
+
+            existing_settings_bid = addressbook.get_user_settings(user_id=int(user_id))
+            if not existing_settings_bid and _memory_store is not None:
+                country = str(user_context.get("country_code") or "AT").strip().upper()[:2] or "AT"
+                lang_norm = str(user_context.get("lang") or "de").strip().lower() or "de"
+
+                settings = UserSettingsBlock(
+                    user_id=int(user_id),
+                    proactive_news_enabled=True,
+                    proactive_news_schedule=None,
+                    countries=[country],
+                    langs=[lang_norm],
+                    modes=["news"],
+                    updated_at=now_iso_z(),
+                ).normalized()
+
+                meta = settings.dict()
+                title = f"User Settings: user={int(user_id)}"
+                content = json.dumps(meta, ensure_ascii=False, indent=2)
+                tags = ["user_settings", f"user:{int(user_id)}"]
+
+                bid = _memory_store.add_block(title=title, content=content, tags=tags, meta=meta)
+                addressbook.index_user_settings(
+                    block_id=bid,
+                    user_id=int(user_id),
+                    proactive_news_enabled=True,
+                    updated_at=meta.get("updated_at"),
+                )
+
+                reply = (
+                    "Alles klar — ich kann dir News proaktiv schicken (Opt-in ist aktiv). "
+                    "Wann passt es dir? (z.B. `daily_07:30` oder `weekday_08:00`) "
+                    "Und soll es bei Österreich/Deutsch bleiben?"
+                )
+                return ChatResponse(
+                    ok=True,
+                    reply=reply,
+                    meta={
+                        "autonomy": {
+                            "web_used": False,
+                            "memory_used": True,
+                            "proactive_enabled": True,
+                            "learned_from": ["explicit"],
+                            "ask_sources_triggered": False,
+                        },
+                        "stored_user_settings": True,
+                        "block_id": bid,
+                    },
+                )
+        elif user_id is None and _looks_like_proactive_opt_in(message):
+            return ChatResponse(
+                ok=True,
+                reply="Für proaktive News (Opt-in) musst du eingeloggt sein.",
+                meta={
+                    "autonomy": {
+                        "web_used": False,
+                        "memory_used": False,
+                        "proactive_enabled": False,
+                        "learned_from": [],
+                        "ask_sources_triggered": False,
+                    }
+                },
+            )
+    except Exception as exc:
+        logger.warning("Phase4 user_settings opt-in failed: %s", exc)
+
     try:
         needs_current, current_reason = needs_current_info(message)
     except Exception:
@@ -1774,6 +1846,15 @@ def _prompt_preview_allowed() -> bool:
         return True
     override = (os.getenv("PROMPT_DEBUG_PREVIEW") or "").strip().lower()
     return override in {"1", "true", "yes", "on"}
+
+
+def _looks_like_proactive_opt_in(message: str) -> bool:
+    text = (message or "").strip().lower()
+    if not text:
+        return False
+    if "proaktiv" not in text:
+        return False
+    return ("news" in text) or ("nachrichten" in text)
 
 
 @router.post("", response_model=ChatResponse)

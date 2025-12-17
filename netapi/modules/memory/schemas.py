@@ -115,6 +115,48 @@ class SourceTrustProfileBlock(BaseModel):
         })
 
 
+class UserSettingsBlock(BaseModel):
+    type: Literal["user_settings"] = "user_settings"
+    user_id: int
+
+    proactive_news_enabled: bool = False
+    proactive_news_schedule: Optional[str] = None  # "daily_07:30", "weekday_08:00"
+
+    countries: List[str] = Field(default_factory=lambda: ["AT"])
+    langs: List[str] = Field(default_factory=lambda: ["de"])
+    modes: List[str] = Field(default_factory=lambda: ["news"])
+
+    updated_at: Optional[str] = None
+
+    def normalized(self) -> "UserSettingsBlock":
+        countries = []
+        for c in self.countries or []:
+            cc = str(c or "").strip().upper()[:2]
+            if cc and cc not in countries:
+                countries.append(cc)
+
+        langs = []
+        for l in self.langs or []:
+            ll = str(l or "").strip().lower()
+            if ll and ll not in langs:
+                langs.append(ll)
+
+        modes = []
+        for m in self.modes or []:
+            mm = str(m or "").strip().lower() or "news"
+            if mm and mm not in modes:
+                modes.append(mm)
+
+        schedule = str(self.proactive_news_schedule or "").strip() or None
+
+        return self.copy(update={
+            "proactive_news_schedule": schedule,
+            "countries": countries or ["AT"],
+            "langs": langs or ["de"],
+            "modes": modes or ["news"],
+        })
+
+
 class InterestProfileBlock(BaseModel):
     type: Literal["interest_profile"] = "interest_profile"
 

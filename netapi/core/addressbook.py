@@ -23,6 +23,10 @@ def _trust_key(user_id: int, country: str, mode: str) -> str:
     return f"trust:sources:{int(user_id)}:{(country or '').strip().upper()[:2]}:{mode_norm}"
 
 
+def _user_settings_key(user_id: int) -> str:
+    return f"user_settings:{int(user_id)}"
+
+
 def _interest_key(user_id: int, country: str, lang: str, mode: str) -> str:
     mode_norm = (mode or "news").strip().lower() or "news"
     return f"interest_profile:{int(user_id)}:{(country or '').strip().upper()[:2]}:{(lang or '').strip().lower()}:{mode_norm}"
@@ -68,10 +72,51 @@ def _normalize_source_trust_index(data: Dict[str, Any]) -> Dict[str, Any]:
     return {}
 
 
+def _normalize_user_settings_index(data: Dict[str, Any]) -> Dict[str, Any]:
+    if isinstance(data, dict) and isinstance(data.get("user_settings"), dict):
+        return data.get("user_settings") or {}
+    return {}
+
+
 def _normalize_interest_profiles_index(data: Dict[str, Any]) -> Dict[str, Any]:
     if isinstance(data, dict) and isinstance(data.get("interest_profiles"), dict):
         return data.get("interest_profiles") or {}
     return {}
+
+
+def index_user_settings(
+    *,
+    block_id: str,
+    user_id: int,
+    proactive_news_enabled: bool = False,
+    updated_at: Optional[str] = None,
+) -> Dict[str, Any]:
+    data = _load()
+    idx = _normalize_user_settings_index(data)
+    key = _user_settings_key(user_id)
+    entry = {
+        "user_id": int(user_id),
+        "proactive_news_enabled": bool(proactive_news_enabled),
+        "updated_at": updated_at or str(_now_ts()),
+        "block_id": str(block_id),
+    }
+    idx[key] = entry
+    data["user_settings"] = idx
+
+    ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return entry
+
+
+def get_user_settings(*, user_id: int) -> Optional[str]:
+    data = _load()
+    idx = _normalize_user_settings_index(data)
+    key = _user_settings_key(user_id)
+    entry = idx.get(key)
+    if not isinstance(entry, dict):
+        return None
+    block_id = entry.get("block_id")
+    return str(block_id) if block_id else None
 
 
 def index_interest_profile(
@@ -257,7 +302,7 @@ def _load() -> Dict[str, Any]:
             return json.loads(ADDRBOOK_PATH.read_text(encoding="utf-8") or "{}")
     except Exception:
         pass
-    return {"blocks": [], "source_prefs": {}, "source_trust_profiles": {}, "interest_profiles": {}}
+    return {"blocks": [], "source_prefs": {}, "source_trust_profiles": {}, "user_settings": {}, "interest_profiles": {}}
 
 
 def _normalize_blocks(data: Dict[str, Any]) -> List[Dict[str, Any]]:

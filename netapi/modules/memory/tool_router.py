@@ -13,6 +13,7 @@ from netapi import memory_store
 from netapi.core import addressbook
 from netapi.modules.memory.schemas import UserSourcePrefsBlock
 from netapi.modules.memory.schemas import SourceTrustProfileBlock
+from netapi.modules.memory.schemas import UserSettingsBlock
 from netapi.modules.memory.schemas import InterestProfileBlock
 from netapi.modules.memory.schemas import now_iso_z
 
@@ -120,6 +121,19 @@ def memory_search(body: MemorySearchRequest, current=Depends(get_current_user_op
                 "user_id": int(body.user_id),
                 "country": str(body.country).upper()[:2],
                 "mode": mode,
+                "block_id": block_id,
+                "block": block,
+            }
+
+        if str(body.type or "").strip().lower() == "user_settings":
+            if body.user_id is None:
+                raise HTTPException(400, "user_settings search requires user_id")
+            block_id = addressbook.get_user_settings(user_id=int(body.user_id))
+            block = memory_store.get_block(block_id) if block_id else None
+            return {
+                "ok": True,
+                "type": "user_settings",
+                "user_id": int(body.user_id),
                 "block_id": block_id,
                 "block": block,
             }
@@ -268,6 +282,45 @@ def memory_store_block(body: MemoryStoreRequest, current=Depends(get_current_use
             )
 
             return {"ok": True, "id": block_id, "type": "source_trust_profile"}
+
+        if str(body.type or "").strip().lower() == "user_settings":
+            if body.user_id is None:
+                raise HTTPException(400, "user_settings store requires user_id")
+
+            settings = UserSettingsBlock(
+                user_id=int(body.user_id),
+                proactive_news_enabled=bool(body.proactive_news_enabled) if body.proactive_news_enabled is not None else False,
+                proactive_news_schedule=body.proactive_news_schedule,
+                countries=list(body.countries or ["AT"]),
+                langs=list(body.langs or ["de"]),
+                modes=list(body.modes or ["news"]),
+            ).normalized()
+
+            now = now_iso_z()
+            settings = settings.copy(update={"updated_at": now})
+            meta = settings.dict()
+
+            tags = [
+                "user_settings",
+                f"user:{settings.user_id}",
+            ]
+            title = f"User Settings: user={settings.user_id}"
+            content = json.dumps(meta, ensure_ascii=False, indent=2)
+
+            block_id = memory_store.add_block(
+                title=title,
+                content=content,
+                tags=tags,
+                url=body.url,
+                meta=meta,
+            )
+            addressbook.index_user_settings(
+                block_id=block_id,
+                user_id=settings.user_id,
+                proactive_news_enabled=bool(settings.proactive_news_enabled),
+                updated_at=settings.updated_at,
+            )
+            return {"ok": True, "id": block_id, "type": "user_settings"}
 
         if str(body.type or "").strip().lower() == "interest_profile":
             if body.user_id is None or not body.country or not body.lang:
