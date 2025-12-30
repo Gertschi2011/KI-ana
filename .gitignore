@@ -4,6 +4,9 @@ venv/
 ENV/
 env/
 
+# Local env (keep .env.example tracked)
+.env
+
 # Lokale DBs / Caches
 test.db
 *.sqlite
@@ -16,6 +19,7 @@ data/chroma/
 
 # Laufzeit-Dateien von KI_ana
 runtime/
+memory/
 system/crawler_state.json
 system/crawler_targets.json
 system/personality_state.json
@@ -29,6 +33,13 @@ reports/
 # __pycache__
 __pycache__/
 **/__pycache__/
+
+# Python test / coverage artifacts
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+*.py[cod]
 
 # Node / Frontend-Builds (falls vorhanden)
 node_modules/
