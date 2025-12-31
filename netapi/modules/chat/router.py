@@ -3689,16 +3689,16 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                 )
         calc = try_calc_or_convert(user_msg)
         if calc:
-        r = _apply_style(calc, profile_used)
-        if style_prompt:
-            r = (r + "\n\n" + style_prompt).strip()
-        return _finalize_reply(
-            r,
-            state=state, conv_id=(body.conv_id or None), intent="calc", topic=extract_topic(user_msg),
-            extras={"ok": True, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
-        )
-except Exception:
-    pass
+            r = _apply_style(calc, profile_used)
+            if style_prompt:
+                r = (r + "\n\n" + style_prompt).strip()
+            return _finalize_reply(
+                r,
+                state=state, conv_id=(body.conv_id or None), intent="calc", topic=extract_topic(user_msg),
+                extras={"ok": True, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
+            )
+    except Exception:
+        pass
 
     skip_direct_llm = False
     try:
