@@ -12,8 +12,11 @@ Date: 2026-01-05
 
 ## Version markers
 
-- Version A (git): `fd60d858ca08` (HEAD at time of drill)
-- Version B (git): **TBD**
+- Version A (git): `3f2c9e20e`
+- Version B (git): `dac6673d9`
+
+Notes:
+- Version B stamps deployments with `BUILD_SHA`/`KIANA_VERSION` and returns them in the v2 ping fallback (useful for verifying which commit is running without admin auth).
 
 Note: The workspace currently contains uncommitted changes (dirty tree). For a fully deterministic rollback drill using commits A/B, we should either (a) commit the staging/deploy artifacts and fixes, or (b) stash/clean the tree and deploy from checked-out commits.
 
@@ -58,18 +61,85 @@ curl -fsS http://localhost:28000/api/metrics | head -n 20
 Output (sample):
 
 ```text
-auth_2fa_challenge_total 0
-auth_2fa_failed_total 0
-auth_login_failed_total 0
-auth_login_success_total 0
-billing_reconcile_runs_total{result="error"} 0
-billing_reconcile_runs_total{result="success"} 0
-billing_webhook_received_total{type="unknown"} 0
-http_request_duration_seconds_bucket{le="+Inf",method="GET",route="/api/v2/chat/ping"} 1
-http_request_duration_seconds_bucket{le="0.005",method="GET",route="/api/v2/chat/ping"} 1
-http_request_duration_seconds_bucket{le="0.01",method="GET",route="/api/v2/chat/ping"} 1
-...
+# HELP ki_ana_process_uptime_seconds Process uptime in seconds
+# TYPE ki_ana_process_uptime_seconds gauge
+ki_ana_process_uptime_seconds 5.770
+# HELP ki_ana_http_requests_total Total HTTP requests
+# TYPE ki_ana_http_requests_total counter
+ki_ana_http_requests_total{route="/api/metrics",method="GET",status="200"} 1
+ki_ana_http_requests_total{route="/api/v2/chat/ping",method="GET",status="200"} 1
 ```
+
+## Evidence (Version B)
+
+### 1) Ping (includes build markers)
+
+```bash
+curl -fsS http://localhost:28000/api/v2/chat/ping
+```
+
+Output:
+
+```json
+{"ok":true,"version":"2.0","module":"chat-v2","sha":"dac6673d9","build":"dac6673d9"}
+```
+
+### 2) Metrics (head)
+
+```bash
+curl -fsS http://localhost:28000/api/metrics | head -n 20
+```
+
+Output (sample):
+
+```text
+# HELP ki_ana_process_uptime_seconds Process uptime in seconds
+# TYPE ki_ana_process_uptime_seconds gauge
+ki_ana_process_uptime_seconds 4.129
+# HELP ki_ana_http_requests_total Total HTTP requests
+# TYPE ki_ana_http_requests_total counter
+ki_ana_http_requests_total{route="/api/v2/chat/ping",method="GET",status="200"} 2
+```
+
+## Rollback drill (completed)
+
+### Deploy A
+
+```bash
+git checkout 3f2c9e20e
+./infra/scripts/deploy_staging.sh
+curl -fsS http://localhost:28000/api/v2/chat/ping
+curl -fsS http://localhost:28000/api/metrics | head -n 8
+```
+
+### Deploy B
+
+```bash
+git checkout dac6673d9
+./infra/scripts/deploy_staging.sh
+curl -fsS http://localhost:28000/api/v2/chat/ping
+curl -fsS http://localhost:28000/api/metrics | head -n 8
+```
+
+### Roll back to A
+
+```bash
+git checkout 3f2c9e20e
+./infra/scripts/deploy_staging.sh
+curl -fsS http://localhost:28000/api/v2/chat/ping
+```
+
+Expected: ping JSON has no `sha`/`build` fields.
+
+### Forward restore to B
+
+```bash
+git checkout dac6673d9
+./infra/scripts/deploy_staging.sh
+curl -fsS http://localhost:28000/api/v2/chat/ping
+```
+
+Expected: ping JSON includes `sha`/`build` matching `dac6673d9`.
 
 ### 3) Ops summary (env)
 
@@ -180,4 +250,4 @@ Once commits A/B are defined and the working tree is clean enough to deploy dete
 - Ping: ✅ (public, returns expected JSON)
 - Metrics head: ✅ (curl returns Prometheus text by default)
 - Ops summary env: ✅ (admin-only; verified with bootstrap admin)
-- Commit-based rollback A/B: ❌ (blocked by dirty git working tree / missing committed Version B)
+- Commit-based rollback A/B: ✅ (deploy A, deploy B, rollback to A, restore B)
