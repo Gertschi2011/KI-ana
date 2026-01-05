@@ -54,6 +54,9 @@ services:
     environment:
       ENV: staging
       DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      BUILD_SHA: ${BUILD_SHA:-}
+      KIANA_BUILD_SHA: ${KIANA_BUILD_SHA:-}
+      KIANA_VERSION: ${KIANA_VERSION:-}
       REDIS_HOST: redis
       REDIS_PORT: 6379
       QDRANT_HOST: qdrant
@@ -83,6 +86,9 @@ services:
     environment:
       ENV: staging
       DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      BUILD_SHA: ${BUILD_SHA:-}
+      KIANA_BUILD_SHA: ${KIANA_BUILD_SHA:-}
+      KIANA_VERSION: ${KIANA_VERSION:-}
       REDIS_HOST: redis
       REDIS_PORT: 6379
     depends_on:

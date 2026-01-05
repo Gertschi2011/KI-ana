@@ -4,6 +4,11 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT_DIR"
 
+# Version markers for evidence capture (used by /api/ops/summary).
+export BUILD_SHA="${BUILD_SHA:-$(git rev-parse --short HEAD 2>/dev/null || true)}"
+export KIANA_BUILD_SHA="${KIANA_BUILD_SHA:-$BUILD_SHA}"
+export KIANA_VERSION="${KIANA_VERSION:-$BUILD_SHA}"
+
 COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.staging.yml}"
 ENV_FILE="${ENV_FILE:-.env.staging}"
 PROJECT_NAME="${PROJECT_NAME:-ki_ana_staging}"
