@@ -43,28 +43,64 @@ def _default_sqlite_url() -> str:
     db_path = root / "netapi" / "users.db"
     return f"sqlite:///{db_path}"
 
-DB_URL = os.getenv("DATABASE_URL", _default_sqlite_url()).strip()
+def _current_db_url() -> str:
+    # Re-load .env only if DATABASE_URL is not explicitly set.
+    _load_env_from_file()
+    return os.getenv("DATABASE_URL", _default_sqlite_url()).strip()
+
+
+DB_URL = _current_db_url()
+
+
+def _make_engine(db_url: str):
+    is_sqlite_local = db_url.startswith("sqlite:")
+    return create_engine(
+        db_url,
+        connect_args=({"check_same_thread": False} if is_sqlite_local else {}),
+        pool_size=10,
+        max_overflow=20,
+        pool_recycle=1800,
+        pool_pre_ping=True,
+        future=True,
+    )
+
 
 # -----------------------------
-# Engine creation
+# Engine creation (supports runtime reconfiguration)
 # -----------------------------
 is_sqlite = DB_URL.startswith("sqlite:")
-engine = create_engine(
-    DB_URL,
-    connect_args=({"check_same_thread": False} if is_sqlite else {}),
-    pool_size=10,
-    max_overflow=20,
-    pool_recycle=1800,
-    pool_pre_ping=True,
-    future=True,
-)
-
+engine = _make_engine(DB_URL)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
+
+
+def ensure_engine_current() -> None:
+    """Ensure engine/sessionmaker reflect the current DATABASE_URL.
+
+    This is mainly to support tests that set DATABASE_URL per-test, even if
+    netapi.db was imported earlier.
+    """
+
+    global DB_URL, engine, SessionLocal, is_sqlite
+
+    env_url = _current_db_url()
+    if not env_url or env_url == DB_URL:
+        return
+
+    try:
+        engine.dispose()
+    except Exception:
+        pass
+
+    DB_URL = env_url
+    is_sqlite = DB_URL.startswith("sqlite:")
+    engine = _make_engine(DB_URL)
+    SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
 Base = declarative_base()
 
 
 def get_db() -> Generator:
     """FastAPI dependency-style session generator (optional)."""
+    ensure_engine_current()
     db = SessionLocal()
     try:
         yield db
@@ -77,6 +113,7 @@ def init_db() -> None:
     Create tables if they don't exist.
     This only creates; it won't drop anything.
     """
+    ensure_engine_current()
     # Import models inside function to avoid circular import at module load time.
     from . import models  # noqa: F401  (registers core models to Base metadata)
     # Ensure folders model is also registered (Conversation.folder_id -> folders.id)
@@ -93,6 +130,7 @@ def ensure_columns() -> None:
     Adds missing columns on 'users' table if absent.
     No data loss, no rename, only simple 'ADD COLUMN'.
     """
+    ensure_engine_current()
     wanted = {
         "plan": "TEXT DEFAULT 'free'",
         "plan_until": "INTEGER DEFAULT 0",
@@ -105,6 +143,21 @@ def ensure_columns() -> None:
         "tier": "TEXT DEFAULT 'user'",
         "daily_quota": "INTEGER DEFAULT 20",
         "quota_reset_at": "INTEGER DEFAULT 0",
+        # M2: SaaS Auth gates
+        "email_verified": "INTEGER DEFAULT 0",
+        "account_status": "TEXT DEFAULT 'pending_verification'",
+        "subscription_status": "TEXT DEFAULT 'inactive'",
+        # M2-BLOCK2: grace period for canceled subscriptions
+        "subscription_grace_until": "INTEGER DEFAULT 0",
+        # M2: brute-force mitigation helpers (optional)
+        "failed_login_count": "INTEGER DEFAULT 0",
+        "locked_until": "INTEGER DEFAULT 0",
+
+        # M2-BLOCK5: GDPR consent + deletion lifecycle
+        "consent_learning": "TEXT DEFAULT 'ask'",
+        "delete_requested_at": "INTEGER DEFAULT 0",
+        "delete_scheduled_for": "INTEGER DEFAULT 0",
+        "deleted_at": "INTEGER DEFAULT 0",
     }
     # Use SQLAlchemy inspector for database-agnostic table/column checks
     from sqlalchemy import inspect
@@ -134,13 +187,48 @@ def ensure_columns() -> None:
                       id SERIAL PRIMARY KEY,
                       user_id INTEGER NOT NULL,
                       date TEXT NOT NULL,
+                      feature TEXT NOT NULL DEFAULT 'chat',
                       count INTEGER NOT NULL DEFAULT 0
                     );
                     """
                 ))
-                conn.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS idx_api_usage_user_date ON api_usage(user_id, date)"))
+                conn.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS idx_api_usage_user_date_feature ON api_usage(user_id, date, feature)"))
         except Exception as e:
             # Table might already exist from a parallel worker, that's OK
+            pass
+    else:
+        # If api_usage exists, ensure it has the 'feature' column and correct unique index.
+        try:
+            cols = inspector.get_columns('api_usage')
+            have_cols = {c['name'] for c in (cols or [])}
+            with engine.begin() as conn:
+                if 'feature' not in have_cols:
+                    conn.execute(text("ALTER TABLE api_usage ADD COLUMN feature TEXT NOT NULL DEFAULT 'chat'"))
+                # Best-effort: create the new unique index (old one may still exist).
+                try:
+                    conn.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS idx_api_usage_user_date_feature ON api_usage(user_id, date, feature)"))
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    # Ensure api_usage_minute table exists (for per-minute counters)
+    if 'api_usage_minute' not in inspector.get_table_names():
+        try:
+            with engine.begin() as conn:
+                conn.execute(text(
+                    """
+                    CREATE TABLE IF NOT EXISTS api_usage_minute (
+                      id SERIAL PRIMARY KEY,
+                      user_id INTEGER NOT NULL,
+                      bucket TEXT NOT NULL,
+                      feature TEXT NOT NULL,
+                      count INTEGER NOT NULL DEFAULT 0
+                    );
+                    """
+                ))
+                conn.execute(text("CREATE UNIQUE INDEX IF NOT EXISTS idx_api_usage_minute_user_bucket_feature ON api_usage_minute(user_id, bucket, feature)"))
+        except Exception:
             pass
 
 
@@ -152,6 +240,7 @@ def ensure_knowledge_indexes() -> None:
     All ops are idempotent and safe if the table or columns are absent.
     """
     try:
+        ensure_engine_current()
         if not DB_URL.startswith("sqlite:"):
             return
         
@@ -273,14 +362,29 @@ def count_memory_per_day(limit: int = 7):
     Expects a 'ts' integer (unix seconds) column on knowledge_blocks.
     """
     try:
-        rows = query_db(
+        dialect = ""
+        try:
+            dialect = str(getattr(getattr(engine, "dialect", None), "name", "") or "").lower()
+        except Exception:
+            dialect = ""
+
+        if dialect.startswith("postgres"):
+            sql = """
+            SELECT to_char(to_timestamp(ts), 'YYYY-MM-DD') AS day, COUNT(*) AS cnt
+            FROM knowledge_blocks
+            GROUP BY day
+            ORDER BY day DESC
             """
+        else:
+            # SQLite (and default fallback)
+            sql = """
             SELECT strftime('%Y-%m-%d', ts, 'unixepoch') AS day, COUNT(*) AS cnt
             FROM knowledge_blocks
             GROUP BY day
             ORDER BY day DESC
             """
-        )
+
+        rows = query_db(sql)
         return rows[: max(1, int(limit))] if rows else []
     except Exception:
         return []

@@ -1,0 +1,112 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata_staging:/var/lib/postgresql/data
+    # Optional: expose to host for debugging only
+    ports:
+      - "25432:5432"
+    networks: [kiana_staging]
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    volumes:
+      - redisdata_staging:/data
+    ports:
+      - "26379:6379"
+    networks: [kiana_staging]
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    restart: unless-stopped
+    volumes:
+      - qdrantdata_staging:/qdrant/storage
+    ports:
+      - "26333:6333"
+    networks: [kiana_staging]
+
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - miniodata_staging:/data
+    ports:
+      - "29000:9000"
+      - "29001:9001"
+    networks: [kiana_staging]
+
+  backend:
+    build:
+      context: .
+      dockerfile: netapi/Dockerfile
+    restart: unless-stopped
+    environment:
+      ENV: staging
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      QDRANT_HOST: qdrant
+      QDRANT_PORT: 6333
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      TZ: Europe/Vienna
+      KI_ROOT: /home/kiana/ki_ana
+    volumes:
+      - /home/kiana/ki_ana/memory:/home/kiana/ki_ana/memory
+      - /home/kiana/ki_ana/system:/home/kiana/ki_ana/system:ro
+      - /home/kiana/ki_ana/data:/home/kiana/ki_ana/data
+    depends_on:
+      - postgres
+      - redis
+      - qdrant
+      - minio
+    networks: [kiana_staging]
+    ports:
+      - "28000:8000"
+
+  worker:
+    build: ./backend
+    command: ["bash","-lc","celery -A workers.celery_app.celery worker -l info"]
+    restart: unless-stopped
+    environment:
+      ENV: staging
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - backend
+      - redis
+    networks: [kiana_staging]
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_BASE: ${NEXT_PUBLIC_API_BASE}
+      NEXT_PUBLIC_ENV: staging
+    depends_on:
+      - backend
+    ports:
+      - "23000:3000"
+    networks: [kiana_staging]
+
+volumes:
+  pgdata_staging: {}
+  redisdata_staging: {}
+  qdrantdata_staging: {}
+  miniodata_staging: {}
+
+networks:
+  kiana_staging: {}

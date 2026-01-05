@@ -10,6 +10,9 @@ python-dotenv>=1.0,<2.0
 pydantic>=2.6,<3.0
 pydantic-settings>=2.2,<3.0
 
+# --- Logging ---
+loguru>=0.7.0
+
 # --- Auth & Security ---
 passlib[bcrypt]>=1.7,<2.0
 itsdangerous>=2.2,<3.0
@@ -31,9 +34,11 @@ python-dateutil>=2.8
 json5>=0.9
 colorama>=0.4
 
+# --- Payments (Stripe) ---
+stripe>=10.0
+
 # --- Speech/Audio ---
 SpeechRecognition>=3.8
-pyaudio>=0.2.14
 pyttsx3>=2.90
 
 # --- NLP & AI ---

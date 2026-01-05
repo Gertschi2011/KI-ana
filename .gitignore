@@ -6,6 +6,8 @@ env/
 
 # Local env (keep .env.example tracked)
 .env
+.env.staging
+.env.prod
 
 # Lokale DBs / Caches
 test.db

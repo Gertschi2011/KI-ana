@@ -29,7 +29,7 @@ import json
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 # Optional Starlette middlewares (be tolerant to older Starlette versions)
 try:
     from starlette.middleware.gzip import GZipMiddleware  # type: ignore
@@ -42,7 +42,19 @@ except Exception:  # pragma: no cover
 
 from .config import settings, STATIC_DIR
 from .brain import brain_status
-from .deps import get_current_user_required, has_any_role
+from .deps import get_current_user_required, has_any_role, require_active_user
+from fastapi import Depends
+
+# App start timestamp (for uptime)
+APP_STARTED_AT_TS = int(time.time())
+
+# Global TimeFlow instance for /api/timeflow router
+try:
+    from netapi.modules.timeflow.engine import TimeFlow as _TimeFlow
+    _tf_tz = (os.getenv("KIANA_TZ") or os.getenv("TZ") or "Europe/Vienna").strip() or "Europe/Vienna"
+    TIMEFLOW = _TimeFlow(tz=_tf_tz)
+except Exception:
+    TIMEFLOW = None  # type: ignore
 
 # Routers are imported lazily and guarded, so a missing optional
 # dependency (e.g., sse_starlette) doesn't crash the whole app.
@@ -56,6 +68,16 @@ except Exception as _e_chat_router:
     chat_router = None  # type: ignore
     try:
         print("❌ Chat router failed to load:", _e_chat_router)
+    except Exception:
+        pass
+
+# v2 chat router (clean architecture) - optional
+try:
+    from netapi.modules.chat.clean_router import router as chat_v2_router
+except Exception as _e_chat_v2_router:
+    chat_v2_router = None  # type: ignore
+    try:
+        print("❌ Chat v2 router failed to load:", _e_chat_v2_router)
     except Exception:
         pass
 try:
@@ -119,9 +141,17 @@ try:
 except Exception:
     memory_router = None  # type: ignore
 try:
+    from netapi.modules.memory.tool_router import router as memory_tools_router
+except Exception:
+    memory_tools_router = None  # type: ignore
+try:
     from netapi.modules.web.router import router as web_router
 except Exception:
     web_router = None  # type: ignore
+try:
+    from netapi.modules.security.router import router as security_router
+except Exception:
+    security_router = None  # type: ignore
 try:
     from netapi.modules.viewer.router import router as viewer_router
 except Exception:
@@ -143,9 +173,25 @@ try:
 except Exception:
     guardian_router = None  # type: ignore
 try:
-    from netapi.modules.billing.router import router as billing_router
+    from netapi.modules.account.router import router as account_router
 except Exception:
+    account_router = None  # type: ignore
+try:
+    from netapi.modules.billing.router import router as billing_router
+except Exception as _e_billing_router:
+    # In production, billing config must be present; fail-fast.
+    try:
+        env_value = (os.getenv("KIANA_ENV") or os.getenv("ENV") or "dev").strip().lower()
+        is_prod = (str(os.getenv("TEST_MODE", "0")).strip() != "1") and (env_value in {"prod", "production"})
+    except Exception:
+        is_prod = False
+    if is_prod:
+        raise
     billing_router = None  # type: ignore
+    try:
+        print("⚠️  Billing router disabled:", _e_billing_router)
+    except Exception:
+        pass
 try:
     from netapi.modules.media.router import router as media_router
 except Exception:
@@ -174,6 +220,14 @@ try:
     from netapi.modules.stats.router import router as stats_router
 except Exception:
     stats_router = None  # type: ignore
+try:
+    from netapi.modules.ops.router import router as ops_router
+except Exception:
+    ops_router = None  # type: ignore
+try:
+    from netapi.modules.privacy.router import router as privacy_router
+except Exception:
+    privacy_router = None  # type: ignore
 try:
     from netapi.modules.colearn.router import router as colearn_router
 except Exception:
@@ -240,6 +294,16 @@ except Exception as _e_crawler_ui_router:
     crawler_ui_router = None  # type: ignore
     try:
         print(f"❌ Import crawler_ui_router failed: {_e_crawler_ui_router}")
+    except Exception:
+        pass
+
+# Crawler API router (frontend expects /api/crawler/*)
+try:
+    from netapi.modules.crawler.api_router import router as crawler_api_router
+except Exception as _e_crawler_api_router:
+    crawler_api_router = None  # type: ignore
+    try:
+        print(f"❌ Import crawler_api_router failed: {_e_crawler_api_router}")
     except Exception:
         pass
 try:
@@ -431,6 +495,38 @@ async def _kernel_boot() -> None:
             pass
     asyncio.create_task(_safe_start())
 
+    # Route dump (best-effort) to help diagnose missing mounts
+    try:
+        import logging as _logging
+        lg = _logging.getLogger("netapi.routes")
+        items = []
+        for r in getattr(app, "routes", []) or []:
+            try:
+                path = getattr(r, "path", None)
+                methods = getattr(r, "methods", None)
+                if not path:
+                    continue
+                m = sorted([str(x) for x in (methods or []) if x])
+                items.append({"path": str(path), "methods": m})
+            except Exception:
+                continue
+        # Keep logs compact
+        items_sorted = sorted(items, key=lambda x: x.get("path") or "")
+        lg.info("route_dump.count=%s", len(items_sorted))
+        for it in items_sorted:
+            p = it.get("path") or ""
+            if p.startswith("/api/") or p.startswith("/crawler") or p.startswith("/static"):
+                lg.info("route_dump: %s %s", ",".join(it.get("methods") or []), p)
+    except Exception:
+        pass
+
+    # Start TimeFlow heartbeat (best-effort)
+    try:
+        if TIMEFLOW is not None:
+            TIMEFLOW.start()
+    except Exception:
+        pass
+
     # Install logging broadcaster so /api/logs endpoints work
     try:
         from .logging_bridge import BROADCASTER
@@ -495,6 +591,13 @@ async def _kernel_down() -> None:
         await asyncio.wait_for(KERNEL.stop(), timeout=3.0)
     except BaseException:
         pass
+
+    # Stop TimeFlow heartbeat (best-effort)
+    try:
+        if TIMEFLOW is not None:
+            await TIMEFLOW.stop()  # type: ignore[func-returns-value]
+    except Exception:
+        pass
     
     crawler_task = getattr(app.state, "crawler_task", None)
     if crawler_task:
@@ -558,13 +661,23 @@ async def _security_headers(request: Request, call_next):
         scheme = (request.headers.get("x-forwarded-proto") or request.url.scheme or "http").lower()
         if scheme == "https":
             resp.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
-        # Auto-upgrade any stray http:// requests in the page
-        # Note: This is safe to send on all responses
-        resp.headers["Content-Security-Policy"] = "upgrade-insecure-requests"
+        # CSP: light policy that keeps the current static frontend working.
+        # We use frame-ancestors for clickjacking protection.
+        resp.headers["Content-Security-Policy"] = (
+            "default-src 'self'; "
+            "base-uri 'self'; "
+            "object-src 'none'; "
+            "frame-ancestors 'self'; "
+            "img-src 'self' data: https:; "
+            "style-src 'self' 'unsafe-inline'; "
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval'; "
+            "connect-src 'self' https:;"
+        )
         # Hardening
         resp.headers["X-Content-Type-Options"] = "nosniff"
         resp.headers["X-Frame-Options"] = "SAMEORIGIN"
         resp.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+        resp.headers["Permissions-Policy"] = "geolocation=(), camera=(), microphone=(), payment=()"
     except Exception:
         # Be permissive: never block a response due to header errors
         pass
@@ -606,10 +719,38 @@ async def debug_ping():
     return {"ok": True}
 
 @app.get("/api/metrics", include_in_schema=False)
-def api_metrics():
-    """Lightweight readiness/metrics endpoint for frontend preflight checks.
-    Currently exposes Ollama (local LLM) availability and configured host/model.
+def api_metrics(request: Request):
+    """M2 Minimal Observability endpoint.
+
+    - Default (browser/UI): JSON readiness (fetch() typically sends Accept: */*)
+    - Prometheus: return text format when Accept explicitly requests text/openmetrics
     """
+    accept = (request.headers.get("accept") or "").lower()
+    ua = (request.headers.get("user-agent") or "").lower()
+
+    wants_prom = (
+        ("text/plain" in accept)
+        or ("application/openmetrics-text" in accept)
+        or ("application/openmetrics" in accept)
+        or ("application/prometheus" in accept)
+    )
+
+    # CLI tools like curl typically send Accept: */*; treat them as Prometheus
+    # scrapes so runbooks can use `curl .../api/metrics | head`.
+    is_cli = any(token in ua for token in ("curl/", "wget/", "httpie", "python-requests"))
+
+    if wants_prom or is_cli:
+        try:
+            from fastapi.responses import PlainTextResponse
+            from netapi.modules.observability.metrics import render_prometheus_text
+            return PlainTextResponse(render_prometheus_text(), media_type="text/plain; version=0.0.4")
+        except Exception:
+            # Never crash; return minimal scrape-safe response.
+            from fastapi.responses import PlainTextResponse
+            return PlainTextResponse("# scrape_failed 1\n", media_type="text/plain")
+
+    # Lightweight readiness/metrics endpoint for frontend preflight checks.
+    # Currently exposes Ollama (local LLM) availability and configured host/model.
     ollama = {"available": False}
     try:
         from .core import llm_local as _llm  # type: ignore
@@ -651,13 +792,12 @@ def api_metrics():
             "model_running": model_running,
         }
     except Exception:
-        # keep defaults; endpoint should never raise
         pass
     return {"ok": True, "ollama": ollama}
 
 # Unified system status for UI (resources + metrics)
 @app.get("/api/system/status", include_in_schema=False)
-def api_system_status():
+def api_system_status(request: Request):
     # Resources (best-effort)
     resources = {}
     try:
@@ -698,9 +838,11 @@ def api_system_status():
     except Exception:
         resources = {}
 
-    # Metrics (reuse api_metrics logic)
+    # Metrics (reuse JSON mode of api_metrics for Ollama readiness)
     try:
-        m = api_metrics()
+        class _Req:
+            headers = {"accept": "application/json"}
+        m = api_metrics(_Req())  # type: ignore
         ollama = m.get("ollama", {}) if isinstance(m, dict) else {}
     except Exception:
         ollama = {"available": False}
@@ -857,7 +999,32 @@ def api_system_status():
                 pass
     except Exception:
         pass
-    return {"ts": int(time.time()), "metrics": metrics, "resources": resources}
+    build = {
+        "sha": (os.getenv("KIANA_BUILD_SHA") or os.getenv("BUILD_SHA") or "").strip() or None,
+        "time": (os.getenv("KIANA_BUILD_TIME") or os.getenv("BUILD_TIME") or "").strip() or None,
+        "version": (os.getenv("KIANA_VERSION") or "").strip() or None,
+    }
+    try:
+        if not any(build.values()):
+            build = {}
+    except Exception:
+        build = {}
+
+    now_ts = int(time.time())
+    try:
+        uptime_sec = max(0, now_ts - int(APP_STARTED_AT_TS or now_ts))
+    except Exception:
+        uptime_sec = 0
+
+    return {
+        "ok": True,
+        "ts": now_ts,
+        "started_at_ts": int(APP_STARTED_AT_TS or now_ts),
+        "uptime_sec": uptime_sec,
+        "build": build,
+        "metrics": metrics,
+        "resources": resources,
+    }
 
 # Direct LLM test endpoint to validate Ollama connectivity
 @app.get("/api/llm/test", include_in_schema=False)
@@ -1097,7 +1264,7 @@ def apple_touch():
 try:
     if chat_router is None:
         raise RuntimeError("chat_router is None")
-    app.include_router(chat_router)
+    app.include_router(chat_router, dependencies=[Depends(require_active_user)])
     print("✅ Chat router ready")
 except Exception as e:
     print("❌ Chat router failed:", e)
@@ -1122,6 +1289,28 @@ except Exception as e:
     @app.post("/api/chat/conversations", include_in_schema=False)
     def _fallback_chat_convs_create():
         return {"ok": True, "id": 0}
+
+# Chat v2 router (preferred)
+try:
+    if chat_v2_router is None:
+        raise RuntimeError("chat_v2_router is None")
+    app.include_router(chat_v2_router, dependencies=[Depends(require_active_user)])
+    print("✅ Chat v2 router ready")
+except Exception as e:
+    print("❌ Chat v2 router failed:", e)
+
+
+# ---- Compatibility routes (frontend expects /api/agent/*) -------------------
+@app.post("/api/agent/chat", include_in_schema=False)
+async def _compat_agent_chat() -> RedirectResponse:
+    # Preserve method+body for fetch() by using 307.
+    return RedirectResponse(url="/api/v2/chat", status_code=307)
+
+
+@app.get("/api/agent/stream", include_in_schema=False)
+async def _compat_agent_stream() -> RedirectResponse:
+    # v2 chat has no SSE stream endpoint yet; keep legacy stream payload contract.
+    return RedirectResponse(url="/api/chat/stream", status_code=307)
 
 # Memory cleanup router
 try:
@@ -1148,23 +1337,29 @@ try:
         raise RuntimeError("auth_router is None")
     # Router already defines prefix="/api"; do not add another prefix here
     app.include_router(auth_router)
-    if chat_router:
-        app.include_router(chat_router)
-    if folders_router:
-        app.include_router(folders_router)
     print("✅ Auth router ready")
 except Exception as e:
     print("❌ Auth router failed:", e)
+
+
+# Memory tools router (/api/memory/*)
+try:
+    if memory_tools_router is not None:
+        app.include_router(memory_tools_router, dependencies=[Depends(require_active_user)])
+        print("✅ Memory tools router ready")
+except Exception as e:
+    print("❌ Memory tools router failed:", e)
 
 
 # Alle übrigen Router automatisch einbinden (ohne Chat/Settings doppelt zu laden)
 router_list = [
     autopilot_router, pages_router, folders_router, addressbook_router, audit_router, emotion_router, timeflow_router,
     # memory_router handled explicitly with prefix later
-    web_router, viewer_router, os_router,
+    web_router, security_router, viewer_router, os_router,
     kernel_router, subminds_router, guardian_router, billing_router,
+    account_router,
     media_router, voice_router, stt_router, ingest_router, agent_router,
-    devices_router, stats_router, colearn_router, genesis_router,
+    devices_router, stats_router, ops_router, privacy_router, colearn_router, genesis_router,
     feedback_router, subki_router, self_router, dashboard_mock_router,
     blocks_router, events_router, reflection_router, plan_router, persona_router,
     knowledge_router, ethics_router, crawler_router, crawler_ui_router, export_router,
@@ -1178,6 +1373,14 @@ for r in router_list:
             app.include_router(r)
     except Exception as e:
         print(f"❌ Fehler beim Einbinden eines Routers: {e}")
+
+# Mount crawler API router explicitly at /api/crawler for UI compatibility
+try:
+    if crawler_api_router is not None:
+        app.include_router(crawler_api_router, prefix="/api/crawler")
+        print("✅ Crawler API router mounted at /api/crawler")
+except Exception as e:
+    print("❌ Crawler API router mount failed:", e)
 
 # Mount adapter last to override mock endpoints
 try:
@@ -1199,7 +1402,7 @@ def _ping_stub():
 # Explicitly mount memory viewer router with desired prefix, after others
 try:
     if memory_router is not None:
-        app.include_router(memory_router, prefix="/api/memory/knowledge")
+        app.include_router(memory_router, prefix="/api/memory/knowledge", dependencies=[Depends(require_active_user)])
         print("✅ Memory router mounted at /api/memory/knowledge")
 except Exception as e:
     print("❌ Memory router mount failed:", e)
@@ -1258,3 +1461,125 @@ async def _emergency_guard(request: Request, call_next):
         # Fail‑open on guard errors to not DOS ourselves
         pass
     return await call_next(request)
+
+
+# ---- Structured request logs + core HTTP metrics (M2 Observability) --------
+@app.middleware("http")
+async def _request_observability(request: Request, call_next):
+    import json as _json
+    import traceback as _tb
+    import uuid as _uuid
+    import time as _time
+    import sys as _sys
+
+    from netapi.modules.observability.redact import redact as _redact
+    from netapi.modules.observability.metrics import record_http_request
+
+    def _emit_stdout(line: str) -> None:
+        try:
+            print(line, flush=True)
+        except Exception:
+            try:
+                _sys.stdout.write(line + "\n")
+                _sys.stdout.flush()
+            except Exception:
+                pass
+
+    def _emit_stderr(line: str) -> None:
+        try:
+            print(line, file=_sys.stderr, flush=True)
+        except Exception:
+            try:
+                _sys.stderr.write(line + "\n")
+                _sys.stderr.flush()
+            except Exception:
+                pass
+
+    req_id = (request.headers.get("x-request-id") or request.headers.get("x-correlation-id") or "").strip()
+    if not req_id:
+        req_id = str(_uuid.uuid4())
+    try:
+        request.state.request_id = req_id
+    except Exception:
+        pass
+
+    t0 = _time.perf_counter()
+    status_code = 500
+    route = None
+    try:
+        resp = await call_next(request)
+        status_code = int(getattr(resp, "status_code", 500) or 500)
+        try:
+            resp.headers["x-request-id"] = req_id
+        except Exception:
+            pass
+        return resp
+    except Exception as exc:
+        # Emit exception log (best-effort, redacted)
+        env_value = (os.getenv("KIANA_ENV") or os.getenv("ENV") or "dev").strip().lower()
+        is_prod = (str(os.getenv("TEST_MODE", "0")).strip() != "1") and (env_value in {"prod", "production"})
+        stack = "".join(_tb.format_exception(type(exc), exc, exc.__traceback__))
+        if is_prod:
+            stack = "\n".join(stack.splitlines()[-20:])
+        err_obj = {
+            "ts": int(_time.time()),
+            "type": "error",
+            "request_id": req_id,
+            "error_code": "unhandled_exception",
+            "error": str(type(exc).__name__),
+            "message": str(exc),
+            "stack": stack,
+            "route": str(getattr(getattr(request, "scope", {}), "get", lambda *_: None)("path") or request.url.path),
+            "method": request.method,
+        }
+        try:
+            _emit_stderr(_json.dumps(_redact(err_obj), ensure_ascii=False))
+        except Exception:
+            pass
+        raise
+    finally:
+        dt = _time.perf_counter() - t0
+        latency_ms = float(dt * 1000.0)
+        try:
+            route = None
+            try:
+                r = request.scope.get("route")
+                route = getattr(r, "path", None)
+            except Exception:
+                route = None
+            if not route:
+                route = request.url.path
+            record_http_request(
+                route=str(route),
+                method=str(request.method),
+                status=int(status_code),
+                duration_seconds=float(dt),
+                latency_ms=latency_ms,
+            )
+        except Exception:
+            pass
+
+        # One JSON line per request
+        try:
+            hdrs = {
+                "authorization": request.headers.get("authorization"),
+                "cookie": request.headers.get("cookie"),
+                "user-agent": request.headers.get("user-agent"),
+            }
+        except Exception:
+            hdrs = {}
+
+        obj = {
+            "ts": int(_time.time()),
+            "type": "request",
+            "request_id": req_id,
+            "route": str(route or request.url.path),
+            "method": request.method,
+            "status_code": int(status_code),
+            "latency_ms": latency_ms,
+            "headers": hdrs,
+        }
+        try:
+            _emit_stdout(_json.dumps(_redact(obj), ensure_ascii=False))
+        except Exception:
+            pass
