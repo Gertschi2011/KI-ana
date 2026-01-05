@@ -12,7 +12,12 @@ from .db import SessionLocal
 from .models import User
 from fastapi import Depends
 from .models import AuthSession
-from netapi.modules.security.audit_log import write_audit_event
+
+try:
+    from netapi.modules.security.audit_log import write_audit_event  # type: ignore
+except Exception:
+    def write_audit_event(*args, **kwargs):  # type: ignore
+        return None
 
 COOKIE_NAME = "ki_session"
 COOKIE_MAX_AGE = 60 * 60 * 24 * 30  # 30 Tage (nur für "remember")

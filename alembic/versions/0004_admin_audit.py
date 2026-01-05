@@ -18,6 +18,8 @@ depends_on = None
 
 def upgrade():
     conn = op.get_bind()
+    if getattr(getattr(conn, "dialect", None), "name", None) != "sqlite":
+        return
     try:
         res = conn.execute(sa.text("SELECT name FROM sqlite_master WHERE type='table' AND name='admin_audit'"))
         if not res.fetchone():

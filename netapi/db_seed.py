@@ -24,7 +24,6 @@ def seed_users() -> None:
                 role='creator',
                 plan='free',
                 plan_until=0,
-                created_at=int(time.time()),
                 updated_at=int(time.time()),
             )
             db.add(u)

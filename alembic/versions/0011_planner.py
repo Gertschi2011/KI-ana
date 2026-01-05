@@ -16,6 +16,11 @@ depends_on = None
 
 
 def upgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    if inspector.has_table("plans") and inspector.has_table("plan_steps"):
+        return
+
     op.create_table(
         'plans',
         sa.Column('id', sa.Integer(), primary_key=True),
@@ -29,9 +34,13 @@ def upgrade() -> None:
         sa.Column('finished_at', sa.Integer(), nullable=False, server_default='0'),
     )
     # Some SQLite backends ignore index=True inside Column; add explicit indexes
-    op.create_index('ix_plans_title', 'plans', ['title'], unique=False)
-    op.create_index('ix_plans_user_id', 'plans', ['user_id'], unique=False)
-    op.create_index('ix_plans_status', 'plans', ['status'], unique=False)
+    existing_plans_indexes = {idx["name"] for idx in inspector.get_indexes("plans")}
+    if "ix_plans_title" not in existing_plans_indexes:
+        op.create_index('ix_plans_title', 'plans', ['title'], unique=False)
+    if "ix_plans_user_id" not in existing_plans_indexes:
+        op.create_index('ix_plans_user_id', 'plans', ['user_id'], unique=False)
+    if "ix_plans_status" not in existing_plans_indexes:
+        op.create_index('ix_plans_status', 'plans', ['status'], unique=False)
 
     op.create_table(
         'plan_steps',
@@ -49,20 +58,39 @@ def upgrade() -> None:
         sa.Column('finished_at', sa.Integer(), nullable=False, server_default='0'),
         sa.ForeignKeyConstraint(['plan_id'], ['plans.id'], ondelete='CASCADE'),
     )
-    op.create_index('ix_plan_steps_plan_id', 'plan_steps', ['plan_id'], unique=False)
-    op.create_index('ix_plan_steps_idx', 'plan_steps', ['idx'], unique=False)
-    op.create_index('ix_plan_steps_type', 'plan_steps', ['type'], unique=False)
-    op.create_index('ix_plan_steps_status', 'plan_steps', ['status'], unique=False)
+    existing_step_indexes = {idx["name"] for idx in inspector.get_indexes("plan_steps")}
+    if "ix_plan_steps_plan_id" not in existing_step_indexes:
+        op.create_index('ix_plan_steps_plan_id', 'plan_steps', ['plan_id'], unique=False)
+    if "ix_plan_steps_idx" not in existing_step_indexes:
+        op.create_index('ix_plan_steps_idx', 'plan_steps', ['idx'], unique=False)
+    if "ix_plan_steps_type" not in existing_step_indexes:
+        op.create_index('ix_plan_steps_type', 'plan_steps', ['type'], unique=False)
+    if "ix_plan_steps_status" not in existing_step_indexes:
+        op.create_index('ix_plan_steps_status', 'plan_steps', ['status'], unique=False)
 
 
 def downgrade() -> None:
-    op.drop_index('ix_plan_steps_status', table_name='plan_steps')
-    op.drop_index('ix_plan_steps_type', table_name='plan_steps')
-    op.drop_index('ix_plan_steps_idx', table_name='plan_steps')
-    op.drop_index('ix_plan_steps_plan_id', table_name='plan_steps')
-    op.drop_table('plan_steps')
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
 
-    op.drop_index('ix_plans_status', table_name='plans')
-    op.drop_index('ix_plans_user_id', table_name='plans')
-    op.drop_index('ix_plans_title', table_name='plans')
-    op.drop_table('plans')
+    if inspector.has_table("plan_steps"):
+        existing_step_indexes = {idx["name"] for idx in inspector.get_indexes("plan_steps")}
+        if "ix_plan_steps_status" in existing_step_indexes:
+            op.drop_index('ix_plan_steps_status', table_name='plan_steps')
+        if "ix_plan_steps_type" in existing_step_indexes:
+            op.drop_index('ix_plan_steps_type', table_name='plan_steps')
+        if "ix_plan_steps_idx" in existing_step_indexes:
+            op.drop_index('ix_plan_steps_idx', table_name='plan_steps')
+        if "ix_plan_steps_plan_id" in existing_step_indexes:
+            op.drop_index('ix_plan_steps_plan_id', table_name='plan_steps')
+        op.drop_table('plan_steps')
+
+    if inspector.has_table("plans"):
+        existing_plans_indexes = {idx["name"] for idx in inspector.get_indexes("plans")}
+        if "ix_plans_status" in existing_plans_indexes:
+            op.drop_index('ix_plans_status', table_name='plans')
+        if "ix_plans_user_id" in existing_plans_indexes:
+            op.drop_index('ix_plans_user_id', table_name='plans')
+        if "ix_plans_title" in existing_plans_indexes:
+            op.drop_index('ix_plans_title', table_name='plans')
+        op.drop_table('plans')

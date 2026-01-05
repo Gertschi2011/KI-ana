@@ -18,6 +18,8 @@ depends_on = None
 
 def upgrade():
     conn = op.get_bind()
+    if getattr(getattr(conn, "dialect", None), "name", None) != "sqlite":
+        return
     try:
         # Ensure columns exist (SQLite-safe ADD COLUMN)
         cols = conn.execute(sa.text("PRAGMA table_info(users)")).fetchall()

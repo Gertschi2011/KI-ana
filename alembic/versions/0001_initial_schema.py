@@ -22,6 +22,13 @@ depends_on = None
 def upgrade():
     conn = op.get_bind()
 
+    # This migration contains SQLite-specific introspection/DDL (sqlite_master,
+    # PRAGMA). On Postgres, executing those statements raises an error which
+    # aborts the surrounding transaction even if the exception is caught.
+    # That, in turn, prevents Alembic from writing to alembic_version.
+    if getattr(getattr(conn, "dialect", None), "name", None) != "sqlite":
+        return
+
     # Create tables from metadata if missing
     # Note: We avoid importing models here; rely on idempotent checks
     # Add missing columns to users (SQLite-safe)

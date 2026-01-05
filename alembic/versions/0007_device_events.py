@@ -15,6 +15,11 @@ branch_labels = None
 depends_on = None
 
 def upgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    if inspector.has_table("device_events"):
+        return
+
     op.create_table(
         'device_events',
         sa.Column('id', sa.Integer(), primary_key=True),
@@ -27,4 +32,8 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    if not inspector.has_table("device_events"):
+        return
     op.drop_table('device_events')

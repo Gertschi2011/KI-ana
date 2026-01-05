@@ -15,15 +15,29 @@ branch_labels = None
 depends_on = None
 
 def upgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    existing_cols = {col["name"] for col in inspector.get_columns("devices")}
+
     with op.batch_alter_table('devices') as batch:
-        batch.add_column(sa.Column('last_ack_ts', sa.Integer(), nullable=True, server_default='0'))
-        batch.add_column(sa.Column('last_ack_type', sa.String(length=40), nullable=True, server_default=''))
-        batch.add_column(sa.Column('last_ack_status', sa.String(length=20), nullable=True, server_default=''))
+        if "last_ack_ts" not in existing_cols:
+            batch.add_column(sa.Column('last_ack_ts', sa.Integer(), nullable=True, server_default='0'))
+        if "last_ack_type" not in existing_cols:
+            batch.add_column(sa.Column('last_ack_type', sa.String(length=40), nullable=True, server_default=''))
+        if "last_ack_status" not in existing_cols:
+            batch.add_column(sa.Column('last_ack_status', sa.String(length=20), nullable=True, server_default=''))
 
 
 def downgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    existing_cols = {col["name"] for col in inspector.get_columns("devices")}
+
     with op.batch_alter_table('devices') as batch:
-        batch.drop_column('last_ack_status')
-        batch.drop_column('last_ack_type')
-        batch.drop_column('last_ack_ts')
+        if "last_ack_status" in existing_cols:
+            batch.drop_column('last_ack_status')
+        if "last_ack_type" in existing_cols:
+            batch.drop_column('last_ack_type')
+        if "last_ack_ts" in existing_cols:
+            batch.drop_column('last_ack_ts')
 

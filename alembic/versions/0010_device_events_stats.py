@@ -15,6 +15,11 @@ branch_labels = None
 depends_on = None
 
 def upgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    if inspector.has_table("device_events_stats"):
+        return
+
     op.create_table(
         'device_events_stats',
         sa.Column('ts_hour', sa.Integer(), primary_key=True),  # Unix epoch, truncated to the hour
@@ -26,4 +31,8 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    if not inspector.has_table("device_events_stats"):
+        return
     op.drop_table('device_events_stats')

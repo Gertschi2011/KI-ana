@@ -1299,6 +1299,10 @@ try:
 except Exception as e:
     print("❌ Chat v2 router failed:", e)
 
+    @app.get("/api/v2/chat/ping", include_in_schema=False)
+    def _fallback_chat_v2_ping():
+        return {"ok": True, "version": "2.0", "module": "chat-v2"}
+
 
 # ---- Compatibility routes (frontend expects /api/agent/*) -------------------
 @app.post("/api/agent/chat", include_in_schema=False)

@@ -25,6 +25,17 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(Integer, default=0)  # DB has INTEGER type
 
+
+class AuthSession(Base):
+    __tablename__ = "auth_sessions"
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    session_hash = Column(String(64), unique=True, nullable=False, index=True)
+    created_at = Column(Integer, default=0, index=True)
+    last_seen_at = Column(Integer, default=0, index=True)
+    expires_at = Column(Integer, default=0, index=True)
+    revoked_at = Column(Integer, default=0, index=True)
+
 # Key/Value Settings (global)
 class SettingsKV(Base):
     __tablename__ = "settings"

@@ -15,18 +15,36 @@ branch_labels = None
 depends_on = None
 
 def upgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    existing_cols = {col["name"] for col in inspector.get_columns("devices")}
+
     with op.batch_alter_table('devices') as batch:
-        batch.add_column(sa.Column('token_hash', sa.String(length=128), nullable=True))
-        batch.add_column(sa.Column('token_hint', sa.String(length=16), nullable=True))
-        batch.add_column(sa.Column('issued_at', sa.Integer(), nullable=True))
-        batch.add_column(sa.Column('last_auth_at', sa.Integer(), nullable=True))
-        batch.add_column(sa.Column('revoked_at', sa.Integer(), nullable=True))
+        if "token_hash" not in existing_cols:
+            batch.add_column(sa.Column('token_hash', sa.String(length=128), nullable=True))
+        if "token_hint" not in existing_cols:
+            batch.add_column(sa.Column('token_hint', sa.String(length=16), nullable=True))
+        if "issued_at" not in existing_cols:
+            batch.add_column(sa.Column('issued_at', sa.Integer(), nullable=True))
+        if "last_auth_at" not in existing_cols:
+            batch.add_column(sa.Column('last_auth_at', sa.Integer(), nullable=True))
+        if "revoked_at" not in existing_cols:
+            batch.add_column(sa.Column('revoked_at', sa.Integer(), nullable=True))
 
 
 def downgrade() -> None:
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+    existing_cols = {col["name"] for col in inspector.get_columns("devices")}
+
     with op.batch_alter_table('devices') as batch:
-        batch.drop_column('revoked_at')
-        batch.drop_column('last_auth_at')
-        batch.drop_column('issued_at')
-        batch.drop_column('token_hint')
-        batch.drop_column('token_hash')
+        if "revoked_at" in existing_cols:
+            batch.drop_column('revoked_at')
+        if "last_auth_at" in existing_cols:
+            batch.drop_column('last_auth_at')
+        if "issued_at" in existing_cols:
+            batch.drop_column('issued_at')
+        if "token_hint" in existing_cols:
+            batch.drop_column('token_hint')
+        if "token_hash" in existing_cols:
+            batch.drop_column('token_hash')
