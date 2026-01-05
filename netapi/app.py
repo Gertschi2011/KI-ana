@@ -1301,7 +1301,9 @@ except Exception as e:
 
     @app.get("/api/v2/chat/ping", include_in_schema=False)
     def _fallback_chat_v2_ping():
-        return {"ok": True, "version": "2.0", "module": "chat-v2"}
+        sha = (os.getenv("KIANA_BUILD_SHA") or os.getenv("BUILD_SHA") or "").strip() or None
+        ver = (os.getenv("KIANA_VERSION") or "").strip() or None
+        return {"ok": True, "version": "2.0", "module": "chat-v2", "sha": sha, "build": ver}
 
 
 # ---- Compatibility routes (frontend expects /api/agent/*) -------------------
