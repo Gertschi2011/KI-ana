@@ -1,7 +1,7 @@
 """User: convert users.updated_at to DateTime
 
 Revision ID: 0012_user_updated_at_datetime
-Revises: 0011_planner
+Revises: 0012_user_location_fields
 Create Date: 2026-01-06
 """
 
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision = "0012_user_updated_at_datetime"
-down_revision = "0011_planner"
+down_revision = "0012_user_location_fields"
 branch_labels = None
 depends_on = None
 
