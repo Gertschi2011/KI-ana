@@ -10,19 +10,21 @@
 from __future__ import annotations
 
 import os, time, typing as T
-from datetime import datetime
+import secrets
+from datetime import datetime, timedelta
 from dataclasses import asdict, dataclass
 
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends, Form
 from fastapi.responses import JSONResponse
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
-from sqlalchemy import select, text
+import bcrypt
+from sqlalchemy import select, text, update, delete
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 # Eigene Module
 from .db import engine, SessionLocal
-from .models import User, Base
+from .models import User, Base, EmailToken
 
 # =========================
 # Konfiguration / Utilities
@@ -83,7 +85,18 @@ def init_db() -> None:
     """Create tables + fehlende Spalten sanft ergänzen (nur ADD COLUMN)."""
     Base.metadata.create_all(engine)
     with engine.begin() as conn:
-        cols = {row[1] for row in conn.exec_driver_sql("PRAGMA table_info('users')")}
+        dialect = conn.dialect.name
+
+        if dialect == "sqlite":
+            cols = {row[1] for row in conn.exec_driver_sql("PRAGMA table_info('users')")}
+        else:
+            from sqlalchemy import inspect
+
+            inspector = inspect(conn)
+            try:
+                cols = {c.get("name") for c in inspector.get_columns("users")}
+            except Exception:
+                cols = set()
         # gewünschte Spalten (falls bei alten DBs fehlen)
         add_stmt: list[str] = []
         if "plan" not in cols:
@@ -95,29 +108,17 @@ def init_db() -> None:
         if "address" not in cols:
             add_stmt.append("ALTER TABLE users ADD COLUMN address TEXT DEFAULT ''")
         if "created_at" not in cols:
-            add_stmt.append("ALTER TABLE users ADD COLUMN created_at INTEGER DEFAULT 0")
+            if dialect == "postgresql":
+                add_stmt.append("ALTER TABLE users ADD COLUMN created_at TIMESTAMP DEFAULT now()")
+            else:
+                add_stmt.append("ALTER TABLE users ADD COLUMN created_at INTEGER DEFAULT 0")
         if "updated_at" not in cols:
-            add_stmt.append("ALTER TABLE users ADD COLUMN updated_at INTEGER DEFAULT 0")
+            if dialect == "postgresql":
+                add_stmt.append("ALTER TABLE users ADD COLUMN updated_at TIMESTAMP DEFAULT now()")
+            else:
+                add_stmt.append("ALTER TABLE users ADD COLUMN updated_at INTEGER DEFAULT 0")
         for stmt in add_stmt:
             conn.exec_driver_sql(stmt)
-
-# user_mgmt.py – Sessions, Auth, Passwort-Reset Helfer
-import os, time, secrets
-from datetime import datetime, timedelta
-import bcrypt
-from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
-
-from sqlalchemy import create_engine, select, update, delete
-from sqlalchemy.orm import sessionmaker
-
-from .models import Base, User, EmailToken
-
-DB_PATH = f"sqlite:////home/kiana/ki_ana/netapi/users.db"
-engine = create_engine(DB_PATH, future=True)
-SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, future=True)
-
-def init_db():
-    Base.metadata.create_all(engine)
 
 # === Passwort-Hashing ===
 def hash_password(pw: str) -> str:
