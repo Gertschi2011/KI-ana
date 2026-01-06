@@ -1,6 +1,6 @@
 # app.py – KI_ana FastAPI (Auth, Chat, Streaming, Static)
 from __future__ import annotations
-import os, time, json, asyncio, re, datetime
+import os, time, json, asyncio, re
 from pathlib import Path
 from typing import Optional, Dict, Any
 
@@ -10,7 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, EmailStr, Field
 from itsdangerous import URLSafeTimedSerializer, BadSignature, SignatureExpired
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from netapi.core.dialog import respond_to
 from netapi.core.speech import synthesize
 from netapi.core.memory import search_memory
@@ -277,8 +277,8 @@ def api_register(payload: RegisterIn, db=Depends(get_db)):
         plan_until=0,
         birthdate=bd,
         address=address_json,
-        created_at=int(time.time()),
-        updated_at=int(time.time()),
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
     )
     db.add(user)
     db.commit()

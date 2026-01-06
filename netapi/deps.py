@@ -11,7 +11,7 @@ from .jwt_utils import decode_jwt
 from .db import SessionLocal
 from .models import User
 from fastapi import Depends
-from .models import AuthSession
+from netapi.models import AuthSession
 
 try:
     from netapi.modules.security.audit_log import write_audit_event  # type: ignore
