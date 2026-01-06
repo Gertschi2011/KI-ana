@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 from typing import Dict, Any, List, Optional
 from pathlib import Path
 import io, tarfile, time, secrets, hashlib, json, shutil
+from datetime import datetime
 
 from ...deps import get_db, get_current_user_required
 from ...db import SessionLocal
@@ -77,7 +78,7 @@ def subscription_confirm(body: ConfirmIn, db = Depends(get_db), user = Depends(g
         raise HTTPException(404, "user_not_found")
     u.plan = body.plan
     u.plan_until = until
-    u.updated_at = int(time.time())
+    u.updated_at = datetime.utcnow()
     db.commit()
     return {"ok": True, "plan": body.plan, "plan_until": until}
 

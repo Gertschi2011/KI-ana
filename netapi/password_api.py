@@ -129,7 +129,7 @@ def reset_password(payload: ResetIn):
 
         # Passwort setzen (bcrypt)
         user.password_hash = bcrypt.hashpw(new_pw.encode(), bcrypt.gensalt()).decode()
-        user.updated_at = int(datetime.utcnow().timestamp())  # falls Spalte int epoch ist
+        user.updated_at = datetime.utcnow()
         # Token verbrauchen (löschen)
         s.delete(et)
         s.commit()

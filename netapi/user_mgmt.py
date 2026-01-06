@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import os, time, typing as T
+from datetime import datetime
 from dataclasses import asdict, dataclass
 
 from fastapi import APIRouter, Request, Response, HTTPException, status, Depends, Form
@@ -148,7 +149,7 @@ def set_user_password(user_id: int, new_password: str):
         s.execute(
             update(User)
             .where(User.id == int(user_id))
-            .values(password_hash=new_hash, updated_at=int(time.time()))
+            .values(password_hash=new_hash, updated_at=datetime.utcnow())
         )
         s.commit()
 

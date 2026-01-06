@@ -23,7 +23,7 @@ class User(Base):
     plan = Column(String, default="free")
     plan_until = Column(Integer, default=0)
     created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(Integer, default=0)  # DB has INTEGER type
+    updated_at = Column(DateTime, default=datetime.utcnow)
 
 
 class AuthSession(Base):

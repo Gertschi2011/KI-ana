@@ -202,7 +202,7 @@ def update_user(user_id: int, data: UserUpdate, user = Depends(get_current_user_
             if data.plan is not None:
                 target_user.plan = data.plan
             
-            target_user.updated_at = int(time.time())
+            target_user.updated_at = datetime.utcnow()
             
             db.commit()
             
