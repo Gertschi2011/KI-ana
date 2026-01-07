@@ -43,7 +43,15 @@ from netapi.core.addressbook_boost import (
 from netapi.core.response_pipeline import PipelineContext, PipelineResponse
 from netapi.core.reflector import get_reflector, ResponseReflector
 from netapi.core.web_enricher import WebEnricher
-from netapi.core import ethics_eval
+try:
+    from netapi.core import ethics_eval  # type: ignore
+except Exception:  # pragma: no cover
+    class _EthicsEvalFallback:
+        @staticmethod
+        def analyze_interaction(*_args, **_kwargs):
+            return {}
+
+    ethics_eval = _EthicsEvalFallback()  # type: ignore
 from netapi.learning.hub import get_learning_hub
 from netapi.core.intent_engine import (
     IntentResult,

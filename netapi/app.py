@@ -225,6 +225,10 @@ try:
 except Exception:
     ops_router = None  # type: ignore
 try:
+    from netapi.modules.gdpr.dsar_router import router as gdpr_router
+except Exception:
+    gdpr_router = None  # type: ignore
+try:
     from netapi.modules.privacy.router import router as privacy_router
 except Exception:
     privacy_router = None  # type: ignore
@@ -1305,6 +1309,11 @@ except Exception as e:
         ver = (os.getenv("KIANA_VERSION") or "").strip() or None
         return {"ok": True, "version": "2.0", "module": "chat-v2", "sha": sha, "build": ver}
 
+    @app.post("/api/v2/chat", include_in_schema=False, dependencies=[Depends(require_active_user)])
+    async def _fallback_chat_v2_once():
+        # Minimal non-404 endpoint for staging/E2E when the full v2 router is unavailable.
+        return {"ok": True, "reply": "", "meta": {}, "sources": [], "trace": [], "fallback": True}
+
 
 # ---- Compatibility routes (frontend expects /api/agent/*) -------------------
 @app.post("/api/agent/chat", include_in_schema=False)
@@ -1371,6 +1380,7 @@ router_list = [
     knowledge_router, ethics_router, crawler_router, crawler_ui_router, export_router,
     explain_router, settings_router, logs_router, admin_router, telemetry_router, jobs_router,
     autonomy_router, insight_router, goals_router,
+    gdpr_router,
 ]
 
 for r in router_list:

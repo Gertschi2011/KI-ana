@@ -53,6 +53,8 @@ services:
     restart: unless-stopped
     environment:
       ENV: staging
+      # Enable deterministic E2E flows on staging (e.g., register returns email_verification_token)
+      TEST_MODE: "1"
       DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       BUILD_SHA: ${BUILD_SHA:-}
       KIANA_BUILD_SHA: ${KIANA_BUILD_SHA:-}

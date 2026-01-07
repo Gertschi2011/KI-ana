@@ -16,11 +16,21 @@ from typing import Any, Callable, Dict, List, Optional, Set, Tuple, TYPE_CHECKIN
 from urllib.parse import quote_plus, urlparse
 from zoneinfo import ZoneInfo
 from bs4 import BeautifulSoup
-from system.conflict_resolver import get_trust_score_from_url
-from netapi.modules.web.news_sources import (
-    NewsSourcePrefs,
-    get_news_sources_for_locale,
-)
+try:
+    from system.conflict_resolver import get_trust_score_from_url
+except Exception:  # pragma: no cover
+    def get_trust_score_from_url(_url: str) -> float:  # type: ignore
+        return 0.5
+try:
+    from netapi.modules.web.news_sources import (  # type: ignore
+        NewsSourcePrefs,
+        get_news_sources_for_locale,
+    )
+except Exception:  # pragma: no cover
+    NewsSourcePrefs = None  # type: ignore
+
+    def get_news_sources_for_locale(*_args, **_kwargs):  # type: ignore
+        return []
 
 try:
     from netapi.core.news_enricher import GlobalNewsLayer  # type: ignore

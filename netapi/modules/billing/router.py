@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse, FileResponse
 from pydantic import BaseModel, Field
 from typing import Dict, Any, List, Optional
 from pathlib import Path
+import os
 import io, tarfile, time, secrets, hashlib, json, shutil
 from datetime import datetime
 

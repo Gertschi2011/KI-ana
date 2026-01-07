@@ -84,12 +84,24 @@ def set_cookie(resp, payload: Dict[str, Any], *, remember: bool = False, request
     - Mit  "remember": Persistentes Cookie mit Max-Age (30 Tage).
     """
     token = _serializer().dumps(payload)
+    secure_cookie = (str(os.getenv("KIANA_COOKIE_INSECURE", "0")).strip() != "1")
+    # Local/staging over plain HTTP: browsers/curl will not send Secure cookies.
+    # Keep Secure as default for real SaaS domains, but auto-disable for localhost.
+    try:
+        if request is not None:
+            host = str(request.url.hostname or "").strip().lower()
+            scheme = str(request.url.scheme or "").strip().lower()
+            if scheme != "https" and host in {"localhost", "127.0.0.1"}:
+                secure_cookie = False
+    except Exception:
+        pass
+
     cookie_kwargs: Dict[str, Any] = {
         "httponly": True,
         "samesite": "lax",
         "path": "/",
         # SaaS default: always secure unless explicitly disabled
-        "secure": (str(os.getenv("KIANA_COOKIE_INSECURE", "0")).strip() != "1"),
+        "secure": secure_cookie,
     }
     # Nur bei "remember" ein dauerhaftes Cookie setzen
     if remember:

@@ -1,16 +1,19 @@
-from datetime import date
+import os
 import json, time
+from datetime import date, datetime
 from fastapi import APIRouter, HTTPException, Depends, Request
 from fastapi.responses import JSONResponse
-from ...deps import get_db, set_cookie, clear_cookie, require_user
+from ...deps import get_db, set_cookie, clear_cookie, require_user, create_session
 from ...models import User
 from .schemas import RegisterIn, LoginIn
-from sqlalchemy import func
+from sqlalchemy import func, text
 from .crypto import hash_pw, check_pw
 from typing import Any, Dict, List, Optional
+from pydantic import BaseModel
 from netapi.deps import get_current_user_opt, is_kid
 from netapi.deps import get_current_user_required as _cur_user, require_role as _require_role
 from ...jwt_utils import encode_jwt
+from ...jwt_utils import decode_jwt
 from ..timeflow.events import record_timeflow_event
 try:
     from ..admin.router import write_audit  # type: ignore
@@ -43,13 +46,83 @@ def register(payload: RegisterIn, request: Request, db=Depends(get_db)):
         role="family", plan="free", plan_until=0,
         birthdate=_validate_birthdate(payload.birthdate),
         address=json.dumps(profile, ensure_ascii=False),
-        created_at=int(time.time()), updated_at=int(time.time()),
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
     )
     db.add(user); db.commit(); db.refresh(user)
-    resp = JSONResponse({"ok": True, "user": {"id": user.id, "username": user.username, "role": user.role, "plan": user.plan, "plan_until": user.plan_until}})
+
+    out: Dict[str, Any] = {
+        "ok": True,
+        "user": {
+            "id": user.id,
+            "username": user.username,
+            "role": user.role,
+            "plan": user.plan,
+            "plan_until": user.plan_until,
+        },
+    }
+
+    # Test-mode: return email verification token for E2E.
+    # Staging E2E can enable this via TEST_MODE=1.
+    if str(os.getenv("TEST_MODE", "0")).strip() in {"1", "true", "True"}:
+        out["email_verification_token"] = encode_jwt(
+            {"purpose": "email_verify", "uid": int(user.id), "email": str(user.email or "").lower()},
+            exp_seconds=24 * 3600,
+        )
+
+    resp = JSONResponse(out)
     # Registrierung: standardmäßig Session-Cookie (kein persistentes Login)
-    set_cookie(resp, {"uid": user.id, "ts": int(time.time())}, remember=False, request=request)
+    sid = create_session(db, user_id=int(user.id), remember=False)
+    set_cookie(resp, {"sid": sid, "ts": int(time.time())}, remember=False, request=request)
     return resp
+
+
+class VerifyEmailIn(BaseModel):
+    token: str
+
+
+@router.post("/verify-email")
+def verify_email(body: VerifyEmailIn, db=Depends(get_db)):
+    payload = decode_jwt((body.token or "").strip())
+    if not payload or payload.get("purpose") != "email_verify":
+        raise HTTPException(400, "invalid_token")
+    try:
+        uid = int(payload.get("uid") or 0)
+    except Exception:
+        uid = 0
+    if uid <= 0:
+        raise HTTPException(400, "invalid_token")
+
+    # Update is done via SQL to avoid ORM/model drift (DB has these columns).
+    now_dt = datetime.utcnow()
+    db.execute(
+        text(
+            """
+            UPDATE users
+            SET
+              email_verified = 1,
+              account_status = 'active',
+              subscription_status = 'active',
+              updated_at = :now_dt
+            WHERE id = :uid
+            """
+        ),
+        {"uid": uid, "now_dt": now_dt},
+    )
+    db.commit()
+
+    # Audit (best-effort)
+    try:
+        write_audit(
+            "email_verify",
+            actor_id=uid,
+            target_type="user",
+            target_id=uid,
+            meta={"via": "token"},
+        )
+    except Exception:
+        pass
+    return {"ok": True, "user_id": uid}
 
 # Creator-only: create user without affecting current session
 @router.post("/admin/users/create")
@@ -77,7 +150,7 @@ def admin_create_user(payload: Dict[str, Any], user = Depends(_cur_user), db=Dep
             daily_quota = int(daily_quota)
     except Exception:
         daily_quota = None
-    now = int(time.time())
+    now_dt = datetime.utcnow()
     u = User(
         username=username,
         email=email,
@@ -85,8 +158,8 @@ def admin_create_user(payload: Dict[str, Any], user = Depends(_cur_user), db=Dep
         role=role,
         plan=plan,
         plan_until=plan_until,
-        created_at=now,
-        updated_at=now,
+        created_at=now_dt,
+        updated_at=now_dt,
     )
     if daily_quota is not None and hasattr(u, 'daily_quota'):
         u.daily_quota = int(daily_quota)
@@ -140,7 +213,8 @@ def login(payload: LoginIn, request: Request, db=Depends(get_db)):
         "user": {"id": user.id, "username": user.username, "role": user.role, "plan": user.plan, "plan_until": user.plan_until}
     })
     # If payload.remember True, then 30 days; else session-cookie until browser close
-    set_cookie(resp, {"uid": user.id, "ts": int(time.time())}, remember=payload.remember, request=request)
+    sid = create_session(db, user_id=int(user.id), remember=bool(payload.remember))
+    set_cookie(resp, {"sid": sid, "ts": int(time.time())}, remember=payload.remember, request=request)
     try:
         record_timeflow_event(
             db,
@@ -254,6 +328,12 @@ def me(current = Depends(get_current_user_opt)) -> Dict[str, Any]:
     }
     return {"auth": True, "user": user_out}
 
+
+@router.get("/account")
+def account(current = Depends(get_current_user_opt)) -> Dict[str, Any]:
+    # Minimal alias for M3.3 E2E/UI compatibility.
+    return me(current)  # type: ignore[misc]
+
 # ---------------- Creator-only: Roles Admin ----------------
 @router.get("/admin/users")
 def admin_list_users(user = Depends(_cur_user), db=Depends(get_db)):
@@ -301,7 +381,7 @@ def admin_set_role(payload: Dict[str, Any], user = Depends(_cur_user), db=Depend
         setattr(rec, 'tier', tier)
     if hasattr(rec, 'daily_quota') and dq is not None:
         setattr(rec, 'daily_quota', dq)
-    rec.updated_at = int(time.time())
+    rec.updated_at = datetime.utcnow()
     db.add(rec); db.commit(); db.refresh(rec)
     # Audit
     try:
@@ -347,7 +427,7 @@ def admin_set_status(payload: Dict[str, Any], user = Depends(_cur_user), db=Depe
         # active
         rec.suspended_reason = ""
         rec.deleted_at = 0
-    rec.updated_at = now
+    rec.updated_at = datetime.utcnow()
     db.add(rec); db.commit(); db.refresh(rec)
     # Audit
     try:
