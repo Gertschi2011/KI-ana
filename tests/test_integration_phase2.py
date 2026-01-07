@@ -13,7 +13,8 @@ from pathlib import Path
 import time
 
 # Add system path
-sys.path.insert(0, str(Path.home() / "ki_ana" / "system"))
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(_REPO_ROOT / "system"))
 
 def test_local_embeddings():
     """Test local embeddings service."""

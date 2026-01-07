@@ -15,7 +15,9 @@ from pathlib import Path
 import time
 
 # Add system path
-sys.path.insert(0, str(Path.home() / "ki_ana" / "system"))
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+_SYSTEM_DIR = _REPO_ROOT / "system"
+sys.path.insert(0, str(_SYSTEM_DIR))
 
 
 async def test_full_p2p_workflow():
@@ -151,18 +153,18 @@ def test_production_readiness():
     
     # Check all required files exist
     required_files = [
-        Path.home() / "ki_ana" / "system" / "local_embeddings.py",
-        Path.home() / "ki_ana" / "system" / "chroma_vector_store.py",
-        Path.home() / "ki_ana" / "system" / "local_stt.py",
-        Path.home() / "ki_ana" / "system" / "local_tts.py",
-        Path.home() / "ki_ana" / "system" / "hybrid_db.py",
-        Path.home() / "ki_ana" / "system" / "submind_manager.py",
-        Path.home() / "ki_ana" / "system" / "p2p_discovery.py",
-        Path.home() / "ki_ana" / "system" / "p2p_connection.py",
-        Path.home() / "ki_ana" / "system" / "block_sync.py",
-        Path.home() / "ki_ana" / "system" / "blockchain.py",
-        Path.home() / "ki_ana" / "system" / "federated_learning.py",
-        Path.home() / "ki_ana" / "system" / "p2p_messaging.py",
+        _SYSTEM_DIR / "local_embeddings.py",
+        _SYSTEM_DIR / "chroma_vector_store.py",
+        _SYSTEM_DIR / "local_stt.py",
+        _SYSTEM_DIR / "local_tts.py",
+        _SYSTEM_DIR / "hybrid_db.py",
+        _SYSTEM_DIR / "submind_manager.py",
+        _SYSTEM_DIR / "p2p_discovery.py",
+        _SYSTEM_DIR / "p2p_connection.py",
+        _SYSTEM_DIR / "block_sync.py",
+        _SYSTEM_DIR / "blockchain.py",
+        _SYSTEM_DIR / "federated_learning.py",
+        _SYSTEM_DIR / "p2p_messaging.py",
     ]
     
     missing = []
@@ -178,10 +180,10 @@ def test_production_readiness():
     
     # Check data directories
     data_dirs = [
-        Path.home() / "ki_ana" / "data",
-        Path.home() / "ki_ana" / "data" / "chroma",
-        Path.home() / "ki_ana" / "data" / "message_queue",
-        Path.home() / "ki_ana" / "system" / "keys",
+        _REPO_ROOT / "data",
+        _REPO_ROOT / "data" / "chroma",
+        _REPO_ROOT / "data" / "message_queue",
+        _SYSTEM_DIR / "keys",
     ]
     
     for dir_path in data_dirs:

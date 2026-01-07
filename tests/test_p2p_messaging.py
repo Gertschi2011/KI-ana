@@ -7,8 +7,9 @@ import sys
 from pathlib import Path
 import time
 
-# Add system path
-sys.path.insert(0, str(Path.home() / "ki_ana" / "system"))
+# Add system path (repo-local, CI-safe)
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(_REPO_ROOT / "system"))
 
 from p2p_messaging import get_p2p_messaging, MessageQueue, PlainMessage
 

@@ -110,34 +110,38 @@ jobs:
           ADMIN_API_TOKEN: ${{ env.ADMIN_API_TOKEN }}
           PYTHONPATH: ${{ github.workspace }}
         run: |
-          nohup python -m uvicorn netapi.app:app --host 127.0.0.1 --port 8000 > uvicorn-e2e.log 2>&1 &
+          nohup python -m uvicorn netapi.app:app --host 127.0.0.1 --port 28000 > uvicorn-e2e.log 2>&1 &
 
           # Strong readiness gate: ensure routers are mounted (not 404).
           for _ in $(seq 1 60); do
-            if curl -fsS http://127.0.0.1:8000/api/v2/chat/ping >/dev/null; then
+            if curl -fsS http://127.0.0.1:28000/api/v2/chat/ping >/dev/null; then
               echo "ping ok"
               break
             fi
             sleep 0.5
           done
 
-          curl -fsS http://127.0.0.1:8000/api/v2/chat/ping >/dev/null
+          if ! curl -fsS http://127.0.0.1:28000/api/v2/chat/ping >/dev/null; then
+            echo "uvicorn failed readiness; last 200 log lines:" >&2
+            tail -n 200 uvicorn-e2e.log >&2 || true
+            exit 1
+          fi
 
-          code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:8000/api/plan || true)
+          code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:28000/api/plan || true)
           echo "$code" | grep -qE '^(200|401)$'
 
-          code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:8000/api/account || true)
+          code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:28000/api/account || true)
           echo "$code" | grep -qE '^(200|401)$'
 
-          code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:8000/api/gdpr/info || true)
+          code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:28000/api/gdpr/info || true)
           echo "$code" | grep -qE '^(401|403)$'
 
-          code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:8000/api/admin/users || true)
+          code=$(curl -sS -o /dev/null -w "%{http_code}" http://127.0.0.1:28000/api/admin/users || true)
           echo "$code" | grep -qE '^(401|403)$'
 
       - name: Run E2E tests
         env:
-          STAGING_BASE_URL: http://127.0.0.1:8000
+          STAGING_BASE_URL: http://127.0.0.1:28000
           TEST_MODE: '1'
           KI_ROOT: ${{ github.workspace }}
           DATABASE_URL: sqlite:///./db.sqlite3

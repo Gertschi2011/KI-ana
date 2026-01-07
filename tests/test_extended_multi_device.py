@@ -14,7 +14,8 @@ import time
 import random
 
 # Add system path
-sys.path.insert(0, str(Path.home() / "ki_ana" / "system"))
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(_REPO_ROOT / "system"))
 
 
 async def test_stress_blocks():
