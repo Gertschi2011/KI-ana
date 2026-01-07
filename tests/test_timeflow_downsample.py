@@ -1,5 +1,4 @@
-import json
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 
 import pytest
 from fastapi.testclient import TestClient
@@ -9,14 +8,26 @@ from netapi.app import app, TIMEFLOW
 
 @pytest.fixture(autouse=True)
 def _no_auth(monkeypatch):
-    # If admin auth is enforced globally elsewhere, stub it out for these endpoints
+    # If admin auth is enforced globally elsewhere,
+    # stub it out for these endpoints.
     from netapi import app as appmod
-    monkeypatch.setattr(appmod, "get_current_user_required", lambda: None, raising=False)
-    monkeypatch.setattr(appmod, "has_any_role", lambda *a, **k: True, raising=False)
+    monkeypatch.setattr(
+        appmod,
+        "get_current_user_required",
+        lambda: None,
+        raising=False,
+    )
+    monkeypatch.setattr(
+        appmod,
+        "has_any_role",
+        lambda *a, **k: True,
+        raising=False,
+    )
 
 
 def _ts(dt_iso: str) -> int:
-    return int(datetime.fromisoformat(dt_iso.replace("Z", "+00:00")).timestamp() * 1000)
+    dt = datetime.fromisoformat(dt_iso.replace("Z", "+00:00"))
+    return int(dt.timestamp() * 1000)
 
 
 def _gen_points(from_iso: str, to_iso: str, step_minutes: int = 5):
@@ -47,14 +58,17 @@ def test_downsample_dst_spring_forward(monkeypatch):
     data = _gen_points(f, t, step_minutes=5)
     monkeypatch.setattr(TIMEFLOW, "history", lambda limit: data)
 
-    resp = client.get("/api/system/timeflow/history", params={
-        "downsample": "minute",
-        "from": f,
-        "to": t,
-        "tz": "Europe/Vienna",
-        "fill_empty": True,
-        "limit": 999999,
-    })
+    resp = client.get(
+        "/api/system/timeflow/history",
+        params={
+            "downsample": "minute",
+            "from": f,
+            "to": t,
+            "tz": "Europe/Vienna",
+            "fill_empty": True,
+            "limit": 999999,
+        },
+    )
     assert resp.status_code == 200
     j = resp.json()
     assert j.get("ok") is True
@@ -75,14 +89,17 @@ def test_downsample_dst_fall_back(monkeypatch):
     data = _gen_points(f, t, step_minutes=5)
     monkeypatch.setattr(TIMEFLOW, "history", lambda limit: data)
 
-    resp = client.get("/api/system/timeflow/history", params={
-        "downsample": "minute",
-        "from": f,
-        "to": t,
-        "tz": "Europe/Vienna",
-        "fill_empty": True,
-        "limit": 999999,
-    })
+    resp = client.get(
+        "/api/system/timeflow/history",
+        params={
+            "downsample": "minute",
+            "from": f,
+            "to": t,
+            "tz": "Europe/Vienna",
+            "fill_empty": True,
+            "limit": 999999,
+        },
+    )
     assert resp.status_code == 200
     j = resp.json()
     assert j.get("ok") is True

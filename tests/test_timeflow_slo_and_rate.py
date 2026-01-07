@@ -5,7 +5,13 @@ from fastapi.testclient import TestClient
 from netapi.app import app, TIMEFLOW
 
 
-def _mk_points(start: datetime, n: int, step_sec: int, above_idx: set, thr: float):
+def _mk_points(
+    start: datetime,
+    n: int,
+    step_sec: int,
+    above_idx: set,
+    thr: float,
+):
     data = []
     t = int(start.timestamp() * 1000)
     for i in range(n):
@@ -26,21 +32,25 @@ def test_slo_edge_exact_pass(monkeypatch):
     client = TestClient(app)
     thr = 0.85
     max_frac = 0.01
-    # Build 100 slices of 60s -> total 6000s; 1% = 60s -> one slice above threshold
+    # Build 100 slices of 60s -> total 6000s;
+    # 1% = 60s -> one slice above threshold.
     start = datetime.utcnow() - timedelta(hours=2)
     data = _mk_points(start, n=100, step_sec=60, above_idx={0}, thr=thr)
     monkeypatch.setattr(TIMEFLOW, "history", lambda limit: data)
     from_iso = start.isoformat() + "Z"
-    to_iso = (start + timedelta(seconds=100*60)).isoformat() + "Z"
+    to_iso = (start + timedelta(seconds=100 * 60)).isoformat() + "Z"
 
-    resp = client.get("/api/system/timeflow/slo", params={
-        "threshold": thr,
-        "window_min": 100,
-        "max_fraction": max_frac,
-        "from": from_iso,
-        "to": to_iso,
-        "time_weighted": True,
-    })
+    resp = client.get(
+        "/api/system/timeflow/slo",
+        params={
+            "threshold": thr,
+            "window_min": 100,
+            "max_fraction": max_frac,
+            "from": from_iso,
+            "to": to_iso,
+            "time_weighted": True,
+        },
+    )
     assert resp.status_code == 200
     j = resp.json()
     assert j.get("ok") is True
