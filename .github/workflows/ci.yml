@@ -34,6 +34,19 @@ jobs:
           KI_ROOT: ${{ github.workspace }}
           PYTHONPATH: ${{ github.workspace }}
         run: |
+          python - <<'PY'
+          import sys, os
+          print("CWD:", os.getcwd())
+          print("PYTHONPATH:", os.environ.get("PYTHONPATH"))
+          import netapi
+          import netapi.app
+          print("netapi:", netapi.__file__)
+          print("netapi.app:", netapi.app.__file__)
+          print(
+              "has /healthz? ",
+              any(getattr(r, "path", None) == "/healthz" for r in netapi.app.app.router.routes),
+          )
+          PY
           pytest -q \
             tests/test_health_and_config.py \
             tests/test_settings.py \
@@ -115,6 +128,7 @@ jobs:
           DATABASE_URL: sqlite:////tmp/ki_ana_e2e.sqlite
           PYTHONPATH: ${{ github.workspace }}
         run: |
+          rm -f /tmp/ki_ana_e2e.sqlite
           python -m alembic -c alembic.ini upgrade head
 
       - name: Verify schema (folder_id)
@@ -127,10 +141,14 @@ jobs:
           assert db_url.startswith('sqlite:////')
           path = db_url.replace('sqlite:////', '/')
           con = sqlite3.connect(path)
-          tables = con.execute(
-              "SELECT name FROM sqlite_master WHERE type='table' ORDER BY 1;"
-          ).fetchall()
+          tables = [
+              r[0]
+              for r in con.execute(
+                  "SELECT name FROM sqlite_master WHERE type='table' ORDER BY 1;"
+              ).fetchall()
+          ]
           print('tables:', tables)
+          assert 'conversations' in tables, 'conversations table missing'
           cols = [r[1] for r in con.execute('PRAGMA table_info(conversations);').fetchall()]
           print('cols:', cols)
           assert 'folder_id' in cols
