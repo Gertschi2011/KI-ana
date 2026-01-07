@@ -194,6 +194,18 @@ class ResponsePipeline:
                 if evaluation.overall_score >= self.quality_threshold:
                     # Success!
                     end_time = time.time()
+                    # Learn from this interaction (success path)
+                    if self.learning_hub and response:
+                        try:
+                            self.learning_hub.record_interaction(
+                                question=processed_question,
+                                answer=response,
+                                quality_score=evaluation.overall_score,
+                                tools_used=[t["tool"] for t in context.tools_used],
+                                retry_count=attempts,
+                            )
+                        except Exception as e:
+                            print(f"Learning Hub error: {e}")
                     return PipelineResponse(
                         ok=True,
                         reply=response,
@@ -217,6 +229,18 @@ class ResponsePipeline:
             else:
                 # Reflection disabled - return immediately
                 end_time = time.time()
+                # Learn from this interaction (no-reflection path)
+                if self.learning_hub and response:
+                    try:
+                        self.learning_hub.record_interaction(
+                            question=processed_question,
+                            answer=response,
+                            quality_score=0.7,
+                            tools_used=[t["tool"] for t in context.tools_used],
+                            retry_count=0,
+                        )
+                    except Exception as e:
+                        print(f"Learning Hub error: {e}")
                 return PipelineResponse(
                     ok=True,
                     reply=response,

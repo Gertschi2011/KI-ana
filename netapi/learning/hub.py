@@ -121,6 +121,11 @@ class LearningHub:
         
         # Load existing data
         self._load_from_disk()
+
+        # If a hub is explicitly constructed (e.g., tests), make it the global instance
+        # so other components (MetaMind/ResponsePipeline defaults) can read its stats.
+        global _hub_instance
+        _hub_instance = self
     
     def record_interaction(
         self,

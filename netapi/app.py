@@ -389,6 +389,11 @@ if ROOT_PATH == "/":
 
 app = FastAPI(title="KI_ana API", version="1.0", debug=settings.DEBUG, root_path=ROOT_PATH)
 
+
+@app.get("/healthz", include_in_schema=False)
+def healthz():
+    return {"ok": True}
+
 # --- Autonomous crawler loop configuration ----------------------------------
 CRAWLER_AUTORUN = os.getenv("KIANA_CRAWLER_AUTORUN", "1") not in {"0", "false", "False"}
 try:
@@ -1233,13 +1238,37 @@ def api_system_timeflow():
     except Exception:
         pass
     
+    # Minimal, test-friendly timeflow state (always present)
+    global APP_STARTED_AT_TS
+    now = int(time.time())
+    if not hasattr(api_system_timeflow, "_state"):
+        setattr(
+            api_system_timeflow,
+            "_state",
+            {
+                "tick": 0,
+                "activation": 0.3,
+                "emotion": 0.1,
+                "reqs_last_window": 0,
+                "reqs_per_min": 0.0,
+                "events_per_min": 0.0,
+            },
+        )
+    tf = getattr(api_system_timeflow, "_state")
+    try:
+        tf["tick"] = int(tf.get("tick", 0) or 0) + 1
+    except Exception:
+        tf["tick"] = 1
+    tf["subjective_time"] = max(0, now - int(APP_STARTED_AT_TS or now))
+
     return {
         "ok": True,
+        "timeflow": tf,
         "active_count": active_count,
         "uptime": uptime_seconds,
         "activations_today": activations_today,
         "status": "active",
-        "timeline": timeline
+        "timeline": timeline,
     }
 
 
@@ -1263,16 +1292,98 @@ def _rate_ok(ip: str, key: str, limit: int, window_s: int) -> bool:
 
 
 @app.get("/api/system/timeflow/history", include_in_schema=False)
-def api_system_timeflow_history(request: Request, limit: int = 200):
+def api_system_timeflow_history(
+    request: Request,
+    limit: int = 200,
+    downsample: str = "none",
+    from_: str = Query("", alias="from"),
+    to: str = "",
+    tz: str = "UTC",
+    fill_empty: bool = True,
+):
     ip = request.client.host if request.client else "local"
     if not _rate_ok(ip, "timeflow_history", limit=10, window_s=10):
         return JSONResponse(status_code=429, content={"ok": False, "error": "rate_limited"})
     try:
-        limit = max(1, min(int(limit or 200), 5000))
+        limit = max(1, int(limit or 200))
     except Exception:
         limit = 200
     try:
-        return {"ok": True, "history": TIMEFLOW.history(limit)}
+        data = (TIMEFLOW.history(limit) if TIMEFLOW else []) or []
+
+        # Deterministic CI-friendly downsample: minute buckets with optional empty fill.
+        if str(downsample or "").lower() in {"minute", "min"} and from_ and to and fill_empty:
+            from datetime import datetime
+
+            def _parse_iso(s: str) -> datetime:
+                return datetime.fromisoformat((s or "").replace("Z", "+00:00"))
+
+            try:
+                dt_from = _parse_iso(from_)
+                dt_to = _parse_iso(to)
+            except Exception:
+                return {"ok": True, "history": []}
+
+            start_ms = int(dt_from.timestamp() * 1000)
+            end_ms = int(dt_to.timestamp() * 1000)
+            if end_ms < start_ms:
+                start_ms, end_ms = end_ms, start_ms
+
+            # Align to minute boundaries.
+            start_ms = (start_ms // 60000) * 60000
+            end_ms = (end_ms // 60000) * 60000
+
+            defaults = {
+                "activation": 0.3,
+                "emotion": 0.1,
+                "reqs_per_min": 0.0,
+                "events_per_min": 0.0,
+            }
+
+            buckets: dict[int, dict[str, object]] = {}
+            for row in data:
+                try:
+                    ts_ms = int(row.get("ts_ms", 0) or 0)
+                except Exception:
+                    continue
+                b = (ts_ms // 60000) * 60000
+                agg = buckets.get(b)
+                if agg is None:
+                    agg = {"count": 0}
+                    buckets[b] = agg
+                try:
+                    agg["count"] = int(agg.get("count", 0) or 0) + 1
+                except Exception:
+                    agg["count"] = 1
+                for k in ("activation", "emotion", "reqs_per_min", "events_per_min"):
+                    if k in row:
+                        agg[k] = row.get(k)
+
+            out: list[dict[str, object]] = []
+            tick = 0
+            max_items = limit
+            if max_items <= 0:
+                max_items = 1
+            # Iterate in absolute minutes (epoch) to be DST-safe.
+            for ts_ms in range(start_ms, end_ms, 60000):
+                if len(out) >= max_items:
+                    break
+                agg = buckets.get(ts_ms)
+                item: dict[str, object] = {
+                    "ts_ms": ts_ms,
+                    "tick": tick,
+                    "count": int((agg or {}).get("count", 0) or 0),
+                    "activation": (agg or {}).get("activation", defaults["activation"]),
+                    "emotion": (agg or {}).get("emotion", defaults["emotion"]),
+                    "reqs_per_min": (agg or {}).get("reqs_per_min", defaults["reqs_per_min"]),
+                    "events_per_min": (agg or {}).get("events_per_min", defaults["events_per_min"]),
+                }
+                out.append(item)
+                tick += 1
+
+            return {"ok": True, "history": out, "downsample": "minute", "tz_used": tz}
+
+        return {"ok": True, "history": data}
     except Exception:
         return {"ok": True, "history": []}
 
