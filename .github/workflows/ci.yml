@@ -127,6 +127,10 @@ jobs:
           assert db_url.startswith('sqlite:////')
           path = db_url.replace('sqlite:////', '/')
           con = sqlite3.connect(path)
+          tables = con.execute(
+              "SELECT name FROM sqlite_master WHERE type='table' ORDER BY 1;"
+          ).fetchall()
+          print('tables:', tables)
           cols = [r[1] for r in con.execute('PRAGMA table_info(conversations);').fetchall()]
           print('cols:', cols)
           assert 'folder_id' in cols

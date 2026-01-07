@@ -32,8 +32,30 @@ def upgrade() -> None:
     except Exception:
         tables = set()
 
-    # If the app hasn't created the table yet, don't fail migrations.
+    # If the table does not exist yet, create it now so CI is deterministic
+    # (E2E runs migrations before app init).
     if "conversations" not in tables:
+        op.create_table(
+            "conversations",
+            sa.Column("id", sa.Integer(), primary_key=True),
+            sa.Column("user_id", sa.Integer(), nullable=False),
+            sa.Column("title", sa.String(length=200), nullable=True),
+            sa.Column("created_at", sa.Integer(), nullable=False, server_default=sa.text("0")),
+            sa.Column("updated_at", sa.Integer(), nullable=False, server_default=sa.text("0")),
+            sa.Column("folder_id", sa.Integer(), nullable=True),
+        )
+        op.create_index(
+            "ix_conversations_user_id",
+            "conversations",
+            ["user_id"],
+            unique=False,
+        )
+        op.create_index(
+            "ix_conversations_folder_id",
+            "conversations",
+            ["folder_id"],
+            unique=False,
+        )
         return
 
     try:
