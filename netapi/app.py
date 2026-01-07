@@ -1415,6 +1415,26 @@ def _events_stub():
 def _ping_stub():
     return {"ok": True}
 
+
+def _route_exists(path: str, method: str) -> bool:
+    try:
+        for r in getattr(app.router, "routes", []):
+            if getattr(r, "path", None) == path and method in (getattr(r, "methods", set()) or set()):
+                return True
+    except Exception:
+        return False
+    return False
+
+
+# Ensure a stable unauthenticated readiness endpoint for Chat v2.
+if not _route_exists("/api/v2/chat/ping", "GET"):
+
+    @app.get("/api/v2/chat/ping", include_in_schema=False)
+    def _chat_v2_ping_stub():
+        sha = (os.getenv("KIANA_BUILD_SHA") or os.getenv("BUILD_SHA") or "").strip() or None
+        ver = (os.getenv("KIANA_VERSION") or "").strip() or None
+        return {"ok": True, "version": "2.0", "module": "chat-v2", "sha": sha, "build": ver}
+
 # Explicitly mount memory viewer router with desired prefix, after others
 try:
     if memory_router is not None:

@@ -39,10 +39,23 @@ class DataExportResponse(BaseModel):
     file_url: Optional[str] = None
 
 
+def _load_user(db: Session, current_user: Dict[str, Any]) -> User:
+    try:
+        uid = int(current_user.get("id") or 0)
+    except Exception:
+        uid = 0
+    if uid <= 0:
+        raise HTTPException(status_code=401, detail="login required")
+    user = db.query(User).filter(User.id == uid).first()
+    if not user:
+        raise HTTPException(status_code=401, detail="unknown user")
+    return user
+
+
 @router.post("/export")
 async def export_user_data(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user_required)
+    current_user: Dict[str, Any] = Depends(get_current_user_required)
 ):
     """
     Export all user data (GDPR Art. 15 - Right of Access)
@@ -54,21 +67,22 @@ async def export_user_data(
     - activity_log.json
     """
     try:
-        logger.info(f"DSAR Export request from user {current_user.id}")
+        user = _load_user(db, current_user)
+        logger.info(f"DSAR Export request from user {user.id}")
         
         # Collect all user data
         user_data = {
-            "user_id": current_user.id,
-            "email": current_user.email,
-            "username": current_user.username,
-            "created_at": current_user.created_at.isoformat() if current_user.created_at else None,
-            "roles": current_user.roles,
+            "user_id": user.id,
+            "email": user.email,
+            "username": user.username,
+            "created_at": user.created_at.isoformat() if user.created_at else None,
+            "roles": getattr(user, "roles", None) or [getattr(user, "role", "user")],
             "export_date": datetime.utcnow().isoformat()
         }
         
         # Get conversations
         conversations = db.query(Conversation).filter(
-            Conversation.user_id == current_user.id
+            Conversation.user_id == user.id
         ).all()
         
         conversations_data = [
@@ -114,8 +128,8 @@ KI-ana Data Export
 ==================
 
 Export Date: {datetime.utcnow().isoformat()}
-User ID: {current_user.id}
-Email: {current_user.email}
+User ID: {user.id}
+Email: {user.email}
 
 This archive contains all your personal data stored in KI-ana:
 
@@ -132,13 +146,13 @@ If you have any questions, contact: support@ki-ana.at
         # Prepare response
         zip_buffer.seek(0)
         
-        logger.success(f"DSAR Export completed for user {current_user.id}")
+        logger.success(f"DSAR Export completed for user {user.id}")
         
         return StreamingResponse(
             zip_buffer,
             media_type="application/zip",
             headers={
-                "Content-Disposition": f"attachment; filename=kiana_data_export_{current_user.id}_{datetime.utcnow().strftime('%Y%m%d')}.zip"
+                "Content-Disposition": f"attachment; filename=kiana_data_export_{user.id}_{datetime.utcnow().strftime('%Y%m%d')}.zip"
             }
         )
         
@@ -151,7 +165,7 @@ If you have any questions, contact: support@ki-ana.at
 async def delete_user_data(
     reason: Optional[str] = None,
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user_required)
+    current_user: Dict[str, Any] = Depends(get_current_user_required)
 ):
     """
     Delete all user data (GDPR Art. 17 - Right to Erasure)
@@ -163,24 +177,25 @@ async def delete_user_data(
     4. Keep minimal audit trail (anonymized)
     """
     try:
-        logger.info(f"DSAR Delete request from user {current_user.id}")
+        user = _load_user(db, current_user)
+        logger.info(f"DSAR Delete request from user {user.id}")
         
         # 1. Delete conversations
         deleted_conversations = db.query(Conversation).filter(
-            Conversation.user_id == current_user.id
+            Conversation.user_id == user.id
         ).delete()
         
         # 2. Anonymize user (don't delete - keep audit trail)
-        current_user.email = f"deleted_{current_user.id}@anonymized.local"
-        current_user.username = f"deleted_user_{current_user.id}"
-        current_user.is_active = False
+        user.email = f"deleted_{user.id}@anonymized.local"
+        user.username = f"deleted_user_{user.id}"
+        user.is_active = False
         
         # 3. Log deletion (for compliance)
-        logger.info(f"User {current_user.id} data deleted. Reason: {reason or 'Not provided'}")
+        logger.info(f"User {user.id} data deleted. Reason: {reason or 'Not provided'}")
         
         db.commit()
         
-        logger.success(f"DSAR Delete completed for user {current_user.id}")
+        logger.success(f"DSAR Delete completed for user {user.id}")
         
         return {
             "success": True,
@@ -201,7 +216,7 @@ async def delete_user_data(
 @router.get("/info")
 async def get_data_info(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user_required)
+    current_user: Dict[str, Any] = Depends(get_current_user_required)
 ):
     """
     Get information about stored data
@@ -209,14 +224,15 @@ async def get_data_info(
     Returns summary of what data is stored
     """
     try:
+        user = _load_user(db, current_user)
         # Count conversations
         conversation_count = db.query(Conversation).filter(
-            Conversation.user_id == current_user.id
+            Conversation.user_id == user.id
         ).count()
         
         return {
-            "user_id": current_user.id,
-            "email": current_user.email,
+            "user_id": user.id,
+            "email": user.email,
             "data_stored": {
                 "profile": True,
                 "conversations": conversation_count,
@@ -238,7 +254,7 @@ async def get_data_info(
 @router.get("/download-link")
 async def get_download_link(
     db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user_required)
+    current_user: Dict[str, Any] = Depends(get_current_user_required)
 ):
     """
     Get temporary download link for data export

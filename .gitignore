@@ -4,15 +4,17 @@ venv/
 ENV/
 env/
 
-# Local env (keep .env.example tracked)
-.env
-.env.staging
-.env.prod
+# Local env (keep only root examples tracked)
+**/.env
+**/.env.*
+!/.env.example
+!/.env.staging.example
 
 # Lokale DBs / Caches
 test.db
 *.sqlite
 *.sqlite3
+*.sqlite*
 
 # Chroma / Vektorstore / Indizes
 data/
@@ -31,6 +33,8 @@ system/personality_state.json
 logs/
 backup/
 reports/
+tmp/
+/tmp/
 
 # __pycache__
 __pycache__/
@@ -42,6 +46,15 @@ __pycache__/
 coverage.xml
 htmlcov/
 *.py[cod]
+
+# Certs / keys (never commit)
+*.pem
+*.key
+infra/certbot/
+infra/certbot/**
+
+# Frontend local env
+frontend/.env.local
 
 # Node / Frontend-Builds (falls vorhanden)
 node_modules/
