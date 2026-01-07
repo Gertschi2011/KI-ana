@@ -65,8 +65,21 @@ from netapi.core.prompt_builder import (
     build_system_prompt,
 )
 from netapi.modules.chat.current_detection import needs_current_info
-from netapi.modules.timeflow.events import record_ethics_hint_event
-from netapi.modules.user.context import build_user_locale_from_user
+try:
+    from netapi.modules.timeflow.events import record_ethics_hint_event
+except Exception:  # pragma: no cover
+    def record_ethics_hint_event(*_args, **_kwargs):
+        return None
+
+try:
+    from netapi.modules.user.context import build_user_locale_from_user  # type: ignore
+except Exception:  # pragma: no cover
+    def build_user_locale_from_user(user: dict | None = None) -> dict:
+        return {
+            "locale": "de-AT",
+            "timezone": "Europe/Vienna",
+            "country": "AT",
+        }
 from netapi.modules.memory.schemas import UserSettingsBlock, now_iso_z
 
 try:

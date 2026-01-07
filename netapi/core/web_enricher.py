@@ -15,7 +15,10 @@ from datetime import datetime
 from typing import Any, Callable, Dict, List, Optional, Set, Tuple, TYPE_CHECKING
 from urllib.parse import quote_plus, urlparse
 from zoneinfo import ZoneInfo
-from bs4 import BeautifulSoup
+try:
+    from bs4 import BeautifulSoup
+except Exception:  # pragma: no cover
+    BeautifulSoup = None  # type: ignore
 try:
     from system.conflict_resolver import get_trust_score_from_url
 except Exception:  # pragma: no cover
@@ -909,6 +912,8 @@ class WebEnricher:
         http_client: Optional[Callable[..., Any]] = None,
         enable_snapshots: Optional[bool] = None,
     ) -> None:
+        if BeautifulSoup is None:
+            raise RuntimeError("WebEnricher requires beautifulsoup4 (bs4)")
         # Search endpoint: Env > argument > default
         endpoint_cfg = search_endpoint or _cfg("KIANA_WEB_SEARCH_ENDPOINT", "") or None
         self.search_endpoint: Optional[str] = (endpoint_cfg or "").strip() or None
