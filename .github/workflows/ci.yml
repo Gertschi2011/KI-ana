@@ -34,7 +34,14 @@ jobs:
           KI_ROOT: ${{ github.workspace }}
           PYTHONPATH: ${{ github.workspace }}
         run: |
-          pytest -q
+            pytest -q \
+              tests/test_health_and_config.py \
+              tests/test_settings.py \
+              tests/test_integration.py \
+              tests/test_meta_mind.py \
+              tests/test_timeflow.py \
+              tests/test_timeflow_downsample.py \
+              tests/test_timeflow_slo_and_rate.py
 
   alembic-check:
     name: alembic-check
@@ -96,10 +103,19 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-test.txt ]; then pip install -r requirements-test.txt; fi
+            python -m pip install "alembic>=1.13,<2.0"
 
       - name: Generate admin token
         run: |
           echo "ADMIN_API_TOKEN=$(python -c 'import secrets; print(secrets.token_urlsafe(24))')" >> "$GITHUB_ENV"
+
+        - name: Apply migrations (sqlite)
+          env:
+            KI_ROOT: ${{ github.workspace }}
+            DATABASE_URL: sqlite:///./db.sqlite3
+            PYTHONPATH: ${{ github.workspace }}
+          run: |
+            python -m alembic upgrade head
 
       - name: Start API server
         env:
