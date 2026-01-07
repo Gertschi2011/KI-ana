@@ -35,10 +35,19 @@ try:
 except Exception as e:  # pragma: no cover
     target_metadata = None
 
-# database url from env or default
-from netapi.db import _default_sqlite_url  # type: ignore
-DATABASE_URL = os.getenv("DATABASE_URL", _default_sqlite_url()).strip()
-config.set_main_option("sqlalchemy.url", DATABASE_URL)
+# Database URL: prefer DATABASE_URL from environment (CI/dev override).
+# Fall back to a local sqlite file if project helpers cannot be imported.
+db_url = (os.getenv("DATABASE_URL") or "").strip()
+if not db_url:
+    try:
+        from netapi.db import _default_sqlite_url  # type: ignore
+
+        db_url = str(_default_sqlite_url() or "").strip()
+    except Exception:
+        db_url = "sqlite:///./db.sqlite3"
+
+if db_url:
+    config.set_main_option("sqlalchemy.url", db_url)
 
 # other values from the config, defined by the needs of env.py, can be
 # acquired:

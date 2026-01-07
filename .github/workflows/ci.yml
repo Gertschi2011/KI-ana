@@ -22,6 +22,16 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install pytest flake8
+          python -m pip install "alembic>=1.13,<2.0"
+
+      - name: Apply migrations (m2 sqlite)
+        env:
+          KI_ROOT: ${{ github.workspace }}
+          DATABASE_URL: sqlite:////tmp/ki_ana_m2.sqlite
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          rm -f /tmp/ki_ana_m2.sqlite
+          python -m alembic -c alembic.ini upgrade head
 
       - name: Lint (report-only)
         continue-on-error: true
@@ -130,6 +140,13 @@ jobs:
         run: |
           rm -f /tmp/ki_ana_e2e.sqlite
           python -m alembic -c alembic.ini upgrade head
+          ls -la /tmp/ki_ana_e2e.sqlite || true
+          python - <<'PY'
+          import sqlite3
+          con = sqlite3.connect('/tmp/ki_ana_e2e.sqlite')
+          tables = [r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table' ORDER BY 1;")]
+          print('tables:', tables)
+          PY
 
       - name: Verify schema (folder_id)
         env:
