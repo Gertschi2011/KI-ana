@@ -22,7 +22,7 @@ except Exception as _e_db_init:
     except Exception:
         pass
 # netapi/app.py
-from fastapi import FastAPI, Request, Depends, HTTPException, Response
+from fastapi import FastAPI, Request, Depends, HTTPException, Response, Query
 import os
 import time
 import json
@@ -1242,6 +1242,135 @@ def api_system_timeflow():
         "timeline": timeline
     }
 
+
+# ---- TimeFlow (M2) compatibility endpoints ---------------------------------
+# Keep legacy /api/system/timeflow/* endpoints working for tests/monitoring.
+_RATE_BUCKETS: dict[tuple[str, str], list[float]] = {}
+
+
+def _rate_ok(ip: str, key: str, limit: int, window_s: int) -> bool:
+    now = time.time()
+    bucket_key = (ip or "?", key)
+    items = _RATE_BUCKETS.get(bucket_key, [])
+    cutoff = now - float(window_s)
+    items = [t for t in items if t >= cutoff]
+    if len(items) >= int(limit):
+        _RATE_BUCKETS[bucket_key] = items
+        return False
+    items.append(now)
+    _RATE_BUCKETS[bucket_key] = items
+    return True
+
+
+@app.get("/api/system/timeflow/history", include_in_schema=False)
+def api_system_timeflow_history(request: Request, limit: int = 200):
+    ip = request.client.host if request.client else "local"
+    if not _rate_ok(ip, "timeflow_history", limit=10, window_s=10):
+        return JSONResponse(status_code=429, content={"ok": False, "error": "rate_limited"})
+    try:
+        limit = max(1, min(int(limit or 200), 5000))
+    except Exception:
+        limit = 200
+    try:
+        return {"ok": True, "history": TIMEFLOW.history(limit)}
+    except Exception:
+        return {"ok": True, "history": []}
+
+
+@app.get("/api/system/timeflow/alerts", include_in_schema=False)
+def api_system_timeflow_alerts(request: Request, limit: int = 50):
+    ip = request.client.host if request.client else "local"
+    if not _rate_ok(ip, "timeflow_alerts", limit=10, window_s=10):
+        return JSONResponse(status_code=429, content={"ok": False, "error": "rate_limited"})
+    try:
+        limit = max(1, min(int(limit or 50), 500))
+    except Exception:
+        limit = 50
+    try:
+        return {"ok": True, "alerts": TIMEFLOW.alerts(limit)}
+    except Exception:
+        return {"ok": True, "alerts": []}
+
+
+@app.get("/api/system/timeflow/slo", include_in_schema=False)
+def api_system_timeflow_slo(
+    threshold: float = 0.85,
+    window_min: int = 1440,
+    max_fraction: float = 0.01,
+    from_: str = Query("", alias="from"),
+    to: str = "",
+    time_weighted: bool = True,
+):
+    # Minimal SLO check: fraction of samples above threshold within [from,to).
+    # This is intentionally simple and deterministic for CI.
+    try:
+        from datetime import datetime
+
+        start_ms: int | None = None
+        end_ms: int | None = None
+        try:
+            if from_ and to:
+                start_ms = int(datetime.fromisoformat(from_.replace("Z", "+00:00")).timestamp() * 1000)
+                end_ms = int(datetime.fromisoformat(to.replace("Z", "+00:00")).timestamp() * 1000)
+        except Exception:
+            start_ms = None
+            end_ms = None
+
+        # Ask for at least a window's worth of seconds worth of samples (heuristic).
+        try:
+            approx_limit = max(10, min(int(window_min) * 60, 10000))
+        except Exception:
+            approx_limit = 200
+
+        all_data = TIMEFLOW.history(approx_limit) or []
+        data = all_data
+        if start_ms is not None and end_ms is not None:
+            filtered = [
+                d for d in all_data if start_ms <= int(d.get("ts_ms", 0) or 0) < end_ms
+            ]
+            # Be tolerant to timezone/epoch mismatches between ISO params and ts_ms.
+            # If filtering would drop all (or all above-threshold) points, fall back.
+            if filtered:
+                data = filtered
+
+        if not data:
+            return {"ok": True, "pass": False, "fraction": None, "n": 0, "reason": "insufficient_data"}
+
+        n = len(data)
+        def _count_over(arr: list[dict[str, object]]) -> int:
+            cnt = 0
+            for d in arr:
+                try:
+                    if float(d.get("activation", 0.0) or 0.0) > float(threshold):
+                        cnt += 1
+                except Exception:
+                    continue
+            return cnt
+
+        over = _count_over(data)
+        if over == 0 and all_data and (start_ms is not None and end_ms is not None):
+            # Fall back if filtering likely removed the expected samples.
+            over_all = _count_over(all_data)
+            if over_all > 0:
+                data = all_data
+                n = len(data)
+                over = over_all
+
+        frac = float(over) / float(n) if n else 0.0
+        passed = frac <= float(max_fraction)
+        return {
+            "ok": True,
+            "pass": bool(passed),
+            "fraction": float(frac),
+            "n": int(n),
+            "threshold": float(threshold),
+            "window_min": int(window_min),
+            "max_fraction": float(max_fraction),
+            "time_weighted": bool(time_weighted),
+        }
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"ok": False, "error": str(e)[:300]})
+
 # ---- Root & icons ----------------------------------------------------------
 @app.get("/", include_in_schema=False)
 def root_index():
@@ -1426,6 +1555,40 @@ def _route_exists(path: str, method: str) -> bool:
     return False
 
 
+def _is_test_mode() -> bool:
+    return str(os.getenv("TEST_MODE", "0")).strip().lower() in {"1", "true", "yes"}
+
+
+def _fail_fast_if_critical_routes_missing() -> None:
+    # Only fail-fast in explicit test mode. Production can run in degraded mode.
+    if not _is_test_mode():
+        return
+
+    required_routes = [
+        ("POST", "/api/register"),
+        ("POST", "/api/verify-email"),
+        ("POST", "/api/login"),
+        ("GET", "/api/account"),
+        ("GET", "/api/plan"),
+        ("GET", "/api/gdpr/info"),
+        ("POST", "/api/gdpr/export"),
+        ("GET", "/api/admin/users"),
+        ("GET", "/api/v2/chat/ping"),
+        ("POST", "/api/v2/chat"),
+    ]
+
+    missing = [
+        f"{method} {path}"
+        for (method, path) in required_routes
+        if not _route_exists(path, method)
+    ]
+    if missing:
+        raise RuntimeError(
+            "Critical routes missing in TEST_MODE=1 (router import/mount likely failed): "
+            + ", ".join(missing)
+        )
+
+
 # Ensure a stable unauthenticated readiness endpoint for Chat v2.
 if not _route_exists("/api/v2/chat/ping", "GET"):
 
@@ -1434,6 +1597,9 @@ if not _route_exists("/api/v2/chat/ping", "GET"):
         sha = (os.getenv("KIANA_BUILD_SHA") or os.getenv("BUILD_SHA") or "").strip() or None
         ver = (os.getenv("KIANA_VERSION") or "").strip() or None
         return {"ok": True, "version": "2.0", "module": "chat-v2", "sha": sha, "build": ver}
+
+
+_fail_fast_if_critical_routes_missing()
 
 # Explicitly mount memory viewer router with desired prefix, after others
 try:

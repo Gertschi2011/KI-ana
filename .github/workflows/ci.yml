@@ -26,12 +26,13 @@ jobs:
       - name: Lint (report-only)
         continue-on-error: true
         run: |
-          flake8 netapi tests
+          flake8 ki_ana/netapi ki_ana/tests
 
       - name: Test
         env:
           DATABASE_URL: sqlite:///./db.sqlite3
           KI_ROOT: ${{ github.workspace }}
+          PYTHONPATH: ${{ github.workspace }}/ki_ana
         run: |
           pytest -q
 
@@ -107,6 +108,7 @@ jobs:
           TEST_MODE: '1'
           KI_SECRET: ci-e2e-secret
           ADMIN_API_TOKEN: ${{ env.ADMIN_API_TOKEN }}
+          PYTHONPATH: ${{ github.workspace }}/ki_ana
         run: |
           nohup python -m uvicorn netapi.app:app --host 127.0.0.1 --port 8000 > uvicorn-e2e.log 2>&1 &
 
@@ -141,5 +143,6 @@ jobs:
           DATABASE_URL: sqlite:///./db.sqlite3
           KI_SECRET: ci-e2e-secret
           ADMIN_API_TOKEN: ${{ env.ADMIN_API_TOKEN }}
+          PYTHONPATH: ${{ github.workspace }}/ki_ana
         run: |
-          pytest -q tests/e2e
+          pytest -q ki_ana/tests/e2e

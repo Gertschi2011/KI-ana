@@ -55,7 +55,8 @@ def test_rate_limit_history_alerts():
     for _ in range(12):
         r = client.get("/api/system/timeflow/history")
         code.append(r.status_code)
-    # Last calls should be 429 (depending on test timing allow at least one 429)
+    # Last calls should be 429.
+    # Depending on timing, allow at least one 429.
     assert any(c == 429 for c in code)
 
     # Hit alerts more than 10 times quickly
