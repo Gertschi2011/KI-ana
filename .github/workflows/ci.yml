@@ -30,18 +30,18 @@ jobs:
 
       - name: Test
         env:
-          DATABASE_URL: sqlite:///./db.sqlite3
+          DATABASE_URL: sqlite:////tmp/ki_ana_m2.sqlite
           KI_ROOT: ${{ github.workspace }}
           PYTHONPATH: ${{ github.workspace }}
         run: |
-            pytest -q \
-              tests/test_health_and_config.py \
-              tests/test_settings.py \
-              tests/test_integration.py \
-              tests/test_meta_mind.py \
-              tests/test_timeflow.py \
-              tests/test_timeflow_downsample.py \
-              tests/test_timeflow_slo_and_rate.py
+          pytest -q \
+            tests/test_health_and_config.py \
+            tests/test_settings.py \
+            tests/test_integration.py \
+            tests/test_meta_mind.py \
+            tests/test_timeflow.py \
+            tests/test_timeflow_downsample.py \
+            tests/test_timeflow_slo_and_rate.py
 
   alembic-check:
     name: alembic-check
@@ -103,24 +103,39 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-test.txt ]; then pip install -r requirements-test.txt; fi
-            python -m pip install "alembic>=1.13,<2.0"
+          python -m pip install "alembic>=1.13,<2.0"
 
       - name: Generate admin token
         run: |
           echo "ADMIN_API_TOKEN=$(python -c 'import secrets; print(secrets.token_urlsafe(24))')" >> "$GITHUB_ENV"
 
-        - name: Apply migrations (sqlite)
-          env:
-            KI_ROOT: ${{ github.workspace }}
-            DATABASE_URL: sqlite:///./db.sqlite3
-            PYTHONPATH: ${{ github.workspace }}
-          run: |
-            python -m alembic upgrade head
+      - name: Apply migrations (sqlite)
+        env:
+          KI_ROOT: ${{ github.workspace }}
+          DATABASE_URL: sqlite:////tmp/ki_ana_e2e.sqlite
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          python -m alembic -c alembic.ini upgrade head
+
+      - name: Verify schema (folder_id)
+        env:
+          DATABASE_URL: sqlite:////tmp/ki_ana_e2e.sqlite
+        run: |
+          python - <<'PY'
+          import os, sqlite3
+          db_url = os.environ['DATABASE_URL']
+          assert db_url.startswith('sqlite:////')
+          path = db_url.replace('sqlite:////', '/')
+          con = sqlite3.connect(path)
+          cols = [r[1] for r in con.execute('PRAGMA table_info(conversations);').fetchall()]
+          print('cols:', cols)
+          assert 'folder_id' in cols
+          PY
 
       - name: Start API server
         env:
           KI_ROOT: ${{ github.workspace }}
-          DATABASE_URL: sqlite:///./db.sqlite3
+          DATABASE_URL: sqlite:////tmp/ki_ana_e2e.sqlite
           TEST_MODE: '1'
           KI_SECRET: ci-e2e-secret
           ADMIN_API_TOKEN: ${{ env.ADMIN_API_TOKEN }}
@@ -160,7 +175,7 @@ jobs:
           STAGING_BASE_URL: http://127.0.0.1:28000
           TEST_MODE: '1'
           KI_ROOT: ${{ github.workspace }}
-          DATABASE_URL: sqlite:///./db.sqlite3
+          DATABASE_URL: sqlite:////tmp/ki_ana_e2e.sqlite
           KI_SECRET: ci-e2e-secret
           ADMIN_API_TOKEN: ${{ env.ADMIN_API_TOKEN }}
           PYTHONPATH: ${{ github.workspace }}
