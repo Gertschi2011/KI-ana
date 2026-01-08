@@ -8,6 +8,10 @@ pytest-mock>=3.11.0
 # HTTP client used by E2E suite
 httpx>=0.24.0
 
+# Optional HTML parsing deps (some modules import bs4/lxml)
+beautifulsoup4>=4.12
+lxml>=5.0
+
 # Code quality
 black>=23.7.0
 flake8>=6.1.0

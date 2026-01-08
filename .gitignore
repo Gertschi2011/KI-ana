@@ -28,6 +28,9 @@ system/crawler_state.json
 system/crawler_targets.json
 system/personality_state.json
 
+# Generated explanation payloads (fixtures may remain tracked)
+explanations/*.json
+
 # Logs / Backups
 *.log
 logs/

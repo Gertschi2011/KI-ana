@@ -42,6 +42,7 @@ class PipelineContext:
     memory_ids: List[str] = field(default_factory=list)
     trace: List[Dict[str, Any]] = field(default_factory=list)
     metadata: Dict[str, Any] = field(default_factory=dict)
+    flags: Dict[str, Any] = field(default_factory=dict)
     
     def to_dict(self) -> Dict[str, Any]:
         return {

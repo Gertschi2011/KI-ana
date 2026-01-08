@@ -58,3 +58,8 @@ def serialize_timeflow_event(row: TimeflowEvent) -> Dict[str, Any]:
         "created_at": int(getattr(row, "created_at", 0) or 0),
         "meta": _safe_load_meta(getattr(row, "meta", None)),
     }
+
+
+def record_ethics_hint_event(*args, **kwargs):
+    """Stub for optional ethics hint event recording (used by clean_router)."""
+    return None

@@ -225,14 +225,22 @@ async def get_data_info(
     """
     try:
         user = _load_user(db, current_user)
-        # Count conversations
+        
+        # Defensive: handle both User model and dict (shouldn't happen, but TEST_MODE might mock)
+        if isinstance(user, dict):
+            user_id = int(user.get("id", 0))
+            user_email = str(user.get("email", ""))
+        else:
+            user_id = user.id
+            user_email = user.email
+        
         conversation_count = db.query(Conversation).filter(
-            Conversation.user_id == user.id
+            Conversation.user_id == user_id
         ).count()
         
         return {
-            "user_id": user.id,
-            "email": user.email,
+            "user_id": user_id,
+            "email": user_email,
             "data_stored": {
                 "profile": True,
                 "conversations": conversation_count,
