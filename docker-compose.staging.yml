@@ -83,7 +83,7 @@ services:
 
   worker:
     build: ./backend
-    command: ["bash","-lc","celery -A workers.celery_app.celery worker -l info"]
+    command: ["bash","-lc","celery -A backend.workers.celery_app.celery worker -l info"]
     restart: unless-stopped
     environment:
       ENV: staging
