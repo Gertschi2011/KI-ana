@@ -9,7 +9,7 @@ sleep 2
 
 # Start with system python and installed packages
 export PYTHONPATH=/home/kiana/ki_ana:$PYTHONPATH
-nohup /home/kiana/.local/bin/uvicorn netapi.app:app --host 0.0.0.0 --port 8000 --log-level info > /tmp/backend.log 2>&1 &
+nohup /home/kiana/.local/bin/uvicorn netapi.app:app --host 0.0.0.0 --port 8000 --log-level info --proxy-headers --forwarded-allow-ips='*' > /tmp/backend.log 2>&1 &
 
 echo "Backend starting... check /tmp/backend.log"
 sleep 3

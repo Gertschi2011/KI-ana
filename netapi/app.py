@@ -42,7 +42,7 @@ except Exception:  # pragma: no cover
 
 from .config import settings, STATIC_DIR
 from .brain import brain_status
-from .deps import get_current_user_required, has_any_role, require_active_user
+from .deps import get_current_user_required, has_any_role, require_active_user, require_admin_area
 from fastapi import Depends
 
 # App start timestamp (for uptime)
@@ -1272,6 +1272,146 @@ def api_system_timeflow():
     }
 
 
+@app.get("/api/system/metrics", include_in_schema=False)
+def api_system_metrics(user: dict = Depends(get_current_user_required)):
+    """System dashboard metrics.
+
+    This endpoint exists primarily for the legacy System Dashboard UI
+    (/static/papa_tools_new.html). It intentionally returns a compact JSON
+    shape that the page can render without additional transformations.
+
+    Access: admin area (admin/creator or derived is_admin).
+    """
+    require_admin_area(user)
+
+    # Uptime
+    uptime_seconds = 0
+    try:
+        with open("/proc/uptime", "r", encoding="utf-8") as f:
+            uptime_seconds = int(float((f.read().split() or ["0"])[0]))
+    except Exception:
+        uptime_seconds = max(0, int(time.time() - int(APP_STARTED_AT_TS or time.time())))
+
+    # CPU (best-effort; without psutil we approximate via load average)
+    load = [0.0, 0.0, 0.0]
+    try:
+        la = os.getloadavg()
+        load = [float(la[0]), float(la[1]), float(la[2])]
+    except Exception:
+        pass
+    try:
+        cpu_count = int(os.cpu_count() or 1)
+    except Exception:
+        cpu_count = 1
+    try:
+        cpu_usage = int(max(0.0, min(100.0, (load[0] / max(1, cpu_count)) * 100.0)))
+    except Exception:
+        cpu_usage = 0
+
+    # Memory from /proc/meminfo
+    mem_total = 0
+    mem_avail = 0
+    try:
+        meminfo = {}
+        with open("/proc/meminfo", "r", encoding="utf-8") as f:
+            for line in f:
+                parts = line.split(":", 1)
+                if len(parts) != 2:
+                    continue
+                k = parts[0].strip()
+                v = parts[1].strip().split()
+                if not v:
+                    continue
+                try:
+                    meminfo[k] = int(v[0])  # kB
+                except Exception:
+                    continue
+        mem_total = int(meminfo.get("MemTotal", 0) or 0) * 1024
+        mem_avail = int(meminfo.get("MemAvailable", 0) or 0) * 1024
+    except Exception:
+        pass
+    mem_used = max(0, mem_total - mem_avail) if mem_total else 0
+
+    # Disk usage (container filesystem; still better than dummy data)
+    disk_total = 0
+    disk_used = 0
+    try:
+        import shutil
+
+        usage = shutil.disk_usage("/")
+        disk_total = int(getattr(usage, "total", 0) or 0)
+        disk_used = int(getattr(usage, "used", 0) or 0)
+    except Exception:
+        pass
+
+    # Requests/min + p95 chat latency from ops snapshot (best-effort)
+    reqs_per_min = None
+    chat_p95_ms = None
+    model_name = (os.getenv("OLLAMA_MODEL") or os.getenv("KIANA_MODEL") or "").strip() or None
+    try:
+        from netapi.modules.ops.router import ops_summary as _ops
+
+        snap = _ops(user)
+        reqs_per_min = (snap.get("http_1m") or {}).get("requests_per_min")
+        p95_s = (snap.get("latency_p95_by_route") or {}).get("/api/v2/chat")
+        if p95_s is not None:
+            try:
+                chat_p95_ms = int(float(p95_s) * 1000.0)
+            except Exception:
+                chat_p95_ms = None
+    except Exception:
+        pass
+
+    # DB size / connections (best-effort)
+    db_size = None
+    db_conns = None
+    try:
+        from sqlalchemy import text as _t
+        from netapi.db import SessionLocal
+
+        with SessionLocal() as db:
+            try:
+                db_conns = int(db.execute(_t("SELECT count(*) FROM pg_stat_activity"))).scalar()  # type: ignore
+            except Exception:
+                db_conns = None
+            try:
+                db_size = int(db.execute(_t("SELECT pg_database_size(current_database())"))).scalar()  # type: ignore
+            except Exception:
+                db_size = None
+    except Exception:
+        # SQLite fallback: file size
+        try:
+            db_path = os.path.expanduser("db.sqlite3")
+            if os.path.exists(db_path):
+                db_size = int(os.path.getsize(db_path))
+        except Exception:
+            pass
+
+    # Users (best-effort count)
+    users_active = None
+    try:
+        from sqlalchemy import func
+        from netapi.db import SessionLocal
+        from netapi.models import User as _User
+
+        with SessionLocal() as db:
+            users_active = int(db.query(func.count(_User.id)).scalar() or 0)
+    except Exception:
+        pass
+
+    return {
+        "ok": True,
+        "server": {"uptime": int(uptime_seconds), "status": "healthy"},
+        "cpu": {"usage": int(cpu_usage), "load": load},
+        "memory": {"used": int(mem_used), "total": int(mem_total) if mem_total else None},
+        "disk": {"used": int(disk_used), "total": int(disk_total) if disk_total else None},
+        "users": {"active": users_active},
+        "requests": {"perMinute": reqs_per_min},
+        "ai": {"model": model_name, "status": "ready", "responseTime": chat_p95_ms},
+        "database": {"size": db_size, "connections": db_conns},
+    }
+
+
 # ---- TimeFlow (M2) compatibility endpoints ---------------------------------
 # Keep legacy /api/system/timeflow/* endpoints working for tests/monitoring.
 _RATE_BUCKETS: dict[tuple[str, str], list[float]] = {}
@@ -1553,6 +1693,18 @@ except Exception as e:
     async def _fallback_chat_v2_once():
         # Minimal non-404 endpoint for staging/E2E when the full v2 router is unavailable.
         return {"ok": True, "reply": "", "meta": {}, "sources": [], "trace": [], "fallback": True}
+
+
+# Learning v2 router (consent flow)
+try:
+    from netapi.modules.learning.router import router as learning_v2_router
+
+    if learning_v2_router is None:
+        raise RuntimeError("learning_v2_router is None")
+    app.include_router(learning_v2_router, dependencies=[Depends(require_active_user)])
+    print("✅ Learning v2 router ready")
+except Exception as e:
+    print("❌ Learning v2 router failed:", e)
 
 
 # ---- Compatibility routes (frontend expects /api/agent/*) -------------------

@@ -87,7 +87,17 @@ def telemetry_summary(since: int = 86400, top: int = 5, user = Depends(get_curre
             )
             rows = q.limit(max(1, min(500, int(top or 5)))).all()
             items = [{"message": m or "", "url": u or "", "count": int(c or 0)} for (m,u,c) in rows]
-            return {"ok": True, "since": t0, "items": items}
+
+            # Telemetry sanity (best-effort): show whether chat traffic is happening.
+            interactions_1h = None
+            try:
+                from netapi.modules.observability import metrics as _m
+                c = _m.window_route_status_counts(route="/api/v2/chat", method="POST", window_seconds=3600, exclude_statuses={401})
+                interactions_1h = int(c.get("ok2xx") or 0)
+            except Exception:
+                interactions_1h = None
+
+            return {"ok": True, "since": t0, "items": items, "sanity": {"interactions_1h": interactions_1h}}
     except Exception:
         return {"ok": True, "since": t0, "items": []}
 

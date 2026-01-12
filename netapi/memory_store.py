@@ -6,7 +6,19 @@ import os, json, time, math, re, random, string, hashlib, sqlite3
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any
 
-ROOT = Path(__file__).resolve().parent.parent
+def _detect_root() -> Path:
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    return Path(__file__).resolve().parent.parent
+
+
+ROOT = _detect_root()
 MEM_DIR = ROOT / "memory" / "long_term" / "blocks"
 SHORT_DIR = ROOT / "memory" / "short_term" / "blocks"
 IDX_DIR = ROOT / "indexes"

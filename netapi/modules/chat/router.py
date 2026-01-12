@@ -3997,6 +3997,11 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
     except Exception:
         pass
 
+    # Ensure `intent` is always defined before first use.
+    # (There is later intent detection that assigns to this local variable,
+    # so referencing it before assignment would raise UnboundLocalError.)
+    intent = "general"
+
     if intent == "knowledge_query":
         web_ctx_digest = ""
         try:

@@ -5,9 +5,24 @@ import json
 import re
 import time
 
+def _detect_root() -> Path:
+    import os
+
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    return Path(__file__).resolve().parents[2]
+
+
 # Reuse the same file used elsewhere
-ADDRBOOK_PATH = Path(__file__).resolve().parents[2] / "memory" / "index" / "addressbook.json"
-BLOCKS_ROOT = Path(__file__).resolve().parents[2] / "memory" / "long_term" / "blocks"
+_ROOT = _detect_root()
+ADDRBOOK_PATH = _ROOT / "memory" / "index" / "addressbook.json"
+BLOCKS_ROOT = _ROOT / "memory" / "long_term" / "blocks"
 
 
 def _now_ts() -> int:
@@ -82,6 +97,79 @@ def _normalize_interest_profiles_index(data: Dict[str, Any]) -> Dict[str, Any]:
     if isinstance(data, dict) and isinstance(data.get("interest_profiles"), dict):
         return data.get("interest_profiles") or {}
     return {}
+
+
+def _normalize_learning_corrections_index(data: Dict[str, Any]) -> Dict[str, Any]:
+    if isinstance(data, dict) and isinstance(data.get("learning_corrections"), dict):
+        return data.get("learning_corrections") or {}
+    return {}
+
+
+def _learning_key(user_id: int, topic: str, source: str) -> str:
+    topic_norm = re.sub(r"\s+", " ", (topic or "").strip().lower())
+    topic_norm = topic_norm[:80] or "unsorted"
+    source_norm = (source or "chat").strip().lower()[:24] or "chat"
+    return f"learning_correction:{int(user_id)}:{source_norm}:{topic_norm}"
+
+
+def index_learning_correction(
+    *,
+    user_id: int,
+    topic: str,
+    source: str,
+    block_id: str,
+    updated_at: Optional[str] = None,
+    max_blocks: int = 50,
+) -> Dict[str, Any]:
+    """Index a learning_correction block for fast retrieval.
+
+    Stores under data["learning_corrections"][key] with:
+    - block_ids (bounded list)
+    - last_seen
+    - count
+    """
+    data = _load()
+    idx = _normalize_learning_corrections_index(data)
+    key = _learning_key(int(user_id), topic, source)
+
+    entry = idx.get(key) if isinstance(idx.get(key), dict) else {}
+    block_ids = list(entry.get("block_ids") or []) if isinstance(entry, dict) else []
+    bid = str(block_id)
+    if bid and bid not in block_ids:
+        block_ids.append(bid)
+    block_ids = block_ids[-max(1, min(200, int(max_blocks or 50))):]
+
+    new_entry = {
+        "user_id": int(user_id),
+        "topic": (topic or "").strip()[:120] or "unsorted",
+        "source": (source or "chat").strip().lower()[:24] or "chat",
+        "block_ids": block_ids,
+        "last_seen": updated_at or str(_now_ts()),
+        "count": int(entry.get("count") or 0) + (1 if bid and (bid not in (entry.get("block_ids") or [])) else 0),
+    }
+
+    idx[key] = new_entry
+    data["learning_corrections"] = idx
+
+    ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
+    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    return new_entry
+
+
+def get_learning_corrections(
+    *,
+    user_id: int,
+    topic: str,
+    source: str,
+) -> List[str]:
+    data = _load()
+    idx = _normalize_learning_corrections_index(data)
+    key = _learning_key(int(user_id), topic, source)
+    entry = idx.get(key)
+    if not isinstance(entry, dict):
+        return []
+    block_ids = entry.get("block_ids")
+    return list(block_ids or []) if isinstance(block_ids, list) else []
 
 
 def index_user_settings(

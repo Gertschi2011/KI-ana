@@ -233,7 +233,10 @@
     }
 
     function formatTime(timestamp) {
-      const date = new Date(timestamp);
+      // API events may provide seconds (unix ts) while UI timeline uses ms.
+      let ts = Number(timestamp || 0);
+      if (ts > 0 && ts < 1e12) ts = ts * 1000;
+      const date = new Date(ts);
       return date.toLocaleString('de-DE', { 
         hour: '2-digit', 
         minute: '2-digit',

@@ -86,12 +86,14 @@ def set_cookie(resp, payload: Dict[str, Any], *, remember: bool = False, request
     token = _serializer().dumps(payload)
     secure_cookie = (str(os.getenv("KIANA_COOKIE_INSECURE", "0")).strip() != "1")
     # Local/staging over plain HTTP: browsers/curl will not send Secure cookies.
-    # Keep Secure as default for real SaaS domains, but auto-disable for localhost.
+    # Keep Secure as default for real SaaS domains, but auto-disable when request is not effectively HTTPS.
     try:
         if request is not None:
             host = str(request.url.hostname or "").strip().lower()
             scheme = str(request.url.scheme or "").strip().lower()
-            if scheme != "https" and host in {"localhost", "127.0.0.1"}:
+            xf_proto = str(request.headers.get("x-forwarded-proto") or request.headers.get("X-Forwarded-Proto") or "").strip().lower()
+            effective_https = (scheme == "https") or (xf_proto == "https")
+            if not effective_https:
                 secure_cookie = False
     except Exception:
         pass
@@ -256,6 +258,34 @@ def require_user(request: Request, db) -> Dict[str, Any]:
     base_role = str(getattr(user, 'role', 'user') or 'user').lower()
     tier = str(getattr(user, 'tier', 'user') or 'user').lower()
     is_papa_flag = (base_role == "papa") or (tier.startswith('papa')) or bool(getattr(user, 'is_papa', False))
+    # Backward-compat defaults: older DB schemas may not have the newer
+    # email/subscription gating columns yet. In that case we default to
+    # permissive values so core features (chat/tools) work.
+    email_verified = True
+    account_status = "active"
+    subscription_status = "active"
+    consent_learning = "ask"
+    try:
+        if hasattr(user, "email_verified"):
+            email_verified = bool(int(getattr(user, "email_verified", 0) or 0))
+    except Exception:
+        pass
+    try:
+        if hasattr(user, "account_status"):
+            account_status = str(getattr(user, "account_status", "active") or "active")
+    except Exception:
+        pass
+    try:
+        if hasattr(user, "subscription_status"):
+            subscription_status = str(getattr(user, "subscription_status", "inactive") or "inactive")
+    except Exception:
+        pass
+    try:
+        if hasattr(user, "consent_learning"):
+            consent_learning = str(getattr(user, "consent_learning", "ask") or "ask")
+    except Exception:
+        pass
+
     ident = {
         "id": user.id, "username": user.username,
         "role": base_role or "user", "tier": tier or 'user',
@@ -266,11 +296,11 @@ def require_user(request: Request, db) -> Dict[str, Any]:
         # Papa flag so /api/me and nav can expose Papa UI
         "is_papa": is_papa_flag,
         # M2 gates
-        "email_verified": bool(int(getattr(user, 'email_verified', 0) or 0)),
-        "account_status": str(getattr(user, 'account_status', 'active') or 'active'),
-        "subscription_status": str(getattr(user, 'subscription_status', 'inactive') or 'inactive'),
+        "email_verified": bool(email_verified),
+        "account_status": str(account_status),
+        "subscription_status": str(subscription_status),
         # M2-BLOCK5: GDPR consent
-        "consent_learning": str(getattr(user, 'consent_learning', 'ask') or 'ask'),
+        "consent_learning": str(consent_learning),
     }
     # Legacy entitlement bridge: treat plan+plan_until as active subscription.
     try:
@@ -284,15 +314,11 @@ def require_user(request: Request, db) -> Dict[str, Any]:
     try:
         eff_roles = sorted(list(_role_set({"role": base_role, "roles": []})))
         ident["roles"] = eff_roles
-        # Compute is_admin per spec: admin OR (creator AND KI_CREATOR_FULL_ACCESS=="1")
-        try:
-            cfa = os.getenv("KI_CREATOR_FULL_ACCESS", "0") or "0"
-        except Exception:
-            cfa = "0"
-        ident["is_admin"] = ("admin" in eff_roles) or (("creator" in eff_roles) and (str(cfa).strip() == "1"))
+        # Creator should have full access (per product requirement).
+        ident["is_admin"] = ("admin" in eff_roles) or ("creator" in eff_roles)
     except Exception:
         ident["roles"] = [base_role] if base_role else ["user"]
-        ident["is_admin"] = (base_role == "admin") or ((base_role == "creator") and (str(os.getenv("KI_CREATOR_FULL_ACCESS", "0")).strip() == "1"))
+        ident["is_admin"] = (base_role == "admin") or (base_role == "creator")
     return ident
 
 

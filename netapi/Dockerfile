@@ -37,5 +37,5 @@ COPY . /app/
 # Expose port
 EXPOSE 8000
 
-# Run with uvicorn
-CMD ["uvicorn", "netapi.app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2", "--log-level", "info"]
+# Run with uvicorn (trust reverse-proxy headers for correct scheme/host)
+CMD ["uvicorn", "netapi.app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2", "--log-level", "info", "--proxy-headers", "--forwarded-allow-ips=*"]

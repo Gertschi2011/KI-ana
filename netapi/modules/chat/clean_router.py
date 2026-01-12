@@ -126,6 +126,7 @@ class ChatRequest(BaseModel):
     enable_reflection: bool = True
     quality_threshold: float = 0.7
     conv_id: Optional[int] = None
+    policy: Optional[Dict[str, Any]] = None
     attachments: List[Dict[str, Any]] = Field(default_factory=list)
     style: Optional[str] = None
     bullets: Optional[int] = None
@@ -1319,6 +1320,7 @@ async def run_chat_pipeline_from_message(
     current: Optional[Dict[str, Any]],
     lang: Optional[str] = None,
     persona: Optional[str] = None,
+    policy: Optional[Dict[str, Any]] = None,
     force_fresh: Optional[bool] = None,
     save_messages: bool = True,
 ) -> ChatResponse:
@@ -1835,6 +1837,47 @@ async def run_chat_pipeline_from_message(
             except Exception as exc:
                 logger.warning("Failed to write ethics audit: %s", exc)
 
+    # --- Learning consent (Phase 14/16) --------------------------------
+    # Deterministic behavior: only when explicitly requested via policy.learning.
+    try:
+        learning_policy = None
+        if isinstance(policy, dict):
+            learning_policy = policy.get("learning")
+        learning_policy_norm = (str(learning_policy or "").strip().lower() or "")
+
+        if learning_policy_norm == "ask" and user_id is not None:
+            correction = _extract_learning_correction(message)
+            if correction:
+                topic = ""
+                try:
+                    topic = str(meta_payload.get("topic") or "").strip()
+                except Exception:
+                    topic = ""
+
+                preview = {
+                    "topic": topic or None,
+                    "content": correction[:200] + ("…" if len(correction) > 200 else ""),
+                }
+
+                from netapi.learning.candidates import get_learning_candidate_store
+
+                store = get_learning_candidate_store()
+                cand = store.create_candidate(
+                    user_id=int(user_id),
+                    content=correction,
+                    snapshot=preview,
+                    source="chat",
+                    topic=topic or "",
+                )
+
+                autonomy_meta = meta_payload.setdefault("autonomy", {})
+                if isinstance(autonomy_meta, dict):
+                    autonomy_meta["ask_learning_consent"] = True
+                    autonomy_meta["learning_candidate_id"] = cand.candidate_id
+                    autonomy_meta["learning_candidate_preview"] = preview
+    except Exception as exc:
+        logger.debug("learning consent trigger failed: %s", exc)
+
     return ChatResponse(
         ok=pipeline_response.ok,
         reply=pipeline_response.reply,
@@ -1878,6 +1921,21 @@ def _looks_like_proactive_opt_in(message: str) -> bool:
     return ("news" in text) or ("nachrichten" in text)
 
 
+def _extract_learning_correction(message: str) -> Optional[str]:
+    text = (message or "").strip()
+    if not text:
+        return None
+    low = text.lower()
+    prefixes = ("korrektur:", "correction:", "fix:", "richtig:")
+    for p in prefixes:
+        if low.startswith(p):
+            remainder = text[len(p):].strip()
+            return remainder or None
+    if low.startswith("du hast gesagt") and "aber" in low:
+        return text
+    return None
+
+
 @router.post("", response_model=ChatResponse)
 async def chat_v2(
     body: ChatRequest,
@@ -1896,6 +1954,7 @@ async def chat_v2(
             current=current,
             lang=body.lang,
             persona=body.persona,
+            policy=body.policy,
         )
     except HTTPException:
         raise
