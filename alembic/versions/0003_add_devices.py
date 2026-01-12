@@ -17,30 +17,31 @@ depends_on = None
 
 
 def upgrade():
-    conn = op.get_bind()
-    if getattr(getattr(conn, "dialect", None), "name", None) != "sqlite":
-        return
+    bind = op.get_bind()
+    inspector = sa.inspect(bind)
+
     try:
-        res = conn.execute(sa.text("SELECT name FROM sqlite_master WHERE type='table' AND name='devices'"))
-        if not res.fetchone():
-            conn.execute(sa.text(
-                """
-                CREATE TABLE devices (
-                  id INTEGER PRIMARY KEY AUTOINCREMENT,
-                  name TEXT DEFAULT '',
-                  os TEXT DEFAULT '',
-                  owner_id INTEGER DEFAULT 0,
-                  status TEXT DEFAULT 'unknown',
-                  last_seen INTEGER DEFAULT 0,
-                  created_at INTEGER DEFAULT 0,
-                  updated_at INTEGER DEFAULT 0
-                )
-                """
-            ))
-            conn.execute(sa.text("CREATE INDEX idx_devices_owner ON devices(owner_id)"))
-            conn.execute(sa.text("CREATE INDEX idx_devices_last_seen ON devices(last_seen)"))
+        tables = set(inspector.get_table_names())
     except Exception:
-        pass
+        tables = set()
+
+    if "devices" in tables:
+        return
+
+    # Create minimal base schema; later migrations add additional fields.
+    op.create_table(
+        "devices",
+        sa.Column("id", sa.Integer(), primary_key=True),
+        sa.Column("name", sa.String(length=120), nullable=False, server_default=sa.text("''")),
+        sa.Column("os", sa.String(length=60), nullable=False, server_default=sa.text("''")),
+        sa.Column("owner_id", sa.Integer(), nullable=False, server_default=sa.text("0")),
+        sa.Column("status", sa.String(length=20), nullable=False, server_default=sa.text("'unknown'")),
+        sa.Column("last_seen", sa.Integer(), nullable=False, server_default=sa.text("0")),
+        sa.Column("created_at", sa.Integer(), nullable=False, server_default=sa.text("0")),
+        sa.Column("updated_at", sa.Integer(), nullable=False, server_default=sa.text("0")),
+    )
+    op.create_index("idx_devices_owner", "devices", ["owner_id"], unique=False)
+    op.create_index("idx_devices_last_seen", "devices", ["last_seen"], unique=False)
 
 
 def downgrade():

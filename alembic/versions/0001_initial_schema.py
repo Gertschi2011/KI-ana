@@ -22,11 +22,53 @@ depends_on = None
 def upgrade():
     conn = op.get_bind()
 
-    # This migration contains SQLite-specific introspection/DDL (sqlite_master,
-    # PRAGMA). On Postgres, executing those statements raises an error which
-    # aborts the surrounding transaction even if the exception is caught.
-    # That, in turn, prevents Alembic from writing to alembic_version.
-    if getattr(getattr(conn, "dialect", None), "name", None) != "sqlite":
+    dialect = getattr(getattr(conn, "dialect", None), "name", None)
+
+    # --- Postgres / non-SQLite ------------------------------------------------
+    # Historically, early migrations were SQLite-only (sqlite_master/PRAGMA).
+    # For fresh Postgres DBs, we must at least create baseline tables that later
+    # migrations ALTER (e.g. users in 0012_user_location_fields).
+    if dialect != "sqlite":
+        inspector = sa.inspect(conn)
+        try:
+            tables = set(inspector.get_table_names())
+        except Exception:
+            tables = set()
+
+        if "users" not in tables:
+            # Keep this minimal: later migrations add extra columns.
+            is_papa_default = sa.text("false") if dialect == "postgresql" else sa.text("0")
+            now_default = sa.text("now()") if dialect == "postgresql" else None
+
+            op.create_table(
+                "users",
+                sa.Column("id", sa.Integer(), primary_key=True),
+                sa.Column("username", sa.String(length=255), nullable=True, unique=True),
+                sa.Column("email", sa.String(length=255), nullable=True, unique=True),
+                sa.Column("password_hash", sa.Text(), nullable=True),
+                sa.Column("birthdate", sa.String(length=64), nullable=True),
+                sa.Column("address", sa.Text(), nullable=True),
+                sa.Column("role", sa.String(length=32), nullable=True, server_default=sa.text("'user'"), quote=True),
+                sa.Column("tier", sa.String(length=32), nullable=True, server_default=sa.text("'user'")),
+                sa.Column("is_papa", sa.Boolean(), nullable=True, server_default=is_papa_default),
+                sa.Column("daily_quota", sa.Integer(), nullable=True, server_default=sa.text("20")),
+                sa.Column("quota_reset_at", sa.Integer(), nullable=True, server_default=sa.text("0")),
+                sa.Column("plan", sa.String(length=32), nullable=True, server_default=sa.text("'free'")),
+                sa.Column("plan_until", sa.Integer(), nullable=True, server_default=sa.text("0")),
+                sa.Column("created_at", sa.DateTime(), nullable=True, server_default=now_default),
+                sa.Column("updated_at", sa.DateTime(), nullable=True, server_default=now_default),
+            )
+
+        if "api_usage" not in tables:
+            op.create_table(
+                "api_usage",
+                sa.Column("id", sa.Integer(), primary_key=True),
+                sa.Column("user_id", sa.Integer(), nullable=False),
+                sa.Column("date", sa.String(length=32), nullable=False),
+                sa.Column("count", sa.Integer(), nullable=False, server_default=sa.text("0")),
+                sa.UniqueConstraint("user_id", "date", name="idx_api_usage_user_date"),
+            )
+
         return
 
     # Create tables from metadata if missing

@@ -89,6 +89,14 @@ def run_migrations_online() -> None:
     )
 
     with connectable.connect() as connection:
+        # NOTE: Widening alembic_version.version_num is handled in-order via
+        # a dedicated migration (0012a_alembic_ver_255). Avoid doing DDL here.
+
+        # Fresh-DB baseline: many early migrations were originally SQLite-only.
+        # Do NOT call SQLAlchemy create_all() here.
+        # We rely on Alembic migrations to create/alter schema in-order.
+        # (create_all() can create "future" columns/tables and break later migrations.)
+
         context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():

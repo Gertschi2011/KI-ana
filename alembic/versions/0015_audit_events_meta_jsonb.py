@@ -29,6 +29,10 @@ def upgrade() -> None:
     # Ensure no NULLs before type conversion
     op.execute("UPDATE audit_events SET meta = '{}' WHERE meta IS NULL")
 
+    # Postgres cannot always auto-cast an existing TEXT default to JSONB during
+    # ALTER COLUMN TYPE, so drop it first.
+    op.execute("ALTER TABLE audit_events ALTER COLUMN meta DROP DEFAULT")
+
     # Convert TEXT -> JSONB. Existing meta is JSON-stringified dicts.
     op.execute("ALTER TABLE audit_events ALTER COLUMN meta TYPE JSONB USING meta::jsonb")
     op.execute("ALTER TABLE audit_events ALTER COLUMN meta SET DEFAULT '{}'::jsonb")

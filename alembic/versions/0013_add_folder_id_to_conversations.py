@@ -18,7 +18,7 @@ import sqlalchemy as sa
 
 # revision identifiers, used by Alembic.
 revision = "0013_add_folder_id_to_conversations"
-down_revision = "0012_user_updated_at_datetime"
+down_revision = "0012a_alembic_ver_255"
 branch_labels = None
 depends_on = None
 

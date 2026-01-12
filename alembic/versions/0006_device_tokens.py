@@ -17,7 +17,11 @@ depends_on = None
 def upgrade() -> None:
     bind = op.get_bind()
     inspector = sa.inspect(bind)
-    existing_cols = {col["name"] for col in inspector.get_columns("devices")}
+    try:
+        existing_cols = {col["name"] for col in inspector.get_columns("devices")}
+    except Exception:
+        # Fresh DBs / dialect drift: if devices table doesn't exist, nothing to do.
+        return
 
     with op.batch_alter_table('devices') as batch:
         if "token_hash" not in existing_cols:
@@ -35,7 +39,10 @@ def upgrade() -> None:
 def downgrade() -> None:
     bind = op.get_bind()
     inspector = sa.inspect(bind)
-    existing_cols = {col["name"] for col in inspector.get_columns("devices")}
+    try:
+        existing_cols = {col["name"] for col in inspector.get_columns("devices")}
+    except Exception:
+        return
 
     with op.batch_alter_table('devices') as batch:
         if "revoked_at" in existing_cols:
