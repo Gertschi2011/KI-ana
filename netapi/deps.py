@@ -70,9 +70,29 @@ def _plan_limits(plan_id: str) -> Dict[str, Any]:
     }
 
 def get_db():
-    db = SessionLocal()
-    try: yield db
-    finally: db.close()
+    try:
+        db = SessionLocal()
+    except Exception:
+        try:
+            from netapi.modules.observability.metrics import inc_db_error
+            inc_db_error(kind="session_local")
+        except Exception:
+            pass
+        raise
+    try:
+        yield db
+    except Exception:
+        try:
+            from netapi.modules.observability.metrics import inc_db_error
+            inc_db_error(kind="db_session")
+        except Exception:
+            pass
+        raise
+    finally:
+        try:
+            db.close()
+        except Exception:
+            pass
 
 def _serializer() -> URLSafeTimedSerializer:
     return URLSafeTimedSerializer(settings.KI_SECRET)

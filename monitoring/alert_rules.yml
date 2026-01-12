@@ -1,0 +1,133 @@
+groups:
+  - name: ki-ana-slo
+    rules:
+      - alert: KiAnaHigh5xxRate
+        expr: |
+          (
+            sum(increase(ki_ana_http_requests_total{status=~"5.."}[5m]))
+            /
+            clamp_min(sum(increase(ki_ana_http_requests_total[5m])), 1)
+          ) > 0.005
+        for: 5m
+        labels:
+          severity: page
+        annotations:
+          summary: "KI_ana high 5xx rate"
+          description: "5xx rate > 0.5% over 5m"
+
+      - alert: KiAnaChatP95LatencyHigh
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_http_request_duration_seconds_bucket{route_group="chat"}[10m])) by (le)
+          ) > 2
+        for: 10m
+        labels:
+          severity: page
+        annotations:
+          summary: "KI_ana chat p95 latency high"
+          description: "p95(chat) > 2s over 10m"
+
+      - alert: KiAnaQueueBacklogHigh
+        expr: ki_ana_celery_queue_backlog > 200
+        for: 10m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "KI_ana queue backlog high"
+          description: "Default Celery queue backlog > 200 for 10m"
+
+      - alert: KiAnaWorkerDown
+        expr: ki_ana_celery_worker_up == 0
+        for: 2m
+        labels:
+          severity: page
+        annotations:
+          summary: "KI_ana worker heartbeat missing"
+          description: "No worker heartbeat seen in the last ~20s"
+
+      - alert: KiAnaDependencyDown
+        expr: ki_ana_dependency_up{dependency=~"redis|qdrant|minio"} == 0
+        for: 2m
+        labels:
+          severity: page
+        annotations:
+          summary: "KI_ana dependency down"
+          description: "Dependency {{ $labels.dependency }} is unreachable from backend"
+          runbook: "ops/runbooks/dependency_down.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-overview.json"
+
+      - alert: KiAnaCeleryTaskFailureRateHigh
+        expr: |
+          (
+            sum(rate(ki_ana_celery_task_total{status="failure"}[5m]))
+            /
+            clamp_min(sum(rate(ki_ana_celery_task_total[5m])), 1)
+          ) > 0.05
+        for: 10m
+        labels:
+          severity: page
+        annotations:
+          summary: "KI_ana Celery task failure rate high"
+          description: "Task failure rate > 5% over 10m"
+          runbook: "ops/runbooks/celery_failures.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-overview.json"
+
+      - alert: KiAnaCeleryEmbedP95RuntimeHigh
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_celery_task_runtime_seconds_bucket{task="embed.text"}[10m])) by (le)
+          ) > 2
+        for: 10m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "KI_ana embed.text p95 runtime high"
+          description: "p95(embed.text) > 2s over 10m"
+          runbook: "ops/runbooks/celery_runtime.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-overview.json"
+
+      - alert: KiAnaCeleryIngestParseP95RuntimeHigh
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_celery_task_runtime_seconds_bucket{task="ingest.parse_file"}[10m])) by (le)
+          ) > 2
+        for: 10m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "KI_ana ingest.parse_file p95 runtime high"
+          description: "p95(ingest.parse_file) > 2s over 10m"
+          runbook: "ops/runbooks/celery_runtime.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-overview.json"
+
+      - alert: KiAnaCeleryAggStale
+        expr: |
+          (
+            time() - ki_ana_celery_agg_last_update_seconds{task=~"embed\\.text|ingest\\.parse_file"}
+          ) > 900
+          and
+          (
+            ki_ana_celery_queue_backlog > 5
+          )
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Celery aggregates stale while backlog is building ({{ $labels.task }})"
+          description: "No aggregate updates for >15m and backlog >5 for 10m. Check worker health, Redis, or stuck tasks."
+          runbook: "ops/runbooks/celery_stale.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-overview.json"
+
+  - name: ki-ana-probes
+    rules:
+      - alert: KiAnaPublicPingDown
+        expr: probe_success{job="blackbox"} == 0
+        for: 2m
+        labels:
+          severity: page
+        annotations:
+          summary: "KI_ana public endpoint probe failed"
+          description: "Blackbox probe failing for {{ $labels.instance }}"

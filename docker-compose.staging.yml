@@ -82,7 +82,9 @@ services:
       - "28000:8000"
 
   worker:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     command: ["bash","-lc","celery -A backend.workers.celery_app.celery worker -l info"]
     restart: unless-stopped
     environment:
@@ -95,6 +97,30 @@ services:
       REDIS_PORT: 6379
     depends_on:
       - backend
+      - redis
+    networks: [kiana_staging]
+
+  worker_beat:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command: ["bash","-lc","celery -A backend.workers.celery_app.celery beat -l info"]
+    restart: unless-stopped
+    environment:
+      ENV: staging
+      DATABASE_URL: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      BUILD_SHA: ${BUILD_SHA:-}
+      KIANA_BUILD_SHA: ${KIANA_BUILD_SHA:-}
+      KIANA_VERSION: ${KIANA_VERSION:-}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      TZ: Europe/Vienna
+      # Optional safety rollout (set to "1" to only report counts, no deletes)
+      # RETENTION_DRY_RUN: "1"
+      # RETENTION_CHAT_DAYS: "30"
+      # RETENTION_PURGE_HOUR: "3"
+      # RETENTION_PURGE_MINUTE: "25"
+    depends_on:
       - redis
     networks: [kiana_staging]
 

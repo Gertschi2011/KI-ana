@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased] - 2026-01-12
+
+### Ops / Monitoring (Phase E)
+
+- ✅ Phase E → DONE: SLO-fähige SLIs (HTTP latency/error, dependencies, Celery runtime/failures/freshness), nicht-noisy Alerts (gated + `for`), Runbooks + Ops-Docs, Messkette E2E verifiziert (Worker → Redis → Backend → Prometheus → Grafana)
+
+### Compliance (Phase D)
+
+- ✅ Phase D → DONE: Retention Policy v1 (30d Chat) + enforced Retention Purge (Beat) + append-only `audit_events` + DSAR Export/Delete mit `dsar_id`, Audit-Actions und `export_manifest.json` (Audit excluded). DSAR_DELETE E2E in staging verifiziert.
+
 ## [3.0.0] - 2025-10-23 - "KI_ana OS"
 
 ### 🌟 Major Release: KI_ana OS

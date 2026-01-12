@@ -1,6 +1,8 @@
 # models.py – SQLAlchemy Modelle
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, Text, DateTime, UniqueConstraint, ForeignKey
+import uuid
+
+from sqlalchemy import Column, Integer, String, Text, DateTime, UniqueConstraint, ForeignKey, Index, JSON
 from .db import Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Boolean
@@ -82,6 +84,29 @@ class AdminAudit(Base):
     target_type = Column(String(64), default="")
     target_id = Column(Integer, default=0, index=True)
     meta = Column(Text, default="{}")
+
+
+# Phase D3: Append-only Audit Events (separate from legacy AdminAudit)
+class AuditEvent(Base):
+    __tablename__ = "audit_events"
+
+    id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    ts = Column(DateTime(timezone=True), default=datetime.utcnow, index=True)
+
+    actor_type = Column(String(16), default="system")  # user|system|admin
+    actor_id = Column(Integer, nullable=True, index=True)
+
+    action = Column(String(64), default="", index=True)
+    subject_type = Column(String(64), default="")
+    subject_id = Column(String(128), nullable=True)
+
+    result = Column(String(16), default="success")  # success|denied|error
+    meta = Column(JSON, default=dict)
+
+    __table_args__ = (
+        Index("ix_audit_events_action_ts", "action", "ts"),
+        Index("ix_audit_events_actor_id_ts", "actor_id", "ts"),
+    )
 
 # Gespräche (serverseitig)
 class Conversation(Base):

@@ -17,3 +17,13 @@ def test_e2e_05_gdpr_info_and_export_zip(verified_user_session):
 
     disp = export.headers.get("content-disposition", "")
     assert "attachment" in disp.lower()
+
+    # Validate ZIP structure
+    import io
+    import zipfile
+
+    z = zipfile.ZipFile(io.BytesIO(export.content))
+    names = set(z.namelist())
+    assert "export_manifest.json" in names
+    assert "profile.json" in names
+    assert "conversations.json" in names
