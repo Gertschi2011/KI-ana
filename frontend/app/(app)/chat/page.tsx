@@ -1,23 +1,54 @@
 "use client";
 import { useEffect, useRef, useState } from 'react';
 
-type Msg = { id: string; role: 'user' | 'assistant'; text: string };
+type Msg = {
+  id: string;
+  role: 'user' | 'assistant';
+  text: string;
+  sources?: any[];
+  memory_ids?: string[];
+  origin?: string;
+  topic?: string;
+  explain?: any;
+};
 
 export default function ChatPage() {
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [canExplain, setCanExplain] = useState(false);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const convRef = useRef<string | null>(null);
   const bufferRef = useRef<string>("");
+  const assistantIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     scrollerRef.current?.scrollTo({ top: scrollerRef.current.scrollHeight });
   }, [msgs.length, busy]);
 
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const r = await fetch('/api/me', { credentials: 'include' });
+        const j = await r.json().catch(() => ({} as any));
+        const u = j?.auth ? j.user : null;
+        const isAdmin = !!u?.is_admin || (Array.isArray(u?.roles) && u.roles.includes('admin'));
+        const isCreator = !!u?.is_creator || (Array.isArray(u?.roles) && u.roles.includes('creator'));
+        if (mounted) setCanExplain(!!(isAdmin || isCreator));
+      } catch {
+        if (mounted) setCanExplain(false);
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   async function streamAnswer(payload: any) {
     setBusy(true);
     bufferRef.current = "";
+    assistantIdRef.current = crypto.randomUUID();
     try {
       const res = await fetch('/api/chat/stream', {
         method: 'POST',
@@ -49,19 +80,44 @@ export default function ChatPage() {
               setMsgs(prev => {
                 // If last is assistant placeholder, update it; else append new
                 const last = prev[prev.length - 1];
-                if (last && last.role === 'assistant' && last.id === '__stream__') {
+                const streamId = assistantIdRef.current || '__stream__';
+                if (last && last.role === 'assistant' && last.id === streamId) {
                   const clone = prev.slice();
                   clone[clone.length - 1] = { ...last, text: bufferRef.current } as Msg;
                   return clone;
                 }
-                return [...prev, { id: '__stream__', role: 'assistant', text: bufferRef.current } as Msg];
+                return [...prev, { id: streamId, role: 'assistant', text: bufferRef.current } as Msg];
               });
             }
             if (evt.conv_id && !convRef.current) {
               convRef.current = String(evt.conv_id);
             }
+            // Finalize payload may include full text + meta
             if (evt.done) {
+              const streamId = assistantIdRef.current || '__stream__';
+              setMsgs(prev => {
+                const idx = prev.findIndex(m => m.id === streamId && m.role === 'assistant');
+                if (idx < 0) return prev;
+                const clone = prev.slice();
+                const cur = clone[idx];
+                const finalText = typeof evt.text === 'string' && evt.text.length > 0
+                  ? evt.text
+                  : (bufferRef.current || cur.text);
+                clone[idx] = {
+                  ...cur,
+                  text: finalText,
+                  sources: Array.isArray(evt.sources) ? evt.sources : cur.sources,
+                  memory_ids: Array.isArray(evt.memory_ids) ? evt.memory_ids : cur.memory_ids,
+                  origin: typeof evt.origin === 'string' ? evt.origin : cur.origin,
+                  topic: typeof evt.topic === 'string' ? evt.topic : cur.topic,
+                  explain: evt.explain ?? cur.explain,
+                };
+                return clone;
+              });
               setBusy(false);
+            }
+            if (evt.done) {
+              // already handled above
             }
           } catch {}
         }
@@ -106,7 +162,44 @@ export default function ChatPage() {
         ) : (
           msgs.map((m) => (
             <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`bubble ${m.role === 'user' ? 'bubble-user' : 'bubble-bot'}`}>{m.text}</div>
+              <div className={`bubble ${m.role === 'user' ? 'bubble-user' : 'bubble-bot'}`}>
+                <div className="whitespace-pre-wrap">{m.text}</div>
+                {canExplain && m.role === 'assistant' && (m.explain || (m.sources && m.sources.length) || (m.memory_ids && m.memory_ids.length)) && (
+                  <details className="mt-2">
+                    <summary className="text-xs opacity-70 cursor-pointer select-none">Explain</summary>
+                    {(() => {
+                      const ex = m.explain || {};
+                      const intent = typeof ex.intent === 'string' ? ex.intent : '';
+                      const route = typeof ex.route === 'string' ? ex.route : '';
+                      const totalMs = ex?.timings_ms && typeof ex.timings_ms.total === 'number' ? ex.timings_ms.total : null;
+                      const toolsArr = Array.isArray(ex.tools) ? ex.tools : [];
+                      const okCount = toolsArr.filter((t: any) => t && t.ok === true).length;
+                      const errCount = toolsArr.filter((t: any) => t && t.ok === false).length;
+                      return (
+                        <div className="text-xs mt-2">
+                          {(intent || route || totalMs !== null) && (
+                            <div className="opacity-80">
+                              {intent ? <div>intent: {intent}</div> : null}
+                              {route ? <div>route: {route}</div> : null}
+                              {totalMs !== null ? <div>total_ms: {totalMs}</div> : null}
+                            </div>
+                          )}
+                          {toolsArr.length > 0 && (
+                            <div className="opacity-80 mt-1">tools: {okCount} ok / {errCount} error</div>
+                          )}
+                        </div>
+                      );
+                    })()}
+                    <pre className="text-xs whitespace-pre-wrap mt-2">{JSON.stringify({
+                      topic: m.topic,
+                      origin: m.origin,
+                      memory_ids: m.memory_ids,
+                      sources: m.sources,
+                      explain: m.explain,
+                    }, null, 2)}</pre>
+                  </details>
+                )}
+              </div>
             </div>
           ))
         )}

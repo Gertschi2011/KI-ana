@@ -8,6 +8,8 @@ services:
       - "--config.file=/etc/prometheus/prometheus.yml"
       - "--storage.tsdb.path=/prometheus"
       - "--web.enable-lifecycle"
+      - "--web.external-url=/ops/prometheus/"
+      - "--web.route-prefix=/ops/prometheus/"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./alert_rules.yml:/etc/prometheus/alert_rules.yml:ro
@@ -23,6 +25,8 @@ services:
     environment:
       GF_SECURITY_ADMIN_PASSWORD: "admin"
       GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_SERVER_ROOT_URL: "%(protocol)s://%(domain)s/ops/grafana/"
+      GF_SERVER_SERVE_FROM_SUB_PATH: "true"
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning:ro
@@ -92,4 +96,4 @@ volumes:
 networks:
   kiana_staging:
     external: true
-    name: ki_ana_staging_kiana_staging
+    name: ${KIANA_MONITORING_NETWORK_NAME:-ki_ana_staging_kiana_staging}

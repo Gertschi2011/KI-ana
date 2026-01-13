@@ -83,6 +83,13 @@
       const data = await r.json().catch(()=>({}));
       if (data && data.auth && data.user){
         cachedUserName = data.user.username || data.user.email || null;
+        try{
+          // Cache roles for UI gating (Explain, Admin tools, etc.)
+          const roles = Array.isArray(data.user.roles) ? data.user.roles : [];
+          window.__kianaRoles = roles.map(x=> String(x||'').toLowerCase());
+          window.__kianaIsAdmin = !!data.user.is_admin || window.__kianaRoles.includes('admin');
+          window.__kianaIsCreator = !!data.user.is_creator || window.__kianaRoles.includes('creator');
+        }catch{}
         try{ localStorage.setItem('kiana_username', cachedUserName || ''); }catch{}
         // store plan if provided
         try{ if (data.user.plan){ localStorage.setItem('kiana_plan', String(data.user.plan)); } }catch{}
@@ -91,12 +98,57 @@
         }
       } else {
         cachedUserName = null;
+        try{ window.__kianaRoles = []; window.__kianaIsAdmin = false; window.__kianaIsCreator = false; }catch{}
         try{ localStorage.removeItem('kiana_username'); }catch{}
         try{ localStorage.removeItem('kiana_plan'); }catch{}
       }
     }catch{
       cachedUserName = null;
+      try{ window.__kianaRoles = []; window.__kianaIsAdmin = false; window.__kianaIsCreator = false; }catch{}
     }
+  }
+
+  function canShowExplainUI(){
+    try{
+      return !!(window.__kianaIsAdmin || window.__kianaIsCreator);
+    }catch{ return false; }
+  }
+
+  function renderExplainIfPresent(meta){
+    try{
+      if (!meta || !meta.explain) return;
+      if (!canShowExplainUI()) return;
+      const chat = document.getElementById('chat');
+      if (!chat) return;
+      const wrap = chat.lastElementChild;
+      if (!wrap || !wrap.classList || !wrap.classList.contains('msg') || !wrap.classList.contains('ai')) return;
+      if (wrap.querySelector('.explain-block')) return;
+
+      const details = document.createElement('details');
+      details.className = 'explain-block';
+      details.style.marginTop = '8px';
+      details.style.opacity = '0.92';
+
+      const summary = document.createElement('summary');
+      summary.textContent = 'Explain';
+      summary.style.cursor = 'pointer';
+      summary.style.fontSize = '12px';
+      summary.style.opacity = '0.85';
+      details.appendChild(summary);
+
+      const pre = document.createElement('pre');
+      pre.style.whiteSpace = 'pre-wrap';
+      pre.style.wordBreak = 'break-word';
+      pre.style.fontSize = '12px';
+      pre.style.margin = '6px 0 0 0';
+      pre.style.padding = '8px';
+      pre.style.borderRadius = '10px';
+      pre.style.background = 'rgba(0,0,0,0.06)';
+      pre.textContent = (()=>{ try{ return JSON.stringify(meta.explain, null, 2); }catch{ return String(meta.explain); } })();
+      details.appendChild(pre);
+
+      wrap.appendChild(details);
+    }catch{}
   }
 
   function getGreetingByTime(name){
@@ -1600,6 +1652,7 @@
       }
       try { applyNaturalFormat(meta || {}, String(txt||'')); } catch {}
       try { addMetaBadgesToLastAI(meta || {}); } catch {}
+      try { renderExplainIfPresent(meta || {}); } catch {}
       if (autoScroll){ scrollToBottom(false); }
       applyScrollUI();
       // IMPORTANT: release previewEl so the next AI turn gets a new bubble
@@ -1826,7 +1879,7 @@
         return;
       }
       const reply = data.reply ?? data.text ?? String(data);
-      finalizePreview(prefill ? (prefill + reply) : reply);
+      finalizePreview(prefill ? (prefill + reply) : reply, data || {});
       
       // Save AI response to server
       if (serverConvId) {
@@ -1834,7 +1887,7 @@
         saveMessageToServer('ai', aiText, serverConvId);
       }
       
-      try{ addMetaBadgesToLastAI(data || {}); }catch{}
+      // (meta badges / explain are rendered in finalizePreview)
       try{
         // Attach memory ids to last AI bubble for rating
         const ids = Array.isArray(data.memory_ids) ? data.memory_ids : [];

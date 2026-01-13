@@ -5,6 +5,7 @@
 - Prometheus: `http://127.0.0.1:29090`
 - Grafana: `http://127.0.0.1:23001` (admin / admin)
 - Alertmanager: `http://127.0.0.1:29093`
+- Quality Dashboard: Grafana → "KI_ana - Quality" (UID: `kiana-quality`)
 
 ## Quick Health Checks
 

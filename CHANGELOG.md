@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Ops / Monitoring (Phase E)
 
 - ✅ Phase E → DONE: SLO-fähige SLIs (HTTP latency/error, dependencies, Celery runtime/failures/freshness), nicht-noisy Alerts (gated + `for`), Runbooks + Ops-Docs, Messkette E2E verifiziert (Worker → Redis → Backend → Prometheus → Grafana)
+- ✅ Phase E2 → DONE: Quality SLO recording rules + burn alerts, “KI_ana – Quality” Dashboard, Runbook + Navigation.
+- ✅ Quality Gates → DONE (observational default): Router-integrated gates (sources_required, learning_cooldown, tools_disabled observed), explain.gates + ki_ana_quality_gate_total, env-gated enforcement + creator/admin bypass.
 
 ### Compliance (Phase D)
 

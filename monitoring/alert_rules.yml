@@ -121,6 +121,360 @@ groups:
           runbook: "ops/runbooks/celery_stale.md"
           dashboard: "monitoring/grafana/dashboards/kiana-overview.json"
 
+  - name: ki-ana-quality-slos
+    rules:
+      # ---- Recording rules (optional; speeds up Grafana) -----------------
+      - record: ki_ana_quality_tool_error_rate_10m
+        expr: |
+          (
+            sum(rate(ki_ana_chat_tool_calls_total{status="error"}[10m]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_tool_calls_total[10m])), 1)
+          )
+
+      - record: ki_ana_quality_tool_error_rate_2h
+        expr: |
+          (
+            sum(rate(ki_ana_chat_tool_calls_total{status="error"}[2h]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_tool_calls_total[2h])), 1)
+          )
+
+      - record: ki_ana_quality_no_sources_rate_10m
+        expr: |
+          (
+            sum(rate(ki_ana_chat_answers_without_sources_total{intent=~"factual|research"}[10m]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_answer_duration_seconds_count{intent=~"factual|research"}[10m])), 1)
+          )
+
+      - record: ki_ana_quality_no_sources_rate_2h
+        expr: |
+          (
+            sum(rate(ki_ana_chat_answers_without_sources_total{intent=~"factual|research"}[2h]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_answer_duration_seconds_count{intent=~"factual|research"}[2h])), 1)
+          )
+
+      - record: ki_ana_quality_consent_prompt_rate_10m
+        expr: |
+          (
+            sum(rate(ki_ana_learning_consent_total{kind="prompt"}[10m]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_answer_duration_seconds_count[10m])), 1)
+          )
+
+      - record: ki_ana_quality_consent_prompt_rate_2h
+        expr: |
+          (
+            sum(rate(ki_ana_learning_consent_total{kind="prompt"}[2h]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_answer_duration_seconds_count[2h])), 1)
+          )
+
+      - record: ki_ana_quality_negative_feedback_rate_10m
+        expr: |
+          (
+            sum(rate(ki_ana_chat_feedback_total{status="negative"}[10m]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_feedback_total[10m])), 1)
+          )
+
+      - record: ki_ana_quality_negative_feedback_rate_2h
+        expr: |
+          (
+            sum(rate(ki_ana_chat_feedback_total{status="negative"}[2h]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_feedback_total[2h])), 1)
+          )
+
+      - record: ki_ana_quality_traffic_rps_5m
+        expr: |
+          sum(rate(ki_ana_chat_answer_duration_seconds_count[5m]))
+
+      # ---- SLO-1: Latency p95 by intent (threshold-based) ----------------
+      - alert: KiAnaQualityLatencyP95HighFastGeneral
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent="general"}[10m])) by (le)
+          ) > 2.0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 fast burn: general (>2.0s)"
+          description: "p95 latency for intent=general is above 2.0s over 10m (fast burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighSlowGeneral
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent="general"}[2h])) by (le)
+          ) > 2.0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 slow burn: general (>2.0s)"
+          description: "p95 latency for intent=general is above 2.0s over 2h (slow burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighFastTool
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent="tool"}[10m])) by (le)
+          ) > 6.0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 fast burn: tool (>6.0s)"
+          description: "p95 latency for intent=tool is above 6.0s over 10m (fast burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighSlowTool
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent="tool"}[2h])) by (le)
+          ) > 6.0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 slow burn: tool (>6.0s)"
+          description: "p95 latency for intent=tool is above 6.0s over 2h (slow burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighFastFactual
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent="factual"}[10m])) by (le)
+          ) > 8.0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 fast burn: factual (>8.0s)"
+          description: "p95 latency for intent=factual is above 8.0s over 10m (fast burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighSlowFactual
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent="factual"}[2h])) by (le)
+          ) > 8.0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 slow burn: factual (>8.0s)"
+          description: "p95 latency for intent=factual is above 8.0s over 2h (slow burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighFastResearch
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent="research"}[10m])) by (le)
+          ) > 8.0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 fast burn: research (>8.0s)"
+          description: "p95 latency for intent=research is above 8.0s over 10m (fast burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighSlowResearch
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent="research"}[2h])) by (le)
+          ) > 8.0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 slow burn: research (>8.0s)"
+          description: "p95 latency for intent=research is above 8.0s over 2h (slow burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighFastOther
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent!~"general|tool|factual|research"}[10m])) by (le)
+          ) > 6.0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 fast burn: other intents (>6.0s)"
+          description: "p95 latency (all other intents) is above 6.0s over 10m (fast burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityLatencyP95HighSlowOther
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent!~"general|tool|factual|research"}[2h])) by (le)
+          ) > 6.0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency p95 slow burn: other intents (>6.0s)"
+          description: "p95 latency (all other intents) is above 6.0s over 2h (slow burn)."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      # ---- SLO-2: Tool error rate ----------------------------------------
+      - alert: KiAnaQualityToolErrorRateHighFast
+        expr: |
+          (
+            sum(rate(ki_ana_chat_tool_calls_total{status="error"}[10m]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_tool_calls_total[10m])), 1)
+          ) > 0.06
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Tool error rate fast burn (>6%)"
+          description: "Tool errors elevated over last 10m."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityToolErrorRateHighSlow
+        expr: |
+          (
+            sum(rate(ki_ana_chat_tool_calls_total{status="error"}[2h]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_tool_calls_total[2h])), 1)
+          ) > 0.03
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Tool error rate slow burn (>3%)"
+          description: "Tool errors elevated over last 2h."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      # ---- SLO-3: Answers without sources (factual|research only) --------
+      - alert: KiAnaQualityNoSourcesRateHighFast
+        expr: |
+          (
+            sum(rate(ki_ana_chat_answers_without_sources_total{intent=~"factual|research"}[10m]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_answer_duration_seconds_count{intent=~"factual|research"}[10m])), 1)
+          ) > 0.10
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "No-sources proxy fast burn (>10%)"
+          description: "Answers without sources elevated for factual|research over last 10m."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityNoSourcesRateHighSlow
+        expr: |
+          (
+            sum(rate(ki_ana_chat_answers_without_sources_total{intent=~"factual|research"}[2h]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_answer_duration_seconds_count{intent=~"factual|research"}[2h])), 1)
+          ) > 0.07
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "No-sources proxy slow burn (>7%)"
+          description: "Answers without sources elevated for factual|research over last 2h."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      # ---- SLO-4: Consent prompt rate (anti-spam) ------------------------
+      - alert: KiAnaQualityConsentPromptRateHighFast
+        expr: |
+          (
+            sum(rate(ki_ana_learning_consent_total{kind="prompt"}[10m]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_answer_duration_seconds_count[10m])), 1)
+          ) > 0.30
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Consent prompt rate fast burn (>30%)"
+          description: "Consent prompts elevated over last 10m."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityConsentPromptRateHighSlow
+        expr: |
+          (
+            sum(rate(ki_ana_learning_consent_total{kind="prompt"}[2h]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_answer_duration_seconds_count[2h])), 1)
+          ) > 0.20
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Consent prompt rate slow burn (>20%)"
+          description: "Consent prompts elevated over last 2h."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      # ---- SLO-5: Negative feedback rate ---------------------------------
+      - alert: KiAnaQualityNegativeFeedbackRateHighFast
+        expr: |
+          (
+            sum(rate(ki_ana_chat_feedback_total{status="negative"}[10m]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_feedback_total[10m])), 1)
+          ) > 0.08
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Negative feedback rate fast burn (>8%)"
+          description: "Negative feedback elevated over last 10m."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
+      - alert: KiAnaQualityNegativeFeedbackRateHighSlow
+        expr: |
+          (
+            sum(rate(ki_ana_chat_feedback_total{status="negative"}[2h]))
+            /
+            clamp_min(sum(rate(ki_ana_chat_feedback_total[2h])), 1)
+          ) > 0.05
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Negative feedback rate slow burn (>5%)"
+          description: "Negative feedback elevated over last 2h."
+          runbook: "ops/runbooks/quality_slos.md"
+          dashboard: "monitoring/grafana/dashboards/kiana-quality.json"
+
   - name: ki-ana-probes
     rules:
       - alert: KiAnaPublicPingDown

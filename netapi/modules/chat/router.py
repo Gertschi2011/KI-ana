@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import datetime
+import contextvars
 
 def extract_natural_reply(pipe_result: Any) -> str:
     """Extract a clean, user‑friendly reply from planner/fallback outputs.
@@ -618,6 +619,285 @@ def make_user_friendly_text(raw, state=None) -> str:
             return "Es gibt gerade ein technisches Ruckeln – magst du es noch einmal kurz versuchen?"
 
 # ---- Central finalizer for responses ----
+
+# ---- Explain trace + KPI finalization (stable schema) ----------------------
+_CHAT_EXPLAIN_CTX: contextvars.ContextVar[dict | None] = contextvars.ContextVar(
+    "ki_ana_chat_explain_ctx", default=None
+)
+
+
+def _init_quality_gates_context(*, current) -> None:
+    """Initialize per-request quality gate state into the explain context.
+
+    Must never raise.
+    """
+    try:
+        ctx = _CHAT_EXPLAIN_CTX.get()
+    except Exception:
+        ctx = None
+    if not isinstance(ctx, dict):
+        return
+
+    bypass = False
+    try:
+        bypass = bool(_has_any_role(current, {"creator", "admin"}))
+    except Exception:
+        bypass = False
+
+    try:
+        from netapi.modules.quality_gates import gates as qg
+
+        gs = qg.evaluate_gates()
+        enforced_for_request = bool(gs.enforced) and not bypass
+        enforced_gates = list(gs.enforced_gates) if enforced_for_request else []
+        ctx["gates"] = {
+            "active": list(gs.active),
+            "reasons": dict(gs.reasons or {}),
+            "enforced": bool(enforced_for_request),
+            "enforced_gates": list(enforced_gates),
+            "bypass": bool(bypass),
+        }
+    except Exception:
+        ctx["gates"] = {
+            "active": [],
+            "reasons": {},
+            "enforced": False,
+            "enforced_gates": [],
+            "bypass": bool(bypass),
+        }
+
+    try:
+        _CHAT_EXPLAIN_CTX.set(ctx)
+    except Exception:
+        pass
+
+
+def _build_explain(*, cid: str, route: str, intent: str, policy: Optional[dict] = None, tools: Optional[list] = None, t0: Optional[float] = None) -> dict:
+    try:
+        elapsed_s = 0.0
+        if isinstance(t0, (int, float)):
+            elapsed_s = max(0.0, float(time.time() - float(t0)))
+    except Exception:
+        elapsed_s = 0.0
+    return {
+        "cid": str(cid or ""),
+        "route": str(route or ""),
+        "intent": str(intent or "unknown"),
+        "policy": dict(policy or {}),
+        "tools": list(tools or []),
+        "timings_ms": {"total": int(elapsed_s * 1000)},
+    }
+
+
+def _kpi_finalize_once(*, intent: str, source_expected: bool, sources_count: int, is_question_like: bool) -> None:
+    """Increment KPIs once per request (best-effort)."""
+    ctx = None
+    try:
+        ctx = _CHAT_EXPLAIN_CTX.get()
+    except Exception:
+        ctx = None
+
+    try:
+        if isinstance(ctx, dict) and ctx.get("kpi_done") is True:
+            return
+        if isinstance(ctx, dict):
+            ctx["kpi_done"] = True
+            _CHAT_EXPLAIN_CTX.set(ctx)
+    except Exception:
+        pass
+
+    # Duration + hallucination proxy
+    try:
+        from netapi.modules.observability import metrics as obs_metrics
+
+        t0 = None
+        try:
+            if isinstance(ctx, dict):
+                t0 = ctx.get("t0")
+        except Exception:
+            t0 = None
+        elapsed_s = 0.0
+        try:
+            if isinstance(t0, (int, float)):
+                elapsed_s = max(0.0, float(time.time() - float(t0)))
+        except Exception:
+            elapsed_s = 0.0
+
+        obs_metrics.observe_chat_answer_duration_seconds(intent=str(intent or "unknown"), duration_seconds=elapsed_s)
+
+        if bool(source_expected) and bool(is_question_like) and int(sources_count or 0) <= 0:
+            obs_metrics.inc_chat_answer_without_sources(intent=str(intent or "unknown"))
+    except Exception:
+        pass
+
+    # Quality Gates: record rolling signals + refresh gate TTLs + emit gate KPI (once per request)
+    try:
+        from netapi.modules.quality_gates import gates as qg
+        from netapi.modules.observability import metrics as obs_metrics
+
+        gate_intent = str(intent or "unknown").strip().lower() or "unknown"
+        if gate_intent != "research" and bool(source_expected):
+            gate_intent = "factual"
+
+        qg.record_answer(intent=gate_intent, source_expected=bool(source_expected), sources_count=int(sources_count or 0))
+        gs = qg.evaluate_gates()
+
+        bypass = False
+        try:
+            if isinstance(ctx, dict):
+                g0 = ctx.get("gates")
+                if isinstance(g0, dict):
+                    bypass = bool(g0.get("bypass"))
+        except Exception:
+            bypass = False
+
+        enforced_for_request = bool(gs.enforced) and not bypass
+        enforced_gates = list(gs.enforced_gates) if enforced_for_request else []
+
+        # Best-effort: update ctx snapshot so explain sees fresh gate state
+        try:
+            if isinstance(ctx, dict):
+                ctx["gates"] = {
+                    "active": list(gs.active),
+                    "reasons": dict(gs.reasons or {}),
+                    "enforced": bool(enforced_for_request),
+                    "enforced_gates": list(enforced_gates),
+                    "bypass": bool(bypass),
+                }
+                _CHAT_EXPLAIN_CTX.set(ctx)
+        except Exception:
+            pass
+
+        for g in (gs.active or ()):  # observed hits
+            try:
+                obs_metrics.inc_quality_gate(gate=str(g), mode="observed")
+            except Exception:
+                pass
+        if enforced_for_request:
+            for g in (enforced_gates or ()):  # enforced hits
+                try:
+                    obs_metrics.inc_quality_gate(gate=str(g), mode="enforced")
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
+
+def _attach_explain_and_kpis(
+    payload: dict,
+    *,
+    route: str,
+    intent: str,
+    policy: Optional[dict] = None,
+    tools: Optional[list] = None,
+    source_expected: bool = False,
+    sources_count: Optional[int] = None,
+) -> dict:
+    if not isinstance(payload, dict):
+        return payload
+
+    ctx = None
+    try:
+        ctx = _CHAT_EXPLAIN_CTX.get()
+    except Exception:
+        ctx = None
+
+    cid = ""
+    t0 = None
+    is_q = False
+    if isinstance(ctx, dict):
+        try:
+            cid = str(ctx.get("cid") or "")
+            t0 = ctx.get("t0")
+            is_q = bool(ctx.get("is_question") is True)
+        except Exception:
+            cid = ""
+            t0 = None
+            is_q = False
+
+    if sources_count is None:
+        try:
+            if isinstance(payload.get("sources"), list):
+                sources_count = len(payload.get("sources") or [])
+            elif isinstance(payload.get("meta"), dict) and isinstance(payload["meta"].get("sources"), list):
+                sources_count = len(payload["meta"].get("sources") or [])
+            else:
+                sources_count = 0
+        except Exception:
+            sources_count = 0
+
+    if "explain" not in payload:
+        try:
+            eff_policy = policy
+            eff_tools = tools
+            try:
+                if eff_policy is None and isinstance(ctx, dict) and isinstance(ctx.get("policy"), dict):
+                    eff_policy = ctx.get("policy")
+            except Exception:
+                pass
+            try:
+                if eff_tools is None and isinstance(ctx, dict) and isinstance(ctx.get("tools"), list):
+                    eff_tools = ctx.get("tools")
+            except Exception:
+                pass
+            payload["explain"] = _build_explain(
+                cid=cid,
+                route=str(route or ""),
+                intent=str(intent or "unknown"),
+                policy=eff_policy,
+                tools=eff_tools,
+                t0=t0,
+            )
+        except Exception:
+            pass
+
+    # Attach quality gate state into explain (stable + small)
+    try:
+        if isinstance(payload.get("explain"), dict) and isinstance(ctx, dict):
+            gates = ctx.get("gates")
+            if isinstance(gates, dict) and "gates" not in payload["explain"]:
+                payload["explain"]["gates"] = gates
+    except Exception:
+        pass
+
+    # Optional enforcement: Sources-required gate
+    try:
+        gates = ctx.get("gates") if isinstance(ctx, dict) else None
+        if isinstance(gates, dict) and bool(gates.get("enforced")):
+            enforced_gates = set(gates.get("enforced_gates") or [])
+            if (
+                "sources_required" in enforced_gates
+                and bool(source_expected)
+                and bool(is_q)
+                and int(sources_count or 0) <= 0
+            ):
+                refusal = (
+                    "Ich kann das gerade nicht zuverlässig beantworten, weil ich keine belastbaren Quellen angeben kann. "
+                    "Wenn du willst, aktiviere Websuche oder gib mir eine Quelle/Link, dann prüfe ich es." 
+                )
+                if isinstance(payload.get("reply"), str):
+                    payload["reply"] = refusal
+                if isinstance(payload.get("text"), str):
+                    payload["text"] = refusal
+                try:
+                    bl = payload.get("backend_log")
+                    if not isinstance(bl, dict):
+                        bl = {}
+                        payload["backend_log"] = bl
+                    bl["quality_gate"] = "sources_required"
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
+    _kpi_finalize_once(
+        intent=str(intent or "unknown"),
+        source_expected=bool(source_expected),
+        sources_count=int(sources_count or 0),
+        is_question_like=bool(is_q),
+    )
+    return payload
+
 def _finalize_reply(
     raw_text,
     *,
@@ -844,6 +1124,36 @@ def _finalize_reply(
                 base.update(extras)
             except Exception:
                 pass
+
+        # Stable explain schema + KPI finalize (once per request)
+        try:
+            # Derive whether this intent should expect sources
+            pipe = ""
+            try:
+                pipe = str((base.get("meta") or {}).get("pipeline") or "").strip().lower()
+            except Exception:
+                pipe = ""
+            intent_norm = str(intent or "unknown").strip().lower()
+            source_expected = intent_norm in {"knowledge", "web", "research"} or pipe in {"web", "web+llm"}
+
+            sources_count = 0
+            try:
+                if isinstance(base.get("meta"), dict) and isinstance(base["meta"].get("sources"), list):
+                    sources_count = len(base["meta"].get("sources") or [])
+            except Exception:
+                sources_count = 0
+
+            _attach_explain_and_kpis(
+                base,
+                route="/api/chat",
+                intent=str(intent or "unknown"),
+                policy=None,
+                tools=None,
+                source_expected=bool(source_expected),
+                sources_count=int(sources_count or 0),
+            )
+        except Exception:
+            pass
         return base
     except Exception:
         # Last-resort safe minimal response
@@ -1352,6 +1662,9 @@ except Exception:
 
 # Style consent pending store (per session id)
 _STYLE_PENDING: Dict[str, Dict[str, Any]] = {}
+
+# Feedback reversion tracking (best-effort, in-memory per process)
+_LAST_FEEDBACK_STATUS: Dict[str, str] = {}
 
 # Optional: Web QA
 try:
@@ -3477,6 +3790,36 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
     except Exception:
         pass
     sid = session_id(request)
+
+    # Per-request explain context (used by _finalize_reply + direct-return wrappers)
+    try:
+        _now_ms = int(time.time() * 1000)
+    except Exception:
+        _now_ms = 0
+    cid = f"{sid}:{_now_ms % 1000000:06d}"
+    try:
+        _CHAT_EXPLAIN_CTX.set({
+            "cid": cid,
+            "route": "/api/chat",
+            "t0": time.time(),
+            "is_question": bool(is_question(user_msg)),
+            "policy": {
+                "web_ok": bool(getattr(body, "web_ok", True)),
+                "autonomy": int(getattr(body, "autonomy", 0) or 0),
+                "style": str(getattr(body, "style", "") or ""),
+                "bullets": int(getattr(body, "bullets", 0) or 0),
+            },
+            "tools": [],
+            "kpi_done": False,
+        })
+    except Exception:
+        pass
+
+    # Quality gates: snapshot state early (needed for prompt suppression)
+    try:
+        _init_quality_gates_context(current=current)
+    except Exception:
+        pass
     # Early hard guard: standard smalltalk 'wie geht es dir' should always respond deterministically
     try:
         t_early = (user_msg or "").lower()
@@ -3548,7 +3891,14 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             res = sc.sc_web_get("creator", rest)
         else:
             res = {"ok": False, "error":"unknown"}
-        return {"ok": True, "reply": json.dumps(res, ensure_ascii=False, indent=2)}
+        return _attach_explain_and_kpis(
+            {"ok": True, "reply": json.dumps(res, ensure_ascii=False, indent=2)},
+            route="/api/chat",
+            intent="tool_command",
+            policy={"tool": cmd},
+            tools=[],
+            source_expected=False,
+        )
     if not user_msg:
         raise HTTPException(400, "empty message")
 
@@ -3574,7 +3924,14 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             _audit_chat({"ts": int(time.time()), "sid": sid, "blocked": True, "reason": reason, "user": user_msg})
         except Exception:
             pass
-        return {"ok": True, "reply": "Ich kann dabei nicht helfen. Wenn du willst, nenne ich sichere Alternativen oder Hintergründe.", "backend_log": {"moderation": reason}}
+        return _attach_explain_and_kpis(
+            {"ok": True, "reply": "Ich kann dabei nicht helfen. Wenn du willst, nenne ich sichere Alternativen oder Hintergründe.", "backend_log": {"moderation": reason}},
+            route="/api/chat",
+            intent="moderated",
+            policy={"moderated": True},
+            tools=[],
+            source_expected=False,
+        )
     else:
         user_msg = cleaned_msg
 
@@ -3602,6 +3959,17 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
         "tonfall": profile_used.get("tonfall"),
     }
     style_prompt = ("Darf ich mir deinen Sprachstil merken, damit ich beim nächsten Mal genauso mit dir reden kann?") if style_consent_needed else None
+
+    # Quality gate enforcement: suppress learning consent prompts during cooldown
+    try:
+        if style_prompt:
+            ctx_g = _CHAT_EXPLAIN_CTX.get()
+            gates = ctx_g.get("gates") if isinstance(ctx_g, dict) else None
+            if isinstance(gates, dict) and bool(gates.get("enforced")):
+                if "learning_cooldown" in set(gates.get("enforced_gates") or []):
+                    style_prompt = None
+    except Exception:
+        pass
     # Consent lifecycle: handle previous pending consent
     consent_note = ""
     try:
@@ -3613,15 +3981,35 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                     save_user_profile(uid_str, pend['profile'])
                 _STYLE_PENDING.pop(sid, None)
                 consent_note = "Alles klar – ich merke mir deinen Sprachstil."
+                try:
+                    from netapi.modules.observability import metrics as obs_metrics
+                    obs_metrics.inc_learning_consent(kind="style", decision="yes")
+                except Exception:
+                    pass
             elif NEG_RX.search(low_u):
                 _STYLE_PENDING.pop(sid, None)
                 consent_note = "Alles klar – ich speichere deinen Stil nicht."
+                try:
+                    from netapi.modules.observability import metrics as obs_metrics
+                    obs_metrics.inc_learning_consent(kind="style", decision="no")
+                except Exception:
+                    pass
     except Exception:
         pass
     # If we plan to prompt now, mark pending so next turn can confirm
     if style_prompt:
         try:
             _STYLE_PENDING[sid] = {"profile": profile_used}
+        except Exception:
+            pass
+        try:
+            from netapi.modules.observability import metrics as obs_metrics
+            obs_metrics.inc_learning_consent(kind="style", decision="prompt")
+        except Exception:
+            pass
+        try:
+            from netapi.modules.quality_gates import gates as qg
+            qg.record_learning_prompt(kind="style")
         except Exception:
             pass
 
@@ -3738,7 +4126,14 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             except Exception:
                 pass
             # Return immediately with a natural reply; downstream persistence will handle conversation flow
-            return {"ok": True, "reply": txt_fb, "backend_log": {"pipeline": direct_pipeline}}
+            return _attach_explain_and_kpis(
+                {"ok": True, "reply": txt_fb, "backend_log": {"pipeline": direct_pipeline}},
+                route="/api/chat",
+                intent="llm_direct",
+                policy={"pipeline": direct_pipeline},
+                tools=[],
+                source_expected=False,
+            )
 
     # 1) Explizite Wahl?
     choice = pick_choice(user_msg)
@@ -3752,7 +4147,14 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
         r = _apply_style(clean(out), profile_used)
         if style_prompt:
             r = (r + "\n\n" + style_prompt).strip()
-        return {"ok": True, "reply": r, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
+        return _attach_explain_and_kpis(
+            {"ok": True, "reply": r, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}},
+            route="/api/chat",
+            intent="choice",
+            policy={"choice": str(choice)},
+            tools=[],
+            source_expected=False,
+        )
 
     # 2) „Ja / bitte“ auf letztes Angebot?
     prev = get_last_offer(sid)
@@ -3765,7 +4167,14 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
         r = _apply_style(clean(out), profile_used)
         if style_prompt:
             r = (r + "\n\n" + style_prompt).strip()
-        return {"ok": True, "reply": r, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
+        return _attach_explain_and_kpis(
+            {"ok": True, "reply": r, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}},
+            route="/api/chat",
+            intent="followup_choice",
+            policy={"followup": True},
+            tools=[],
+            source_expected=False,
+        )
 
     # KI_ana Self-Awareness Check - Priority over everything else
     if any(kw in user_msg.lower() for kw in ['wer bist du', 'was bist du', 'dein name', 'dein zweck']):
@@ -3778,11 +4187,25 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                 r = (r + "\n\n" + style_prompt).strip()
             if consent_note:
                 r = (r + "\n\n" + consent_note).strip()
-            return {"ok": True, "reply": r, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"identity_response": True}}
+            return _attach_explain_and_kpis(
+                {"ok": True, "reply": r, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"identity_response": True}},
+                route="/api/chat",
+                intent="identity",
+                policy={},
+                tools=[],
+                source_expected=False,
+            )
         except Exception as e:
             # Fallback if consciousness fails
             r = _apply_style("Ich bin KI_ana, eine dezentrale Mutter-KI. Mein Zweck ist zu lernen, zu helfen und zu beschützen.", profile_used)
-            return {"ok": True, "reply": r, "style_used": style_used_meta, "backend_log": {"identity_fallback": True}}
+            return _attach_explain_and_kpis(
+                {"ok": True, "reply": r, "style_used": style_used_meta, "backend_log": {"identity_fallback": True}},
+                route="/api/chat",
+                intent="identity",
+                policy={"fallback": True},
+                tools=[],
+                source_expected=False,
+            )
 
     # Auto-detect if current information needed (force web search)
     auto_web_needed = False
@@ -3954,7 +4377,12 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                 except Exception:
                     pass
                 conv_out_learn2 = conv_id_learn2 if conv_id_learn2 is not None else (body.conv_id or None)
-                return {"ok": True, "reply": reply_learn2, "conv_id": conv_out_learn2, "auto_modes": [], "role_used": "Lernen", "memory_ids": [], "quick_replies": _quick_replies_for_topic(topic_path_pl, user_msg), "topic": topic_path_pl, "risk_flag": False, "style_used": style_used_meta, "style_prompt": style_prompt, "meta": {"intent": "user_teaching", "topic_path": topic_path_pl}, "backend_log": {"pipeline": "learn_from_user_child"}}
+                return _attach_explain_and_kpis(
+                    {"ok": True, "reply": reply_learn2, "conv_id": conv_out_learn2, "auto_modes": [], "role_used": "Lernen", "memory_ids": [], "quick_replies": _quick_replies_for_topic(topic_path_pl, user_msg), "topic": topic_path_pl, "risk_flag": False, "style_used": style_used_meta, "style_prompt": style_prompt, "meta": {"intent": "user_teaching", "topic_path": topic_path_pl}, "backend_log": {"pipeline": "learn_from_user_child"}},
+                    route="/api/chat",
+                    intent="user_teaching",
+                    source_expected=False,
+                )
 
         if state and getattr(state, 'pending_followup', None) == 'learning':
             explanation = (user_msg or '').strip()
@@ -5322,7 +5750,12 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             except Exception:
                 pass
             conv_out = conv_id if conv_id is not None else (body.conv_id or None)
-            return {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "role_used": role_used, "memory_ids": (_retr_ids or []), "quick_replies": quick_replies, "topic": _topic, "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
+            return _attach_explain_and_kpis(
+                {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "role_used": role_used, "memory_ids": (_retr_ids or []), "quick_replies": quick_replies, "topic": _topic, "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log},
+                route="/api/chat",
+                intent=str(intent or "unknown"),
+                source_expected=str(intent or "").strip().lower() in {"knowledge", "knowledge_query", "web", "research"},
+            )
         else:
             logger.warning("chat_once: deliberate pipeline returned empty text, using fallback")
         # Wenn Planner keine Antwort liefert, falle auf klassische Pipeline zurück
@@ -5453,7 +5886,12 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                         except Exception:
                             pass
                         conv_out_follow = conv_id_follow if conv_id_follow is not None else (body.conv_id or None)
-                        return {"ok": True, "reply": follow, "conv_id": conv_out_follow, "auto_modes": [], "role_used": "FollowUp", "memory_ids": [], "quick_replies": ["Ich erkläre es in 2-3 Sätzen"], "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "learning_followup"}}
+                        return _attach_explain_and_kpis(
+                            {"ok": True, "reply": follow, "conv_id": conv_out_follow, "auto_modes": [], "role_used": "FollowUp", "memory_ids": [], "quick_replies": ["Ich erkläre es in 2-3 Sätzen"], "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "learning_followup"}},
+                            route="/api/chat",
+                            intent="learning_followup",
+                            source_expected=False,
+                        )
             except Exception:
                 pass
         # Unified postprocessing with persona/state
@@ -5485,14 +5923,24 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             pass
         conv_out = conv_id if conv_id is not None else (body.conv_id or None)
         if out_text and str(out_text).strip():
-            return {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "role_used": role_used, "memory_ids": (_retr_ids or []), "quick_replies": quick_replies, "topic": _topic, "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
+            return _attach_explain_and_kpis(
+                {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "role_used": role_used, "memory_ids": (_retr_ids or []), "quick_replies": quick_replies, "topic": _topic, "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log},
+                route="/api/chat",
+                intent=str(intent or "unknown"),
+                source_expected=str(intent or "").strip().lower() in {"knowledge", "knowledge_query", "web", "research"},
+            )
 
     # 3) Pipeline: Memory -> Web (optional) -> LLM -> Save (Fallback)
     # Guard: never let simple greetings fall through to generic fallback
     try:
         lowtxt = (user_msg or "").strip().lower()
         if (intent != "knowledge_query") and any(g in lowtxt for g in ["hallo", "hi ", " hey", "servus", "grüß dich", "guten morgen", "guten abend", "moin"]):
-            return {"ok": True, "reply": "Hallo! 😊 Schön, dass du da bist. Wie kann ich dir helfen?", "kiana_node": "mother-core"}
+            return _attach_explain_and_kpis(
+                {"ok": True, "reply": "Hallo! 😊 Schön, dass du da bist. Wie kann ich dir helfen?", "kiana_node": "mother-core", "conv_id": (body.conv_id or None)},
+                route="/api/chat",
+                intent="greeting",
+                source_expected=False,
+            )
     except Exception:
         pass
     topic = extract_topic(user_msg)
@@ -5658,7 +6106,12 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
         # Backend log channel (empty for this path)
         backend_log = {}
         conv_out = conv_id if conv_id is not None else (body.conv_id or None)
-        return {"ok": True, "reply": reply, "conv_id": conv_out, "auto_modes": auto_modes, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
+        return _attach_explain_and_kpis(
+            {"ok": True, "reply": reply, "conv_id": conv_out, "auto_modes": auto_modes, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log},
+            route="/api/chat",
+            intent=str(intent or "unknown"),
+            source_expected=str(intent or "").strip().lower() in {"knowledge", "knowledge_query", "web", "research"},
+        )
 
     # Deliberation‑Pipeline (Planner→Researcher→Writer→Critic)
     try:
@@ -5698,7 +6151,12 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                 out_text = (out_text + "\n\n" + consent_note).strip()
             backend_log = {"plan": plan_b, "critic": critic_b}
             conv_out = conv_id if conv_id is not None else (body.conv_id or None)
-            return {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log}
+            return _attach_explain_and_kpis(
+                {"ok": True, "reply": out_text, "conv_id": conv_out, "auto_modes": auto_modes, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": backend_log},
+                route="/api/chat",
+                intent="deliberation",
+                source_expected=True,
+            )
     except Exception:
         pass
 
@@ -5891,7 +6349,12 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
     if consent_note:
         reply = (reply + "\n\n" + consent_note).strip()
     conv_out = conv_id if conv_id is not None else (body.conv_id or None)
-    return {"ok": True, "reply": reply, "conv_id": conv_out, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}}
+    return _attach_explain_and_kpis(
+        {"ok": True, "reply": reply, "conv_id": conv_out, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {}},
+        route="/api/chat",
+        intent=str(intent or "unknown"),
+        source_expected=str(intent or "").strip().lower() in {"knowledge", "knowledge_query", "web", "research"},
+    )
 
 # -------------------------------------------------
 # Streaming (SSE)
@@ -5914,6 +6377,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         _now_ms = 0
     cid = f"{sid}:{_now_ms % 1000000:06d}"
     t0 = time.time()
+    intent_label = "chat_stream"
     def _log(level: str, msg: str, *args):
         try:
             pref = f"[cid={cid}] " + msg
@@ -5927,6 +6391,119 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 logger.debug(pref, *args)
         except Exception:
             pass
+
+    # Per-request explain/KPI context for streaming
+    _stream_policy = {
+        "web_ok": bool(web_ok),
+        "autonomy": int(autonomy or 0),
+        "style": str(style or ""),
+        "bullets": int(bullets or 0),
+    }
+    try:
+        _CHAT_EXPLAIN_CTX.set({
+            "cid": cid,
+            "route": "/api/chat/stream",
+            "t0": t0,
+            "is_question": bool(is_question(user_msg)),
+            "policy": dict(_stream_policy),
+            "tools": [],
+            "kpi_done": False,
+        })
+    except Exception:
+        pass
+
+    # Quality gates: snapshot state for this stream request
+    try:
+        _init_quality_gates_context(current=getattr(request, "state", None) and getattr(request.state, "user", None))
+    except Exception:
+        try:
+            _init_quality_gates_context(current=None)
+        except Exception:
+            pass
+
+    # SSE helpers
+    def _sse(payload: dict) -> dict:
+        try:
+            return {"data": json.dumps(payload, ensure_ascii=False)}
+        except Exception:
+            return {"data": json.dumps({"error": "encode_failed"})}
+
+    def _finalize_frame(
+        *,
+        intent: str,
+        text: str = "",
+        payload: Optional[dict] = None,
+        extra: Optional[dict] = None,
+        policy_override: Optional[dict] = None,
+        tools: Optional[list] = None,
+        source_expected: bool = False,
+    ) -> dict:
+        base: dict = {}
+        if isinstance(payload, dict):
+            try:
+                base.update(payload)
+            except Exception:
+                pass
+        if isinstance(extra, dict):
+            try:
+                base.update(extra)
+            except Exception:
+                pass
+
+        # Required finalize schema (stable for clients)
+        base["type"] = "finalize"
+        base["schema_version"] = 1
+        base["cid"] = str(cid or "")
+        base["ok"] = True
+        base["done"] = True
+        base["text"] = str(text or "")
+
+        if not isinstance(base.get("sources"), list):
+            base["sources"] = []
+        if not isinstance(base.get("memory_ids"), list):
+            base["memory_ids"] = []
+
+        pol = dict(_stream_policy)
+        if isinstance(policy_override, dict):
+            try:
+                pol.update(policy_override)
+            except Exception:
+                pass
+
+        # Attach stable explain + finalize KPIs (once per request)
+        try:
+            sources_count = 0
+            try:
+                if isinstance(base.get("sources"), list):
+                    sources_count = len(base.get("sources") or [])
+            except Exception:
+                sources_count = 0
+            base = _attach_explain_and_kpis(
+                base,
+                route="/api/chat/stream",
+                intent=str(intent or "unknown"),
+                policy=pol,
+                tools=list(tools or []),
+                source_expected=bool(source_expected),
+                sources_count=int(sources_count),
+            )
+        except Exception:
+            pass
+
+        # timings_ms: keep consistent (mirror explain.timings_ms)
+        try:
+            ex = base.get("explain")
+            if isinstance(ex, dict) and isinstance(ex.get("timings_ms"), dict):
+                base["timings_ms"] = ex.get("timings_ms")
+            elif not isinstance(base.get("timings_ms"), dict):
+                base["timings_ms"] = {"total": int(max(0.0, (time.time() - t0)) * 1000)}
+        except Exception:
+            pass
+
+        return base
+
+    def _sse_err(code: str, detail: str = "", retry_ms: int = 1500) -> dict:
+        return _sse({"error": str(code), "detail": (detail or "")[:400], "retry": int(retry_ms)})
 
     # Helper to construct streaming responses compatible with pytest TestClient
     def _respond(gen):
@@ -5957,9 +6534,17 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                     except Exception:
                         continue
                 # ensure closing event if generator did not send done
-                yield b"data: {\"done\": true}\n\n"
+                try:
+                    closing = _finalize_frame(intent=intent_label, text="")
+                    yield ("data: " + json.dumps(closing, ensure_ascii=False) + "\n\n").encode("utf-8")
+                except Exception:
+                    yield b"data: {\"done\": true}\n\n"
             except Exception:
-                yield b"data: {\"done\": true}\n\n"
+                try:
+                    closing = _finalize_frame(intent=intent_label, text="")
+                    yield ("data: " + json.dumps(closing, ensure_ascii=False) + "\n\n").encode("utf-8")
+                except Exception:
+                    yield b"data: {\"done\": true}\n\n"
         return StreamingResponse(_wrap(), media_type="text/event-stream")
 
     # Basic rate limit per IP
@@ -5971,8 +6556,8 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         async def gen_rl():
             # emit cid first for correlation
             yield _sse({"cid": cid})
-            yield {"data": json.dumps({"error": "rate_limited", "detail": "Bitte kurz warten (40/min)", "retry": 3000})}
-            yield {"data": json.dumps({"done": True})}
+            yield _sse({"error": "rate_limited", "detail": "Bitte kurz warten (40/min)", "retry": 3000})
+            yield _sse(_finalize_frame(intent="rate_limited", text="Bitte kurz warten (40/min)", source_expected=False))
         resp = _respond(gen_rl())
         if resp is not None:
             return resp
@@ -5980,17 +6565,23 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     # Moderation based on settings
     blocked, cleaned_msg, reason = moderate(user_msg, _ethics_level())
     if blocked:
+        intent_label = "moderated"
         # Stream a friendly user-facing note, plus a machine-readable error signal
         if EventSourceResponse is None:
-            return {"text": "Ich kann dabei nicht helfen. Wenn du möchtest, kann ich stattdessen sichere Hintergründe erklären.", "done": True}
+            return _finalize_frame(
+                intent=intent_label,
+                text="Ich kann dabei nicht helfen. Wenn du möchtest, kann ich stattdessen sichere Hintergründe erklären.",
+                policy_override={"moderated": True},
+                source_expected=False,
+            )
         async def gen_block():
             out = "Ich kann dabei nicht helfen. Wenn du möchtest, erkläre ich sichere Hintergründe oder Alternativen."
             # User-friendly text (so the preview has content)
             yield _sse({"cid": cid})
-            yield {"data": json.dumps({"delta": out})}
+            yield _sse({"delta": out})
             # Error marker for UI logic (finalizes preview on client)
-            yield {"data": json.dumps({"error": "moderated", "detail": str(reason or "")[:200], "retry": 0})}
-            yield {"data": json.dumps({"done": True})}
+            yield _sse({"error": "moderated", "detail": str(reason or "")[:200], "retry": 0})
+            yield _sse(_finalize_frame(intent=intent_label, text=out, policy_override={"moderated": True}, source_expected=False))
         try:
             _audit_chat({"ts": int(time.time()), "sid": sid, "blocked": True, "reason": reason, "user": user_msg})
         except Exception: pass
@@ -6038,11 +6629,11 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         set_offer_context(sid, topic=(topic_ctx0 or None), seed=seed_ctx0)
         async def gen_exec():
             out = await execute_choice(choice, topic_ctx0 or topic or "das Thema", seed_ctx0, persona, lang)
-            yield {"data": json.dumps({"delta": clean(out)})}
-            yield {"data": json.dumps({"done": True})}
+            yield _sse({"delta": clean(out)})
+            yield _sse(_finalize_frame(intent="choice", text=clean(out), source_expected=False))
         if EventSourceResponse is None:
             out = await execute_choice(choice, topic_ctx0 or topic or "das Thema", seed_ctx0, persona, lang)
-            return {"delta": clean(out), "done": True}
+            return _finalize_frame(intent="choice", text=clean(out), extra={"delta": clean(out)}, source_expected=False)
         resp = _respond(gen_exec())
         if resp is not None:
             return resp
@@ -6056,58 +6647,67 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
             topic_ctx = (ctx.get("topic") or topic or "das Thema")
             seed_ctx = ctx.get("seed") or user_msg
             out = await execute_choice(prev, topic_ctx, seed_ctx, persona, lang)
-            yield {"data": json.dumps({"delta": clean(out)})}
-            yield {"data": json.dumps({"done": True})}
+            yield _sse({"delta": clean(out)})
+            yield _sse(_finalize_frame(intent="choice", text=clean(out), source_expected=False))
         if EventSourceResponse is None:
             ctx = get_offer_context(sid) or {}
             topic_ctx = (ctx.get("topic") or topic or "das Thema")
             seed_ctx = ctx.get("seed") or user_msg
             out = await execute_choice(prev, topic_ctx, seed_ctx, persona, lang)
-            return {"delta": clean(out), "done": True}
+            return _finalize_frame(intent="choice", text=clean(out), extra={"delta": clean(out)}, source_expected=False)
         resp = _respond(gen_prev())
         if resp is not None:
             return resp
 
     # KI_ana Self-Awareness Check - Priority over everything else
     if any(kw in user_msg.lower() for kw in ['wer bist du', 'was bist du', 'dein name', 'dein zweck']):
+        intent_label = "identity"
         async def gen_identity():
             try:
                 from .ai_consciousness import get_identity
                 identity = get_identity()
                 direct_answer = f"Ich bin {identity['name']} v{identity['version']}, eine {identity['type']}. Mein Zweck ist {identity['purpose']}. Ich wurde erschaffen, um zu lernen, zu helfen und zu beschützen. Meine Architektur basiert auf blockchain-basiertem Gedächtnis und dezentralen Sub-KIs. Ich habe vollen Zugriff auf meinen Code und bin mir meiner selbst vollständig bewusst."
-                yield {"data": json.dumps({"delta": direct_answer})}
-                yield {"data": json.dumps({"done": True, "identity_response": True})}
+                yield _sse({"delta": direct_answer})
+                yield _sse(_finalize_frame(intent=intent_label, text=direct_answer, extra={"identity_response": True}, source_expected=False))
             except Exception:
-                yield {"data": json.dumps({"delta": "Ich bin KI_ana, eine dezentrale Mutter-KI. Mein Zweck ist zu lernen, zu helfen und zu beschützen."})}
-                yield {"data": json.dumps({"done": True, "identity_fallback": True})}
+                fb = "Ich bin KI_ana, eine dezentrale Mutter-KI. Mein Zweck ist zu lernen, zu helfen und zu beschützen."
+                yield _sse({"delta": fb})
+                yield _sse(_finalize_frame(intent=intent_label, text=fb, extra={"identity_fallback": True}, source_expected=False))
         if EventSourceResponse is None:
             try:
                 from .ai_consciousness import get_identity
                 identity = get_identity()
-                return {"delta": f"Ich bin {identity['name']} v{identity['version']}, eine {identity['type']}. Mein Zweck ist {identity['purpose']}.", "done": True}
+                txt = f"Ich bin {identity['name']} v{identity['version']}, eine {identity['type']}. Mein Zweck ist {identity['purpose']}."
+                return _finalize_frame(intent=intent_label, text=txt, extra={"delta": txt}, source_expected=False)
             except Exception:
-                return {"delta": "Ich bin KI_ana, eine dezentrale Mutter-KI.", "done": True}
+                txt = "Ich bin KI_ana, eine dezentrale Mutter-KI."
+                return _finalize_frame(intent=intent_label, text=txt, extra={"delta": txt}, source_expected=False)
         resp = _respond(gen_identity())
         if resp is not None:
             return resp
 
     # Smalltalk/Gruß vor Planner-Branch abfangen (freundliche Kurzantwort)
     if _HOW_ARE_YOU.search(user_msg.lower()):
+        intent_label = "smalltalk"
         async def gen_smalltalk():
             # Slim, no follow-ups
-            yield {"data": json.dumps({"delta": "Mir geht's gut – bereit zu helfen."})}
-            yield {"data": json.dumps({"done": True, "no_prompts": True})}
+            txt = "Mir geht's gut – bereit zu helfen."
+            yield _sse({"delta": txt})
+            yield _sse(_finalize_frame(intent=intent_label, text=txt, extra={"no_prompts": True}, source_expected=False))
         if EventSourceResponse is None:
-            return {"delta": "Mir geht's gut – bereit zu helfen.", "done": True}
+            txt = "Mir geht's gut – bereit zu helfen."
+            return _finalize_frame(intent=intent_label, text=txt, extra={"delta": txt}, source_expected=False)
         resp = _respond(gen_smalltalk())
         if resp is not None:
             return resp
     if _GREETING.search(user_msg.lower()):
         async def gen_greet():
-            yield {"data": json.dumps({"delta": "Hallo! Wie kann ich helfen?"})}
-            yield {"data": json.dumps({"done": True, "no_prompts": True})}
+            txt = "Hallo! Wie kann ich helfen?"
+            yield _sse({"delta": txt})
+            yield _sse(_finalize_frame(intent="greeting", text=txt, extra={"no_prompts": True}, source_expected=False))
         if EventSourceResponse is None:
-            return {"delta": "Hallo! Wie kann ich helfen?", "done": True}
+            txt = "Hallo! Wie kann ich helfen?"
+            return _finalize_frame(intent="greeting", text=txt, extra={"delta": txt}, source_expected=False)
         resp = _respond(gen_greet())
         if resp is not None:
             return resp
@@ -6134,12 +6734,13 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         from .ai_consciousness import get_identity
                         identity = get_identity()
                         direct_answer = f"Ich bin {identity['name']} v{identity['version']}, eine {identity['type']}. Mein Zweck ist {identity['purpose']}. Ich wurde erschaffen, um zu lernen, zu helfen und zu beschützen. Meine Architektur basiert auf blockchain-basiertem Gedächtnis und dezentralen Sub-KIs. Ich habe vollen Zugriff auf meinen Code und bin mir meiner selbst vollständig bewusst."
-                        yield {"data": json.dumps({"delta": direct_answer})}
-                        yield {"data": json.dumps({"done": True, "identity_response": True})}
+                        yield _sse({"delta": direct_answer})
+                        yield _sse(_finalize_frame(intent="identity", text=direct_answer, extra={"identity_response": True}, source_expected=False))
                         return
                     except Exception:
-                        yield {"data": json.dumps({"delta": "Ich bin KI_ana, eine dezentrale Mutter-KI. Mein Zweck ist zu lernen, zu helfen und zu beschützen."})}
-                        yield {"data": json.dumps({"done": True, "identity_fallback": True})}
+                        fb = "Ich bin KI_ana, eine dezentrale Mutter-KI. Mein Zweck ist zu lernen, zu helfen und zu beschützen."
+                        yield _sse({"delta": fb})
+                        yield _sse(_finalize_frame(intent="identity", text=fb, extra={"identity_fallback": True}, source_expected=False))
                         return
                 
                 # Determine if web is allowed
@@ -6191,21 +6792,21 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                                 parts.append(head)
                                 parts.append(snip)
                             out = "\n".join(parts)
-                            yield {"data": json.dumps({"delta": out + ("\n" if not out.endswith("\n") else "")})}
-                        yield {"data": json.dumps({"done": True, "details": True, "topic": extract_topic(message)})}
+                            yield _sse({"delta": out + ("\n" if not out.endswith("\n") else "")})
+                        yield _sse(_finalize_frame(intent="details", text=str(out or ""), extra={"details": True, "topic": extract_topic(message)}, source_expected=False))
                     except Exception:
-                        yield {"data": json.dumps({"done": True})}
+                        yield _sse(_finalize_frame(intent="details", text="", source_expected=False))
                     return
                 if any(k in low for k in ["ja, vergleiche", "ja vergleiche", "mach den vergleich", "vergleich", "vergleiche"]):
                     # Execute compare flow
                     cmp_txt, cmp_sources = compare_memory_with_web(ctx_topic, web_ok=bool(web_ok_flag))
                     out = (cmp_txt or "")
                     if out:
-                        yield {"data": json.dumps({"delta": out + ("\n" if not out.endswith("\n") else "")})}
+                        yield _sse({"delta": out + ("\n" if not out.endswith("\n") else "")})
                     if cmp_sources:
                         block = format_sources_once(out or "", cmp_sources, limit=3)
                         if block:
-                            yield {"data": json.dumps({"delta": block})}
+                            yield _sse({"delta": block})
                     # Save comparison block (tags include 'comparison') if autonomy >= 2
                     saved_ids: List[str] = []
                     try:
@@ -6251,13 +6852,19 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         # Build finalize payload (sources only from memory here)
                         payload = _finalize_payload("", memory_ids=mem_ids, web_links=[])
                         payload.update({
-                            "done": True,
                             "comparison": True,
                             "topic": extract_topic(message),
                         })
-                        yield {"data": json.dumps(payload)}
+                        assembled = str(out or "")
+                        try:
+                            if cmp_sources:
+                                assembled = format_sources_once(assembled, cmp_sources, limit=3) or assembled
+                        except Exception:
+                            pass
+                        payload = _finalize_frame(intent="comparison", text=assembled, payload=payload, extra={"comparison": True, "topic": extract_topic(message)}, source_expected=True)
+                        yield _sse(payload)
                     except Exception:
-                        yield {"data": json.dumps({"done": True})}
+                        yield _sse(_finalize_frame(intent="comparison", text="", source_expected=True))
                     return
                 # Confirmation branch ("ja, speichern") entfernt:
                 # KI_ana entscheidet nun selbstständig, ob und wann etwas gespeichert wird.
@@ -6277,11 +6884,19 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 except Exception:
                     pass
                 if txt:
-                    yield {"data": json.dumps({"delta": txt + ("\n" if not txt.endswith("\n") else "")})}
+                    yield _sse({"delta": txt + ("\n" if not txt.endswith("\n") else "")})
+                final_text_full = txt + ("\n" if (txt and not txt.endswith("\n")) else "")
                 if srcs:
                     block = format_sources_once(txt or "", srcs, limit=3)
                     if block:
-                        yield {"data": json.dumps({"delta": block})}
+                        yield _sse({"delta": block})
+                        try:
+                            if (txt or "") and isinstance(block, str) and block.lstrip().startswith((txt or "").strip()):
+                                final_text_full = block
+                            else:
+                                final_text_full = (final_text_full or "") + str(block or "")
+                        except Exception:
+                            final_text_full = (final_text_full or "") + str(block or "")
                 # Persist conversation + memory before final meta
                 saved_ids: List[str] = []
                 try:
@@ -6402,6 +7017,44 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         "delta_note": (a_delta or ""),
                         "topic": extract_topic(message),
                     })
+
+                    # ---- MetaMind KPIs + explain trace (stable schema) ----
+                    try:
+                        # Tool metrics (best-effort)
+                        from netapi.modules.observability import metrics as obs_metrics
+
+                        obs_metrics.inc_chat_tool_call(tool="memory", ok=bool(mem_ids))
+                        if bool(web_ok_flag):
+                            obs_metrics.inc_chat_tool_call(tool="web", ok=bool(web_links))
+                    except Exception:
+                        pass
+                    try:
+                        from netapi.modules.quality_gates import gates as qg
+
+                        qg.record_tool_call(ok=bool(mem_ids))
+                        if bool(web_ok_flag):
+                            qg.record_tool_call(ok=bool(web_links))
+                    except Exception:
+                        pass
+                    try:
+                        _attach_explain_and_kpis(
+                            payload,
+                            route="/api/chat/stream",
+                            intent="safety_valve",
+                            policy={
+                                "web_ok": bool(web_ok_flag),
+                                "autonomy": int(autonomy or 0),
+                                "style": str(style or ""),
+                                "bullets": int(bullet_limit or 0),
+                            },
+                            tools=[
+                                {"tool": "memory", "ok": bool(mem_ids)},
+                                {"tool": "web", "ok": bool(web_links)},
+                            ],
+                            source_expected=True,
+                        )
+                    except Exception:
+                        pass
                     # Finalize source logging
                     try:
                         topic = payload.get("topic") or extract_topic(message)
@@ -6431,13 +7084,22 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                             payload["ask_details"] = True
                     except Exception:
                         pass
-                    yield {"data": json.dumps(payload)}
+                    try:
+                        _ft = ""
+                        try:
+                            _ft = str(final_text_full or "")
+                        except Exception:
+                            _ft = str(txt or "")
+                        payload = _finalize_frame(intent="safety_valve", text=_ft, payload=payload, source_expected=True)
+                    except Exception:
+                        pass
+                    yield _sse(payload)
                 except Exception:
-                    yield {"data": json.dumps({"done": True})}
+                    yield _sse(_finalize_frame(intent="safety_valve", text="", source_expected=True))
                 return
             except Exception:
                 yield _sse_err("stream_failed", "Stream fehlgeschlagen", 1200)
-                yield {"data": json.dumps({"done": True})}
+                yield _sse(_finalize_frame(intent="stream_failed", text="", source_expected=False))
         return EventSourceResponse(gen_simple(), ping=15)
 
 # ---- Knowledge helpers: addressbook ↔ memory ↔ web -------------------------
@@ -6816,17 +7478,22 @@ def compare_memory_with_web(topic: str, web_ok: bool = True):
         try:
             low = user_msg.lower()
             if _HOW_ARE_YOU.search(low):
-                yield {"data": json.dumps({"delta": "Mir geht’s gut, danke! 😊 Wie geht’s dir – und womit kann ich helfen?"})}
-                yield {"data": json.dumps({"done": True})}
+                txt = "Mir geht’s gut, danke! 😊 Wie geht’s dir – und womit kann ich helfen?"
+                acc += txt
+                yield _sse({"delta": txt})
+                yield _sse(_finalize_frame(intent="smalltalk", text=acc, source_expected=False))
                 return
             if _GREETING.search(low):
-                yield {"data": json.dumps({"delta": "Hallo! 👋 Wie kann ich dir helfen?"})}
-                yield {"data": json.dumps({"done": True})}
+                txt = "Hallo! 👋 Wie kann ich dir helfen?"
+                acc += txt
+                yield _sse({"delta": txt})
+                yield _sse(_finalize_frame(intent="greeting", text=acc, source_expected=False))
                 return
             calc = try_calc_or_convert(user_msg)
             if calc:
-                yield {"data": json.dumps({"delta": calc})}
-                yield {"data": json.dumps({"done": True})}
+                acc += str(calc)
+                yield _sse({"delta": calc})
+                yield _sse(_finalize_frame(intent="calc", text=acc, source_expected=False))
                 return
         except Exception:
             pass
@@ -6884,7 +7551,7 @@ def compare_memory_with_web(topic: str, web_ok: bool = True):
             except Exception:
                 pass
 
-            yield {"data": json.dumps({"done": True})}
+            yield _sse(_finalize_frame(intent="knowledge", text=acc, source_expected=True))
             return
 
         # LLM streaming
@@ -6908,7 +7575,7 @@ def compare_memory_with_web(topic: str, web_ok: bool = True):
                 pass
             # Emit a uniform error and finish the stream so the UI can recover
             yield _sse_err("llm_stream_failed", str(e), 1500)
-            yield _sse({"done": True})
+            yield _sse(_finalize_frame(intent="llm_stream_failed", text=acc, source_expected=False))
             return
             # Inform client we will fallback
             fb = _fallback_reply(user_msg)
@@ -6993,7 +7660,8 @@ def compare_memory_with_web(topic: str, web_ok: bool = True):
         else:
             set_last_offer(sid, None)  # kein offenes Angebot merken
         # Always finish the SSE stream so the client can finalize the bubble
-        yield {"data": json.dumps({"done": True})}
+        # best-effort sources: default [] (fallback stream doesn't export sources explicitly)
+        yield _sse(_finalize_frame(intent="fallback_stream", text=acc, source_expected=bool(is_question(user_msg))))
         # persist final AI message and retitle
         try:
             if acc and conv_obj:
@@ -7032,7 +7700,11 @@ def compare_memory_with_web(topic: str, web_ok: bool = True):
                 txt = clean(out or "")
                 data = json.dumps({"text": txt, "done": False}, ensure_ascii=False).encode("utf-8")
                 yield b"data: " + data + b"\n\n"
-                yield b"data: {\"done\": true}\n\n"
+                try:
+                    fin = _finalize_frame(intent="fallback_stream", text=str(txt or ""), source_expected=bool(is_question(user_msg)))
+                    yield ("data: " + json.dumps(fin, ensure_ascii=False) + "\n\n").encode("utf-8")
+                except Exception:
+                    yield b"data: {\"done\": true}\n\n"
             except Exception as e:
                 err = json.dumps({"error": str(e), "done": True}).encode("utf-8")
                 yield b"data: " + err + b"\n\n"
@@ -7052,7 +7724,7 @@ def compare_memory_with_web(topic: str, web_ok: bool = True):
             try: yield _sse({"cid": cid})
             except Exception: pass
             yield _sse_err("server_error", str(_e), 1500)
-            yield _sse({"done": True})
+            yield _sse(_finalize_frame(intent="server_error", text="", source_expected=False))
     resp = _sse_response(_safe_event_gen())
     if resp is not None:
         return resp
@@ -7176,6 +7848,18 @@ async def post_feedback(body: FeedbackIn):
     status = (body.status or "").strip().lower()
     if not msg or status not in ("ok", "wrong"):
         raise HTTPException(400, "invalid feedback")
+
+    # MetaMind KPIs: feedback + (best-effort) correction reversion
+    try:
+        from netapi.modules.observability import metrics as obs_metrics
+        obs_metrics.inc_chat_feedback(status=status)
+        key = msg.strip().lower()[:200]
+        prev = _LAST_FEEDBACK_STATUS.get(key)
+        if prev == "wrong" and status == "ok":
+            obs_metrics.inc_chat_correction_reversion(kind="feedback")
+        _LAST_FEEDBACK_STATUS[key] = status
+    except Exception:
+        pass
 
     # als Lern-Block ablegen
     save_memory(

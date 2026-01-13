@@ -27,6 +27,39 @@ _limits_exceeded_total: Dict[Tuple[str, str], int] = {}
 _started_at = time.time()
 
 
+# ---- MetaMind KPIs (chat/product metrics) ---------------------------------
+# Counter keyed by (tool, ok)
+_chat_tool_calls_total: Dict[Tuple[str, str], int] = {}
+
+# Counter keyed by (kind, decision)
+_learning_consent_total: Dict[Tuple[str, str], int] = {}
+
+# Counter keyed by (status)
+_chat_feedback_total: Dict[Tuple[str], int] = {}
+
+# Counter keyed by (kind)
+_chat_correction_reversion_total: Dict[Tuple[str], int] = {}
+
+# Counter keyed by (intent)
+_chat_answers_without_sources_total: Dict[Tuple[str], int] = {}
+
+# Counter keyed by (gate, mode)
+_quality_gate_total: Dict[Tuple[str, str], int] = {}
+
+# Export stable label sets so dashboards don't show "No data" before first hit.
+_KNOWN_QUALITY_GATES: Tuple[str, ...] = (
+    "sources_required",
+    "learning_cooldown",
+    "tools_disabled",
+)
+_KNOWN_QUALITY_GATE_MODES: Tuple[str, ...] = ("observed", "enforced")
+
+# Histogram keyed by (intent, le_bucket)
+_chat_answer_duration_seconds_bucket: Dict[Tuple[str, float], int] = {}
+_chat_answer_duration_seconds_sum: Dict[Tuple[str], float] = {}
+_chat_answer_duration_seconds_count: Dict[Tuple[str], int] = {}
+
+
 # ---- Route grouping (Phase E: SLO-ready histograms) ------------------------
 _ROUTE_GROUP_BUCKETS: Tuple[float, ...] = (
     0.025,
@@ -267,6 +300,79 @@ def inc_limits_exceeded(*, feature: str, scope: str) -> None:
         _limits_exceeded_total[(f, sc)] = _limits_exceeded_total.get((f, sc), 0) + 1
 
 
+def inc_chat_tool_call(*, tool: str, ok: bool) -> None:
+    try:
+        t = str(tool or "unknown").strip().lower() or "unknown"
+    except Exception:
+        t = "unknown"
+    status = "ok" if bool(ok) else "error"
+    with _lock:
+        _chat_tool_calls_total[(t, status)] = _chat_tool_calls_total.get((t, status), 0) + 1
+
+
+def inc_learning_consent(*, kind: str, decision: str) -> None:
+    try:
+        k = str(kind or "unknown").strip().lower() or "unknown"
+        d = str(decision or "unknown").strip().lower() or "unknown"
+    except Exception:
+        return
+    with _lock:
+        _learning_consent_total[(k, d)] = _learning_consent_total.get((k, d), 0) + 1
+
+
+def inc_chat_feedback(*, status: str) -> None:
+    try:
+        s = str(status or "unknown").strip().lower() or "unknown"
+    except Exception:
+        s = "unknown"
+    with _lock:
+        _chat_feedback_total[(s,)] = _chat_feedback_total.get((s,), 0) + 1
+
+
+def inc_chat_correction_reversion(*, kind: str = "feedback") -> None:
+    try:
+        k = str(kind or "feedback").strip().lower() or "feedback"
+    except Exception:
+        k = "feedback"
+    with _lock:
+        _chat_correction_reversion_total[(k,)] = _chat_correction_reversion_total.get((k,), 0) + 1
+
+
+def inc_chat_answer_without_sources(*, intent: str) -> None:
+    try:
+        i = str(intent or "unknown").strip().lower() or "unknown"
+    except Exception:
+        i = "unknown"
+    with _lock:
+        _chat_answers_without_sources_total[(i,)] = _chat_answers_without_sources_total.get((i,), 0) + 1
+
+
+def observe_chat_answer_duration_seconds(*, intent: str, duration_seconds: float) -> None:
+    try:
+        i = str(intent or "unknown").strip().lower() or "unknown"
+        d = max(0.0, float(duration_seconds))
+    except Exception:
+        return
+    le = _bucket_le(d)
+    with _lock:
+        _chat_answer_duration_seconds_bucket[(i, le)] = _chat_answer_duration_seconds_bucket.get((i, le), 0) + 1
+        _chat_answer_duration_seconds_bucket[(i, float("inf"))] = _chat_answer_duration_seconds_bucket.get((i, float("inf")), 0) + 1
+        _chat_answer_duration_seconds_sum[(i,)] = _chat_answer_duration_seconds_sum.get((i,), 0.0) + d
+        _chat_answer_duration_seconds_count[(i,)] = _chat_answer_duration_seconds_count.get((i,), 0) + 1
+
+
+def inc_quality_gate(*, gate: str, mode: str = "observed") -> None:
+    try:
+        g = str(gate or "unknown").strip().lower() or "unknown"
+        m = str(mode or "observed").strip().lower() or "observed"
+        if m not in {"observed", "enforced"}:
+            m = "observed"
+    except Exception:
+        return
+    with _lock:
+        _quality_gate_total[(g, m)] = _quality_gate_total.get((g, m), 0) + 1
+
+
 def render_prometheus_text() -> str:
     """Render a minimal Prometheus exposition string."""
     lines: list[str] = []
@@ -332,6 +438,70 @@ def render_prometheus_text() -> str:
             f = _escape_label(feature)
             sc = _escape_label(scope)
             lines.append(f"ki_ana_limits_exceeded_total{{feature=\"{f}\",scope=\"{sc}\"}} {int(count)}")
+
+        # ---- MetaMind KPIs -------------------------------------------------
+        lines.append("# HELP ki_ana_chat_tool_calls_total Chat tool calls (best-effort)")
+        lines.append("# TYPE ki_ana_chat_tool_calls_total counter")
+        for (tool, status), count in sorted(_chat_tool_calls_total.items()):
+            t = _escape_label(tool)
+            st = _escape_label(status)
+            lines.append(f"ki_ana_chat_tool_calls_total{{tool=\"{t}\",status=\"{st}\"}} {int(count)}")
+
+        lines.append("# HELP ki_ana_learning_consent_total Learning consent outcomes")
+        lines.append("# TYPE ki_ana_learning_consent_total counter")
+        for (kind, decision), count in sorted(_learning_consent_total.items()):
+            k = _escape_label(kind)
+            d = _escape_label(decision)
+            lines.append(f"ki_ana_learning_consent_total{{kind=\"{k}\",decision=\"{d}\"}} {int(count)}")
+
+        lines.append("# HELP ki_ana_chat_feedback_total Chat feedback outcomes")
+        lines.append("# TYPE ki_ana_chat_feedback_total counter")
+        for (status,), count in sorted(_chat_feedback_total.items()):
+            st = _escape_label(status)
+            lines.append(f"ki_ana_chat_feedback_total{{status=\"{st}\"}} {int(count)}")
+
+        lines.append("# HELP ki_ana_chat_correction_reversion_total Corrections later reverted (best-effort)")
+        lines.append("# TYPE ki_ana_chat_correction_reversion_total counter")
+        for (kind,), count in sorted(_chat_correction_reversion_total.items()):
+            k = _escape_label(kind)
+            lines.append(f"ki_ana_chat_correction_reversion_total{{kind=\"{k}\"}} {int(count)}")
+
+        lines.append("# HELP ki_ana_chat_answers_without_sources_total Hallucination proxy: factual-ish answers without sources")
+        lines.append("# TYPE ki_ana_chat_answers_without_sources_total counter")
+        for (intent,), count in sorted(_chat_answers_without_sources_total.items()):
+            i = _escape_label(intent)
+            lines.append(f"ki_ana_chat_answers_without_sources_total{{intent=\"{i}\"}} {int(count)}")
+
+        lines.append("# HELP ki_ana_chat_answer_duration_seconds Chat answer duration histogram (best-effort, app-level)")
+        lines.append("# TYPE ki_ana_chat_answer_duration_seconds histogram")
+        for (intent, le), count in sorted(_chat_answer_duration_seconds_bucket.items()):
+            i = _escape_label(intent)
+            le_label = "+Inf" if (isinstance(le, float) and math.isinf(le)) else ("{:.3f}".format(float(le)).rstrip("0").rstrip("."))
+            lines.append(f"ki_ana_chat_answer_duration_seconds_bucket{{intent=\"{i}\",le=\"{le_label}\"}} {int(count)}")
+        for (intent,), total in sorted(_chat_answer_duration_seconds_sum.items()):
+            i = _escape_label(intent)
+            lines.append(f"ki_ana_chat_answer_duration_seconds_sum{{intent=\"{i}\"}} {float(total):.6f}")
+        for (intent,), cnt in sorted(_chat_answer_duration_seconds_count.items()):
+            i = _escape_label(intent)
+            lines.append(f"ki_ana_chat_answer_duration_seconds_count{{intent=\"{i}\"}} {int(cnt)}")
+
+        lines.append("# HELP ki_ana_quality_gate_total Quality gate hits (observed vs enforced)")
+        lines.append("# TYPE ki_ana_quality_gate_total counter")
+        # Always export known label combinations (0 if never incremented)
+        for gate in _KNOWN_QUALITY_GATES:
+            for mode in _KNOWN_QUALITY_GATE_MODES:
+                count = _quality_gate_total.get((gate, mode), 0)
+                g = _escape_label(gate)
+                m = _escape_label(mode)
+                lines.append(f"ki_ana_quality_gate_total{{gate=\"{g}\",mode=\"{m}\"}} {int(count)}")
+
+        # Also export any dynamic/unknown gates that were observed
+        for (gate, mode), count in sorted(_quality_gate_total.items()):
+            if gate in _KNOWN_QUALITY_GATES and mode in _KNOWN_QUALITY_GATE_MODES:
+                continue
+            g = _escape_label(gate)
+            m = _escape_label(mode)
+            lines.append(f"ki_ana_quality_gate_total{{gate=\"{g}\",mode=\"{m}\"}} {int(count)}")
 
     # External gauges (outside lock)
     try:

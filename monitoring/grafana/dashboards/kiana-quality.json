@@ -34,15 +34,140 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 4,
+        "w": 8,
         "x": 0,
         "y": 0
       },
       "id": 1,
       "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "ki_ana_quality_traffic_rps_5m",
+          "legendFormat": "rps",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Traffic (RPS, 5m)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "Prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 8,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "ki_ana_quality_tool_error_rate_10m",
+          "legendFormat": "tool error rate (10m)",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Tool Error Rate (10m)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "Prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "sum(increase(ki_ana_quality_gate_total[10m])) by (gate,mode)",
+          "legendFormat": "{{gate}} {{mode}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Quality Gates (10m)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "Prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 4
+      },
+      "id": 3,
+      "options": {
         "legend": {
-          "calcs": [],
           "displayMode": "list",
           "placement": "bottom"
         },
@@ -53,13 +178,77 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(rate(ki_ana_http_requests_total[5m]))",
-          "legendFormat": "rps",
+          "expr": "histogram_quantile(0.95, sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent=\"general\"}[10m])) by (le))",
+          "legendFormat": "general (p95)",
           "range": true,
           "refId": "A"
+        },
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent=\"tool\"}[10m])) by (le))",
+          "legendFormat": "tool (p95)",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent=\"factual\"}[10m])) by (le))",
+          "legendFormat": "factual (p95)",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum(rate(ki_ana_chat_answer_duration_seconds_bucket{intent=\"research\"}[10m])) by (le))",
+          "legendFormat": "research (p95)",
+          "range": true,
+          "refId": "D"
         }
       ],
-      "title": "HTTP Requests (RPS)",
+      "title": "Latency p95 by intent (10m)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "Prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 12
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "ki_ana_quality_tool_error_rate_10m",
+          "legendFormat": "10m",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "editorMode": "code",
+          "expr": "ki_ana_quality_tool_error_rate_2h",
+          "legendFormat": "2h",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Tool Error Rate (fast/slow)",
       "type": "timeseries"
     },
     {
@@ -77,136 +266,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 0
-      },
-      "id": 2,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom"
-        }
-      },
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "sum(rate(ki_ana_http_requests_total{status=~\"5..\"}[5m])) / clamp_min(sum(rate(ki_ana_http_requests_total[5m])), 1)",
-          "legendFormat": "5xx rate",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "editorMode": "code",
-          "expr": "sum(rate(ki_ana_http_requests_total{status=~\"4..\"}[5m])) / clamp_min(sum(rate(ki_ana_http_requests_total[5m])), 1)",
-          "legendFormat": "4xx rate",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "HTTP Error Rate (4xx/5xx)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 8
-      },
-      "id": 3,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom"
-        }
-      },
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum(rate(ki_ana_http_request_duration_seconds_bucket{route_group=\"chat\"}[5m])) by (le))",
-          "legendFormat": "chat p95",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "editorMode": "code",
-          "expr": "histogram_quantile(0.99, sum(rate(ki_ana_http_request_duration_seconds_bucket{route_group=\"chat\"}[5m])) by (le))",
-          "legendFormat": "chat p99",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Chat Latency (p95/p99)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 8
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom"
-        }
-      },
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "ki_ana_celery_worker_up",
-          "legendFormat": "worker up",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "editorMode": "code",
-          "expr": "ki_ana_celery_queue_backlog",
-          "legendFormat": "queue backlog",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Worker / Queue", 
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 24,
-        "x": 0,
-        "y": 16
+        "y": 12
       },
       "id": 5,
       "options": {
@@ -218,13 +278,20 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "ki_ana_dependency_up",
-          "legendFormat": "{{dependency}}",
+          "expr": "ki_ana_quality_no_sources_rate_10m",
+          "legendFormat": "10m (factual|research)",
           "range": true,
           "refId": "A"
+        },
+        {
+          "editorMode": "code",
+          "expr": "ki_ana_quality_no_sources_rate_2h",
+          "legendFormat": "2h (factual|research)",
+          "range": true,
+          "refId": "B"
         }
       ],
-      "title": "Dependencies Up",
+      "title": "Answers without sources rate (proxy)",
       "type": "timeseries"
     },
     {
@@ -234,40 +301,41 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "short"
+          "unit": "percentunit"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 8,
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 22
+        "y": 20
       },
       "id": 6,
       "options": {
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "orientation": "auto",
-        "textMode": "auto",
-        "colorMode": "value"
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
       },
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum(increase(ki_ana_celery_task_total{status=\"failure\"}[5m]))",
-          "legendFormat": "failures",
+          "expr": "ki_ana_quality_consent_prompt_rate_10m",
+          "legendFormat": "10m",
           "range": true,
           "refId": "A"
+        },
+        {
+          "editorMode": "code",
+          "expr": "ki_ana_quality_consent_prompt_rate_2h",
+          "legendFormat": "2h",
+          "range": true,
+          "refId": "B"
         }
       ],
-      "title": "Worker Failures (5m)",
-      "type": "stat"
+      "title": "Consent prompt rate (anti-spam)",
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -276,15 +344,15 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "s"
+          "unit": "percentunit"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 16,
-        "x": 8,
-        "y": 22
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 20
       },
       "id": 7,
       "options": {
@@ -296,20 +364,20 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum(rate(ki_ana_celery_task_runtime_seconds_bucket{task=\"embed.text\"}[10m])) by (le))",
-          "legendFormat": "embed.text p95",
+          "expr": "ki_ana_quality_negative_feedback_rate_10m",
+          "legendFormat": "10m",
           "range": true,
           "refId": "A"
         },
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum(rate(ki_ana_celery_task_runtime_seconds_bucket{task=\"ingest.parse_file\"}[10m])) by (le))",
-          "legendFormat": "ingest.parse_file p95",
+          "expr": "ki_ana_quality_negative_feedback_rate_2h",
+          "legendFormat": "2h",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Task Runtime p95 (embed/ingest)",
+      "title": "Negative feedback rate",
       "type": "timeseries"
     },
     {
@@ -319,7 +387,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "ops"
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -339,74 +407,14 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (task) (rate(ki_ana_celery_task_total[5m]))",
-          "legendFormat": "{{task}}",
+          "expr": "ki_ana_quality_traffic_rps_5m",
+          "legendFormat": "rps",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Task Volume by Task",
+      "title": "Traffic (RPS)",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "s"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 36
-      },
-      "id": 9,
-      "options": {
-        "legend": {
-          "displayMode": "list",
-          "placement": "bottom"
-        }
-      },
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "time() - ki_ana_celery_agg_last_update_seconds",
-          "legendFormat": "{{task}}",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Agg Freshness Age (s)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "Prometheus"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 24,
-        "x": 0,
-        "y": 44
-      },
-      "id": 10,
-      "options": {
-        "content": "## Dashboards\n\n\u2192 **KI_ana - Quality** (UID: `kiana-quality`)\n",
-        "mode": "markdown"
-      },
-      "pluginVersion": "10.2.0",
-      "title": "Dashboards",
-      "type": "text"
     }
   ],
   "refresh": "15s",
@@ -422,8 +430,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "KI_ana - Overview",
-  "uid": "kiana-overview",
-  "version": 1,
+  "title": "KI_ana - Quality",
+  "uid": "kiana-quality",
+  "version": 2,
   "weekStart": ""
 }

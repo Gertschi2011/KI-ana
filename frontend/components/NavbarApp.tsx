@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 export default function NavbarApp() {
   const [username, setUsername] = useState<string | null>(null);
+  const grafanaUrl = process.env.NEXT_PUBLIC_GRAFANA_URL || '/ops/grafana/';
 
   useEffect(() => {
     const u = typeof window !== 'undefined' ? localStorage.getItem('kiana_username') : null;
@@ -21,6 +22,7 @@ export default function NavbarApp() {
       <div className="flex space-x-4">
         <Link href="/chat">Chat</Link>
         <Link href="/papa">Papa</Link>
+        <a href={grafanaUrl} target="_blank" rel="noreferrer">Monitoring</a>
         <Link href="/settings">Einstellungen</Link>
         <Link href="/admin/users">Admin</Link>
       </div>

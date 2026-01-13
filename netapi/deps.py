@@ -128,18 +128,26 @@ def set_cookie(resp, payload: Dict[str, Any], *, remember: bool = False, request
     # Nur bei "remember" ein dauerhaftes Cookie setzen
     if remember:
         cookie_kwargs["max_age"] = COOKIE_MAX_AGE
-    # Optional: Domain scoping for production domain
+    # Domain scoping is intentionally opt-in.
+    # A wrong Domain attribute is a common reason for "login required" in browsers.
+    # If you need cross-subdomain cookies, set KIANA_COOKIE_DOMAIN explicitly (e.g. ".ki-ana.at").
     try:
-        if request is not None and "ki-ana.at" in str(request.url.hostname or ""):
-            cookie_kwargs["domain"] = ".ki-ana.at"
+        cookie_domain = str(os.getenv("KIANA_COOKIE_DOMAIN", "") or "").strip()
+        if cookie_domain:
+            cookie_kwargs["domain"] = cookie_domain
     except Exception:
         pass
     resp.set_cookie(COOKIE_NAME, token, **cookie_kwargs)
 
 def clear_cookie(resp) -> None:
     resp.delete_cookie(COOKIE_NAME, path="/")
-    # Auch für ki-ana.at Domain löschen
-    resp.delete_cookie(COOKIE_NAME, path="/", domain=".ki-ana.at")
+    # Optional: also delete for configured domain scope
+    try:
+        cookie_domain = str(os.getenv("KIANA_COOKIE_DOMAIN", "") or "").strip()
+        if cookie_domain:
+            resp.delete_cookie(COOKIE_NAME, path="/", domain=cookie_domain)
+    except Exception:
+        pass
 
 def read_cookie(request: Request) -> Optional[Dict[str, Any]]:
     token = request.cookies.get(COOKIE_NAME)
