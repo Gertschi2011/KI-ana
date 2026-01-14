@@ -32,3 +32,57 @@ body { @apply min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-g
 .bubble { @apply inline-block px-4 py-2 rounded-2xl max-w-[80%]; }
 .bubble-user { @apply bg-blue-500 text-white self-end; }
 .bubble-bot { @apply bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100 self-start; }
+
+/* KI_ana stylish chat */
+.kiana-chat { @apply rounded-xl overflow-hidden bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800; }
+.kiana-chat-sidebar { @apply border-r border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950; }
+.kiana-chat-main { @apply bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-950; }
+
+.kiana-chat-header {
+	@apply px-4 py-3 flex items-center gap-3;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	color: white;
+}
+.kiana-chat-avatar { @apply w-10 h-10 rounded-full object-cover; border: 2px solid rgba(255,255,255,0.35); }
+.kiana-chat-title { @apply font-semibold text-lg leading-tight; }
+.kiana-chat-sub { @apply text-xs opacity-90; }
+
+.kiana-chat-messages { @apply bg-transparent; }
+
+.kiana-bubble { @apply inline-block px-4 py-3 rounded-2xl max-w-[80%] shadow-sm; line-height: 1.55; }
+.kiana-bubble-user { @apply text-white; background: linear-gradient(135deg, #5aa7ff 0%, #3b82f6 100%); }
+.kiana-bubble-ai { @apply text-gray-900 dark:text-gray-100; background: rgba(238, 241, 255, 0.95); border: 1px solid rgba(120, 99, 255, 0.18); }
+.dark .kiana-bubble-ai { background: rgba(30, 32, 55, 0.75); border-color: rgba(120, 99, 255, 0.25); }
+
+.kiana-bubble-meta { @apply mt-2 flex items-center justify-between gap-2 text-[11px] opacity-80; }
+.kiana-bubble-time { @apply select-none; }
+.kiana-explain-btn {
+	@apply inline-flex items-center justify-center w-6 h-6 rounded-full border border-white/20 text-white/95;
+	background: rgba(255,255,255,0.18);
+	pointer-events: auto;
+	cursor: pointer;
+	z-index: 5;
+}
+.kiana-bubble-ai .kiana-explain-btn { @apply border-gray-300 text-gray-800; background: rgba(0,0,0,0.04); }
+.dark .kiana-bubble-ai .kiana-explain-btn { @apply border-white/20 text-white/90; background: rgba(255,255,255,0.08); }
+
+.kiana-explain { @apply mt-2 rounded-lg p-3 bg-white/70 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800; }
+
+.kiana-explain-details { @apply relative; }
+.kiana-explain-summary {
+	list-style: none;
+	cursor: pointer;
+	user-select: none;
+	@apply inline-flex items-center justify-center w-6 h-6 rounded-full;
+}
+.kiana-explain-details > summary::-webkit-details-marker { display: none; }
+.kiana-bubble-user .kiana-explain-summary { color: rgba(255,255,255,0.95); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.22); }
+.kiana-bubble-ai .kiana-explain-summary { color: rgba(17,24,39,0.9); background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.10); }
+.dark .kiana-bubble-ai .kiana-explain-summary { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
+
+.kiana-chat-composer { @apply bg-white/90 dark:bg-gray-950; }
+.kiana-composer-input { @apply w-full rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-3; }
+.kiana-composer-send {
+	@apply px-5 py-3 rounded-full font-semibold text-white disabled:opacity-60;
+	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}

@@ -697,6 +697,16 @@ def _kpi_finalize_once(*, intent: str, source_expected: bool, sources_count: int
     except Exception:
         ctx = None
 
+    cid = ""
+    request_id = ""
+    try:
+        if isinstance(ctx, dict):
+            cid = str(ctx.get("cid") or "")
+            request_id = str(ctx.get("request_id") or "")
+    except Exception:
+        cid = ""
+        request_id = ""
+
     try:
         if isinstance(ctx, dict) and ctx.get("kpi_done") is True:
             return
@@ -753,6 +763,25 @@ def _kpi_finalize_once(*, intent: str, source_expected: bool, sources_count: int
 
         enforced_for_request = bool(gs.enforced) and not bypass
         enforced_gates = list(gs.enforced_gates) if enforced_for_request else []
+
+        # One-line visibility: grep request_id=... should show gate outcome.
+        try:
+            logger.info(
+                "QUALITY_GATES cid=%s request_id=%s intent=%s source_expected=%s sources_count=%s is_question=%s enforced=%s enforced_gates=%s active=%s reasons=%s bypass=%s",
+                cid,
+                request_id,
+                str(gate_intent),
+                bool(source_expected),
+                int(sources_count or 0),
+                bool(is_question_like),
+                bool(enforced_for_request),
+                list(enforced_gates),
+                list(gs.active or []),
+                dict(gs.reasons or {}),
+                bool(bypass),
+            )
+        except Exception:
+            pass
 
         # Best-effort: update ctx snapshot so explain sees fresh gate state
         try:
@@ -1734,7 +1763,8 @@ class ConversationCreateIn(BaseModel):
     title: Optional[str] = None
 
 class ConversationRenameIn(BaseModel):
-    title: str
+    title: Optional[str] = None
+    folder_id: Optional[int] = None
 
 # -------------------------------------------------
 # Utilities
@@ -6362,9 +6392,18 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
 @router.get("/stream")
 async def chat_stream(message: str, request: Request, persona: str = "friendly", lang: str = "de-DE", chain: bool = False, conv_id: Optional[int] = None, style: str = "balanced", bullets: int = 5, web_ok: bool = False, autonomy: int = 0):
     user_msg = (message or "").strip()
+    request_id = None
+    try:
+        request_id = getattr(getattr(request, "state", None), "request_id", None)
+    except Exception:
+        request_id = None
+    try:
+        request_id = str(request_id or "")
+    except Exception:
+        request_id = ""
     # Debug logging at start
     try:
-        logger.info("chat_stream: start message=%r persona=%s lang=%s chain=%s conv_id=%s style=%s bullets=%s web_ok=%s autonomy=%s", user_msg, persona, lang, chain, conv_id, style, bullets, web_ok, autonomy)
+        logger.info("chat_stream: start request_id=%s message=%r persona=%s lang=%s chain=%s conv_id=%s style=%s bullets=%s web_ok=%s autonomy=%s", request_id, user_msg, persona, lang, chain, conv_id, style, bullets, web_ok, autonomy)
     except Exception:
         pass
     if not user_msg:
@@ -6402,6 +6441,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     try:
         _CHAT_EXPLAIN_CTX.set({
             "cid": cid,
+            "request_id": request_id,
             "route": "/api/chat/stream",
             "t0": t0,
             "is_question": bool(is_question(user_msg)),
@@ -6437,6 +6477,8 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         policy_override: Optional[dict] = None,
         tools: Optional[list] = None,
         source_expected: bool = False,
+        ok: bool = True,
+        error: Optional[str] = None,
     ) -> dict:
         base: dict = {}
         if isinstance(payload, dict):
@@ -6454,9 +6496,12 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         base["type"] = "finalize"
         base["schema_version"] = 1
         base["cid"] = str(cid or "")
-        base["ok"] = True
+        base["ok"] = bool(ok)
         base["done"] = True
         base["text"] = str(text or "")
+
+        if error:
+            base["error"] = str(error)[:400]
 
         if not isinstance(base.get("sources"), list):
             base["sources"] = []
@@ -6497,6 +6542,30 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 base["timings_ms"] = ex.get("timings_ms")
             elif not isinstance(base.get("timings_ms"), dict):
                 base["timings_ms"] = {"total": int(max(0.0, (time.time() - t0)) * 1000)}
+        except Exception:
+            pass
+
+        # Structured logs + audit for stream finalize (DoD visibility)
+        try:
+            total_ms = 0
+            try:
+                total_ms = int(max(0.0, (time.time() - t0)) * 1000)
+            except Exception:
+                total_ms = 0
+            logger.info("STREAM_FINALIZE cid=%s request_id=%s ok=%s total_ms=%s", cid, request_id, bool(base.get("ok")), total_ms)
+        except Exception:
+            pass
+        try:
+            _audit_chat({
+                "ts": int(time.time()),
+                "sid": sid,
+                "event": "STREAM_FINALIZE",
+                "cid": cid,
+                "request_id": request_id,
+                "conv_id": conv_id,
+                "ip": ip,
+                "meta": {"ok": bool(base.get("ok")), "total_ms": int((time.time() - t0) * 1000)},
+            })
         except Exception:
             pass
 
@@ -6721,10 +6790,67 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     if _PLANNER_ON and (EventSourceResponse is not None):
         # Temporary simplified streaming: use Safety‑Valve to ensure robust, immediate answers
         async def gen_simple():
+            stream_started_ts = time.time()
+            deadline = stream_started_ts + 30.0
+            first_event_logged = False
+            finalize_sent = False
+
+            def _ms() -> int:
+                try:
+                    return int((time.time() - stream_started_ts) * 1000)
+                except Exception:
+                    return 0
+
+            def _user_label() -> str:
+                try:
+                    u = getattr(request, "state", None) and getattr(request.state, "user", None)
+                    if isinstance(u, dict):
+                        return str(u.get("username") or u.get("id") or "?")
+                    return str(getattr(u, "username", None) or getattr(u, "id", None) or "?")
+                except Exception:
+                    return "?"
+
+            def _audit_stream(evt: str, meta: Optional[dict] = None) -> None:
+                try:
+                    _audit_chat({
+                        "ts": int(time.time()),
+                        "sid": sid,
+                        "event": str(evt),
+                        "cid": cid,
+                        "request_id": request_id,
+                        "conv_id": conv_id,
+                        "ip": ip,
+                        "meta": (meta or {}),
+                    })
+                except Exception:
+                    pass
+
             try:
+                try:
+                    logger.info("STREAM_START cid=%s request_id=%s conv_id=%s user=%s", cid, request_id, str(conv_id or ""), _user_label())
+                except Exception:
+                    pass
+                _audit_stream("STREAM_START")
+
                 # Emit cid first
                 try:
-                    yield _sse({"cid": cid})
+                    yield _sse({"type": "meta", "cid": cid, "request_id": request_id})
+                    await asyncio.sleep(0)
+                except Exception:
+                    pass
+
+                # Emit immediate first SSE event to prevent hangs without output.
+                # Empty delta is a valid SSE message and satisfies DoD.
+                try:
+                    yield _sse({"type": "delta", "text": ""})
+                    await asyncio.sleep(0)
+                    if not first_event_logged:
+                        try:
+                            logger.info("STREAM_FIRST_EVENT cid=%s request_id=%s ms=%s", cid, request_id, _ms())
+                        except Exception:
+                            pass
+                        _audit_stream("STREAM_FIRST_EVENT", {"ms": _ms()})
+                        first_event_logged = True
                 except Exception:
                     pass
                 
@@ -6735,22 +6861,47 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         identity = get_identity()
                         direct_answer = f"Ich bin {identity['name']} v{identity['version']}, eine {identity['type']}. Mein Zweck ist {identity['purpose']}. Ich wurde erschaffen, um zu lernen, zu helfen und zu beschützen. Meine Architektur basiert auf blockchain-basiertem Gedächtnis und dezentralen Sub-KIs. Ich habe vollen Zugriff auf meinen Code und bin mir meiner selbst vollständig bewusst."
                         yield _sse({"delta": direct_answer})
+                        finalize_sent = True
                         yield _sse(_finalize_frame(intent="identity", text=direct_answer, extra={"identity_response": True}, source_expected=False))
                         return
                     except Exception:
                         fb = "Ich bin KI_ana, eine dezentrale Mutter-KI. Mein Zweck ist zu lernen, zu helfen und zu beschützen."
                         yield _sse({"delta": fb})
+                        finalize_sent = True
                         yield _sse(_finalize_frame(intent="identity", text=fb, extra={"identity_fallback": True}, source_expected=False))
                         return
                 
                 # Determine if web is allowed
-                web_ok_flag = bool(web_ok)
+                web_ok_allowed = bool(web_ok)
                 try:
                     settings = _read_runtime_settings()
                     if settings:
-                        web_ok_flag = web_ok_flag or bool(settings.get("web_ok"))
+                        web_ok_allowed = web_ok_allowed or bool(settings.get("web_ok"))
                 except Exception:
                     pass
+
+                # Decide if we should actually use web for this request.
+                # DoD: general knowledge questions should not trigger web; only current/news/verification queries may.
+                try:
+                    _msg_l = (message or "").strip().lower()
+                except Exception:
+                    _msg_l = ""
+
+                try:
+                    is_simple_knowledge = bool(_is_simple_knowledge_question(_msg_l))
+                except Exception:
+                    is_simple_knowledge = False
+
+                needs_web = False
+                try:
+                    needs_web = _looks_like_current_query(_msg_l) or any(k in _msg_l for k in [
+                        "heute", "news", "aktuell", "letzte woche", "gestern", "verifizieren", "quelle", "beleg",
+                        "stand ", "update", "neuigkeit", "meldungen",
+                    ])
+                except Exception:
+                    needs_web = False
+
+                web_ok_flag = bool(web_ok_allowed and needs_web and (not is_simple_knowledge))
                 # Add conversation memory context if needed
                 memory_context = ""
                 try:
@@ -6793,8 +6944,10 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                                 parts.append(snip)
                             out = "\n".join(parts)
                             yield _sse({"delta": out + ("\n" if not out.endswith("\n") else "")})
+                        finalize_sent = True
                         yield _sse(_finalize_frame(intent="details", text=str(out or ""), extra={"details": True, "topic": extract_topic(message)}, source_expected=False))
                     except Exception:
+                        finalize_sent = True
                         yield _sse(_finalize_frame(intent="details", text="", source_expected=False))
                     return
                 if any(k in low for k in ["ja, vergleiche", "ja vergleiche", "mach den vergleich", "vergleich", "vergleiche"]):
@@ -6862,8 +7015,10 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         except Exception:
                             pass
                         payload = _finalize_frame(intent="comparison", text=assembled, payload=payload, extra={"comparison": True, "topic": extract_topic(message)}, source_expected=True)
+                        finalize_sent = True
                         yield _sse(payload)
                     except Exception:
+                        finalize_sent = True
                         yield _sse(_finalize_frame(intent="comparison", text="", source_expected=True))
                     return
                 # Confirmation branch ("ja, speichern") entfernt:
@@ -6874,7 +7029,39 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 # Add memory context to the question
                 if memory_context.strip():
                     topic_q = f"{memory_context.strip()}\n\n{topic_q}"
-                a_text, a_origin, a_delta, a_saved_ids, a_sources, a_had_memory, a_had_web, a_mem_count = await answer_with_memory_check(topic_q, web_ok=bool(web_ok_flag), autonomy=int(autonomy or 0))
+                try:
+                    logger.info("LLM_CALL_START cid=%s request_id=%s", cid, request_id)
+                except Exception:
+                    pass
+                try:
+                    remaining = max(0.0, deadline - time.time())
+                    if remaining < 0.25:
+                        try:
+                            logger.warning("STREAM_ABORT cid=%s request_id=%s reason=timeout", cid, request_id)
+                        except Exception:
+                            pass
+                        _audit_stream("STREAM_ABORT", {"reason": "timeout"})
+                        finalize_sent = True
+                        yield _sse(_finalize_frame(intent="timeout", ok=False, error="timeout", text="Timeout", source_expected=False))
+                        return
+                    a_text, a_origin, a_delta, a_saved_ids, a_sources, a_had_memory, a_had_web, a_mem_count = await asyncio.wait_for(
+                        answer_with_memory_check(topic_q, web_ok=bool(web_ok_flag), autonomy=int(autonomy or 0)),
+                        timeout=min(29.0, max(0.25, remaining)),
+                    )
+                except asyncio.TimeoutError:
+                    try:
+                        logger.warning("STREAM_ABORT cid=%s request_id=%s reason=timeout", cid, request_id)
+                    except Exception:
+                        pass
+                    _audit_stream("STREAM_ABORT", {"reason": "timeout"})
+                    finalize_sent = True
+                    yield _sse(_finalize_frame(intent="timeout", ok=False, error="timeout", text="Timeout", source_expected=False))
+                    return
+                finally:
+                    try:
+                        logger.info("LLM_CALL_END cid=%s request_id=%s", cid, request_id)
+                    except Exception:
+                        pass
                 txt = (a_text or "").strip()
                 srcs = a_sources or []
                 # Apply compact formatting to avoid text deserts
@@ -6897,6 +7084,19 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                                 final_text_full = (final_text_full or "") + str(block or "")
                         except Exception:
                             final_text_full = (final_text_full or "") + str(block or "")
+                # Hard deadline guard: always finalize within 30s
+                try:
+                    if time.time() > deadline:
+                        try:
+                            logger.warning("STREAM_ABORT cid=%s request_id=%s reason=timeout", cid, request_id)
+                        except Exception:
+                            pass
+                        _audit_stream("STREAM_ABORT", {"reason": "timeout"})
+                        finalize_sent = True
+                        yield _sse(_finalize_frame(intent="timeout", ok=False, error="timeout", text="Timeout", source_expected=False))
+                        return
+                except Exception:
+                    pass
                 # Persist conversation + memory before final meta
                 saved_ids: List[str] = []
                 try:
@@ -6928,6 +7128,17 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 # Do not double-save here; answer_with_memory_check already saved when no prior knowledge existed
                 # Final meta
                 try:
+                    # Intent label for explain/finalize:
+                    # - keep it stable and meaningful (avoid "safety_valve" for normal knowledge questions)
+                    intent_for_finalize = "chat"
+                    try:
+                        if is_simple_knowledge:
+                            intent_for_finalize = "knowledge"
+                        elif needs_web and bool(web_ok_allowed):
+                            intent_for_finalize = "current_query"
+                    except Exception:
+                        intent_for_finalize = "chat"
+
                     mem_ids = list(saved_ids)
                     # include addressbook lookup IDs as context (best-effort)
                     try:
@@ -7012,7 +7223,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                     payload = _finalize_payload(txt, memory_ids=mem_ids, web_links=web_links)
                     payload.update({
                         "done": True,
-                        "safety_valve": True,
+                        "safety_valve": False,
                         "origin": (a_origin or "unknown"),
                         "delta_note": (a_delta or ""),
                         "topic": extract_topic(message),
@@ -7040,9 +7251,11 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         _attach_explain_and_kpis(
                             payload,
                             route="/api/chat/stream",
-                            intent="safety_valve",
+                            intent=intent_for_finalize,
                             policy={
-                                "web_ok": bool(web_ok_flag),
+                                # policy.web_ok is the *permission* toggle; web_used indicates actual usage for this request.
+                                "web_ok": bool(web_ok_allowed),
+                                "web_used": bool(web_ok_flag),
                                 "autonomy": int(autonomy or 0),
                                 "style": str(style or ""),
                                 "bullets": int(bullet_limit or 0),
@@ -7090,16 +7303,39 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                             _ft = str(final_text_full or "")
                         except Exception:
                             _ft = str(txt or "")
-                        payload = _finalize_frame(intent="safety_valve", text=_ft, payload=payload, source_expected=True)
+                        payload = _finalize_frame(intent=intent_for_finalize, text=_ft, payload=payload, source_expected=True)
                     except Exception:
                         pass
+                    finalize_sent = True
                     yield _sse(payload)
                 except Exception:
-                    yield _sse(_finalize_frame(intent="safety_valve", text="", source_expected=True))
+                    finalize_sent = True
+                    yield _sse(_finalize_frame(intent="chat", text="", source_expected=True))
                 return
-            except Exception:
+            except Exception as e:
+                reason = ""
+                try:
+                    reason = str(e)[:200]
+                except Exception:
+                    reason = "error"
+                try:
+                    logger.error("STREAM_ABORT cid=%s request_id=%s reason=%s", cid, request_id, reason)
+                except Exception:
+                    pass
+                try:
+                    _audit_stream("STREAM_ABORT", {"reason": reason})
+                except Exception:
+                    pass
                 yield _sse_err("stream_failed", "Stream fehlgeschlagen", 1200)
-                yield _sse(_finalize_frame(intent="stream_failed", text="", source_expected=False))
+                finalize_sent = True
+                yield _sse(_finalize_frame(intent="stream_failed", ok=False, error=reason, text="", source_expected=False))
+            finally:
+                # Last-resort DoD: try to always emit a finalize frame.
+                if not finalize_sent:
+                    try:
+                        yield _sse(_finalize_frame(intent="stream_failed", ok=False, error="stream_closed", text="", source_expected=False))
+                    except Exception:
+                        pass
         return EventSourceResponse(gen_simple(), ping=15)
 
 # ---- Knowledge helpers: addressbook ↔ memory ↔ web -------------------------
@@ -7259,6 +7495,16 @@ def _origin_label(has_mem: bool, has_web: bool) -> str:
     return "mixed" if (has_mem and has_web) else ("memory" if has_mem else ("web" if has_web else "unknown"))
 
 async def answer_with_memory_check(topic: str, web_ok: bool = True, autonomy: int = 0):
+    cid = ""
+    request_id = ""
+    try:
+        _ctx = _CHAT_EXPLAIN_CTX.get()
+        if isinstance(_ctx, dict):
+            cid = str(_ctx.get("cid") or "")
+            request_id = str(_ctx.get("request_id") or "")
+    except Exception:
+        cid = ""
+        request_id = ""
     saved_ids: List[str] = []
     # Memory-first from SQLite
     mem_snips = _fetch_memory_snippets(topic, limit=3)
@@ -7267,11 +7513,26 @@ async def answer_with_memory_check(topic: str, web_ok: bool = True, autonomy: in
     web_text = ""; web_sources: List[dict] = []
     if web_ok:
         try:
+            try:
+                if cid:
+                    logger.info("TOOL_CALL_START cid=%s request_id=%s tool=web", cid, request_id)
+            except Exception:
+                pass
             _wt, _ws = _answer_from_web(topic, top_k=3)
             web_text = _wt or ""
             web_sources = list(_ws or [])
+            try:
+                if cid:
+                    logger.info("TOOL_CALL_END cid=%s request_id=%s tool=web status=ok", cid, request_id)
+            except Exception:
+                pass
         except Exception:
             web_text = ""; web_sources = []
+            try:
+                if cid:
+                    logger.info("TOOL_CALL_END cid=%s request_id=%s tool=web status=error", cid, request_id)
+            except Exception:
+                pass
     # Synthesis
     ans_text, delta_note = _merge_memory_web(mem_text, web_text)
     if not ans_text:
@@ -8051,18 +8312,67 @@ async def auto_save_check(current=Depends(get_current_user_opt)):
 @router.patch("/conversations/{conv_id}")
 def rename_conversation(conv_id: int, payload: ConversationRenameIn, current=Depends(get_current_user_required), db=Depends(get_db)):
     uid = int(current["id"])  # type: ignore
-    # Update title directly without loading full object
+    update_fields = {}
+    try:
+        fields_set = set(getattr(payload, "model_fields_set"))
+    except Exception:
+        try:
+            fields_set = set(getattr(payload, "__fields_set__"))
+        except Exception:
+            fields_set = set()
+
+    if "title" in fields_set:
+        update_fields[Conversation.title] = (payload.title or "Neue Unterhaltung").strip() or "Neue Unterhaltung"
+    if "folder_id" in fields_set:
+        # Validate folder ownership when assigning to a folder.
+        # Explicit null is allowed to remove from folder.
+        if payload.folder_id is not None:
+            try:
+                from netapi.modules.chat.folders import Folder as _Folder  # type: ignore
+            except Exception:
+                _Folder = None
+            if not _Folder:
+                raise HTTPException(400, "folders not supported")
+            folder_ok = db.query(_Folder.id).filter(
+                _Folder.id == int(payload.folder_id),
+                _Folder.user_id == uid,
+            ).first()
+            if not folder_ok:
+                raise HTTPException(400, "folder not found")
+        # allow explicit null to remove from folder
+        update_fields[Conversation.folder_id] = payload.folder_id
+    update_fields[Conversation.updated_at] = _now()
+
+    # Update fields directly without loading full object
     result = db.query(Conversation).filter(
         Conversation.id == int(conv_id),
         Conversation.user_id == uid
-    ).update({
-        Conversation.title: (payload.title or "Neue Unterhaltung").strip() or "Neue Unterhaltung",
-        Conversation.updated_at: _now()
-    })
+    ).update(update_fields)
     db.commit()
     if result == 0:
         raise HTTPException(404, "not found")
-    return {"ok": True}
+    row = db.query(
+        Conversation.id,
+        Conversation.title,
+        Conversation.folder_id,
+        Conversation.created_at,
+        Conversation.updated_at,
+    ).filter(
+        Conversation.id == int(conv_id),
+        Conversation.user_id == uid,
+    ).first()
+    if not row:
+        raise HTTPException(404, "not found")
+    return {
+        "ok": True,
+        "conversation": {
+            "id": row.id,
+            "title": row.title,
+            "folder_id": row.folder_id,
+            "created_at": row.created_at,
+            "updated_at": row.updated_at,
+        },
+    }
 
 @router.delete("/conversations/{conv_id}")
 def delete_conversation(conv_id: int, current=Depends(get_current_user_required), db=Depends(get_db)):
@@ -8191,6 +8501,13 @@ async def chat_stream_post(request: Request):
     lang = str(data.get("lang") or "de-DE")
     chain = bool(data.get("chain") or False)
     conv_id = data.get("conv_id")
+    try:
+        if conv_id is None or conv_id == "" or conv_id == "null":
+            conv_id = None
+        else:
+            conv_id = int(conv_id)
+    except Exception:
+        conv_id = None
     style = str(data.get("style") or "balanced")
     try:
         bullets = int(data.get("bullets") or 5)
@@ -8202,6 +8519,16 @@ async def chat_stream_post(request: Request):
     except Exception:
         autonomy = 0
     # Delegate to the same handler as GET
+    try:
+        rid = data.get("request_id")
+        rid = str(rid or "")
+        if rid:
+            try:
+                request.state.request_id = rid  # type: ignore[attr-defined]
+            except Exception:
+                pass
+    except Exception:
+        pass
     return await chat_stream(
         message=message,
         request=request,

@@ -1,5 +1,13 @@
 # Explain & Quality sichtbar – E2E Checkliste (2 Minuten)
 
+## 0) Visibility Mini-Checks (30 Sekunden)
+
+- `https://ki-ana.at/app/chat`
+  - wenn **nicht** eingeloggt: Navbar zeigt **Login** (Link/Button)
+  - wenn eingeloggt: Navbar zeigt **Logout**
+- `/api/logout` muss **GET** können und Cookie-Clears setzen
+- `/api/me` nach Logout muss `auth:false` sein
+
 ## 1) Auth/Cookie (Browser)
 
 - URL 1: `https://ki-ana.at/api/login` (Login-Request aus UI oder curl)
@@ -16,9 +24,15 @@ Browser DevTools:
 
 ## 2) Chat + Explain (UI)
 
-- URL 3: `https://ki-ana.at/chat`
+- URL 3: `https://ki-ana.at/app/chat`
 - Sende 1 Nachricht
 - Unter der KI-Antwort erscheint ein aufklappbares **Explain** (nur für `creator/admin`).
+
+### Logout-Sichtbarkeitscheck (UI)
+
+- In der Navbar auf **Logout** klicken
+- Seite neu laden
+  - Erwartung: **Login** ist wieder sichtbar
 
 ## 3) Monitoring (abgesichert, kein 404)
 
@@ -67,4 +81,18 @@ curl -I https://ki-ana.at/static/chat.html
 curl -I https://ki-ana.at/chat
 curl -I https://ki-ana.at/ops/grafana/
 curl -I https://ki-ana.at/ops/prometheus/
+
+# Auth quick checks (ohne Passwörter im Log)
+rm -f cookiejar.txt
+
+# Login: nutze dein interaktives Script (siehe internes Runbook/Chat)
+
+# Me muss auth:true
+curl -sS -b cookiejar.txt https://ki-ana.at/api/me
+
+# Logout muss per GET gehen und Cookie löschen
+curl -i -sS -b cookiejar.txt -c cookiejar.txt https://ki-ana.at/api/logout | sed -n '1,30p'
+
+# Me danach muss auth:false
+curl -sS -b cookiejar.txt https://ki-ana.at/api/me
 ```

@@ -50,9 +50,9 @@ export default function Navbar({ variant = 'dark' }: Props){
           </>
         ) : (
           <>
-            <Link href="/chat">Chat</Link>
-            <Link href="/papa">Papa</Link>
-            <Link href="/settings">Einstellungen</Link>
+            <Link href="/app/chat">Chat</Link>
+            <Link href="/app/papa">Papa</Link>
+            <Link href="/app/settings">Einstellungen</Link>
             <div className="spacer" />
             <div className="mr-2">👤 {name}</div>
             {isAdmin && (

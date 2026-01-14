@@ -441,9 +441,9 @@ def admin_set_status(payload: Dict[str, Any], user = Depends(_cur_user), db=Depe
     except Exception:
         pass
     return {"ok": True, "user": {"id": rec.id, "status": rec.status, "deleted_at": rec.deleted_at, "reason": rec.suspended_reason}}
-@router.post("/logout")
-def logout():
-    resp = JSONResponse({"ok": True}); clear_cookie(resp); return resp
+@router.api_route("/logout", methods=["GET", "POST"])
+def logout(request: Request):
+    resp = JSONResponse({"ok": True}); clear_cookie(resp, request=request); return resp
 
 # Issue JWT tokens for API clients (optional, in addition to cookie sessions)
 @router.post("/token")
@@ -488,9 +488,9 @@ def _legacy_login(payload: LoginIn, request: Request, db=Depends(get_db)):
 def _legacy_me(current = Depends(get_current_user_opt)):
     return me(current)  # type: ignore[misc]
 
-@legacy.post("/logout")
-def _legacy_logout():
-    return logout()
+@legacy.api_route("/logout", methods=["GET", "POST"])
+def _legacy_logout(request: Request):
+    return logout(request)
 
 @legacy.post("/token")
 def _legacy_token(payload: Optional[LoginIn] = None, request: Request = None, db=Depends(get_db)):

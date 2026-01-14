@@ -14,7 +14,7 @@ export default function LoginPage(){
       try{
         const me = await getMe()
         if(me?.auth) {
-          window.location.replace('/chat')
+          window.location.replace('/app/chat')
         }
       }catch{}
     })()
@@ -24,27 +24,20 @@ export default function LoginPage(){
     e.preventDefault()
     setMsg(''); setBusy(true)
     try{
-      const res:any = await login({ username, password, remember: true })
-      try { if(res?.user?.username) localStorage.setItem('kiana_username', res.user.username) } catch{}
+      await login({ username, password, remember: true })
+
       // Validate session via /api/me then redirect
-      try{
-        const me = await getMe()
-        if(me?.auth){
-          // Redirect Papa/Admin to Dashboard, others to Chat
-          const roles = (me?.user as any)?.roles || []
-          const isPapa = Array.isArray(roles) && roles.some((r: string) => ['papa','admin','creator'].includes(String(r).toLowerCase()))
-          window.location.replace(isPapa ? '/static/dashboard.html' : '/chat')
-          return
-        }
-      }catch{}
-      // Fallback redirect based on user response
-      try{
-        const roles = (res?.user?.roles || []) as string[]
-        const isPapa = roles.some(r => ['papa','admin','creator'].includes(r.toLowerCase()))
-        window.location.replace(isPapa ? '/static/dashboard.html' : '/chat')
-      }catch{
-        window.location.replace('/chat')
+      const me = await getMe()
+      if(me?.auth){
+        try {
+          const u = (me as any)?.user?.username || username
+          if(u) localStorage.setItem('kiana_username', String(u))
+        } catch {}
+        window.location.replace('/app/chat')
+        return
       }
+
+      setMsg('Login fehlgeschlagen (keine Session)')
     }catch(err:any){
       const text = typeof err?.message === 'string' ? err.message : ''
       setMsg(text || 'Login fehlgeschlagen')

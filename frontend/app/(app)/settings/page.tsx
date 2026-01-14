@@ -4,13 +4,16 @@ import { useEffect, useState } from 'react'
 export default function SettingsPage(){
   const [voice, setVoice] = useState('neutral')
   const [style, setStyle] = useState('balanced')
+  const [webOk, setWebOk] = useState(false)
   const [msg, setMsg] = useState('')
 
   useEffect(()=>{ // load user prefs (placeholder)
     try{
       const v = localStorage.getItem('kiana_voice') || 'neutral'
       const s = localStorage.getItem('kiana_style') || 'balanced'
+      const w = localStorage.getItem('kiana_web_ok') || '0'
       setVoice(v); setStyle(s)
+      setWebOk(w === '1')
     }catch{}
   },[])
 
@@ -18,6 +21,7 @@ export default function SettingsPage(){
     try{
       localStorage.setItem('kiana_voice', voice)
       localStorage.setItem('kiana_style', style)
+      localStorage.setItem('kiana_web_ok', webOk ? '1' : '0')
       setMsg('Gespeichert')
       setTimeout(()=>setMsg(''), 800)
     }catch{ setMsg('Konnte nicht speichern') }
@@ -42,6 +46,13 @@ export default function SettingsPage(){
             <option value="concise">Kurz</option>
             <option value="detailed">Ausführlich</option>
           </select>
+        </label>
+        <label className="flex items-center gap-3">
+          <input type="checkbox" checked={webOk} onChange={(e)=>setWebOk(e.target.checked)} />
+          <div>
+            <div className="font-medium">Web-Recherche erlauben (für mich)</div>
+            <div className="small">Nur für „aktuell/news/verifizieren“-Fragen wird Web genutzt.</div>
+          </div>
         </label>
         <div>
           <button className="btn-dark" onClick={save}>Speichern</button>

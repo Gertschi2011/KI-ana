@@ -139,13 +139,26 @@ def set_cookie(resp, payload: Dict[str, Any], *, remember: bool = False, request
         pass
     resp.set_cookie(COOKIE_NAME, token, **cookie_kwargs)
 
-def clear_cookie(resp) -> None:
+def clear_cookie(resp, *, request: Optional[Request] = None) -> None:
     resp.delete_cookie(COOKIE_NAME, path="/")
+
     # Optional: also delete for configured domain scope
     try:
         cookie_domain = str(os.getenv("KIANA_COOKIE_DOMAIN", "") or "").strip()
         if cookie_domain:
             resp.delete_cookie(COOKIE_NAME, path="/", domain=cookie_domain)
+    except Exception:
+        pass
+
+    # Best-effort: also clear host-scoped and dot-scoped variants derived from request.
+    # This prevents "logout ok but still authed" when an older cookie was set with a Domain attribute.
+    try:
+        if request is not None:
+            host = str(request.url.hostname or "").strip().lower()
+            if host:
+                resp.delete_cookie(COOKIE_NAME, path="/", domain=host)
+                if not host.startswith("."):
+                    resp.delete_cookie(COOKIE_NAME, path="/", domain=f".{host}")
     except Exception:
         pass
 
