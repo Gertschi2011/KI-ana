@@ -72,3 +72,11 @@ dist/
 *.tmp
 .vscode/
 .idea/
+
+# Local cookie jars (avoid committing sessions)
+cookiejar.txt
+cookiejar*.txt
+cookies.txt
+cookies*.txt
+*.cookie
+.cookie
