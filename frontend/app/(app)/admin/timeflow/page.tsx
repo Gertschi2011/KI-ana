@@ -83,7 +83,6 @@ export default function TimeFlowManagerPage() {
       setError(null)
     } catch (err) {
       setError('Fehler beim Laden der TimeFlow-Daten')
-      console.error(err)
     } finally {
       setLoading(false)
     }
@@ -108,7 +107,6 @@ export default function TimeFlowManagerPage() {
       }
     } catch (err) {
       setSaveMessage('❌ Fehler beim Speichern')
-      console.error(err)
     }
   }
 
@@ -125,28 +123,36 @@ export default function TimeFlowManagerPage() {
 
   if (loading && !state) {
     return (
-      <div className="p-4">
-        <h1 className="text-2xl font-bold mb-4">⏱️ TimeFlow Manager</h1>
-        <div className="card">Lade Daten...</div>
+      <div className="max-w-7xl mx-auto grid gap-4">
+        <div className="card">
+          <div className="text-lg font-semibold">⏱️ TimeFlow Manager</div>
+          <div className="small mt-1">Lade Daten…</div>
+        </div>
       </div>
     )
   }
 
   if (error && !state) {
     return (
-      <div className="p-4">
-        <h1 className="text-2xl font-bold mb-4">⏱️ TimeFlow Manager</h1>
-        <div className="card bg-red-50 text-red-600">{error}</div>
+      <div className="max-w-7xl mx-auto grid gap-4">
+        <div className="card">
+          <div className="text-lg font-semibold">⏱️ TimeFlow Manager</div>
+          <div className="small mt-1">Konnte Daten nicht laden.</div>
+        </div>
+        <div className="kiana-alert kiana-alert-error">{error}</div>
       </div>
     )
   }
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold">⏱️ TimeFlow Manager</h1>
-        <button onClick={loadData} className="btn-dark">
-          🔄 Aktualisieren
+    <div className="max-w-7xl mx-auto grid gap-6">
+      <div className="card flex items-start justify-between gap-4">
+        <div>
+          <div className="text-lg font-semibold">⏱️ TimeFlow Manager</div>
+          <div className="small mt-1">Status, Konfiguration und Alerts im Dashboard-Look.</div>
+        </div>
+        <button onClick={loadData} className="kiana-btn" disabled={loading}>
+          Aktualisieren
         </button>
       </div>
 
@@ -329,12 +335,12 @@ export default function TimeFlowManagerPage() {
                 </label>
               </div>
 
-              <button onClick={saveConfig} className="btn-dark mt-3">
+              <button onClick={saveConfig} className="kiana-btn kiana-btn-primary mt-3">
                 💾 Konfiguration speichern
               </button>
 
               {saveMessage && (
-                <div className="text-sm p-2 bg-gray-100 rounded">
+                <div className={`kiana-alert ${saveMessage.includes('✅') ? 'kiana-alert-success' : 'kiana-alert-error'}`}>
                   {saveMessage}
                 </div>
               )}

@@ -2,69 +2,223 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: light dark; }
+:root {
+	color-scheme: light;
+
+	/* Dashboard-aligned (light) */
+	--k-bg: #F7F8FC;
+	--k-surface: #FFFFFF;
+	--k-border: #E5E7EB;
+	--k-text: #111827;
+	--k-muted: #6B7280;
+	--k-primary: #9333EA; /* purple-600 */
+	--k-accent: #2563EB;  /* blue-600 */
+	--k-success: #16A34A;
+	--k-danger: #DC2626;
+	--k-gradient: linear-gradient(90deg, #9333EA 0%, #2563EB 100%);
+
+	--k-radius: 12px;
+	--k-radius-btn: 10px;
+	--k-radius-bubble: 14px;
+	--k-shadow-card: 0 4px 12px rgba(0,0,0,0.10);
+	--k-shadow-btn: 0 4px 12px rgba(0,0,0,0.12);
+}
 html { height: 100%; }
-body { @apply min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100; }
+body {
+	@apply min-h-screen;
+	background: var(--k-bg);
+	color: var(--k-text);
+}
 
 /* Navbar */
-.nav { @apply sticky top-0 z-50 border-b; }
-.nav-inner { @apply max-w-6xl mx-auto flex items-center gap-3 px-4 py-3; }
-.nav .brand { @apply font-extrabold text-lg mr-2; }
-.nav .spacer { @apply flex-1; }
+.kiana-header {
+	@apply sticky top-0 z-50;
+	background: var(--k-gradient);
+	color: #fff;
+	box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+.kiana-header-inner { @apply max-w-6xl mx-auto px-4 py-6; }
+.kiana-header-row { @apply flex items-center justify-between gap-4; }
+.kiana-brand-title { @apply text-3xl font-bold; }
+.kiana-brand-sub { @apply mt-1 text-sm; color: rgba(255,255,255,0.85); }
 
-/* Dark variant */
-.nav-dark { @apply bg-gray-900 text-white border-gray-800/80; }
-.nav-dark a { @apply text-white/90 hover:text-white transition-colors; }
-.btn-dark { @apply inline-flex items-center gap-2 rounded-md px-3 py-2 border border-white/15 bg-white/5 hover:bg-white/10 transition; }
+.kiana-status {
+	@apply text-right;
+}
+.kiana-status-label { @apply text-sm; color: rgba(255,255,255,0.85); }
+.kiana-status-line { @apply flex items-center justify-end gap-2; }
 
-/* Light variant */
-.nav-light { @apply bg-white text-gray-900 border-gray-200; }
-.nav-light a { @apply text-gray-700 hover:text-gray-900 transition-colors; }
-.btn-light { @apply inline-flex items-center gap-2 rounded-md px-3 py-2 border border-gray-300 bg-white hover:bg-gray-50 transition; }
+.kiana-header-status-dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 999px;
+	background: #4ADE80; /* green-400 */
+	box-shadow: 0 0 0 6px rgba(74,222,128,0.22);
+}
+.kiana-status-text { @apply font-semibold; }
+
+.kiana-navtabs {
+	@apply border-b;
+	border-color: rgba(255,255,255,0.18);
+	background: rgba(255,255,255,0.14);
+	backdrop-filter: blur(6px);
+}
+.kiana-navtabs-inner { @apply max-w-6xl mx-auto px-4; }
+.kiana-navtabs-list { @apply flex items-center gap-8; }
+.kiana-tab {
+	@apply py-4 px-1 border-b-2 font-medium text-sm transition-colors;
+	border-color: transparent;
+	color: rgba(255,255,255,0.78);
+}
+.kiana-tab:hover { color: rgba(255,255,255,0.95); border-color: rgba(255,255,255,0.30); }
+.kiana-tab-active { color: #fff; border-color: #fff; }
+
+.kiana-header-actions { @apply flex items-center gap-3; }
+.kiana-userpill {
+	@apply text-sm;
+	color: rgba(255,255,255,0.90);
+}
+.kiana-header-btn {
+	@apply inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors;
+	border: 1px solid rgba(255,255,255,0.22);
+	background: rgba(255,255,255,0.12);
+	color: #fff;
+}
+.kiana-header-btn:hover { background: rgba(255,255,255,0.18); }
 
 /* Cards & forms */
-.card { @apply bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 shadow-sm; }
-.input { @apply w-full rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 px-3 py-2; }
+.card {
+	@apply p-6;
+	background: var(--k-surface);
+	border: 1px solid var(--k-border);
+	border-radius: var(--k-radius);
+	box-shadow: var(--k-shadow-card);
+}
+.input {
+	@apply w-full px-3 py-2;
+	background: var(--k-surface);
+	border: 1px solid var(--k-border);
+	border-radius: var(--k-radius-btn);
+}
 .form { @apply grid gap-3 max-w-md; }
-.small { @apply text-sm text-gray-600 dark:text-gray-400; }
+.small { @apply text-sm; color: var(--k-muted); }
+
+/* Kiana buttons */
+.kiana-btn {
+	@apply inline-flex items-center justify-center gap-2 px-3 py-2 font-medium;
+	border-radius: var(--k-radius-btn);
+	border: 1px solid var(--k-border);
+	background: var(--k-surface);
+	color: var(--k-text);
+	transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+.kiana-btn:hover { border-color: rgba(168,85,247,0.35); box-shadow: 0 6px 18px rgba(17,24,39,0.06); }
+.kiana-btn:active { transform: translateY(1px); }
+.kiana-btn-primary {
+	@apply text-white;
+	border: 0;
+	background: var(--k-gradient);
+	box-shadow: var(--k-shadow-btn);
+}
+.kiana-btn-primary:hover { filter: saturate(1.06); }
+.kiana-btn-ghost {
+	background: transparent;
+	border: 1px solid transparent;
+	color: var(--k-muted);
+}
+.kiana-btn-ghost:hover { background: rgba(79,70,229,0.06); color: var(--k-text); border-color: rgba(79,70,229,0.10); }
+
+/* Switch */
+.kiana-switch { @apply inline-flex items-center gap-2 select-none; color: var(--k-muted); }
+.kiana-switch input { accent-color: var(--k-primary); }
 
 /* Chat bubbles */
 .bubble { @apply inline-block px-4 py-2 rounded-2xl max-w-[80%]; }
 .bubble-user { @apply bg-blue-500 text-white self-end; }
-.bubble-bot { @apply bg-gray-200 text-gray-900 dark:bg-gray-800 dark:text-gray-100 self-start; }
+.bubble-bot { @apply bg-gray-200 text-gray-900 self-start; }
 
 /* KI_ana stylish chat */
-.kiana-chat { @apply rounded-xl overflow-hidden bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800; }
-.kiana-chat-sidebar { @apply border-r border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950; }
-.kiana-chat-main { @apply bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-950; }
+
+.kiana-chat {
+	@apply overflow-hidden;
+	background: var(--k-surface);
+	border: 1px solid var(--k-border);
+	border-radius: var(--k-radius);
+	box-shadow: var(--k-shadow-card);
+}
+.kiana-chat-sidebar {
+	background: rgba(255,255,255,0.86);
+	border-right: 1px solid var(--k-border);
+}
+.kiana-chat-main {
+	background:
+		radial-gradient(900px 400px at 85% 10%, rgba(147,51,234,0.08), transparent 55%),
+		radial-gradient(800px 360px at 25% 20%, rgba(37,99,235,0.07), transparent 55%),
+		var(--k-bg);
+}
+
+.kiana-sidebar-brand { @apply flex items-center gap-2; }
+.kiana-status-dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 999px;
+	background: var(--k-success);
+	box-shadow: 0 0 0 4px rgba(22,163,74,0.14);
+}
+.kiana-sidebar-title { @apply font-semibold; font-size: 16px; }
+.kiana-sidebar-sub { @apply text-xs; color: var(--k-muted); }
 
 .kiana-chat-header {
 	@apply px-4 py-3 flex items-center gap-3;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	color: white;
+	position: relative;
+	background: var(--k-surface);
+	border-bottom: 1px solid var(--k-border);
 }
-.kiana-chat-avatar { @apply w-10 h-10 rounded-full object-cover; border: 2px solid rgba(255,255,255,0.35); }
-.kiana-chat-title { @apply font-semibold text-lg leading-tight; }
-.kiana-chat-sub { @apply text-xs opacity-90; }
+.kiana-chat-header::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: var(--k-gradient);
+}
+.kiana-chat-avatar { @apply w-10 h-10 rounded-full object-cover; border: 2px solid rgba(79,70,229,0.20); }
+.kiana-chat-title { @apply font-semibold leading-tight; font-size: 17px; }
+.kiana-chat-sub { @apply text-xs; color: var(--k-muted); }
 
 .kiana-chat-messages { @apply bg-transparent; }
 
-.kiana-bubble { @apply inline-block px-4 py-3 rounded-2xl max-w-[80%] shadow-sm; line-height: 1.55; }
-.kiana-bubble-user { @apply text-white; background: linear-gradient(135deg, #5aa7ff 0%, #3b82f6 100%); }
-.kiana-bubble-ai { @apply text-gray-900 dark:text-gray-100; background: rgba(238, 241, 255, 0.95); border: 1px solid rgba(120, 99, 255, 0.18); }
-.dark .kiana-bubble-ai { background: rgba(30, 32, 55, 0.75); border-color: rgba(120, 99, 255, 0.25); }
+.kiana-bubble {
+	@apply inline-block px-4 py-3 max-w-[80%];
+	border-radius: var(--k-radius-bubble);
+	line-height: 1.55;
+	border: 1px solid var(--k-border);
+}
+.kiana-bubble-user {
+	background: linear-gradient(135deg, rgba(147,51,234,0.92) 0%, rgba(37,99,235,0.82) 100%);
+	border-color: rgba(255,255,255,0.20);
+	color: #fff;
+}
+.kiana-bubble-ai {
+	background: var(--k-surface);
+	border-color: var(--k-border);
+	color: var(--k-text);
+}
 
 .kiana-bubble-meta { @apply mt-2 flex items-center justify-between gap-2 text-[11px] opacity-80; }
 .kiana-bubble-time { @apply select-none; }
 .kiana-explain-btn {
-	@apply inline-flex items-center justify-center w-6 h-6 rounded-full border border-white/20 text-white/95;
-	background: rgba(255,255,255,0.18);
+	@apply inline-flex items-center justify-center w-7 h-7;
+	border-radius: 999px;
+	border: 1px solid rgba(17,24,39,0.10);
+	color: rgba(17,24,39,0.85);
+	background: rgba(17,24,39,0.03);
 	pointer-events: auto;
 	cursor: pointer;
 	z-index: 5;
 }
-.kiana-bubble-ai .kiana-explain-btn { @apply border-gray-300 text-gray-800; background: rgba(0,0,0,0.04); }
-.dark .kiana-bubble-ai .kiana-explain-btn { @apply border-white/20 text-white/90; background: rgba(255,255,255,0.08); }
+.kiana-explain-btn:hover { border-color: rgba(168,85,247,0.30); background: rgba(168,85,247,0.08); }
 
 .kiana-explain { @apply mt-2 rounded-lg p-3 bg-white/70 dark:bg-gray-900/60 border border-gray-200 dark:border-gray-800; }
 
@@ -78,11 +232,66 @@ body { @apply min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-g
 .kiana-explain-details > summary::-webkit-details-marker { display: none; }
 .kiana-bubble-user .kiana-explain-summary { color: rgba(255,255,255,0.95); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.22); }
 .kiana-bubble-ai .kiana-explain-summary { color: rgba(17,24,39,0.9); background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.10); }
-.dark .kiana-bubble-ai .kiana-explain-summary { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); }
 
-.kiana-chat-composer { @apply bg-white/90 dark:bg-gray-950; }
-.kiana-composer-input { @apply w-full rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 px-4 py-3; }
+.kiana-chat-composer { background: rgba(255,255,255,0.90); }
+.kiana-composer-input {
+	@apply w-full px-4 py-3;
+	border-radius: 999px;
+	border: 1px solid var(--k-border);
+	background: var(--k-surface);
+}
 .kiana-composer-send {
 	@apply px-5 py-3 rounded-full font-semibold text-white disabled:opacity-60;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	background: var(--k-gradient);
+	box-shadow: var(--k-shadow-btn);
+}
+
+/* Modal */
+.kiana-modal {
+	@apply relative w-full max-w-3xl;
+	max-height: 80vh;
+	overflow: auto;
+	background: var(--k-surface);
+	border: 1px solid var(--k-border);
+	border-radius: var(--k-radius);
+	box-shadow: var(--k-shadow-card);
+}
+
+/* Alerts */
+.kiana-alert {
+	@apply rounded-xl border p-4;
+	border-color: var(--k-border);
+	background: rgba(255,255,255,0.70);
+}
+.kiana-alert-error {
+	border-color: rgba(220,38,38,0.25);
+	background: rgba(220,38,38,0.06);
+	color: var(--k-danger);
+}
+.kiana-alert-success {
+	border-color: rgba(22,163,74,0.25);
+	background: rgba(22,163,74,0.06);
+	color: var(--k-success);
+}
+
+/* Tables (Admin) */
+.kiana-table {
+	@apply w-full text-sm;
+}
+.kiana-table th {
+	@apply text-left py-3 px-3;
+	color: var(--k-muted);
+	font-weight: 600;
+}
+.kiana-table td {
+	@apply py-3 px-3;
+}
+.kiana-table thead tr {
+	border-bottom: 1px solid var(--k-border);
+}
+.kiana-table tbody tr {
+	border-bottom: 1px solid rgba(229,231,235,0.6);
+}
+.kiana-table tbody tr:hover {
+	background: rgba(147,51,234,0.04);
 }

@@ -1,5 +1,9 @@
 FROM node:20-alpine
 WORKDIR /app
+
+ARG NEXT_PUBLIC_BUILD_SHA=unknown
+ENV NEXT_PUBLIC_BUILD_SHA=$NEXT_PUBLIC_BUILD_SHA
+
 COPY package.json .
 # Install deps (no lockfile present in repo)
 RUN npm install --no-audit --no-fund

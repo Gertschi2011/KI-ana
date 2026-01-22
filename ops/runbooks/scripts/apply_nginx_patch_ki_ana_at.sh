@@ -24,6 +24,7 @@ else
 fi
 
 echo "Done. Quick checks:"
+echo "  curl -I https://ki-ana.at/app/chat"
 echo "  curl -I https://ki-ana.at/chat"
 echo "  curl -I https://ki-ana.at/static/chat.html"
 echo "  curl -I https://ki-ana.at/ops/grafana/"

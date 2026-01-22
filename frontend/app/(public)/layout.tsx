@@ -1,6 +1,6 @@
 "use client"
 import '../globals.css'
-import NavbarPublic from '../../components/NavbarPublic'
+import Navbar from '../../components/Navbar'
 import { useEffect } from 'react'
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
@@ -10,12 +10,12 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
   },[])
   return (
     <html lang="de">
-      <body className="bg-white text-gray-900">
+      <body style={{ background: 'var(--k-bg)', color: 'var(--k-text)' }}>
         <script
           dangerouslySetInnerHTML={{ __html: "try{document.documentElement.classList.remove('dark')}catch(e){}" }}
         />
-        <NavbarPublic />
-        <main className="p-6">{children}</main>
+        <Navbar />
+        <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
       </body>
     </html>
   )

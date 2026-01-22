@@ -3,6 +3,12 @@ from __future__ import annotations
 import os
 import datetime
 import contextvars
+import json as _json
+import re
+import time
+import typing
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 def extract_natural_reply(pipe_result: Any) -> str:
     """Extract a clean, user‑friendly reply from planner/fallback outputs.
@@ -92,31 +98,11 @@ def _natural(text: Any) -> str:
             logger.exception("knowledge pipeline failed")
         except Exception:
             pass
-        out = (
+        return (
             "Zu genau diesem Thema bin ich mir noch unsicher. "
             "Magst du mir kurz mit deinen Worten erklären, worum es geht? "
             "Dann kann ich mir dazu einen ersten Wissensblock anlegen."
-        )
-        out = postprocess_and_style(out, persona, state, profile_used, style_prompt)
-        out = make_user_friendly_text(out, state)
-        # Knowledge fallback hard-guard
-        try:
-            if isinstance(out, str):
-                s = out.strip()
-                if s.startswith('{') and '"recent_topics"' in s and '"mood"' in s:
-                    logger.warning("chat_once: knowledge answer tried to return self-state JSON, converting to human text")
-                    try:
-                        from netapi.core.expression import express_state_human as _expr_fb
-                        out = _expr_fb(state) if state else "Ich spüre, dass ich gerade vor allem lernen und verstehen will – sag mir gern, was du konkret über das Thema wissen möchtest. 🙂"
-                    except Exception:
-                        out = "Ich spüre, dass ich gerade vor allem lernen und verstehen will – sag mir gern, was du konkret über das Thema wissen möchtest. 🙂"
-        except Exception:
-            pass
-        return _finalize_reply(
-            out,
-            state=state, conv_id=(body.conv_id or None), intent="knowledge", topic=extract_topic(user_msg),
-            extras={"ok": True, "auto_modes": [], "role_used": "FollowUp", "memory_ids": [], "quick_replies": ["Ich erkläre es in 2-3 Sätzen"], "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "knowledge_fallback"}}
-        )
+        ).strip()
     logger.warning("natural: empty after cleaning; returning empty for upstream handling")
     return ""
 from fastapi import APIRouter
@@ -6401,6 +6387,12 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         request_id = str(request_id or "")
     except Exception:
         request_id = ""
+    if not request_id:
+        try:
+            import uuid as _uuid
+            request_id = str(_uuid.uuid4())
+        except Exception:
+            request_id = ""
     # Debug logging at start
     try:
         logger.info("chat_stream: start request_id=%s message=%r persona=%s lang=%s chain=%s conv_id=%s style=%s bullets=%s web_ok=%s autonomy=%s", request_id, user_msg, persona, lang, chain, conv_id, style, bullets, web_ok, autonomy)
@@ -6417,6 +6409,37 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     cid = f"{sid}:{_now_ms % 1000000:06d}"
     t0 = time.time()
     intent_label = "chat_stream"
+
+    # Best-effort: ensure we have a real conversation id early so clients can rely on it.
+    stream_conv_id: Optional[int] = None
+    try:
+        if conv_id is None or conv_id == "" or conv_id == "null":
+            stream_conv_id = None
+        else:
+            _cid = int(conv_id)  # type: ignore[arg-type]
+            stream_conv_id = _cid if _cid > 0 else None
+    except Exception:
+        stream_conv_id = None
+    try:
+        db_gen = get_db()
+        db = next(db_gen)
+        try:
+            current = get_current_user_opt(request, db=db)
+            if current and current.get("id"):
+                uid = int(current["id"])  # type: ignore[index]
+                conv = _ensure_conversation(db, uid, stream_conv_id)
+                stream_conv_id = int(conv.id)
+        finally:
+            try:
+                db.close()
+            except Exception:
+                pass
+            try:
+                db_gen.close()
+            except Exception:
+                pass
+    except Exception:
+        pass
     def _log(level: str, msg: str, *args):
         try:
             pref = f"[cid={cid}] " + msg
@@ -6496,9 +6519,18 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         base["type"] = "finalize"
         base["schema_version"] = 1
         base["cid"] = str(cid or "")
+        base["request_id"] = str(request_id or "")
         base["ok"] = bool(ok)
         base["done"] = True
         base["text"] = str(text or "")
+
+        # Conversation id: always include when available (meta+finalize contract)
+        try:
+            if stream_conv_id is not None and int(stream_conv_id) > 0:
+                base["conversation_id"] = int(stream_conv_id)
+                base["conv_id"] = int(stream_conv_id)
+        except Exception:
+            pass
 
         if error:
             base["error"] = str(error)[:400]
@@ -6571,6 +6603,24 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
 
         return base
 
+    # Always send meta first for streaming clients.
+    _meta_payload = {
+        "type": "meta",
+        "cid": cid,
+        "request_id": request_id,
+        "conversation_id": stream_conv_id,
+        "conv_id": stream_conv_id,
+    }
+
+    async def _with_meta(gen):
+        try:
+            yield _sse(_meta_payload)
+            await asyncio.sleep(0)
+        except Exception:
+            pass
+        async for _chunk in gen:
+            yield _chunk
+
     def _sse_err(code: str, detail: str = "", retry_ms: int = 1500) -> dict:
         return _sse({"error": str(code), "detail": (detail or "")[:400], "retry": int(retry_ms)})
 
@@ -6590,6 +6640,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 return EventSourceResponse(gen, ping=15)
         # Wrap dict-yielding generator to raw SSE text for StreamingResponse
         async def _wrap():
+            finalize_emitted = False
             try:
                 async for chunk in gen:
                     try:
@@ -6599,21 +6650,32 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         else:
                             data = str(chunk)
                         if data:
+                            # Detect finalize/done frames so we don't append a second one.
+                            try:
+                                parsed = json.loads(data)
+                                if isinstance(parsed, dict) and (
+                                    parsed.get("type") == "finalize" or parsed.get("done") is True
+                                ):
+                                    finalize_emitted = True
+                            except Exception:
+                                pass
                             yield ("data: " + data + "\n\n").encode("utf-8")
                     except Exception:
                         continue
-                # ensure closing event if generator did not send done
-                try:
-                    closing = _finalize_frame(intent=intent_label, text="")
-                    yield ("data: " + json.dumps(closing, ensure_ascii=False) + "\n\n").encode("utf-8")
-                except Exception:
-                    yield b"data: {\"done\": true}\n\n"
+                # Ensure closing event if generator did not send finalize/done.
+                if not finalize_emitted:
+                    try:
+                        closing = _finalize_frame(intent=intent_label, text="")
+                        yield ("data: " + json.dumps(closing, ensure_ascii=False) + "\n\n").encode("utf-8")
+                    except Exception:
+                        yield b"data: {\"done\": true}\n\n"
             except Exception:
-                try:
-                    closing = _finalize_frame(intent=intent_label, text="")
-                    yield ("data: " + json.dumps(closing, ensure_ascii=False) + "\n\n").encode("utf-8")
-                except Exception:
-                    yield b"data: {\"done\": true}\n\n"
+                if not finalize_emitted:
+                    try:
+                        closing = _finalize_frame(intent=intent_label, text="")
+                        yield ("data: " + json.dumps(closing, ensure_ascii=False) + "\n\n").encode("utf-8")
+                    except Exception:
+                        yield b"data: {\"done\": true}\n\n"
         return StreamingResponse(_wrap(), media_type="text/event-stream")
 
     # Basic rate limit per IP
@@ -6623,11 +6685,9 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         if EventSourceResponse is None:
             raise HTTPException(429, "rate limit: 40/min")
         async def gen_rl():
-            # emit cid first for correlation
-            yield _sse({"cid": cid})
             yield _sse({"error": "rate_limited", "detail": "Bitte kurz warten (40/min)", "retry": 3000})
             yield _sse(_finalize_frame(intent="rate_limited", text="Bitte kurz warten (40/min)", source_expected=False))
-        resp = _respond(gen_rl())
+        resp = _respond(_with_meta(gen_rl()))
         if resp is not None:
             return resp
 
@@ -6646,7 +6706,6 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         async def gen_block():
             out = "Ich kann dabei nicht helfen. Wenn du möchtest, erkläre ich sichere Hintergründe oder Alternativen."
             # User-friendly text (so the preview has content)
-            yield _sse({"cid": cid})
             yield _sse({"delta": out})
             # Error marker for UI logic (finalizes preview on client)
             yield _sse({"error": "moderated", "detail": str(reason or "")[:200], "retry": 0})
@@ -6654,7 +6713,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         try:
             _audit_chat({"ts": int(time.time()), "sid": sid, "blocked": True, "reason": reason, "user": user_msg})
         except Exception: pass
-        resp = _respond(gen_block())
+        resp = _respond(_with_meta(gen_block()))
         if resp is not None:
             return resp
     else:
@@ -6703,7 +6762,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         if EventSourceResponse is None:
             out = await execute_choice(choice, topic_ctx0 or topic or "das Thema", seed_ctx0, persona, lang)
             return _finalize_frame(intent="choice", text=clean(out), extra={"delta": clean(out)}, source_expected=False)
-        resp = _respond(gen_exec())
+        resp = _respond(_with_meta(gen_exec()))
         if resp is not None:
             return resp
 
@@ -6724,7 +6783,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
             seed_ctx = ctx.get("seed") or user_msg
             out = await execute_choice(prev, topic_ctx, seed_ctx, persona, lang)
             return _finalize_frame(intent="choice", text=clean(out), extra={"delta": clean(out)}, source_expected=False)
-        resp = _respond(gen_prev())
+        resp = _respond(_with_meta(gen_prev()))
         if resp is not None:
             return resp
 
@@ -6751,7 +6810,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
             except Exception:
                 txt = "Ich bin KI_ana, eine dezentrale Mutter-KI."
                 return _finalize_frame(intent=intent_label, text=txt, extra={"delta": txt}, source_expected=False)
-        resp = _respond(gen_identity())
+        resp = _respond(_with_meta(gen_identity()))
         if resp is not None:
             return resp
 
@@ -6766,7 +6825,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         if EventSourceResponse is None:
             txt = "Mir geht's gut – bereit zu helfen."
             return _finalize_frame(intent=intent_label, text=txt, extra={"delta": txt}, source_expected=False)
-        resp = _respond(gen_smalltalk())
+        resp = _respond(_with_meta(gen_smalltalk()))
         if resp is not None:
             return resp
     if _GREETING.search(user_msg.lower()):
@@ -6777,7 +6836,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
         if EventSourceResponse is None:
             txt = "Hallo! Wie kann ich helfen?"
             return _finalize_frame(intent="greeting", text=txt, extra={"delta": txt}, source_expected=False)
-        resp = _respond(gen_greet())
+        resp = _respond(_with_meta(gen_greet()))
         if resp is not None:
             return resp
 
@@ -6818,7 +6877,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         "event": str(evt),
                         "cid": cid,
                         "request_id": request_id,
-                        "conv_id": conv_id,
+                        "conv_id": stream_conv_id,
                         "ip": ip,
                         "meta": (meta or {}),
                     })
@@ -6831,13 +6890,6 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 except Exception:
                     pass
                 _audit_stream("STREAM_START")
-
-                # Emit cid first
-                try:
-                    yield _sse({"type": "meta", "cid": cid, "request_id": request_id})
-                    await asyncio.sleep(0)
-                except Exception:
-                    pass
 
                 # Emit immediate first SSE event to prevent hangs without output.
                 # Empty delta is a valid SSE message and satisfies DoD.
@@ -7285,7 +7337,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         pass
                     # Perf timing
                     try:
-                        elapsed = time.time() - _t0
+                        elapsed = time.time() - t0
                         if elapsed > 5.0:
                             logger.warning("[perf] slow answer for topic=%s (%.2fs)", payload.get("topic") or "", elapsed)
                     except Exception:
@@ -7336,7 +7388,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         yield _sse(_finalize_frame(intent="stream_failed", ok=False, error="stream_closed", text="", source_expected=False))
                     except Exception:
                         pass
-        return EventSourceResponse(gen_simple(), ping=15)
+        return _respond(_with_meta(gen_simple()))
 
 # ---- Knowledge helpers: addressbook ↔ memory ↔ web -------------------------
 ADDRBOOK_PATH = Path(__file__).resolve().parents[3] / "memory" / "index" / "addressbook.json"
@@ -7382,7 +7434,7 @@ def _kb_snippets(topic: str, top_k: int = 5) -> List[Dict[str, Any]]:
             })
     return out
 
-def _answer_from_web(topic: str, top_k: int = 3) -> (str, List[Dict[str, Any]]):
+def _answer_from_web(topic: str, top_k: int = 3) -> tuple[str, List[Dict[str, Any]]]:
     try:
         ans, sources = try_web_answer(topic, limit=top_k)
         return (ans or ""), (sources or [])
@@ -7955,6 +8007,11 @@ def compare_memory_with_web(topic: str, web_ok: bool = True):
             try:
                 # minimal thinking indicator
                 yield b": ping\n\n"
+                try:
+                    meta_b = ("data: " + json.dumps(_meta_payload, ensure_ascii=False) + "\n\n").encode("utf-8")
+                    yield meta_b
+                except Exception:
+                    pass
                 user = user_msg
                 system = system_prompt(persona)
                 out = await call_llm_once(user, system, lang, persona)
@@ -7986,7 +8043,7 @@ def compare_memory_with_web(topic: str, web_ok: bool = True):
             except Exception: pass
             yield _sse_err("server_error", str(_e), 1500)
             yield _sse(_finalize_frame(intent="server_error", text="", source_expected=False))
-    resp = _sse_response(_safe_event_gen())
+    resp = _sse_response(_with_meta(_safe_event_gen()))
     if resp is not None:
         return resp
         

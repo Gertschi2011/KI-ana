@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 type Msg = {
   id: string;
@@ -24,13 +24,8 @@ export default function ChatPage() {
   const [showExplain, setShowExplain] = useState(true);
   const [webOkAllowed, setWebOkAllowed] = useState(false);
   const [streamError, setStreamError] = useState<string | null>(null);
-  const [sseLastEventType, setSseLastEventType] = useState<string>('');
-  const [sseReceivedBytes, setSseReceivedBytes] = useState<number>(0);
-  const [sseLastFramePreview, setSseLastFramePreview] = useState<string>('');
-  const [sseLastRequestId, setSseLastRequestId] = useState<string>('');
-  const [sseLastRequestConvId, setSseLastRequestConvId] = useState<string>('');
-  const [sseLastRequestMessage, setSseLastRequestMessage] = useState<string>('');
   const [folders, setFolders] = useState<any[]>([]);
+  const [foldersAvailable, setFoldersAvailable] = useState(true);
   const [convs, setConvs] = useState<any[]>([]);
   const [activeFolderId, setActiveFolderId] = useState<number | null>(null);
   const [activeConvId, setActiveConvId] = useState<number | null>(null);
@@ -45,6 +40,10 @@ export default function ChatPage() {
   const activeControllerRef = useRef<AbortController | null>(null);
 
   const uiBusy = busy || startingStreamRef.current;
+
+  const canShowExplainUi = useMemo(() => {
+    return !!(showExplain && canExplain);
+  }, [showExplain, canExplain]);
 
   const explainOpenMsg = explainOpenMsgId
     ? msgs.find((m) => m.id === explainOpenMsgId) || null
@@ -61,8 +60,10 @@ export default function ChatPage() {
         const r = await fetch('/api/me', { credentials: 'include' });
         const j = await r.json().catch(() => ({} as any));
         const u = j?.auth ? j.user : null;
-        const isAdmin = !!u?.is_admin || (Array.isArray(u?.roles) && u.roles.includes('admin'));
-        const isCreator = !!u?.is_creator || (Array.isArray(u?.roles) && u.roles.includes('creator'));
+        const role = String(u?.role ?? '').toLowerCase();
+        const roles = Array.isArray(u?.roles) ? u.roles.map((x: any) => String(x).toLowerCase()) : [];
+        const isAdmin = !!u?.is_admin || roles.includes('admin') || role === 'admin';
+        const isCreator = !!u?.is_creator || roles.includes('creator') || role === 'creator';
         if (mounted) setCanExplain(!!(isAdmin || isCreator));
       } catch {
         if (mounted) setCanExplain(false);
@@ -92,9 +93,16 @@ export default function ChatPage() {
   async function refreshFolders() {
     try {
       const r = await fetch('/api/folders', { credentials: 'include' });
+      if (!r.ok) {
+        setFoldersAvailable(false);
+        setFolders([]);
+        return;
+      }
       const j = await r.json().catch(() => ({} as any));
+      setFoldersAvailable(true);
       setFolders(Array.isArray(j?.folders) ? j.folders : []);
     } catch {
+      setFoldersAvailable(false);
       setFolders([]);
     }
   }
@@ -111,6 +119,7 @@ export default function ChatPage() {
   }
 
   async function createFolder() {
+    if (!foldersAvailable) return;
     const name = prompt('Ordnername');
     if (!name) return;
     try {
@@ -125,6 +134,7 @@ export default function ChatPage() {
   }
 
   async function renameFolder(folderId: number) {
+    if (!foldersAvailable) return;
     const cur = folders.find((f: any) => Number(f?.id) === Number(folderId));
     const name = prompt('Neuer Ordnername', String(cur?.name ?? ''));
     if (!name) return;
@@ -140,6 +150,7 @@ export default function ChatPage() {
   }
 
   async function deleteFolder(folderId: number) {
+    if (!foldersAvailable) return;
     if (!confirm('Ordner wirklich löschen? (Unterhaltungen bleiben erhalten)')) return;
     try {
       await fetch(`/api/folders/${folderId}`, { method: 'DELETE', credentials: 'include' });
@@ -150,6 +161,7 @@ export default function ChatPage() {
   }
 
   async function moveActiveConversationToFolder(folderId: number) {
+    if (!foldersAvailable) return;
     if (!activeConvId) return;
     try {
       await fetch(`/api/folders/${folderId}/conversations`, {
@@ -203,6 +215,7 @@ export default function ChatPage() {
 
   async function setActiveConversationFolder(folderId: number | null) {
     if (activeConvId == null) return;
+    if (!foldersAvailable) return;
     try {
       await fetch(`/api/chat/conversations/${activeConvId}`, {
         method: 'PATCH',
@@ -253,6 +266,7 @@ export default function ChatPage() {
   }
 
   async function removeConversationFromFolder(convId: number) {
+    if (!foldersAvailable) return;
     try {
       await fetch(`/api/chat/conversations/${convId}`, {
         method: 'PATCH',
@@ -266,6 +280,7 @@ export default function ChatPage() {
   }
 
   async function moveConversationToFolder(convId: number, folderId: number | null) {
+    if (!foldersAvailable) return;
     try {
       await fetch(`/api/chat/conversations/${convId}`, {
         method: 'PATCH',
@@ -301,12 +316,6 @@ export default function ChatPage() {
     activeRequestIdRef.current = String(payload?.request_id || '') || null;
 
     setStreamError(null);
-    setSseLastEventType('');
-    setSseReceivedBytes(0);
-    setSseLastFramePreview('');
-    setSseLastRequestId(String(payload?.request_id || ''));
-    setSseLastRequestConvId(payload?.conv_id != null ? String(payload.conv_id) : '');
-    setSseLastRequestMessage(String(payload?.message || '').slice(0, 160));
     bufferRef.current = "";
     assistantIdRef.current = crypto.randomUUID();
     let finalized = false;
@@ -347,13 +356,69 @@ export default function ChatPage() {
         }
         const { value, done } = await reader.read();
         if (done) {
-          console.log('SSE end');
+          // Some proxies/servers may close immediately after sending the last frame
+          // without a trailing "\n\n". Best-effort: parse the leftover buffer once.
+          if (finalizeSeenRef.current !== true) {
+            try {
+              const leftover = buffer;
+              if (leftover && leftover.includes('data:')) {
+                const dataLines = leftover
+                  .split('\n')
+                  .filter((l) => l.startsWith('data:'))
+                  .map((l) => l.slice(5).trim());
+                const payloadText = dataLines.join('\n');
+                if (payloadText) {
+                  const frame: any = JSON.parse(payloadText);
+                  if (frame?.type === 'finalize' || frame?.done === true) {
+                    finalized = true;
+                    finalizeSeenRef.current = true;
+                    if (activeRequestIdRef.current === reqIdLocal) {
+                      setStreamError(null);
+                    }
+                    try {
+                      const finConvId = Number(frame?.conversation_id ?? frame?.conv_id ?? 0);
+                      if (Number.isFinite(finConvId) && finConvId > 0) {
+                        convRef.current = String(finConvId);
+                        if (activeRequestIdRef.current === reqIdLocal) {
+                          setActiveConvId(finConvId);
+                          refreshConversations();
+                        }
+                      }
+                    } catch {}
+                    const streamId = assistantIdRef.current || '__stream__';
+                    if (activeRequestIdRef.current === reqIdLocal) {
+                      setMsgs((prev) => {
+                        const idxMsg = prev.findIndex((m) => m.id === streamId && m.role === 'assistant');
+                        if (idxMsg < 0) return prev;
+                        const clone = prev.slice();
+                        const cur = clone[idxMsg];
+                        const finalText = typeof frame?.text === 'string' && frame.text.length > 0
+                          ? frame.text
+                          : (bufferRef.current || cur.text);
+                        clone[idxMsg] = {
+                          ...cur,
+                          text: finalText,
+                          sources: Array.isArray(frame?.sources) ? frame.sources : (cur.sources ?? []),
+                          memory_ids: Array.isArray(frame?.memory_ids) ? frame.memory_ids : (cur.memory_ids ?? []),
+                          origin: typeof frame?.origin === 'string' ? frame.origin : cur.origin,
+                          topic: typeof frame?.topic === 'string' ? frame.topic : cur.topic,
+                          explain: frame?.explain ?? cur.explain,
+                        };
+                        return clone;
+                      });
+                    }
+                    setBusy(false);
+                    break;
+                  }
+                }
+              }
+            } catch {}
+          }
           if (finalizeSeenRef.current === true) {
             // Finalize-wins: never overwrite finalize state with eof.
             break;
           }
           if (!finalized) {
-            setSseLastEventType('eof');
             setStreamError('Stream beendet ohne finalize. Bitte erneut senden.');
           }
           break;
@@ -362,11 +427,6 @@ export default function ChatPage() {
           .decode(value, { stream: true })
           .replace(/\r\n/g, '\n')
           .replace(/\r/g, '\n');
-        console.log('SSE chunk', chunkText);
-        if (activeRequestIdRef.current === reqIdLocal) {
-          setSseReceivedBytes((b) => b + (value?.byteLength || 0));
-        }
-
         buffer += chunkText;
 
         // Split SSE events by double newline (\n\n)
@@ -374,11 +434,6 @@ export default function ChatPage() {
           const idx = buffer.indexOf('\n\n');
           const eventText = buffer.slice(0, idx);
           buffer = buffer.slice(idx + 2);
-
-          const preview = eventText.length > 240 ? `${eventText.slice(0, 240)}…` : eventText;
-          if (activeRequestIdRef.current === reqIdLocal) {
-            setSseLastFramePreview(preview);
-          }
 
           const dataLines = eventText
             .split('\n')
@@ -390,23 +445,29 @@ export default function ChatPage() {
 
           try {
             const frame: any = JSON.parse(payloadText);
-            console.log('SSE frame', frame);
 
             if (activeRequestIdRef.current !== reqIdLocal) {
               stop = true;
               break;
             }
 
-            const typeGuess =
-              typeof frame?.type === 'string' ? frame.type :
-              frame?.done === true ? 'done' :
-              frame?.delta ? 'delta' :
-              'event';
-            if (activeRequestIdRef.current === reqIdLocal) {
-              setSseLastEventType(typeGuess);
+            // Meta: carries request_id + conversation_id and must NOT be dropped.
+            if (frame?.type === 'meta') {
+              try {
+                const metaConvId = Number(frame?.conversation_id ?? frame?.conv_id ?? 0);
+                if (Number.isFinite(metaConvId) && metaConvId > 0) {
+                  convRef.current = String(metaConvId);
+                  if (activeRequestIdRef.current === reqIdLocal) {
+                    setActiveConvId(metaConvId);
+                    refreshConversations();
+                  }
+                }
+              } catch {}
+              continue;
             }
 
-            if (frame?.cid) continue; // correlation id
+            // Ignore pure correlation frames.
+            if (frame?.cid && !frame?.type && frame?.request_id == null) continue;
 
             // Handle deltas
             const deltaText =
@@ -433,12 +494,11 @@ export default function ChatPage() {
             }
 
             // Conversation id bootstrap
-            const convId = frame?.conv_id ?? frame?.conversation_id;
-            if (convId && !convRef.current) {
-              convRef.current = String(convId);
-              const cid = Number(convId);
+            const convIdCandidate = Number(frame?.conversation_id ?? frame?.conv_id ?? 0);
+            if (!convRef.current && Number.isFinite(convIdCandidate) && convIdCandidate > 0) {
+              convRef.current = String(convIdCandidate);
               if (activeRequestIdRef.current === reqIdLocal) {
-                if (Number.isFinite(cid)) setActiveConvId(cid);
+                setActiveConvId(convIdCandidate);
                 refreshConversations();
               }
             }
@@ -448,9 +508,21 @@ export default function ChatPage() {
               finalized = true;
               finalizeSeenRef.current = true;
               if (activeRequestIdRef.current === reqIdLocal) {
-                setSseLastEventType('finalize');
                 setStreamError(null);
               }
+
+              // Adopt conversation_id if provided and valid.
+              try {
+                const finConvId = Number(frame?.conversation_id ?? frame?.conv_id ?? 0);
+                if (Number.isFinite(finConvId) && finConvId > 0) {
+                  convRef.current = String(finConvId);
+                  if (activeRequestIdRef.current === reqIdLocal) {
+                    setActiveConvId(finConvId);
+                    refreshConversations();
+                  }
+                }
+              } catch {}
+
               const streamId = assistantIdRef.current || '__stream__';
               if (activeRequestIdRef.current !== reqIdLocal) {
                 stop = true;
@@ -467,8 +539,8 @@ export default function ChatPage() {
                 clone[idxMsg] = {
                   ...cur,
                   text: finalText,
-                  sources: Array.isArray(frame?.sources) ? frame.sources : cur.sources,
-                  memory_ids: Array.isArray(frame?.memory_ids) ? frame.memory_ids : cur.memory_ids,
+                  sources: Array.isArray(frame?.sources) ? frame.sources : (cur.sources ?? []),
+                  memory_ids: Array.isArray(frame?.memory_ids) ? frame.memory_ids : (cur.memory_ids ?? []),
                   origin: typeof frame?.origin === 'string' ? frame.origin : cur.origin,
                   topic: typeof frame?.topic === 'string' ? frame.topic : cur.topic,
                   explain: frame?.explain ?? cur.explain,
@@ -481,8 +553,15 @@ export default function ChatPage() {
               stop = true;
               break;
             }
-          } catch (err) {
-            console.error('SSE error', err);
+          } catch {
+            if (finalizeSeenRef.current === true) {
+              // Finalize-wins
+              stop = true;
+              break;
+            }
+            if (activeRequestIdRef.current === reqIdLocal) {
+              setStreamError('Stream Fehler. Bitte erneut senden.');
+            }
           }
         }
 
@@ -506,22 +585,15 @@ export default function ChatPage() {
         });
         setBusy(false);
       }
-    } catch (e) {
-      console.error('SSE error', e);
+    } catch {
       if (finalizeSeenRef.current === true) {
         // Finalize-wins: do not show errors if we already received finalize.
         setBusy(false);
         return;
       }
       if (timeoutFired) {
-        setSseLastEventType('timeout');
         setStreamError('Stream timeout (60s). Bitte erneut senden.');
       } else {
-        try {
-          if (controller?.signal?.aborted) {
-            setSseLastEventType('aborted');
-          }
-        } catch {}
         setStreamError('Stream abgebrochen. Bitte erneut senden.');
       }
       setBusy(false);
@@ -549,9 +621,12 @@ export default function ChatPage() {
     const convIdNum =
       typeof activeConvId === 'number' ? activeConvId :
       (convRef.current ? Number(convRef.current) : null);
+    const convIdClean = (typeof convIdNum === 'number' && Number.isFinite(convIdNum) && convIdNum > 0)
+      ? convIdNum
+      : null;
     const payload = {
       message: t,
-      conv_id: Number.isFinite(Number(convIdNum)) ? Number(convIdNum) : null,
+      conv_id: convIdClean,
       style: 'balanced',
       bullets: 5,
       web_ok: !!webOkAllowed,
@@ -561,7 +636,7 @@ export default function ChatPage() {
     streamAnswer(payload);
   }
 
-  function onKey(e: React.KeyboardEvent<HTMLInputElement>) {
+  function onComposerKey(e: React.KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       send();
@@ -572,13 +647,29 @@ export default function ChatPage() {
     <div className="kiana-chat h-[calc(100vh-140px)] grid grid-cols-[280px_1fr]">
       <aside className="kiana-chat-sidebar p-3 overflow-y-auto">
         <div className="flex items-center justify-between">
-          <div className="font-semibold">Unterhaltungen</div>
-          <button className="btn-dark" onClick={newConversation} disabled={uiBusy}>Neu</button>
+          <div className="kiana-sidebar-brand">
+            <span className="kiana-status-dot" aria-hidden />
+            <div>
+              <div className="kiana-sidebar-title">KI_ana</div>
+              <div className="kiana-sidebar-sub">Online</div>
+            </div>
+          </div>
+          <button className="kiana-btn kiana-btn-primary" onClick={newConversation} disabled={uiBusy}>＋ Neu</button>
         </div>
 
-        {activeConvId != null && (
-          <div className="mt-3 p-2 rounded border border-gray-200 dark:border-gray-800">
-            <div className="text-xs opacity-70 mb-1">Aktive Unterhaltung → Ordner</div>
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <button
+            className="kiana-btn"
+            onClick={createFolder}
+            disabled={uiBusy || !foldersAvailable}
+            title={!foldersAvailable ? 'Ordner-Feature backendseitig nicht verfügbar' : 'Ordner erstellen'}
+          >＋ Ordner</button>
+          <button className="kiana-btn kiana-btn-ghost" onClick={refreshConversations} disabled={uiBusy}>↻ Refresh</button>
+        </div>
+
+        {foldersAvailable && activeConvId != null && (
+          <div className="mt-3 p-3 rounded-xl border" style={{ borderColor: 'var(--k-border)', background: 'rgba(79,70,229,0.03)' }}>
+            <div className="text-xs mb-1" style={{ color: 'var(--k-muted)' }}>Aktive Unterhaltung → Ordner</div>
             <div className="flex items-center gap-2">
               <select
                 className="input"
@@ -596,63 +687,83 @@ export default function ChatPage() {
                   <option key={f.id} value={String(f.id)}>{String(f.icon || '📁')} {String(f.name || 'Ordner')}</option>
                 ))}
               </select>
-              <button className="btn-dark" disabled={uiBusy} onClick={() => setActiveConversationFolder(null)} title="Aus Ordner entfernen">↩</button>
+              <button className="kiana-btn" disabled={uiBusy} onClick={() => setActiveConversationFolder(null)} title="Aus Ordner entfernen">↩</button>
             </div>
           </div>
         )}
 
+        {!foldersAvailable && (
+          <div className="mt-3 kiana-alert" style={{ padding: 12 }}>
+            <div className="text-xs" style={{ color: 'var(--k-muted)' }}>
+              Ordner sind aktuell nicht verfügbar.
+            </div>
+          </div>
+        )}
+
+        {foldersAvailable && (
         <div className="mt-3">
           <div className="flex items-center justify-between">
-            <div className="text-xs opacity-70 mb-1">Ordner</div>
-            <button className="text-xs opacity-70 hover:opacity-100" onClick={createFolder} disabled={uiBusy} title="Ordner erstellen">＋</button>
+            <div className="text-xs mb-1" style={{ color: 'var(--k-muted)' }}>Ordner</div>
           </div>
           <div className="flex flex-col gap-1">
             <button
-              className={`text-left px-2 py-1 rounded ${activeFolderId == null ? 'bg-gray-200 dark:bg-gray-800' : 'hover:bg-gray-100 dark:hover:bg-gray-900'}`}
+              className={`text-left px-2 py-1 rounded ${activeFolderId == null ? '' : ''}`}
               onClick={() => setActiveFolderId(null)}
               disabled={uiBusy}
+              style={activeFolderId == null ? { background: 'rgba(79,70,229,0.10)' } : {}}
             >Alle</button>
             {folders.map((f: any) => (
-              <div key={f.id} className={`flex items-center gap-2 px-2 py-1 rounded ${Number(activeFolderId) === Number(f.id) ? 'bg-gray-200 dark:bg-gray-800' : 'hover:bg-gray-100 dark:hover:bg-gray-900'}`}>
+              <div key={f.id} className="flex items-center gap-2 px-2 py-1 rounded" style={Number(activeFolderId) === Number(f.id) ? { background: 'rgba(79,70,229,0.10)' } : {}}>
                 <button
                   className="flex-1 text-left truncate"
                   onClick={() => setActiveFolderId(Number(f.id))}
                   disabled={uiBusy}
                   title={String(f.name)}
                 >{String(f.icon || '📁')} {String(f.name || 'Ordner')} <span className="opacity-60">({Number(f.conversation_count || 0)})</span></button>
-                <button className="text-xs opacity-70" onClick={() => moveActiveConversationToFolder(Number(f.id))} disabled={uiBusy || !activeConvId} title="Aktive Unterhaltung hier einsortieren">↪</button>
-                <button className="text-xs opacity-70" onClick={() => renameFolder(Number(f.id))} disabled={uiBusy} title="Umbenennen">✎</button>
-                <button className="text-xs opacity-70" onClick={() => deleteFolder(Number(f.id))} disabled={uiBusy} title="Löschen">✕</button>
+                <button
+                  className="text-xs"
+                  style={{ color: 'var(--k-muted)' }}
+                  onClick={() => moveActiveConversationToFolder(Number(f.id))}
+                  disabled={uiBusy || !activeConvId}
+                  title="Aktive Unterhaltung hier einsortieren"
+                >↪</button>
+                <button className="text-xs" style={{ color: 'var(--k-muted)' }} onClick={() => renameFolder(Number(f.id))} disabled={uiBusy} title="Umbenennen">✎</button>
+                <button className="text-xs" style={{ color: 'var(--k-danger)' }} onClick={() => deleteFolder(Number(f.id))} disabled={uiBusy} title="Löschen">✕</button>
               </div>
             ))}
           </div>
         </div>
+        )}
         <div className="mt-4">
-          <div className="text-xs opacity-70 mb-1">Chats</div>
+          <div className="text-xs mb-1" style={{ color: 'var(--k-muted)' }}>Unterhaltungen</div>
           <div className="flex flex-col gap-1">
             {filteredConvs.map((c: any) => (
-              <div key={c.id} className={`flex items-center gap-2 px-2 py-1 rounded ${Number(activeConvId) === Number(c.id) ? 'bg-gray-200 dark:bg-gray-800' : 'hover:bg-gray-100 dark:hover:bg-gray-900'}`}>
+              <div key={c.id} className="flex items-center gap-2 px-2 py-1 rounded" style={Number(activeConvId) === Number(c.id) ? { background: 'rgba(79,70,229,0.10)' } : {}}>
                 <button className="flex-1 text-left truncate" onClick={() => loadConversation(Number(c.id))} disabled={uiBusy}>
                   {String(c.title || 'Unterhaltung')}
                 </button>
-                <button
-                  className="text-xs opacity-70"
-                  onClick={() => {
-                    const cid = Number(c.id);
-                    setMovePickerConvId((cur) => (cur === cid ? null : cid));
-                    setMovePickerFolderId(null);
-                  }}
-                  disabled={uiBusy}
-                  title="In Ordner verschieben"
-                >↪</button>
-                {c?.folder_id != null && (
-                  <button className="text-xs opacity-70" onClick={() => removeConversationFromFolder(Number(c.id))} disabled={uiBusy} title="Aus Ordner entfernen">↩</button>
+                {foldersAvailable && (
+                  <>
+                    <button
+                      className="text-xs opacity-70"
+                      onClick={() => {
+                        const cid = Number(c.id);
+                        setMovePickerConvId((cur) => (cur === cid ? null : cid));
+                        setMovePickerFolderId(null);
+                      }}
+                      disabled={uiBusy}
+                      title="In Ordner verschieben"
+                    >↪</button>
+                    {c?.folder_id != null && (
+                      <button className="text-xs opacity-70" onClick={() => removeConversationFromFolder(Number(c.id))} disabled={uiBusy} title="Aus Ordner entfernen">↩</button>
+                    )}
+                  </>
                 )}
                 <button className="text-xs opacity-70" onClick={() => renameConversation(Number(c.id))} disabled={uiBusy} title="Umbenennen">✎</button>
-                <button className="text-xs opacity-70" onClick={() => deleteConversation(Number(c.id))} disabled={uiBusy} title="Löschen">✕</button>
+                <button className="text-xs" style={{ color: 'var(--k-danger)' }} onClick={() => deleteConversation(Number(c.id))} disabled={uiBusy} title="Löschen">✕</button>
               </div>
             ))}
-            {movePickerConvId != null && (
+            {foldersAvailable && movePickerConvId != null && (
               <div className="px-2 py-2 text-xs border border-gray-200 dark:border-gray-800 rounded">
                 <div className="opacity-80 mb-2">In Ordner verschieben</div>
                 <div className="flex items-center gap-2">
@@ -671,11 +782,11 @@ export default function ChatPage() {
                     ))}
                   </select>
                   <button
-                    className="btn-dark"
+                    className="kiana-btn"
                     disabled={uiBusy || movePickerFolderId == null}
                     onClick={() => moveConversationToFolder(Number(movePickerConvId), Number(movePickerFolderId))}
                   >Verschieben</button>
-                  <button className="btn-dark" disabled={uiBusy} onClick={() => setMovePickerConvId(null)}>Abbrechen</button>
+                  <button className="kiana-btn" disabled={uiBusy} onClick={() => setMovePickerConvId(null)}>Abbrechen</button>
                 </div>
               </div>
             )}
@@ -683,9 +794,25 @@ export default function ChatPage() {
           </div>
         </div>
 
-        <div className="mt-5 pt-4 border-t border-gray-200 dark:border-gray-800">
-          <div className="text-xs opacity-70 mb-2">Settings</div>
-          <label className="flex items-center gap-2 text-sm">
+        {streamError && (
+          <div className="mt-4 p-3 rounded-xl border" style={{ borderColor: 'rgba(220,38,38,0.25)', background: 'rgba(220,38,38,0.06)', color: 'var(--k-danger)' }}>
+            <div className="text-sm">{streamError}</div>
+          </div>
+        )}
+      </aside>
+
+      <div className="kiana-chat-main grid grid-rows-[auto_1fr_auto]">
+      <div className="kiana-chat-header">
+        <img className="kiana-chat-avatar" src="/static/Avatar_KI_ana.png" alt="KI_ana" />
+        <div className="kiana-chat-header-info">
+          <div className="kiana-chat-title">KI_ana</div>
+          <div className="kiana-chat-sub">Chat</div>
+        </div>
+
+        <div className="flex-1" />
+
+        {canExplain && (
+          <label className="kiana-switch text-sm">
             <input
               type="checkbox"
               checked={showExplain}
@@ -696,20 +823,9 @@ export default function ChatPage() {
               }}
               disabled={!canExplain}
             />
-            Explain anzeigen
+            Explain
           </label>
-          {!canExplain && <div className="text-xs opacity-60 mt-1">Explain nur für creator/admin</div>}
-          {streamError && <div className="text-xs text-red-600 mt-2">{streamError}</div>}
-        </div>
-      </aside>
-
-      <div className="kiana-chat-main grid grid-rows-[auto_1fr_auto]">
-      <div className="kiana-chat-header">
-        <img className="kiana-chat-avatar" src="/static/Avatar_KI_ana.png" alt="KI_ana" />
-        <div className="kiana-chat-header-info">
-          <div className="kiana-chat-title">KI_ana</div>
-          <div className="kiana-chat-sub">Online &amp; bereit</div>
-        </div>
+        )}
       </div>
 
       <div ref={scrollerRef} className="kiana-chat-messages overflow-y-auto p-4 flex flex-col gap-3">
@@ -734,13 +850,13 @@ export default function ChatPage() {
                       }
                     })()}
                   </span>
-                  {showExplain && canExplain && m.role === 'assistant' && (m.explain || (m.sources && m.sources.length) || (m.memory_ids && m.memory_ids.length)) && (
+                  {canShowExplainUi && m.role === 'assistant' && (m.explain || (m.sources && m.sources.length) || (m.memory_ids && m.memory_ids.length)) && (
                     <button
                       type="button"
                       className="kiana-explain-btn"
                       title="Explain"
                       onClick={() => setExplainOpenMsgId(m.id)}
-                    >ⓘ Explain</button>
+                    >ⓘ</button>
                   )}
                 </div>
               </div>
@@ -751,47 +867,18 @@ export default function ChatPage() {
           <div className="flex justify-start"><div className="kiana-bubble kiana-bubble-ai opacity-90">KI_ana denkt …</div></div>
         )}
       </div>
-      <div className="kiana-chat-composer border-t border-gray-200 dark:border-gray-800 p-3">
+      <div className="kiana-chat-composer p-3" style={{ borderTop: '1px solid var(--k-border)' }}>
         <div className="max-w-4xl mx-auto flex gap-2 items-center">
-          <input
-            className="kiana-composer-input flex-1"
+          <textarea
+            className="kiana-composer-input flex-1 resize-none"
             placeholder="Nachricht eingeben…"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={onKey}
+            onKeyDown={onComposerKey}
             disabled={uiBusy}
+            rows={1}
           />
           <button className="kiana-composer-send" onClick={send} disabled={uiBusy}>Senden</button>
-        </div>
-        <div className="max-w-4xl mx-auto mt-2 text-xs opacity-80">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <div className="px-2 py-1 rounded border border-gray-200 dark:border-gray-800">
-              <div className="opacity-70">lastEventType</div>
-              <div className="font-mono break-all">{sseLastEventType || '-'}</div>
-            </div>
-            <div className="px-2 py-1 rounded border border-gray-200 dark:border-gray-800">
-              <div className="opacity-70">receivedBytes</div>
-              <div className="font-mono">{sseReceivedBytes}</div>
-            </div>
-            <div className="px-2 py-1 rounded border border-gray-200 dark:border-gray-800">
-              <div className="opacity-70">lastFramePreview</div>
-              <div className="font-mono break-all">{sseLastFramePreview || '-'}</div>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
-            <div className="px-2 py-1 rounded border border-gray-200 dark:border-gray-800">
-              <div className="opacity-70">request_id</div>
-              <div className="font-mono break-all">{sseLastRequestId || '-'}</div>
-            </div>
-            <div className="px-2 py-1 rounded border border-gray-200 dark:border-gray-800">
-              <div className="opacity-70">conv_id</div>
-              <div className="font-mono break-all">{sseLastRequestConvId || '-'}</div>
-            </div>
-            <div className="px-2 py-1 rounded border border-gray-200 dark:border-gray-800">
-              <div className="opacity-70">message</div>
-              <div className="font-mono break-all">{sseLastRequestMessage || '-'}</div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -803,13 +890,10 @@ export default function ChatPage() {
           onClick={() => setExplainOpenMsgId(null)}
         >
           <div className="absolute inset-0 bg-black/40" />
-          <div
-            className="relative w-full max-w-3xl max-h-[80vh] overflow-auto rounded-xl bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 p-4"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="kiana-modal p-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between gap-3">
               <div className="font-semibold">Explain</div>
-              <button className="btn-dark" onClick={() => setExplainOpenMsgId(null)}>Schließen</button>
+              <button className="kiana-btn" onClick={() => setExplainOpenMsgId(null)}>Schließen</button>
             </div>
             <div className="mt-3 text-xs">
               {(() => {

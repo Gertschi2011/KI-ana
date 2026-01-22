@@ -28,9 +28,12 @@ export default function SettingsPage(){
   }
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Einstellungen</h1>
+    <div className="max-w-3xl mx-auto">
       <div className="card grid gap-4">
+        <div>
+          <div className="text-lg font-semibold">Einstellungen</div>
+          <div className="small mt-1">Passe Stil, Stimme und Web-Recherche an. Diese Einstellungen werden lokal gespeichert.</div>
+        </div>
         <label className="block">
           <div className="mb-1">TTS Stimme</div>
           <select className="input" value={voice} onChange={e=>setVoice(e.target.value)}>
@@ -55,7 +58,7 @@ export default function SettingsPage(){
           </div>
         </label>
         <div>
-          <button className="btn-dark" onClick={save}>Speichern</button>
+          <button className="kiana-btn kiana-btn-primary" onClick={save}>Speichern</button>
         </div>
         {msg && <div className="small">{msg}</div>}
       </div>

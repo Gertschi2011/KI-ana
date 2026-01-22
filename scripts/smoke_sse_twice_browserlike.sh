@@ -4,24 +4,98 @@ set -euo pipefail
 BASE_URL="${BASE_URL:-https://ki-ana.at}"
 USER="${KIANA_USER:-}"
 PASS="${KIANA_PASS:-}"
+NON_INTERACTIVE="${KIANA_NON_INTERACTIVE:-}"
+
+warn() {
+  # Always one line per warning.
+  echo "WARN: $1" >&2
+}
+
+fail() {
+  # Always one line per failure, plus a snippet.
+  # Usage: fail "invariant=name" ["k=v ..."] ["snippet_text"]
+  local inv="$1"
+  local extra="${2:-}"
+  local snippet="${3:-}"
+  if [[ -n "$extra" ]]; then
+    echo "FAIL: ${inv} ${extra}" >&2
+  else
+    echo "FAIL: ${inv}" >&2
+  fi
+  if [[ -n "$snippet" ]]; then
+    echo "--- response snippet (first 30 lines) ---" >&2
+    echo "$snippet" | head -n 30 >&2
+  fi
+  return 1
+}
+
+_http_status_from_response() {
+  # Extract the first HTTP status code from a curl -i response.
+  # Prints empty string if unknown.
+  local resp="$1"
+  echo "$resp" | sed -nE 's/^HTTP\/[^ ]+[[:space:]]+([0-9]{3}).*/\1/p' | head -n 1 | tr -d '\r\n'
+}
+
+if [[ -n "${NON_INTERACTIVE}" && ( -z "${USER}" || -z "${PASS}" ) ]]; then
+  echo "FAIL: missing KIANA_USER/KIANA_PASS (non-interactive mode)" >&2
+  echo "Usage: KIANA_USER=... KIANA_PASS=... [BASE_URL=https://ki-ana.at] $0" >&2
+  exit 2
+fi
 
 if [[ -z "${USER}" || -z "${PASS}" ]]; then
-  if [[ -t 0 ]]; then
+  # Read from /dev/tty so prompting works even if stdin is not a TTY.
+  # Also ensure prompts are visible even when caller captures stdout/stderr.
+  # IMPORTANT: only prompt in truly interactive runs. In CI/non-interactive runs,
+  # prompting will hang and is not answerable.
+  if [[ -t 0 && -t 1 && -e /dev/tty && -r /dev/tty && -w /dev/tty ]]; then
+    if ! exec 3<>/dev/tty; then
+      # No controlling TTY (non-interactive). Skip prompting.
+      true
+    else
     if [[ -z "${USER}" ]]; then
-      read -r -p "KIANA_USER: " USER
+      printf '%s' "KIANA_USER: " >&3
+      if ! IFS= read -r -t 30 USER <&3; then
+        USER=""
+        printf '%s\n' "(timed out waiting for KIANA_USER)" >&3
+      fi
     fi
     if [[ -z "${PASS}" ]]; then
-      read -r -s -p "KIANA_PASS: " PASS
-      echo
+      for _try in 1 2 3; do
+        printf '%s' "KIANA_PASS: " >&3
+        # Hide input on tty while reading password.
+        stty -echo <&3 2>/dev/null || true
+        if ! IFS= read -r -t 30 PASS <&3; then
+          PASS=""
+        fi
+        stty echo <&3 2>/dev/null || true
+        printf '\n' >&3
+        if [[ -n "${PASS}" ]]; then
+          break
+        fi
+        if [[ -z "${PASS}" ]]; then
+          printf '%s\n' "(timed out waiting for KIANA_PASS)" >&3
+          break
+        fi
+        printf '%s\n' "(empty password, try again)" >&3
+      done
+    fi
+    exec 3>&- 3<&- || true
     fi
   fi
 fi
 
 if [[ -z "${USER}" || -z "${PASS}" ]]; then
+  if [[ -z "${PASS}" ]]; then
+    echo "FAIL: missing KIANA_PASS (set KIANA_USER/KIANA_PASS or run interactively)" >&2
+  fi
   echo "Usage: KIANA_USER=... KIANA_PASS=... [BASE_URL=https://ki-ana.at] $0" >&2
   echo "Tip: run interactively and you'll be prompted." >&2
   exit 2
 fi
+
+# Ensure python/curl get creds even when we prompted.
+export KIANA_USER="$USER"
+export KIANA_PASS="$PASS"
 
 JAR="${COOKIEJAR:-}"
 if [[ -z "${JAR}" ]]; then
@@ -39,17 +113,22 @@ print(json.dumps({
 PY
 )
 
-# Ensure python gets creds even when we prompted.
-export KIANA_USER="$USER"
-export KIANA_PASS="$PASS"
-
 # Login (cookie jar)
 rm -f "$JAR"
-curl --http2 -sS -c "$JAR" -b "$JAR" \
+set +e
+login_resp=$(curl --http2 -sS -i -c "$JAR" -b "$JAR" \
   -H 'Content-Type: application/json' \
   --data "$login_payload" \
-  "$BASE_URL/api/login" \
-  >/dev/null
+  "$BASE_URL/api/login")
+login_rc=$?
+set -e
+if [[ $login_rc -ne 0 ]]; then
+  fail "invariant=http_status" "expected=200 got=curl_error" "$login_resp"
+fi
+login_status=$(_http_status_from_response "$login_resp")
+if [[ -n "$login_status" && "$login_status" != "200" ]]; then
+  fail "invariant=http_status" "expected=200 got=$login_status" "$login_resp"
+fi
 
 # Validate session
 set +e
@@ -57,10 +136,7 @@ me=$(curl --http2 -sS -b "$JAR" "$BASE_URL/api/me")
 rc=$?
 set -e
 if [[ $rc -ne 0 ]] || ! echo "$me" | grep -q '"auth"[[:space:]]*:[[:space:]]*true'; then
-  echo "FAIL: login/session invalid (api/me not auth:true)" >&2
-  echo "--- api/me snippet ---" >&2
-  echo "$me" | head -n 30 >&2
-  exit 1
+  fail "invariant=session_invalid" "expected=auth:true" "$me"
 fi
 
 run_once() {
@@ -105,21 +181,47 @@ PY
   set -e
 
   if [[ $rc -ne 0 ]]; then
-    echo "FAIL: curl failed for request_id=$reqid" >&2
+    fail "invariant=http_status" "expected=200 got=curl_error" "$output"
+    return 1
+  fi
+
+  # HTTP status must be 200 (we used -i)
+  status=$(_http_status_from_response "$output")
+  if [[ -n "$status" && "$status" != "200" ]]; then
+    fail "invariant=http_status" "expected=200 got=$status" "$output"
     return 1
   fi
 
   echo "$output" | grep -q '^data:' || {
-    echo "FAIL: no data: line (request_id=$reqid)" >&2
-    echo "--- response snippet (first 30 lines) ---" >&2
-    echo "$output" | head -n 30 >&2
+    fail "invariant=data_missing" "" "$output"
     return 1
   }
 
+  # Meta is best-effort: warn (but pass) if missing.
+  if ! echo "$output" | grep -Eq '"type"[[:space:]]*:[[:space:]]*"meta"'; then
+    warn "invariant=meta_missing"
+  else
+    if ! echo "$output" | grep -Eq '"type"[[:space:]]*:[[:space:]]*"meta".*("conversation_id"|"conv_id")[[:space:]]*:[[:space:]]*[1-9][0-9]*'; then
+      warn "invariant=meta_missing_conversation_id"
+    fi
+  fi
+
   echo "$output" | grep -Eq '"type"[[:space:]]*:[[:space:]]*"finalize"|"done"[[:space:]]*:[[:space:]]*true[[:space:]]*,[[:space:]]*"schema_version"' || {
-    echo "FAIL: no finalize frame (request_id=$reqid)" >&2
-    echo "--- response snippet (first 30 lines) ---" >&2
-    echo "$output" | head -n 30 >&2
+    fail "invariant=finalize_missing" "" "$output"
+    return 1
+  }
+
+  # Double-finalize proof: exactly one finalize frame per request.
+  local fin_count
+  fin_count=$(echo "$output" | grep -E '"type"[[:space:]]*:[[:space:]]*"finalize"' -c || true)
+  if [[ "${fin_count}" != "1" ]]; then
+    fail "invariant=finalize_count" "expected=1 got=${fin_count}" "$output"
+    return 1
+  fi
+
+  # Finalize must carry a real conversation id.
+  echo "$output" | grep -Eq '"type"[[:space:]]*:[[:space:]]*"finalize".*("conversation_id"|"conv_id")[[:space:]]*:[[:space:]]*[1-9][0-9]*' || {
+    fail "invariant=finalize_missing_conversation_id" "" "$output"
     return 1
   }
 

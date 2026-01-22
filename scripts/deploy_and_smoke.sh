@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # One-command deploy + smoke for KI_ana
-# Supports: --env prod|staging, --service frontend|backend|all, --smoke-only, --reload-nginx
+# Supports: --env prod|staging, --service frontend|backend|all, --smoke-only, --reload-nginx, --skip-sse
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -11,12 +11,13 @@ ENV_NAME=""
 SERVICE="all"
 SMOKE_ONLY=0
 RELOAD_NGINX=0
+SKIP_SSE=0
 BASE_URL="https://ki-ana.at"
 
 usage() {
   cat >&2 <<'USAGE'
 Usage:
-  ./scripts/deploy_and_smoke.sh --env prod|staging [--service frontend|backend|all] [--smoke-only] [--reload-nginx] [--base-url URL]
+  ./scripts/deploy_and_smoke.sh --env prod|staging [--service frontend|backend|all] [--smoke-only] [--reload-nginx] [--skip-sse] [--base-url URL]
 
 Examples:
   ./scripts/deploy_and_smoke.sh --env prod --service frontend
@@ -49,16 +50,39 @@ fail() {
 run_step() {
   local name="$1"; shift
   log "==> ${name}"
+
+  # Interactive: run directly so output and prompts are visible live.
+  if [[ -t 0 && -t 1 ]]; then
+    set +e
+    "$@"
+    local rc=$?
+    set -e
+    if [[ $rc -ne 0 ]]; then
+      fail "$name" "(exit=$rc)"
+    fi
+    return 0
+  fi
+
+  # Non-interactive: capture output for logs (avoid infinite hangs).
   local out
   set +e
-  out="$({ "$@"; } 2>&1)"
+  if command -v timeout >/dev/null 2>&1; then
+    out="$({ timeout 120s "$@"; } 2>&1)"
+  else
+    out="$({ "$@"; } 2>&1)"
+  fi
   local rc=$?
   set -e
   if [[ $rc -ne 0 ]]; then
     log "--- last 30 lines ---" >&2
     printf '%s\n' "$out" | tail -n 30 >&2
+    if [[ $rc -eq 124 ]]; then
+      fail "$name" "(timeout)" "Command exceeded 120s in non-interactive mode"
+    fi
     fail "$name" "(exit=$rc)"
   fi
+  # Print captured output for transparency.
+  printf '%s\n' "$out"
 }
 
 # Parse args
@@ -74,6 +98,8 @@ while [[ $# -gt 0 ]]; do
       RELOAD_NGINX=1; shift ;;
     --base-url)
       BASE_URL="${2:-}"; shift 2 ;;
+    --skip-sse)
+      SKIP_SSE=1; shift ;;
     -h|--help)
       usage; exit 0 ;;
     *)
@@ -113,7 +139,7 @@ else
   COMPOSE_FILE="docker-compose.yml"
   if [[ -d ops/runbooks ]]; then
     # shellcheck disable=SC2016
-    derived="$(grep -RhoE 'docker compose[^\n]*-p ki_ana\b[^\n]*-f [^ ]+' ops/runbooks 2>/dev/null | head -n 1 | sed -E 's/.*-f ([^ ]+).*/\1/' || true)"
+    derived="$(grep -RhoE 'docker compose[^\n]*-p ki_ana\b[^\n]*-f [^ ]+' ops/runbooks 2>/dev/null | head -n 1 | sed -E 's/.*-f ([^ ]+).*/\1/' | tr -d '\r' | tr -d '\n' | xargs || true)"
     if [[ -n "$derived" && -f "$derived" ]]; then
       COMPOSE_FILE="$derived"
     elif [[ -f docker-compose.production.yml ]]; then
@@ -130,6 +156,27 @@ fi
 
 COMPOSE_CMD="docker compose -p ${PROJECT} -f ${COMPOSE_FILE}"
 
+SERVICES="$($COMPOSE_CMD config --services 2>/dev/null || true)"
+
+pick_service() {
+  local role="$1"; shift
+  local svc
+  for svc in "$@"; do
+    if printf '%s\n' "$SERVICES" | grep -qx "$svc"; then
+      printf '%s' "$svc"
+      return 0
+    fi
+  done
+  return 1
+}
+
+BACKEND_SVC=""
+FRONTEND_SVC=""
+if [[ -n "$SERVICES" ]]; then
+  BACKEND_SVC="$(pick_service backend backend kiana-backend netapi api server || true)"
+  FRONTEND_SVC="$(pick_service frontend frontend kiana-frontend web nextjs ui || true)"
+fi
+
 SHA="$(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
 log "Repo: ${REPO_ROOT}"
 log "Env: ${ENV_NAME}"
@@ -141,18 +188,31 @@ log "Base URL: ${BASE_URL}"
 if [[ $SMOKE_ONLY -eq 0 ]]; then
   case "$SERVICE" in
     frontend)
-      run_step "docker build frontend" $COMPOSE_CMD build frontend
-      run_step "docker up frontend" $COMPOSE_CMD up -d --no-deps --force-recreate frontend
+      if [[ -z "$FRONTEND_SVC" ]]; then
+        fail "frontend service not found in compose" "Available: $(printf '%s' "$SERVICES" | tr '\n' ' ')"
+      fi
+      run_step "docker build frontend" $COMPOSE_CMD build --build-arg NEXT_PUBLIC_BUILD_SHA="$SHA" "$FRONTEND_SVC"
+      run_step "docker up frontend" $COMPOSE_CMD up -d --no-deps --force-recreate "$FRONTEND_SVC"
       ;;
     backend)
-      run_step "docker build backend" $COMPOSE_CMD build backend
-      run_step "docker up backend" $COMPOSE_CMD up -d --no-deps --force-recreate backend
+      if [[ -z "$BACKEND_SVC" ]]; then
+        fail "backend service not found in compose" "Available: $(printf '%s' "$SERVICES" | tr '\n' ' ')"
+      fi
+      run_step "docker build backend" $COMPOSE_CMD build "$BACKEND_SVC"
+      run_step "docker up backend" $COMPOSE_CMD up -d --no-deps --force-recreate "$BACKEND_SVC"
       ;;
     all)
-      run_step "docker build backend" $COMPOSE_CMD build backend
-      run_step "docker build frontend" $COMPOSE_CMD build frontend
-      run_step "docker up backend" $COMPOSE_CMD up -d --no-deps --force-recreate backend
-      run_step "docker up frontend" $COMPOSE_CMD up -d --no-deps --force-recreate frontend
+      if [[ -z "$BACKEND_SVC" ]]; then
+        fail "backend service not found in compose" "Available: $(printf '%s' "$SERVICES" | tr '\n' ' ')"
+      fi
+      run_step "docker build backend" $COMPOSE_CMD build "$BACKEND_SVC"
+      if [[ -n "$FRONTEND_SVC" ]]; then
+        run_step "docker build frontend" $COMPOSE_CMD build --build-arg NEXT_PUBLIC_BUILD_SHA="$SHA" "$FRONTEND_SVC"
+      fi
+      run_step "docker up backend" $COMPOSE_CMD up -d --no-deps --force-recreate "$BACKEND_SVC"
+      if [[ -n "$FRONTEND_SVC" ]]; then
+        run_step "docker up frontend" $COMPOSE_CMD up -d --no-deps --force-recreate "$FRONTEND_SVC"
+      fi
       ;;
   esac
 else
@@ -162,11 +222,30 @@ fi
 # Nginx reload only when explicitly requested OR when last commit looks like nginx-related.
 if [[ $RELOAD_NGINX -eq 1 ]]; then
   if command -v nginx >/dev/null 2>&1; then
-    run_step "nginx -t" sudo nginx -t
-    if command -v systemctl >/dev/null 2>&1; then
-      run_step "nginx reload" sudo systemctl reload nginx
+    # Avoid hanging on sudo password prompts in non-interactive environments.
+    if ! command -v sudo >/dev/null 2>&1; then
+      fail "sudo not found" "--reload-nginx requested but sudo is not installed"
+    fi
+
+    # Interactive TTY: allow sudo to prompt.
+    if [[ -t 0 && -t 1 ]]; then
+      run_step "nginx -t" sudo nginx -t
+      if command -v systemctl >/dev/null 2>&1; then
+        run_step "nginx reload" sudo systemctl reload nginx
+      else
+        run_step "nginx reload" sudo nginx -s reload
+      fi
     else
-      run_step "nginx reload" sudo nginx -s reload
+      # Non-interactive: require passwordless sudo.
+      if ! sudo -n true >/dev/null 2>&1; then
+        fail "nginx reload requires sudo" "Non-interactive run: configure passwordless sudo for nginx reload, or run interactively (TTY)."
+      fi
+      run_step "nginx -t" sudo -n nginx -t
+      if command -v systemctl >/dev/null 2>&1; then
+        run_step "nginx reload" sudo -n systemctl reload nginx
+      else
+        run_step "nginx reload" sudo -n nginx -s reload
+      fi
     fi
   else
     fail "nginx not found" "--reload-nginx requested but nginx is not installed"
@@ -186,21 +265,33 @@ log "==> smoke: /api/me"
 ME_JSON="$(curl -fsS "${BASE_URL%/}/api/me" || true)"
 AUTH=""
 if command -v jq >/dev/null 2>&1; then
-  AUTH="$(printf '%s' "$ME_JSON" | jq -r '.auth // empty' 2>/dev/null || true)"
+  AUTH="$(printf '%s' "$ME_JSON" | jq -r '.auth' 2>/dev/null || true)"
 else
   AUTH="$(python3 -c 'import json,sys
 try:
   j=json.loads(sys.stdin.read() or "{}")
-  v=j.get("auth", "")
-  sys.stdout.write("true" if v is True else ("false" if v is False else ""))
+  v=j.get("auth", None)
+  if v is True:
+    sys.stdout.write("true")
+  elif v is False:
+    sys.stdout.write("false")
+  else:
+    sys.stdout.write("unknown")
 except Exception:
-  pass
+  sys.stdout.write("unknown")
 ' 2>/dev/null <<<"$ME_JSON" || true)"
 fi
-log "api/me auth: ${AUTH:-unknown}"
+case "${AUTH}" in
+  true|false) log "api/me auth: ${AUTH}" ;;
+  *) log "api/me auth: unknown" ;;
+esac
 
 # SSE stream twice + finalize (uses its own /api/me auth:true validation after login)
-run_step "smoke: SSE stream twice" env BASE_URL="$BASE_URL" bash "$REPO_ROOT/scripts/smoke_sse_twice_browserlike.sh"
+if [[ $SKIP_SSE -eq 1 ]]; then
+  log "==> smoke: SSE stream twice (skipped: --skip-sse)"
+else
+  run_step "smoke: SSE stream twice" env BASE_URL="$BASE_URL" bash "$REPO_ROOT/scripts/smoke_sse_twice_browserlike.sh"
+fi
 
 log "OK: deploy_and_smoke"
 log "- env=${ENV_NAME} service=${SERVICE} smoke_only=${SMOKE_ONLY}"

@@ -28,6 +28,14 @@ cd /home/kiana/ki_ana
 ./scripts/deploy_and_smoke.sh --env prod --service frontend
 ```
 
+Wenn die /app-UI auf die **dedizierte Prod-Frontend-Instanz** umgestellt werden soll (nginx vhost patch + reload):
+
+```bash
+cd /home/kiana/ki_ana
+./ops/runbooks/scripts/apply_nginx_patch_ki_ana_at.sh
+./scripts/deploy_and_smoke.sh --env prod --service all --reload-nginx
+```
+
 Wenn nginx-Konfig/vhost angepasst wurde:
 
 ```bash

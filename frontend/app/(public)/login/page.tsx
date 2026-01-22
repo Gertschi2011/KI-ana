@@ -45,8 +45,13 @@ export default function LoginPage(){
   }
 
   return (
-    <div className="max-w-md mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Login</h1>
+    <div className="max-w-md mx-auto grid gap-4">
+      <div className="card">
+        <div className="text-lg font-semibold">Login</div>
+        <div className="small mt-1">Melde dich an, um Chat und Papa zu nutzen.</div>
+      </div>
+
+      <div className="card">
       <form className="form" onSubmit={onSubmit}>
         <label>
           <div className="small">Benutzername oder E-Mail</div>
@@ -56,9 +61,10 @@ export default function LoginPage(){
           <div className="small">Passwort</div>
           <input className="input" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
         </label>
-        <button className="btn-dark" disabled={busy} type="submit">{busy ? 'Anmelden …' : 'Anmelden'}</button>
+        <button className="kiana-btn kiana-btn-primary" disabled={busy} type="submit">{busy ? 'Anmelden …' : 'Anmelden'}</button>
       </form>
-      {msg && <div className="mt-3 text-red-600 dark:text-red-400">{msg}</div>}
+      {msg && <div className="mt-3 kiana-alert kiana-alert-error">{msg}</div>}
+      </div>
     </div>
   )
 }

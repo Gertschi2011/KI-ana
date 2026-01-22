@@ -1,6 +1,17 @@
-version: '3.8'
-
 services:
+  # KI_ana Next.js Frontend (Production)
+  # Served behind host nginx: /app/* (prefix stripped) -> http://127.0.0.1:23100/*
+  kiana-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: kiana-frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:23100:3000"
+    networks:
+      - kiana-network
+
   # KI_ana FastAPI Backend
   kiana-backend:
     build:
@@ -16,6 +27,8 @@ services:
       - ./models:/app/models
     environment:
       - SERVER_MODE=0  # SQLite mode
+      - KI_ROOT=/app
+      - DATABASE_URL=sqlite:////app/netapi/users.db
       - QDRANT_HOST=qdrant
       - QDRANT_PORT=6333
       - OLLAMA_HOST=http://ollama:11434
@@ -52,8 +65,6 @@ services:
     image: ollama/ollama:latest
     container_name: kiana-ollama
     restart: unless-stopped
-    ports:
-      - "11434:11434"
     volumes:
       - ollama-data:/root/.ollama
     networks:
@@ -69,6 +80,7 @@ services:
     image: nginx:alpine
     container_name: kiana-nginx
     restart: unless-stopped
+    profiles: ["nginx"]
     ports:
       - "80:80"
       - "443:443"

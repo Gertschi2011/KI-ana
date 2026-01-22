@@ -3,40 +3,29 @@ export default function AdminSettingsPage(){
   const prometheusUrl = process.env.NEXT_PUBLIC_PROMETHEUS_URL || '/ops/prometheus/'
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Admin-Einstellungen</h1>
+    <div className="max-w-5xl mx-auto grid gap-4">
+      <div className="card">
+        <div className="text-lg font-semibold">Admin</div>
+        <div className="small mt-1">Monitoring-Links und Systemoptionen im gleichen Look wie der Rest der App.</div>
+      </div>
 
-      <div className="card mb-4">
+      <div className="card">
         <div className="font-semibold mb-2">Monitoring</div>
-        <div className="text-sm text-gray-300 mb-3">
-          Links öffnen in neuem Tab. Falls du hier 404 siehst, fehlt noch ein Reverse-Proxy auf dem Server
-          (z.B. /ops/grafana/ → Grafana).
+        <div className="small mb-3">
+          Öffnet in neuem Tab. Wenn du 404 siehst, fehlt ggf. ein Reverse-Proxy-Pfad auf dem Server.
         </div>
         <div className="flex gap-3 flex-wrap">
-          <a className="btn-dark" href={grafanaUrl} target="_blank" rel="noreferrer">Grafana (Quality)</a>
-          <a className="btn-dark" href={prometheusUrl} target="_blank" rel="noreferrer">Prometheus</a>
+          <a className="kiana-btn kiana-btn-primary" href={grafanaUrl} target="_blank" rel="noreferrer">Grafana</a>
+          <a className="kiana-btn" href={prometheusUrl} target="_blank" rel="noreferrer">Prometheus</a>
         </div>
       </div>
 
       <div className="card">
-        <form className="grid gap-3 max-w-xl">
-          <label className="block">
-            <div className="mb-1">Systemmodus</div>
-            <select className="input">
-              <option>Normal</option>
-              <option>Wartung</option>
-            </select>
-          </label>
-          <label className="block">
-            <div className="mb-1">Web-Recherche erlauben</div>
-            <select className="input">
-              <option>Standard</option>
-              <option>Erzwingen</option>
-              <option>Deaktivieren</option>
-            </select>
-          </label>
-          <button className="btn-dark" type="button">Speichern (Platzhalter)</button>
-        </form>
+        <div className="font-semibold mb-2">Systemeinstellungen</div>
+        <div className="kiana-alert">
+          <div className="font-medium">Keine Optionen verfügbar</div>
+          <div className="small mt-1">Aktuell gibt es in der Weboberfläche keine konfigurierbaren Admin-Optionen.</div>
+        </div>
       </div>
     </div>
   )

@@ -21,6 +21,7 @@ from typing import Iterable, List, Optional, Tuple
 
 
 TARGET_SERVER_NAME = "ki-ana.at"
+NEXT_UPSTREAM_PORT = 23100
 
 
 def _strip_comment(line: str) -> str:
@@ -147,7 +148,7 @@ def _detect_location_indent(block_lines: Iterable[str], fallback: str) -> str:
     return fallback
 
 
-INSERT_BLOCK = """# --- Chat: konsolidiert auf Next UI ---
+INSERT_BLOCK_TEMPLATE = """# --- Chat: konsolidiert auf Next UI ---
 location = /health {
     proxy_pass http://127.0.0.1:28000/health;
     proxy_set_header Host $host;
@@ -157,7 +158,7 @@ location = /health {
 
 # --- Public login (served by Next) ---
 location = /login {
-    proxy_pass http://127.0.0.1:23000;
+    proxy_pass http://127.0.0.1:__NEXT_UPSTREAM_PORT__;
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -208,7 +209,7 @@ location = /api/chat/stream {
 
 location ^~ /app/ {
     # NOTE: trailing slash strips the /app/ prefix so /app/chat -> upstream /chat
-    proxy_pass http://127.0.0.1:23000/;
+    proxy_pass http://127.0.0.1:__NEXT_UPSTREAM_PORT__/;
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -216,7 +217,7 @@ location ^~ /app/ {
 
 # Next.js assets are rooted at /_next/*
 location ^~ /_next/ {
-    proxy_pass http://127.0.0.1:23000;
+    proxy_pass http://127.0.0.1:__NEXT_UPSTREAM_PORT__;
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -260,6 +261,8 @@ location = /addressbook { return 302 /static/addressbook.html; }
 location = /blockviewer { return 302 /static/block_viewer.html; }
 location = /timeflow    { return 302 /static/timeflow.html; }
 """
+
+INSERT_BLOCK = INSERT_BLOCK_TEMPLATE.replace("__NEXT_UPSTREAM_PORT__", str(NEXT_UPSTREAM_PORT))
 
 
 def _remove_target_locations(block_lines: List[str]) -> List[str]:
