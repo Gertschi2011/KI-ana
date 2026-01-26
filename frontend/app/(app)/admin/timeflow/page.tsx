@@ -1,5 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
+import KianaCard from '../../../../components/ui/KianaCard'
+import KianaButton from '../../../../components/ui/KianaButton'
 
 interface TimeFlowState {
   tick: number
@@ -124,10 +126,10 @@ export default function TimeFlowManagerPage() {
   if (loading && !state) {
     return (
       <div className="max-w-7xl mx-auto grid gap-4">
-        <div className="card">
-          <div className="text-lg font-semibold">⏱️ TimeFlow Manager</div>
+        <KianaCard>
+          <div className="text-lg font-semibold">TimeFlow</div>
           <div className="small mt-1">Lade Daten…</div>
-        </div>
+        </KianaCard>
       </div>
     )
   }
@@ -135,275 +137,289 @@ export default function TimeFlowManagerPage() {
   if (error && !state) {
     return (
       <div className="max-w-7xl mx-auto grid gap-4">
-        <div className="card">
-          <div className="text-lg font-semibold">⏱️ TimeFlow Manager</div>
+        <KianaCard>
+          <div className="text-lg font-semibold">TimeFlow</div>
           <div className="small mt-1">Konnte Daten nicht laden.</div>
-        </div>
-        <div className="kiana-alert kiana-alert-error">{error}</div>
+          <div className="kiana-inset mt-4" role="status">
+            <div className="font-semibold">Kurz notiert</div>
+            <div className="small mt-1">{error}</div>
+          </div>
+          <div className="mt-4">
+            <KianaButton variant="primary" onClick={loadData}>
+              Erneut versuchen
+            </KianaButton>
+          </div>
+        </KianaCard>
       </div>
     )
   }
 
   return (
     <div className="max-w-7xl mx-auto grid gap-6">
-      <div className="card flex items-start justify-between gap-4">
-        <div>
-          <div className="text-lg font-semibold">⏱️ TimeFlow Manager</div>
-          <div className="small mt-1">Status, Konfiguration und Alerts im Dashboard-Look.</div>
+      <KianaCard>
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <div className="text-lg font-semibold">TimeFlow</div>
+            <div className="small mt-1">Status, Konfiguration und Hinweise – ruhig und übersichtlich.</div>
+          </div>
+          <KianaButton onClick={loadData} variant="primary" disabled={loading}>
+            Aktualisieren
+          </KianaButton>
         </div>
-        <button onClick={loadData} className="kiana-btn" disabled={loading}>
-          Aktualisieren
-        </button>
-      </div>
 
-      {/* Current State */}
-      {state && (
-        <div className="card mb-6">
-          <h2 className="text-xl font-bold mb-4">Aktueller Status</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div>
-              <div className="text-sm text-gray-600">Tick</div>
-              <div className="text-2xl font-bold">{state.tick.toLocaleString()}</div>
+        {error ? (
+          <div className="kiana-inset mt-4" role="status">
+            <div className="font-semibold">Kurz notiert</div>
+            <div className="small mt-1">{error}</div>
+          </div>
+        ) : null}
+
+        {state ? (
+          <div className="kiana-inset mt-5">
+            <h2 className="text-base font-semibold">Aktueller Status</h2>
+
+            <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div>
+                <div className="small" style={{ opacity: 0.8 }}>Tick</div>
+                <div className="text-2xl font-extrabold">{state.tick.toLocaleString()}</div>
+              </div>
+              <div>
+                <div className="small" style={{ opacity: 0.8 }}>Activation</div>
+                <div className="text-2xl font-extrabold">{(state.activation * 100).toFixed(1)}%</div>
+                <div className="kiana-progress mt-2">
+                  <div className="kiana-progress-bar" style={{ width: `${Math.max(0, Math.min(100, state.activation * 100))}%` }} />
+                </div>
+              </div>
+              <div>
+                <div className="small" style={{ opacity: 0.8 }}>Emotion</div>
+                <div className="text-2xl font-extrabold">{(state.emotion * 100).toFixed(1)}%</div>
+                <div className="kiana-progress mt-2" style={{ background: 'rgba(181,124,255,0.10)' }}>
+                  <div
+                    className="kiana-progress-bar"
+                    style={{ width: `${Math.max(0, Math.min(100, state.emotion * 100))}%`, background: 'linear-gradient(90deg, rgba(181,124,255,0.9), rgba(123,140,255,0.9))' }}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="small" style={{ opacity: 0.8 }}>Subjektive Zeit</div>
+                <div className="text-2xl font-extrabold">{formatDuration(state.subjective_time)}</div>
+              </div>
             </div>
-            <div>
-              <div className="text-sm text-gray-600">Activation</div>
-              <div className="text-2xl font-bold">
-                {(state.activation * 100).toFixed(1)}%
+
+            <div className="mt-5" style={{ height: 1, background: 'rgba(17,24,39,0.10)' }} />
+
+            <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div>
+                <div className="small" style={{ opacity: 0.8 }}>Events/min</div>
+                <div className="text-lg font-semibold">{state.events_per_min.toFixed(1)}</div>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
-                <div 
-                  className="bg-blue-600 h-2 rounded-full" 
-                  style={{ width: `${state.activation * 100}%` }}
-                />
+              <div>
+                <div className="small" style={{ opacity: 0.8 }}>Requests/min</div>
+                <div className="text-lg font-semibold">{state.reqs_per_min.toFixed(1)}</div>
               </div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-600">Emotion</div>
-              <div className="text-2xl font-bold">
-                {(state.emotion * 100).toFixed(1)}%
+              <div>
+                <div className="small" style={{ opacity: 0.8 }}>Circadian</div>
+                <div className="text-lg font-semibold">{state.circadian_factor.toFixed(2)}</div>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
-                <div 
-                  className="bg-purple-600 h-2 rounded-full" 
-                  style={{ width: `${state.emotion * 100}%` }}
-                />
-              </div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-600">Subjektive Zeit</div>
-              <div className="text-2xl font-bold">
-                {formatDuration(state.subjective_time)}
+              <div>
+                <div className="small" style={{ opacity: 0.8 }}>Timestamp</div>
+                <div className="small">{formatTimestamp(state.ts_ms)}</div>
               </div>
             </div>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 pt-4 border-t">
-            <div>
-              <div className="text-sm text-gray-600">Events/min</div>
-              <div className="text-lg font-semibold">{state.events_per_min.toFixed(1)}</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-600">Requests/min</div>
-              <div className="text-lg font-semibold">{state.reqs_per_min.toFixed(1)}</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-600">Circadian Factor</div>
-              <div className="text-lg font-semibold">{state.circadian_factor.toFixed(2)}</div>
-            </div>
-            <div>
-              <div className="text-sm text-gray-600">Timestamp</div>
-              <div className="text-xs">{formatTimestamp(state.ts_ms)}</div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* Configuration */}
-        {config && (
-          <div className="card">
-            <h2 className="text-xl font-bold mb-4">⚙️ Konfiguration</h2>
-            <div className="grid gap-3">
-              <label className="block">
-                <div className="text-sm font-medium mb-1">Activation Decay</div>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  max="1"
-                  value={config.activation_decay}
-                  onChange={e => setConfig({...config, activation_decay: parseFloat(e.target.value)})}
-                  className="input"
-                />
-                <div className="text-xs text-gray-500 mt-1">
-                  Wie schnell die Aktivierung abklingt (0-1)
-                </div>
-              </label>
-
-              <label className="block">
-                <div className="text-sm font-medium mb-1">Stimulus Weight</div>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  max="1"
-                  value={config.stimulus_weight}
-                  onChange={e => setConfig({...config, stimulus_weight: parseFloat(e.target.value)})}
-                  className="input"
-                />
-                <div className="text-xs text-gray-500 mt-1">
-                  Gewicht für neue Stimuli
-                </div>
-              </label>
-
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={config.circadian_enabled}
-                  onChange={e => setConfig({...config, circadian_enabled: e.target.checked})}
-                  className="w-4 h-4"
-                />
-                <div className="text-sm font-medium">Circadian Rhythm aktiviert</div>
-              </label>
-
-              {config.circadian_enabled && (
-                <label className="block">
-                  <div className="text-sm font-medium mb-1">Circadian Amplitude</div>
-                  <input
-                    type="number"
-                    step="0.05"
-                    min="0"
-                    max="1"
-                    value={config.circadian_amplitude}
-                    onChange={e => setConfig({...config, circadian_amplitude: parseFloat(e.target.value)})}
-                    className="input"
-                  />
-                </label>
-              )}
-
-              <div className="pt-3 border-t">
-                <h3 className="font-medium mb-2">Alert Thresholds</h3>
-                
-                <label className="block mb-2">
-                  <div className="text-sm mb-1">Activation Warning</div>
-                  <input
-                    type="number"
-                    step="0.05"
-                    min="0"
-                    max="1"
-                    value={config.alert_activation_warn}
-                    onChange={e => setConfig({...config, alert_activation_warn: parseFloat(e.target.value)})}
-                    className="input"
-                  />
-                </label>
-
-                <label className="block mb-2">
-                  <div className="text-sm mb-1">Activation Critical</div>
-                  <input
-                    type="number"
-                    step="0.05"
-                    min="0"
-                    max="1"
-                    value={config.alert_activation_crit}
-                    onChange={e => setConfig({...config, alert_activation_crit: parseFloat(e.target.value)})}
-                    className="input"
-                  />
-                </label>
-
-                <label className="block mb-2">
-                  <div className="text-sm mb-1">Requests/min Warning</div>
-                  <input
-                    type="number"
-                    step="10"
-                    min="0"
-                    value={config.alert_reqs_per_min_warn}
-                    onChange={e => setConfig({...config, alert_reqs_per_min_warn: parseFloat(e.target.value)})}
-                    className="input"
-                  />
-                </label>
-
-                <label className="block mb-2">
-                  <div className="text-sm mb-1">Requests/min Critical</div>
-                  <input
-                    type="number"
-                    step="10"
-                    min="0"
-                    value={config.alert_reqs_per_min_crit}
-                    onChange={e => setConfig({...config, alert_reqs_per_min_crit: parseFloat(e.target.value)})}
-                    className="input"
-                  />
-                </label>
-              </div>
-
-              <button onClick={saveConfig} className="kiana-btn kiana-btn-primary mt-3">
-                💾 Konfiguration speichern
-              </button>
-
-              {saveMessage && (
-                <div className={`kiana-alert ${saveMessage.includes('✅') ? 'kiana-alert-success' : 'kiana-alert-error'}`}>
-                  {saveMessage}
-                </div>
-              )}
-            </div>
+        ) : (
+          <div className="kiana-inset mt-5">
+            <div className="font-semibold">Noch kein Status</div>
+            <div className="small mt-1">Sobald TimeFlow aktiv ist, erscheint hier ein ruhiger Überblick.</div>
           </div>
         )}
 
-        {/* Alerts & Stats */}
-        <div className="space-y-6">
-          {/* Recent Alerts */}
-          <div className="card">
-            <h2 className="text-xl font-bold mb-4">🚨 Kürzliche Alerts</h2>
-            {alerts.length === 0 ? (
-              <div className="text-sm text-gray-500">Keine Alerts</div>
-            ) : (
-              <div className="space-y-2">
-                {alerts.map((alert, idx) => (
-                  <div key={idx} className="p-2 bg-gray-50 rounded text-sm">
-                    <div className="flex justify-between items-start">
-                      <div className="font-medium">{alert.kind}</div>
-                      <div className="text-xs text-gray-500">
-                        {formatTimestamp(alert.ts)}
-                      </div>
-                    </div>
-                    {alert.severity && (
-                      <div className={`text-xs mt-1 ${
-                        alert.severity === 'crit' ? 'text-red-600' : 'text-yellow-600'
-                      }`}>
-                        Severity: {alert.severity}
-                      </div>
-                    )}
+        <div className="mt-5 grid md:grid-cols-2 gap-4">
+          {config ? (
+            <div className="kiana-inset">
+              <h2 className="text-base font-semibold">Konfiguration</h2>
+
+              <div className="mt-4 grid gap-3">
+                <label className="block">
+                  <div className="text-sm font-medium mb-1">Activation Decay</div>
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    max="1"
+                    value={config.activation_decay}
+                    onChange={e => setConfig({...config, activation_decay: parseFloat(e.target.value)})}
+                    className="input"
+                  />
+                  <div className="small mt-1">Wie schnell die Aktivierung abklingt (0–1).</div>
+                </label>
+
+                <label className="block">
+                  <div className="text-sm font-medium mb-1">Stimulus Weight</div>
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    max="1"
+                    value={config.stimulus_weight}
+                    onChange={e => setConfig({...config, stimulus_weight: parseFloat(e.target.value)})}
+                    className="input"
+                  />
+                  <div className="small mt-1">Gewicht für neue Stimuli.</div>
+                </label>
+
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={config.circadian_enabled}
+                    onChange={e => setConfig({...config, circadian_enabled: e.target.checked})}
+                    className="w-4 h-4"
+                  />
+                  <div className="text-sm font-medium">Circadian Rhythm aktiviert</div>
+                </label>
+
+                {config.circadian_enabled && (
+                  <label className="block">
+                    <div className="text-sm font-medium mb-1">Circadian Amplitude</div>
+                    <input
+                      type="number"
+                      step="0.05"
+                      min="0"
+                      max="1"
+                      value={config.circadian_amplitude}
+                      onChange={e => setConfig({...config, circadian_amplitude: parseFloat(e.target.value)})}
+                      className="input"
+                    />
+                  </label>
+                )}
+
+                <div className="pt-3" style={{ borderTop: '1px solid rgba(17,24,39,0.10)' }}>
+                  <h3 className="font-medium mb-2">Alert Thresholds</h3>
+
+                  <label className="block mb-2">
+                    <div className="text-sm mb-1">Activation Warning</div>
+                    <input
+                      type="number"
+                      step="0.05"
+                      min="0"
+                      max="1"
+                      value={config.alert_activation_warn}
+                      onChange={e => setConfig({...config, alert_activation_warn: parseFloat(e.target.value)})}
+                      className="input"
+                    />
+                  </label>
+
+                  <label className="block mb-2">
+                    <div className="text-sm mb-1">Activation Critical</div>
+                    <input
+                      type="number"
+                      step="0.05"
+                      min="0"
+                      max="1"
+                      value={config.alert_activation_crit}
+                      onChange={e => setConfig({...config, alert_activation_crit: parseFloat(e.target.value)})}
+                      className="input"
+                    />
+                  </label>
+
+                  <label className="block mb-2">
+                    <div className="text-sm mb-1">Requests/min Warning</div>
+                    <input
+                      type="number"
+                      step="10"
+                      min="0"
+                      value={config.alert_reqs_per_min_warn}
+                      onChange={e => setConfig({...config, alert_reqs_per_min_warn: parseFloat(e.target.value)})}
+                      className="input"
+                    />
+                  </label>
+
+                  <label className="block mb-2">
+                    <div className="text-sm mb-1">Requests/min Critical</div>
+                    <input
+                      type="number"
+                      step="10"
+                      min="0"
+                      value={config.alert_reqs_per_min_crit}
+                      onChange={e => setConfig({...config, alert_reqs_per_min_crit: parseFloat(e.target.value)})}
+                      className="input"
+                    />
+                  </label>
+                </div>
+
+                <div className="mt-1">
+                  <KianaButton variant="primary" onClick={saveConfig}>
+                    Konfiguration speichern
+                  </KianaButton>
+                </div>
+
+                {saveMessage ? (
+                  <div className="kiana-inset mt-3" role="status">
+                    <div className="small">{saveMessage.replace('✅', '').replace('❌', '').trim()}</div>
                   </div>
-                ))}
+                ) : null}
+              </div>
+            </div>
+          ) : (
+            <div className="kiana-inset">
+              <div className="font-semibold">Konfiguration nicht verfügbar</div>
+              <div className="small mt-1">Wenn der Endpunkt bereit ist, kannst du hier Werte anpassen.</div>
+            </div>
+          )}
+
+          <div className="grid gap-4">
+            <div className="kiana-inset">
+              <h2 className="text-base font-semibold">Kürzliche Alerts</h2>
+              {alerts.length === 0 ? (
+                <div className="small mt-2" style={{ opacity: 0.8 }}>Im Moment ist alles ruhig.</div>
+              ) : (
+                <div className="mt-3 grid gap-2">
+                  {alerts.map((alert, idx) => (
+                    <div key={idx} className="rounded-xl p-3" style={{ background: 'rgba(255,255,255,0.70)', border: '1px solid rgba(17,24,39,0.08)' }}>
+                      <div className="flex justify-between items-start gap-4">
+                        <div className="font-medium">{alert.kind}</div>
+                        <div className="small" style={{ opacity: 0.7 }}>{formatTimestamp(alert.ts)}</div>
+                      </div>
+                      {alert.severity ? (
+                        <div className="small mt-1" style={{ opacity: 0.85 }}>
+                          Severity: {String(alert.severity)}
+                        </div>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {stats ? (
+              <div className="kiana-inset">
+                <h2 className="text-base font-semibold">Statistiken</h2>
+                <div className="mt-3 grid gap-2">
+                  <div className="flex justify-between gap-4">
+                    <span className="small" style={{ opacity: 0.85 }}>Webhook Dropped Total</span>
+                    <span className="font-semibold">{stats.webhook_dropped_total}</span>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <span className="small" style={{ opacity: 0.85 }}>Pruned Files Total</span>
+                    <span className="font-semibold">{stats.pruned_files_total}</span>
+                  </div>
+                  {stats.last_compact_ts > 0 ? (
+                    <div className="flex justify-between gap-4">
+                      <span className="small" style={{ opacity: 0.85 }}>Last Compaction</span>
+                      <span className="font-semibold">{formatTimestamp(stats.last_compact_ts * 1000)}</span>
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ) : (
+              <div className="kiana-inset">
+                <div className="font-semibold">Noch keine Statistiken</div>
+                <div className="small mt-1">Wenn TimeFlow Stats liefert, tauchen sie hier automatisch auf.</div>
               </div>
             )}
           </div>
-
-          {/* System Stats */}
-          {stats && (
-            <div className="card">
-              <h2 className="text-xl font-bold mb-4">📊 Statistiken</h2>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span>Webhook Dropped Total:</span>
-                  <span className="font-semibold">{stats.webhook_dropped_total}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Pruned Files Total:</span>
-                  <span className="font-semibold">{stats.pruned_files_total}</span>
-                </div>
-                {stats.last_compact_ts > 0 && (
-                  <div className="flex justify-between">
-                    <span>Last Compaction:</span>
-                    <span className="font-semibold">
-                      {formatTimestamp(stats.last_compact_ts * 1000)}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
         </div>
-      </div>
+      </KianaCard>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { getMe, logout } from '../lib/api'
+import { LayoutGroup, motion } from 'framer-motion'
 
 export default function Navbar(){
   const [name, setName] = useState<string>('Gast')
@@ -13,6 +14,10 @@ export default function Navbar(){
   const [caps, setCaps] = useState<Record<string, any>>({})
   const pathname = usePathname() || ''
   const buildSha = (process.env.NEXT_PUBLIC_BUILD_SHA || 'unknown').slice(0, 12)
+  const showBuildEnv = (() => {
+    const v = String(process.env.NEXT_PUBLIC_SHOW_BUILD || '').trim().toLowerCase()
+    return v === '1' || v === 'true' || v === 'yes'
+  })()
 
   useEffect(()=>{
     let mounted = true
@@ -51,8 +56,9 @@ export default function Navbar(){
   const isCreator = !!flags.is_creator || roles.includes('creator') || role === 'creator'
   const isPapa = !!flags.is_papa || roles.includes('papa') || role === 'papa'
   const canSeeAdmin = isAdmin || isCreator
-  const canViewBlockViewer = !!(caps?.can_view_block_viewer)
-  const showBuild = canSeeAdmin
+  const showBuild = canSeeAdmin || !!showBuildEnv
+
+  const brandHref = isAuthed ? '/app/chat' : '/'
 
   const isActive = (href: string) => {
     if (href === '/app/dashboard') return pathname === '/app/dashboard'
@@ -61,15 +67,15 @@ export default function Navbar(){
   }
 
   const authedTabs: Array<{ href: string; label: string; show?: boolean; external?: boolean }> = [
-    { href: '/app/dashboard', label: '🏠 Dashboard', show: true },
-    { href: '/app/chat', label: '💬 Chat', show: true },
-    { href: '/app/papa', label: '👨‍👧 Papa', show: isPapa },
-    { href: '/app/settings', label: '⚙️ Einstellungen', show: true },
-    { href: '/app/admin/timeflow', label: '⏱️ TimeFlow', show: canSeeAdmin },
-    { href: '/app/monitoring', label: '📈 Monitoring', show: canSeeAdmin },
-    { href: '/app/tools', label: '🧰 Tools', show: canSeeAdmin },
-    { href: '/app/blockviewer', label: '🧱 Block Viewer', show: canViewBlockViewer },
-    { href: '/app/admin/users', label: '👥 Benutzer', show: canSeeAdmin },
+    { href: '/app/dashboard', label: 'Dashboard', show: true },
+    { href: '/app/chat', label: 'Chat', show: true },
+    { href: '/app/papa', label: 'Papa', show: true },
+    { href: '/app/settings', label: 'Einstellungen', show: true },
+    { href: '/app/admin/timeflow', label: 'TimeFlow', show: canSeeAdmin },
+    { href: '/app/monitoring', label: 'Monitoring', show: canSeeAdmin },
+    { href: '/app/tools', label: 'Tools', show: canSeeAdmin },
+    { href: '/app/blockviewer', label: 'Block Viewer', show: canSeeAdmin },
+    { href: '/app/admin/users', label: 'Benutzer', show: canSeeAdmin },
   ]
 
   const publicTabs: Array<{ href: string; label: string }> = [
@@ -83,17 +89,13 @@ export default function Navbar(){
       <div className="kiana-header-inner">
         <div className="kiana-header-row">
           <div>
-            <div className="kiana-brand-title" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <img
-                src="/static/Avatar_KI_ana.png"
-                alt="Kiana"
-                width={42}
-                height={42}
-                style={{ borderRadius: 999, border: '2px solid rgba(255,255,255,0.22)', background: 'rgba(255,255,255,0.10)' }}
-              />
-              <span>KI_ana</span>
-            </div>
-            <div className="kiana-brand-sub">Online</div>
+            <Link className="kiana-brand-link" href={brandHref} aria-label="KI_ana Home">
+              <span className="kiana-brand-mark" aria-hidden />
+              <div>
+                <div className="kiana-brand-title">KI_ana</div>
+                <div className="kiana-brand-sub">verspielt • lernend • ruhig</div>
+              </div>
+            </Link>
           </div>
 
           <div className="kiana-header-actions">
@@ -109,7 +111,7 @@ export default function Navbar(){
             </div>
             {isAuthed && (
               <>
-                <div className="kiana-userpill">👤 {name}{isCreator ? ' (Creator)' : isAdmin ? ' (Admin)' : isPapa ? ' (Papa)' : ''}</div>
+                <div className="kiana-userpill">{name}{isCreator ? ' (Creator)' : isAdmin ? ' (Admin)' : isPapa ? ' (Papa)' : ''}</div>
                 <button className="kiana-header-btn" onClick={onLogout}>Logout</button>
               </>
             )}
@@ -119,19 +121,31 @@ export default function Navbar(){
 
       <div className="kiana-navtabs">
         <div className="kiana-navtabs-inner">
-          <nav className="kiana-navtabs-list" aria-label="Navigation">
-            {(isAuthed ? authedTabs : publicTabs)
-              .filter((t: any) => t.show !== false)
-              .map((t: any) => (
-                <Link
-                  key={t.href}
-                  href={t.href}
-                  className={`kiana-tab ${isActive(t.href) ? 'kiana-tab-active' : ''}`}
-                >
-                  {t.label}
-                </Link>
-              ))}
-          </nav>
+          <LayoutGroup>
+            <nav className="kiana-navtabs-list" aria-label="Navigation">
+              {(isAuthed ? authedTabs : publicTabs)
+                .filter((t: any) => t.show !== false)
+                .map((t: any) => {
+                  const active = isActive(t.href)
+                  return (
+                    <Link
+                      key={t.href}
+                      href={t.href}
+                      className={`kiana-tab ${active ? 'kiana-tab-active' : ''}`}
+                    >
+                      {active ? (
+                        <motion.span
+                          layoutId="kiana-nav-pill"
+                          className="kiana-tab-active-pill"
+                          transition={{ duration: 0.25, ease: 'easeOut' }}
+                        />
+                      ) : null}
+                      <span style={{ position: 'relative', zIndex: 1 }}>{t.label}</span>
+                    </Link>
+                  )
+                })}
+            </nav>
+          </LayoutGroup>
         </div>
       </div>
     </header>

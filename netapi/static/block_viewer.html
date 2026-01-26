@@ -9,6 +9,9 @@
   <link href="/static/chat.css" rel="stylesheet">
   <style>
     body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+    body.embed { background: #ffffff; min-height: 100vh; }
+    body.embed .container { padding: 12px; }
+    body.embed #navbar { display: none !important; }
     .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
     .toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
     .muted { opacity: .75; }
@@ -209,6 +212,15 @@
 <script>
 (function(){
   try{
+    const u = new URL(window.location.href);
+    const embed = (u.searchParams.get('embed') || u.searchParams.get('hideNav') || '').trim();
+    if (embed === '1' || embed.toLowerCase() === 'true' || embed.toLowerCase() === 'yes') {
+      try{ document.body.classList.add('embed'); }catch{}
+      const n0 = document.getElementById('navbar');
+      if (n0) n0.innerHTML = '';
+      return;
+    }
+
     fetch('/static/nav.html?v=' + Date.now())
       .then(r=>r.text())
       .then(html=>{

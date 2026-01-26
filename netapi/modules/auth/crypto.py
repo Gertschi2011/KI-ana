@@ -1,31 +1,74 @@
-# netapi/modules/auth/crypto.py
-from werkzeug.security import check_password_hash, generate_password_hash
+"""Password hashing helpers.
+
+Goals:
+- Use a modern password hash for NEW registrations (bcrypt).
+- Stay backward-compatible with existing hashes:
+  - Werkzeug `generate_password_hash` (scrypt/pbkdf2 formats like `scrypt:...`)
+  - Legacy argon2 hashes from the old backend.
+
+Implementation note:
+- We intentionally avoid passlib's bcrypt backend auto-detection here because
+  some bcrypt backends raise on >72-byte inputs during passlib's self-tests.
+- We pre-hash the password with SHA-256 before bcrypt so we never hit bcrypt's
+  72-byte limit while keeping verification stable.
+"""
+
+from __future__ import annotations
+
+import hashlib
+
+from werkzeug.security import check_password_hash
+
+
+def _pw_bytes(pw: str) -> bytes:
+    # bcrypt has a 72-byte input limit; pre-hash for safety.
+    return hashlib.sha256((pw or "").encode("utf-8")).digest()
+
 
 def hash_pw(pw: str) -> str:
-    """Generate password hash using scrypt (werkzeug default)"""
-    return generate_password_hash(pw)
+    """Hash password for storage (bcrypt, SHA-256 prehash)."""
+    try:
+        import bcrypt  # type: ignore
+
+        return bcrypt.hashpw(_pw_bytes(pw), bcrypt.gensalt()).decode("utf-8")
+    except Exception:
+        # Fallback: Werkzeug scrypt (still strong, but we prefer bcrypt when available)
+        from werkzeug.security import generate_password_hash
+
+        return generate_password_hash(pw)
+
 
 def check_pw(pw: str, hashed: str) -> bool:
-    """
-    Check password against hash.
-    Supports BOTH scrypt (new) and argon2 (legacy from Flask backend).
-    """
-    # Try scrypt first (current format)
-    try:
-        if check_password_hash(hashed, pw):
-            return True
-    except Exception:
-        pass
-    
-    # Try argon2 (legacy format from old Flask backend)
-    if hashed.startswith("$argon2"):
+    """Verify password against stored hash."""
+    h = (hashed or "").strip()
+    if not pw or not h:
+        return False
+
+    # Werkzeug formats (current/legacy in this project)
+    if h.startswith("scrypt:") or h.startswith("pbkdf2:"):
+        try:
+            return bool(check_password_hash(h, pw))
+        except Exception:
+            return False
+
+    # Legacy argon2 from older backend
+    if h.startswith("$argon2"):
         try:
             from argon2 import PasswordHasher
+
             ph = PasswordHasher()
-            ph.verify(hashed, pw)
+            ph.verify(h, pw)
             return True
         except Exception:
-            # argon2 not installed or verification failed
-            pass
-    
+            return False
+
+    # bcrypt hashes ($2a$, $2b$, $2y$)
+    if h.startswith("$2"):
+        try:
+            import bcrypt  # type: ignore
+
+            return bool(bcrypt.checkpw(_pw_bytes(pw), h.encode("utf-8")))
+        except Exception:
+            return False
+
     return False

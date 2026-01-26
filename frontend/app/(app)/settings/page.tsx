@@ -1,5 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
+import KianaCard from '../../../components/ui/KianaCard'
+import KianaButton from '../../../components/ui/KianaButton'
 
 export default function SettingsPage(){
   const [voice, setVoice] = useState('neutral')
@@ -28,8 +30,8 @@ export default function SettingsPage(){
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
-      <div className="card grid gap-4">
+    <div className="max-w-3xl mx-auto grid gap-4">
+      <KianaCard>
         <div>
           <div className="text-lg font-semibold">Einstellungen</div>
           <div className="small mt-1">Passe Stil, Stimme und Web-Recherche an. Diese Einstellungen werden lokal gespeichert.</div>
@@ -57,11 +59,15 @@ export default function SettingsPage(){
             <div className="small">Nur für „aktuell/news/verifizieren“-Fragen wird Web genutzt.</div>
           </div>
         </label>
-        <div>
-          <button className="kiana-btn kiana-btn-primary" onClick={save}>Speichern</button>
+        <div className="mt-2">
+          <KianaButton variant="primary" onClick={save}>Speichern</KianaButton>
         </div>
-        {msg && <div className="small">{msg}</div>}
-      </div>
+        {msg ? (
+          <div className="kiana-inset mt-3" role="status">
+            <div className="small">{msg}</div>
+          </div>
+        ) : null}
+      </KianaCard>
     </div>
   )
 }

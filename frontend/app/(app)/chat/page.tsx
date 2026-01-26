@@ -707,13 +707,12 @@ export default function ChatPage() {
           </div>
           <div className="flex flex-col gap-1">
             <button
-              className={`text-left px-2 py-1 rounded ${activeFolderId == null ? '' : ''}`}
+              className={`kiana-sidebar-item ${activeFolderId == null ? 'kiana-sidebar-item-active' : ''}`}
               onClick={() => setActiveFolderId(null)}
               disabled={uiBusy}
-              style={activeFolderId == null ? { background: 'rgba(79,70,229,0.10)' } : {}}
             >Alle</button>
             {folders.map((f: any) => (
-              <div key={f.id} className="flex items-center gap-2 px-2 py-1 rounded" style={Number(activeFolderId) === Number(f.id) ? { background: 'rgba(79,70,229,0.10)' } : {}}>
+              <div key={f.id} className={`flex items-center gap-2 ${Number(activeFolderId) === Number(f.id) ? 'kiana-sidebar-item-active' : ''}`} style={{ borderRadius: 999, padding: '6px 8px' }}>
                 <button
                   className="flex-1 text-left truncate"
                   onClick={() => setActiveFolderId(Number(f.id))}
@@ -738,7 +737,7 @@ export default function ChatPage() {
           <div className="text-xs mb-1" style={{ color: 'var(--k-muted)' }}>Unterhaltungen</div>
           <div className="flex flex-col gap-1">
             {filteredConvs.map((c: any) => (
-              <div key={c.id} className="flex items-center gap-2 px-2 py-1 rounded" style={Number(activeConvId) === Number(c.id) ? { background: 'rgba(79,70,229,0.10)' } : {}}>
+              <div key={c.id} className={`flex items-center gap-2 ${Number(activeConvId) === Number(c.id) ? 'kiana-sidebar-item-active' : ''}`} style={{ borderRadius: 999, padding: '6px 8px' }}>
                 <button className="flex-1 text-left truncate" onClick={() => loadConversation(Number(c.id))} disabled={uiBusy}>
                   {String(c.title || 'Unterhaltung')}
                 </button>

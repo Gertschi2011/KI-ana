@@ -13,9 +13,11 @@ class BillingIn(BaseModel):
     notes: Optional[str] = ""
 
 class RegisterIn(BaseModel):
+    name: Optional[str] = Field(default=None, max_length=120)
     username: str = Field(min_length=3, max_length=50)
     email: EmailStr
-    password: str = Field(min_length=8, max_length=200)
+    # Password length policy is enforced in the /api/register route (configurable).
+    password: str = Field(min_length=1, max_length=200)
     birthdate: Optional[str] = None
     address: Optional[AddressIn] = None
     billing: Optional[BillingIn] = None

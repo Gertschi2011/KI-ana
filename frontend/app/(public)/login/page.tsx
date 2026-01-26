@@ -1,12 +1,17 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { login, getMe } from '../../../lib/api'
+import Link from 'next/link'
+import KianaCard from '../../../components/ui/KianaCard'
+import KianaButton from '../../../components/ui/KianaButton'
 
 export default function LoginPage(){
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [msg, setMsg] = useState('')
   const [busy, setBusy] = useState(false)
+
+  const canSubmit = username.trim().length > 0 && password.length > 0
 
   // If already authenticated, go to chat directly
   useEffect(()=>{
@@ -46,25 +51,32 @@ export default function LoginPage(){
 
   return (
     <div className="max-w-md mx-auto grid gap-4">
-      <div className="card">
-        <div className="text-lg font-semibold">Login</div>
-        <div className="small mt-1">Melde dich an, um Chat und Papa zu nutzen.</div>
-      </div>
+      <KianaCard>
+        <div className="text-lg font-semibold">Willkommen zurück</div>
+        <div className="small mt-1">Melde dich an, um Chat und Dashboard zu nutzen.</div>
+      </KianaCard>
 
-      <div className="card">
-      <form className="form" onSubmit={onSubmit}>
-        <label>
-          <div className="small">Benutzername oder E-Mail</div>
-          <input className="input" value={username} onChange={e=>setUsername(e.target.value)} required />
-        </label>
-        <label>
-          <div className="small">Passwort</div>
-          <input className="input" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
-        </label>
-        <button className="kiana-btn kiana-btn-primary" disabled={busy} type="submit">{busy ? 'Anmelden …' : 'Anmelden'}</button>
-      </form>
-      {msg && <div className="mt-3 kiana-alert kiana-alert-error">{msg}</div>}
-      </div>
+      <KianaCard>
+        <form className="form" onSubmit={onSubmit}>
+          <label>
+            <div className="small">Benutzername oder E-Mail</div>
+            <input className="input" value={username} onChange={e=>setUsername(e.target.value)} required />
+          </label>
+          <label>
+            <div className="small">Passwort</div>
+            <input className="input" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+          </label>
+          <KianaButton variant="primary" disabled={busy || !canSubmit} type="submit">
+            {busy ? 'Anmelden …' : 'Anmelden'}
+          </KianaButton>
+        </form>
+
+        {msg && <div className="mt-3 kiana-alert kiana-alert-error"><div className="small">{msg}</div></div>}
+
+        <div className="small mt-4" style={{opacity:0.8}}>
+          Noch kein Konto? <Link className="underline" href="/register">Registrieren</Link>
+        </div>
+      </KianaCard>
     </div>
   )
 }

@@ -23,6 +23,30 @@ except Exception:
 
 router = APIRouter(prefix="/api", tags=["auth"])
 
+# -------------------------
+# Registration guardrails
+# -------------------------
+_REGISTER_RATE_BUCKET: Dict[str, List[float]] = {}
+
+
+def _rate_allow(ip: str, key: str, *, limit: int = 5, per_seconds: int = 60) -> bool:
+    now = time.time()
+    bucket_key = f"{ip}:{key}"
+    bucket = _REGISTER_RATE_BUCKET.setdefault(bucket_key, [])
+    while bucket and now - bucket[0] > per_seconds:
+        bucket.pop(0)
+    if len(bucket) >= limit:
+        return False
+    bucket.append(now)
+    return True
+
+
+def _min_password_len() -> int:
+    try:
+        return max(6, int(os.getenv("KI_MIN_PASSWORD_LEN", "10")))
+    except Exception:
+        return 10
+
 def _validate_birthdate(bd: str | None) -> str | None:
     if not bd: return None
     try: date.fromisoformat(bd); return bd
@@ -30,37 +54,63 @@ def _validate_birthdate(bd: str | None) -> str | None:
 
 @router.post("/register")
 def register(payload: RegisterIn, request: Request, db=Depends(get_db)):
-    u_name = payload.username.strip()
-    email = payload.email.strip().lower()
-    if not u_name or not email or not payload.password:
-        raise HTTPException(400, "missing fields")
-    exists = db.query(User).filter((User.username == u_name) | (User.email == email)).first()
-    if exists: raise HTTPException(409, "username or email already exists")
+    ip = (request.client.host if request.client else "?")
+    if not _rate_allow(ip, "register", limit=5, per_seconds=60):
+        raise HTTPException(429, "rate_limited")
+
+    u_name = (payload.username or "").strip().lower()
+    email = str(payload.email or "").strip().lower()
+    pw = str(payload.password or "")
+    display_name = (payload.name or "").strip()[:120] if getattr(payload, "name", None) else ""
+
+    if not u_name or not email or not pw:
+        raise HTTPException(400, "missing_fields")
+
+    # Username policy: min 3, only [a-z0-9._-]
+    try:
+        import re
+
+        if not re.fullmatch(r"[a-z0-9._-]{3,50}", u_name):
+            raise HTTPException(400, "invalid_username")
+    except HTTPException:
+        raise
+    except Exception:
+        # If regex fails for some unexpected reason, still avoid creating weird usernames.
+        raise HTTPException(400, "invalid_username")
+
+    min_pw = _min_password_len()
+    if len(pw) < min_pw:
+        raise HTTPException(400, f"password_too_short:{min_pw}")
+
+    # Distinct duplicates (case-insensitive)
+    if db.query(User).filter(func.lower(User.username) == u_name).first():
+        raise HTTPException(409, "username_exists")
+    if db.query(User).filter(func.lower(User.email) == email).first():
+        raise HTTPException(409, "email_exists")
 
     profile = {
+        "name": display_name,
         "address": (payload.address.dict() if payload.address else {}),
         "billing": (payload.billing.dict() if payload.billing else {}),
     }
+    now_dt = datetime.utcnow()
     user = User(
-        username=u_name, email=email, password_hash=hash_pw(payload.password),
-        role="family", plan="free", plan_until=0,
+        username=u_name,
+        email=email,
+        password_hash=hash_pw(pw),
+        role="user",
+        tier="user",
+        is_papa=False,
+        plan="free",
+        plan_until=0,
         birthdate=_validate_birthdate(payload.birthdate),
         address=json.dumps(profile, ensure_ascii=False),
-        created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        created_at=now_dt,
+        updated_at=now_dt,
     )
     db.add(user); db.commit(); db.refresh(user)
 
-    out: Dict[str, Any] = {
-        "ok": True,
-        "user": {
-            "id": user.id,
-            "username": user.username,
-            "role": user.role,
-            "plan": user.plan,
-            "plan_until": user.plan_until,
-        },
-    }
+    out: Dict[str, Any] = {"ok": True, "user_id": int(user.id)}
 
     # Test-mode: return email verification token for E2E.
     # Staging E2E can enable this via TEST_MODE=1.

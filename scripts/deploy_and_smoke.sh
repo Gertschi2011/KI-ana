@@ -293,6 +293,52 @@ else
   run_step "smoke: SSE stream twice" env BASE_URL="$BASE_URL" bash "$REPO_ROOT/scripts/smoke_sse_twice_browserlike.sh"
 fi
 
+# Optional proof: verify frontend has current build SHA (only visible to creator/admin).
+# Enable explicitly to avoid leaking build markers to normal users.
+# Usage:
+#   PROOF_BUILD=1 KIANA_USER=creator KIANA_PASS=... ./scripts/deploy_and_smoke.sh --env prod --service frontend
+if [[ "${PROOF_BUILD:-0}" == "1" ]]; then
+  if [[ -z "${KIANA_USER:-}" || -z "${KIANA_PASS:-}" ]]; then
+    # Interactive prompt (no password in logs)
+    if [[ -t 0 && -t 1 ]]; then
+      if [[ -z "${KIANA_USER:-}" ]]; then
+        printf 'Creator/Admin username: ' > /dev/tty
+        IFS= read -r KIANA_USER < /dev/tty
+        export KIANA_USER
+      fi
+      if [[ -z "${KIANA_PASS:-}" ]]; then
+        printf 'Creator/Admin password: ' > /dev/tty
+        IFS= read -r -s KIANA_PASS < /dev/tty
+        printf '\n' > /dev/tty
+        export KIANA_PASS
+      fi
+    fi
+  fi
+  if [[ -z "${KIANA_USER:-}" || -z "${KIANA_PASS:-}" ]]; then
+    fail "proof: missing creds" "Set KIANA_USER/KIANA_PASS (creator/admin) or run interactively with PROOF_BUILD=1"
+  fi
+  run_step "proof: build sha visible for creator" bash -lc '
+    set -euo pipefail
+    BASE_URL="'"${BASE_URL%/}"'"
+    SHA="'"$SHA"'"
+    JAR="$(mktemp /tmp/kiana_proof_cookies.XXXXXX)"
+    trap "rm -f $JAR" EXIT
+
+    payload=$(python3 - <<PY
+import json, os
+print(json.dumps({"username": os.environ.get("KIANA_USER",""), "password": os.environ.get("KIANA_PASS",""), "remember": True}))
+PY
+)
+
+    curl -sS --http2 -c "$JAR" -b "$JAR" -H "Content-Type: application/json" --data "$payload" "$BASE_URL/api/login" >/dev/null
+    # NOTE: Navbar is a client component, so Build markers will not appear in curl HTML reliably.
+    # Use a server-rendered, admin-only proof page.
+    html=$(curl -sS --http2 -b "$JAR" "$BASE_URL/app/buildproof" | head -n 80)
+    echo "$html" | grep -F "Build" >/dev/null
+    echo "$html" | grep -F "$SHA" >/dev/null
+  '
+fi
+
 log "OK: deploy_and_smoke"
 log "- env=${ENV_NAME} service=${SERVICE} smoke_only=${SMOKE_ONLY}"
 log "- ${BASE_URL%/}/app/chat"
