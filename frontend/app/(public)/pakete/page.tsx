@@ -22,7 +22,7 @@ export default function PaketePage() {
           <Link href="/register" className="kiana-btn2 kiana-btn2-primary">Kostenlos starten</Link>
         </div>
         <div className="small mt-3">
-          Oder zurück zur <Link className="underline" href="/">Landing</Link>.
+          Oder zurück zur <Link className="underline" href="/">Startseite</Link>.
         </div>
       </KianaCard>
     </div>

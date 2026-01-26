@@ -129,7 +129,10 @@ export default function AppDashboardPage(){
     <div className="grid gap-4">
       <div className="card">
         <div className="text-lg font-semibold">{greeting}, {displayName} 👋</div>
-        <div className="small mt-1">Schön, dass du da bist. Lass uns kurz schauen, wo wir gerade stehen.</div>
+        <div className="small mt-1">Schön, dass du da bist. Hier ist dein ruhiger Überblick – ohne Druck, ohne Lärm.</div>
+        <div className="small mt-2" style={{ opacity: 0.85 }}>
+          Dieses Dashboard hilft dir, wieder reinzufinden: Was war zuletzt wichtig – und was lohnt sich als nächstes?
+        </div>
         {loading ? <div className="small mt-3">Ich sammle kurz alles ein…</div> : null}
       </div>
 

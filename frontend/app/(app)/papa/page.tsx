@@ -119,7 +119,7 @@ export default function PapaPage(){
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
             <div className="text-lg font-semibold">Papa Tools</div>
-            <div className="small mt-1">Für Gerald. Fürs Gefühl. Für bewusstes Lernen.</div>
+            <div className="small mt-1">Hier begleitest du KI_anas Lernen – behutsam, nachvollziehbar, mit gutem Gefühl.</div>
           </div>
           <Link href="/app/chat">
             <KianaButton variant="primary">Zum Chat</KianaButton>
@@ -165,7 +165,7 @@ export default function PapaPage(){
           Nicht um zu nerven – sondern um sauber zu lernen.
         </div>
         <div className="small mt-3">
-          Du entscheidest: <span style={{ fontWeight: 700 }}>annehmen</span> (es darf bleiben) oder
+          Du schützt die Qualität: <span style={{ fontWeight: 700 }}>annehmen</span> (es darf bleiben) oder
           <span style={{ fontWeight: 700 }}> verwerfen</span> (es war nur ein Moment).
         </div>
       </KianaCard>

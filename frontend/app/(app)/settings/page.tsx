@@ -34,15 +34,21 @@ export default function SettingsPage(){
       <KianaCard>
         <div>
           <div className="text-lg font-semibold">Einstellungen</div>
-          <div className="small mt-1">Passe Stil, Stimme und Web-Recherche an. Diese Einstellungen werden lokal gespeichert.</div>
+          <div className="small mt-1">Mach KI_ana so, wie es sich für dich gut anfühlt.</div>
+          <div className="small mt-2" style={{ opacity: 0.85 }}>
+            Diese Einstellungen bleiben auf diesem Gerät.
+          </div>
         </div>
         <label className="block">
-          <div className="mb-1">TTS Stimme</div>
+          <div className="mb-1">Stimme</div>
           <select className="input" value={voice} onChange={e=>setVoice(e.target.value)}>
             <option value="neutral">Neutral</option>
             <option value="freundlich">Freundlich</option>
             <option value="formal">Formal</option>
           </select>
+          <div className="small mt-1" style={{ opacity: 0.75 }}>
+            Wie KI_ana klingt – ruhig, warm, klar.
+          </div>
         </label>
         <label className="block">
           <div className="mb-1">Antwortstil</div>
@@ -51,14 +57,28 @@ export default function SettingsPage(){
             <option value="concise">Kurz</option>
             <option value="detailed">Ausführlich</option>
           </select>
+          <div className="small mt-1" style={{ opacity: 0.75 }}>
+            Kurz zum Atmen – oder lieber mit mehr Tiefe.
+          </div>
         </label>
         <label className="flex items-center gap-3">
           <input type="checkbox" checked={webOk} onChange={(e)=>setWebOk(e.target.checked)} />
           <div>
-            <div className="font-medium">Web-Recherche erlauben (für mich)</div>
-            <div className="small">Nur für „aktuell/news/verifizieren“-Fragen wird Web genutzt.</div>
+            <div className="font-medium">Aktuelles Wissen aus dem Web</div>
+            <div className="small">
+              Wenn du willst, schaut KI_ana bei Fragen zu „aktuell / News / prüfen“ kurz nach. Sonst bleibt sie bei dem, was sie schon weiß.
+            </div>
           </div>
         </label>
+        <div className="kiana-inset mt-3">
+          <div className="font-semibold">Gedächtnis & Datenschutz</div>
+          <div className="small mt-1" style={{ opacity: 0.9 }}>
+            KI_ana versucht dich zu verstehen – aber sie merkt sich Dinge nur, wenn du das möchtest.
+          </div>
+          <div className="small mt-2" style={{ opacity: 0.85 }}>
+            Wenn etwas „bleiben“ soll, fragt KI_ana sanft nach. Und wenn etwas nur ein Moment war, darf es auch wieder gehen.
+          </div>
+        </div>
         <div className="mt-2">
           <KianaButton variant="primary" onClick={save}>Speichern</KianaButton>
         </div>

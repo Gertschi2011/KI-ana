@@ -99,14 +99,14 @@ export default function RegisterPage(){
       try{
         const me = await getMe()
         if((me as any)?.auth){
-          setMsg('Account erstellt ✅ Weiterleitung …')
+          setMsg('Geschafft ✨ Ich bringe dich direkt in den Chat…')
           setMsgKind('success')
           setTimeout(()=>{ window.location.replace('/app/chat') }, 600)
           return
         }
       }catch{}
 
-      setMsg('Account erstellt ✅ Du kannst dich jetzt einloggen.')
+      setMsg('Geschafft ✨ Du kannst dich jetzt einloggen.')
       setMsgKind('success')
     }catch(err:any){
       setMsg(err?.message || 'Registrierung fehlgeschlagen')
@@ -159,6 +159,9 @@ export default function RegisterPage(){
             <label>
               <div className="small">Name (optional)</div>
               <input className="input" value={name} onChange={e=>setName(e.target.value)} placeholder="Gerald" />
+              <div className="small mt-1" style={{ opacity: 0.75 }}>
+                So darf KI_ana dich ansprechen.
+              </div>
             </label>
             <label>
               <div className="small">Username</div>
@@ -169,16 +172,25 @@ export default function RegisterPage(){
                 placeholder="gerald"
                 required
               />
+              <div className="small mt-1" style={{ opacity: 0.75 }}>
+                Kurz & freundlich – du kannst ihn später ändern.
+              </div>
             </label>
             <label>
               <div className="small">E-Mail</div>
               <input className="input" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
+              <div className="small mt-1" style={{ opacity: 0.75 }}>
+                Nur für Login & Sicherheit. Keine Newsletter.
+              </div>
             </label>
             <label>
               <div className="small">Passwort</div>
               <input className="input" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
               <div className="small mt-2" style={{opacity:0.8}}>
                 Mindestens {MIN_PW} Zeichen. Stärke: <span style={{ fontWeight: 700 }}>{pwStrength.label}</span>
+              </div>
+              <div className="small mt-1" style={{ opacity: 0.75 }}>
+                Deine Daten gehören dir.
               </div>
               <div className="mt-2" style={{ height: 10, borderRadius: 999, background: 'rgba(123,140,255,0.12)', border: '1px solid rgba(123,140,255,0.16)', overflow: 'hidden' }}>
                 <div

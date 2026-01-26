@@ -61,10 +61,16 @@ export default function LoginPage(){
           <label>
             <div className="small">Benutzername oder E-Mail</div>
             <input className="input" value={username} onChange={e=>setUsername(e.target.value)} required />
+            <div className="small mt-1" style={{ opacity: 0.75 }}>
+              Kein Stress. Du darfst hier einfach du sein.
+            </div>
           </label>
           <label>
             <div className="small">Passwort</div>
             <input className="input" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+            <div className="small mt-1" style={{ opacity: 0.75 }}>
+              Deine Daten gehören dir. Wir sind leise. Kein Spam.
+            </div>
           </label>
           <KianaButton variant="primary" disabled={busy || !canSubmit} type="submit">
             {busy ? 'Anmelden …' : 'Anmelden'}
@@ -78,5 +84,6 @@ export default function LoginPage(){
         </div>
       </KianaCard>
     </div>
-  )
-}
+      }
+
+      setMsg('Hm – das hat gerade nicht geklappt. Magst du es kurz noch einmal versuchen?')

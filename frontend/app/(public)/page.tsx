@@ -85,7 +85,7 @@ export default function PublicHome() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <div className="font-semibold">KI_ana</div>
-            <div className="small mt-1">Ein ruhiges KI‑System mit Gedächtnis – und einem weichen Gefühl.</div>
+            <div className="small mt-1">Eine ruhige KI mit Gedächtnis – und einem weichen Gefühl.</div>
           </div>
           <div className="flex items-center gap-4 flex-wrap">
             <Link className="small underline" href="/privacy">Datenschutz</Link>

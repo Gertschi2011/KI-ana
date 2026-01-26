@@ -15,13 +15,13 @@ export default function PricingSection() {
   const plans: Plan[] = [
     {
       name: 'Free',
-      goal: 'Kennenlernen, Vertrauen aufbauen',
-      description: 'Der Einstieg in KI_ana. Reden, ausprobieren, fühlen.',
+      goal: 'Ankommen, ausprobieren, Gefühl bekommen',
+      description: 'Für den ersten Kontakt: leicht, freundlich, ohne Druck. Einfach reden und schauen, ob es passt.',
       bullets: [
-        'Chat mit KI_ana',
-        'Kurzzeit‑Kontext (pro Sitzung)',
-        'Keine Langzeit‑Erinnerung',
-        'Keine Lernfreigaben',
+        'Einfach chatten – ohne „Prompt‑Magie“',
+        'KI_ana bleibt im Moment (merkt sich noch nichts dauerhaft)',
+        'Du bekommst ein Gefühl für Ton & Tempo',
+        'Jederzeit aufhören – kein Verkaufsdruck',
       ],
       ctaLabel: 'Kostenlos starten',
       ctaHref: '/register',
@@ -31,31 +31,30 @@ export default function PricingSection() {
       highlight: true,
       badge: 'Alltag',
       goal: 'Alltag, echte Beziehung',
-      description: 'KI_ana merkt sich, was dir wichtig ist und entwickelt ein Verständnis für dich.',
+      description: 'Für Menschen, die bleiben: KI_ana darf sich Dinge merken – und wird über Zeit spürbar „deine“ KI.',
       bullets: [
         'Alles aus Free',
-        'Persönliches Langzeitgedächtnis',
-        'Rückfragen: „Soll ich mir das merken?“',
-        'Einfaches Dashboard',
-        'Persönliche Einstellungen',
+        'KI_ana erkennt dich wieder',
+        'Sie fragt sanft: „Soll ich mir das merken?“',
+        'Ein ruhiges Dashboard, das dich abholt',
+        'Stil & Stimme so, wie es sich gut anfühlt',
       ],
-      ctaLabel: 'KI_ana persönlich machen',
+      ctaLabel: 'Als User starten',
       ctaHref: '/register',
     },
     {
       name: 'User Pro',
       badge: 'Vorbereitet',
-      goal: 'Power‑User, Denkpartner, Tiefe',
-      description: 'Für Menschen, die mehr wollen als Antworten. (Details noch offen – aber vorbereitet.)',
+      goal: 'Tiefe, Fokus, Denkpartner',
+      description: 'Für Menschen, die regelmäßig mit KI_ana arbeiten und mehr Raum für Themen & Struktur wollen.',
       bullets: [
-        'Größeres Langzeitgedächtnis (optional)',
-        'Themen‑Gedächtnisse (z. B. Projekte, Interessen)',
-        'Reflexionsfragen von KI_ana',
-        'Export / Verlauf / Analyse',
-        'Priorisierte Weiterentwicklung',
-        'Kein Zugriff auf Papa Tools / Systemlogik',
+        'Mehr Platz für deine Themen (z. B. Projekte, Interessen)',
+        'Bessere Übersicht über längere Verläufe',
+        'Reflexionsfragen, wenn es dich weiterbringt',
+        'Mitgestalten: Feedback fließt schneller ein',
+        'Papa Tools bleiben Gerald vorbehalten',
       ],
-      ctaLabel: 'Interesse an User Pro',
+      ctaLabel: 'Interesse vormerken',
       ctaHref: '/contact',
     },
   ]
@@ -65,7 +64,7 @@ export default function PricingSection() {
       <div id="pricing" style={{ position: 'relative', top: -96 }} aria-hidden />
       <div className="text-center mb-8">
         <div className="text-3xl font-bold">Pakete</div>
-        <div className="small mt-2">Keine Preise. Keine Upsells. Nur ein klarer Einstieg – und ein Weg in die Beziehung.</div>
+        <div className="small mt-2">Keine Preise hier. Kein Verkaufsdruck. Nur ein Einstieg, der sich gut anfühlt.</div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
@@ -126,7 +125,7 @@ export default function PricingSection() {
       </div>
 
       <div className="small text-center mt-6">
-        Hinweis: Creator‑Funktionen sind keine „Upgrades“. Creator ist eine feste Sonderrolle (Owner) und wird manuell vergeben.
+        Hinweis: Gerald (Creator) ist kein Paket. Papa Tools sind nicht kaufbar.
       </div>
     </section>
   )

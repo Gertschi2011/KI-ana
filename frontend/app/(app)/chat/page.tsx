@@ -831,8 +831,8 @@ export default function ChatPage() {
       <div ref={scrollerRef} className="kiana-chat-messages overflow-y-auto p-4 flex flex-col gap-3">
         {msgs.length === 0 ? (
           <div className="card text-center">
-            <div className="text-2xl">Hallo 👋 Schön, dass du wieder da bist!</div>
-            <div className="small mt-2">Stell eine Frage oder beschreibe deine Aufgabe.</div>
+            <div className="text-2xl">Schreib KI_ana einfach drauflos ✨</div>
+            <div className="small mt-2">Ein Gedanke, eine Frage, ein Plan – ich bin da.</div>
           </div>
         ) : (
           msgs.map((m) => (
@@ -864,14 +864,14 @@ export default function ChatPage() {
           ))
         )}
         {uiBusy && (
-          <div className="flex justify-start"><div className="kiana-bubble kiana-bubble-ai opacity-90">KI_ana denkt …</div></div>
+          <div className="flex justify-start"><div className="kiana-bubble kiana-bubble-ai opacity-90">KI_ana denkt nach …</div></div>
         )}
       </div>
       <div className="kiana-chat-composer p-3" style={{ borderTop: '1px solid var(--k-border)' }}>
         <div className="max-w-4xl mx-auto flex gap-2 items-center">
           <textarea
             className="kiana-composer-input flex-1 resize-none"
-            placeholder="Nachricht eingeben…"
+            placeholder="Schreib KI_ana einfach drauflos…"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={onComposerKey}

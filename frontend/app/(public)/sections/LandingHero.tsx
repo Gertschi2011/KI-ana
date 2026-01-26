@@ -113,7 +113,7 @@ export default function LandingHero() {
               className="grid gap-3"
             >
               {[{
-                t: 'Privat & lokal',
+                t: 'Privat & in deiner Hand',
                 d: 'Deine Daten gehören dir – klar, ruhig und nachvollziehbar.',
               },
               {
@@ -142,7 +142,7 @@ export default function LandingHero() {
 
       <div className="mt-6 grid gap-3 md:grid-cols-3">
         <div className="card" style={{ borderRadius: 18 }}>
-          <div className="text-sm font-semibold">🔐 Privat & lokal</div>
+          <div className="text-sm font-semibold">🔐 Privat & in deiner Hand</div>
           <div className="small mt-1">Weniger Lärm, mehr Vertrauen.</div>
         </div>
         <div className="card" style={{ borderRadius: 18 }}>
