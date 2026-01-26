@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import PricingSection from '../../../components/PricingSection'
 import KianaCard from '../../../components/ui/KianaCard'
+import KianaButton from '../../../components/ui/KianaButton'
 import KianaSectionTitle from '../../../components/ui/KianaSectionTitle'
 
 export default function PaketePage() {
@@ -19,7 +20,9 @@ export default function PaketePage() {
             <div className="text-lg font-semibold">Bereit für ein erstes Gespräch?</div>
             <div className="small mt-1">Ein erstes Gespräch reicht oft, um das Gefühl zu bekommen.</div>
           </div>
-          <Link href="/register" className="kiana-btn2 kiana-btn2-primary">Kostenlos starten</Link>
+          <Link href="/register">
+            <KianaButton variant="primary">Kostenlos starten</KianaButton>
+          </Link>
         </div>
         <div className="small mt-3">
           Oder zurück zur <Link className="underline" href="/">Startseite</Link>.

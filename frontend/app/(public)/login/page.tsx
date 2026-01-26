@@ -84,6 +84,5 @@ export default function LoginPage(){
         </div>
       </KianaCard>
     </div>
-      }
-
-      setMsg('Hm – das hat gerade nicht geklappt. Magst du es kurz noch einmal versuchen?')
+  )
+}

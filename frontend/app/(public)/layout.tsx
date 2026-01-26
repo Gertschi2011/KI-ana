@@ -3,6 +3,7 @@
 import { useEffect } from 'react'
 import Navbar from '../../components/Navbar'
 import PageTransition from '../../components/ui/PageTransition'
+import { MotionConfig } from 'framer-motion'
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -18,7 +19,9 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       />
       <Navbar />
       <main className="max-w-6xl mx-auto px-4 py-10">
-        <PageTransition>{children}</PageTransition>
+        <MotionConfig reducedMotion="user">
+          <PageTransition>{children}</PageTransition>
+        </MotionConfig>
       </main>
     </>
   )

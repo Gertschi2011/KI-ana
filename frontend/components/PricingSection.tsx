@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import KianaCard from './ui/KianaCard'
+import KianaButton from './ui/KianaButton'
 
 type Plan = {
   name: string
@@ -69,7 +71,7 @@ export default function PricingSection() {
 
       <div className="grid gap-4 md:grid-cols-3">
         {plans.map((p) => (
-          <div
+          <KianaCard
             key={p.name}
             className="card"
             style={
@@ -85,7 +87,7 @@ export default function PricingSection() {
               <div className="text-lg font-semibold">{p.name}</div>
               {p.badge ? (
                 <span
-                  className={`text-xs px-2 py-1 rounded-full ${p.highlight ? 'kiana-badge-pulse' : ''}`}
+                  className="text-xs px-2 py-1 rounded-full"
                   style={{
                     background: p.highlight ? 'rgba(147,51,234,0.10)' : 'rgba(37,99,235,0.08)',
                     color: 'rgba(17,24,39,0.82)',
@@ -116,11 +118,11 @@ export default function PricingSection() {
             </ul>
 
             <div className="mt-6">
-              <Link className="kiana-btn2 kiana-btn2-primary w-full" href={p.ctaHref}>
-                {p.ctaLabel}
+              <Link href={p.ctaHref} className="w-full">
+                <KianaButton variant="primary" className="w-full">{p.ctaLabel}</KianaButton>
               </Link>
             </div>
-          </div>
+          </KianaCard>
         ))}
       </div>
 

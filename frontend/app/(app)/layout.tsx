@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar'
 import { useEffect } from 'react'
 import { getMe } from '../../lib/api'
 import PageTransition from '../../components/ui/PageTransition'
+import { MotionConfig } from 'framer-motion'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   useEffect(()=>{
@@ -23,7 +24,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       />
       <Navbar />
       <main className="max-w-6xl mx-auto px-4 py-8">
-        <PageTransition>{children}</PageTransition>
+        <MotionConfig reducedMotion="user">
+          <PageTransition>{children}</PageTransition>
+        </MotionConfig>
       </main>
     </>
   )

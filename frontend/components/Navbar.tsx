@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { getMe, logout } from '../lib/api'
 import { LayoutGroup, motion } from 'framer-motion'
+import { kianaTransitionMedium } from './ui/motionTokens'
 
 export default function Navbar(){
   const [name, setName] = useState<string>('Gast')
@@ -14,10 +15,7 @@ export default function Navbar(){
   const [caps, setCaps] = useState<Record<string, any>>({})
   const pathname = usePathname() || ''
   const buildSha = (process.env.NEXT_PUBLIC_BUILD_SHA || 'unknown').slice(0, 12)
-  const showBuildEnv = (() => {
-    const v = String(process.env.NEXT_PUBLIC_SHOW_BUILD || '').trim().toLowerCase()
-    return v === '1' || v === 'true' || v === 'yes'
-  })()
+  // Phase 2 visibility rule: build/debug markers never for normal users.
 
   useEffect(()=>{
     let mounted = true
@@ -56,7 +54,7 @@ export default function Navbar(){
   const isCreator = !!flags.is_creator || roles.includes('creator') || role === 'creator'
   const isPapa = !!flags.is_papa || roles.includes('papa') || role === 'papa'
   const canSeeCreatorNav = isAdmin || isCreator
-  const showBuild = canSeeCreatorNav || !!showBuildEnv
+  const showBuild = canSeeCreatorNav
 
   const brandHref = isAuthed ? '/app/chat' : '/'
 
@@ -143,7 +141,7 @@ export default function Navbar(){
                           <motion.span
                             layoutId="kiana-nav-pill"
                             className="kiana-tab-active-pill"
-                            transition={{ duration: 0.25, ease: 'easeOut' }}
+                            transition={kianaTransitionMedium()}
                           />
                         ) : null}
                         <span style={{ position: 'relative', zIndex: 1 }}>{t.label}</span>
@@ -159,7 +157,7 @@ export default function Navbar(){
                           <motion.span
                             layoutId="kiana-nav-pill"
                             className="kiana-tab-active-pill"
-                            transition={{ duration: 0.25, ease: 'easeOut' }}
+                            transition={kianaTransitionMedium()}
                           />
                         ) : null}
                         <span style={{ position: 'relative', zIndex: 1 }}>{t.label}</span>

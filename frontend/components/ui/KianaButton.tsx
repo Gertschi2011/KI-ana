@@ -1,9 +1,10 @@
 'use client'
 
 import * as React from "react";
-import { motion, type HTMLMotionProps } from "framer-motion";
+import { motion, type HTMLMotionProps, useReducedMotion } from "framer-motion";
 
 import { kianaCx } from './kianaCx'
+import { KIANA_MOTION, kianaTransitionMicro } from './motionTokens'
 
 export type KianaButtonVariant = 'primary' | 'secondary' | 'ghost'
 
@@ -13,6 +14,7 @@ export type KianaButtonProps = HTMLMotionProps<"button"> & {
 }
 
 export function KianaButton({ variant = 'primary', size = 'md', className = '', ...props }: KianaButtonProps) {
+  const reducedMotion = useReducedMotion()
   const base = 'kiana-btn2'
   const v =
     variant === 'primary'
@@ -24,9 +26,10 @@ export function KianaButton({ variant = 'primary', size = 'md', className = '', 
 
   return (
     <motion.button
-      whileTap={{ scale: 0.96 }}
-      whileHover={{ filter: 'brightness(1.03)' }}
-      transition={{ duration: 0.12, ease: 'easeOut' }}
+      whileHover={reducedMotion ? undefined : { scale: KIANA_MOTION.scale.hover }}
+      whileFocus={reducedMotion ? undefined : { scale: KIANA_MOTION.scale.hover }}
+      whileTap={reducedMotion ? undefined : { scale: KIANA_MOTION.scale.tap }}
+      transition={kianaTransitionMicro()}
       className={kianaCx(base, v, s, className)}
       {...props}
     />

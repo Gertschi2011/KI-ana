@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { KIANA_MOTION, kianaTransitionMedium, kianaTransitionMicro } from '../../../components/ui/motionTokens';
 
 type Msg = {
   id: string;
@@ -14,6 +16,7 @@ type Msg = {
 };
 
 export default function ChatPage() {
+  const reducedMotion = useReducedMotion();
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
@@ -835,36 +838,79 @@ export default function ChatPage() {
             <div className="small mt-2">Ein Gedanke, eine Frage, ein Plan – ich bin da.</div>
           </div>
         ) : (
-          msgs.map((m) => (
-            <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`kiana-bubble ${m.role === 'user' ? 'kiana-bubble-user' : 'kiana-bubble-ai'}`}>
-                <div className="whitespace-pre-wrap">{m.text}</div>
-                <div className="kiana-bubble-meta">
-                  <span className="kiana-bubble-time">
-                    {(() => {
-                      try {
-                        const d = typeof m.createdAt === 'number' ? new Date(m.createdAt) : (m.createdAt ? new Date(String(m.createdAt)) : null);
-                        return d ? d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
-                      } catch {
-                        return '';
-                      }
-                    })()}
-                  </span>
-                  {canShowExplainUi && m.role === 'assistant' && (m.explain || (m.sources && m.sources.length) || (m.memory_ids && m.memory_ids.length)) && (
-                    <button
-                      type="button"
-                      className="kiana-explain-btn"
-                      title="Transparenz"
-                      onClick={() => setExplainOpenMsgId(m.id)}
-                    >ⓘ</button>
-                  )}
-                </div>
+          <AnimatePresence initial={false} mode="popLayout">
+            {msgs.map((m) => (
+              <div key={m.id} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                {m.role === 'assistant' ? (
+                  <motion.div
+                    initial={{ opacity: 0, y: reducedMotion ? 0 : KIANA_MOTION.y.medium }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={kianaTransitionMedium()}
+                    className="kiana-bubble kiana-bubble-ai"
+                  >
+                    <div className="whitespace-pre-wrap">{m.text}</div>
+                    <div className="kiana-bubble-meta">
+                      <span className="kiana-bubble-time">
+                        {(() => {
+                          try {
+                            const d = typeof m.createdAt === 'number' ? new Date(m.createdAt) : (m.createdAt ? new Date(String(m.createdAt)) : null);
+                            return d ? d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+                          } catch {
+                            return '';
+                          }
+                        })()}
+                      </span>
+                      {canShowExplainUi && (m.explain || (m.sources && m.sources.length) || (m.memory_ids && m.memory_ids.length)) && (
+                        <button
+                          type="button"
+                          className="kiana-explain-btn"
+                          title="Transparenz"
+                          onClick={() => setExplainOpenMsgId(m.id)}
+                        >ⓘ</button>
+                      )}
+                    </div>
+                  </motion.div>
+                ) : (
+                  <div className="kiana-bubble kiana-bubble-user">
+                    <div className="whitespace-pre-wrap">{m.text}</div>
+                    <div className="kiana-bubble-meta">
+                      <span className="kiana-bubble-time">
+                        {(() => {
+                          try {
+                            const d = typeof m.createdAt === 'number' ? new Date(m.createdAt) : (m.createdAt ? new Date(String(m.createdAt)) : null);
+                            return d ? d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+                          } catch {
+                            return '';
+                          }
+                        })()}
+                      </span>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          ))
+            ))}
+          </AnimatePresence>
         )}
         {uiBusy && (
-          <div className="flex justify-start"><div className="kiana-bubble kiana-bubble-ai opacity-90">KI_ana denkt nach …</div></div>
+          <div className="flex justify-start">
+            <motion.div
+              className="kiana-bubble kiana-bubble-ai"
+              animate={reducedMotion ? { opacity: 1 } : { opacity: [KIANA_MOTION.opacity.pulseMin, 1, KIANA_MOTION.opacity.pulseMin] }}
+              transition={
+                reducedMotion
+                  ? kianaTransitionMedium()
+                  : {
+                      type: 'tween',
+                      duration: 1.6,
+                      ease: KIANA_MOTION.ease.inOut,
+                      repeat: Infinity,
+                    }
+              }
+              style={{ opacity: 0.92 }}
+            >
+              KI_ana denkt nach …
+            </motion.div>
+          </div>
         )}
       </div>
       <div className="kiana-chat-composer p-3" style={{ borderTop: '1px solid var(--k-border)' }}>
@@ -878,7 +924,16 @@ export default function ChatPage() {
             disabled={uiBusy}
             rows={1}
           />
-          <button className="kiana-composer-send" onClick={send} disabled={uiBusy}>Senden</button>
+          <motion.button
+            className="kiana-composer-send"
+            onClick={send}
+            disabled={uiBusy}
+            whileHover={reducedMotion ? undefined : { scale: KIANA_MOTION.scale.hover }}
+            whileTap={reducedMotion ? undefined : { scale: KIANA_MOTION.scale.tap }}
+            transition={kianaTransitionMicro()}
+          >
+            Senden
+          </motion.button>
         </div>
       </div>
 

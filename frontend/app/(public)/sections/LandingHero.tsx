@@ -3,14 +3,16 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { getMe } from '../../../lib/api'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import KianaCard from '../../../components/ui/KianaCard'
 import KianaButton from '../../../components/ui/KianaButton'
+import { KIANA_MOTION, kianaRevealFadeUp, kianaTransitionMedium } from '../../../components/ui/motionTokens'
 
 type MeShape = { auth?: boolean }
 
 export default function LandingHero() {
   const [auth, setAuth] = useState(false)
+  const reducedMotion = useReducedMotion()
 
   useEffect(() => {
     ;(async () => {
@@ -28,9 +30,9 @@ export default function LandingHero() {
   return (
     <section id="home" className="relative scroll-mt-24">
       <div className="kiana-hero-shapes" aria-hidden>
-        <div className="kiana-blob kiana-blob-a kiana-float-slow" />
-        <div className="kiana-blob kiana-blob-b kiana-float-slower" />
-        <div className="kiana-blob kiana-blob-c kiana-float-slow" />
+        <div className="kiana-blob kiana-blob-a" />
+        <div className="kiana-blob kiana-blob-b" />
+        <div className="kiana-blob kiana-blob-c" />
       </div>
       <KianaCard
         reveal
@@ -43,9 +45,7 @@ export default function LandingHero() {
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <div>
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
+              {...kianaRevealFadeUp(!!reducedMotion, 0)}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm"
               style={{
                 background: 'rgba(123,140,255,0.10)',
@@ -57,9 +57,7 @@ export default function LandingHero() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: 'easeOut', delay: 0.05 }}
+              {...kianaRevealFadeUp(!!reducedMotion, 0.05)}
               className="mt-5 text-4xl md:text-5xl font-extrabold"
               style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}
             >
@@ -67,9 +65,7 @@ export default function LandingHero() {
               <span className="block">Deine KI, die dich wirklich versteht.</span>
             </motion.h1>
             <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: 'easeOut', delay: 0.10 }}
+              {...kianaRevealFadeUp(!!reducedMotion, 0.10)}
               className="mt-4 text-lg"
               style={{ color: 'rgba(17,24,39,0.72)' }}
             >
@@ -79,9 +75,7 @@ export default function LandingHero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: 'easeOut', delay: 0.15 }}
+              {...kianaRevealFadeUp(!!reducedMotion, 0.15)}
               className="mt-6 flex items-center gap-3 flex-wrap"
             >
               <Link href="/register">
@@ -108,7 +102,7 @@ export default function LandingHero() {
               animate="show"
               variants={{
                 hidden: { opacity: 0 },
-                show: { opacity: 1, transition: { staggerChildren: 0.08 } },
+                show: { opacity: 1, transition: { staggerChildren: 0.06 } },
               }}
               className="grid gap-3"
             >
@@ -126,8 +120,10 @@ export default function LandingHero() {
               }].map((x, i) => (
                 <motion.div
                   key={x.t}
-                  variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
-                  className={i === 1 ? 'kiana-float-slow' : i === 2 ? 'kiana-float-slower' : ''}
+                  variants={{
+                    hidden: { opacity: 0, y: reducedMotion ? 0 : KIANA_MOTION.y.micro },
+                    show: { opacity: 1, y: 0, transition: kianaTransitionMedium() },
+                  }}
                 >
                   <KianaCard hover className="p-5" style={{ background: 'rgba(255,255,255,0.78)' }}>
                     <div className="text-sm font-semibold">{x.t}</div>
@@ -141,18 +137,18 @@ export default function LandingHero() {
       </KianaCard>
 
       <div className="mt-6 grid gap-3 md:grid-cols-3">
-        <div className="card" style={{ borderRadius: 18 }}>
+        <KianaCard hover style={{ borderRadius: 18 }}>
           <div className="text-sm font-semibold">🔐 Privat & in deiner Hand</div>
           <div className="small mt-1">Weniger Lärm, mehr Vertrauen.</div>
-        </div>
-        <div className="card" style={{ borderRadius: 18 }}>
+        </KianaCard>
+        <KianaCard hover style={{ borderRadius: 18 }}>
           <div className="text-sm font-semibold">🧠 Lernt mit dir</div>
           <div className="small mt-1">Nicht perfekt – aber ehrlich und lernfähig.</div>
-        </div>
-        <div className="card" style={{ borderRadius: 18 }}>
+        </KianaCard>
+        <KianaCard hover style={{ borderRadius: 18 }}>
           <div className="text-sm font-semibold">🌱 Wächst über Zeit</div>
           <div className="small mt-1">Aus Gesprächen wird Beziehung.</div>
-        </div>
+        </KianaCard>
       </div>
     </section>
   )

@@ -1,8 +1,9 @@
 'use client'
 
 import * as React from 'react'
-import { motion, type HTMLMotionProps } from 'framer-motion'
+import { motion, type HTMLMotionProps, useReducedMotion } from 'framer-motion'
 import { kianaCx } from './kianaCx'
+import { KIANA_MOTION, kianaRevealFadeUp, kianaTransitionMicro } from './motionTokens'
 
 export type KianaCardProps = HTMLMotionProps<'div'> & {
   hover?: boolean
@@ -10,12 +11,9 @@ export type KianaCardProps = HTMLMotionProps<'div'> & {
 }
 
 export default function KianaCard({ hover = true, reveal = true, className, ...props }: KianaCardProps) {
+  const reducedMotion = useReducedMotion()
   const motionProps = reveal
-    ? {
-        initial: { opacity: 0, y: 12 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.35, ease: 'easeOut' },
-      }
+    ? kianaRevealFadeUp(!!reducedMotion)
     : {}
 
   return (
@@ -24,9 +22,18 @@ export default function KianaCard({ hover = true, reveal = true, className, ...p
       whileHover={
         hover
           ? {
-              y: -2,
-              scale: 1.01,
+              scale: reducedMotion ? 1 : KIANA_MOTION.scale.hover,
               boxShadow: 'var(--kiana-card-shadow-hover)',
+              transition: kianaTransitionMicro(),
+            }
+          : undefined
+      }
+      whileFocus={
+        hover
+          ? {
+              scale: reducedMotion ? 1 : KIANA_MOTION.scale.hover,
+              boxShadow: 'var(--kiana-card-shadow-hover)',
+              transition: kianaTransitionMicro(),
             }
           : undefined
       }
