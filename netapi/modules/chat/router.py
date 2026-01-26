@@ -317,12 +317,141 @@ async def get_conv_state(request: Request, conv_id: Optional[str] = None):
         return {"ok": False, "error": str(e)}
 
 @router.get("/diagnostic/knowledge_loop")
-async def diagnostic_knowledge_loop():
-    """Run the knowledge loop in read-only mode and return a structured report."""
+async def diagnostic_knowledge_loop(
+    request: Request,
+    message: str = "",
+    limit: int = 5,
+    include_preview: bool = False,
+):
+    """Read-only diagnostic report for the knowledge loop.
+
+    Auth: requires creator/admin (cookie) or Bearer ADMIN_API_TOKEN.
+    """
+
+    # --- Auth (no Depends here: keep definition safe even if imports are lower in file) ---
+    db = None
+    user: Optional[Dict[str, Any]] = None
     try:
-        # Run the knowledge loop in read-only mode
-        report = {}
-        # ... (insert knowledge loop code here)
+        from fastapi import HTTPException as _HTTPException
+        from netapi.db import SessionLocal as _SessionLocal
+        from netapi.deps import require_user as _require_user
+
+        db = _SessionLocal()
+        user = _require_user(request, db)
+
+        roles: set[str] = set()
+        try:
+            for r in (user or {}).get("roles") or []:
+                if r:
+                    roles.add(str(r).strip().lower())
+        except Exception:
+            roles = set()
+        try:
+            base = str((user or {}).get("role") or "").strip().lower()
+            if base:
+                roles.add(base)
+        except Exception:
+            pass
+
+        if not ("creator" in roles or "admin" in roles):
+            return {"ok": False, "error": "forbidden"}
+    except Exception as e:
+        # Normalize FastAPI-style HTTPException into a stable dict payload
+        try:
+            if "_HTTPException" in locals() and isinstance(e, _HTTPException):  # type: ignore[name-defined]
+                detail = getattr(e, "detail", None)
+                return {"ok": False, "error": str(detail or "login required")}
+        except Exception:
+            pass
+        return {"ok": False, "error": str(e)}
+    finally:
+        try:
+            if db is not None:
+                db.close()
+        except Exception:
+            pass
+
+    # --- Report ---
+    try:
+        msg = (message or "").strip()
+        lim = int(limit or 0)
+        if lim < 1:
+            lim = 1
+        if lim > 20:
+            lim = 20
+
+        intent = ""
+        topic_path = ""
+        try:
+            intent = detect_intent(msg)
+            topic_path = extract_topic_path(msg)
+        except Exception:
+            intent = ""
+            topic_path = ""
+
+        decision = ""
+        try:
+            decision = decide_ask_or_search(msg, None, None)
+        except Exception:
+            decision = ""
+
+        topic = ""
+        try:
+            topic = extract_topic(msg)
+        except Exception:
+            topic = ""
+
+        hits: List[Dict[str, Any]] = []
+        retrieval_error = ""
+        try:
+            scored = km_find_relevant_blocks(msg, limit=lim, topic_hints={"topic_path": topic_path} if topic_path else None)
+            for b, score in (scored or []):
+                try:
+                    rec: Dict[str, Any] = {
+                        "id": getattr(b, "id", ""),
+                        "title": getattr(b, "title", ""),
+                        "topic_path": getattr(b, "topic_path", ""),
+                        "tags": list(getattr(b, "tags", []) or []),
+                        "confidence": float(getattr(b, "confidence", 0.0) or 0.0),
+                        "uses": int(getattr(b, "uses", 0) or 0),
+                        "score": float(score or 0.0),
+                    }
+                    if include_preview:
+                        summ = str(getattr(b, "summary", "") or "").strip()
+                        if summ:
+                            rec["summary"] = (summ[:240] + " …") if len(summ) > 240 else summ
+                    hits.append(rec)
+                except Exception:
+                    continue
+        except Exception as e:
+            retrieval_error = str(e)
+
+        report: Dict[str, Any] = {
+            "ts": int(time.time()),
+            "user": {
+                "id": (user or {}).get("id"),
+                "username": (user or {}).get("username"),
+                "role": (user or {}).get("role"),
+                "roles": (user or {}).get("roles"),
+            },
+            "input": {
+                "message": (msg[:500] + " …") if len(msg) > 500 else msg,
+                "limit": lim,
+                "include_preview": bool(include_preview),
+            },
+            "nlu": {
+                "intent": intent,
+                "topic": topic,
+                "topic_path": topic_path,
+            },
+            "decision": {
+                "ask_or_search": decision,
+            },
+            "retrieval": {
+                "hits": hits,
+                "error": retrieval_error,
+            },
+        }
         return {"ok": True, "report": report}
     except Exception as e:
         return {"ok": False, "error": str(e)}

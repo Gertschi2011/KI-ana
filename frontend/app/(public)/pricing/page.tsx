@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
-export default function PricingPage(){
-  redirect('/#pricing')
+export default function PricingRedirectPage() {
+  redirect('/pakete')
 }

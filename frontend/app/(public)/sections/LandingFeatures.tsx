@@ -5,16 +5,16 @@ import KianaCard from '../../../components/ui/KianaCard'
 
 const FEATURES = [
   {
-    t: 'Chat',
-    d: 'SSE‑Streaming, Konversationen, Ordner – ruhig und übersichtlich.',
+    t: '🧠 Sie erinnert sich – wirklich.',
+    d: 'Nicht nur „dieses Gespräch“. Sondern dich. Stück für Stück.',
   },
   {
-    t: 'Tools',
-    d: 'TimeFlow, Monitoring und Block Viewer – rollenbasiert, sauber getrennt.',
+    t: '🤝 Sie fragt nach, statt zu raten.',
+    d: 'Wenn etwas wichtig klingt, fragt KI_ana kurz nach – damit sie richtig lernt.',
   },
   {
-    t: 'Privacy',
-    d: 'Keine Tech‑Leaks für normale User, klare Rollen, Audit/Logs – Vertrauen durch Klarheit.',
+    t: '🌱 Sie wächst mit dir.',
+    d: 'Mit jedem Chat entsteht mehr Vertrauen, mehr Kontext, mehr Gefühl.',
   },
 ] as const
 

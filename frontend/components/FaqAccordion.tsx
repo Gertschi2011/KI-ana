@@ -9,27 +9,27 @@ export default function FaqAccordion() {
     () => [
       {
         q: 'Was ist KI_ana?',
-        a: 'KI_ana ist ein persönliches KI‑System, das Chat, Tools und Kontrolle in einem Dashboard bündelt – mit Rollen, Protokollen und (optional) Wissensblöcken.',
+        a: 'KI_ana ist keine App. KI_ana ist eine Beziehung: Sie lernt, erinnert sich, fragt zurück – und wächst mit dir über Zeit.',
       },
       {
         q: 'Muss ich mich registrieren?',
-        a: 'Für die App‑Funktionen unter /app brauchst du ein Konto. Die Landingpage ist frei zugänglich.',
+        a: 'Für die App‑Funktionen (Dashboard, Chat, Einstellungen) brauchst du ein Konto. Die Landingpage ist frei zugänglich.',
       },
       {
         q: 'Was passiert mit meinen Daten?',
-        a: 'KI_ana ist datenschutz‑fokussiert. Was gespeichert wird, ist transparent; Rollen und Berechtigungen sorgen dafür, dass nicht jeder alles sieht.',
+        a: 'Deine Gedanken gehören dir. KI_ana soll sich „bei dir“ anfühlen: transparent, kontrollierbar und ohne Blackbox‑Gefühl.',
       },
       {
         q: 'Was bedeutet Explain?',
-        a: 'Explain ist eine optionale, kontrollierte Zusatzansicht, die bei Bedarf erklärt, wie eine Antwort zustande kam. Für normale Nutzer bleibt es einfach und ruhig.',
+        a: 'Explain ist eine optionale Ansicht, die (wenn aktiviert) grob zeigt, warum KI_ana so geantwortet hat. Für normale Nutzung bleibt alles ruhig und einfach.',
       },
       {
-        q: 'Welche Rollen gibt es?',
-        a: 'Typisch sind User, Creator und Admin. Rollen steuern Menüs, Tools und Zugriffsrechte – so bleibt die Oberfläche für normale Nutzer schlank.',
+        q: 'Was ist der Unterschied zwischen Paketen und Rollen?',
+        a: 'Pakete sind für Nutzer (Free / User / User Pro). Rollen sind intern. Creator ist keine Kauf‑Option: Creator ist die feste Owner‑Rolle und wird manuell vergeben.',
       },
       {
-        q: 'Kann ich später upgraden?',
-        a: 'Ja. Du kannst jederzeit von Free auf Creator/Pro wechseln (je nach Verfügbarkeit).',
+        q: 'Kann ich später wechseln?',
+        a: 'Ja: von Free zu User – sobald du willst. User Pro ist vorbereitet (Details folgen). Creator ist kein Upgrade und wird nicht verkauft.',
       },
       {
         q: 'Ist das mobil nutzbar?',
@@ -37,11 +37,11 @@ export default function FaqAccordion() {
       },
       {
         q: 'Wie sicher ist das?',
-        a: 'Sessions, Rollen/Caps, Audit/Logs und klare Trennung zwischen Public und App‑Bereich sind Kernprinzipien. Details hängen vom Deployment ab.',
+        a: 'KI_ana trennt klar zwischen Public‑Bereich und App‑Bereich. Zugriff und Funktionen hängen von deinem Konto ab. Details hängen vom Deployment ab.',
       },
       {
         q: 'Gibt es eine Demo?',
-        a: 'Ohne Login zeigen wir dir Features & Screens als Vorschau. Mit Login kannst du direkt in /app/chat starten.',
+        a: 'Am besten ist ein echtes Gespräch: Registrieren, kurz chatten, fühlen. Das dauert 2 Minuten.',
       },
     ],
     [],

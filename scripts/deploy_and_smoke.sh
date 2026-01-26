@@ -290,7 +290,7 @@ esac
 if [[ $SKIP_SSE -eq 1 ]]; then
   log "==> smoke: SSE stream twice (skipped: --skip-sse)"
 else
-  run_step "smoke: SSE stream twice" env BASE_URL="$BASE_URL" bash "$REPO_ROOT/scripts/smoke_sse_twice_browserlike.sh"
+  run_step "smoke: SSE stream twice" env KIANA_NON_INTERACTIVE=1 BASE_URL="$BASE_URL" bash "$REPO_ROOT/scripts/smoke_sse_twice_browserlike.sh"
 fi
 
 # Optional proof: verify frontend has current build SHA (only visible to creator/admin).

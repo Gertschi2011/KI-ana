@@ -18,7 +18,7 @@ export default function PublicHome() {
       <section id="features" className="scroll-mt-24">
         <KianaSectionTitle
           title="Warum KI_ana?"
-          subtitle="Weich, lebendig, einladend – und trotzdem kontrolliert und stabil."
+          subtitle="Für Menschen, die nicht „besser prompten“ wollen – sondern verstanden werden."
         />
 
         <LandingFeatures />
@@ -26,74 +26,56 @@ export default function PublicHome() {
 
       <SectionDivider />
 
-      <section className="grid gap-4">
+      <section id="wie" className="grid gap-4 scroll-mt-24">
         <KianaSectionTitle
-          title="Features"
-          subtitle="Ein paar Highlights – ohne Tech‑Noise, aber mit Substanz."
+          title="So funktioniert KI_ana"
+          subtitle="Drei Schritte – ganz ohne Technik‑Gerede."
         />
 
-        <div className="grid gap-4">
-          <div className="grid gap-4 lg:grid-cols-2">
-            <KianaCard>
-              <div className="text-lg font-semibold">Chat</div>
-              <div className="small mt-2">Schnell, sauber, optional mit Explain – nur für Creator/Admin sichtbar.</div>
-              <div className="mt-4 grid gap-2">
-                <div className="card" style={{ background: 'rgba(147,51,234,0.06)' }}>
-                  <div className="text-sm font-semibold">Streaming UI</div>
-                  <div className="small mt-1">Antworten kommen live an – ohne Chaos.</div>
-                </div>
-                <div className="card" style={{ background: 'rgba(37,99,235,0.05)' }}>
-                  <div className="text-sm font-semibold">Kontext & Ordnung</div>
-                  <div className="small mt-1">Ordner, Threads und ein ruhiges Layout.</div>
-                </div>
+        <KianaCard>
+          <div className="grid gap-4" style={{ maxWidth: 820, margin: '0 auto' }}>
+            <div className="grid gap-3 md:grid-cols-3">
+              <div className="card" style={{ background: 'rgba(37,99,235,0.06)', borderRadius: 18 }}>
+                <div className="text-sm" style={{ fontWeight: 800, opacity: 0.85 }}>1) Du redest</div>
+                <div className="mt-1">Ganz normal. Ohne „Prompt‑Magie". So wie du bist.</div>
               </div>
-            </KianaCard>
+              <div className="card" style={{ background: 'rgba(147,51,234,0.07)', borderRadius: 18 }}>
+                <div className="text-sm" style={{ fontWeight: 800, opacity: 0.85 }}>2) KI_ana fragt nach</div>
+                <div className="mt-1">Wenn etwas wichtig wirkt, fragt sie kurz nach – statt zu raten.</div>
+              </div>
+              <div className="card" style={{ background: 'rgba(37,99,235,0.06)', borderRadius: 18 }}>
+                <div className="text-sm" style={{ fontWeight: 800, opacity: 0.85 }}>3) KI_ana merkt es sich</div>
+                <div className="mt-1">Damit sie beim nächsten Mal schon weiß, was du meinst.</div>
+              </div>
+            </div>
 
-            <KianaCard>
-              <div className="text-lg font-semibold">Dashboard</div>
-              <div className="small mt-2">Übersicht & Kontrolle: das System fühlt sich wie ein Produkt an, nicht wie ein Playground.</div>
-              <div className="mt-4 grid gap-2">
-                <div className="card" style={{ background: 'rgba(37,99,235,0.05)' }}>
-                  <div className="text-sm font-semibold">Status & Navigation</div>
-                  <div className="small mt-1">Alles Wichtige mit einem Klick erreichbar.</div>
-                </div>
-                <div className="card" style={{ background: 'rgba(147,51,234,0.06)' }}>
-                  <div className="text-sm font-semibold">Rollenbasiert</div>
-                  <div className="small mt-1">Normal User sieht nur das Nötige. Admin sieht Tools.</div>
-                </div>
-              </div>
-            </KianaCard>
+            <div className="small" style={{ textAlign: 'center', marginTop: 2, opacity: 0.85 }}>
+              Kurz gesagt: KI_ana lernt nicht heimlich – sie lernt mit dir.
+            </div>
+
+            <div className="mt-2 flex items-center justify-center gap-3 flex-wrap">
+              <Link href="/register" className="kiana-btn2 kiana-btn2-primary">Im Chat starten</Link>
+              <Link href="/pakete" className="kiana-btn2">Pakete anschauen</Link>
+            </div>
           </div>
-
-          <div className="grid gap-4 lg:grid-cols-2">
-            <KianaCard>
-              <div className="text-lg font-semibold">Block Viewer</div>
-              <div className="small mt-2">Wissensblöcke durchsuchen und verifizieren – nur wenn dein Account die Rechte hat.</div>
-              <div className="mt-4 grid gap-2">
-                <div className="card" style={{ background: 'rgba(147,51,234,0.06)' }}>
-                  <div className="text-sm font-semibold">Verifikation</div>
-                  <div className="small mt-1">Signieren/Prüfen für saubere Nachvollziehbarkeit.</div>
-                </div>
-              </div>
-            </KianaCard>
-
-            <KianaCard>
-              <div className="text-lg font-semibold">TimeFlow / Monitoring</div>
-              <div className="small mt-2">Status und Systemflüsse – damit du immer weißt, was läuft.</div>
-              <div className="mt-4 grid gap-2">
-                <div className="card" style={{ background: 'rgba(37,99,235,0.05)' }}>
-                  <div className="text-sm font-semibold">Monitoring</div>
-                  <div className="small mt-1">Metriken und Services im Blick (rollenbasiert).</div>
-                </div>
-              </div>
-            </KianaCard>
-          </div>
-        </div>
+        </KianaCard>
       </section>
 
       <SectionDivider />
 
       <PricingSection />
+
+      <section className="grid gap-4">
+        <KianaCard>
+          <div className="flex items-start justify-between gap-4 flex-wrap">
+            <div>
+              <div className="text-lg font-semibold">Bereit für ein erstes Gespräch?</div>
+              <div className="small mt-1">Nimm dir 2 Minuten. Danach weißt du, ob KI_ana zu dir passt.</div>
+            </div>
+            <Link href="/register" className="kiana-btn2 kiana-btn2-primary">KI_ana kennenlernen</Link>
+          </div>
+        </KianaCard>
+      </section>
 
       <SectionDivider />
 
@@ -103,7 +85,7 @@ export default function PublicHome() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
             <div className="font-semibold">KI_ana</div>
-            <div className="small mt-1">Ein ruhiges KI‑System mit Gedächtnis, Tools und Kontrolle.</div>
+            <div className="small mt-1">Ein ruhiges KI‑System mit Gedächtnis – und einem weichen Gefühl.</div>
           </div>
           <div className="flex items-center gap-4 flex-wrap">
             <Link className="small underline" href="/privacy">Datenschutz</Link>

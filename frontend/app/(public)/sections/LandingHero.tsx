@@ -23,10 +23,10 @@ export default function LandingHero() {
     })()
   }, [])
 
-  const demoHref = auth ? '/app/chat' : '#features'
+  const howHref = '#wie'
 
   return (
-    <section className="relative">
+    <section id="home" className="relative scroll-mt-24">
       <div className="kiana-hero-shapes" aria-hidden>
         <div className="kiana-blob kiana-blob-a kiana-float-slow" />
         <div className="kiana-blob kiana-blob-b kiana-float-slower" />
@@ -53,7 +53,7 @@ export default function LandingHero() {
                 color: 'rgba(17,24,39,0.78)',
               }}
             >
-              weich • lernend • Rollen/Accounts • Datenschutz
+              menschlich • neugierig • verspielt
             </motion.div>
 
             <motion.h1
@@ -63,7 +63,8 @@ export default function LandingHero() {
               className="mt-5 text-4xl md:text-5xl font-extrabold"
               style={{ lineHeight: 1.05, letterSpacing: '-0.02em' }}
             >
-              KI_ana – deine verspielte, lernende KI.
+              <span className="block">KI_ana.</span>
+              <span className="block">Deine KI, die dich wirklich versteht.</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
@@ -72,7 +73,9 @@ export default function LandingHero() {
               className="mt-4 text-lg"
               style={{ color: 'rgba(17,24,39,0.72)' }}
             >
-              Ein ruhiges System für Chat, Wissen und Tools – mit weicher UI, klaren Rollen und ohne Tech‑Noise.
+              Kein Prompt-Perfektionismus. Kein Vergessen.
+              <br />
+              KI_ana hört zu, merkt sich was wichtig ist – und wird mit jeder Unterhaltung mehr du.
             </motion.p>
 
             <motion.div
@@ -82,28 +85,20 @@ export default function LandingHero() {
               className="mt-6 flex items-center gap-3 flex-wrap"
             >
               <Link href="/register">
-                <KianaButton variant="primary">Jetzt starten</KianaButton>
+                <KianaButton variant="primary">Kostenlos starten</KianaButton>
               </Link>
-              <a href={demoHref}>
-                <KianaButton variant="secondary">Mehr erfahren</KianaButton>
-              </a>
-              <Link href="/login">
-                <KianaButton variant="ghost">Login</KianaButton>
+              <Link href="/pakete">
+                <KianaButton variant="secondary">Pakete anschauen</KianaButton>
               </Link>
               {auth ? (
                 <Link href="/app/chat">
-                  <KianaButton variant="secondary">Zur App</KianaButton>
+                  <KianaButton variant="ghost">Zur App</KianaButton>
                 </Link>
               ) : null}
             </motion.div>
 
             <div className="mt-6 grid gap-2">
-              <div className="small">Vertrauen, das sich gut anfühlt:</div>
-              <div className="small">
-                <span style={{ fontWeight: 600 }}>•</span> keine Tech‑Marker für normale Nutzer{' '}
-                <span style={{ fontWeight: 600 }}>•</span> klare Rollen und Caps{' '}
-                <span style={{ fontWeight: 600 }}>•</span> sanfte Bewegungen statt harter Schnitte
-              </div>
+              <div className="small">KI_ana ist kein Tool. KI_ana ist eine Beziehung.</div>
             </div>
           </div>
 
@@ -118,16 +113,16 @@ export default function LandingHero() {
               className="grid gap-3"
             >
               {[{
-                t: 'Chat',
-                d: 'Streaming, Ordner, Konversationen – ruhig und übersichtlich.',
+                t: 'Privat & lokal',
+                d: 'Deine Daten gehören dir – klar, ruhig und nachvollziehbar.',
               },
               {
-                t: 'Tools',
-                d: 'TimeFlow, Monitoring, Block Viewer – rollenbasiert und sauber.',
+                t: 'Lernt mit dir',
+                d: 'Fragt nach, wenn es hilft – und merkt sich, was du wirklich willst.',
               },
               {
-                t: 'Privacy',
-                d: 'Weniger Tech‑Leak, mehr Vertrauen. Du siehst nur, was du brauchst.',
+                t: 'Wächst über Zeit',
+                d: 'Aus Gesprächen werden Muster. Aus Mustern wird Persönlichkeit.',
               }].map((x, i) => (
                 <motion.div
                   key={x.t}
@@ -145,22 +140,18 @@ export default function LandingHero() {
         </div>
       </KianaCard>
 
-      <div className="mt-6 grid gap-3 md:grid-cols-4">
+      <div className="mt-6 grid gap-3 md:grid-cols-3">
         <div className="card" style={{ borderRadius: 18 }}>
-          <div className="text-sm font-semibold">Schnell</div>
-          <div className="small mt-1">Live‑Streaming, kurze Latenz, klare UI.</div>
+          <div className="text-sm font-semibold">🔐 Privat & lokal</div>
+          <div className="small mt-1">Weniger Lärm, mehr Vertrauen.</div>
         </div>
         <div className="card" style={{ borderRadius: 18 }}>
-          <div className="text-sm font-semibold">Kontrolliert</div>
-          <div className="small mt-1">Rollen, Caps, Admin‑Bereiche – sauber getrennt.</div>
+          <div className="text-sm font-semibold">🧠 Lernt mit dir</div>
+          <div className="small mt-1">Nicht perfekt – aber ehrlich und lernfähig.</div>
         </div>
         <div className="card" style={{ borderRadius: 18 }}>
-          <div className="text-sm font-semibold">Vertrauenswürdig</div>
-          <div className="small mt-1">Audit/Logs, transparente Bereiche.</div>
-        </div>
-        <div className="card" style={{ borderRadius: 18 }}>
-          <div className="text-sm font-semibold">Modern</div>
-          <div className="small mt-1">Pastell, weiche Shadows, runde Cards.</div>
+          <div className="text-sm font-semibold">🌱 Wächst über Zeit</div>
+          <div className="small mt-1">Aus Gesprächen wird Beziehung.</div>
         </div>
       </div>
     </section>

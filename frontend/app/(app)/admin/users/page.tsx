@@ -28,7 +28,7 @@ export default function AdminUsersPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [users, setUsers] = useState<AdminUser[]>([])
-  const [isAdmin, setIsAdmin] = useState<boolean>(false)
+  const [canManageUsers, setCanManageUsers] = useState<boolean>(false)
 
   const columns = useMemo(
     () => [
@@ -50,9 +50,13 @@ export default function AdminUsersPage() {
       const u: any = me?.auth ? me?.user : null
       const rolesRaw = Array.isArray(u?.roles) ? u.roles : []
       const role = String(u?.role || '').toLowerCase()
-      const admin = !!u?.is_admin || rolesRaw.map((r: any) => String(r).toLowerCase()).includes('admin') || role === 'admin'
-      setIsAdmin(admin)
-      if (!admin) {
+      const rolesLower = rolesRaw.map((r: any) => String(r).toLowerCase())
+      const isAdmin = !!u?.is_admin || rolesLower.includes('admin') || role === 'admin'
+      const isCreator = !!u?.is_creator || rolesLower.includes('creator') || role === 'creator'
+      const capsObj = (me?.caps && typeof me.caps === 'object') ? me.caps : ((u?.caps && typeof u.caps === 'object') ? u.caps : {})
+      const can = Boolean(capsObj?.can_manage_users) || isAdmin || isCreator
+      setCanManageUsers(can)
+      if (!can) {
         setUsers([])
         return
       }
@@ -90,12 +94,12 @@ export default function AdminUsersPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if (!isAdmin && !loading) {
+  if (!canManageUsers && !loading) {
     return (
       <div className="max-w-5xl mx-auto grid gap-4">
         <KianaCard>
           <div className="text-lg font-semibold">Benutzerverwaltung</div>
-          <div className="small mt-1">Dieser Bereich ist nur für Administratoren sichtbar.</div>
+          <div className="small mt-1">Kein Zugriff. Dieser Bereich ist nur für Creator/Admin sichtbar.</div>
           <div className="mt-4">
             <a href="/app/chat">
               <KianaButton variant="primary">Zurück zum Chat</KianaButton>

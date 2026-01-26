@@ -36,13 +36,66 @@ _http_status_from_response() {
   echo "$resp" | sed -nE 's/^HTTP\/[^ ]+[[:space:]]+([0-9]{3}).*/\1/p' | head -n 1 | tr -d '\r\n'
 }
 
+register_and_get_cookiejar() {
+  # Register a throwaway user and return a cookie jar path on stdout.
+  # Uses /api/register which should set a session cookie.
+  local ts u e p jar tmp status curl_rc
+
+  ts="$(date +%Y%m%d_%H%M%S)"
+  u="smoke_sse_${ts}_$RANDOM"
+  e="${u}@example.com"
+  p="Test1234_${ts}"
+  jar="$(mktemp /tmp/kiana_sse_reg_cookies.XXXXXX)"
+  tmp="$(mktemp /tmp/kiana_sse_reg_body.XXXXXX)"
+
+  # Try a few times in case of 429.
+  for _attempt in 1 2 3; do
+    set +e
+    status="$({
+      curl --http2 -sS -c "$jar" -o "$tmp" -w '%{http_code}' \
+        -H 'Content-Type: application/json' \
+        -H 'Accept: application/json' \
+        -d "{\"name\":\"Smoke Test\",\"username\":\"$u\",\"email\":\"$e\",\"password\":\"$p\"}" \
+        "${BASE_URL%/}/api/register"
+    } )"
+    curl_rc=$?
+    set -e
+    if [[ $curl_rc -ne 0 ]]; then
+      rm -f "$jar" "$tmp" 2>/dev/null || true
+      echo "FAIL: register curl_error" >&2
+      return 1
+    fi
+    if [[ "$status" == "429" ]]; then
+      warn "register rate_limited=429 (retrying)"
+      sleep 2
+      continue
+    fi
+    break
+  done
+
+  if [[ "$status" != "200" && "$status" != "201" ]]; then
+    local body
+    body="$(cat "$tmp" 2>/dev/null || true)"
+    rm -f "$jar" "$tmp" 2>/dev/null || true
+    echo "FAIL: register bad_status expected=200/201 got=$status" >&2
+    echo "--- response snippet (first 30 lines) ---" >&2
+    echo "$body" | head -n 30 >&2
+    return 1
+  fi
+
+  # Cleanup body file; keep cookie jar.
+  rm -f "$tmp" 2>/dev/null || true
+  printf '%s' "$jar"
+}
+
+AUTO_REGISTER=0
 if [[ -n "${NON_INTERACTIVE}" && ( -z "${USER}" || -z "${PASS}" ) ]]; then
-  echo "FAIL: missing KIANA_USER/KIANA_PASS (non-interactive mode)" >&2
-  echo "Usage: KIANA_USER=... KIANA_PASS=... [BASE_URL=https://ki-ana.at] $0" >&2
-  exit 2
+  # In CI/non-interactive environments we cannot prompt.
+  # Prefer auto-registering a throwaway user so smoke can run without secrets.
+  AUTO_REGISTER=1
 fi
 
-if [[ -z "${USER}" || -z "${PASS}" ]]; then
+if [[ $AUTO_REGISTER -eq 0 && ( -z "${USER}" || -z "${PASS}" ) ]]; then
   # Read from /dev/tty so prompting works even if stdin is not a TTY.
   # Also ensure prompts are visible even when caller captures stdout/stderr.
   # IMPORTANT: only prompt in truly interactive runs. In CI/non-interactive runs,
@@ -84,26 +137,36 @@ if [[ -z "${USER}" || -z "${PASS}" ]]; then
   fi
 fi
 
-if [[ -z "${USER}" || -z "${PASS}" ]]; then
-  if [[ -z "${PASS}" ]]; then
-    echo "FAIL: missing KIANA_PASS (set KIANA_USER/KIANA_PASS or run interactively)" >&2
-  fi
-  echo "Usage: KIANA_USER=... KIANA_PASS=... [BASE_URL=https://ki-ana.at] $0" >&2
-  echo "Tip: run interactively and you'll be prompted." >&2
-  exit 2
-fi
-
-# Ensure python/curl get creds even when we prompted.
-export KIANA_USER="$USER"
-export KIANA_PASS="$PASS"
-
 JAR="${COOKIEJAR:-}"
 if [[ -z "${JAR}" ]]; then
   JAR="$(mktemp /tmp/kiana_cookies.XXXXXX)"
   trap 'rm -f "$JAR"' EXIT
 fi
 
-login_payload=$(python3 - <<'PY'
+if [[ $AUTO_REGISTER -eq 1 ]]; then
+  log_jar="$(register_and_get_cookiejar || true)"
+  if [[ -z "$log_jar" ]]; then
+    echo "FAIL: missing KIANA_USER/KIANA_PASS and auto-register failed" >&2
+    echo "Tip: set KIANA_USER/KIANA_PASS, or ensure /api/register is enabled." >&2
+    exit 2
+  fi
+  rm -f "$JAR" 2>/dev/null || true
+  mv "$log_jar" "$JAR"
+else
+  if [[ -z "${USER}" || -z "${PASS}" ]]; then
+    if [[ -z "${PASS}" ]]; then
+      echo "FAIL: missing KIANA_PASS (set KIANA_USER/KIANA_PASS or run interactively)" >&2
+    fi
+    echo "Usage: KIANA_USER=... KIANA_PASS=... [BASE_URL=https://ki-ana.at] $0" >&2
+    echo "Tip: run interactively and you'll be prompted." >&2
+    exit 2
+  fi
+
+  # Ensure python/curl get creds even when we prompted.
+  export KIANA_USER="$USER"
+  export KIANA_PASS="$PASS"
+
+  login_payload=$(python3 - <<'PY'
 import json, os
 print(json.dumps({
   "username": os.environ.get("KIANA_USER", ""),
@@ -111,32 +174,36 @@ print(json.dumps({
   "remember": True,
 }))
 PY
-)
+  )
 
-# Login (cookie jar)
-rm -f "$JAR"
-set +e
-login_resp=$(curl --http2 -sS -i -c "$JAR" -b "$JAR" \
-  -H 'Content-Type: application/json' \
-  --data "$login_payload" \
-  "$BASE_URL/api/login")
-login_rc=$?
-set -e
-if [[ $login_rc -ne 0 ]]; then
-  fail "invariant=http_status" "expected=200 got=curl_error" "$login_resp"
-fi
-login_status=$(_http_status_from_response "$login_resp")
-if [[ -n "$login_status" && "$login_status" != "200" ]]; then
-  fail "invariant=http_status" "expected=200 got=$login_status" "$login_resp"
+  # Login (cookie jar)
+  rm -f "$JAR"
+  set +e
+  login_resp=$(curl --http2 -sS -i -c "$JAR" -b "$JAR" \
+    -H 'Content-Type: application/json' \
+    --data "$login_payload" \
+    "$BASE_URL/api/login")
+  login_rc=$?
+  set -e
+  if [[ $login_rc -ne 0 ]]; then
+    fail "invariant=http_status" "expected=200 got=curl_error" "$login_resp"
+    exit 1
+  fi
+  login_status=$(_http_status_from_response "$login_resp")
+  if [[ -n "$login_status" && "$login_status" != "200" ]]; then
+    fail "invariant=http_status" "expected=200 got=$login_status" "$login_resp"
+    exit 1
+  fi
 fi
 
-# Validate session
+# Validate session (shared path)
 set +e
 me=$(curl --http2 -sS -b "$JAR" "$BASE_URL/api/me")
 rc=$?
 set -e
 if [[ $rc -ne 0 ]] || ! echo "$me" | grep -q '"auth"[[:space:]]*:[[:space:]]*true'; then
   fail "invariant=session_invalid" "expected=auth:true" "$me"
+  exit 1
 fi
 
 run_once() {

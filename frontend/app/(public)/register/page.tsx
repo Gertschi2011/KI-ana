@@ -127,8 +127,8 @@ export default function RegisterPage(){
 
       <div className="max-w-md mx-auto grid gap-4">
         <KianaCard>
-          <div className="text-lg font-semibold">Account erstellen</div>
-          <div className="small mt-1">Ein paar Details – dann geht’s direkt in den Chat.</div>
+          <div className="text-lg font-semibold">Lass uns starten ✨</div>
+          <div className="small mt-1">Du brauchst nur einen Moment – dann bist du im Chat.</div>
         </KianaCard>
 
         <KianaCard>
@@ -196,7 +196,7 @@ export default function RegisterPage(){
               <input className="input" type="password" value={password2} onChange={e=>setPassword2(e.target.value)} required />
             </label>
             <KianaButton variant="primary" disabled={busy || !formOk} type="submit">
-              {busy ? 'Erstellen …' : 'Account erstellen'}
+              {busy ? 'Starten …' : 'Kostenlos starten'}
             </KianaButton>
           </form>
 

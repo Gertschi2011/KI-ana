@@ -2,9 +2,10 @@ import Link from 'next/link'
 
 type Plan = {
   name: string
-  price: string
   highlight?: boolean
   badge?: string
+  goal: string
+  description: string
   bullets: string[]
   ctaLabel: string
   ctaHref: string
@@ -14,54 +15,57 @@ export default function PricingSection() {
   const plans: Plan[] = [
     {
       name: 'Free',
-      price: 'Gratis',
+      goal: 'Kennenlernen, Vertrauen aufbauen',
+      description: 'Der Einstieg in KI_ana. Reden, ausprobieren, fühlen.',
       bullets: [
-        'Chat mit KI_ana (Streaming)',
-        'Ordner & Konversationen',
-        'Einstellungen & Profil',
-        'Basis-Rollen (User)',
-        'Mobil nutzbar',
+        'Chat mit KI_ana',
+        'Kurzzeit‑Kontext (pro Sitzung)',
+        'Keine Langzeit‑Erinnerung',
+        'Keine Lernfreigaben',
       ],
-      ctaLabel: 'Jetzt starten',
+      ctaLabel: 'Kostenlos starten',
       ctaHref: '/register',
     },
     {
-      name: 'Creator',
-      price: 'Für Power-User',
+      name: 'User',
       highlight: true,
-      badge: 'Beliebt',
+      badge: 'Alltag',
+      goal: 'Alltag, echte Beziehung',
+      description: 'KI_ana merkt sich, was dir wichtig ist und entwickelt ein Verständnis für dich.',
       bullets: [
-        'Creator/Admin Funktionen',
-        'Tools & Monitoring Zugriff',
-        'Block Viewer + Verifizieren',
-        'Audit/Logs & Admin-Übersichten',
-        'Explain optional (kontrolliert)',
-        'Schneller Support',
+        'Alles aus Free',
+        'Persönliches Langzeitgedächtnis',
+        'Rückfragen: „Soll ich mir das merken?“',
+        'Einfaches Dashboard',
+        'Persönliche Einstellungen',
       ],
-      ctaLabel: 'Upgrade / Registrieren',
+      ctaLabel: 'KI_ana persönlich machen',
       ctaHref: '/register',
     },
     {
-      name: 'Team / Pro',
-      price: 'Coming soon',
-      badge: 'Bald verfügbar',
+      name: 'User Pro',
+      badge: 'Vorbereitet',
+      goal: 'Power‑User, Denkpartner, Tiefe',
+      description: 'Für Menschen, die mehr wollen als Antworten. (Details noch offen – aber vorbereitet.)',
       bullets: [
-        'Team-Rollen & Policies',
-        'Mehr Rechte-Profile & Caps',
-        'SLA / Enterprise Optionen',
-        'Onboarding & Migration',
-        'Custom Integrationen',
+        'Größeres Langzeitgedächtnis (optional)',
+        'Themen‑Gedächtnisse (z. B. Projekte, Interessen)',
+        'Reflexionsfragen von KI_ana',
+        'Export / Verlauf / Analyse',
+        'Priorisierte Weiterentwicklung',
+        'Kein Zugriff auf Papa Tools / Systemlogik',
       ],
-      ctaLabel: 'Kontakt',
+      ctaLabel: 'Interesse an User Pro',
       ctaHref: '/contact',
     },
   ]
 
   return (
-    <section id="pricing" className="scroll-mt-24">
+    <section id="pakete" className="scroll-mt-24">
+      <div id="pricing" style={{ position: 'relative', top: -96 }} aria-hidden />
       <div className="text-center mb-8">
         <div className="text-3xl font-bold">Pakete</div>
-        <div className="small mt-2">Ein klarer Einstieg – und ein Upgrade-Pfad, wenn du mehr Kontrolle brauchst.</div>
+        <div className="small mt-2">Keine Preise. Keine Upsells. Nur ein klarer Einstieg – und ein Weg in die Beziehung.</div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
@@ -94,8 +98,11 @@ export default function PricingSection() {
               ) : null}
             </div>
 
-            <div className="mt-2" style={{ fontSize: 28, fontWeight: 800 }}>
-              {p.price}
+            <div className="mt-2 small" style={{ color: 'rgba(17,24,39,0.75)' }}>
+              <span style={{ fontWeight: 800 }}>Ziel:</span> {p.goal}
+            </div>
+            <div className="mt-2" style={{ fontSize: 16, lineHeight: 1.6, color: 'rgba(17,24,39,0.80)' }}>
+              {p.description}
             </div>
 
             <ul className="mt-4 grid gap-2">
@@ -119,7 +126,7 @@ export default function PricingSection() {
       </div>
 
       <div className="small text-center mt-6">
-        Hinweis: Preise/Details können sich ändern. Für Teams: einfach Kontakt aufnehmen.
+        Hinweis: Creator‑Funktionen sind keine „Upgrades“. Creator ist eine feste Sonderrolle (Owner) und wird manuell vergeben.
       </div>
     </section>
   )

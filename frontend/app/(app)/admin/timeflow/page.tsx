@@ -27,6 +27,7 @@ interface TimeFlowConfig {
 }
 
 export default function TimeFlowManagerPage() {
+  const [access, setAccess] = useState<'loading' | 'denied' | 'allowed'>('loading')
   const [state, setState] = useState<TimeFlowState | null>(null)
   const [config, setConfig] = useState<TimeFlowConfig | null>(null)
   const [alerts, setAlerts] = useState<any[]>([])
@@ -35,11 +36,43 @@ export default function TimeFlowManagerPage() {
   const [error, setError] = useState<string | null>(null)
   const [saveMessage, setSaveMessage] = useState<string | null>(null)
 
-  // Auto-refresh every 2 seconds
+  // Access gate + auto-refresh every 2 seconds (Creator/Admin)
   useEffect(() => {
-    loadData()
-    const interval = setInterval(loadData, 2000)
-    return () => clearInterval(interval)
+    let mounted = true
+    let interval: any = null
+
+    ;(async () => {
+      try {
+        const r = await fetch('/api/me', { credentials: 'include' })
+        const me = await r.json().catch(() => ({} as any))
+        const u: any = me?.auth ? me?.user : null
+        const role = String(u?.role ?? '').toLowerCase()
+        const roles = Array.isArray(u?.roles) ? u.roles.map((x: any) => String(x).toLowerCase()) : []
+        const isAdmin = !!u?.is_admin || roles.includes('admin') || role === 'admin'
+        const isCreator = !!u?.is_creator || roles.includes('creator') || role === 'creator'
+        const allowed = Boolean(isAdmin || isCreator)
+
+        if (!mounted) return
+        setAccess(allowed ? 'allowed' : 'denied')
+        if (!allowed) {
+          setLoading(false)
+          return
+        }
+
+        await loadData()
+        interval = setInterval(loadData, 2000)
+      } catch {
+        if (!mounted) return
+        setAccess('denied')
+        setLoading(false)
+      }
+    })()
+
+    return () => {
+      mounted = false
+      if (interval) clearInterval(interval)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function loadData() {
@@ -121,6 +154,33 @@ export default function TimeFlowManagerPage() {
     const mins = Math.floor((seconds % 3600) / 60)
     const secs = Math.floor(seconds % 60)
     return `${hours}h ${mins}m ${secs}s`
+  }
+
+  if (access === 'loading') {
+    return (
+      <div className="max-w-7xl mx-auto grid gap-4">
+        <KianaCard>
+          <div className="text-lg font-semibold">TimeFlow</div>
+          <div className="small mt-1">Prüfe Zugriff…</div>
+        </KianaCard>
+      </div>
+    )
+  }
+
+  if (access === 'denied') {
+    return (
+      <div className="max-w-7xl mx-auto grid gap-4">
+        <KianaCard>
+          <div className="text-lg font-semibold">TimeFlow</div>
+          <div className="small mt-1">Kein Zugriff. Dieser Bereich ist nur für Creator/Admin sichtbar.</div>
+          <div className="mt-4">
+            <a href="/app/chat">
+              <KianaButton variant="primary">Zurück zum Chat</KianaButton>
+            </a>
+          </div>
+        </KianaCard>
+      </div>
+    )
   }
 
   if (loading && !state) {

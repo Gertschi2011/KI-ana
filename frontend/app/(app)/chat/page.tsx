@@ -64,7 +64,8 @@ export default function ChatPage() {
         const roles = Array.isArray(u?.roles) ? u.roles.map((x: any) => String(x).toLowerCase()) : [];
         const isAdmin = !!u?.is_admin || roles.includes('admin') || role === 'admin';
         const isCreator = !!u?.is_creator || roles.includes('creator') || role === 'creator';
-        if (mounted) setCanExplain(!!(isAdmin || isCreator));
+        // Spec: Explain/Transparenz nur für Creator (Gerald)
+        if (mounted) setCanExplain(!!isCreator);
       } catch {
         if (mounted) setCanExplain(false);
       }
@@ -592,9 +593,9 @@ export default function ChatPage() {
         return;
       }
       if (timeoutFired) {
-        setStreamError('Stream timeout (60s). Bitte erneut senden.');
+        setStreamError('Die Verbindung war kurz zu langsam. Bitte sende die Nachricht einfach nochmal.');
       } else {
-        setStreamError('Stream abgebrochen. Bitte erneut senden.');
+        setStreamError('Die Verbindung wurde unterbrochen. Bitte sende die Nachricht nochmal.');
       }
       setBusy(false);
     } finally {
@@ -662,9 +663,9 @@ export default function ChatPage() {
             className="kiana-btn"
             onClick={createFolder}
             disabled={uiBusy || !foldersAvailable}
-            title={!foldersAvailable ? 'Ordner-Feature backendseitig nicht verfügbar' : 'Ordner erstellen'}
+            title={!foldersAvailable ? 'Ordner sind gerade nicht verfügbar' : 'Ordner erstellen'}
           >＋ Ordner</button>
-          <button className="kiana-btn kiana-btn-ghost" onClick={refreshConversations} disabled={uiBusy}>↻ Refresh</button>
+          <button className="kiana-btn kiana-btn-ghost" onClick={refreshConversations} disabled={uiBusy}>↻ Aktualisieren</button>
         </div>
 
         {foldersAvailable && activeConvId != null && (
@@ -822,7 +823,7 @@ export default function ChatPage() {
               }}
               disabled={!canExplain}
             />
-            Explain
+            Transparenz
           </label>
         )}
       </div>
@@ -853,7 +854,7 @@ export default function ChatPage() {
                     <button
                       type="button"
                       className="kiana-explain-btn"
-                      title="Explain"
+                      title="Transparenz"
                       onClick={() => setExplainOpenMsgId(m.id)}
                     >ⓘ</button>
                   )}
@@ -881,7 +882,7 @@ export default function ChatPage() {
         </div>
       </div>
 
-      {explainOpenMsg && (
+      {canShowExplainUi && explainOpenMsg && (
         <div
           className="fixed inset-0 z-[1000] flex items-center justify-center p-4"
           role="dialog"
@@ -891,40 +892,65 @@ export default function ChatPage() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="kiana-modal p-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between gap-3">
-              <div className="font-semibold">Explain</div>
+              <div className="font-semibold">Transparenz</div>
               <button className="kiana-btn" onClick={() => setExplainOpenMsgId(null)}>Schließen</button>
             </div>
-            <div className="mt-3 text-xs">
-              {(() => {
-                const ex = (explainOpenMsg as any).explain || {};
-                const intent = typeof ex.intent === 'string' ? ex.intent : '';
-                const route = typeof ex.route === 'string' ? ex.route : '';
-                const totalMs = ex?.timings_ms && typeof ex.timings_ms.total === 'number' ? ex.timings_ms.total : null;
-                const toolsArr = Array.isArray(ex.tools) ? ex.tools : [];
-                const okCount = toolsArr.filter((t: any) => t && t.ok === true).length;
-                const errCount = toolsArr.filter((t: any) => t && t.ok === false).length;
-                return (
-                  <div className="opacity-90">
-                    {(intent || route || totalMs !== null) && (
-                      <div className="opacity-80">
-                        {intent ? <div>intent: {intent}</div> : null}
-                        {route ? <div>route: {route}</div> : null}
-                        {totalMs !== null ? <div>total_ms: {totalMs}</div> : null}
-                      </div>
-                    )}
-                    {toolsArr.length > 0 && (
-                      <div className="opacity-80 mt-1">tools: {okCount} ok / {errCount} error</div>
-                    )}
+            <div className="mt-4 grid gap-4">
+              <div className="kiana-inset">
+                <div className="text-sm font-semibold">Quellen</div>
+                {Array.isArray((explainOpenMsg as any).sources) && (explainOpenMsg as any).sources.length > 0 ? (
+                  <div className="mt-2 grid gap-1">
+                    {(explainOpenMsg as any).sources.slice(0, 8).map((s: any, idx: number) => {
+                      const url = String(s?.url || s?.link || s?.href || '').trim();
+                      const title = String(s?.title || s?.name || url || `Quelle ${idx + 1}`);
+                      return url ? (
+                        <a key={url + idx} className="small underline" href={url} target="_blank" rel="noreferrer">
+                          {title}
+                        </a>
+                      ) : (
+                        <div key={idx} className="small opacity-80">{title}</div>
+                      );
+                    })}
                   </div>
-                );
-              })()}
-              <pre className="mt-3 text-xs whitespace-pre-wrap">{JSON.stringify({
-                topic: (explainOpenMsg as any).topic,
-                origin: (explainOpenMsg as any).origin,
-                memory_ids: (explainOpenMsg as any).memory_ids,
-                sources: (explainOpenMsg as any).sources,
-                explain: (explainOpenMsg as any).explain,
-              }, null, 2)}</pre>
+                ) : (
+                  <div className="small mt-2 opacity-80">Keine Quellen für diese Antwort.</div>
+                )}
+              </div>
+
+              <div className="kiana-inset">
+                <div className="text-sm font-semibold">Erinnerungen</div>
+                {Array.isArray((explainOpenMsg as any).memory_ids) && (explainOpenMsg as any).memory_ids.length > 0 ? (
+                  <>
+                    <div className="small mt-2 opacity-80">Verknüpfte Erinnerungen: {(explainOpenMsg as any).memory_ids.length}</div>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {(explainOpenMsg as any).memory_ids.slice(0, 12).map((id: any) => (
+                        <span
+                          key={String(id)}
+                          className="text-xs px-2 py-1 rounded-full"
+                          style={{ background: 'rgba(99,102,241,0.10)', border: '1px solid rgba(99,102,241,0.18)' }}
+                        >
+                          {String(id)}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="small mt-2 opacity-80">Keine verknüpften Erinnerungen.</div>
+                )}
+              </div>
+
+              <div className="kiana-inset">
+                <div className="text-sm font-semibold">Kurz erklärt</div>
+                <div className="small mt-2" style={{ whiteSpace: 'pre-wrap' }}>
+                  {(() => {
+                    const ex: any = (explainOpenMsg as any).explain;
+                    if (!ex) return 'Für diese Antwort gibt es keine zusätzliche Erklärung.';
+                    const candidates = [ex?.summary, ex?.why, ex?.note, ex?.explanation, ex?.rationale];
+                    const first = candidates.find((v) => typeof v === 'string' && String(v).trim().length > 0);
+                    return first ? String(first).trim() : 'KI_ana hat hier keine extra Notiz hinterlegt – Quellen/Erinnerungen stehen oben.';
+                  })()}
+                </div>
+              </div>
             </div>
           </div>
         </div>

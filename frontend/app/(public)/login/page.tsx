@@ -52,8 +52,8 @@ export default function LoginPage(){
   return (
     <div className="max-w-md mx-auto grid gap-4">
       <KianaCard>
-        <div className="text-lg font-semibold">Willkommen zurück</div>
-        <div className="small mt-1">Melde dich an, um Chat und Dashboard zu nutzen.</div>
+        <div className="text-lg font-semibold">Willkommen zurück 👋</div>
+        <div className="small mt-1">Schön, dass du wieder da bist. Wir gehen direkt in den Chat.</div>
       </KianaCard>
 
       <KianaCard>
@@ -74,7 +74,7 @@ export default function LoginPage(){
         {msg && <div className="mt-3 kiana-alert kiana-alert-error"><div className="small">{msg}</div></div>}
 
         <div className="small mt-4" style={{opacity:0.8}}>
-          Noch kein Konto? <Link className="underline" href="/register">Registrieren</Link>
+          Noch kein Konto? <Link className="underline" href="/register">Kostenlos starten</Link>
         </div>
       </KianaCard>
     </div>

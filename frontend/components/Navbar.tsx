@@ -55,8 +55,8 @@ export default function Navbar(){
   const isAdmin = !!flags.is_admin || roles.includes('admin') || role === 'admin'
   const isCreator = !!flags.is_creator || roles.includes('creator') || role === 'creator'
   const isPapa = !!flags.is_papa || roles.includes('papa') || role === 'papa'
-  const canSeeAdmin = isAdmin || isCreator
-  const showBuild = canSeeAdmin || !!showBuildEnv
+  const canSeeCreatorNav = isAdmin || isCreator
+  const showBuild = canSeeCreatorNav || !!showBuildEnv
 
   const brandHref = isAuthed ? '/app/chat' : '/'
 
@@ -69,19 +69,17 @@ export default function Navbar(){
   const authedTabs: Array<{ href: string; label: string; show?: boolean; external?: boolean }> = [
     { href: '/app/dashboard', label: 'Dashboard', show: true },
     { href: '/app/chat', label: 'Chat', show: true },
-    { href: '/app/papa', label: 'Papa', show: true },
     { href: '/app/settings', label: 'Einstellungen', show: true },
-    { href: '/app/admin/timeflow', label: 'TimeFlow', show: canSeeAdmin },
-    { href: '/app/monitoring', label: 'Monitoring', show: canSeeAdmin },
-    { href: '/app/tools', label: 'Tools', show: canSeeAdmin },
-    { href: '/app/blockviewer', label: 'Block Viewer', show: canSeeAdmin },
-    { href: '/app/admin/users', label: 'Benutzer', show: canSeeAdmin },
+    { href: '/app/papa', label: 'Papa Tools', show: isCreator },
+    { href: '/app/admin/users', label: 'Benutzerverwaltung', show: canSeeCreatorNav },
+    { href: '/app/blockviewer', label: 'Block Viewer', show: canSeeCreatorNav },
+    { href: '/app/admin/timeflow', label: 'Timeflow', show: canSeeCreatorNav },
   ]
 
   const publicTabs: Array<{ href: string; label: string }> = [
-    { href: '/', label: 'Start' },
+    { href: '/', label: 'Home' },
+    { href: '/pakete', label: 'Pakete' },
     { href: '/login', label: 'Login' },
-    { href: '/register', label: 'Registrieren' },
   ]
 
   return (
@@ -109,6 +107,12 @@ export default function Navbar(){
                 <div className="kiana-status-label" style={{ marginTop: 4, opacity: 0.9 }}>Build {buildSha}</div>
               )}
             </div>
+            {!isAuthed && (
+              <div className="flex items-center gap-2">
+                <Link className="kiana-header-btn" href="/login">Login</Link>
+                <Link className="kiana-header-btn" href="/register">Registrieren</Link>
+              </div>
+            )}
             {isAuthed && (
               <>
                 <div className="kiana-userpill">{name}{isCreator ? ' (Creator)' : isAdmin ? ' (Admin)' : isPapa ? ' (Papa)' : ''}</div>
@@ -127,21 +131,40 @@ export default function Navbar(){
                 .filter((t: any) => t.show !== false)
                 .map((t: any) => {
                   const active = isActive(t.href)
+                  const isHash = typeof t.href === 'string' && t.href.includes('#')
                   return (
-                    <Link
-                      key={t.href}
-                      href={t.href}
-                      className={`kiana-tab ${active ? 'kiana-tab-active' : ''}`}
-                    >
-                      {active ? (
-                        <motion.span
-                          layoutId="kiana-nav-pill"
-                          className="kiana-tab-active-pill"
-                          transition={{ duration: 0.25, ease: 'easeOut' }}
-                        />
-                      ) : null}
-                      <span style={{ position: 'relative', zIndex: 1 }}>{t.label}</span>
-                    </Link>
+                    isHash ? (
+                      <a
+                        key={t.href}
+                        href={t.href}
+                        className={`kiana-tab ${active ? 'kiana-tab-active' : ''}`}
+                      >
+                        {active ? (
+                          <motion.span
+                            layoutId="kiana-nav-pill"
+                            className="kiana-tab-active-pill"
+                            transition={{ duration: 0.25, ease: 'easeOut' }}
+                          />
+                        ) : null}
+                        <span style={{ position: 'relative', zIndex: 1 }}>{t.label}</span>
+                      </a>
+                    ) : (
+                      <Link
+                        key={t.href}
+                        href={t.href}
+                        scroll={true}
+                        className={`kiana-tab ${active ? 'kiana-tab-active' : ''}`}
+                      >
+                        {active ? (
+                          <motion.span
+                            layoutId="kiana-nav-pill"
+                            className="kiana-tab-active-pill"
+                            transition={{ duration: 0.25, ease: 'easeOut' }}
+                          />
+                        ) : null}
+                        <span style={{ position: 'relative', zIndex: 1 }}>{t.label}</span>
+                      </Link>
+                    )
                   )
                 })}
             </nav>

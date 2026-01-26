@@ -3,19 +3,30 @@ import type { NextRequest } from 'next/server'
 
 export const config = {
   matcher: [
-    // External (nginx) path
+    // Production nginx strips /app/* -> /* before Next.js.
+    // So we must protect BOTH:
+    // - the external /app/* prefix (direct-to-frontend)
+    // - the internal "stripped" routes like /chat, /dashboard, ...
     '/app/:path*',
-    // Internal Next.js paths (nginx may strip /app)
     '/chat',
+    '/chat/:path*',
     '/dashboard',
+    '/dashboard/:path*',
     '/settings',
+    '/settings/:path*',
     '/papa',
-    '/blockviewer',
-    '/monitoring',
+    '/papa/:path*',
     '/tools',
+    '/tools/:path*',
+    '/monitoring',
+    '/monitoring/:path*',
+    '/blockviewer',
+    '/blockviewer/:path*',
+    '/admin',
     '/admin/:path*',
     '/buildproof',
-    // Public auth routes
+    '/buildproof/:path*',
+    // Auth routes remain public, but we redirect authed users away.
     '/login',
     '/register',
   ],
@@ -24,6 +35,7 @@ export const config = {
 export async function middleware(req: NextRequest) {
   const url = req.nextUrl.clone()
   const pathname = url.pathname || '/'
+  const isAppPrefixed = pathname === '/app' || pathname.startsWith('/app/')
 
   const forwardedProto = req.headers.get('x-forwarded-proto')
   const forwardedHost = req.headers.get('x-forwarded-host')
@@ -38,24 +50,20 @@ export async function middleware(req: NextRequest) {
   const isAuthPage =
     normalizedPathname === '/login' || normalizedPathname === '/register'
 
-  const requiresAuth =
-    (pathname.startsWith('/app/') && !isAuthPage) ||
-    pathname === '/chat' ||
-    pathname.startsWith('/chat/') ||
-    pathname === '/dashboard' ||
-    pathname.startsWith('/dashboard/') ||
-    pathname === '/settings' ||
-    pathname.startsWith('/settings/') ||
-    pathname === '/papa' ||
-    pathname.startsWith('/papa/') ||
-    pathname === '/blockviewer' ||
-    pathname.startsWith('/blockviewer/') ||
-    pathname === '/monitoring' ||
-    pathname.startsWith('/monitoring/') ||
-    pathname === '/tools' ||
-    pathname.startsWith('/tools/') ||
-    pathname.startsWith('/admin/') ||
-    pathname === '/buildproof'
+  const protectedPrefixes = [
+    '/app',
+    '/chat',
+    '/dashboard',
+    '/settings',
+    '/papa',
+    '/tools',
+    '/monitoring',
+    '/blockviewer',
+    '/admin',
+    '/buildproof',
+  ]
+
+  const requiresAuth = protectedPrefixes.some((p) => pathname === p || pathname.startsWith(p + '/'))
 
   // Routing rules:
   // - If unauth and /app/* => redirect /login
@@ -97,6 +105,14 @@ export async function middleware(req: NextRequest) {
         url.search = ''
         return NextResponse.redirect(url)
       }
+    }
+
+    // Compatibility: allow direct-to-frontend /app/* URLs even though the
+    // Next.js route structure is /chat, /dashboard, ... (route groups).
+    // We keep the browser URL as /app/* but internally serve the stripped route.
+    if (isAppPrefixed && pathname.startsWith('/app/')) {
+      url.pathname = pathname.slice('/app'.length) || '/'
+      return NextResponse.rewrite(url)
     }
 
     return NextResponse.next()
