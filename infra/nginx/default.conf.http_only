@@ -3,6 +3,11 @@ server {
   listen [::]:80;
   server_name ki-ana.at www.ki-ana.at 152.53.128.59;
 
+  # LiveLog entrypoint
+  location = /livelog {
+    return 302 /app/livelog;
+  }
+
   # Proxy to Frontend (Next.js on port 3000)
   location / {
     proxy_pass http://frontend:3000;

@@ -71,6 +71,7 @@ export default function Navbar(){
     { href: '/app/papa', label: 'Papa Tools', show: isCreator },
     { href: '/app/admin/users', label: 'Benutzerverwaltung', show: canSeeCreatorNav },
     { href: '/app/blockviewer', label: 'Block Viewer', show: canSeeCreatorNav },
+    { href: '/app/livelog', label: 'LiveLog', show: canSeeCreatorNav },
     { href: '/app/admin/timeflow', label: 'Timeflow', show: canSeeCreatorNav },
   ]
 

@@ -331,6 +331,10 @@ try:
 except Exception:
     logs_router = None  # type: ignore
 try:
+    from netapi.modules.livelog.router import router as livelog_router
+except Exception:
+    livelog_router = None  # type: ignore
+try:
     from netapi.modules.dashboard_adapter.router import router as dashboard_adapter_router
 except Exception:
     dashboard_adapter_router = None  # type: ignore
@@ -1770,7 +1774,7 @@ router_list = [
     feedback_router, subki_router, self_router, dashboard_mock_router,
     blocks_router, events_router, reflection_router, plan_router, persona_router,
     knowledge_router, ethics_router, crawler_router, crawler_ui_router, export_router,
-    explain_router, settings_router, logs_router, admin_router, telemetry_router, jobs_router,
+    explain_router, settings_router, logs_router, livelog_router, admin_router, telemetry_router, jobs_router,
     autonomy_router, insight_router, goals_router,
     gdpr_router,
 ]
