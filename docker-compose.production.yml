@@ -19,12 +19,14 @@ services:
       dockerfile: Dockerfile.production
     container_name: kiana-backend
     restart: unless-stopped
+    user: "1000:1000"
     ports:
       - "8000:8000"
     volumes:
       - ./data:/app/data
       - ./system/keys:/app/system/keys
       - ./models:/app/models
+      - ./memory:/app/memory
     environment:
       - SERVER_MODE=0  # SQLite mode
       - KI_ROOT=/app

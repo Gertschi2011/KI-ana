@@ -6,31 +6,70 @@ Phase 9 - TimeFlow 2.0
 """
 import json
 import time
+import os
+import sys
 from pathlib import Path
 from typing import Dict, List, Any, Tuple
 from collections import defaultdict
 from datetime import datetime
 
+# Allow running as a script from any CWD
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from netapi.utils.fs import atomic_write_json
+
+
+def _detect_root() -> Path:
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    return Path(__file__).resolve().parents[1]
+
+
+def _is_root() -> bool:
+    try:
+        return os.geteuid() == 0
+    except Exception:
+        return False
+
 
 class MemoryCompressor:
     """Compresses old memories into experiences"""
     
-    def __init__(self):
-        self.diary_dir = Path("/home/kiana/ki_ana/data/time_diary")
-        self.experience_dir = Path("/home/kiana/ki_ana/memory/long_term/blocks/experiences")
+    def __init__(
+        self,
+        *,
+        diary_dir: Path,
+        experience_dir: Path,
+        archive_dir: Path,
+        config_file: Path,
+        write_enabled: bool = False,
+    ):
+        self.diary_dir = Path(diary_dir)
+        self.experience_dir = Path(experience_dir)
+        self.archive_dir = Path(archive_dir)
+        self.config_file = Path(config_file)
+        self.write_enabled = bool(write_enabled)
         self.config = self._load_config()
-        
-        self.experience_dir.mkdir(parents=True, exist_ok=True)
+
+        if self.write_enabled:
+            self.experience_dir.mkdir(parents=True, exist_ok=True)
+            self.archive_dir.mkdir(parents=True, exist_ok=True)
     
     def _load_config(self) -> Dict[str, Any]:
         """Load timeflow config"""
-        config_file = Path("/home/kiana/ki_ana/data/timeflow_config.json")
-        
-        if not config_file.exists():
+        if not self.config_file.exists():
             return {}
         
         try:
-            with open(config_file, 'r', encoding='utf-8') as f:
+            with open(self.config_file, 'r', encoding='utf-8') as f:
                 return json.load(f)
         except:
             return {}
@@ -172,9 +211,11 @@ class MemoryCompressor:
         
         # Save experience block
         exp_file = self.experience_dir / f"{experience['id']}.json"
-        
-        with open(exp_file, 'w', encoding='utf-8') as f:
-            json.dump(experience, f, ensure_ascii=False, indent=2)
+
+        if self.write_enabled:
+            atomic_write_json(exp_file, experience, kind="block", min_bytes=32)
+        else:
+            print(f"   💾 [dry-run] Would create experience: {exp_file.name}")
         
         print(f"   💾 Created experience: {experience['title']}")
         
@@ -223,14 +264,14 @@ class MemoryCompressor:
     
     def _archive_compressed_entries(self, entries: List[Dict[str, Any]]):
         """Archive (delete) compressed entries"""
-        archive_dir = Path("/home/kiana/ki_ana/data/time_diary_archive")
-        archive_dir.mkdir(parents=True, exist_ok=True)
+        if not self.write_enabled:
+            return
         
         for entry in entries:
             entry_file = entry.get('_file')
             if entry_file and entry_file.exists():
                 # Move to archive
-                archive_file = archive_dir / entry_file.name
+                archive_file = self.archive_dir / entry_file.name
                 entry_file.rename(archive_file)
 
 
@@ -239,6 +280,34 @@ def main():
     import argparse
     
     parser = argparse.ArgumentParser(description="Memory Compression Tool")
+    parser.add_argument(
+        '--memory-dir',
+        type=str,
+        default=None,
+        help='Explicit memory dir (required with --write), e.g. /home/kiana/ki_ana/memory'
+    )
+    parser.add_argument(
+        '--write',
+        action='store_true',
+        help='Enable writes (default: dry-run / read-only)'
+    )
+    parser.add_argument(
+        '--allow-root',
+        action='store_true',
+        help='Allow running as root (default: abort when root)'
+    )
+    parser.add_argument(
+        '--diary-dir',
+        type=str,
+        default=None,
+        help='Override diary dir (default: <root>/data/time_diary)'
+    )
+    parser.add_argument(
+        '--archive-dir',
+        type=str,
+        default=None,
+        help='Override archive dir (default: <root>/data/time_diary_archive)'
+    )
     parser.add_argument(
         '--age-days',
         type=int,
@@ -253,8 +322,30 @@ def main():
     )
     
     args = parser.parse_args()
-    
-    compressor = MemoryCompressor()
+
+    if _is_root() and not args.allow_root:
+        print("Refusing to run as root. Use --allow-root if you really mean it.")
+        raise SystemExit(2)
+
+    root = _detect_root()
+    write_enabled = bool(args.write)
+    if write_enabled and not args.memory_dir:
+        print("--write requires --memory-dir to avoid accidental writes.")
+        raise SystemExit(2)
+
+    memory_dir = Path(args.memory_dir).expanduser().resolve() if args.memory_dir else (root / "memory")
+    diary_dir = Path(args.diary_dir).expanduser().resolve() if args.diary_dir else (root / "data" / "time_diary")
+    archive_dir = Path(args.archive_dir).expanduser().resolve() if args.archive_dir else (root / "data" / "time_diary_archive")
+    config_file = root / "data" / "timeflow_config.json"
+    experience_dir = memory_dir / "long_term" / "blocks" / "experiences"
+
+    compressor = MemoryCompressor(
+        diary_dir=diary_dir,
+        experience_dir=experience_dir,
+        archive_dir=archive_dir,
+        config_file=config_file,
+        write_enabled=write_enabled,
+    )
     report = compressor.compress_old_memories(
         age_days=args.age_days,
         min_entries=args.min_entries

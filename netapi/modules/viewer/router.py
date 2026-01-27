@@ -11,6 +11,7 @@ from netapi.deps import has_any_role
 import os
 from netapi import memory_store as _mem
 from importlib.machinery import SourceFileLoader
+import time
 
 router = APIRouter(prefix="/viewer", tags=["viewer"])
 
@@ -27,6 +28,51 @@ STATIC_DIR     = PROJECT_ROOT / "netapi" / "static"
 SIGNER_PATH    = PROJECT_ROOT / "system" / "block_signer.py"
 REFLECT_PATH   = PROJECT_ROOT / "system" / "reflection_engine.py"
 KEYS_DIR       = PROJECT_ROOT / "system" / "keys"
+
+
+def _addressbook_path() -> Path:
+    return PROJECT_ROOT / "memory" / "index" / "addressbook.json"
+
+
+def _load_addressbook() -> Dict[str, Any]:
+    ab_path = _addressbook_path()
+    if not ab_path.exists():
+        return {"blocks": []}
+    try:
+        raw = json.loads(ab_path.read_text(encoding="utf-8") or "{}")
+        if isinstance(raw, dict) and isinstance(raw.get("blocks"), list):
+            return raw
+    except Exception:
+        pass
+    return {"blocks": []}
+
+
+def _addressbook_stats() -> Dict[str, Any]:
+    ab_path = _addressbook_path()
+    data = _load_addressbook()
+    blocks = data.get("blocks") if isinstance(data, dict) else []
+    blocks = blocks if isinstance(blocks, list) else []
+    topics = set()
+    for e in blocks:
+        try:
+            t = str((e or {}).get("topic") or "").strip()
+            if t:
+                topics.add(t)
+        except Exception:
+            continue
+    mtime = None
+    try:
+        if ab_path.exists():
+            mtime = int(ab_path.stat().st_mtime)
+    except Exception:
+        mtime = None
+    return {
+        "path": str(ab_path),
+        "exists": ab_path.exists(),
+        "topics_count": len(topics),
+        "entries_count": len(blocks),
+        "last_rebuild_ts": mtime,
+    }
 
 # Guards: allow access if Papa‑Modus enabled OR current user is admin
 def _papa_on() -> bool:
@@ -311,6 +357,7 @@ async def list_blocks(
     sort: str = "none",
     page: int = 1,
     limit: int = 50,
+    source: str = "filesystem",
     current=Depends(get_current_user_opt),
 ):
     _require_admin_or_papa(current)
@@ -336,13 +383,49 @@ async def list_blocks(
                     "hash_calc": "",
                 })
 
-        if CHAIN_DIR.exists():
-            for p in sorted(CHAIN_DIR.glob("*.json")):
-                safe_add(p, "system/chain")
+        # Support selecting source: 'filesystem' (both dirs) or 'addressbook'
+        src = (source or "filesystem").strip().lower()
+        if src == "addressbook":
+            # Try to load addressbook JSON and map entries to items
+            ab_path = PROJECT_ROOT / "memory" / "index" / "addressbook.json"
+            try:
+                if ab_path.exists():
+                    ab = json.loads(ab_path.read_text(encoding="utf-8") or "{}") or {"blocks": []}
+                    blocks_list = ab.get("blocks") if isinstance(ab, dict) else []
+                    for entry in blocks_list or []:
+                        # entry may contain 'path' or 'block_id'
+                        path_str = entry.get("path") or entry.get("block_file") or ""
+                        if path_str and not Path(path_str).is_absolute():
+                            p = (PROJECT_ROOT / path_str).resolve()
+                        else:
+                            p = Path(path_str) if path_str else None
+                        if p and p.exists():
+                            safe_add(p, "addressbook")
+                        else:
+                            # create lightweight item for missing path
+                            bid = entry.get("block_id") or (p.stem if p else (entry.get("id") or ""))
+                            items.append({
+                                "id": bid,
+                                "file": path_str or "",
+                                "origin": "addressbook",
+                                "title": entry.get("title") or entry.get("topic") or "",
+                                "topic": entry.get("topic") or "",
+                                "timestamp": entry.get("timestamp") or "",
+                                "source": entry.get("source") or "",
+                                "size": 0,
+                                "valid": False,
+                                "reason": "missing_file",
+                            })
+            except Exception:
+                pass
+        else:
+            if CHAIN_DIR.exists():
+                for p in sorted(CHAIN_DIR.glob("*.json")):
+                    safe_add(p, "system/chain")
 
-        if MEM_BLOCKS_DIR.exists():
-            for p in sorted(MEM_BLOCKS_DIR.glob("*.json")):
-                safe_add(p, "memory/long_term/blocks")
+            if MEM_BLOCKS_DIR.exists():
+                for p in sorted(MEM_BLOCKS_DIR.glob("*.json")):
+                    safe_add(p, "memory/long_term/blocks")
 
         # optionally filter to only signature-verified blocks
         if verified_only:
@@ -410,6 +493,168 @@ async def list_blocks(
 
     except Exception:
         raise HTTPException(500, f"list_blocks failed:\n{traceback.format_exc()}")
+
+
+@router.get("/api/blocks/coverage")
+async def blocks_coverage(current=Depends(get_current_user_opt)):
+    """Return counts for filesystem blocks vs addressbook entries (admin only)."""
+    _require_admin_or_papa(current)
+    try:
+        fs_total = 0
+        for base in (CHAIN_DIR, MEM_BLOCKS_DIR):
+            if not base.exists():
+                continue
+            for _ in base.glob("*.json"):
+                fs_total += 1
+
+        ab_count = 0
+        ab_path = PROJECT_ROOT / "memory" / "index" / "addressbook.json"
+        if ab_path.exists():
+            try:
+                ab = json.loads(ab_path.read_text(encoding="utf-8") or "{}") or {"blocks": []}
+                if isinstance(ab, dict) and isinstance(ab.get("blocks"), list):
+                    ab_count = len(ab.get("blocks") or [])
+            except Exception:
+                ab_count = 0
+
+        return {"ok": True, "fs_total": fs_total, "addressbook_count": ab_count, "diff": (fs_total - ab_count)}
+    except Exception:
+        raise HTTPException(500, "coverage_failed")
+
+
+@router.get("/api/addressbook")
+async def get_addressbook(q: str | None = None, current=Depends(get_current_user_opt)):
+    """Return addressbook as grouped tree (categories -> topics -> block_ids)."""
+    _require_admin_or_papa(current)
+    try:
+        data = _load_addressbook()
+        blocks = data.get("blocks") if isinstance(data, dict) else []
+        blocks = blocks if isinstance(blocks, list) else []
+
+        qq = (q or "").strip().lower()
+        if qq:
+            def _match(e: Dict[str, Any]) -> bool:
+                topic = str(e.get("topic") or "").lower()
+                bid = str(e.get("block_id") or "").lower()
+                tags = e.get("tags") or []
+                tags_s = " ".join([str(t) for t in tags]) if isinstance(tags, list) else str(tags)
+                return (qq in topic) or (qq in bid) or (qq in tags_s.lower())
+            blocks = [e for e in blocks if isinstance(e, dict) and _match(e)]
+
+        # Build tree
+        tree: Dict[str, Dict[str, List[str]]] = {}
+        for e in blocks:
+            if not isinstance(e, dict):
+                continue
+            topic = str(e.get("topic") or "Allgemein").strip() or "Allgemein"
+            # category heuristic: first segment before '/' else before ':' else Allgemein
+            if "/" in topic:
+                cat = topic.split("/", 1)[0].strip() or "Allgemein"
+            elif ":" in topic:
+                cat = topic.split(":", 1)[0].strip() or "Allgemein"
+            else:
+                cat = "Allgemein"
+            bid = str(e.get("block_id") or "").strip() or ""
+            if not bid:
+                continue
+            tree.setdefault(cat, {}).setdefault(topic, []).append(bid)
+
+        stats = _addressbook_stats()
+        return {
+            "ok": True,
+            **stats,
+            "filtered": bool(qq),
+            "tree": tree,
+        }
+    except Exception:
+        raise HTTPException(500, "addressbook_failed")
+
+
+@router.get("/api/addressbook/health")
+async def addressbook_health(current=Depends(get_current_user_opt)):
+    _require_admin_or_papa(current)
+    try:
+        stats = _addressbook_stats()
+        ab_path = _addressbook_path()
+        readable = False
+        try:
+            readable = ab_path.exists() and ab_path.is_file()
+            if readable:
+                _ = ab_path.read_text(encoding="utf-8")
+        except Exception:
+            readable = False
+        return {"ok": True, **stats, "readable": readable}
+    except Exception:
+        raise HTTPException(500, "addressbook_health_failed")
+
+
+@router.post("/api/rebuild-addressbook")
+async def rebuild_addressbook(current=Depends(get_current_user_required)):
+    """Rebuild addressbook JSON from filesystem blocks. Requires creator/admin."""
+    # require creator/admin role
+    try:
+        from netapi.deps import has_any_role
+        if not has_any_role(current, {"creator", "admin", "papa"}):
+            raise HTTPException(403, "creator role required")
+    except Exception:
+        raise HTTPException(403, "creator role required")
+
+    t0 = time.monotonic()
+    out: Dict[str, Any] = {"blocks": [], "rebuilt_at": datetime.utcnow().isoformat() + "Z"}
+    try:
+        for base in (CHAIN_DIR, MEM_BLOCKS_DIR):
+            if not base.exists():
+                continue
+            for p in sorted(base.glob("*.json")):
+                try:
+                    data = _load_json_file(p)
+                except Exception:
+                    data = {}
+                tags: list[str] = []
+                try:
+                    if isinstance(data.get("tags"), list):
+                        tags = [str(x) for x in (data.get("tags") or [])]
+                    elif isinstance((data.get("meta") or {}).get("tags"), list):
+                        tags = [str(x) for x in ((data.get("meta") or {}).get("tags") or [])]
+                except Exception:
+                    tags = []
+                entry = {
+                    "block_id": data.get("id") or p.stem,
+                    "path": str(p.relative_to(PROJECT_ROOT).as_posix()),
+                    "title": data.get("title") or data.get("topic") or "",
+                    "topic": data.get("topic") or "",
+                    "timestamp": data.get("timestamp") or data.get("ts") or "",
+                    "source": data.get("source") or ((data.get("meta") or {}).get("source") or ""),
+                    "tags": tags,
+                }
+                out["blocks"].append(entry)
+
+        # write addressbook
+        idx_dir = PROJECT_ROOT / "memory" / "index"
+        idx_dir.mkdir(parents=True, exist_ok=True)
+        ab_path = idx_dir / "addressbook.json"
+        from netapi.utils.fs import atomic_write_json
+        atomic_write_json(ab_path, out, kind="index", min_bytes=2)
+
+        took_ms = int((time.monotonic() - t0) * 1000)
+        topics = set()
+        for e in out.get("blocks") or []:
+            try:
+                t = str((e or {}).get("topic") or "").strip()
+                if t:
+                    topics.add(t)
+            except Exception:
+                pass
+        return {
+            "ok": True,
+            "topics_count": len(topics),
+            "entries_count": len(out.get("blocks") or []),
+            "took_ms": took_ms,
+            "path": str(ab_path),
+            "rebuilt_at": out.get("rebuilt_at"),
+        }
+    except Exception as e:
+        raise HTTPException(500, f"rebuild_failed: {e}")
 
 
 @router.get("/api/blocks/health")
@@ -634,10 +879,8 @@ async def sign_block(file: str = Body(..., embed=True), user = Depends(get_curre
         data["signature"] = sig_b64
         data["pubkey"] = pub_b64
         data["signed_at"] = signed_at
-        path.write_text(
-            json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True),
-            encoding="utf-8",
-        )
+        from netapi.utils.fs import atomic_write_json
+        atomic_write_json(path, data, kind="block", min_bytes=32)
         return {"ok": True, "file": file}
     except HTTPException:
         raise
@@ -670,7 +913,8 @@ async def sign_all_blocks(user = Depends(get_current_user_required)):
                 data["signature"] = sig_b64
                 data["pubkey"] = pub_b64
                 data["signed_at"] = signed_at
-                p.write_text(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+                from netapi.utils.fs import atomic_write_json
+                atomic_write_json(p, data, kind="block", min_bytes=32)
                 fixed += 1
                 checked += 1
             except Exception as e:
@@ -723,7 +967,8 @@ async def rehash_all_blocks(user = Depends(get_current_user_required)):
                 checked += 1
                 if not stored or stored != calc:
                     data["hash"] = calc
-                    p.write_text(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+                    from netapi.utils.fs import atomic_write_json
+                    atomic_write_json(p, data, kind="block", min_bytes=32)
                     fixed += 1
             except Exception as e:
                 errors.append(f"{p.name}: {e}")

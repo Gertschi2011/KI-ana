@@ -150,7 +150,7 @@ def set_user_password(user_id: int, new_password: str):
         s.execute(
             update(User)
             .where(User.id == int(user_id))
-            .values(password_hash=new_hash, updated_at=datetime.utcnow())
+            .values(password_hash=new_hash, updated_at=int(time.time()))
         )
         s.commit()
 

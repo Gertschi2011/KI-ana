@@ -5,7 +5,7 @@ from fastapi import APIRouter, HTTPException, Request, status
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta, timezone
-import secrets, os, json, pathlib, bcrypt
+import secrets, os, json, pathlib, bcrypt, time
 
 from .db import SessionLocal
 from .models import User, EmailToken
@@ -129,7 +129,7 @@ def reset_password(payload: ResetIn):
 
         # Passwort setzen (bcrypt)
         user.password_hash = bcrypt.hashpw(new_pw.encode(), bcrypt.gensalt()).decode()
-        user.updated_at = datetime.utcnow()
+        user.updated_at = int(time.time())
         # Token verbrauchen (löschen)
         s.delete(et)
         s.commit()

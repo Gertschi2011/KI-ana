@@ -1,8 +1,10 @@
 from __future__ import annotations
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 from pathlib import Path
 from typing import List, Dict, Optional, Tuple
-import json, time, re, uuid, heapq
+import json, time, re, uuid, heapq, os
+
+from netapi.utils.fs import atomic_write_json, atomic_write_text
 
 # ------------------------------------------------------------
 # Speicher-Layout (Systempfad, wie bei dir beschrieben)
@@ -15,9 +17,21 @@ import json, time, re, uuid, heapq
 #     └─ open_questions.json
 # ------------------------------------------------------------
 
-HOME = Path.home()
-KI_ROOT = HOME / "ki_ana"
-MEM_DIR = KI_ROOT / "memory"
+def _detect_root() -> Path:
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    # netapi/modules/chat/memory_adapter.py -> <root>/netapi/modules/chat/...
+    return Path(__file__).resolve().parents[3]
+
+
+ROOT = _detect_root()
+MEM_DIR = ROOT / "memory"
 LT_BLOCKS = MEM_DIR / "long_term" / "blocks"
 ST_DIR = MEM_DIR / "short_term"
 KNOWN_TOPICS = MEM_DIR / "known_topics.txt"
@@ -26,9 +40,9 @@ OPEN_QUESTIONS = MEM_DIR / "open_questions.json"
 for p in [LT_BLOCKS, ST_DIR]:
     p.mkdir(parents=True, exist_ok=True)
 if not KNOWN_TOPICS.exists():
-    KNOWN_TOPICS.write_text("", encoding="utf-8")
+    atomic_write_text(KNOWN_TOPICS, "", encoding="utf-8")
 if not OPEN_QUESTIONS.exists():
-    OPEN_QUESTIONS.write_text("[]", encoding="utf-8")
+    atomic_write_text(OPEN_QUESTIONS, "[]", encoding="utf-8")
 
 # --------- Simple Tokenizer/Scorer (keine externen Deps) ---------
 _WORD = re.compile(r"[A-Za-zÄÖÜäöüß0-9_-]+")
@@ -68,7 +82,7 @@ class Block:
     content: str
     tags: List[str]
     url: Optional[str] = None
-    created_at: float = time.time()
+    created_at: float = field(default_factory=time.time)
     meta: Optional[Dict] = None
     path: Optional[str] = None
     score: Optional[float] = None
@@ -191,7 +205,7 @@ def store(title: str, content: str, tags: List[str], url: Optional[str] = None, 
     )
     path = LT_BLOCKS / f"{blk.id}.json"
     data = asdict(blk); data["path"] = None  # keine absoluten Pfade im JSON ablegen
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(path, data, kind="block", min_bytes=32)
 
     # known_topics pflegen (einfach: jede Zeile ein Topic/Tag/Title-Snippet)
     try:
@@ -199,7 +213,7 @@ def store(title: str, content: str, tags: List[str], url: Optional[str] = None, 
         topics.add(blk.title)
         for t in blk.tags:
             topics.add(t)
-        KNOWN_TOPICS.write_text("\n".join(sorted(topics)), encoding="utf-8")
+        atomic_write_text(KNOWN_TOPICS, "\n".join(sorted(topics)), encoding="utf-8")
     except Exception:
         pass
 
@@ -221,7 +235,7 @@ def add_open_question(question: str, context: Optional[Dict] = None) -> None:
         "id": uuid.uuid4().hex[:10],
         "status": "open",
     })
-    OPEN_QUESTIONS.write_text(json.dumps(items, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(OPEN_QUESTIONS, items, kind="index", min_bytes=2)
 
 
 def list_open_questions() -> List[Dict]:

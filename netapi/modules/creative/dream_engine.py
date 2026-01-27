@@ -5,23 +5,39 @@ Phase 10 - Kreativität & Traum-Modus
 import json
 import time
 import random
+import os
 from pathlib import Path
 from typing import Dict, List, Any, Set, Tuple
 from collections import defaultdict
+
+from netapi.utils.fs import atomic_write_json
+
+
+def _detect_root() -> Path:
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    return Path(__file__).resolve().parents[3]
 
 
 class DreamEngine:
     """Runs pattern association during 'sleep' periods"""
     
     def __init__(self):
+        self.root = _detect_root()
         self.config = self._load_config()
-        self.blocks_dir = Path("/home/kiana/ki_ana/memory/long_term/blocks")
-        self.dreams_dir = Path("/home/kiana/ki_ana/memory/long_term/blocks/dreams")
+        self.blocks_dir = self.root / "memory" / "long_term" / "blocks"
+        self.dreams_dir = self.blocks_dir / "dreams"
         self.dreams_dir.mkdir(parents=True, exist_ok=True)
     
     def _load_config(self) -> Dict[str, Any]:
         """Load creative config"""
-        config_file = Path("/home/kiana/ki_ana/data/creative_config.json")
+        config_file = self.root / "data" / "creative_config.json"
         
         if not config_file.exists():
             return {}
@@ -250,9 +266,8 @@ class DreamEngine:
         
         # Save dream block
         dream_file = self.dreams_dir / f"dream_{timestamp}.json"
-        
-        with open(dream_file, 'w', encoding='utf-8') as f:
-            json.dump(dream_block, f, ensure_ascii=False, indent=2)
+
+        atomic_write_json(dream_file, dream_block, kind="block", min_bytes=32)
         
         return dream_block
 

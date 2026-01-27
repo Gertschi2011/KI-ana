@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json
+import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -7,6 +8,8 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import HTMLResponse
 from nacl.signing import VerifyKey
 from nacl.exceptions import BadSignatureError
+
+from netapi.utils.fs import atomic_write_json
 
 router = APIRouter(prefix="/api/subki", tags=["subki"])
 
@@ -75,7 +78,7 @@ async def register(meta: Dict[str, Any]):
         "public_key": meta.get("public_key") or "",
         "capabilities": meta.get("capabilities") or [],
     }
-    f.write_text(json.dumps(reg, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(f, reg, kind="index", min_bytes=2)
     return {"ok": True}
 
 @router.get("/status")
@@ -117,9 +120,7 @@ async def sync(payload: Dict[str, Any]):
                     },
                 }
                 # write proposal copy
-                (node_dir / f"{b.get('hash','nohash')}.json").write_text(
-                    json.dumps(prop, ensure_ascii=False, indent=2), encoding="utf-8"
-                )
+                atomic_write_json(node_dir / f"{b.get('hash','nohash')}.json", prop, kind="block", min_bytes=32)
                 # Filter by active_subkis if configured
                 if active is not None and node_id not in active:
                     dropped_inactive += 1
@@ -204,7 +205,7 @@ async def feedback(payload: Dict[str, Any]):
     trust_map[sid] = v
     try:
         TRUST_PATH.parent.mkdir(parents=True, exist_ok=True)
-        TRUST_PATH.write_text(json.dumps(trust_map, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+        atomic_write_json(TRUST_PATH, trust_map, kind="index", min_bytes=2)
     except Exception as e:
         raise HTTPException(500, f"persist_error: {e}")
     return {"ok": True, "trust": trust_map}
@@ -338,7 +339,7 @@ async def broadcast(payload: Dict[str, Any]):
         inbox.mkdir(parents=True, exist_ok=True)
         bid = str(block.get("id") or f"noid_{int(time.time())}")
         path = inbox / f"{int(time.time())}_{bid}.json"
-        path.write_text(json.dumps(block, ensure_ascii=False, indent=2), encoding="utf-8")
+        atomic_write_json(path, block, kind="block", min_bytes=32)
         return {"ok": True, "saved": str(path)}
     except Exception as e:
         raise HTTPException(500, f"broadcast_error: {e}")

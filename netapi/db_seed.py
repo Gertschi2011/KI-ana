@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import Optional
 from datetime import datetime
+import time
 
 from .db import SessionLocal
 from .models import User
@@ -24,7 +25,7 @@ def seed_users() -> None:
                 role='creator',
                 plan='free',
                 plan_until=0,
-                updated_at=datetime.utcnow(),
+                updated_at=int(time.time()),
             )
             db.add(u)
             db.commit()

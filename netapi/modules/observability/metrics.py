@@ -27,6 +27,13 @@ _limits_exceeded_total: Dict[Tuple[str, str], int] = {}
 _started_at = time.time()
 
 
+# ---- Memory / filesystem safety metrics ------------------------------------
+# Counter keyed by (kind, ok)
+_memory_block_write_total: Dict[Tuple[str, str], int] = {}
+# Counter keyed by (kind,)
+_memory_block_quarantine_total: Dict[Tuple[str], int] = {}
+
+
 # ---- MetaMind KPIs (chat/product metrics) ---------------------------------
 # Counter keyed by (tool, ok)
 _chat_tool_calls_total: Dict[Tuple[str, str], int] = {}
@@ -373,6 +380,26 @@ def inc_quality_gate(*, gate: str, mode: str = "observed") -> None:
         _quality_gate_total[(g, m)] = _quality_gate_total.get((g, m), 0) + 1
 
 
+def inc_memory_block_write(*, ok: bool, kind: str = "block") -> None:
+    try:
+        k = str(kind or "block").strip().lower() or "block"
+        status = "ok" if bool(ok) else "fail"
+    except Exception:
+        k = "block"
+        status = "fail"
+    with _lock:
+        _memory_block_write_total[(k, status)] = _memory_block_write_total.get((k, status), 0) + 1
+
+
+def inc_memory_block_quarantine(*, kind: str = "block") -> None:
+    try:
+        k = str(kind or "block").strip().lower() or "block"
+    except Exception:
+        k = "block"
+    with _lock:
+        _memory_block_quarantine_total[(k,)] = _memory_block_quarantine_total.get((k,), 0) + 1
+
+
 def render_prometheus_text() -> str:
     """Render a minimal Prometheus exposition string."""
     lines: list[str] = []
@@ -502,6 +529,20 @@ def render_prometheus_text() -> str:
             g = _escape_label(gate)
             m = _escape_label(mode)
             lines.append(f"ki_ana_quality_gate_total{{gate=\"{g}\",mode=\"{m}\"}} {int(count)}")
+
+        # ---- Filesystem/memory safety counters -----------------------------
+        lines.append("# HELP ki_ana_memory_block_write_total Memory JSON writes (ok vs fail)")
+        lines.append("# TYPE ki_ana_memory_block_write_total counter")
+        for (kind, status), count in sorted(_memory_block_write_total.items()):
+            k = _escape_label(kind)
+            st = _escape_label(status)
+            lines.append(f"ki_ana_memory_block_write_total{{kind=\"{k}\",status=\"{st}\"}} {int(count)}")
+
+        lines.append("# HELP ki_ana_memory_block_quarantine_total Number of files moved to quarantine")
+        lines.append("# TYPE ki_ana_memory_block_quarantine_total counter")
+        for (kind,), count in sorted(_memory_block_quarantine_total.items()):
+            k = _escape_label(kind)
+            lines.append(f"ki_ana_memory_block_quarantine_total{{kind=\"{k}\"}} {int(count)}")
 
     # External gauges (outside lock)
     try:

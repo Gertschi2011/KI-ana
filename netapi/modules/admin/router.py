@@ -218,7 +218,7 @@ def create_user(data: UserCreate, user = Depends(get_current_user_required)):
                 is_papa=data.is_papa,
                 plan=data.plan,
                 created_at=datetime.utcnow(),
-                updated_at=datetime.utcnow(),
+                updated_at=now,
             )
             # lifecycle fields
             try:
@@ -301,7 +301,7 @@ def update_user(user_id: int, data: UserUpdate, user = Depends(get_current_user_
                 except Exception:
                     pass
             
-            target_user.updated_at = datetime.utcnow()
+            target_user.updated_at = int(time.time())
             
             db.commit()
             

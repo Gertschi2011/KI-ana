@@ -34,6 +34,10 @@ RUN pip install --no-cache-dir \
 # Copy application code
 COPY . .
 
+# Run as non-root (matches host UID/GID 1000:1000)
+RUN groupadd -g 1000 kiana && useradd -m -u 1000 -g 1000 kiana \
+    && chown -R 1000:1000 /app
+
 # Create necessary directories
 RUN mkdir -p /app/data /app/system/keys /app/models
 
@@ -45,4 +49,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
 # Run application
+USER 1000:1000
 CMD ["uvicorn", "netapi.app:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers", "--forwarded-allow-ips=*"]

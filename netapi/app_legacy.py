@@ -278,7 +278,7 @@ def api_register(payload: RegisterIn, db=Depends(get_db)):
         birthdate=bd,
         address=address_json,
         created_at=datetime.utcnow(),
-        updated_at=datetime.utcnow(),
+        updated_at=int(time.time()),
     )
     db.add(user)
     db.commit()

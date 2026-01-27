@@ -79,7 +79,7 @@ def subscription_confirm(body: ConfirmIn, db = Depends(get_db), user = Depends(g
         raise HTTPException(404, "user_not_found")
     u.plan = body.plan
     u.plan_until = until
-    u.updated_at = datetime.utcnow()
+    u.updated_at = int(time.time())
     db.commit()
     return {"ok": True, "plan": body.plan, "plan_until": until}
 

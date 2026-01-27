@@ -15,11 +15,28 @@ type BlockItem = {
   sig_valid?: boolean
 }
 
+type AddressbookTree = Record<string, Record<string, string[]>>
+
+type AddressbookResponse = {
+  ok: boolean
+  path?: string
+  exists?: boolean
+  readable?: boolean
+  topics_count?: number
+  entries_count?: number
+  last_rebuild_ts?: number | null
+  filtered?: boolean
+  tree?: AddressbookTree
+}
+
 export default function BlockViewerPage() {
   const [loading, setLoading] = useState<boolean>(true)
   const [err, setErr] = useState<string | null>(null)
   const [canView, setCanView] = useState<boolean>(false)
   const [canRehash, setCanRehash] = useState<boolean>(false)
+  const [isAdminLike, setIsAdminLike] = useState<boolean>(false)
+
+  const [view, setView] = useState<'blocks' | 'addressbook'>('blocks')
 
   const [busyRehash, setBusyRehash] = useState<boolean>(false)
   const [toast, setToast] = useState<string | null>(null)
@@ -27,6 +44,7 @@ export default function BlockViewerPage() {
   const [page, setPage] = useState<number>(1)
   const [limit] = useState<number>(50)
   const [includeUnverified, setIncludeUnverified] = useState<boolean>(false)
+  const [source, setSource] = useState<'filesystem'|'addressbook'>('filesystem')
   const [total, setTotal] = useState<number>(0)
   const [count, setCount] = useState<number>(0)
   const [pages, setPages] = useState<number>(1)
@@ -35,12 +53,49 @@ export default function BlockViewerPage() {
   const [healthBusy, setHealthBusy] = useState<boolean>(false)
   const [healthInfo, setHealthInfo] = useState<any>(null)
 
+  const [abLoading, setAbLoading] = useState<boolean>(false)
+  const [abErr, setAbErr] = useState<string | null>(null)
+  const [abSearch, setAbSearch] = useState<string>('')
+  const [abData, setAbData] = useState<AddressbookResponse | null>(null)
+  const [abExpandedCats, setAbExpandedCats] = useState<Record<string, boolean>>({})
+  const [abExpandedTopics, setAbExpandedTopics] = useState<Record<string, boolean>>({})
+
   const hasPrev = page > 1
   const hasNext = page < pages
 
   const header = useMemo(() => {
     return includeUnverified ? 'Block Viewer (inkl. unverified)' : 'Block Viewer'
   }, [includeUnverified])
+
+  function fmtTs(ts: number | null | undefined): string {
+    if (!ts) return '–'
+    try {
+      return new Date(ts * 1000).toLocaleString()
+    } catch {
+      return String(ts)
+    }
+  }
+
+  async function loadAddressbook() {
+    setAbLoading(true)
+    setAbErr(null)
+    try {
+      const qs = new URLSearchParams()
+      if (abSearch.trim()) qs.set('q', abSearch.trim())
+      const res = await fetch(`/viewer/api/addressbook?${qs.toString()}`, { credentials: 'include', cache: 'no-store' })
+      const data: any = await res.json().catch(() => ({}))
+      if (!res.ok || !data?.ok) {
+        const msg = data?.error || data?.detail || `Adressbuch konnte nicht geladen werden (${res.status})`
+        throw new Error(msg)
+      }
+      setAbData(data as AddressbookResponse)
+    } catch (e: any) {
+      setAbData(null)
+      setAbErr(typeof e?.message === 'string' ? e.message : 'Fehler beim Laden')
+    } finally {
+      setAbLoading(false)
+    }
+  }
 
   async function load() {
     setLoading(true)
@@ -52,11 +107,13 @@ export default function BlockViewerPage() {
       const role = String(u?.role ?? '').toLowerCase()
       const roles = Array.isArray(u?.roles) ? u.roles.map((x: any) => String(x).toLowerCase()) : []
       const isCreator = Boolean(u?.is_creator) || roles.includes('creator') || role === 'creator'
+      const isAdmin = roles.includes('admin') || role === 'admin'
       const capsObj = (me?.caps && typeof me.caps === 'object') ? me.caps : ((u?.caps && typeof u.caps === 'object') ? u.caps : {})
       const allowed = Boolean(capsObj?.can_view_block_viewer) || isCreator
       const rehashAllowed = Boolean(capsObj?.can_rehash_blocks) || isCreator
       setCanView(allowed)
       setCanRehash(rehashAllowed)
+      setIsAdminLike(Boolean(isAdmin || isCreator))
       if (!allowed) {
         setItems([])
         setTotal(0)
@@ -69,9 +126,10 @@ export default function BlockViewerPage() {
       const qs = new URLSearchParams({
         page: String(page),
         limit: String(limit),
-        include_unverified: includeUnverified ? 'true' : 'false',
+        verified_only: includeUnverified ? 'false' : 'true',
+        source: source,
       })
-      const res = await fetch(`/api/blocks?${qs.toString()}`, { credentials: 'include', cache: 'no-store' })
+      const res = await fetch(`/viewer/api/blocks?${qs.toString()}`, { credentials: 'include', cache: 'no-store' })
       if (!res.ok) {
         const t = await res.text().catch(() => '')
         throw new Error(`Blocks konnten nicht geladen werden (${res.status})${t ? `: ${t}` : ''}`)
@@ -93,9 +151,22 @@ export default function BlockViewerPage() {
   }
 
   useEffect(() => {
-    load()
+    if (view === 'blocks') {
+      load()
+    } else {
+      loadAddressbook()
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, includeUnverified])
+  }, [page, includeUnverified, view])
+
+  useEffect(() => {
+    if (view !== 'addressbook') return
+    const t = setTimeout(() => {
+      loadAddressbook()
+    }, 250)
+    return () => clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [abSearch])
 
   async function runRehash() {
     setToast(null)
@@ -180,6 +251,21 @@ export default function BlockViewerPage() {
             </div>
           </div>
           <div className="flex gap-2 flex-wrap items-center">
+            <div className="flex gap-1 items-center">
+              <KianaButton variant={view === 'blocks' ? 'primary' : 'ghost'} onClick={() => { setView('blocks'); setPage(1) }}>
+                Blöcke
+              </KianaButton>
+              <KianaButton variant={view === 'addressbook' ? 'primary' : 'ghost'} onClick={() => { setView('addressbook'); setPage(1) }}>
+                📚 Adressbuch
+              </KianaButton>
+            </div>
+            <div className="small" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+              Quelle:
+              <select value={source} onChange={(e) => { setSource(e.target.value as any); setPage(1); }} className="ml-1">
+                <option value="filesystem">Filesystem (default)</option>
+                <option value="addressbook">Addressbook (index)</option>
+              </select>
+            </div>
             <label className="small" style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <input
                 type="checkbox"
@@ -203,6 +289,43 @@ export default function BlockViewerPage() {
             <KianaButton variant="primary" onClick={runRehash} disabled={!canRehash || busyRehash}>
               {busyRehash ? 'Rehash …' : 'Rehash (creator)'}
             </KianaButton>
+            {/* Debug: coverage & rebuild - visible to creators only (canRehash true) */}
+            {canRehash ? (
+              <>
+                <KianaButton variant="ghost" onClick={async () => {
+                  try {
+                    const r = await fetch('/viewer/api/blocks/coverage', { credentials: 'include' })
+                    const j = await r.json()
+                    if (r.ok && j?.ok) {
+                      setToast(`Coverage: fs=${j.fs_total} ab=${j.addressbook_count} diff=${j.diff}`)
+                    } else {
+                      setToast(j?.error || 'Coverage failed')
+                    }
+                  } catch (e) { setToast('Coverage failed') }
+                }}>
+                  Coverage
+                </KianaButton>
+                <KianaButton variant="secondary" onClick={async () => {
+                  if (!confirm('Rebuild addressbook from filesystem? This will overwrite index.')) return
+                  try {
+                    const r = await fetch('/viewer/api/rebuild-addressbook', { method: 'POST', credentials: 'include' })
+                    const j = await r.json()
+                    if (r.ok && j?.ok) {
+                      setToast(`Rebuild ok: topics=${j.topics_count} entries=${j.entries_count} took_ms=${j.took_ms}`)
+                      if (view === 'blocks') {
+                        await load()
+                      } else {
+                        await loadAddressbook()
+                      }
+                    } else {
+                      setToast(j?.error || 'Rebuild failed')
+                    }
+                  } catch (e) { setToast('Rebuild failed') }
+                }}>
+                  Rebuild Index
+                </KianaButton>
+              </>
+            ) : null}
           </div>
         </div>
 
@@ -226,41 +349,133 @@ export default function BlockViewerPage() {
           </div>
         ) : null}
 
-        <div className="mt-4 overflow-x-auto">
-          <table className="kiana-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Titel/Topic</th>
-                <th>Origin</th>
-                <th>Valid</th>
-              </tr>
-            </thead>
-            <tbody>
-              {loading ? (
+        {view === 'blocks' ? (
+          <div className="mt-4 overflow-x-auto">
+            <table className="kiana-table">
+              <thead>
                 <tr>
-                  <td colSpan={4} className="small">Lade Blöcke…</td>
+                  <th>ID</th>
+                  <th>Titel/Topic</th>
+                  <th>Origin</th>
+                  <th>Valid</th>
                 </tr>
-              ) : items.length === 0 ? (
-                <tr>
-                  <td colSpan={4} className="small">Keine Blöcke gefunden.</td>
-                </tr>
-              ) : (
-                items.map((it: BlockItem) => (
-                  <tr key={it.id}>
-                    <td className="font-mono" style={{ fontSize: 12 }}>{it.id}</td>
-                    <td>
-                      <div className="font-medium">{it.title || it.topic || '–'}</div>
-                      <div className="small" style={{ opacity: 0.75 }}>{it.source || ''}</div>
-                    </td>
-                    <td className="small">{it.origin || '–'}</td>
-                    <td className="small">{(it.valid && it.sig_valid) ? 'ok' : 'warn'}</td>
+              </thead>
+              <tbody>
+                {loading ? (
+                  <tr>
+                    <td colSpan={4} className="small">Lade Blöcke…</td>
                   </tr>
-                ))
+                ) : items.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="small">Keine Blöcke gefunden.</td>
+                  </tr>
+                ) : (
+                  items.map((it: BlockItem) => (
+                    <tr key={it.id}>
+                      <td className="font-mono" style={{ fontSize: 12 }}>{it.id}</td>
+                      <td>
+                        <div className="font-medium">{it.title || it.topic || '–'}</div>
+                        <div className="small" style={{ opacity: 0.75 }}>{it.source || ''}</div>
+                      </td>
+                      <td className="small">{it.origin || '–'}</td>
+                      <td className="small">{(it.valid && it.sig_valid) ? 'ok' : 'warn'}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="mt-4">
+            <div className="kiana-inset" role="status">
+              <div className="font-semibold">📚 Adressbuch</div>
+              <div className="small mt-1">
+                Topics: {abData?.topics_count ?? '–'} • Einträge: {abData?.entries_count ?? '–'} • letzter Rebuild: {fmtTs(abData?.last_rebuild_ts ?? null)}
+              </div>
+              <div className="mt-3 flex gap-2 flex-wrap items-center">
+                <input
+                  value={abSearch}
+                  onChange={(e) => setAbSearch(e.target.value)}
+                  placeholder="Suche Topic/Tag/Block-ID…"
+                  className="kiana-input"
+                  style={{ minWidth: 260 }}
+                />
+                <KianaButton variant="ghost" onClick={loadAddressbook} disabled={abLoading}>
+                  {abLoading ? 'Lade…' : 'Reload'}
+                </KianaButton>
+                {isAdminLike ? (
+                  <KianaButton variant="secondary" onClick={async () => {
+                    if (!confirm('Rebuild Adressbuch? (überschreibt addressbook.json)')) return
+                    try {
+                      const r = await fetch('/viewer/api/rebuild-addressbook', { method: 'POST', credentials: 'include' })
+                      const j = await r.json()
+                      if (r.ok && j?.ok) {
+                        setToast(`Rebuild ok: topics=${j.topics_count} entries=${j.entries_count} took_ms=${j.took_ms}`)
+                        await loadAddressbook()
+                      } else {
+                        setToast(j?.error || 'Rebuild failed')
+                      }
+                    } catch {
+                      setToast('Rebuild failed')
+                    }
+                  }}>
+                    🔁 Rebuild Adressbuch
+                  </KianaButton>
+                ) : null}
+              </div>
+              {abErr ? <div className="small mt-2">{abErr}</div> : null}
+            </div>
+
+            <div className="mt-4">
+              {abLoading ? (
+                <div className="small">Lade Adressbuch…</div>
+              ) : !abData?.tree ? (
+                <div className="small">Keine Daten.</div>
+              ) : (
+                <div className="grid gap-2">
+                  {Object.keys(abData.tree).sort().map((cat) => {
+                    const topicsObj = abData.tree?.[cat] || {}
+                    const catOpen = Boolean(abExpandedCats[cat])
+                    const topics = Object.keys(topicsObj).sort()
+                    return (
+                      <div key={cat} className="kiana-inset">
+                        <button
+                          className="w-full text-left"
+                          onClick={() => setAbExpandedCats((s) => ({ ...s, [cat]: !catOpen }))}
+                        >
+                          <div className="font-semibold">{cat} <span className="small" style={{ opacity: 0.7 }}>({topics.length} Topics)</span></div>
+                        </button>
+                        {catOpen ? (
+                          <div className="mt-2 grid gap-2">
+                            {topics.map((topic) => {
+                              const ids = topicsObj[topic] || []
+                              const key = `${cat}::${topic}`
+                              const open = Boolean(abExpandedTopics[key])
+                              return (
+                                <div key={key} className="kiana-inset">
+                                  <button className="w-full text-left" onClick={() => setAbExpandedTopics((s) => ({ ...s, [key]: !open }))}>
+                                    <div className="font-medium">{topic} <span className="small" style={{ opacity: 0.7 }}>({ids.length})</span></div>
+                                  </button>
+                                  {open ? (
+                                    <div className="mt-2 flex flex-wrap gap-2">
+                                      {ids.map((id) => (
+                                        <span key={id} className="font-mono" style={{ fontSize: 12, opacity: 0.9 }}>{id}</span>
+                                      ))}
+                                    </div>
+                                  ) : null}
+                                </div>
+                              )
+                            })}
+                          </div>
+                        ) : null}
+                      </div>
+                    )
+                  })}
+                </div>
               )}
-            </tbody>
-          </table>
-        </div>
+            </div>
+          </div>
+        )}
 
         <div className="mt-4 flex items-center justify-between gap-2">
           <KianaButton variant="ghost" disabled={!hasPrev || loading} onClick={() => setPage((p: number) => Math.max(1, p - 1))}>

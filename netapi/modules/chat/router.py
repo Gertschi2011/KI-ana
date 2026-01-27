@@ -2426,6 +2426,8 @@ def upsert_addressbook(topic: str, *, block_file: str = "", url: str = "") -> No
     This writer will upgrade legacy data in-place to the new schema while preserving info.
     """
     try:
+        from netapi.utils.fs import atomic_write_json
+
         data: Any = {"blocks": []}
         if ADDRBOOK_PATH.exists():
             try:
@@ -2485,20 +2487,22 @@ def upsert_addressbook(topic: str, *, block_file: str = "", url: str = "") -> No
 
         # Write back in new schema
         out = {"blocks": blocks}
-        ADDRBOOK_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+        atomic_write_json(ADDRBOOK_PATH, out, kind="index", min_bytes=2)
     except Exception:
         pass
 
 def migrate_addressbook_schema() -> bool:
     """Ensure addressbook.json uses the new blocks schema. Returns True if changed."""
     try:
+        from netapi.utils.fs import atomic_write_json
+
         if not ADDRBOOK_PATH.exists():
             return False
         raw = json.loads(ADDRBOOK_PATH.read_text(encoding="utf-8"))
         if isinstance(raw, dict) and isinstance(raw.get("blocks"), list):
             return False  # already new schema
         if not isinstance(raw, dict):
-            ADDRBOOK_PATH.write_text(json.dumps({"blocks": []}, ensure_ascii=False, indent=2), encoding="utf-8")
+            atomic_write_json(ADDRBOOK_PATH, {"blocks": []}, kind="index", min_bytes=2)
             return True
         blocks: List[Dict[str, Any]] = []
         for topic, e in raw.items():
@@ -2517,7 +2521,7 @@ def migrate_addressbook_schema() -> bool:
                 })
             except Exception:
                 continue
-        ADDRBOOK_PATH.write_text(json.dumps({"blocks": blocks}, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+        atomic_write_json(ADDRBOOK_PATH, {"blocks": blocks}, kind="index", min_bytes=2)
         return True
     except Exception:
         return False

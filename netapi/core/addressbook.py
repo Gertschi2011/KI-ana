@@ -5,6 +5,8 @@ import json
 import re
 import time
 
+from netapi.utils.fs import atomic_write_json
+
 def _detect_root() -> Path:
     import os
 
@@ -152,7 +154,7 @@ def index_learning_correction(
     data["learning_corrections"] = idx
 
     ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(ADDRBOOK_PATH, data, kind="index", min_bytes=2)
     return new_entry
 
 
@@ -192,7 +194,7 @@ def index_user_settings(
     data["user_settings"] = idx
 
     ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(ADDRBOOK_PATH, data, kind="index", min_bytes=2)
     return entry
 
 
@@ -231,7 +233,7 @@ def index_interest_profile(
     data["interest_profiles"] = idx
 
     ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(ADDRBOOK_PATH, data, kind="index", min_bytes=2)
     return entry
 
 
@@ -281,7 +283,7 @@ def index_source_trust_profile(
     data["source_trust_profiles"] = trust
 
     ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(ADDRBOOK_PATH, data, kind="index", min_bytes=2)
     return entry
 
 
@@ -349,7 +351,7 @@ def index_source_prefs(
     data["source_prefs"] = prefs
 
     ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
-    ADDRBOOK_PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(ADDRBOOK_PATH, data, kind="index", min_bytes=2)
     return entry
 
 
@@ -533,7 +535,7 @@ def register_block_for_topic(topic_path: str, block_id: str) -> None:
         if not exists:
             blocks.append(entry)
         ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
-        ADDRBOOK_PATH.write_text(json.dumps({"blocks": blocks}, ensure_ascii=False, indent=2), encoding="utf-8")
+        atomic_write_json(ADDRBOOK_PATH, {"blocks": blocks}, kind="index", min_bytes=2)
     except Exception:
         # best effort
         pass

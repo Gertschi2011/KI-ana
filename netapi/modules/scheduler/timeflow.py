@@ -6,16 +6,31 @@ Sprint 6.3 - Ethik & Mirror
 """
 import subprocess
 import time
+import os
 from pathlib import Path
 from datetime import datetime
 import json
+
+from netapi.utils.fs import atomic_write_json
+
+
+def _detect_root() -> Path:
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    return Path(__file__).resolve().parents[3]
 
 
 class TimeFlowScheduler:
     """Manages scheduled tasks for KI_ana"""
     
     def __init__(self):
-        self.base_dir = Path("/home/kiana/ki_ana")
+        self.base_dir = _detect_root()
         self.tools_dir = self.base_dir / "tools"
         self.log_file = self.base_dir / "data" / "scheduler.log"
         self.log_file.parent.mkdir(parents=True, exist_ok=True)
@@ -127,8 +142,7 @@ class TimeFlowScheduler:
             reflection_dir.mkdir(parents=True, exist_ok=True)
             
             reflection_file = reflection_dir / f"reflection_{reflection['id']}.json"
-            with open(reflection_file, 'w', encoding='utf-8') as f:
-                json.dump(reflection, f, ensure_ascii=False, indent=2)
+            atomic_write_json(reflection_file, reflection, kind="block", min_bytes=32)
             
             self.log(f"✅ Reflection saved: {reflection_file.name}")
             return True

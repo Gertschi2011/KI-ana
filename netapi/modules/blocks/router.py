@@ -209,7 +209,8 @@ def api_rehash_blocks(user=Depends(get_current_user_required)):
                     data["hash"] = calc
                     for k in ("signature", "pubkey", "signed_at"):
                         data.pop(k, None)
-                    path.write_text(json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+                    from netapi.utils.fs import atomic_write_json
+                    atomic_write_json(path, data, kind="block", min_bytes=32)
                     changed += 1
             except Exception as e:
                 errors.append(f"{origin}/{path.name}: {type(e).__name__}: {e}")

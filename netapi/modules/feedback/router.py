@@ -5,6 +5,8 @@ from typing import Optional, Dict, Any
 from pathlib import Path
 from importlib.machinery import SourceFileLoader
 from netapi.deps import get_current_user_required
+from netapi.utils.fs import atomic_write_text
+import os
 import time, json
 
 router = APIRouter(prefix="/feedback", tags=["feedback"])
@@ -48,7 +50,7 @@ async def post_feedback(
         }
         fb = _sign(fb)
         path = BLOCKS_DIR / f"{fb['id']}.json"
-        path.write_text(json.dumps(fb, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+        atomic_write_text(path, json.dumps(fb, ensure_ascii=False, indent=2, sort_keys=True))
         return JSONResponse({"ok": True, "id": fb["id"], "path": str(path)})
     except Exception as e:
         raise HTTPException(500, f"feedback failed: {e}")

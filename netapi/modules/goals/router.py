@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json
+import os
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -7,6 +8,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import HTMLResponse
 
 from system.self_diagnosis import current_goals, propose_learning_goal  # type: ignore
+from netapi.utils.fs import atomic_write_text
 
 router = APIRouter(prefix="/api/goals", tags=["goals"])
 
@@ -87,8 +89,9 @@ def _write_motivation_block(goal: Dict[str, Any]) -> None:
             "tags": ["motivation", "goal"] + list(goal.get("tags") or []),
             "meta": {"provenance": "self_diagnosis", "goal": goal},
         }
-        (BLOCKS_DIR / f"{block['id']}.json").write_text(
-            json.dumps(block, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8"
+        atomic_write_text(
+            BLOCKS_DIR / f"{block['id']}.json",
+            json.dumps(block, ensure_ascii=False, indent=2, sort_keys=True),
         )
     except Exception:
         pass

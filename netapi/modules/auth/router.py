@@ -201,6 +201,7 @@ def admin_create_user(payload: Dict[str, Any], user = Depends(_cur_user), db=Dep
     except Exception:
         daily_quota = None
     now_dt = datetime.utcnow()
+    now_epoch = int(time.time())
     u = User(
         username=username,
         email=email,
@@ -209,7 +210,7 @@ def admin_create_user(payload: Dict[str, Any], user = Depends(_cur_user), db=Dep
         plan=plan,
         plan_until=plan_until,
         created_at=now_dt,
-        updated_at=now_dt,
+        updated_at=now_epoch,
     )
     if daily_quota is not None and hasattr(u, 'daily_quota'):
         u.daily_quota = int(daily_quota)
@@ -465,7 +466,7 @@ def admin_set_role(payload: Dict[str, Any], user = Depends(_cur_user), db=Depend
         setattr(rec, 'tier', tier)
     if hasattr(rec, 'daily_quota') and dq is not None:
         setattr(rec, 'daily_quota', dq)
-    rec.updated_at = datetime.utcnow()
+    rec.updated_at = int(time.time())
     db.add(rec); db.commit(); db.refresh(rec)
     # Audit
     try:
@@ -560,7 +561,7 @@ def admin_set_status(payload: Dict[str, Any], user = Depends(_cur_user), db=Depe
             rec.suspended_reason = ""  # legacy column
         except Exception:
             pass
-    rec.updated_at = datetime.utcnow()
+    rec.updated_at = int(time.time())
     db.add(rec); db.commit(); db.refresh(rec)
     # Audit
     try:

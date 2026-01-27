@@ -5,17 +5,33 @@ Scans memory blocks and builds a hierarchical topic tree
 import json
 import hashlib
 import time
+import os
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from collections import defaultdict
+
+from netapi.utils.fs import atomic_write_json
+
+
+def _detect_root() -> Path:
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    return Path(__file__).resolve().parents[3]
 
 
 class AddressbookIndexer:
     """Builds and maintains a topic tree from memory blocks"""
     
-    def __init__(self, blocks_dir: str = "/home/kiana/ki_ana/memory/long_term/blocks"):
-        self.blocks_dir = Path(blocks_dir)
-        self.index_file = Path("/home/kiana/ki_ana/data/addressbook.index.json")
+    def __init__(self, blocks_dir: str | None = None):
+        root = _detect_root()
+        self.blocks_dir = Path(blocks_dir) if blocks_dir else (root / "memory" / "long_term" / "blocks")
+        self.index_file = root / "data" / "addressbook.index.json"
         self.tree = {}
         self.stats = {
             "total_blocks": 0,
@@ -229,9 +245,8 @@ class AddressbookIndexer:
     def _save_index(self, data: Dict[str, Any]):
         """Save index to file"""
         self.index_file.parent.mkdir(parents=True, exist_ok=True)
-        
-        with open(self.index_file, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
+
+        atomic_write_json(self.index_file, data, kind="index", min_bytes=2)
         
         print(f"💾 Index saved to: {self.index_file}")
     
@@ -251,9 +266,6 @@ class AddressbookIndexer:
 # Standalone function for external use
 def build_addressbook_index(blocks_dir: str = None) -> Dict[str, Any]:
     """Build addressbook index (standalone function)"""
-    if blocks_dir is None:
-        blocks_dir = "/home/kiana/ki_ana/memory/long_term/blocks"
-    
     indexer = AddressbookIndexer(blocks_dir)
     return indexer.build_index()
 

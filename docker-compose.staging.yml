@@ -50,6 +50,7 @@ services:
     build:
       context: .
       dockerfile: netapi/Dockerfile
+    user: "1000:1000"
     restart: unless-stopped
     environment:
       ENV: staging
@@ -69,7 +70,7 @@ services:
       TZ: Europe/Vienna
       KI_ROOT: /home/kiana/ki_ana
     volumes:
-      - /home/kiana/ki_ana/memory:/home/kiana/ki_ana/memory
+      - /home/kiana/ki_ana/memory_staging:/home/kiana/ki_ana/memory
       - /home/kiana/ki_ana/system:/home/kiana/ki_ana/system:ro
       - /home/kiana/ki_ana/data:/home/kiana/ki_ana/data
     depends_on:

@@ -6,6 +6,8 @@ import os, json, time, math, re, random, string, hashlib, sqlite3
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Any
 
+from netapi.utils.fs import atomic_write_json
+
 def _detect_root() -> Path:
     env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
     if env_root:
@@ -58,7 +60,8 @@ def _read_json(p: Path) -> dict:
 
 def _write_json(p: Path, data: dict) -> None:
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    # Index files are rewritten frequently; keep these atomic to avoid partial JSON.
+    atomic_write_json(p, data, kind="index", min_bytes=2)
 
 def _canonical_for_hash(data: Dict[str, Any]) -> Dict[str, Any]:
     """Return a canonical dict for hashing: exclude transient hash fields."""
@@ -184,7 +187,7 @@ def add_block(title: str, content: str, tags: Optional[List[str]] = None, url: O
     data["hash"] = _calc_hash(data)
     # Datei speichern
     out_path = MEM_DIR / f"{bid}.json"
-    out_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    atomic_write_json(out_path, data, kind="block", min_bytes=32)
 
     # Indizes aktualisieren
     _update_indexes(bid, data)

@@ -7,10 +7,38 @@ Sprint 6.3 - Ethik & Mirror
 import json
 import time
 import hashlib
+import os
+import sys
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 import subprocess
+
+# Allow running as a script from any CWD
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from netapi.utils.fs import atomic_write_json
+
+
+def _detect_root() -> Path:
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    return Path(__file__).resolve().parents[1]
+
+
+def _is_root() -> bool:
+    try:
+        return os.geteuid() == 0
+    except Exception:
+        return False
 
 
 class MirrorSystem:
@@ -18,11 +46,15 @@ class MirrorSystem:
     
     def __init__(
         self,
-        blocks_dir: str = "/home/kiana/ki_ana/memory/long_term/blocks/mirror",
-        config_file: str = "/home/kiana/ki_ana/data/mirror_topics.json"
+        blocks_dir: str,
+        config_file: str,
+        *,
+        write_enabled: bool = False,
     ):
         self.blocks_dir = Path(blocks_dir)
-        self.blocks_dir.mkdir(parents=True, exist_ok=True)
+        self.write_enabled = bool(write_enabled)
+        if self.write_enabled:
+            self.blocks_dir.mkdir(parents=True, exist_ok=True)
         
         self.config_file = Path(config_file)
         self.topics = self._load_topics()
@@ -172,17 +204,19 @@ class MirrorSystem:
             "content": snapshot_data,
             "tags": ["mirror", "auto-fetch", topic.get('frequency', 'weekly')]
         }
-        
-        # Save as latest
+
+        if not self.write_enabled:
+            print(f"💾 [dry-run] Would save: mirror_{topic_id}_latest.json")
+            return
+
+        # Save as latest (atomic)
         latest_file = self.blocks_dir / f"mirror_{topic_id}_latest.json"
-        with open(latest_file, 'w', encoding='utf-8') as f:
-            json.dump(block, f, ensure_ascii=False, indent=2)
-        
-        # Save timestamped version
+        atomic_write_json(latest_file, block, kind="block", min_bytes=32)
+
+        # Save timestamped version (atomic)
         archive_file = self.blocks_dir / f"mirror_{topic_id}_{timestamp}.json"
-        with open(archive_file, 'w', encoding='utf-8') as f:
-            json.dump(block, f, ensure_ascii=False, indent=2)
-        
+        atomic_write_json(archive_file, block, kind="block", min_bytes=32)
+
         print(f"💾 Saved: {latest_file.name}")
     
     def _fetch_url(self, url: str) -> Dict[str, Any]:
@@ -218,10 +252,48 @@ def main():
         action='store_true',
         help='Force refresh ignoring TTL'
     )
+
+    parser.add_argument(
+        '--memory-dir',
+        type=str,
+        default=None,
+        help='Explicit memory dir (required with --write), e.g. /home/kiana/ki_ana/memory'
+    )
+    parser.add_argument(
+        '--config',
+        type=str,
+        default=None,
+        help='Path to mirror_topics.json (optional)'
+    )
+    parser.add_argument(
+        '--write',
+        action='store_true',
+        help='Enable writes (default: dry-run / read-only)'
+    )
+    parser.add_argument(
+        '--allow-root',
+        action='store_true',
+        help='Allow running as root (default: abort when root)'
+    )
     
     args = parser.parse_args()
-    
-    mirror = MirrorSystem()
+
+    if _is_root() and not args.allow_root:
+        print("Refusing to run as root. Use --allow-root if you really mean it.")
+        raise SystemExit(2)
+
+    root = _detect_root()
+
+    write_enabled = bool(args.write)
+    if write_enabled and not args.memory_dir:
+        print("--write requires --memory-dir to avoid accidental writes.")
+        raise SystemExit(2)
+
+    memory_dir = Path(args.memory_dir).expanduser().resolve() if args.memory_dir else (root / "memory")
+    blocks_dir = memory_dir / "long_term" / "blocks" / "mirror"
+    config_file = Path(args.config).expanduser().resolve() if args.config else (root / "data" / "mirror_topics.json")
+
+    mirror = MirrorSystem(str(blocks_dir), str(config_file), write_enabled=write_enabled)
     stats = mirror.run_mirror(
         topic_filter=args.topic,
         force_refresh=args.force

@@ -5,23 +5,39 @@ Phase 10 - Kreativität
 import json
 import time
 import random
+import os
 from pathlib import Path
 from typing import Dict, List, Any, Optional
+
+from netapi.utils.fs import atomic_write_json
+
+
+def _detect_root() -> Path:
+    env_root = (os.getenv("KI_ROOT") or os.getenv("KIANA_ROOT") or os.getenv("APP_ROOT") or "").strip()
+    if env_root:
+        try:
+            p = Path(env_root).expanduser().resolve()
+            if p.exists() and p.is_dir():
+                return p
+        except Exception:
+            pass
+    return Path(__file__).resolve().parents[3]
 
 
 class CreativeEngine:
     """Handles creative expression - poetry, imagery, etc."""
     
     def __init__(self):
+        self.root = _detect_root()
         self.config = self._load_config()
-        self.creative_dir = Path("/home/kiana/ki_ana/memory/long_term/blocks/creative")
+        self.creative_dir = self.root / "memory" / "long_term" / "blocks" / "creative"
         self.creative_dir.mkdir(parents=True, exist_ok=True)
         
         self.symbols = self.config.get('symbol_system', {}).get('core_symbols', {})
     
     def _load_config(self) -> Dict[str, Any]:
         """Load creative config"""
-        config_file = Path("/home/kiana/ki_ana/data/creative_config.json")
+        config_file = self.root / "data" / "creative_config.json"
         
         if not config_file.exists():
             return {}
@@ -175,8 +191,7 @@ class CreativeEngine:
         # Save
         file_path = self.creative_dir / f"{imagery_block['id']}.json"
         
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(imagery_block, f, ensure_ascii=False, indent=2)
+        atomic_write_json(file_path, imagery_block, kind="block", min_bytes=32)
         
         print(f"   ✅ Imagery created")
         
@@ -233,8 +248,7 @@ class CreativeEngine:
         # Save poem
         file_path = self.creative_dir / f"{poem_block['id']}.json"
         
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(poem_block, f, ensure_ascii=False, indent=2)
+        atomic_write_json(file_path, poem_block, kind="block", min_bytes=32)
         
         return poem_block
     
@@ -284,8 +298,7 @@ class CreativeEngine:
         # Save
         file_path = self.creative_dir / f"{reflection_block['id']}.json"
         
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(reflection_block, f, ensure_ascii=False, indent=2)
+        atomic_write_json(file_path, reflection_block, kind="block", min_bytes=32)
         
         return reflection_block
     

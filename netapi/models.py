@@ -1,11 +1,80 @@
 # models.py – SQLAlchemy Modelle
+from __future__ import annotations
+
 from datetime import datetime
+import time
 import uuid
 
 from sqlalchemy import Column, Integer, String, Text, DateTime, UniqueConstraint, ForeignKey, Index, JSON
+from sqlalchemy.types import TypeDecorator
 from .db import Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Boolean
+
+
+class FlexibleEpoch(TypeDecorator):
+    """Stores a timestamp in DB but tolerates legacy mixed values.
+
+    We have real-world SQLite rows where `updated_at` is either an epoch int
+    or a datetime string like "2026-01-07 06:14:45.106290".
+    This type normalizes results to an `int` epoch (UTC).
+    """
+
+    impl = Text
+    cache_ok = True
+
+    def process_bind_param(self, value, dialect):  # type: ignore[override]
+        if value is None:
+            return None
+        if isinstance(value, bool):
+            return int(value)
+        if isinstance(value, (int, float)):
+            return str(int(value))
+        if isinstance(value, datetime):
+            return str(int(value.timestamp()))
+        if isinstance(value, str):
+            s = value.strip()
+            if not s:
+                return None
+            if s.isdigit():
+                return s
+            # Try parsing datetime-like strings; fallback to now.
+            try:
+                dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+                return str(int(dt.timestamp()))
+            except Exception:
+                return str(int(time.time()))
+        return str(int(time.time()))
+
+    def process_result_value(self, value, dialect):  # type: ignore[override]
+        if value is None:
+            return 0
+        if isinstance(value, bool):
+            return int(value)
+        if isinstance(value, (int, float)):
+            return int(value)
+        if isinstance(value, datetime):
+            return int(value.timestamp())
+        if isinstance(value, bytes):
+            try:
+                value = value.decode("utf-8", errors="ignore")
+            except Exception:
+                return 0
+        if isinstance(value, str):
+            s = value.strip()
+            if not s:
+                return 0
+            if s.isdigit():
+                try:
+                    return int(s)
+                except Exception:
+                    return 0
+            try:
+                dt = datetime.fromisoformat(s.replace("Z", "+00:00"))
+                return int(dt.timestamp())
+            except Exception:
+                return 0
+        return 0
 
 # Bestehendes User-Modell (so lassen; nur Beispiel-Felder)
 class User(Base):
@@ -25,7 +94,7 @@ class User(Base):
     plan = Column(String, default="free")
     plan_until = Column(Integer, default=0)
     created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(FlexibleEpoch, default=0)
 
     # Account lifecycle / moderation (compose uses Postgres where these names exist)
     account_status = Column(Text, default="active")
