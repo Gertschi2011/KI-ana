@@ -27,6 +27,12 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow)
 
+    # Account lifecycle / moderation (compose uses Postgres where these names exist)
+    account_status = Column(Text, default="active")
+    deleted_at = Column(Integer, default=0)
+    is_active = Column(Boolean, default=True)
+    locked_until = Column(Integer, default=0)
+
 
 class AuthSession(Base):
     __tablename__ = "auth_sessions"

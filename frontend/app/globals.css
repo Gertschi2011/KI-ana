@@ -264,7 +264,7 @@ body {
 
 /* Cards & forms */
 .card {
-	@apply p-6;
+	@apply p-4 md:p-6;
 	background: var(--kiana-card-bg);
 	border: 1px solid var(--kiana-card-border);
 	border-radius: var(--kiana-radius-card);
@@ -283,12 +283,12 @@ body {
 	border-color: rgba(123,140,255,0.42);
 	box-shadow: 0 0 0 4px rgba(123,140,255,0.16), 0 10px 22px rgba(123,140,255,0.10);
 }
-.form { @apply grid gap-3 max-w-md; }
+.form { @apply grid gap-3 max-w-full md:max-w-md; }
 .small { @apply text-sm; color: var(--k-muted); }
 
 /* Design-system primitives (new) */
 .kiana-card {
-	@apply p-6;
+	@apply p-4 md:p-6;
 	background: var(--kiana-card-bg);
 	border: 1px solid var(--kiana-card-border);
 	border-radius: var(--kiana-radius-card);
@@ -530,12 +530,12 @@ body {
 	@apply w-full text-sm;
 }
 .kiana-table th {
-	@apply text-left py-3 px-3;
+	@apply text-left py-3 px-2 md:px-3;
 	color: var(--k-muted);
 	font-weight: 600;
 }
 .kiana-table td {
-	@apply py-3 px-3;
+	@apply py-3 px-2 md:px-3;
 }
 .kiana-table thead tr {
 	border-bottom: 1px solid var(--k-border);

@@ -39,10 +39,10 @@ def _require_admin_or_papa(current: dict | None) -> None:
     # Allow if Papa‑Modus is enabled globally
     if _papa_on():
         return
-    # Else require role 'admin' or 'papa'
-    if has_any_role(current, {"admin", "papa", "creator"}):
+    # Else require creator role (strict; UI should not expose viewer to non-creator)
+    if has_any_role(current, {"creator"}):
         return
-    raise HTTPException(403, "viewer requires Papa‑Modus or admin/papa role")
+    raise HTTPException(403, "viewer requires creator role")
 
 # ---------- Helpers ---------------------------------------------------------
 
@@ -590,7 +590,9 @@ async def rehash_block(file: str = Body(..., embed=True), user = Depends(get_cur
     Rechnet den Hash eines Blocks mit der kanonischen Methode neu
     und speichert ihn im Feld 'hash'. Nur für eingeloggte Nutzer mit Rolle 'creator'.
     """
-    # any logged-in user may request a rehash on a single file
+    from netapi.deps import has_any_role
+    if not has_any_role(user, {"creator"}):
+        raise HTTPException(403, "creator role required")
 
     path = PROJECT_ROOT / file
     if not path.exists() or not path.is_file():
@@ -680,7 +682,9 @@ async def sign_all_blocks(user = Depends(get_current_user_required)):
 @router.post("/api/block/rehash-dryrun")
 async def rehash_block_dryrun(file: str = Body(..., embed=True), user = Depends(get_current_user_required)):
     """Nur berechnen, nicht speichern – für UI‑Diff."""
-    # any logged-in user may test a single file
+    from netapi.deps import has_any_role
+    if not has_any_role(user, {"creator"}):
+        raise HTTPException(403, "creator role required")
 
     path = PROJECT_ROOT / file
     if not path.exists() or not path.is_file():
@@ -702,8 +706,8 @@ async def rehash_all_blocks(user = Depends(get_current_user_required)):
     Nur für Nutzer mit Rolle 'creator'.
     """
     from netapi.deps import has_any_role
-    if not has_any_role(user, {"worker", "admin"}):
-        raise HTTPException(403, "worker role required")
+    if not has_any_role(user, {"creator"}):
+        raise HTTPException(403, "creator role required")
 
     fixed = 0
     checked = 0

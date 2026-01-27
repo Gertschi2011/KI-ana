@@ -137,7 +137,8 @@ def _looks_like_current_query(msg: str) -> bool:
         t = str(msg).lower()
         if "?" in t and any(k in t for k in ["wie ist", "wie sind", "stand ", "aktuell", "verhältnis", "beziehung"]):
             return True
-        if any(k in t for k in ["stand ", "aktueller stand", "aktuellen stand", "was weißt du über", "was weisst du über"]):
+        # Only treat as current-events query if it explicitly asks for the current state.
+        if any(k in t for k in ["stand ", "aktueller stand", "aktuellen stand", "aktuell", "heute", "derzeit"]):
             return True
     except Exception:
         return False
@@ -5253,7 +5254,8 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                             style=_sanitize_style(body.style), bullets=_sanitize_bullets(body.bullets),
                             logic=_sanitize_logic(getattr(body, 'logic', 'balanced')),
                             fmt=_sanitize_format(getattr(body, 'format', 'plain')),
-                            retrieval_snippet=web_ctx_snippet,
+                            # Prevent reasoner from auto-fetching web context for general knowledge questions.
+                            retrieval_snippet=(web_ctx_snippet or _retr_snip),
                         )
                     try:
                         r_llm = await asyncio.wait_for(_run_llm_consult(), timeout=PLANNER_TIMEOUT_SECONDS)
@@ -5557,7 +5559,11 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             except Exception:
                 pass
             # 4) Ask the user (childlike), set pending learning markers
-            ask = "Das weiß ich noch nicht so gut. Magst du mir kurz erklären, worum es da geht oder wo ich nachschauen soll?"
+            ask = (
+                "Dazu habe ich noch keine gespeicherten Informationen. "
+                "Wenn du willst, kann ich es dir aber aus allgemeinem Wissen erklären – "
+                "sag mir nur kurz, ob du eine kurze Übersicht oder eine detailliertere Erklärung möchtest."
+            )
             if state:
                 state.pending_learning = {"topic_path": topic_path}
                 try:

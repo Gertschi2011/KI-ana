@@ -95,6 +95,7 @@ class UserCreate(BaseModel):
     role: str = "user"
     is_papa: bool = False
     plan: str = "free"
+    status: str = "active"  # active|locked
 
 
 class UserUpdate(BaseModel):
@@ -103,12 +104,63 @@ class UserUpdate(BaseModel):
     role: str | None = None
     is_papa: bool | None = None
     plan: str | None = None
+    status: str | None = None  # active|locked
+
+
+def _normalize_role(role: str | None) -> str:
+    r = str(role or "user").strip().lower()
+    if r in {"user", "user_pro"}:
+        return r
+    raise HTTPException(status_code=400, detail="role must be one of user|user_pro")
+
+
+def _normalize_status_to_db(status: str | None) -> tuple[str, str]:
+    """Return (account_status, reason_placeholder).
+
+    UI contract uses active|locked. DB uses account_status + locked_until/is_active.
+    Second tuple element kept for backward compatibility with existing call sites.
+    """
+    s = str(status or "active").strip().lower()
+    if s in {"active", "unlock", "unlocked"}:
+        return "active", ""
+    if s in {"locked", "lock", "suspended"}:
+        return "locked", ""
+    raise HTTPException(status_code=400, detail="status must be one of active|locked")
+
+
+def _status_for_ui(u: User) -> str:
+    try:
+        import time as _t
+        now = int(_t.time())
+    except Exception:
+        now = 0
+    try:
+        if int(getattr(u, "deleted_at", 0) or 0) > 0:
+            return "locked"
+    except Exception:
+        pass
+    try:
+        if int(getattr(u, "is_active", 1) or 1) == 0:
+            return "locked"
+    except Exception:
+        pass
+    try:
+        if int(getattr(u, "locked_until", 0) or 0) > now:
+            return "locked"
+    except Exception:
+        pass
+    try:
+        if str(getattr(u, "account_status", "active") or "active").strip().lower() != "active":
+            return "locked"
+    except Exception:
+        pass
+    return "active"
 
 
 @router.get("/users")
 def list_users(user = Depends(get_current_user_required)):
     """List all users (admin only)"""
-    require_role(user, {"admin", "creator"})
+    require_role(user, {"creator"})
     
     try:
         with SessionLocal() as db:
@@ -124,6 +176,9 @@ def list_users(user = Depends(get_current_user_required)):
                         "roles": [u.role] if u.role else [],
                         "is_papa": u.is_papa,
                         "plan": u.plan,
+                        "status": _status_for_ui(u),
+                        "status_raw": getattr(u, 'account_status', None),
+                        "deleted_at": int(getattr(u, 'deleted_at', 0) or 0),
                         "created_at": u.created_at,
                         "updated_at": u.updated_at
                     }
@@ -137,7 +192,7 @@ def list_users(user = Depends(get_current_user_required)):
 @router.post("/users")
 def create_user(data: UserCreate, user = Depends(get_current_user_required)):
     """Create new user (admin only)"""
-    require_role(user, {"admin", "creator"})
+    require_role(user, {"creator"})
     
     try:
         with SessionLocal() as db:
@@ -147,7 +202,10 @@ def create_user(data: UserCreate, user = Depends(get_current_user_required)):
             ).first()
             
             if existing:
-                raise HTTPException(status_code=400, detail="Username or email already exists")
+                raise HTTPException(status_code=409, detail="Username or email already exists")
+
+            role_norm = _normalize_role(data.role)
+            acct_status, _reason_unused = _normalize_status_to_db(data.status)
             
             # Create user
             from datetime import datetime
@@ -156,12 +214,30 @@ def create_user(data: UserCreate, user = Depends(get_current_user_required)):
                 username=data.username,
                 email=data.email,
                 password_hash=generate_password_hash(data.password),
-                role=data.role,
+                role=role_norm,
                 is_papa=data.is_papa,
                 plan=data.plan,
                 created_at=datetime.utcnow(),
-                updated_at=now
+                updated_at=datetime.utcnow(),
             )
+            # lifecycle fields
+            try:
+                setattr(new_user, 'account_status', acct_status)
+            except Exception:
+                pass
+            try:
+                setattr(new_user, 'deleted_at', 0)
+            except Exception:
+                pass
+            try:
+                setattr(new_user, 'is_active', True if acct_status == 'active' else False)
+            except Exception:
+                pass
+            try:
+                # if locked, set a long lock window (UI still treats it as locked)
+                setattr(new_user, 'locked_until', 0 if acct_status == 'active' else (now + 10 * 365 * 24 * 3600))
+            except Exception:
+                pass
             
             db.add(new_user)
             db.commit()
@@ -180,7 +256,7 @@ def create_user(data: UserCreate, user = Depends(get_current_user_required)):
 @router.patch("/users/{user_id}")
 def update_user(user_id: int, data: UserUpdate, user = Depends(get_current_user_required)):
     """Update user (admin only)"""
-    require_role(user, {"admin", "creator"})
+    require_role(user, {"creator"})
     
     try:
         with SessionLocal() as db:
@@ -192,15 +268,38 @@ def update_user(user_id: int, data: UserUpdate, user = Depends(get_current_user_
             # Update fields
             from datetime import datetime
             if data.username is not None:
+                # conflict check (exclude self)
+                existing = db.query(User).filter(User.username == data.username, User.id != user_id).first()
+                if existing:
+                    raise HTTPException(status_code=409, detail="Username already exists")
                 target_user.username = data.username
             if data.email is not None:
+                existing = db.query(User).filter(User.email == data.email, User.id != user_id).first()
+                if existing:
+                    raise HTTPException(status_code=409, detail="Email already exists")
                 target_user.email = data.email
             if data.role is not None:
-                target_user.role = data.role
+                target_user.role = _normalize_role(data.role)
             if data.is_papa is not None:
                 target_user.is_papa = data.is_papa
             if data.plan is not None:
                 target_user.plan = data.plan
+
+            if data.status is not None:
+                acct_status, _reason_unused = _normalize_status_to_db(data.status)
+                try:
+                    setattr(target_user, 'account_status', acct_status)
+                except Exception:
+                    pass
+                try:
+                    setattr(target_user, 'is_active', True if acct_status == 'active' else False)
+                except Exception:
+                    pass
+                try:
+                    now = int(time.time())
+                    setattr(target_user, 'locked_until', 0 if acct_status == 'active' else (now + 10 * 365 * 24 * 3600))
+                except Exception:
+                    pass
             
             target_user.updated_at = datetime.utcnow()
             
@@ -219,7 +318,7 @@ def update_user(user_id: int, data: UserUpdate, user = Depends(get_current_user_
 @router.delete("/users/{user_id}")
 def delete_user(user_id: int, user = Depends(get_current_user_required)):
     """Delete user (admin only)"""
-    require_role(user, {"admin", "creator"})
+    require_role(user, {"creator"})
     
     try:
         with SessionLocal() as db:

@@ -391,6 +391,9 @@ def admin_list_users(user = Depends(_cur_user), db=Depends(get_db)):
     rows = db.query(User).all()
     out = []
     for u in rows:
+        acct_status = getattr(u, 'account_status', None)
+        if not acct_status:
+            acct_status = getattr(u, 'status', 'active')
         out.append({
             "id": u.id,
             "username": u.username,
@@ -402,10 +405,41 @@ def admin_list_users(user = Depends(_cur_user), db=Depends(get_db)):
             "plan_until": int(u.plan_until or 0),
             "birthdate": getattr(u, 'birthdate', None),
             "is_kid": bool(is_kid({"birthdate": getattr(u, 'birthdate', None)})),
-            "status": getattr(u, 'status', 'active') or 'active',
+            "status": str(acct_status or 'active'),
             "suspended_reason": getattr(u, 'suspended_reason', ''),
         })
     return {"ok": True, "items": out}
+
+
+@router.get("/admin/users/{user_id}")
+def admin_get_user(user_id: int, user = Depends(_cur_user), db=Depends(get_db)):
+    _require_role(user, {"creator"})
+    rec = db.query(User).filter(User.id == int(user_id)).first()
+    if not rec:
+        raise HTTPException(404, "user not found")
+    acct_status = getattr(rec, 'account_status', None)
+    if not acct_status:
+        acct_status = getattr(rec, 'status', 'active')
+    return {
+        "ok": True,
+        "user": {
+            "id": rec.id,
+            "username": rec.username,
+            "email": rec.email,
+            "role": rec.role or "user",
+            "tier": getattr(rec, 'tier', 'user') or 'user',
+            "daily_quota": int(getattr(rec, 'daily_quota', 20) or 20),
+            "plan": getattr(rec, 'plan', None) or 'free',
+            "plan_until": int(getattr(rec, 'plan_until', 0) or 0),
+            "birthdate": getattr(rec, 'birthdate', None),
+            "is_kid": bool(is_kid({"birthdate": getattr(rec, 'birthdate', None)})),
+            "status": str(acct_status or 'active'),
+            "suspended_reason": getattr(rec, 'suspended_reason', ''),
+            "locked_until": int(getattr(rec, 'locked_until', 0) or 0),
+            "deleted_at": int(getattr(rec, 'deleted_at', 0) or 0),
+            "is_active": bool(getattr(rec, 'is_active', True)),
+        },
+    }
 
 @router.post("/admin/users/set-role")
 def admin_set_role(payload: Dict[str, Any], user = Depends(_cur_user), db=Depends(get_db)):
@@ -466,17 +500,66 @@ def admin_set_status(payload: Dict[str, Any], user = Depends(_cur_user), db=Depe
     if not rec:
         raise HTTPException(404, "user not found")
     now = int(time.time())
-    rec.status = new_status
+    # Prefer Postgres schema column 'account_status'; fall back to legacy 'status'
+    try:
+        setattr(rec, 'account_status', new_status)
+    except Exception:
+        try:
+            rec.status = new_status  # type: ignore[attr-defined]
+        except Exception:
+            pass
     if new_status in {"suspended","banned"}:
-        rec.suspended_reason = reason[:500]
-        rec.deleted_at = 0
+        try:
+            rec.deleted_at = 0
+        except Exception:
+            pass
+        try:
+            rec.locked_until = now + 10 * 365 * 24 * 3600  # type: ignore[attr-defined]
+        except Exception:
+            pass
+        try:
+            rec.is_active = False  # type: ignore[attr-defined]
+        except Exception:
+            pass
+        try:
+            rec.suspended_reason = reason[:500]  # legacy column
+        except Exception:
+            pass
     elif new_status == "deleted":
-        rec.deleted_at = now
-        rec.suspended_reason = reason[:500]
+        try:
+            rec.deleted_at = now
+        except Exception:
+            pass
+        try:
+            rec.locked_until = now + 10 * 365 * 24 * 3600  # type: ignore[attr-defined]
+        except Exception:
+            pass
+        try:
+            rec.is_active = False  # type: ignore[attr-defined]
+        except Exception:
+            pass
+        try:
+            rec.suspended_reason = reason[:500]  # legacy column
+        except Exception:
+            pass
     else:
         # active
-        rec.suspended_reason = ""
-        rec.deleted_at = 0
+        try:
+            rec.deleted_at = 0
+        except Exception:
+            pass
+        try:
+            rec.locked_until = 0  # type: ignore[attr-defined]
+        except Exception:
+            pass
+        try:
+            rec.is_active = True  # type: ignore[attr-defined]
+        except Exception:
+            pass
+        try:
+            rec.suspended_reason = ""  # legacy column
+        except Exception:
+            pass
     rec.updated_at = datetime.utcnow()
     db.add(rec); db.commit(); db.refresh(rec)
     # Audit
@@ -490,7 +573,11 @@ def admin_set_status(payload: Dict[str, Any], user = Depends(_cur_user), db=Depe
         )
     except Exception:
         pass
-    return {"ok": True, "user": {"id": rec.id, "status": rec.status, "deleted_at": rec.deleted_at, "reason": rec.suspended_reason}}
+    status_out = getattr(rec, 'account_status', None)
+    if not status_out:
+        status_out = getattr(rec, 'status', 'active')
+    reason_out = getattr(rec, 'suspended_reason', '')
+    return {"ok": True, "user": {"id": rec.id, "status": status_out, "deleted_at": getattr(rec, 'deleted_at', 0), "reason": reason_out}}
 @router.api_route("/logout", methods=["GET", "POST"])
 def logout(request: Request):
     resp = JSONResponse({"ok": True}); clear_cookie(resp, request=request); return resp

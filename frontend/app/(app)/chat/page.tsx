@@ -36,6 +36,7 @@ export default function ChatPage() {
   const [movePickerFolderId, setMovePickerFolderId] = useState<number | null>(null);
   const [activeConvFolderPick, setActiveConvFolderPick] = useState<number | null>(null);
   const [explainOpenMsgId, setExplainOpenMsgId] = useState<string | null>(null);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const convRef = useRef<string | null>(null);
   const bufferRef = useRef<string>("");
@@ -184,6 +185,17 @@ export default function ChatPage() {
     refreshFolders();
     refreshConversations();
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    // default: open on desktop, closed on small screens
+    if (typeof window !== 'undefined') {
+      const isDesktop = window.innerWidth >= 768;
+      setSidebarOpen(isDesktop);
+      const onResize = () => setSidebarOpen(window.innerWidth >= 768);
+      window.addEventListener('resize', onResize);
+      return () => window.removeEventListener('resize', onResize);
+    }
   }, []);
 
   const filteredConvs = activeFolderId == null ? convs : convs.filter((c: any) => Number(c?.folder_id) === Number(activeFolderId));
@@ -647,10 +659,186 @@ export default function ChatPage() {
     }
   }
 
+  function renderSidebarContent() {
+    return (
+      <>
+        <div className="flex items-center justify-between">
+          <div className="kiana-sidebar-brand">
+            <span className="kiana-status-dot" aria-hidden />
+            <div>
+              <div className="kiana-sidebar-title">KI_ana</div>
+              <div className="kiana-sidebar-sub">Online</div>
+            </div>
+          </div>
+          <button className="kiana-btn kiana-btn-primary" onClick={newConversation} disabled={uiBusy}>＋ Neu</button>
+        </div>
+
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <button
+            className="kiana-btn"
+            onClick={createFolder}
+            disabled={uiBusy || !foldersAvailable}
+            title={!foldersAvailable ? 'Ordner sind gerade nicht verfügbar' : 'Ordner erstellen'}
+          >＋ Ordner</button>
+          <button className="kiana-btn kiana-btn-ghost" onClick={refreshConversations} disabled={uiBusy}>↻ Aktualisieren</button>
+        </div>
+
+        {foldersAvailable && activeConvId != null && (
+          <div className="mt-3 p-3 rounded-xl border" style={{ borderColor: 'var(--k-border)', background: 'rgba(79,70,229,0.03)' }}>
+            <div className="text-xs mb-1" style={{ color: 'var(--k-muted)' }}>Aktive Unterhaltung → Ordner</div>
+            <div className="flex items-center gap-2">
+              <select
+                className="input"
+                value={activeConvFolderPick == null ? '' : String(activeConvFolderPick)}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  const fid = v ? Number(v) : null;
+                  setActiveConvFolderPick(fid);
+                  setActiveConversationFolder(fid);
+                }}
+                disabled={uiBusy}
+              >
+                <option value="">(Ohne Ordner)</option>
+                {folders.map((f: any) => (
+                  <option key={f.id} value={String(f.id)}>{String(f.icon || '📁')} {String(f.name || 'Ordner')}</option>
+                ))}
+              </select>
+              <button className="kiana-btn" disabled={uiBusy} onClick={() => setActiveConversationFolder(null)} title="Aus Ordner entfernen">↩</button>
+            </div>
+          </div>
+        )}
+
+        {!foldersAvailable && (
+          <div className="mt-3 kiana-alert" style={{ padding: 12 }}>
+            <div className="text-xs" style={{ color: 'var(--k-muted)' }}>
+              Ordner sind aktuell nicht verfügbar.
+            </div>
+          </div>
+        )}
+
+        {foldersAvailable && (
+        <div className="mt-3">
+          <div className="flex items-center justify-between">
+            <div className="text-xs mb-1" style={{ color: 'var(--k-muted)' }}>Ordner</div>
+          </div>
+          <div className="flex flex-col gap-1">
+            <button
+              className={`kiana-sidebar-item ${activeFolderId == null ? 'kiana-sidebar-item-active' : ''}`}
+              onClick={() => setActiveFolderId(null)}
+              disabled={uiBusy}
+            >Alle</button>
+            {folders.map((f: any) => (
+              <div key={f.id} className={`flex items-center gap-2 ${Number(activeFolderId) === Number(f.id) ? 'kiana-sidebar-item-active' : ''}`} style={{ borderRadius: 999, padding: '6px 8px' }}>
+                <button
+                  className="flex-1 text-left truncate"
+                  onClick={() => setActiveFolderId(Number(f.id))}
+                  disabled={uiBusy}
+                  title={String(f.name)}
+                >{String(f.icon || '📁')} {String(f.name || 'Ordner')} <span className="opacity-60">({Number(f.conversation_count || 0)})</span></button>
+                <button
+                  className="text-xs"
+                  style={{ color: 'var(--k-muted)' }}
+                  onClick={() => moveActiveConversationToFolder(Number(f.id))}
+                  disabled={uiBusy || !activeConvId}
+                  title="Aktive Unterhaltung hier einsortieren"
+                >↪</button>
+                <button className="text-xs" style={{ color: 'var(--k-muted)' }} onClick={() => renameFolder(Number(f.id))} disabled={uiBusy} title="Umbenennen">✎</button>
+                <button className="text-xs" style={{ color: 'var(--k-danger)' }} onClick={() => deleteFolder(Number(f.id))} disabled={uiBusy} title="Löschen">✕</button>
+              </div>
+            ))}
+          </div>
+        </div>
+        )}
+        <div className="mt-4">
+          <div className="text-xs mb-1" style={{ color: 'var(--k-muted)' }}>Unterhaltungen</div>
+          <div className="flex flex-col gap-1">
+            {filteredConvs.map((c: any) => (
+              <div key={c.id} className={`flex items-center gap-2 ${Number(activeConvId) === Number(c.id) ? 'kiana-sidebar-item-active' : ''}`} style={{ borderRadius: 999, padding: '6px 8px' }}>
+                <button className="flex-1 text-left truncate" onClick={() => loadConversation(Number(c.id))} disabled={uiBusy}>
+                  {String(c.title || 'Unterhaltung')}
+                </button>
+                {foldersAvailable && (
+                  <>
+                    <button
+                      className="text-xs opacity-70"
+                      onClick={() => {
+                        const cid = Number(c.id);
+                        setMovePickerConvId((cur) => (cur === cid ? null : cid));
+                        setMovePickerFolderId(null);
+                      }}
+                      disabled={uiBusy}
+                      title="In Ordner verschieben"
+                    >↪</button>
+                    {c?.folder_id != null && (
+                      <button className="text-xs opacity-70" onClick={() => removeConversationFromFolder(Number(c.id))} disabled={uiBusy} title="Aus Ordner entfernen">↩</button>
+                    )}
+                  </>
+                )}
+                <button className="text-xs opacity-70" onClick={() => renameConversation(Number(c.id))} disabled={uiBusy} title="Umbenennen">✎</button>
+                <button className="text-xs" style={{ color: 'var(--k-danger)' }} onClick={() => deleteConversation(Number(c.id))} disabled={uiBusy} title="Löschen">✕</button>
+              </div>
+            ))}
+            {foldersAvailable && movePickerConvId != null && (
+              <div className="px-2 py-2 text-xs border border-gray-200 dark:border-gray-800 rounded">
+                <div className="opacity-80 mb-2">In Ordner verschieben</div>
+                <div className="flex items-center gap-2">
+                  <select
+                    className="input"
+                    value={movePickerFolderId == null ? '' : String(movePickerFolderId)}
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setMovePickerFolderId(v ? Number(v) : null);
+                    }}
+                      disabled={uiBusy}
+                  >
+                    <option value="">(Ordner wählen)</option>
+                    {folders.map((f: any) => (
+                      <option key={f.id} value={String(f.id)}>{String(f.icon || '📁')} {String(f.name || 'Ordner')}</option>
+                    ))}
+                  </select>
+                  <button
+                    className="kiana-btn"
+                    disabled={uiBusy || movePickerFolderId == null}
+                    onClick={() => moveConversationToFolder(Number(movePickerConvId), Number(movePickerFolderId))}
+                  >Verschieben</button>
+                  <button className="kiana-btn" disabled={uiBusy} onClick={() => setMovePickerConvId(null)}>Abbrechen</button>
+                </div>
+              </div>
+            )}
+            {filteredConvs.length === 0 && <div className="text-xs opacity-60 px-2 py-2">Keine Unterhaltungen</div>}
+          </div>
+        </div>
+
+        {streamError && (
+          <div className="mt-4 p-3 rounded-xl border" style={{ borderColor: 'rgba(220,38,38,0.25)', background: 'rgba(220,38,38,0.06)', color: 'var(--k-danger)' }}>
+            <div className="text-sm">{streamError}</div>
+          </div>
+        )}
+      </>
+    );
+  }
+
   return (
     <div className="kiana-chat h-[calc(100vh-140px)] grid grid-cols-[280px_1fr]">
-      <aside className="kiana-chat-sidebar p-3 overflow-y-auto">
-        <div className="flex items-center justify-between">
+      {/* Desktop sidebar */}
+      <aside className="kiana-chat-sidebar p-3 overflow-y-auto hidden md:block">
+        {renderSidebarContent()}
+      </aside>
+
+      {/* Mobile overlay sidebar */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-50 md:hidden">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setSidebarOpen(false)} />
+          <div className="absolute left-0 top-0 bottom-0 w-72 bg-white overflow-y-auto">
+            <div className="p-3">
+              {renderSidebarContent()}
+              <div className="mt-3">
+                <button className="kiana-btn" onClick={() => setSidebarOpen(false)}>Schließen</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
           <div className="kiana-sidebar-brand">
             <span className="kiana-status-dot" aria-hidden />
             <div>
@@ -806,6 +994,7 @@ export default function ChatPage() {
 
       <div className="kiana-chat-main grid grid-rows-[auto_1fr_auto]">
       <div className="kiana-chat-header">
+        <button className="kiana-btn md:hidden mr-3" onClick={() => setSidebarOpen(true)} aria-label="Menü öffnen">☰</button>
         <img className="kiana-chat-avatar" src="/static/Avatar_KI_ana.png" alt="KI_ana" />
         <div className="kiana-chat-header-info">
           <div className="kiana-chat-title">KI_ana</div>

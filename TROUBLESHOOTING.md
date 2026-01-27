@@ -25,7 +25,20 @@ P2P_PORT=8001 uvicorn netapi.app:app --port 8001
 
 ---
 
-### 2. mDNS Discovery funktioniert nicht
+### 2. `psql: command not found`
+
+**Problem:** `psql` ist am Host nicht installiert (Exit Code `127`).
+
+**Lösung:** Verwende `psql` direkt im Docker-Container:
+
+```bash
+./scripts/psql.sh -c "SELECT 1;"
+./scripts/pg_user_status.sh gerald
+```
+
+---
+
+### 3. mDNS Discovery funktioniert nicht
 
 **Problem:** Geräte finden sich nicht im LAN
 
@@ -57,7 +70,7 @@ dns-sd -B _kiana._tcp
 
 ---
 
-### 3. Import-Fehler / Module not found
+### 4. Import-Fehler / Module not found
 
 **Problem:** Python-Module fehlen
 
@@ -77,7 +90,7 @@ pip install zeroconf aiortc pynacl psutil
 
 ---
 
-### 4. Permission denied (keys)
+### 5. Permission denied (keys)
 
 **Problem:** Keine Berechtigung für Private Keys
 
@@ -95,7 +108,7 @@ chown $USER:$USER system/keys/*
 
 ---
 
-### 5. WebRTC Connection failed
+### 6. WebRTC Connection failed
 
 **Problem:** P2P-Verbindung schlägt fehl
 
@@ -122,7 +135,7 @@ docker-compose -f infra/turn/docker-compose.turn.yml up -d
 
 ---
 
-### 6. Backup schlägt fehl
+### 7. Backup schlägt fehl
 
 **Problem:** Backup-Script funktioniert nicht
 
@@ -143,7 +156,7 @@ tail -f /var/log/kiana/backup.log
 
 ---
 
-### 7. High CPU/Memory Usage
+### 8. High CPU/Memory Usage
 
 **Problem:** KI_ana verbraucht zu viel Ressourcen
 

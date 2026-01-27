@@ -22,6 +22,7 @@ from typing import Iterable, List, Optional, Tuple
 
 TARGET_SERVER_NAME = "ki-ana.at"
 NEXT_UPSTREAM_PORT = 23100
+BACKEND_UPSTREAM_PORT = 8000
 
 
 def _strip_comment(line: str) -> str:
@@ -64,7 +65,14 @@ def _parse_location_header(stripped_no_comment: str) -> Optional[Tuple[Optional[
 def _is_target_location(mod: Optional[str], uri: str) -> bool:
     targets = {
         ("=", "/health"),
+        ("=", "/openapi.json"),
+        (None, "/openapi.json"),
+        ("^~", "/docs"),
+        (None, "/docs"),
+        ("^~", "/redoc"),
+        (None, "/redoc"),
         ("=", "/login"),
+        ("=", "/register"),
         ("=", "/chat"),
         ("=", "/papa"),
         ("=", "/settings"),
@@ -73,8 +81,13 @@ def _is_target_location(mod: Optional[str], uri: str) -> bool:
         ("^~", "/admin/"),
         # Optional single public entrypoint
         ("=", "/"),
+        ("=", "/home"),
         # Dedicated SSE endpoint (must disable buffering)
         ("=", "/api/chat/stream"),
+        ("^~", "/api/"),
+        (None, "/api/"),
+        ("^~", "/viewer/"),
+        (None, "/viewer/"),
         ("^~", "/app/"),
         ("^~", "/_next/"),
         ("=", "/static/chat.html"),
@@ -150,10 +163,32 @@ def _detect_location_indent(block_lines: Iterable[str], fallback: str) -> str:
 
 INSERT_BLOCK_TEMPLATE = """# --- Chat: konsolidiert auf Next UI ---
 location = /health {
-    proxy_pass http://127.0.0.1:28000/health;
+    proxy_pass http://127.0.0.1:__BACKEND_UPSTREAM_PORT__/health;
     proxy_set_header Host $host;
     # curl -I uses HEAD; force GET upstream so /health is 200 for HEAD too
     proxy_method GET;
+}
+
+# --- OpenAPI / Docs (FastAPI) ---
+location = /openapi.json {
+    proxy_pass http://127.0.0.1:__BACKEND_UPSTREAM_PORT__/openapi.json;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+
+location ^~ /docs {
+    proxy_pass http://127.0.0.1:__BACKEND_UPSTREAM_PORT__/docs;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+
+location ^~ /redoc {
+    proxy_pass http://127.0.0.1:__BACKEND_UPSTREAM_PORT__/redoc;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 
 # --- Public login (served by Next) ---
@@ -164,8 +199,22 @@ location = /login {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 
+location = /register {
+    proxy_pass http://127.0.0.1:__NEXT_UPSTREAM_PORT__;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+
 location = / {
-    return 302 /app/chat;
+    proxy_pass http://127.0.0.1:__NEXT_UPSTREAM_PORT__;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+
+location = /home {
+    return 302 /;
 }
 
 location = /chat {
@@ -191,7 +240,7 @@ location ^~ /admin/ {
 
 # --- SSE: Chat Stream (no buffering) ---
 location = /api/chat/stream {
-    proxy_pass http://127.0.0.1:28000;
+    proxy_pass http://127.0.0.1:__BACKEND_UPSTREAM_PORT__;
 
     proxy_http_version 1.1;
     proxy_set_header Host $host;
@@ -205,6 +254,24 @@ location = /api/chat/stream {
 
     proxy_read_timeout 3600;
     proxy_send_timeout 3600;
+}
+
+# --- Backend API (all other /api/*) ---
+location ^~ /api/ {
+    proxy_pass http://127.0.0.1:__BACKEND_UPSTREAM_PORT__;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+
+# --- Viewer endpoints (/viewer/*) ---
+location ^~ /viewer/ {
+    proxy_pass http://127.0.0.1:__BACKEND_UPSTREAM_PORT__;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
 
 location ^~ /app/ {
@@ -262,7 +329,11 @@ location = /blockviewer { return 302 /static/block_viewer.html; }
 location = /timeflow    { return 302 /static/timeflow.html; }
 """
 
-INSERT_BLOCK = INSERT_BLOCK_TEMPLATE.replace("__NEXT_UPSTREAM_PORT__", str(NEXT_UPSTREAM_PORT))
+INSERT_BLOCK = (
+    INSERT_BLOCK_TEMPLATE
+    .replace("__NEXT_UPSTREAM_PORT__", str(NEXT_UPSTREAM_PORT))
+    .replace("__BACKEND_UPSTREAM_PORT__", str(BACKEND_UPSTREAM_PORT))
+)
 
 
 def _remove_target_locations(block_lines: List[str]) -> List[str]:

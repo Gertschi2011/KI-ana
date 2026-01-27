@@ -1,4 +1,4 @@
-// File: /home/kiana/ki_ana/frontend/app/layout.tsx
+// File: /app/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
