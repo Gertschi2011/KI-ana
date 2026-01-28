@@ -138,15 +138,35 @@ def should_use_memory(message: str) -> bool:
 def build_memory_context(message: str, user_id: int) -> str:
     """
     Build memory context for message
-    NOW ALWAYS ACTIVE - loads relevant memories for EVERY message
+    Relevance-gated: loads memories only when the message indicates recall intent.
     """
-    # IMMER Memory laden (nicht nur bei Keywords!)
+    ctx, _ids = build_memory_context_with_ids(message, user_id)
+    return ctx
+
+
+def build_memory_context_with_ids(message: str, user_id: int) -> tuple[str, List[str]]:
+    """Like build_memory_context(), but also returns the memory block ids used.
+
+    This enables transparency (`memory_ids`) whenever memory context is injected.
+    """
+    # Only load memory context when the user is asking about prior context.
+    # This avoids injecting unrelated memories into normal queries.
+    try:
+        if not should_use_memory(message or ""):
+            return "", []
+    except Exception:
+        return "", []
+
     # Search relevant conversation memories
     memories = search_conversation_memory(message, user_id, limit=3)
-    
+    try:
+        mem_ids = [str(m.get('id')) for m in (memories or []) if m.get('id')]
+    except Exception:
+        mem_ids = []
+
     # Format for context injection
     context = format_conversation_context(memories)
-    
+
     # Add user profile context
     try:
         user_profile = get_user_profile(user_id)
@@ -156,9 +176,9 @@ def build_memory_context(message: str, user_id: int) -> str:
                 context = profile_context + "\n" + context
     except Exception:
         pass
-    
+
     # Add KI_ana's self-awareness context if needed
-    if any(kw in message.lower() for kw in ['wer bist du', 'was bist du', 'dein name', 'dein zweck']):
+    if any(kw in (message or "").lower() for kw in ['wer bist du', 'was bist du', 'dein name', 'dein zweck']):
         try:
             from .ai_consciousness import get_identity
             identity = get_identity()
@@ -166,8 +186,8 @@ def build_memory_context(message: str, user_id: int) -> str:
             context += self_context
         except Exception:
             pass
-    
-    return context
+
+    return context, mem_ids
 
 async def auto_save_conversation_if_needed(
     conv_id: int, 

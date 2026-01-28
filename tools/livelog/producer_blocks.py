@@ -11,7 +11,7 @@ Design goals:
 Auth options:
 - --token or env ADMIN_API_TOKEN / KIANA_ADMIN_API_TOKEN
 - --cookie "name=value; ..."
-- --cookiejar (Netscape cookie file) best-effort
+- --cookie-jar / --cookiejar (Netscape cookie file) best-effort
 
 Requires: inotifywait (package: inotify-tools)
 """
@@ -289,10 +289,16 @@ def main() -> int:
         default=str(Path(os.getenv("KI_ROOT", str(Path.home() / "ki_ana"))) / "memory" / "long_term" / "blocks"),
         help="Directory to watch (default: $KI_ROOT/memory/long_term/blocks)",
     )
+    ap.add_argument(
+        "--watch-dir",
+        dest="watch_dir_flag",
+        default="",
+        help="Directory to watch (flag alias for the positional watch_dir)",
+    )
     ap.add_argument("--base-url", default=os.getenv("KIANA_BASE_URL", "http://127.0.0.1:8000"), help="Base URL for API")
     ap.add_argument("--token", default="", help="Bearer token (creator/admin). Falls back to env ADMIN_API_TOKEN")
     ap.add_argument("--cookie", default="", help="Raw Cookie header value (e.g. 'ki_session=...; ...')")
-    ap.add_argument("--cookiejar", default="", help="Path to Netscape cookiejar file")
+    ap.add_argument("--cookiejar", "--cookie-jar", dest="cookiejar", default="", help="Path to Netscape cookiejar file")
     ap.add_argument("--use-sudo", action="store_true", default=False, help="Try sudo -n for lsof/fuser/docker")
     ap.add_argument("--dedupe-seconds", type=float, default=2.0, help="Dedupe TTL per (event,file,pid)")
     ap.add_argument("--dry-run", action="store_true", help="Print events but do not POST")
@@ -301,7 +307,8 @@ def main() -> int:
 
     args = ap.parse_args()
 
-    watch_dir = Path(args.watch_dir).expanduser().resolve()
+    watch_dir_s = (args.watch_dir_flag or args.watch_dir or "").strip()
+    watch_dir = Path(watch_dir_s).expanduser().resolve()
     if not watch_dir.exists() or not watch_dir.is_dir():
         print(f"watch_dir missing/not a dir: {watch_dir}", file=sys.stderr)
         return 2
@@ -321,7 +328,7 @@ def main() -> int:
     if not headers.get("Authorization") and not headers.get("Cookie"):
         print(
             "warning: no auth provided; POST will likely be 401/403. "
-            "Use --token/--cookie/--cookiejar or env ADMIN_API_TOKEN.",
+            "Use --token/--cookie/--cookie-jar or env ADMIN_API_TOKEN.",
             file=sys.stderr,
         )
 
@@ -370,11 +377,11 @@ def main() -> int:
             ts, ev, file_s = parts
             file_path = Path(file_s)
 
-            # Normalize event string: can be "OPEN" or "OPEN,ISDIR" etc.
-            ev_up = ev.upper()
+            raw = (ev or "").strip()  # e.g. "CLOSE_WRITE,CLOSE"
+            events = {e.strip().upper() for e in raw.split(",") if e.strip()}
 
             # Attribution on OPEN
-            if "OPEN" in ev_up:
+            if "OPEN" in events:
                 attrib: Dict[str, Any] = {}
                 # do a few small retries: the fd might appear a tick later
                 for _ in range(5):
@@ -399,10 +406,9 @@ def main() -> int:
                     "data": {k: v for (k, v) in attrib.items() if k not in {"pid", "user", "cmd", "container"}},
                 }
                 send(evt)
-                continue
 
             # Integrity on close_write / moved_to
-            if "CLOSE_WRITE" in ev_up or "MOVED_TO" in ev_up:
+            if ("CLOSE_WRITE" in events) or ("MOVED_TO" in events):
                 key = f"final|{file_path}"
                 if not dedupe.allow(key):
                     continue

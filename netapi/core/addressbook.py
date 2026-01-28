@@ -534,8 +534,12 @@ def register_block_for_topic(topic_path: str, block_id: str) -> None:
                 break
         if not exists:
             blocks.append(entry)
+        # Preserve other index sections (source_prefs, learning_corrections, etc.)
+        if not isinstance(data, dict):
+            data = {}
+        data["blocks"] = blocks
         ADDRBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
-        atomic_write_json(ADDRBOOK_PATH, {"blocks": blocks}, kind="index", min_bytes=2)
+        atomic_write_json(ADDRBOOK_PATH, data, kind="index", min_bytes=2)
     except Exception:
         # best effort
         pass

@@ -53,6 +53,12 @@ export default function BlockViewerPage() {
   const [healthBusy, setHealthBusy] = useState<boolean>(false)
   const [healthInfo, setHealthInfo] = useState<any>(null)
 
+  const [healthSummaryBusy, setHealthSummaryBusy] = useState<boolean>(false)
+  const [healthSummary, setHealthSummary] = useState<any>(null)
+  const [coverageBusy, setCoverageBusy] = useState<boolean>(false)
+  const [coverageInfo, setCoverageInfo] = useState<any>(null)
+  const [coverageErr, setCoverageErr] = useState<string | null>(null)
+
   const [abLoading, setAbLoading] = useState<boolean>(false)
   const [abErr, setAbErr] = useState<string | null>(null)
   const [abSearch, setAbSearch] = useState<string>('')
@@ -62,6 +68,11 @@ export default function BlockViewerPage() {
 
   const hasPrev = page > 1
   const hasNext = page < pages
+
+  const filterLabel = includeUnverified ? 'Including unverified' : 'Verified only'
+  const healthTotal = Number(healthSummary?.stats?.total ?? 0) || 0
+  const healthVerified = Number(healthSummary?.stats?.signature_ok ?? 0) || 0
+  const healthUnverified = Math.max(0, healthTotal - healthVerified)
 
   const header = useMemo(() => {
     return includeUnverified ? 'Block Viewer (inkl. unverified)' : 'Block Viewer'
@@ -150,6 +161,29 @@ export default function BlockViewerPage() {
     }
   }
 
+  async function loadVerificationSummary() {
+    if (!isAdminLike) return
+    setCoverageErr(null)
+    setCoverageBusy(true)
+    setHealthSummaryBusy(true)
+    try {
+      const [rh, rc] = await Promise.all([
+        fetch('/viewer/api/blocks/health', { credentials: 'include', cache: 'no-store' }),
+        fetch('/viewer/api/blocks/coverage', { credentials: 'include', cache: 'no-store' }),
+      ])
+      const jh: any = await rh.json().catch(() => ({}))
+      const jc: any = await rc.json().catch(() => ({}))
+      if (rh.ok && jh?.ok) setHealthSummary(jh)
+      if (rc.ok && jc?.ok) setCoverageInfo(jc)
+      if ((!rc.ok || !jc?.ok) && (jc?.error || jc?.detail)) setCoverageErr(String(jc?.error || jc?.detail))
+    } catch (e: any) {
+      setCoverageErr(typeof e?.message === 'string' ? e.message : 'Summary konnte nicht geladen werden')
+    } finally {
+      setCoverageBusy(false)
+      setHealthSummaryBusy(false)
+    }
+  }
+
   useEffect(() => {
     if (view === 'blocks') {
       load()
@@ -157,7 +191,15 @@ export default function BlockViewerPage() {
       loadAddressbook()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page, includeUnverified, view])
+  }, [page, includeUnverified, view, source])
+
+  useEffect(() => {
+    if (view !== 'blocks') return
+    if (!includeUnverified) return
+    // When showing unverified, proactively fetch a short explanation (stats + coverage)
+    loadVerificationSummary()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [view, includeUnverified, source, isAdminLike])
 
   useEffect(() => {
     if (view !== 'addressbook') return
@@ -249,6 +291,32 @@ export default function BlockViewerPage() {
             <div className="small mt-1">
               Total: {total} • Seite {page}/{pages} • Items: {items.length}{count ? ` (count=${count})` : ''}
             </div>
+            <div className="small mt-1" style={{ opacity: 0.85 }}>
+              Filter: <b>{filterLabel}</b>
+              {includeUnverified && healthSummary?.stats ? (
+                <> • Verified: {healthVerified} / Unverified: {healthUnverified}</>
+              ) : null}
+            </div>
+            {includeUnverified && source === 'filesystem' ? (
+              <div className="small mt-2" style={{ opacity: 0.9 }}>
+                Hinweis: <b>Unverified anzeigen</b> listet alle Block-Dateien im Filesystem.
+                <span style={{ opacity: 0.85 }}> Verified-only filtert strikt auf <code>sig_valid && valid</code>.</span>
+                <div className="mt-2" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                  <span>Health total={healthSummary?.stats?.total ?? '–'}</span>
+                  <span>hash_ok={healthSummary?.stats?.hash_ok ?? '–'}</span>
+                  <span>signature_ok={healthSummary?.stats?.signature_ok ?? '–'}</span>
+                  <span>Adressbuch={coverageInfo?.addressbook_count ?? '–'}</span>
+                  <span>FS={coverageInfo?.fs_total ?? '–'}</span>
+                  <span>diff={coverageInfo?.diff ?? '–'}</span>
+                </div>
+                {coverageErr ? <div className="mt-1" style={{ color: 'var(--danger, #b91c1c)' }}>{coverageErr}</div> : null}
+                <div className="mt-2">
+                  <KianaButton variant="ghost" onClick={loadVerificationSummary} disabled={coverageBusy || healthSummaryBusy}>
+                    {coverageBusy || healthSummaryBusy ? 'Erklärung …' : 'Erklärung aktualisieren'}
+                  </KianaButton>
+                </div>
+              </div>
+            ) : null}
           </div>
           <div className="flex gap-2 flex-wrap items-center">
             <div className="flex gap-1 items-center">

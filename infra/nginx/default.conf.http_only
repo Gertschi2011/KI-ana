@@ -5,7 +5,7 @@ server {
 
   # LiveLog entrypoint
   location = /livelog {
-    return 302 /app/livelog;
+    return 302 /static/livelog.html;
   }
 
   # Proxy to Frontend (Next.js on port 3000)

@@ -1,11 +1,105 @@
 {
-  "created": "2025-08-14T12:45:08.539516Z",
-  "updated": "2025-08-14T14:10:33.969863Z",
-  "curiosity": 0.74,
-  "interactions": 0,
-  "successes": 1,
-  "failures": 0,
-  "recent_topics": [
-    "photosynthese"
-  ]
+  "version": "2.0",
+  "created": "2026-01-28T12:36:12.542435",
+  "updated": "2026-01-28T12:36:12.580558",
+  "traits": {
+    "formality": {
+      "value": 0.37,
+      "adjustments": 1,
+      "last_feedback": "2026-01-28T12:36:12.580540",
+      "history": [
+        {
+          "timestamp": "2026-01-28T12:36:12.580544",
+          "feedback": "positive",
+          "delta": 0.02,
+          "new_value": 0.37
+        }
+      ]
+    },
+    "empathy": {
+      "value": 0.87,
+      "adjustments": 1,
+      "last_feedback": "2026-01-28T12:36:12.580546",
+      "history": [
+        {
+          "timestamp": "2026-01-28T12:36:12.580547",
+          "feedback": "positive",
+          "delta": 0.02,
+          "new_value": 0.87
+        }
+      ]
+    },
+    "humor": {
+      "value": 0.37,
+      "adjustments": 1,
+      "last_feedback": "2026-01-28T12:36:12.580549",
+      "history": [
+        {
+          "timestamp": "2026-01-28T12:36:12.580550",
+          "feedback": "positive",
+          "delta": 0.02,
+          "new_value": 0.37
+        }
+      ]
+    },
+    "directness": {
+      "value": 0.62,
+      "adjustments": 1,
+      "last_feedback": "2026-01-28T12:36:12.580551",
+      "history": [
+        {
+          "timestamp": "2026-01-28T12:36:12.580552",
+          "feedback": "positive",
+          "delta": 0.02,
+          "new_value": 0.62
+        }
+      ]
+    },
+    "explainability": {
+      "value": 0.92,
+      "adjustments": 1,
+      "last_feedback": "2026-01-28T12:36:12.580553",
+      "history": [
+        {
+          "timestamp": "2026-01-28T12:36:12.580553",
+          "feedback": "positive",
+          "delta": 0.02,
+          "new_value": 0.92
+        }
+      ]
+    },
+    "curiosity": {
+      "value": 0.72,
+      "adjustments": 1,
+      "last_feedback": "2026-01-28T12:36:12.580555",
+      "history": [
+        {
+          "timestamp": "2026-01-28T12:36:12.580555",
+          "feedback": "positive",
+          "delta": 0.02,
+          "new_value": 0.72
+        }
+      ]
+    },
+    "patience": {
+      "value": 0.92,
+      "adjustments": 1,
+      "last_feedback": "2026-01-28T12:36:12.580556",
+      "history": [
+        {
+          "timestamp": "2026-01-28T12:36:12.580557",
+          "feedback": "positive",
+          "delta": 0.02,
+          "new_value": 0.92
+        }
+      ]
+    }
+  },
+  "context_modifiers": {
+    "time_of_day": {},
+    "user_mood": {}
+  },
+  "interactions": 6,
+  "positive_feedback": 4,
+  "negative_feedback": 2
 }

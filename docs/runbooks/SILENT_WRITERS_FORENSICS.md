@@ -37,7 +37,7 @@ python3 tools/livelog/producer_blocks.py /home/kiana/ki_ana/memory/long_term/blo
 
 Auth-Optionen:
 - `--token` (Bearer Creator/Admin; fallback: env `ADMIN_API_TOKEN`)
-- `--cookie "ki_session=..."` oder `--cookiejar /path/to/cookiejar.txt`
+- `--cookie "ki_session=..."` oder `--cookie-jar /path/to/cookiejar.txt` (alias: `--cookiejar`)
 
 Events:
 - Bei **OPEN**: Attribution (PID/Commandline/Container-Hint)

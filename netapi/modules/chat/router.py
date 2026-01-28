@@ -742,6 +742,83 @@ _CHAT_EXPLAIN_CTX: contextvars.ContextVar[dict | None] = contextvars.ContextVar(
 )
 
 
+def _dedupe_str_list(items) -> list[str]:
+    out: list[str] = []
+    seen: set[str] = set()
+    for x in (items or []):
+        if x is None:
+            continue
+        try:
+            s = str(x).strip()
+        except Exception:
+            continue
+        if not s or s in seen:
+            continue
+        seen.add(s)
+        out.append(s)
+    return out
+
+
+def _infer_memory_ids_from_sources(sources) -> list[str]:
+    mids: list[str] = []
+    try:
+        if not isinstance(sources, list):
+            return []
+        for s in sources:
+            if not isinstance(s, dict):
+                continue
+            try:
+                origin = str(s.get("origin") or "").strip().lower()
+            except Exception:
+                origin = ""
+            if origin and origin != "memory":
+                continue
+            mid = s.get("id")
+            if mid:
+                mids.append(str(mid))
+                continue
+            try:
+                url = str(s.get("url") or "")
+                if "highlight=" in url:
+                    mid2 = url.split("highlight=", 1)[-1].split("&", 1)[0].strip()
+                    if mid2:
+                        mids.append(mid2)
+            except Exception:
+                continue
+    except Exception:
+        return []
+    return _dedupe_str_list(mids)
+
+
+def _ctx_memory_ids(ctx) -> list[str]:
+    try:
+        if not isinstance(ctx, dict):
+            return []
+        for k in ("memory_ids_used", "memory_ids"):
+            v = ctx.get(k)
+            if isinstance(v, list):
+                return _dedupe_str_list(v)
+    except Exception:
+        return []
+    return []
+
+
+def _record_used_memory_ids(ids: list[str]) -> None:
+    """Best-effort: record memory ids used by this request into explain ctx."""
+    try:
+        ctx = _CHAT_EXPLAIN_CTX.get()
+    except Exception:
+        ctx = None
+    if not isinstance(ctx, dict):
+        return
+    merged = _dedupe_str_list(list(ctx.get("memory_ids_used") or []) + list(ids or []))
+    ctx["memory_ids_used"] = merged
+    try:
+        _CHAT_EXPLAIN_CTX.set(ctx)
+    except Exception:
+        pass
+
+
 def _init_quality_gates_context(*, current) -> None:
     """Initialize per-request quality gate state into the explain context.
 
@@ -993,6 +1070,27 @@ def _attach_explain_and_kpis(
                 tools=eff_tools,
                 t0=t0,
             )
+        except Exception:
+            pass
+
+    # ---- memory_ids consistency ----
+    # If memory influenced the answer (memory sources OR recorded ctx usage), ensure memory_ids contains them.
+    try:
+        existing_mids: list[str] = []
+        if isinstance(payload.get("memory_ids"), list):
+            existing_mids = list(payload.get("memory_ids") or [])
+        # Some paths store sources under meta.sources
+        srcs = payload.get("sources")
+        if not isinstance(srcs, list) and isinstance(payload.get("meta"), dict):
+            srcs = payload["meta"].get("sources")
+        inferred = _infer_memory_ids_from_sources(srcs)
+        ctx_mids = _ctx_memory_ids(ctx)
+        merged = _dedupe_str_list(list(existing_mids) + list(inferred) + list(ctx_mids))
+        payload["memory_ids"] = merged
+    except Exception:
+        try:
+            if not isinstance(payload.get("memory_ids"), list):
+                payload["memory_ids"] = []
         except Exception:
             pass
 
@@ -1727,6 +1825,24 @@ def _debug_save(label: str, blk: Dict[str, Any]) -> None:
 try:
     # Memory Adapter (Recall/Store/Open Questions)
     from .memory_adapter import recall as recall_mem, store as store_mem, add_open_question
+    _recall_mem_impl = recall_mem
+
+    def recall_mem(q, top_k=3):  # type: ignore[no-redef]
+        hits = _recall_mem_impl(q, top_k=top_k)
+        try:
+            ids = []
+            for h in (hits or []):
+                try:
+                    bid = _extract_block_id(h)
+                    if bid:
+                        ids.append(str(bid))
+                except Exception:
+                    continue
+            if ids:
+                _record_used_memory_ids(ids)
+        except Exception:
+            pass
+        return hits
 except Exception:
     recall_mem = lambda q, top_k=3: []  # type: ignore
     store_mem = lambda *a, **k: None    # type: ignore
@@ -2642,6 +2758,14 @@ def postprocess_and_style(text: str, persona, state, profile_used, style_prompt:
         last_tone = (getattr(state, 'last_user_tone', 'neutral') or 'neutral').lower()
     except Exception:
         mood, pref, last_tone = '', '', 'neutral'
+
+    # User profile preference: concise replies
+    try:
+        if isinstance(profile_used, dict) and bool(profile_used.get('kurz')):
+            out = re.sub(r"[\u2190-\u21FF\u2600-\u27BF\U0001F300-\U0001FAD6]+", "", out)
+            out = short_summary(out, max_chars=360)
+    except Exception:
+        pass
     # Focused/sachlich: concise, minimal emojis
     if pref == 'sachlich' or mood == 'fokussiert':
         out = re.sub(r"[\u2190-\u21FF\u2600-\u27BF\U0001F300-\U0001FAD6]+", "", out)
@@ -3307,23 +3431,45 @@ def try_web_answer(q: str, limit: int = 5) -> Tuple[Optional[str], List[dict]]:
     Gibt (answer_text, sources) zurück. answer_text ist eine kompakte
     Zusammenfassung der Top-Resultate, sources enthält [{title,url},...].
     """
+    q0 = (q or "").strip()
+    if not q0:
+        return None, []
+
+    # Router-level gating:
+    # - very short queries (<5 words) without explicit research triggers must not hit the web
+    #   (prevents topic-mapping + random Wikipedia-style lookups for e.g. "Mars")
+    try:
+        from .intent_guard import has_research_trigger as _has_research_trigger
+    except Exception:  # pragma: no cover
+        def _has_research_trigger(_: str) -> bool:
+            return False
+    words = [w for w in re.split(r"\s+", q0) if w]
+    if len(words) < 5 and not _has_research_trigger(q0):
+        return None, []
+
+    # Prefer reproducible implementation (no Wikipedia-only fallback).
+    try:
+        from ..tools.web_fetch import web_search_and_summarize as _web_fetch_and_summarize
+        text, sources = _web_fetch_and_summarize(q0, lang="de", max_results=limit)
+        sources = _filter_sources_by_env(list(sources or []))
+        return (text or None), list(sources or [])
+    except Exception:
+        pass
+
+    # Legacy fallback (kept for compatibility; may be removed later).
     try:
         from ... import web_qa  # lazy import
     except Exception:
-        # If web_qa is not available, signal no web answer
         return None, []
 
-    # Use web_qa when available and always return a tuple
     try:
-        res = web_qa.web_search_and_summarize(q, user_context={"lang": "de"}, max_results=limit)
+        res = web_qa.web_search_and_summarize(q0, user_context={"lang": "de"}, max_results=limit)
         if not res or not res.get("allowed"):
             return None, []
         items = res.get("results") or []
-        # Apply policy filter (allowlist) if configured
         items = _filter_sources_by_env(items)
         if not items:
             return None, []
-        # Build compact answer text from the first 1-2 results
         lines: List[str] = []
         sources: List[dict] = []
         for it in items[:2]:
@@ -3332,78 +3478,19 @@ def try_web_answer(q: str, limit: int = 5) -> Tuple[Optional[str], List[dict]]:
             url = it.get("url") or ""
             if summary:
                 lines.append(f"{summary}")
-            sources.append({"title": title, "url": url})
+            sources.append({"title": title, "url": url, "kind": "web", "origin": "web"})
         text = "\n\n".join(lines).strip()
         return (text or None), sources
     except Exception:
         return None, []
 
 def _force_web_answer(q: str, limit: int = 3) -> Tuple[Optional[str], List[dict]]:
-    """Minimaler Web‑Fallback, auch wenn globales Netz deaktiviert ist.
-    Nutzt Wikipedia OpenSearch + Seitenabruf und baut eine kurze Antwort.
-    """
-    try:
-        import requests
-        from bs4 import BeautifulSoup  # type: ignore
-        lang = "de"
-        base = f"https://{lang}.wikipedia.org/w/api.php"
-        r = requests.get(base, params={"action":"opensearch","format":"json","search":q,"limit":limit}, timeout=10)
-        items = []
-        if r.ok:
-            data = r.json()
-            titles = data[1] if isinstance(data, list) and len(data)>=2 else []
-            links  = data[3] if isinstance(data, list) and len(data)>=4 else []
-            for t,u in list(zip(titles, links))[:limit]:
-                items.append({"title": t, "url": u})
-        sources = []
-        paras = []
-        for it in items[:2]:
-            url = it.get("url") or ""
-            if not url:
-                continue
-            rr = requests.get(url, timeout=10, headers={"User-Agent":"KI_ana/force-web"})
-            if not rr.ok:
-                continue
-            soup = BeautifulSoup(rr.text, "html.parser")
-            for bad in soup(["script","style","noscript","header","footer","nav","form","aside"]):
-                bad.extract()
-            ps = [p.get_text(" ", strip=True) for p in soup.find_all("p")]
-            ps = [p for p in ps if len(p) > 60]
-            if ps:
-                paras.extend(ps[:2])
-                sources.append({"title": it.get("title") or "Wikipedia", "url": url})
-        if not paras:
-            return None, []
-        bullets = [p[:220] + ("…" if len(p)>220 else "") for p in paras[:5]]
-        body = "Wesentliches:\n" + "\n".join("• "+b for b in bullets)
-        tldr = "\n\nKurz gesagt: " + bullets[0]
-        return (body + tldr).strip(), sources
-    except Exception:
-        return None, []
+    """Compatibility shim.
 
-    try:
-        res = web_qa.web_search_and_summarize(q, user_context={"lang": "de"}, max_results=limit)
-        if not res or not res.get("allowed"):
-            return None, []
-        items = res.get("results") or []
-        # Apply policy filter (allowlist) if configured
-        items = _filter_sources_by_env(items)
-        if not items:
-            return None, []
-        # Baue kompakten Antworttext aus den ersten 1-2 Treffern
-        lines = []
-        sources = []
-        for it in items[:2]:
-            title = it.get("title") or "Quelle"
-            summary = (it.get("summary") or "").strip()
-            url = it.get("url") or ""
-            if summary:
-                lines.append(f"{summary}")
-            sources.append({"title": title, "url": url})
-        text = "\n\n".join(lines).strip()
-        return (text or None), sources
-    except Exception:
-        return None, []
+    DoD: avoid Wikipedia-only forced answers. This now behaves like try_web_answer
+    and respects short-query gating.
+    """
+    return try_web_answer(q, limit=limit)
 
 def _filter_hits_by_topic(mem_hits: List[dict], topic: str) -> List[dict]:
     """Prefer memory hits that actually mention the topic to reduce noise.
@@ -4085,6 +4172,242 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
     else:
         user_msg = cleaned_msg
 
+    # -------------------------------------------------
+    # Selftalk / smalltalk bypass (must never use web/memory and must never be blocked)
+    # -------------------------------------------------
+    try:
+        from .intent_guard import classify as _ig_classify
+        _intent0 = str(_ig_classify(user_msg) or "general")
+    except Exception:
+        _intent0 = "general"
+    if _intent0 == "selftalk":
+        low0 = (user_msg or "").lower().strip()
+        if any(k in low0 for k in ["wie geht", "how are you"]):
+            lead = "Mir geht’s gut, danke."
+        elif any(k in low0 for k in ["hallo", "hi", "hey", "guten morgen", "guten tag", "guten abend", "hello", "good morning", "good evening"]):
+            lead = "Hallo!"
+        else:
+            lead = "Ich bin KI_ana."
+        reply_selftalk = (
+            f"{lead} Ich bin deine digitale Begleiterin im KI_ana-System. "
+            "Ich helfe dir beim Denken, Erklären, Planen, Schreiben und beim Debuggen von Code. "
+            "Wobei kann ich dir helfen?"
+        ).strip()
+
+        conv_id_selftalk = None
+        try:
+            if current and current.get("id"):
+                uid = int(current["id"])  # type: ignore[index]
+                conv = _ensure_conversation(db, uid, body.conv_id)
+                conv_id_selftalk = int(conv.id)
+                _save_msg(db, conv.id, "user", user_msg)
+                _save_msg(db, conv.id, "ai", reply_selftalk)
+                asyncio.create_task(_retitle_if_needed(conv.id, user_msg, reply_selftalk, body.lang or "de-DE"))
+        except Exception:
+            conv_id_selftalk = None
+
+        conv_out_selftalk = conv_id_selftalk if conv_id_selftalk is not None else (body.conv_id or None)
+        payload = {
+            "ok": True,
+            "reply": reply_selftalk,
+            "conv_id": conv_out_selftalk,
+            "sources": [],
+            "memory_ids": [],
+            "style_prompt": None,
+            "backend_log": {"pipeline": "selftalk"},
+        }
+        return _attach_explain_and_kpis(
+            payload,
+            route="/api/chat",
+            intent="selftalk",
+            policy={"web_ok": False, "memory_retrieve_ok": False},
+            tools=[],
+            source_expected=False,
+            sources_count=0,
+        )
+
+    # -------------------------------------------------
+    # Phase 0.5: Explicit remember command ("Merk dir: …")
+    # - Must save without asking
+    # - Must return memory_ids for transparency
+    # -------------------------------------------------
+    try:
+        low_u = (user_msg or "").strip().lower()
+        m_remember = re.match(r"^\s*(merk\s+dir|merke\s+dir|speicher|speichere|remember)\s*[:\-]?\s*(.+)?$", low_u, flags=re.IGNORECASE)
+    except Exception:
+        m_remember = None
+
+    if m_remember:
+        raw_payload = ""
+        try:
+            raw_payload = (user_msg or "").strip()
+            # Extract after the first ':' or '-' if present; otherwise remove the command words.
+            m2 = re.match(r"^\s*(?:merk\s+dir|merke\s+dir|speicher|speichere|remember)\s*[:\-]?\s*(.*)$", raw_payload, flags=re.IGNORECASE)
+            raw_payload = (m2.group(1) if m2 else "").strip()
+        except Exception:
+            raw_payload = ""
+
+        if not raw_payload:
+            reply_rem = "Was genau soll ich mir merken? (Schreib es bitte nach ‘Merk dir: …’)"
+            payload = {
+                "ok": True,
+                "reply": reply_rem,
+                "conv_id": (body.conv_id or None),
+                "sources": [],
+                "memory_ids": [],
+                "style_prompt": None,
+                "backend_log": {"pipeline": "remember_explicit", "saved": False},
+            }
+            try:
+                payload["explain"] = {"note": "Explizites Merken angefordert, aber ohne Inhalt."}
+            except Exception:
+                pass
+            return _attach_explain_and_kpis(
+                payload,
+                route="/api/chat",
+                intent="remember",
+                policy={"learning": "explicit"},
+                tools=[{"tool": "memory_write", "ok": False}],
+                source_expected=False,
+                sources_count=0,
+            )
+
+        # Persist as long-term memory block
+        persisted_id = None
+        addr_ok = False
+        topic_path = "user_memory"
+        mem_type = "user_note"
+        tags = []
+        try:
+            # Heuristic: treat common phrasing as response-style preference
+            lp = raw_payload.lower()
+            if any(k in lp for k in ["antworte kurz", "kurze antwort", "knapp", "bitte kurz", "kurz &", "concise"]):
+                mem_type = "user_preference"
+                topic_path = "user_preferences"
+                tags.append("preference")
+        except Exception:
+            pass
+
+        try:
+            from netapi import memory_store
+            uid = int(current.get("id")) if (current and current.get("id") is not None) else 0
+            meta = {
+                "type": mem_type,
+                "user_id": int(uid),
+                "source": "explicit",
+                "content": raw_payload,
+            }
+            title = f"User Memory: user={uid} ({mem_type})"[:160]
+            tags = list({*(tags or []), mem_type, f"user:{uid}", "source:chat"})
+            persisted_id = memory_store.add_block(title=title, content=raw_payload, tags=tags, meta=meta)
+            try:
+                from netapi.core.addressbook import register_block_for_topic
+                register_block_for_topic(topic_path, str(persisted_id))
+                addr_ok = True
+            except Exception:
+                addr_ok = False
+        except Exception:
+            persisted_id = None
+            addr_ok = False
+
+        # Also update per-user style profile for concise preference
+        try:
+            if persisted_id and uid_str:
+                lp = raw_payload.lower()
+                if any(k in lp for k in ["antworte kurz", "kurze antwort", "knapp", "bitte kurz", "concise"]):
+                    existing = load_user_profile(uid_str) or {}
+                    existing["kurz"] = True
+                    save_user_profile(uid_str, existing)
+        except Exception:
+            pass
+
+        reply_ok = "Alles klar – ich habe mir das gemerkt."
+        if mem_type == "user_preference":
+            reply_ok = "Alles klar – ich merke mir diese Präferenz."
+        payload = {
+            "ok": True,
+            "reply": reply_ok,
+            "conv_id": (body.conv_id or None),
+            "sources": [],
+            "memory_ids": ([str(persisted_id)] if persisted_id else []),
+            "style_prompt": None,
+            "backend_log": {"pipeline": "remember_explicit", "saved": bool(persisted_id), "addressbook": bool(addr_ok)},
+        }
+        try:
+            payload["explain"] = {"note": "Explizite Merken-Anweisung: gespeichert." if persisted_id else "Explizite Merken-Anweisung: Speichern fehlgeschlagen."}
+        except Exception:
+            pass
+        return _attach_explain_and_kpis(
+            payload,
+            route="/api/chat",
+            intent="remember",
+            policy={"learning": "explicit"},
+            tools=[{"tool": "memory_write", "ok": bool(persisted_id)}],
+            source_expected=False,
+            sources_count=0,
+        )
+
+    # -------------------------------------------------
+    # Phase 1: Missing-Context-Gate (intent_guard)
+    # Must short-circuit BEFORE retrieval/memory/LLM/learning.
+    # -------------------------------------------------
+    try:
+        from .intent_guard import guard_missing_context
+        g = guard_missing_context(user_msg, lang=str(getattr(body, "lang", "de-DE") or "de-DE"))
+    except Exception:
+        g = None
+    if g and getattr(g, "should_block", False):
+        qs = list(getattr(g, "questions", []) or [])
+        intent_g = str(getattr(g, "intent", "missing_context") or "missing_context")
+        miss = list(getattr(g, "missing_fields", []) or [])
+        note = str(getattr(g, "note", "Noch kein Kontext – KI_ana wartet auf Klärung.") or "")
+        if not qs:
+            qs = ["Kannst du kurz mehr Kontext geben?"]
+        reply_guard = (
+            "Bevor ich loslege, brauche ich noch kurz Kontext (ich will nichts raten):\n\n"
+            + "\n".join([f"- {q}" for q in qs])
+        ).strip()
+
+        # Optional persistence to conversation (NOT memory learning): store chat messages only.
+        conv_id_guard = None
+        try:
+            if current and current.get("id"):
+                uid = int(current["id"])  # type: ignore[index]
+                conv = _ensure_conversation(db, uid, body.conv_id)
+                conv_id_guard = int(conv.id)
+                _save_msg(db, conv.id, "user", user_msg)
+                _save_msg(db, conv.id, "ai", reply_guard)
+                asyncio.create_task(_retitle_if_needed(conv.id, user_msg, reply_guard, body.lang or "de-DE"))
+        except Exception:
+            conv_id_guard = None
+
+        conv_out_guard = conv_id_guard if conv_id_guard is not None else (body.conv_id or None)
+        payload = {
+            "ok": True,
+            "reply": reply_guard,
+            "conv_id": conv_out_guard,
+            "sources": [],
+            "memory_ids": [],
+            "backend_log": {
+                "pipeline": "intent_guard",
+                "intent_guard": {"intent": intent_g, "missing": miss},
+            },
+        }
+        # Ensure transparency modal has a note even when empty sources/memories.
+        try:
+            payload["explain"] = {"note": note}
+        except Exception:
+            pass
+        return _attach_explain_and_kpis(
+            payload,
+            route="/api/chat",
+            intent=intent_g,
+            policy={"intent_guard": True},
+            tools=[],
+            source_expected=False,
+            sources_count=0,
+        )
+
     # Style profile: analyze incoming text and prepare profile for application
     uid_str: Optional[str] = None
     try:
@@ -4108,7 +4431,29 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
         "dialekt": profile_used.get("dialekt"),
         "tonfall": profile_used.get("tonfall"),
     }
-    style_prompt = ("Darf ich mir deinen Sprachstil merken, damit ich beim nächsten Mal genauso mit dir reden kann?") if style_consent_needed else None
+    # style_prompt gating: only ask when a real learning candidate exists AND policy requests asking,
+    # or when the user explicitly requests remembering.
+    style_prompt = None
+    try:
+        low_u = (user_msg or "").lower()
+        explicit_style_request = bool(re.search(r"\b(merk\s+dir|merke\s+dir|speicher|speichere|remember)\b", low_u))
+    except Exception:
+        explicit_style_request = False
+    try:
+        learning_candidate = bool(any(style_used_meta.get(k) for k in ["anrede", "formell", "dialekt", "tonfall"]))
+    except Exception:
+        learning_candidate = False
+    try:
+        meta_obj = getattr(body, "meta", None)
+        meta_dict = meta_obj if isinstance(meta_obj, dict) else {}
+        pol = meta_dict.get("policy") if isinstance(meta_dict.get("policy"), dict) else {}
+        learning_policy = str(pol.get("learning") or "").lower().strip()
+    except Exception:
+        learning_policy = ""
+    if explicit_style_request:
+        style_prompt = "Darf ich mir deinen Sprachstil merken, damit ich beim nächsten Mal genauso mit dir reden kann?"
+    elif style_consent_needed and learning_candidate and learning_policy == "ask":
+        style_prompt = "Darf ich mir deinen Sprachstil merken, damit ich beim nächsten Mal genauso mit dir reden kann?"
 
     # Quality gate enforcement: suppress learning consent prompts during cooldown
     try:
@@ -4370,15 +4715,21 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
     
     # Memory Context Check - Add conversation memory
     memory_context = ""
+    memory_context_ids: list[str] = []
     try:
-        from .memory_integration import build_memory_context, compact_response
+        from .memory_integration import build_memory_context_with_ids, compact_response
         if current and current.get("id"):
             user_id = int(current["id"])
-            memory_context = build_memory_context(user_msg, user_id)
+            memory_context, memory_context_ids = build_memory_context_with_ids(user_msg, user_id)
             if memory_context:
                 logger.info(f"🧠 Memory context loaded for user {user_id}: {len(memory_context)} chars")
     except Exception as e:
         logger.error(f"Failed to load memory context: {e}")
+    try:
+        if memory_context_ids:
+            _record_used_memory_ids(memory_context_ids)
+    except Exception:
+        pass
 
     # Self-State: load and update basic fields
     try:
@@ -4974,7 +5325,7 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                         return _finalize_reply(
                             reply_ab,
                             state=state, conv_id=(body.conv_id or None), intent="knowledge", topic=extract_topic(user_msg), pipeline="km_addressbook",
-                            extras={"ok": True, "auto_modes": [], "role_used": "Wissen", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "km_addressbook", "topic": extract_topic(user_msg)}}
+                            extras={"ok": True, "auto_modes": [], "role_used": "Wissen", "memory_ids": ([str(getattr(best_blk, 'id', ''))] if getattr(best_blk, 'id', None) else []), "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "km_addressbook", "topic": extract_topic(user_msg)}}
                         )
             except Exception:
                 pass
@@ -5074,7 +5425,7 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                         return _finalize_reply(
                             reply_km,
                             state=state, conv_id=(body.conv_id or None), intent="knowledge", topic=extract_topic(user_msg), pipeline="km",
-                            extras={"ok": True, "auto_modes": [], "role_used": "Wissen", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "km", "topic": extract_topic(user_msg)}}
+                            extras={"ok": True, "auto_modes": [], "role_used": "Wissen", "memory_ids": ([str(getattr(top_blk, 'id', ''))] if getattr(top_blk, 'id', None) else []), "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "km", "topic": extract_topic(user_msg)}}
                         )
                     else:
                         # If KM found only hint blocks, prefer web next.
@@ -5092,6 +5443,7 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             # 1) Memory search by topic_path (short-term first, then long-term; fallback: user_msg)
             ans_mem = ""
             src_block_mem = ""
+            memory_ids_mem: list[str] = []
             try:
                 from netapi import memory_store as _mem
                 # Prefer explicit short-term topic index hits
@@ -5103,6 +5455,12 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                         if st_blk:
                             used_short = True
                             ans_mem = (st_blk.get('info') or '').strip()
+                            try:
+                                mid = st_blk.get('id') or st_ids[-1]
+                                if mid:
+                                    memory_ids_mem = [str(mid)]
+                            except Exception:
+                                pass
                             try:
                                 if hasattr(_mem, 'increment_use'):
                                     _mem.increment_use(st_blk.get('id') or st_ids[-1])
@@ -5119,6 +5477,11 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                         blk = _mem.get_block(bid)
                         if blk:
                             ans_mem = (blk.get('content') or '').strip()
+                            try:
+                                if bid:
+                                    memory_ids_mem = [str(bid)]
+                            except Exception:
+                                pass
                             # small concise summary if very long
                             if len(ans_mem) > 600:
                                 try:
@@ -5202,7 +5565,7 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
                     return _finalize_reply(
                         reply_k,
                         state=state, conv_id=(conv_id_k if conv_id_k is not None else (body.conv_id or None)), intent="knowledge", topic=extract_topic(user_msg), pipeline="km",
-                        extras={"ok": True, "auto_modes": [], "role_used": "Wissen", "memory_ids": [], "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "km", "topic": extract_topic(user_msg)}}
+                        extras={"ok": True, "auto_modes": [], "role_used": "Wissen", "memory_ids": (memory_ids_mem or []), "quick_replies": _quick_replies_for_topic(extract_topic(user_msg), user_msg), "topic": extract_topic(user_msg), "risk_flag": risk_flag, "style_used": style_used_meta, "style_prompt": style_prompt, "backend_log": {"pipeline": "km", "topic": extract_topic(user_msg)}}
                     )
 
             # 2) LLM consultation (local model) if memory empty or low-confidence
@@ -6114,11 +6477,22 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             from ... import memory_store as _mem  # type: ignore
             sem = _mem.search_blocks_semantic(query, top_k=3, min_score=0.15) or []
             blocks = []
+            _ids_sem: list[str] = []
             for bid, sc in sem:
                 b = _mem.get_block(bid)
                 if b:
                     blocks.append({"id": bid, "title": b.get('title',''), "content": b.get('content',''), "score": float(sc)})
+                    try:
+                        if bid:
+                            _ids_sem.append(str(bid))
+                    except Exception:
+                        pass
             mem_hits = blocks
+            try:
+                if _ids_sem:
+                    _record_used_memory_ids(_ids_sem)
+            except Exception:
+                pass
         except Exception:
             mem_hits = []
     if mem_hits:
@@ -6549,6 +6923,9 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     t0 = time.time()
     intent_label = "chat_stream"
 
+    # Auth context (best-effort). Must be defined even if lookup fails.
+    current = None
+
     # Best-effort: ensure we have a real conversation id early so clients can rely on it.
     stream_conv_id: Optional[int] = None
     try:
@@ -6858,6 +7235,88 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     else:
         user_msg = cleaned_msg
 
+    # -------------------------------------------------
+    # Selftalk / smalltalk bypass (must never use web/memory and must never be blocked)
+    # -------------------------------------------------
+    try:
+        from .intent_guard import classify as _ig_classify
+        _intent0 = str(_ig_classify(user_msg) or "general")
+    except Exception:
+        _intent0 = "general"
+    if _intent0 == "selftalk":
+        low0 = (user_msg or "").lower().strip()
+        if any(k in low0 for k in ["wie geht", "how are you"]):
+            lead = "Mir geht’s gut, danke."
+        elif any(k in low0 for k in ["hallo", "hi", "hey", "guten morgen", "guten tag", "guten abend", "hello", "good morning", "good evening"]):
+            lead = "Hallo!"
+        else:
+            lead = "Ich bin KI_ana."
+        reply_selftalk = (
+            f"{lead} Ich bin deine digitale Begleiterin im KI_ana-System. "
+            "Ich helfe dir beim Denken, Erklären, Planen, Schreiben und beim Debuggen von Code. "
+            "Wobei kann ich dir helfen?"
+        ).strip()
+
+        policy_override = {"web_ok": False, "memory_retrieve_ok": False}
+
+        async def gen_selftalk():
+            yield _sse({"delta": reply_selftalk})
+            yield _sse(_finalize_frame(intent="selftalk", text=reply_selftalk, policy_override=policy_override, source_expected=False))
+
+        if EventSourceResponse is None:
+            return _finalize_frame(intent="selftalk", text=reply_selftalk, policy_override=policy_override, source_expected=False)
+
+        resp = _respond(_with_meta(gen_selftalk()))
+        if resp is not None:
+            return resp
+
+    # -------------------------------------------------
+    # Phase 1: Missing-Context-Gate (intent_guard)
+    # Must short-circuit BEFORE retrieval/memory/LLM.
+    # -------------------------------------------------
+    try:
+        from .intent_guard import guard_missing_context
+        g = guard_missing_context(user_msg, lang=str(lang or "de-DE"))
+    except Exception:
+        g = None
+    if g and getattr(g, "should_block", False):
+        qs = list(getattr(g, "questions", []) or [])
+        intent_g = str(getattr(g, "intent", "missing_context") or "missing_context")
+        miss = list(getattr(g, "missing_fields", []) or [])
+        note = str(getattr(g, "note", "Noch kein Kontext – KI_ana wartet auf Klärung.") or "")
+        if not qs:
+            qs = ["Kannst du kurz mehr Kontext geben?"]
+        reply_guard = (
+            "Bevor ich loslege, brauche ich noch kurz Kontext (ich will nichts raten):\n\n"
+            + "\n".join([f"- {q}" for q in qs])
+        ).strip()
+
+        async def gen_guard():
+            # Provide immediate user-visible content (avoid perceived hangs).
+            yield _sse({"delta": reply_guard})
+            payload = {
+                "sources": [],
+                "memory_ids": [],
+                "origin": "intent_guard",
+                "backend_log": {"pipeline": "intent_guard", "intent_guard": {"intent": intent_g, "missing": miss}},
+                "explain": {"note": note},
+            }
+            yield _sse(_finalize_frame(intent=intent_g, text=reply_guard, payload=payload, source_expected=False))
+
+        if EventSourceResponse is None:
+            payload = {
+                "sources": [],
+                "memory_ids": [],
+                "origin": "intent_guard",
+                "backend_log": {"pipeline": "intent_guard", "intent_guard": {"intent": intent_g, "missing": miss}},
+                "explain": {"note": note},
+            }
+            return _finalize_frame(intent=intent_g, text=reply_guard, payload=payload, source_expected=False)
+
+        resp = _respond(_with_meta(gen_guard()))
+        if resp is not None:
+            return resp
+
     # Frage-Kontext vormerken
     try:
         if is_question(user_msg):
@@ -6872,10 +7331,22 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     # Add conversation memory context if needed
     memory_context = ""
     try:
-        from .memory_integration import build_memory_context, should_use_memory
-        # Use user_id=1 for testing (would be real user_id in production)
-        user_id = 1
-        memory_context = build_memory_context(user_msg, user_id)
+        from .memory_integration import build_memory_context_with_ids, should_use_memory
+        user_id = None
+        try:
+            if isinstance(current, dict) and current.get("id") is not None:
+                user_id = int(current["id"])  # type: ignore[index]
+        except Exception:
+            user_id = None
+
+        _mids_ctx: list[str] = []
+        if user_id is not None:
+            memory_context, _mids_ctx = build_memory_context_with_ids(user_msg, int(user_id))
+        try:
+            if _mids_ctx:
+                _record_used_memory_ids(list(_mids_ctx))
+        except Exception:
+            pass
         if memory_context:
             query = f"{memory_context}\n\n{query}"
     except Exception:
@@ -7697,8 +8168,13 @@ async def answer_with_memory_check(topic: str, web_ok: bool = True, autonomy: in
         cid = ""
         request_id = ""
     saved_ids: List[str] = []
+    used_ids: List[str] = []
     # Memory-first from SQLite
     mem_snips = _fetch_memory_snippets(topic, limit=3)
+    try:
+        used_ids = [str(sn.get('id')) for sn in (mem_snips or []) if sn.get('id')]
+    except Exception:
+        used_ids = []
     mem_text = _summarize_memory(mem_snips, max_sentences=5)
     # Web assist
     web_text = ""; web_sources: List[dict] = []
@@ -7727,10 +8203,15 @@ async def answer_with_memory_check(topic: str, web_ok: bool = True, autonomy: in
     # Synthesis
     ans_text, delta_note = _merge_memory_web(mem_text, web_text)
     if not ans_text:
-        # Final fallback: produce a concise, substantive line
-        base = mem_text or web_text or f"Hier ist, was ich zu {topic or 'deinem Thema'} weiß:"
-        pts = build_points(base, max_points=4)
-        ans_text = base if pts == [] else (base + "\n\nKernpunkte:\n" + "\n".join(f"• {p}" for p in pts))
+        # Final fallback: do NOT add empty scaffolding.
+        base = (mem_text or web_text or "").strip()
+        if base:
+            pts = build_points(base, max_points=4)
+            ans_text = base
+            if pts:
+                ans_text = base + "\n\nKernpunkte:\n" + "\n".join(f"• {p}" for p in pts)
+        else:
+            ans_text = ""
     # Apply compact formatting
     from .memory_integration import compact_response
     ans_text = compact_response(ans_text, max_length=150)
@@ -7768,7 +8249,16 @@ async def answer_with_memory_check(topic: str, web_ok: bool = True, autonomy: in
         logger.info("[answer_with_memory_check] topic=%s mem_count=%s has_web=%s origin=%s", str(topic)[:120], mem_count, had_web, origin)
     except Exception:
         pass
-    return ans_text, origin, delta_note, saved_ids, web_sources, had_memory, had_web, mem_count
+    try:
+        all_ids = _dedupe_str_list(list(used_ids or []) + list(saved_ids or []))
+    except Exception:
+        all_ids = _dedupe_str_list(list(saved_ids or []))
+    try:
+        if all_ids:
+            _record_used_memory_ids(all_ids)
+    except Exception:
+        pass
+    return ans_text, origin, delta_note, all_ids, web_sources, had_memory, had_web, mem_count
 
 def _extract_points(text: str) -> List[str]:
     try:

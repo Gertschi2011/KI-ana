@@ -23,18 +23,32 @@ export default function Navbar(){
       try{
         const me:any = await getMe()
         if(mounted){
-          const authed = !!me?.auth
+          const uAny = (me && typeof me === 'object') ? (me.user ?? me.data?.user ?? null) : null
+          const authed = (me?.auth === true) || (me?.ok === true) || !!uAny
           setIsAuthed(authed)
-          const u = authed ? (me?.user || null) : null
+          const u = authed ? (uAny || me?.user || null) : null
           const n = u?.username || u?.email || 'Gast'
           setName(String(n || 'Gast'))
-          const rolesRaw = Array.isArray(u?.roles) ? u.roles : []
-          setRoles(rolesRaw.map((r: any) => String(r).toLowerCase()))
-          setRole(String(u?.role || '').toLowerCase())
+          const rolesRaw = Array.isArray(u?.roles) ? u.roles : (Array.isArray(me?.roles) ? me.roles : [])
+          const roleRaw = String(u?.role ?? me?.role ?? '').trim()
+
+          const rolesSet = new Set<string>()
+          for (const r of rolesRaw) {
+            const t = String(r ?? '').trim().toLowerCase()
+            if (t) rolesSet.add(t)
+          }
+          // Backends sometimes encode roles in a comma-separated role string.
+          for (const part of roleRaw.split(',')) {
+            const t = String(part ?? '').trim().toLowerCase()
+            if (t) rolesSet.add(t)
+          }
+          setRoles(Array.from(rolesSet))
+          // Keep primary role string (first segment) for legacy checks.
+          setRole(String(roleRaw.split(',')[0] || '').trim().toLowerCase())
           setFlags({
-            is_admin: !!u?.is_admin,
-            is_creator: !!u?.is_creator,
-            is_papa: !!u?.is_papa,
+            is_admin: Boolean(u?.is_admin ?? u?.isAdmin ?? me?.is_admin ?? me?.isAdmin),
+            is_creator: Boolean(u?.is_creator ?? u?.isCreator ?? me?.is_creator ?? me?.isCreator),
+            is_papa: Boolean(u?.is_papa ?? u?.isPapa ?? me?.is_papa ?? me?.isPapa),
           })
           const capsObj = (me?.caps && typeof me.caps === 'object') ? me.caps : ((u?.caps && typeof u.caps === 'object') ? u.caps : {})
           setCaps(capsObj || {})
@@ -51,7 +65,7 @@ export default function Navbar(){
   }
 
   const isAdmin = !!flags.is_admin || roles.includes('admin') || role === 'admin'
-  const isCreator = !!flags.is_creator || roles.includes('creator') || role === 'creator'
+  const isCreator = !!flags.is_creator || roles.includes('creator') || role === 'creator' || !!caps?.can_view_block_viewer || !!caps?.can_rehash_blocks
   const isPapa = !!flags.is_papa || roles.includes('papa') || role === 'papa'
   const canSeeCreatorNav = isAdmin || isCreator
   const showBuild = canSeeCreatorNav

@@ -11,6 +11,11 @@ export default function AppDashboardPage(){
   const [lastTopic, setLastTopic] = useState<string>('')
   const [busy, setBusy] = useState(false)
 
+  const [livelogTail, setLivelogTail] = useState<any[]>([])
+  const [livelogStats, setLivelogStats] = useState<any | null>(null)
+  const [livelogErr, setLivelogErr] = useState<string>('')
+  const [livelogUpdatedAt, setLivelogUpdatedAt] = useState<number>(0)
+
   useEffect(()=>{
     let mounted = true
     ;(async()=>{
@@ -67,6 +72,42 @@ export default function AppDashboardPage(){
   const isPapa = !!u?.is_papa || roles.includes('papa') || role === 'papa'
   const canSeeAdmin = isAdmin || isCreator
   const canSeePapaTools = isCreator
+
+  async function loadLiveLog() {
+    if (!canSeeAdmin) return
+    try {
+      setLivelogErr('')
+      const [rt, rs] = await Promise.all([
+        fetch('/api/livelog/tail?limit=12', { credentials: 'include', cache: 'no-store' }),
+        fetch('/api/livelog/stats?window=500&top=5', { credentials: 'include', cache: 'no-store' }),
+      ])
+      const jt = await rt.json().catch(() => ({} as any))
+      const js = await rs.json().catch(() => ({} as any))
+      if (!rt.ok || !jt?.ok) throw new Error(jt?.error || jt?.detail || `tail failed (${rt.status})`)
+      if (!rs.ok || !js?.ok) throw new Error(js?.error || js?.detail || `stats failed (${rs.status})`)
+      setLivelogTail(Array.isArray(jt?.items) ? jt.items : [])
+      setLivelogStats(js)
+      setLivelogUpdatedAt(Date.now())
+    } catch (e: any) {
+      setLivelogErr(typeof e?.message === 'string' ? e.message : 'LiveLog nicht verfügbar')
+    }
+  }
+
+  useEffect(() => {
+    if (!canSeeAdmin) return
+    let alive = true
+    const run = async () => {
+      if (!alive) return
+      await loadLiveLog()
+    }
+    run()
+    const t = setInterval(run, 5000)
+    return () => {
+      alive = false
+      clearInterval(t)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [canSeeAdmin])
 
   const topGoal = Array.isArray(goals) && goals.length > 0 ? goals[0] : null
   const goalTopic = String(topGoal?.topic || '').trim()
@@ -236,6 +277,59 @@ export default function AppDashboardPage(){
         <div className="grid gap-3">
           <div className="small" style={{ opacity: 0.8 }}>Werkstatt (nur intern)</div>
           <div className="grid md:grid-cols-2 gap-4">
+            {canSeeAdmin ? (
+              <div className="card">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <div className="text-base font-semibold">🟢 LiveLog</div>
+                    <div className="small mt-1" style={{ opacity: 0.85 }}>
+                      Live‑Events: wer schreibt was (Forensics + Integrität).
+                    </div>
+                  </div>
+                  <div className="flex gap-2 flex-wrap">
+                    <Link className="kiana-header-btn" href="/app/livelog">Öffnen</Link>
+                    <button className="kiana-header-btn" onClick={loadLiveLog}>Refresh</button>
+                  </div>
+                </div>
+
+                {livelogErr ? (
+                  <div className="small mt-3" style={{ color: 'var(--danger, #b91c1c)' }}>
+                    {livelogErr}
+                  </div>
+                ) : null}
+
+                <div className="small mt-3" style={{ opacity: 0.8 }}>
+                  Letzte Updates: {livelogUpdatedAt ? new Date(livelogUpdatedAt).toLocaleTimeString() : '–'}
+                </div>
+
+                <div className="mt-3 grid gap-2">
+                  {Array.isArray(livelogTail) && livelogTail.length ? (
+                    <div className="small">
+                      {livelogTail.slice(-6).reverse().map((e: any, idx: number) => (
+                        <div key={idx} style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: 8 }}>
+                          <span style={{ opacity: 0.75 }}>{String(e?.ts || '').slice(11, 19) || '–'}</span>
+                          <span>
+                            <span style={{ fontWeight: 600 }}>{String(e?.kind || 'event')}</span>
+                            {e?.path ? ` · ${String(e.path)}` : ''}
+                            {e?.pid ? ` · pid=${String(e.pid)}` : ''}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="small" style={{ opacity: 0.8 }}>Noch keine Events.</div>
+                  )}
+
+                  {livelogStats?.by_kind?.length ? (
+                    <div className="small" style={{ opacity: 0.9 }}>
+                      Top kinds (window={livelogStats.window}):
+                      {' '}
+                      {livelogStats.by_kind.map((x: any) => `${x.key}:${x.count}`).join(' · ')}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ) : null}
             {workshopCards.map((c) => (
               <Link key={c.href} href={c.href} className="card" style={{ display: 'block' }}>
                 <div className="text-base font-semibold">{c.title}</div>

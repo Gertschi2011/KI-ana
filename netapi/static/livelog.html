@@ -51,6 +51,8 @@
       </div>
     </div>
 
+    <div id="llAuth" class="mono muted" style="margin-top:10px"></div>
+
     <div class="ll-grid">
       <div class="card">
         <h3>Last events</h3>
@@ -96,6 +98,7 @@
     const tbody = document.getElementById('events');
     const dot = document.getElementById('llDot');
     const state = document.getElementById('llState');
+    const authEl = document.getElementById('llAuth');
     const filterEl = document.getElementById('filter');
     const clearBtn = document.getElementById('clear');
 
@@ -104,6 +107,10 @@
       dot.classList.remove('ok','warn');
       if(kind==='ok') dot.classList.add('ok');
       else if(kind==='warn') dot.classList.add('warn');
+    }
+
+    function setAuth(text){
+      try{ authEl.textContent = text || ''; }catch{}
     }
 
     function esc(s){
@@ -158,12 +165,24 @@
     async function loadTail(){
       try{
         const r = await fetch('/api/livelog/tail?limit=80', { credentials:'include' });
-        if(!r.ok) return;
+        if(r.status===401 || r.status===403){
+          setAuth('Login required: bitte einloggen (Creator/Admin) und Seite neu laden.');
+          setState('warn','login required');
+          return false;
+        }
+        if(!r.ok){
+          setAuth(`API error: /api/livelog/tail -> HTTP ${r.status}`);
+          setState('warn',`error ${r.status}`);
+          return false;
+        }
+        setAuth('');
         const j = await r.json();
         const items = Array.isArray(j.items) ? j.items : [];
         tbody.innerHTML='';
         items.filter(matchesFilter).slice(-MAX_ROWS).reverse().forEach(addEvent);
+        return true;
       }catch{}
+      return false;
     }
 
     function renderTop(el, items){
@@ -207,9 +226,13 @@
 
     filterEl.addEventListener('input', ()=>{ loadTail(); });
 
-    connect();
-    loadTail();
-    pollStats();
+    (async ()=>{
+      setState('warn','checking auth…');
+      const ok = await loadTail();
+      if(!ok) return;
+      connect();
+      pollStats();
+    })();
     setInterval(pollStats, 4000);
   </script>
 </body>

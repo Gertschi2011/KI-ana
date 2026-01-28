@@ -12,6 +12,9 @@ httpx>=0.24.0
 beautifulsoup4>=4.12
 lxml>=5.0
 
+# PDF extraction used by doc_fetch
+pypdf>=4.0,<5.0
+
 # Code quality
 black>=23.7.0
 flake8>=6.1.0

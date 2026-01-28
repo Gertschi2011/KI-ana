@@ -61,6 +61,20 @@ Zusätzlich existieren minimalistische Tool-Endpunkte:
 
 Hinweis: Für Debug-Endpunkte ohne Auth muss die App als `dev/test` laufen (z.B. `KIANA_ENV=dev` oder `PROMPT_DEBUG_PREVIEW=1`).
 
+## Smoke (Chat Selftalk: kein Web, kein Style-Prompt)
+
+Command:
+
+- `curl -sS -b /tmp/cj.txt https://ki-ana.at/api/chat \
+  -H 'Content-Type: application/json' \
+  --data-binary '{"message":"was machst du?","stream":false}' | jq '.reply,.explain.policy.web_ok,.style_prompt'`
+
+Expected:
+
+- Sinnvolle kurze Selbstbeschreibung (enthält z. B. "KI_ana" / "ich helfe")
+- `.explain.policy.web_ok` ist `false`
+- `.style_prompt` ist `null` oder leer
+
 ## Golden Docker Smoke (News Meta)
 
 Ziel: Sicherstellen, dass der **Runtime-Pfad** (Docker Container) die News-Ranking-Pässe und die erweiterten `meta.web` Felder liefert (u.a. `relevance_applied`, `dedup_applied`, `service_penalty_applied`, `interest_used`, `penalized_examples`, `news_cards`) – und dass ein Signal (`/api/v2/chat/signal`) das Ranking sichtbar beeinflusst.
