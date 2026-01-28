@@ -338,7 +338,8 @@ def _get_subminds(user: Dict[str, Any]) -> List[Any]:
 @router.get("/me")
 def me(current = Depends(get_current_user_opt)) -> Dict[str, Any]:
     if not current:
-        return {"auth": False, "user": None}
+        # Keep a stable top-level plan field for frontend gating.
+        return {"auth": False, "user": None, "plan": "free"}
 
     # 'current' ist das Dict aus require_user/current_user_optional
     # -> enthält id, username, role, plan, plan_until
@@ -348,6 +349,27 @@ def me(current = Depends(get_current_user_opt)) -> Dict[str, Any]:
     # Creator soll Papa-Rechte im UI implizieren
     if (is_papa or ("creator" in roles)) and "papa" not in roles:
         roles = sorted(set(roles) | {"papa"})
+
+    # Plan normalization for UI/entitlements (single stable field)
+    # Spec: plan is always one of: free|user|pro|creator|admin
+    try:
+        if _is_admin(roles):
+            plan_norm = "admin"
+        elif _is_creator(roles):
+            plan_norm = "creator"
+        else:
+            p = str(current.get("plan") or "free").strip().lower()
+            if not p or p == "free":
+                plan_norm = "free"
+            elif p == "user":
+                plan_norm = "user"
+            elif p in {"pro", "team"} or p.startswith("submind_"):
+                plan_norm = "pro"
+            else:
+                # Unknown plans: treat as pro (fail-open for paying users)
+                plan_norm = "pro"
+    except Exception:
+        plan_norm = "free"
     user_out: Dict[str, Any] = {
         "id": current.get("id"),
         "username": current.get("username"),
@@ -360,7 +382,7 @@ def me(current = Depends(get_current_user_opt)) -> Dict[str, Any]:
         "is_papa": is_papa,
         "birthdate": current.get("birthdate"),
         "is_kid": is_kid(current),
-        "plan": current.get("plan", "free"),
+        "plan": plan_norm,
         "plan_until": current.get("plan_until", 0),
         "created_at": current.get("created_at", 0),
         "subminds": _get_subminds(current),
@@ -377,7 +399,7 @@ def me(current = Depends(get_current_user_opt)) -> Dict[str, Any]:
             "can_view_admin": (_is_admin(roles) or _is_creator(roles)),
         },
     }
-    return {"auth": True, "user": user_out}
+    return {"auth": True, "plan": plan_norm, "user": user_out}
 
 
 @router.get("/account")

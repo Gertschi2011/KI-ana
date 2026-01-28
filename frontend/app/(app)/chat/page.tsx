@@ -8,6 +8,8 @@ type Msg = {
   role: 'user' | 'assistant';
   text: string;
   createdAt?: number | string;
+  serverMsgId?: number;
+  serverConvId?: number;
   sources?: any[];
   memory_ids?: string[];
   origin?: string;
@@ -24,7 +26,8 @@ export default function ChatPage() {
   const finalizeSeenRef = useRef(false);
   const activeRequestIdRef = useRef<string | null>(null);
   const [canExplain, setCanExplain] = useState(false);
-  const [showExplain, setShowExplain] = useState(true);
+  const [mePlan, setMePlan] = useState<string>('free');
+  const [upgradeOpen, setUpgradeOpen] = useState(false);
   const [webOkAllowed, setWebOkAllowed] = useState(false);
   const [streamError, setStreamError] = useState<string | null>(null);
   const [folders, setFolders] = useState<any[]>([]);
@@ -36,6 +39,9 @@ export default function ChatPage() {
   const [movePickerFolderId, setMovePickerFolderId] = useState<number | null>(null);
   const [activeConvFolderPick, setActiveConvFolderPick] = useState<number | null>(null);
   const [explainOpenMsgId, setExplainOpenMsgId] = useState<string | null>(null);
+  const [traceLoading, setTraceLoading] = useState(false);
+  const [traceError, setTraceError] = useState<string | null>(null);
+  const [traceData, setTraceData] = useState<any | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const convRef = useRef<string | null>(null);
@@ -46,8 +52,8 @@ export default function ChatPage() {
   const uiBusy = busy || startingStreamRef.current;
 
   const canShowExplainUi = useMemo(() => {
-    return !!(showExplain && canExplain);
-  }, [showExplain, canExplain]);
+    return !!canExplain;
+  }, [canExplain]);
 
   const explainOpenMsg = explainOpenMsgId
     ? msgs.find((m) => m.id === explainOpenMsgId) || null
@@ -68,10 +74,17 @@ export default function ChatPage() {
         const roles = Array.isArray(u?.roles) ? u.roles.map((x: any) => String(x).toLowerCase()) : [];
         const isAdmin = !!u?.is_admin || roles.includes('admin') || role === 'admin';
         const isCreator = !!u?.is_creator || roles.includes('creator') || role === 'creator';
-        // Spec: Explain/Transparenz nur für Creator (Gerald)
-        if (mounted) setCanExplain(!!isCreator);
+        const planNorm = String(j?.plan ?? u?.plan ?? 'free').toLowerCase();
+        if (mounted) {
+          setMePlan(planNorm);
+          // Transparenz: user/pro/creator/admin (not free)
+          setCanExplain(!!(planNorm !== 'free' || isCreator || isAdmin));
+        }
       } catch {
-        if (mounted) setCanExplain(false);
+        if (mounted) {
+          setMePlan('free');
+          setCanExplain(false);
+        }
       }
     })();
     return () => {
@@ -80,11 +93,38 @@ export default function ChatPage() {
   }, []);
 
   useEffect(() => {
-    try {
-      const v = localStorage.getItem('kiana_show_explain');
-      if (v === '0') setShowExplain(false);
-    } catch {}
-  }, []);
+    let cancelled = false;
+    (async () => {
+      setTraceError(null);
+      setTraceData(null);
+      if (!canShowExplainUi || !explainOpenMsg || explainOpenMsg.role !== 'assistant') return;
+      const convId =
+        typeof activeConvId === 'number' ? activeConvId :
+        (convRef.current ? Number(convRef.current) : null);
+      const serverMsgId = (explainOpenMsg as any).serverMsgId;
+      if (!convId) return;
+      setTraceLoading(true);
+      try {
+        const url = serverMsgId
+          ? `/api/chat/trace?conv_id=${encodeURIComponent(String(convId))}&msg_id=${encodeURIComponent(String(serverMsgId))}`
+          : `/api/chat/trace?conv_id=${encodeURIComponent(String(convId))}&last=1`;
+        const r = await fetch(url, { credentials: 'include' });
+        const j = await r.json().catch(() => ({} as any));
+        if (cancelled) return;
+        if (!r.ok || j?.ok !== true) {
+          setTraceError('Transparenz ist gerade nicht verfügbar.');
+          setTraceData(null);
+        } else {
+          setTraceData(j);
+        }
+      } catch {
+        if (!cancelled) setTraceError('Transparenz ist gerade nicht verfügbar.');
+      } finally {
+        if (!cancelled) setTraceLoading(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [canShowExplainUi, explainOpenMsgId, activeConvId]);
 
   useEffect(() => {
     try {
@@ -212,10 +252,27 @@ export default function ChatPage() {
         role: (String(m?.role) === 'ai' ? 'assistant' : 'user'),
         text: String(m?.text ?? ''),
         createdAt: (m?.created_at ?? m?.ts ?? null) || undefined,
+        serverMsgId: typeof m?.id === 'number' ? m.id : (Number.isFinite(Number(m?.id)) ? Number(m.id) : undefined),
+        serverConvId: Number.isFinite(Number(convId)) ? Number(convId) : undefined,
       }));
       setMsgs(mapped);
     } catch {
       setMsgs([]);
+    }
+  }
+
+  function openTransparencyPanelForLastAssistant() {
+    // Free: show upgrade modal and avoid any API calls.
+    if (String(mePlan || 'free').toLowerCase() === 'free') {
+      setUpgradeOpen(true);
+      return;
+    }
+    // Find last assistant message in the current timeline.
+    for (let i = msgs.length - 1; i >= 0; i--) {
+      if (msgs[i]?.role === 'assistant') {
+        setExplainOpenMsgId(msgs[i].id);
+        return;
+      }
     }
   }
 
@@ -555,6 +612,8 @@ export default function ChatPage() {
                 clone[idxMsg] = {
                   ...cur,
                   text: finalText,
+                  serverMsgId: typeof frame?.msg_id === 'number' ? frame.msg_id : cur.serverMsgId,
+                  serverConvId: typeof frame?.conv_id === 'number' ? frame.conv_id : (typeof frame?.conversation_id === 'number' ? frame.conversation_id : cur.serverConvId),
                   sources: Array.isArray(frame?.sources) ? frame.sources : (cur.sources ?? []),
                   memory_ids: Array.isArray(frame?.memory_ids) ? frame.memory_ids : (cur.memory_ids ?? []),
                   origin: typeof frame?.origin === 'string' ? frame.origin : cur.origin,
@@ -850,21 +909,20 @@ export default function ChatPage() {
 
         <div className="flex-1" />
 
-        {canExplain && (
-          <label className="kiana-switch text-sm">
-            <input
-              type="checkbox"
-              checked={showExplain}
-              onChange={(e) => {
-                const v = e.target.checked;
-                setShowExplain(v);
-                try { localStorage.setItem('kiana_show_explain', v ? '1' : '0'); } catch {}
-              }}
-              disabled={!canExplain}
-            />
+        <div
+          title={String(mePlan || 'free').toLowerCase() === 'free' ? 'Nur für User/Pro. Upgrade ansehen…' : 'Transparenz öffnen'}
+          onClick={() => openTransparencyPanelForLastAssistant()}
+          style={{ cursor: 'pointer' }}
+        >
+          <button
+            type="button"
+            className="kiana-btn"
+            disabled={String(mePlan || 'free').toLowerCase() === 'free'}
+            aria-disabled={String(mePlan || 'free').toLowerCase() === 'free'}
+          >
             Transparenz
-          </label>
-        )}
+          </button>
+        </div>
       </div>
 
       <div ref={scrollerRef} className="kiana-chat-messages overflow-y-auto p-4 flex flex-col gap-3">
@@ -896,7 +954,9 @@ export default function ChatPage() {
                           }
                         })()}
                       </span>
-                      {canShowExplainUi && (m.explain || (m.sources && m.sources.length) || (m.memory_ids && m.memory_ids.length)) && (
+                      {canShowExplainUi && (
+                        (m as any).serverMsgId || (m.explain || (m.sources && m.sources.length) || (m.memory_ids && m.memory_ids.length))
+                      ) && (
                         <button
                           type="button"
                           className="kiana-explain-btn"
@@ -989,20 +1049,54 @@ export default function ChatPage() {
             <div className="mt-4 grid gap-4">
               <div className="kiana-inset">
                 <div className="text-sm font-semibold">Quellen</div>
-                {Array.isArray((explainOpenMsg as any).sources) && (explainOpenMsg as any).sources.length > 0 ? (
-                  <div className="mt-2 grid gap-1">
-                    {(explainOpenMsg as any).sources.slice(0, 8).map((s: any, idx: number) => {
-                      const url = String(s?.url || s?.link || s?.href || '').trim();
-                      const title = String(s?.title || s?.name || url || `Quelle ${idx + 1}`);
-                      return url ? (
-                        <a key={url + idx} className="small underline" href={url} target="_blank" rel="noreferrer">
-                          {title}
-                        </a>
-                      ) : (
-                        <div key={idx} className="small opacity-80">{title}</div>
-                      );
-                    })}
-                  </div>
+                {traceLoading ? (
+                  <div className="small mt-2 opacity-80">Lade…</div>
+                ) : traceError ? (
+                  <div className="small mt-2 opacity-80">{traceError}</div>
+                ) : (() => {
+                  const tr = traceData?.trace ?? traceData;
+                  const all = Array.isArray(tr?.sources) ? tr.sources : [];
+                  if (!all.length) return <div className="small mt-2 opacity-80">Keine Quellen für diese Antwort.</div>;
+
+                  const buckets: Record<string, any[]> = { web: [], pdf: [], memory: [], other: [] };
+                  for (const s of all) {
+                    const o = String(s?.origin || s?.type || s?.kind || '').toLowerCase();
+                    const key = o.includes('pdf') ? 'pdf' : o.includes('memory') ? 'memory' : o.includes('web') ? 'web' : 'other';
+                    (buckets[key] || buckets.other).push(s);
+                  }
+                  const order: Array<[string, string]> = [
+                    ['web', 'Web'],
+                    ['pdf', 'PDF'],
+                    ['memory', 'Memory'],
+                    ['other', 'Sonstiges'],
+                  ];
+                  return (
+                    <div className="mt-2 grid gap-3">
+                      {order.map(([k, label]) => {
+                        const arr = buckets[k] || [];
+                        if (!arr.length) return null;
+                        return (
+                          <div key={k}>
+                            <div className="small opacity-80">{label}</div>
+                            <div className="mt-1 grid gap-1">
+                              {arr.slice(0, 8).map((s: any, idx: number) => {
+                                const url = String(s?.url || s?.link || s?.href || '').trim();
+                                const title = String(s?.title || s?.name || url || `Quelle ${idx + 1}`);
+                                return url ? (
+                                  <a key={url + idx} className="small underline" href={url} target="_blank" rel="noreferrer">
+                                    {title}
+                                  </a>
+                                ) : (
+                                  <div key={idx} className="small opacity-80">{title}</div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
                 ) : (
                   <div className="small mt-2 opacity-80">Keine Quellen für diese Antwort.</div>
                 )}
@@ -1010,20 +1104,66 @@ export default function ChatPage() {
 
               <div className="kiana-inset">
                 <div className="text-sm font-semibold">Erinnerungen</div>
-                {Array.isArray((explainOpenMsg as any).memory_ids) && (explainOpenMsg as any).memory_ids.length > 0 ? (
+                {traceLoading ? (
+                  <div className="small mt-2 opacity-80">Lade…</div>
+                ) : traceError ? (
+                  <div className="small mt-2 opacity-80">{traceError}</div>
+                ) : (() => {
+                  const tr = traceData?.trace ?? traceData;
+                  const previews = Array.isArray(tr?.memory_previews)
+                    ? tr.memory_previews
+                    : (Array.isArray(tr?.memory_items) ? tr.memory_items : []);
+                  const ids = Array.isArray(tr?.memory_ids) ? tr.memory_ids : [];
+
+                  if (previews.length > 0) {
+                    return (
+                      <>
+                        <div className="small mt-2 opacity-80">Verknüpfte Wissensblöcke: {previews.length}</div>
+                        <div className="mt-2 grid gap-2">
+                          {previews.slice(0, 8).map((it: any) => (
+                            <div key={String(it?.id)} className="small" style={{ border: '1px solid var(--k-border)', borderRadius: 12, padding: 10 }}>
+                              <div className="font-semibold">{String(it?.title || it?.id || 'Wissensblock')}</div>
+                              {(() => {
+                                const parts: string[] = [];
+                                if (it?.topic) parts.push(String(it.topic));
+                                try {
+                                  const ts = Number(it?.ts || 0);
+                                  if (Number.isFinite(ts) && ts > 0) {
+                                    parts.push(new Date(ts * 1000).toLocaleDateString());
+                                  }
+                                } catch {}
+                                return parts.length ? <div className="opacity-80 mt-1">{parts.join(' · ')}</div> : null;
+                              })()}
+                              {it?.preview ? <div className="opacity-80 mt-1">{String(it.preview)}</div> : null}
+                            </div>
+                          ))}
+                        </div>
+                      </>
+                    );
+                  }
+
+                  if (ids.length > 0) {
+                    return (
+                      <>
+                        <div className="small mt-2 opacity-80">Verknüpfte IDs: {ids.length}</div>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {ids.slice(0, 12).map((id: any) => (
+                            <span
+                              key={String(id)}
+                              className="text-xs px-2 py-1 rounded-full"
+                              style={{ background: 'rgba(99,102,241,0.10)', border: '1px solid rgba(99,102,241,0.18)' }}
+                            >
+                              {String(id)}
+                            </span>
+                          ))}
+                        </div>
+                      </>
+                    );
+                  }
+
+                  return <div className="small mt-2 opacity-80">Keine verknüpften Wissensblöcke.</div>;
+                })()}
                   <>
-                    <div className="small mt-2 opacity-80">Verknüpfte Erinnerungen: {(explainOpenMsg as any).memory_ids.length}</div>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {(explainOpenMsg as any).memory_ids.slice(0, 12).map((id: any) => (
-                        <span
-                          key={String(id)}
-                          className="text-xs px-2 py-1 rounded-full"
-                          style={{ background: 'rgba(99,102,241,0.10)', border: '1px solid rgba(99,102,241,0.18)' }}
-                        >
-                          {String(id)}
-                        </span>
-                      ))}
-                    </div>
                   </>
                 ) : (
                   <div className="small mt-2 opacity-80">Keine verknüpften Erinnerungen.</div>
@@ -1034,14 +1174,38 @@ export default function ChatPage() {
                 <div className="text-sm font-semibold">Kurz erklärt</div>
                 <div className="small mt-2" style={{ whiteSpace: 'pre-wrap' }}>
                   {(() => {
-                    const ex: any = (explainOpenMsg as any).explain;
-                    if (!ex) return 'Für diese Antwort gibt es keine zusätzliche Erklärung.';
+                    const tr = traceData?.trace ?? traceData;
+                    const ex: any = tr?.explain ?? traceData?.explain ?? (explainOpenMsg as any).explain;
+                    if (!ex) return 'Für diese Antwort gibt es keine zusätzliche Erklärung (nur Pro).';
                     const candidates = [ex?.summary, ex?.why, ex?.note, ex?.explanation, ex?.rationale];
                     const first = candidates.find((v) => typeof v === 'string' && String(v).trim().length > 0);
                     return first ? String(first).trim() : 'KI_ana hat hier keine extra Notiz hinterlegt – Quellen/Erinnerungen stehen oben.';
                   })()}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {upgradeOpen && (
+        <div
+          className="fixed inset-0 z-[1100] flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setUpgradeOpen(false)}
+        >
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="kiana-modal p-4" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between gap-3">
+              <div className="font-semibold">Transparenz ist ein Pro-Feature</div>
+              <button className="kiana-btn" onClick={() => setUpgradeOpen(false)}>Schließen</button>
+            </div>
+            <div className="small mt-3" style={{ whiteSpace: 'pre-wrap' }}>
+              Quellen und Wissensblöcke anzeigen ist für User/Pro verfügbar.
+            </div>
+            <div className="mt-4 flex gap-2 justify-end">
+              <a className="kiana-btn kiana-btn-primary" href="/pricing">Upgrade ansehen</a>
             </div>
           </div>
         </div>

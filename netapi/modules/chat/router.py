@@ -286,6 +286,7 @@ async def chat_feedback(body: FeedbackIn, request: Request):
 @router.on_event("startup")
 async def _chat_audit_startup():
     async def _loop():
+        last_trace_cleanup = 0
         while True:
             try:
                 rows = count_memory_per_day()
@@ -295,6 +296,39 @@ async def _chat_audit_startup():
                 total = total_blocks()
                 if total > 10000:
                     logger.warning("[memory] DB size growing large: %s blocks", total)
+
+                # Optional: prune old MessageTrace rows to prevent DB growth.
+                try:
+                    ttl_days = int(os.getenv("TRACE_TTL_DAYS", "90") or "90")
+                except Exception:
+                    ttl_days = 90
+                now = int(time.time())
+                if ttl_days > 0 and (now - int(last_trace_cleanup or 0)) >= 24 * 3600:
+                    last_trace_cleanup = now
+                    cutoff = now - (ttl_days * 24 * 3600)
+                    db = None
+                    try:
+                        db = SessionLocal()
+                        deleted = (
+                            db.query(MessageTrace)
+                            .filter(MessageTrace.created_at.isnot(None), MessageTrace.created_at < int(cutoff))
+                            .delete(synchronize_session=False)
+                        )
+                        db.commit()
+                        if int(deleted or 0) > 0:
+                            logger.info("[trace] pruned %s traces older than %s days", deleted, ttl_days)
+                    except Exception:
+                        try:
+                            if db is not None:
+                                db.rollback()
+                        except Exception:
+                            pass
+                    finally:
+                        try:
+                            if db is not None:
+                                db.close()
+                        except Exception:
+                            pass
             except Exception as e:
                 logger.error("[audit] failed: %s", e)
             await asyncio.sleep(3600)
@@ -1103,21 +1137,60 @@ def _attach_explain_and_kpis(
     except Exception:
         pass
 
-    # Optional enforcement: Sources-required gate
+    # Quellenpflicht enforcement (strict intents only)
+    # Rules:
+    # - Strict intents (facts/law/news/current/pdf/research/web): if no sources AND no memory_ids => enforce.
+    # - Non-strict (smalltalk/coding help/brainstorming): never enforce.
+    # - If web_ok == false or offline: do NOT hard-refuse; add a disclaimer + question instead.
     try:
+        intent_norm = str(intent or "unknown").strip().lower()
+        strict_intents = {"web", "research", "facts", "law", "pdf", "news", "current_query"}
+
+        # Determine whether web access is permitted/available.
+        eff_policy: dict = {}
+        if isinstance(policy, dict):
+            eff_policy = policy
+        elif isinstance(ctx, dict) and isinstance(ctx.get("policy"), dict):
+            eff_policy = ctx.get("policy") or {}
+        try:
+            web_ok = bool(eff_policy.get("web_ok", True))
+        except Exception:
+            web_ok = True
+        allow_net = os.getenv("ALLOW_NET", "1").strip().lower() in {"1", "true", "yes", "y"}
+        offline = not allow_net
+
+        # Only strict intents can trigger Quellenpflicht.
+        enforce_now = bool(intent_norm in strict_intents and bool(source_expected))
+
+        # If quality gates explicitly enforce sources_required, honor that too — but still strict-only.
         gates = ctx.get("gates") if isinstance(ctx, dict) else None
-        if isinstance(gates, dict) and bool(gates.get("enforced")):
+        if enforce_now and isinstance(gates, dict) and bool(gates.get("enforced")):
             enforced_gates = set(gates.get("enforced_gates") or [])
-            if (
-                "sources_required" in enforced_gates
-                and bool(source_expected)
-                and bool(is_q)
-                and int(sources_count or 0) <= 0
-            ):
-                refusal = (
-                    "Ich kann das gerade nicht zuverlässig beantworten, weil ich keine belastbaren Quellen angeben kann. "
-                    "Wenn du willst, aktiviere Websuche oder gib mir eine Quelle/Link, dann prüfe ich es." 
+            if "sources_required" in enforced_gates and bool(source_expected):
+                enforce_now = True
+
+        if enforce_now and bool(is_q) and int(sources_count or 0) <= 0:
+            if (not web_ok) or offline:
+                disclaimer = (
+                    "Hinweis: Ich habe gerade keinen Zugriff auf Quellen (Websuche ist deaktiviert/kein Netzwerk). "
+                    "Soll ich trotzdem eine vorsichtige Einschätzung geben, oder soll ich recherchieren sobald Websuche erlaubt ist?"
                 )
+                # Not a hard-refusal: keep the existing answer and append a disclaimer.
+                for k in ("reply", "text"):
+                    if isinstance(payload.get(k), str):
+                        txt = str(payload.get(k) or "").rstrip()
+                        if disclaimer not in txt:
+                            payload[k] = (txt + "\n\n" + disclaimer).strip()
+                try:
+                    bl = payload.get("backend_log")
+                    if not isinstance(bl, dict):
+                        bl = {}
+                        payload["backend_log"] = bl
+                    bl["quality_gate"] = "sources_unavailable"
+                except Exception:
+                    pass
+            else:
+                refusal = "Ich kann das gerade nicht belegen—soll ich recherchieren?"
                 if isinstance(payload.get("reply"), str):
                     payload["reply"] = refusal
                 if isinstance(payload.get("text"), str):
@@ -1128,6 +1201,77 @@ def _attach_explain_and_kpis(
                         bl = {}
                         payload["backend_log"] = bl
                     bl["quality_gate"] = "sources_required"
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
+    # Attach msg_id + persist trace when conv_id is present (best-effort)
+    try:
+        conv_id = payload.get("conv_id")
+        if conv_id is None and isinstance(payload.get("conversation_id"), int):
+            conv_id = payload.get("conversation_id")
+        try:
+            conv_id_int = int(conv_id) if conv_id is not None else 0
+        except Exception:
+            conv_id_int = 0
+
+        if conv_id_int > 0:
+            db2 = SessionLocal()
+            try:
+                last_ai = (
+                    db2.query(Message)
+                    .filter(Message.conv_id == int(conv_id_int), Message.role == "ai")
+                    .order_by(Message.id.desc())
+                    .first()
+                )
+                if last_ai and getattr(last_ai, "id", None) is not None:
+                    payload["msg_id"] = int(last_ai.id)
+
+                owner_id = None
+                try:
+                    owner_id = db2.query(Conversation.user_id).filter(Conversation.id == int(conv_id_int)).scalar()
+                except Exception:
+                    owner_id = None
+
+                allow_trace = False
+                try:
+                    allow_trace = _transparency_allowed_for_user(None, db=db2, conv_id=int(conv_id_int))
+                except Exception:
+                    allow_trace = False
+
+                if allow_trace and owner_id and last_ai and getattr(last_ai, "id", None) is not None:
+                    srcs: list = []
+                    try:
+                        if isinstance(payload.get("sources"), list):
+                            srcs = list(payload.get("sources") or [])
+                        elif isinstance(payload.get("meta"), dict) and isinstance(payload["meta"].get("sources"), list):
+                            srcs = list(payload["meta"].get("sources") or [])
+                    except Exception:
+                        srcs = []
+                    mids: list = []
+                    try:
+                        if isinstance(payload.get("memory_ids"), list):
+                            mids = list(payload.get("memory_ids") or [])
+                    except Exception:
+                        mids = []
+                    ex = payload.get("explain") if isinstance(payload.get("explain"), dict) else {}
+                    _upsert_message_trace(
+                        db2,
+                        conv_id=int(conv_id_int),
+                        msg_id=int(last_ai.id),
+                        user_id=int(owner_id),
+                        sources=srcs,
+                        memory_ids=mids,
+                        explain=ex if isinstance(ex, dict) else {},
+                    )
+
+                # Enforce transparency gating for free plans (strip fields)
+                if not allow_trace:
+                    _strip_transparency_fields(payload)
+            finally:
+                try:
+                    db2.close()
                 except Exception:
                     pass
     except Exception:
@@ -1377,7 +1521,7 @@ def _finalize_reply(
             except Exception:
                 pipe = ""
             intent_norm = str(intent or "unknown").strip().lower()
-            source_expected = intent_norm in {"knowledge", "web", "research"} or pipe in {"web", "web+llm"}
+            source_expected = intent_norm in {"knowledge", "web", "research", "facts", "law", "pdf", "news"} or pipe in {"web", "web+llm"}
 
             sources_count = 0
             try:
@@ -1385,6 +1529,12 @@ def _finalize_reply(
                     sources_count = len(base["meta"].get("sources") or [])
             except Exception:
                 sources_count = 0
+            mem_count = 0
+            try:
+                if isinstance(base.get("memory_ids"), list):
+                    mem_count = len(base.get("memory_ids") or [])
+            except Exception:
+                mem_count = 0
 
             _attach_explain_and_kpis(
                 base,
@@ -1393,10 +1543,72 @@ def _finalize_reply(
                 policy=None,
                 tools=None,
                 source_expected=bool(source_expected),
-                sources_count=int(sources_count or 0),
+                sources_count=int((sources_count or 0) + (mem_count or 0)),
             )
         except Exception:
             pass
+
+        # Add stable msg_id + persist trace for /api/chat (best-effort)
+        try:
+            if conv_id is not None:
+                db2 = SessionLocal()
+                try:
+                    # Find the most recent assistant message in this conversation.
+                    last_ai = (
+                        db2.query(Message)
+                        .filter(Message.conv_id == int(conv_id), Message.role == "ai")
+                        .order_by(Message.id.desc())
+                        .first()
+                    )
+                    if last_ai and getattr(last_ai, "id", None):
+                        base["msg_id"] = int(last_ai.id)
+                    # Persist trace for retrieval
+                    owner_id = None
+                    try:
+                        owner_id = db2.query(Conversation.user_id).filter(Conversation.id == int(conv_id)).scalar()
+                    except Exception:
+                        owner_id = None
+                    allow_trace = False
+                    try:
+                        allow_trace = _transparency_allowed_for_user(None, db=db2, conv_id=int(conv_id))
+                    except Exception:
+                        allow_trace = False
+
+                    if allow_trace and owner_id and last_ai and getattr(last_ai, "id", None):
+                        srcs = []
+                        try:
+                            if isinstance(base.get("meta"), dict) and isinstance(base["meta"].get("sources"), list):
+                                srcs = list(base["meta"].get("sources") or [])
+                        except Exception:
+                            srcs = []
+                        mids = []
+                        try:
+                            if isinstance(base.get("memory_ids"), list):
+                                mids = list(base.get("memory_ids") or [])
+                        except Exception:
+                            mids = []
+                        ex = base.get("explain") if isinstance(base.get("explain"), dict) else {}
+                        _upsert_message_trace(
+                            db2,
+                            conv_id=int(conv_id),
+                            msg_id=int(last_ai.id),
+                            user_id=int(owner_id),
+                            sources=srcs,
+                            memory_ids=mids,
+                            explain=ex if isinstance(ex, dict) else {},
+                        )
+
+                    # Enforce transparency gating for free plans (strip fields)
+                    if not allow_trace:
+                        _strip_transparency_fields(base)
+                finally:
+                    try:
+                        db2.close()
+                    except Exception:
+                        pass
+        except Exception:
+            pass
+
         return base
     except Exception:
         # Last-resort safe minimal response
@@ -1478,13 +1690,200 @@ ALLOW_DIRECT_LLM = os.getenv("KI_DIRECT_LLM_FIRST", "0").strip().lower() in {"1"
 from ...db import get_db, init_db
 from ...db import SessionLocal
 from ...deps import get_current_user_opt, get_current_user_required, enforce_quota
-from ...models import Conversation, Message
+from ...models import Conversation, Message, MessageTrace, User
 
 # Ensure tables exist (safe no-op if present)
 try:
     init_db()
 except Exception:
     pass
+
+
+def _roles_set(current: Optional[dict]) -> set[str]:
+    try:
+        if not isinstance(current, dict):
+            return set()
+        role = str(current.get("role") or "").lower().strip()
+        roles = current.get("roles")
+        out: set[str] = set()
+        if role:
+            out.add(role)
+        if isinstance(roles, (list, tuple)):
+            out.update({str(r).lower().strip() for r in roles if r is not None})
+        return {r for r in out if r}
+    except Exception:
+        return set()
+
+
+def _transparency_allowed_for_user(current: Optional[dict], *, db=None, conv_id: Optional[int] = None) -> bool:
+    """Paid users (effective plan != free) may access transparency details.
+
+    When current is unavailable, falls back to DB lookup via conv_id -> users.plan.
+    """
+    try:
+        # Creator/admin always allowed
+        if _roles_set(current) & {"creator", "admin"}:
+            return True
+        if isinstance(current, dict):
+            try:
+                from ...deps import _effective_plan_id
+                plan_id = _effective_plan_id(str(current.get("plan") or "free"))
+                return plan_id != "free"
+            except Exception:
+                pass
+        # Fallback: DB lookup by conv_id
+        if db is not None and conv_id:
+            uid = None
+            try:
+                uid = db.query(Conversation.user_id).filter(Conversation.id == int(conv_id)).scalar()
+            except Exception:
+                uid = None
+            if uid:
+                try:
+                    plan = db.query(User.plan).filter(User.id == int(uid)).scalar()
+                except Exception:
+                    plan = None
+                try:
+                    from ...deps import _effective_plan_id
+                    return _effective_plan_id(str(plan or "free")) != "free"
+                except Exception:
+                    return False
+        return False
+    except Exception:
+        return False
+
+
+def _strip_transparency_fields(payload: dict) -> dict:
+    """Remove sources/memory/explain fields from a payload in-place (best-effort)."""
+    if not isinstance(payload, dict):
+        return payload
+    try:
+        payload.pop("explain", None)
+        payload.pop("memory_ids", None)
+        payload.pop("sources", None)
+    except Exception:
+        pass
+    try:
+        meta = payload.get("meta")
+        if isinstance(meta, dict):
+            meta.pop("sources", None)
+    except Exception:
+        pass
+    return payload
+
+
+def _memory_previews(ids: List[str], *, limit_chars: int = 240, max_items: int = 20) -> List[dict]:
+    try:
+        from netapi import memory_store as _ms
+        out: List[dict] = []
+        seen: set[str] = set()
+        for bid in ids:
+            b = str(bid or "").strip()
+            if not b or b in seen:
+                continue
+            seen.add(b)
+            blk = _ms.get_block(b)
+            if not isinstance(blk, dict):
+                continue
+            content = str(blk.get("content") or "")
+            preview = content.strip().replace("\n", " ")
+            if len(preview) > int(limit_chars or 240):
+                preview = preview[: int(limit_chars or 240)].rstrip() + "…"
+            out.append({
+                "id": str(blk.get("id") or b),
+                "title": str(blk.get("title") or ""),
+                "ts": int(blk.get("ts") or 0),
+                "tags": list(blk.get("tags") or []),
+                "url": str(blk.get("url") or ""),
+                "preview": preview,
+            })
+            if len(out) >= int(max_items or 20):
+                break
+        return out
+    except Exception:
+        return []
+
+
+def _upsert_message_trace(
+    db,
+    *,
+    conv_id: int,
+    msg_id: int,
+    user_id: int,
+    sources: Optional[list] = None,
+    memory_ids: Optional[list] = None,
+    explain: Optional[dict] = None,
+) -> None:
+    """Best-effort write once per msg_id."""
+    try:
+        if not (db and conv_id and msg_id and user_id):
+            return
+        existing = db.query(MessageTrace).filter(MessageTrace.msg_id == int(msg_id)).first()
+        if existing:
+            return
+
+        # Size guard: cap trace payload to avoid DB bloat.
+        max_bytes = 64 * 1024
+        srcs = list(sources or [])
+        mids = list(memory_ids or [])
+        ex = dict(explain or {})
+        try:
+            srcs = srcs[:50]
+        except Exception:
+            srcs = list(sources or [])
+        try:
+            mids = mids[:200]
+        except Exception:
+            mids = list(memory_ids or [])
+
+        def _fits(sources_v, mids_v, ex_v) -> bool:
+            try:
+                b = json.dumps({"sources": sources_v, "memory_ids": mids_v, "explain": ex_v}, ensure_ascii=False)
+                return len(b.encode("utf-8")) <= int(max_bytes)
+            except Exception:
+                return True
+
+        if not _fits(srcs, mids, ex):
+            # First: drop large explain (keep only short summary if present).
+            try:
+                summary = ex.get("summary")
+                ex = {"summary": (str(summary)[:1000] if isinstance(summary, str) else "")} if summary else {}
+            except Exception:
+                ex = {}
+
+        if not _fits(srcs, mids, ex):
+            # Then: shrink sources/memory ids further.
+            try:
+                srcs = srcs[:10]
+            except Exception:
+                pass
+            try:
+                mids = mids[:50]
+            except Exception:
+                pass
+
+        if not _fits(srcs, mids, ex):
+            # Last resort: store only minimal trace skeleton.
+            srcs = []
+            mids = []
+            ex = {}
+
+        tr = MessageTrace(
+            msg_id=int(msg_id),
+            conv_id=int(conv_id),
+            user_id=int(user_id),
+            created_at=int(time.time()),
+            sources=srcs,
+            memory_ids=mids,
+            explain=ex,
+        )
+        db.add(tr)
+        db.commit()
+    except Exception:
+        try:
+            db.rollback()
+        except Exception:
+            pass
 
 # -------------------------
 # Conversation state (in-memory, per session)
@@ -2113,7 +2512,12 @@ def build_structured_reply(ans_text: str, mem_hits: List[dict], web_sources: Lis
     return "\n".join(l for l in lines if l is not None)
 
 # -------- Finalize payload helper (sources array) ----------------------------
-def _finalize_payload(answer: str, memory_ids: Optional[List[str]] = None, web_links: Optional[List[str]] = None) -> Dict[str, Any]:
+def _finalize_payload(
+    answer: str,
+    memory_ids: Optional[List[str]] = None,
+    web_links: Optional[List[str]] = None,
+    pdf_sources: Optional[List[dict]] = None,
+) -> Dict[str, Any]:
     """
     Build the SSE finalize payload with 'text', 'memory_ids', and 'sources'.
     - Memory sources get title "Wissensblock <id>", a viewer URL with highlight, and origin="memory".
@@ -2150,6 +2554,11 @@ def _finalize_payload(answer: str, memory_ids: Optional[List[str]] = None, web_l
             "id": None,
             "origin": "web",
         })
+
+    # Add pdf sources (stable dicts from doc_fetch)
+    for s in (pdf_sources or []):
+        if isinstance(s, dict):
+            sources.append(dict(s))
 
     return {
         "text": str(answer or ""),
@@ -2507,6 +2916,15 @@ def short_summary(text: str, max_chars: int = 300) -> str:
     t = (text or "").strip()
     if len(t) <= max_chars:
         return t
+    # Ensure we always return a string.
+    try:
+        cut = t[: max(1, int(max_chars))].rstrip()
+        # Prefer cutting at whitespace to avoid jagged endings.
+        if len(cut) > 80 and " " in cut:
+            cut = cut.rsplit(" ", 1)[0].rstrip()
+        return (cut + " …").strip()
+    except Exception:
+        return (t[: max(1, int(max_chars))].rstrip() + " …").strip()
 
 # ---- System status (for dashboard pipeline monitor) -------------------------
 @router.get("/system/kiana-status")
@@ -3483,6 +3901,86 @@ def try_web_answer(q: str, limit: int = 5) -> Tuple[Optional[str], List[dict]]:
         return (text or None), sources
     except Exception:
         return None, []
+
+
+# -------------------------------------------------
+# PDF Fetch/Context
+# -------------------------------------------------
+
+def try_pdf_context_from_message(
+    message: str,
+    *,
+    max_urls: int = 1,
+    max_pages: int = 8,
+) -> tuple[str, List[dict], dict]:
+    """Extract and fetch PDF context from a user message.
+
+    Returns (pdf_context_text, pdf_sources, pdf_meta).
+    pdf_context_text contains inline page tags like `[page N]`.
+    """
+    msg = (message or "").strip()
+    if not msg:
+        return "", [], {}
+    try:
+        from ..tools.doc_fetch import extract_urls, is_pdf_url, fetch_pdf_text
+    except Exception:
+        return "", [], {}
+
+    urls: List[str] = []
+    try:
+        urls = [u for u in (extract_urls(msg) or []) if is_pdf_url(u)]
+    except Exception:
+        urls = []
+    if not urls:
+        return "", [], {}
+
+    merged_texts: List[str] = []
+    merged_sources: List[dict] = []
+    merged_meta: dict = {"ok": False}
+
+    for u in urls[: max(1, int(max_urls or 1))]:
+        try:
+            text, sources, meta = fetch_pdf_text(u, max_pages=int(max_pages or 8))
+        except Exception:
+            text, sources, meta = None, [], {"ok": False}
+
+        if isinstance(meta, dict):
+            merged_meta = meta
+
+        # Attach a stable page hint to sources (non-breaking optional field).
+        page_hint = ""
+        try:
+            pages_read = meta.get("pages_read") if isinstance(meta, dict) else None
+            pages_total = meta.get("pages_total") if isinstance(meta, dict) else None
+            if pages_read and pages_total:
+                page_hint = f"1-{int(pages_read)} (of {int(pages_total)})"
+            elif pages_read:
+                page_hint = f"1-{int(pages_read)}"
+        except Exception:
+            page_hint = ""
+
+        for s in (sources or []):
+            if not isinstance(s, dict):
+                continue
+            d = dict(s)
+            if page_hint:
+                d.setdefault("page_hint", page_hint)
+            if isinstance(meta, dict):
+                if meta.get("pages_read") is not None:
+                    d.setdefault("pages_read", meta.get("pages_read"))
+                if meta.get("pages_total") is not None:
+                    d.setdefault("pages_total", meta.get("pages_total"))
+            merged_sources.append(d)
+
+        if isinstance(text, str) and text.strip():
+            merged_texts.append(f"(PDF Kontext: {u})\n{text.strip()}")
+
+    if not merged_texts:
+        return "", merged_sources, merged_meta
+
+    ctx = "\n\n".join(merged_texts).strip()
+    ctx = (ctx + "\n\nHinweis: Wenn du direkt zitierst, verwende die [page N]-Tags.").strip()
+    return ctx, merged_sources, merged_meta
 
 def _force_web_answer(q: str, limit: int = 3) -> Tuple[Optional[str], List[dict]]:
     """Compatibility shim.
@@ -4631,7 +5129,15 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             )
 
     # 1) Explizite Wahl?
-    choice = pick_choice(user_msg)
+    # DoD: If a PDF URL is present, treat this as a PDF-reading request (not a menu choice like "zusammenfassung").
+    has_pdf_url = False
+    try:
+        from ..tools.doc_fetch import extract_urls, is_pdf_url
+        has_pdf_url = any(is_pdf_url(u) for u in (extract_urls(user_msg) or []))
+    except Exception:
+        has_pdf_url = False
+
+    choice = pick_choice(user_msg) if not has_pdf_url else None
     if choice:
         ctx = get_offer_context(sid) or {}
         topic_ctx = ctx.get("topic") or extract_topic(user_msg) or ""
@@ -4653,7 +5159,7 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
 
     # 2) „Ja / bitte“ auf letztes Angebot?
     prev = get_last_offer(sid)
-    if prev and is_affirmation(user_msg):
+    if (not has_pdf_url) and prev and is_affirmation(user_msg):
         ctx = get_offer_context(sid) or {}
         topic_ctx = (ctx.get("topic") or extract_topic(user_msg) or "das Thema")
         seed_ctx = ctx.get("seed") or user_msg
@@ -4712,6 +5218,14 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
             body.web_ok = True  # Force web search on!
     except Exception:
         pass
+
+    # PDF auto-ingest (bounded): if a PDF URL is present, fetch & extract for grounded answering.
+    pdf_context = ""
+    pdf_sources: List[dict] = []
+    try:
+        pdf_context, pdf_sources, _pdf_meta = try_pdf_context_from_message(user_msg, max_urls=1, max_pages=8)
+    except Exception:
+        pdf_context, pdf_sources = "", []
     
     # Memory Context Check - Add conversation memory
     memory_context = ""
@@ -5015,6 +5529,62 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
         logger.warning("CHAT_DEBUG intent=%s", intent)
     except Exception:
         pass
+
+    # PDF-first pipeline: if the user provided a PDF, answer grounded on it before web-digest shortcuts.
+    if pdf_context and pdf_sources:
+        try:
+            r_pdf = await asyncio.wait_for(
+                reason_about(
+                    user_msg,
+                    persona=(body.persona or "friendly"),
+                    lang=(body.lang or "de-DE"),
+                    style=_sanitize_style(body.style),
+                    bullets=_sanitize_bullets(body.bullets),
+                    logic=_sanitize_logic(getattr(body, "logic", "balanced")),
+                    fmt=_sanitize_format(getattr(body, "format", "plain")),
+                    retrieval_snippet=pdf_context,
+                ),
+                timeout=PLANNER_TIMEOUT_SECONDS,
+            )
+        except Exception:
+            r_pdf = {}
+        reply_pdf = extract_natural_reply(r_pdf)
+        if not reply_pdf or not str(reply_pdf).strip():
+            reply_pdf = (
+                "Ich habe das PDF gelesen, aber ich konnte daraus gerade keine klare Antwort formulieren. "
+                "Welche konkrete Stelle/Frage soll ich prüfen?"
+            )
+        reply_pdf = postprocess_and_style(reply_pdf, persona, state, profile_used, style_prompt)
+        reply_pdf = make_user_friendly_text(reply_pdf, state)
+
+        conv_id_pdf: Optional[int] = None
+        try:
+            if current and current.get("id"):
+                uid = int(current["id"])  # type: ignore
+                conv = _ensure_conversation(db, uid, body.conv_id)
+                conv_id_pdf = conv.id
+                _save_msg(db, conv.id, "user", user_msg)
+                _save_msg(db, conv.id, "ai", reply_pdf)
+                asyncio.create_task(_retitle_if_needed(conv.id, user_msg, reply_pdf, body.lang or "de-DE"))
+        except Exception:
+            conv_id_pdf = None
+
+        out = {
+            "ok": True,
+            "reply": reply_pdf,
+            "conv_id": (conv_id_pdf if conv_id_pdf is not None else (body.conv_id or None)),
+            "memory_ids": [],
+            "meta": {"sources": list(pdf_sources or [])},
+            "backend_log": {"pipeline": "pdf+llm"},
+        }
+        return _attach_explain_and_kpis(
+            out,
+            route="/api/chat",
+            intent="pdf",
+            policy={"web_ok": bool(getattr(body, "web_ok", True)), "pdf": True},
+            tools=[{"tool": "pdf", "ok": True}],
+            source_expected=True,
+        )
 
     if intent == "knowledge_query" or _looks_like_current_query(user_msg):
         return await _answer_with_web_digest(user_msg, body, state, persona, profile_used, style_prompt, style_used_meta, current, db, risk_flag)
@@ -6885,11 +7455,127 @@ async def chat_once(body: dict, request: Request, db=Depends(get_db), current=De
         source_expected=str(intent or "").strip().lower() in {"knowledge", "knowledge_query", "web", "research"},
     )
 
+
+@router.get("/trace")
+def chat_trace(
+    conv_id: int,
+    msg_id: Optional[int] = None,
+    last: Optional[int] = None,
+    include_memory_preview: bool = True,
+    current=Depends(get_current_user_required),
+    db=Depends(get_db),
+):
+    """Return transparency trace for a specific assistant message.
+
+    Access control: paid plans (effective plan != free) + creator/admin.
+    Owner-only: conversation must belong to current user.
+    """
+    # Plan/role gate (fail closed)
+    if not _transparency_allowed_for_user(current, db=db, conv_id=conv_id):
+        raise HTTPException(403, "upgrade_required")
+    uid = int(current.get("id") or 0)
+    if uid <= 0:
+        raise HTTPException(401, "Authentication required")
+
+    c = db.query(Conversation).filter(Conversation.id == int(conv_id), Conversation.user_id == uid).first()
+    if not c:
+        raise HTTPException(404, "conversation not found")
+
+    # Minimal viable: allow requesting the last assistant turn.
+    target_msg_id: int = 0
+    try:
+        if msg_id is not None:
+            target_msg_id = int(msg_id)
+    except Exception:
+        target_msg_id = 0
+
+    # If msg_id is omitted, default to last assistant message (minimal viable).
+    if target_msg_id <= 0 and (int(last or 0) == 1 or msg_id is None):
+        try:
+            last_ai = (
+                db.query(Message)
+                .filter(Message.conv_id == int(conv_id), Message.role == "ai")
+                .order_by(Message.id.desc())
+                .first()
+            )
+            if last_ai and getattr(last_ai, "id", None) is not None:
+                target_msg_id = int(last_ai.id)
+        except Exception:
+            target_msg_id = 0
+
+    if target_msg_id <= 0:
+        raise HTTPException(404, "trace not found")
+
+    tr = (
+        db.query(MessageTrace)
+        .filter(
+            MessageTrace.conv_id == int(conv_id),
+            MessageTrace.msg_id == int(target_msg_id),
+            MessageTrace.user_id == int(uid),
+        )
+        .first()
+    )
+    if not tr:
+        raise HTTPException(404, "trace not found")
+
+    sources = tr.sources if isinstance(tr.sources, list) else []
+    memory_ids = tr.memory_ids if isinstance(tr.memory_ids, list) else []
+    explain = tr.explain if isinstance(tr.explain, dict) else {}
+
+    # Explain is optional; show only for pro + creator/admin.
+    allow_explain = False
+    try:
+        roles = _roles_set(current)
+        if roles & {"creator", "admin"}:
+            allow_explain = True
+        else:
+            p = str(current.get("plan") or "free").strip().lower()
+            allow_explain = bool(p in {"pro", "team"} or p.startswith("submind_"))
+    except Exception:
+        allow_explain = False
+    explain_out = explain if allow_explain else None
+
+    memory_previews: List[dict] = []
+    if include_memory_preview and memory_ids:
+        memory_previews = _memory_previews([str(x) for x in memory_ids], limit_chars=240, max_items=20)
+
+    trace = {
+        "sources": sources,
+        "memory_ids": [str(x) for x in memory_ids],
+        "memory_previews": memory_previews,
+        "explain": explain_out,
+    }
+
+    # Keep legacy top-level fields for backward compatibility.
+    return {
+        "ok": True,
+        "conv_id": int(conv_id),
+        "msg_id": int(target_msg_id),
+        "trace": trace,
+        "sources": sources,
+        "memory_ids": [str(x) for x in memory_ids],
+        "memory_items": memory_previews,
+        "explain": explain_out,
+    }
+
 # -------------------------------------------------
 # Streaming (SSE)
 # -------------------------------------------------
 @router.get("/stream")
-async def chat_stream(message: str, request: Request, persona: str = "friendly", lang: str = "de-DE", chain: bool = False, conv_id: Optional[int] = None, style: str = "balanced", bullets: int = 5, web_ok: bool = False, autonomy: int = 0):
+async def chat_stream(
+    message: str,
+    request: Request,
+    persona: str = "friendly",
+    lang: str = "de-DE",
+    chain: bool = False,
+    conv_id: Optional[int] = None,
+    style: str = "balanced",
+    bullets: int = 5,
+    web_ok: bool = False,
+    autonomy: int = 0,
+    db=Depends(get_db),
+    current=Depends(get_current_user_opt),
+):
     user_msg = (message or "").strip()
     request_id = None
     try:
@@ -6923,9 +7609,6 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     t0 = time.time()
     intent_label = "chat_stream"
 
-    # Auth context (best-effort). Must be defined even if lookup fails.
-    current = None
-
     # Best-effort: ensure we have a real conversation id early so clients can rely on it.
     stream_conv_id: Optional[int] = None
     try:
@@ -6937,23 +7620,10 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     except Exception:
         stream_conv_id = None
     try:
-        db_gen = get_db()
-        db = next(db_gen)
-        try:
-            current = get_current_user_opt(request, db=db)
-            if current and current.get("id"):
-                uid = int(current["id"])  # type: ignore[index]
-                conv = _ensure_conversation(db, uid, stream_conv_id)
-                stream_conv_id = int(conv.id)
-        finally:
-            try:
-                db.close()
-            except Exception:
-                pass
-            try:
-                db_gen.close()
-            except Exception:
-                pass
+        if current and isinstance(current, dict) and current.get("id"):
+            uid = int(current["id"])  # type: ignore[index]
+            conv = _ensure_conversation(db, uid, stream_conv_id)
+            stream_conv_id = int(conv.id)
     except Exception:
         pass
     def _log(level: str, msg: str, *args):
@@ -7071,6 +7741,12 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                     sources_count = len(base.get("sources") or [])
             except Exception:
                 sources_count = 0
+            mem_count = 0
+            try:
+                if isinstance(base.get("memory_ids"), list):
+                    mem_count = len(base.get("memory_ids") or [])
+            except Exception:
+                mem_count = 0
             base = _attach_explain_and_kpis(
                 base,
                 route="/api/chat/stream",
@@ -7078,8 +7754,16 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 policy=pol,
                 tools=list(tools or []),
                 source_expected=bool(source_expected),
-                sources_count=int(sources_count),
+                sources_count=int((sources_count or 0) + (mem_count or 0)),
             )
+        except Exception:
+            pass
+
+        # Enforce transparency gating for free plans (strip fields)
+        try:
+            if stream_conv_id is not None and int(stream_conv_id) > 0:
+                if not _transparency_allowed_for_user(current, db=None, conv_id=int(stream_conv_id)):
+                    _strip_transparency_fields(base)
         except Exception:
             pass
 
@@ -7185,10 +7869,22 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         yield ("data: " + json.dumps(closing, ensure_ascii=False) + "\n\n").encode("utf-8")
                     except Exception:
                         yield b"data: {\"done\": true}\n\n"
-            except Exception:
+            except Exception as e:
+                tb = ""
+                try:
+                    import traceback
+                    tb = traceback.format_exc()
+                except Exception:
+                    tb = ""
+                try:
+                    logger.exception("chat_stream TEST_MODE wrapper failed")
+                except Exception:
+                    pass
                 if not finalize_emitted:
                     try:
-                        closing = _finalize_frame(intent=intent_label, text="")
+                        closing = _finalize_frame(intent=intent_label, ok=False, error=str(e)[:200], text="", source_expected=False)
+                        if tb:
+                            closing["debug"] = tb[-3000:]
                         yield ("data: " + json.dumps(closing, ensure_ascii=False) + "\n\n").encode("utf-8")
                     except Exception:
                         yield b"data: {\"done\": true}\n\n"
@@ -7357,8 +8053,17 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
     style = _sanitize_style(style)
     bullet_limit = _sanitize_bullets(bullets)
 
+    # If a PDF URL is present, don't treat "zusammenfassung/plan/kurz" as a menu choice.
+    # This keeps PDF-reading prompts on the PDF ingest path (with sources + trace) instead of execute_choice.
+    has_pdf_url = False
+    try:
+        from ..tools.doc_fetch import extract_urls, is_pdf_url
+        has_pdf_url = any(is_pdf_url(u) for u in (extract_urls(user_msg) or []))
+    except Exception:
+        has_pdf_url = False
+
     # 1) Explizite Wahl?
-    choice = pick_choice(user_msg)
+    choice = pick_choice(user_msg) if not has_pdf_url else None
     if choice:
         ctx0 = get_offer_context(sid) or {}
         topic_ctx0 = ctx0.get("topic") or extract_topic(user_msg) or topic or ""
@@ -7378,7 +8083,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
 
     # 2) Bestätigung auf letztes Angebot?
     prev = get_last_offer(sid)
-    if prev and is_affirmation(user_msg):
+    if (not has_pdf_url) and prev and is_affirmation(user_msg):
         set_last_offer(sid, None)
         async def gen_prev():
             ctx = get_offer_context(sid) or {}
@@ -7573,6 +8278,11 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                     memory_context = build_memory_context(message or "", user_id)
                 except Exception:
                     pass
+                # build_memory_context may return None; normalize to string early.
+                try:
+                    memory_context = str(memory_context or "")
+                except Exception:
+                    memory_context = ""
                 
                 # Intent detection for confirmations
                 low = (message or "").strip().lower()
@@ -7686,11 +8396,28 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 # Confirmation branch ("ja, speichern") entfernt:
                 # KI_ana entscheidet nun selbstständig, ob und wann etwas gespeichert wird.
                 # Explizite "ja, speichern"-Eingaben haben keine Sonderbehandlung mehr.
+                # PDF auto-ingest: if a PDF URL is present, answer grounded on its extracted text.
+                pdf_context = ""
+                pdf_sources: List[dict] = []
+                try:
+                    pdf_context, pdf_sources, _pdf_meta = try_pdf_context_from_message(message or "", max_urls=1, max_pages=8)
+                except Exception:
+                    pdf_context, pdf_sources = "", []
+                try:
+                    pdf_context = str(pdf_context or "")
+                except Exception:
+                    pdf_context = ""
+
                 # Build thoughtful answer using memory check + web compare
                 topic_q = extract_topic(message) or message
                 # Add memory context to the question
-                if memory_context.strip():
-                    topic_q = f"{memory_context.strip()}\n\n{topic_q}"
+                mem_ctx = ""
+                try:
+                    mem_ctx = (memory_context or "").strip()
+                except Exception:
+                    mem_ctx = ""
+                if mem_ctx:
+                    topic_q = f"{mem_ctx}\n\n{topic_q}"
                 try:
                     logger.info("LLM_CALL_START cid=%s request_id=%s", cid, request_id)
                 except Exception:
@@ -7706,10 +8433,39 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         finalize_sent = True
                         yield _sse(_finalize_frame(intent="timeout", ok=False, error="timeout", text="Timeout", source_expected=False))
                         return
-                    a_text, a_origin, a_delta, a_saved_ids, a_sources, a_had_memory, a_had_web, a_mem_count = await asyncio.wait_for(
-                        answer_with_memory_check(topic_q, web_ok=bool(web_ok_flag), autonomy=int(autonomy or 0)),
-                        timeout=min(29.0, max(0.25, remaining)),
-                    )
+                    if pdf_context and pdf_sources:
+                        try:
+                            parts = []
+                            if pdf_context.strip():
+                                parts.append(pdf_context.strip())
+                            if mem_ctx:
+                                parts.append(mem_ctx)
+                            _pdf_retrieval = "\n\n".join(parts).strip()
+                            r_pdf = await reason_about(
+                                message or "",
+                                persona=str(persona or "friendly"),
+                                lang=str(lang or "de-DE"),
+                                style=_sanitize_style(style),
+                                bullets=_sanitize_bullets(bullets),
+                                logic=_sanitize_logic("balanced"),
+                                fmt=_sanitize_format("plain"),
+                                retrieval_snippet=_pdf_retrieval,
+                            )
+                        except Exception:
+                            r_pdf = {}
+                        a_text = extract_natural_reply(r_pdf)
+                        a_origin = "pdf"
+                        a_delta = ""
+                        a_saved_ids = []
+                        a_sources = list(pdf_sources or [])
+                        a_had_memory = bool(mem_ctx)
+                        a_had_web = False
+                        a_mem_count = int(len(mem_hits or []))
+                    else:
+                        a_text, a_origin, a_delta, a_saved_ids, a_sources, a_had_memory, a_had_web, a_mem_count = await asyncio.wait_for(
+                            answer_with_memory_check(topic_q, web_ok=bool(web_ok_flag), autonomy=int(autonomy or 0)),
+                            timeout=min(29.0, max(0.25, remaining)),
+                        )
                 except asyncio.TimeoutError:
                     try:
                         logger.warning("STREAM_ABORT cid=%s request_id=%s reason=timeout", cid, request_id)
@@ -7761,6 +8517,7 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                     pass
                 # Persist conversation + memory before final meta
                 saved_ids: List[str] = []
+                saved_ai_msg_id: int = 0
                 try:
                     for _sid in (a_saved_ids or []):
                         if _sid and _sid not in saved_ids:
@@ -7770,9 +8527,15 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                 try:
                     if current and current.get("id"):
                         uid = int(current["id"])  # type: ignore
-                        conv = _ensure_conversation(db, uid, conv_id)
+                        # IMPORTANT: persist into the same conversation id that we advertised in meta/finalize.
+                        conv = _ensure_conversation(db, uid, stream_conv_id)
                         _save_msg(db, conv.id, "user", message)
-                        _save_msg(db, conv.id, "ai", txt)
+                        _ai_msg = _save_msg(db, conv.id, "ai", txt)
+                        try:
+                            if _ai_msg is not None and getattr(_ai_msg, "id", None) is not None:
+                                saved_ai_msg_id = int(_ai_msg.id)
+                        except Exception:
+                            saved_ai_msg_id = 0
                         asyncio.create_task(_retitle_if_needed(conv.id, message, txt, lang or "de-DE"))
                         
                         # Auto-save conversation to memory if needed
@@ -7837,6 +8600,12 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                             for _s in (_sources or []):
                                 if not isinstance(_s, dict):
                                     continue
+                                # Only treat explicit web sources as web links.
+                                try:
+                                    if str(_s.get("origin") or "").strip().lower() not in {"web"} and str(_s.get("kind") or "").strip().lower() not in {"web"}:
+                                        continue
+                                except Exception:
+                                    pass
                                 for _k in ("url", "link", "href"):
                                     _u = _s.get(_k)
                                     if isinstance(_u, str) and _u.strip():
@@ -7882,7 +8651,12 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                     # No placeholder fallback: if still empty, we will return only memory sources
 
                     # Build finalize payload with sources
-                    payload = _finalize_payload(txt, memory_ids=mem_ids, web_links=web_links)
+                    payload = _finalize_payload(
+                        txt,
+                        memory_ids=mem_ids,
+                        web_links=web_links,
+                        pdf_sources=(list(srcs or []) if str(a_origin or "").strip().lower() == "pdf" else None),
+                    )
                     payload.update({
                         "done": True,
                         "safety_valve": False,
@@ -7890,6 +8664,13 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                         "delta_note": (a_delta or ""),
                         "topic": extract_topic(message),
                     })
+
+                    # Attach stable msg_id if we have one
+                    try:
+                        if int(saved_ai_msg_id or 0) > 0:
+                            payload["msg_id"] = int(saved_ai_msg_id)
+                    except Exception:
+                        pass
 
                     # ---- MetaMind KPIs + explain trace (stable schema) ----
                     try:
@@ -7927,9 +8708,38 @@ async def chat_stream(message: str, request: Request, persona: str = "friendly",
                                 {"tool": "web", "ok": bool(web_links)},
                             ],
                             source_expected=True,
+                            sources_count=int(
+                                (len(payload.get("sources") or []) if isinstance(payload.get("sources"), list) else 0)
+                                + (len(payload.get("memory_ids") or []) if isinstance(payload.get("memory_ids"), list) else 0)
+                            ),
                         )
                     except Exception:
                         pass
+
+                    # Persist trace (best-effort)
+                    try:
+                        mid = int(payload.get("msg_id") or 0)
+                    except Exception:
+                        mid = 0
+                    allow_trace = False
+                    try:
+                        allow_trace = _transparency_allowed_for_user(current, db=db, conv_id=int(stream_conv_id or conv_id or 0))
+                    except Exception:
+                        allow_trace = False
+
+                    if allow_trace and mid and current and current.get("id"):
+                        try:
+                            _upsert_message_trace(
+                                db,
+                                conv_id=int(stream_conv_id or conv_id or 0),
+                                msg_id=int(mid),
+                                user_id=int(current.get("id") or 0),
+                                sources=list(payload.get("sources") or []),
+                                memory_ids=list(payload.get("memory_ids") or []),
+                                explain=payload.get("explain") if isinstance(payload.get("explain"), dict) else {},
+                            )
+                        except Exception:
+                            pass
                     # Finalize source logging
                     try:
                         topic = payload.get("topic") or extract_topic(message)

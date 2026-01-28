@@ -202,6 +202,18 @@ class Message(Base):
     text = Column(Text, nullable=False)
     created_at = Column(Integer, default=0)
 
+
+class MessageTrace(Base):
+    __tablename__ = "message_traces"
+    id = Column(Integer, primary_key=True)
+    msg_id = Column(Integer, nullable=False, unique=True, index=True)
+    conv_id = Column(Integer, nullable=False, index=True)
+    user_id = Column(Integer, nullable=False, index=True)
+    created_at = Column(Integer, default=0)
+    sources = Column(JSON, default=list)
+    memory_ids = Column(JSON, default=list)
+    explain = Column(JSON, default=dict)
+
 class TimeflowEvent(Base):
     __tablename__ = "timeflow_events"
     id = Column(Integer, primary_key=True)

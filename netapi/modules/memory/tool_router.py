@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 
-from netapi.deps import get_current_user_opt
+from netapi.deps import get_current_user_opt, get_current_user_required, _effective_plan_id
 from netapi import memory_store
 from netapi.core import addressbook
 from netapi.modules.memory.schemas import UserSourcePrefsBlock
@@ -77,6 +77,55 @@ def _require_creator_admin(current: Optional[Dict[str, Any]]) -> None:
     role = str(current.get("role") or "").lower()
     if role not in {"creator", "admin"}:
         raise HTTPException(403, "creator/admin role required")
+
+
+def _require_transparency_allowed(current: Optional[Dict[str, Any]]) -> None:
+    """Allow transparency endpoints for paid users (plan != free) and creator/admin."""
+    if not current:
+        raise HTTPException(401, "Authentication required")
+    role = str(current.get("role") or "").lower()
+    roles = current.get("roles")
+    roles_norm: set[str] = set()
+    if isinstance(roles, (list, tuple)):
+        roles_norm = {str(r).lower() for r in roles if r is not None}
+    if role in {"creator", "admin"} or ("creator" in roles_norm) or ("admin" in roles_norm):
+        return
+    plan_id = _effective_plan_id(str(current.get("plan") or "free"))
+    if plan_id == "free":
+        raise HTTPException(403, "upgrade_required")
+
+
+class MemoryPreviewRequest(BaseModel):
+    ids: List[str] = Field(default_factory=list, max_length=50)
+    limit_chars: int = Field(default=240, ge=40, le=2000)
+
+
+@router.post("/preview")
+def memory_preview(body: MemoryPreviewRequest, current=Depends(get_current_user_required)):
+    _require_transparency_allowed(current)
+    ids = [str(x).strip() for x in (body.ids or []) if str(x or "").strip()]
+    ids = ids[:50]
+    items: List[Dict[str, Any]] = []
+    for bid in ids:
+        blk = memory_store.get_block(bid)
+        if not isinstance(blk, dict):
+            continue
+        meta = blk.get("meta") if isinstance(blk.get("meta"), dict) else {}
+        content = str(blk.get("content") or "")
+        preview = content.strip().replace("\n", " ")
+        if len(preview) > int(body.limit_chars or 240):
+            preview = preview[: int(body.limit_chars or 240)].rstrip() + "…"
+        items.append({
+            "id": str(blk.get("id") or bid),
+            "ts": int(blk.get("ts") or 0),
+            "topic": str(meta.get("topic") or meta.get("topic_path") or ""),
+            "title": str(blk.get("title") or ""),
+            "preview": preview,
+            # keep extra fields for backwards compatibility
+            "tags": list(blk.get("tags") or []),
+            "url": str(blk.get("url") or ""),
+        })
+    return {"ok": True, "items": items}
 
 
 @router.post("/search")
